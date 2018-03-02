@@ -1,38 +1,40 @@
 from singleton import Singleton
 from abc import ABC
 import pickle
+import os
 
 class InsufficentQuantityError(Exception):
     pass
 
+class Base:
+    def __init__(self):
+        pass
 
-
-class BaseInventory(ABC):
-    def __init__(self, item):
-        self.__dict__["item"] = item
+    def __repr__(self):
+        return str(self.__dict__)
 
     def __getitem__(self, item):
-        return self.item[item]
+        return self.__dict__[item]
 
     def __setitem__(self, key, value):
-        self.item[key] = value
-        if self.item[key] >= 0:
+        self.key = value
+        if self.key < 0:
             raise InsufficentQuantityError
         return True
 
     def __getattr__(self, item):
-        return self.item[item]
+        return self.__dict__[item]
 
     def __setattr__(self, key, value):
-        if not hasattr(self, "resource"):
-            print("ResourceInventory does not have resource initialised. Check"
-                  "naming of attributes.")
-            raise NotImplementedError
-        self.item[key] = value
+        self.__dict__[key] = value
+        print("this is")
+        print(key)
+        print(self.__dict__)
+        print(self.__dict__[key])
+        if self.__dict__[key] < 0:
+            raise InsufficentQuantityError
         return
 
-    def __repr__(self):
-        return str(self.item)
 
     def dump(self, file_path="../save/", file_name=None):
         if not file_name:
@@ -42,11 +44,11 @@ class BaseInventory(ABC):
         if not os.path.isdir(file_path):
             os.makedirs(file_path)
         with open(file_path + file_name, "wb") as file:
-            pickle.dump(self.item, file, -1)
+            pickle.dump(self.__dict__, file, -1)
         return True
 
     def load(self, file_path="../save/", file_name=None):
-        if hasattr(self, "item"):
+        if self.__dict__:
             print("Warning: Current item exists. Overwritting.")
         if not file_name:
             file_name = self.__class__.__name__ + "_save.pkl"
@@ -57,28 +59,27 @@ class BaseInventory(ABC):
             print(f"File {file_name} does not exist in specified directory {file_path}.")
             raise FileNotFoundError
         with open(file_path + file_name, "rb") as file:
-            self.__dict__["item"] = pickle.load(file)
+            self.__dict__ = pickle.load(file)
         return True
 
-class ResourceInventory(BaseInventory):
+
+class ResourceInventory(Base):
     __metaclass__ = Singleton
 
     def __init__(self):
-        self.__dict__["resource"] = self._default_resources()
-        super().__init__(self.resource)
-
-    def _default_resources(self):
-        resource = dict(cloth=0, stuff=0, accessory=0, packaging=0)
-        return resource
+        self.cloth = 0
+        self.stuff = 0
+        self.accessory = 0
+        self.packaging = 0
 
 
-class PlushieInventory(BaseInventory):
-    __metaclass__ = Singleton
-    def __init__(self):
-        self.__dict__["plushie"] = self._default_plushie()
-        super().__init__(self.plushie)
-
-    def _default_plushie(self):
-        plushie = dict(Aisha=0, Beta=0, Chama=0)
-        return plushie
-
+x = ResourceInventory()
+# print(x)
+# print(x.cloth)
+# print(x["cloth"])
+# x.cloth += 1
+# x["stuff"] += 3
+# print(x)
+# print(x.cloth + 34)
+# x.dump()
+x.load()
