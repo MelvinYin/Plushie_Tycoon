@@ -1,21 +1,32 @@
 from singleton import Singleton
+from bases import Base, BaseInt
 
-class ProductionCost(metaclass=Singleton):
+class PlushieHours(Base):
     def __init__(self):
-        self.plushie_manhours = self.default_hours()
-        self.cost_per_hour = self.def_cost_per_hour()
+        self.Aisha = 30
+        self.Beta = 24
+        self.Chama = 36
 
-    def default_hours(self):
-        plushie_manhours = dict(Aisha=30, Beta=24, Chama=36)
-        return plushie_manhours
 
-    def def_cost_per_hour(self):
-        return 2
 
-    def get_hours(self, category):
-        """ Might want to make this complicated in future, like scaling """
-        return self.plushie_manhours[category]
+class CostPerHour(BaseInt):
+    def __init__(self):
+        self.cost_per_hour = 3
+        super().__init__(self.cost_per_hour)
+
+
+class ProductionCost(Base):
+    __metaclass__ = Singleton
+    def __init__(self):
+        self.plushie_hours = PlushieHours()
+        self.cost_per_hour = CostPerHour()
 
     def __call__(self, category, quantity):
-        total_cost = self.cost_per_hour * self.get_hours(category) * quantity
-        return total_cost
+        hours_per_plushie = self.plushie_hours[category]
+        cost = hours_per_plushie * self.cost_per_hour * quantity
+        return cost
+
+# x = ProductionCost()
+# y = x("Aisha", 12)
+# print(y)
+# print(type(y))

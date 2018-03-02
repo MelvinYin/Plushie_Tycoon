@@ -19,9 +19,10 @@ class Base:
         return self.item
 
     def __setattr__(self, key, value):
-        self[key] = value
+        object.__setattr__(self, key, value)
         if self[key] < 0:
             raise InsufficentQuantityError
+
         return
 
 class Class(Base):

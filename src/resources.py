@@ -1,14 +1,13 @@
 from collections import namedtuple
 from singleton import Singleton
+from bases import Base
 
-class ResourceCost(metaclass=Singleton):
+class ResourceCost(Base):
+    __metaclass__ = Singleton
     def __init__(self):
         self.Aisha = self._default_Aisha()
         self.Beta = self._default_Beta()
         self.Chama = self._default_Chama()
-
-    def __call__(self, category):
-        return getattr(self, category)
 
     @staticmethod
     def _default_tuple(name):
