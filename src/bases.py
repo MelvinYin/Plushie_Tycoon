@@ -1,5 +1,6 @@
 from abc import ABC
 import os
+import pickle
 
 class Base(ABC):
     def __repr__(self):

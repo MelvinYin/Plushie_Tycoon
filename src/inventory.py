@@ -21,3 +21,17 @@ class PlushieInventory(Base):
         self.Beta = 0
         self.Chama = 0
 
+
+
+# x = ResourceInventory()
+# print(x)
+# print(x.cloth)
+# print(x["cloth"])
+# x.cloth += 1
+# x["stuff"] += 3
+# print(x)
+# print(x.cloth + 34)
+# x.cloth = x.cloth + 35
+# x.dump()
+# x.load()
+# print(x)
