@@ -21,8 +21,8 @@ class PlushieInventory(Base):
         self.Beta = 0
         self.Chama = 0
 
-
-
+#
+#
 # x = ResourceInventory()
 # print(x)
 # print(x.cloth)

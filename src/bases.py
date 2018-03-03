@@ -2,12 +2,16 @@ from abc import ABC
 import os
 import pickle
 
+class InsufficentQuantityError(Exception):
+    pass
+
 class Base(ABC):
-    def __repr__(self):
-        return self.__dict__
 
     def __str__(self):
-        return str(self.__repr__())
+        tmp = dict()
+        for key, value in self.__dict__.items():
+            tmp[str(key)] = str(value)
+        return str(tmp)
 
     def __getitem__(self, item):
         return self.__dict__[item]
@@ -24,6 +28,12 @@ class Base(ABC):
                 raise InsufficentQuantityError
         super().__setattr__(key, value)
         return
+
+    def check_if_sufficient(self, category, quantity):
+        if self[category] >= quantity:
+            return True
+        else:
+            return False
 
     def dump(self, file_path="../save/", file_name=None):
         if not file_name:
@@ -54,11 +64,8 @@ class BaseInt(ABC):
     def __init__(self, item):
         self.item = item
 
-    def __repr__(self):
-        return self.item
-
     def __str__(self):
-        return str(self.__repr__())
+        return str(self.item)
 
     def __add__(self, other):
         self.item += other
@@ -116,13 +123,3 @@ class BaseInt(ABC):
 
 # TODO: write tests for this
 
-class Cla(BaseInt):
-    def __init__(self):
-        self.one = 1
-        super().__init__(self.one)
-
-
-x = Cla()
-print(x)
-y = x * 3
-print(y)

@@ -7,13 +7,10 @@ class PlushieHours(Base):
         self.Beta = 24
         self.Chama = 36
 
-
-
 class CostPerHour(BaseInt):
     def __init__(self):
         self.cost_per_hour = 3
         super().__init__(self.cost_per_hour)
-
 
 class ProductionCost(Base):
     __metaclass__ = Singleton
@@ -26,7 +23,3 @@ class ProductionCost(Base):
         cost = hours_per_plushie * self.cost_per_hour * quantity
         return cost
 
-# x = ProductionCost()
-# y = x("Aisha", 12)
-# print(y)
-# print(type(y))
