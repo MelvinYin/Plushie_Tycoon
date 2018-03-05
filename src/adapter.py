@@ -1,11 +1,8 @@
-
+from exceptions import InsufficentQuantityError
 import UI as ui
 from game_engine import GameEngine as GE
-import game_engine
 
 # TODO: check what exception is raised when negative quantity.
-# TODO: need to somehow handle production, if res deducted but budget not enough, then
-# TODO: res remain deducted.
 
 
 GE = GE()
@@ -17,17 +14,16 @@ def to_do(instruction="action", GE=GE):
 
     func_in_str = result[0]
 
-    print(f">{func_in_str}<")
     if func_in_str == "buy_res":
         func = GE.buy_res
     elif func_in_str == "sell_res":
         func = GE.sell_res
 
-    elif func_in_str == "buy_plushie":
+    elif func_in_str == "buy_plush":
         func = GE.buy_plushie
-    elif func_in_str == "make_plushie":
+    elif func_in_str == "make_plush":
         func = GE.make_plushie
-    elif func_in_str == "sell_plushie":
+    elif func_in_str == "sell_plush":
         func = GE.sell_plushie
 
     elif func_in_str == "show_stats":

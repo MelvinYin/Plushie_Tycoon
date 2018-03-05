@@ -8,5 +8,5 @@ class Budget(BaseInt):
         super().__init__(self.budget)
 
     def _default_budget(self):
-        return 10000
+        return 10000000
 

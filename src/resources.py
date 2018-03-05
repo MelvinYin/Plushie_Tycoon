@@ -6,9 +6,9 @@ class ResourceCost(Base):
     __metaclass__ = Singleton
     def __init__(self):
         self.index = ["cloth", "stuff", "accessory", "packaging"]
-        self.Aisha = self._default_Aisha()
-        self.Beta = self._default_Beta()
-        self.Chama = self._default_Chama()
+        self.aisha = self._default_Aisha()
+        self.beta = self._default_Beta()
+        self.chama = self._default_Chama()
 
     def _default_Aisha(self):
         cost = pd.Series([3,6,2,1], self.index, name="Aisha")

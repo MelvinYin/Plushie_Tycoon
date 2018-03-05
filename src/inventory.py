@@ -3,9 +3,6 @@ from abc import ABC
 import pickle
 from bases import Base
 
-class InsufficentQuantityError(Exception):
-    pass
-
 class ResourceInventory(Base):
     __metaclass__ = Singleton
     def __init__(self):
@@ -17,9 +14,9 @@ class ResourceInventory(Base):
 class PlushieInventory(Base):
     __metaclass__ = Singleton
     def __init__(self):
-        self.Aisha = 0
-        self.Beta = 0
-        self.Chama = 0
+        self.aisha = 0
+        self.beta = 0
+        self.chama = 0
 
 #
 #

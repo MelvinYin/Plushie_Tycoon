@@ -1,16 +1,12 @@
-from interpreters import interpret_action, interpret_plushie, interpret_resource
-from inventory import InsufficentQuantityError
-
-class InvalidInputException(Exception):
-    pass
-
+from interpreters import interpret_action, interpret_plushie, interpret_resource, interpret_yes_no
+from exceptions import InvalidInputException
 
 def repeat_if_invalid_input(func):
 
     def wrapper(*args, **kwargs):
         while True:
             try:
-                print("Performing " + func.__name__)
+                print("Performing " + func.__name__ + "\n")
                 return func(*args, **kwargs)
             except InvalidInputException as e:
                 if hasattr(e, "message"):
@@ -44,27 +40,26 @@ def sell_resource():
     category, quantity = interpreted
     return ("sell_res", category, quantity)
 
-
 @repeat_if_invalid_input
 def buy_plushie():
     user_input = ask_cat_quan()
     interpreted = interpret_plushie(user_input)
     category, quantity = interpreted
-    return ("buy_plushie", category, quantity)
+    return ("buy_plush", category, quantity)
 
 @repeat_if_invalid_input
 def make_plushie():
     user_input = ask_cat_quan()
     interpreted = interpret_plushie(user_input)
     category, quantity = interpreted
-    return ("make_plushie", category, quantity)
+    return ("make_plush", category, quantity)
 
 @repeat_if_invalid_input
 def sell_plushie():
     user_input = ask_cat_quan()
     interpreted = interpret_plushie(user_input)
     category, quantity = interpreted
-    return ("sell_plushie", category, quantity)
+    return ("sell_plush", category, quantity)
 
 @repeat_if_invalid_input
 def if_save():
@@ -78,7 +73,6 @@ def if_save():
 def action():
     user_input = ask_action()
     desired_action = interpret_action(user_input)
-    print("pass interpretor")
 
     if desired_action == "buy_res":
         return buy_resource()

@@ -13,6 +13,6 @@ class MarketResource(Base):
 class MarketPlushie(Base):
     __metaclass__ = Singleton
     def __init__(self):
-        self.Aisha = 80
-        self.Beta = 76
-        self.Chama = 52
+        self.aisha = 80
+        self.beta = 76
+        self.chama = 52

@@ -1,7 +1,5 @@
 import re
-
-class InvalidInputException(Exception):
-    pass
+from exceptions import InvalidInputException
 
 # TODO: 3 cloth?
 buy_res_p = re.compile("buy[ _]res(ource(s)?)?(\.)?", re.IGNORECASE)
@@ -19,6 +17,8 @@ show_stats_p = re.compile("(show[ _])?stats(\.)?", re.IGNORECASE)
 show_prices_p = re.compile("(show[ _])?price(s)?(\.)?", re.IGNORECASE)
 
 next_turn_p = re.compile("((skip)|(next))([ _]turn)?(\.)?", re.IGNORECASE)
+
+back_p = re.compile("((back)|(return))(\.)?", re.IGNORECASE)
 
 def interpret_action(user_input):
     user_input = user_input.strip()
@@ -86,8 +86,11 @@ packaging_p = re.compile("packaging(s)?", re.IGNORECASE)
 
 def interpret_resource(user_input):
 
-    user_input = user_input.strip()
-    plushie_name, quantity = re.split("[, ]+", user_input, maxsplit=2)
+    try:
+        user_input = user_input.strip()
+        plushie_name, quantity = re.split("[, ]+", user_input, maxsplit=2)
+    except ValueError:
+        raise InvalidInputException(user_input)
     if not re.fullmatch("[1-9][0-9]*", quantity):
         raise InvalidInputException(user_input)
 

@@ -3,9 +3,9 @@ from bases import Base, BaseInt
 
 class PlushieHours(Base):
     def __init__(self):
-        self.Aisha = 30
-        self.Beta = 24
-        self.Chama = 36
+        self.aisha = 30
+        self.beta = 24
+        self.chama = 36
 
 class CostPerHour(BaseInt):
     def __init__(self):
