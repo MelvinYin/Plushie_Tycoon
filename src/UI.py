@@ -1,17 +1,17 @@
 from interpreters import interpret_action, interpret_plushie, interpret_resource, interpret_yes_no
 from exceptions import InvalidInputException
+import logging
 
 def repeat_if_invalid_input(func):
-
     def wrapper(*args, **kwargs):
         while True:
             try:
-                print("Performing " + func.__name__ + "\n")
+                logging.DEBUG("Performing " + func.__name__ + "\n")
                 return func(*args, **kwargs)
             except InvalidInputException as e:
                 if hasattr(e, "message"):
-                    print(f"Invalid input. You have entered {e.message}. "
-                      f"Please try again.")
+                    logging.WARNING(f"Invalid input. You have entered "
+                                    f"{e.message}. Please try again.")
                 else:
                     print(f"Invalid input. Please try again.")
                 continue
@@ -94,7 +94,7 @@ def action():
     elif desired_action == "save_game":
         return ("save_game",)
     elif desired_action == "load_game":
-        print("Game Loaded.")
+        logging.DEBUG("Game Loaded.")
         return ("load_game",)
     elif desired_action == "next_turn":
         return ("next_turn",)

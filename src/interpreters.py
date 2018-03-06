@@ -1,7 +1,10 @@
 import re
 from exceptions import InvalidInputException
 
-# TODO: 3 cloth?
+# TODO: We don't really want to make that tolerant a ui at this point,
+# TODO: intention is to wrap it up in a gui afterwards.
+
+
 buy_res_p = re.compile("buy[ _]res(ource(s)?)?(\.)?", re.IGNORECASE)
 sell_res_p = re.compile("sell[ _]res(ource(s)?)?(\.)?", re.IGNORECASE)
 
@@ -88,10 +91,17 @@ def interpret_resource(user_input):
 
     try:
         user_input = user_input.strip()
-        plushie_name, quantity = re.split("[, ]+", user_input, maxsplit=2)
+        field_a, field_b = re.split("[, ]+", user_input, maxsplit=2)
     except ValueError:
         raise InvalidInputException(user_input)
-    if not re.fullmatch("[1-9][0-9]*", quantity):
+
+    if re.fullmatch("[1-9][0-9]*", field_a):
+        quantity = field_a
+        plushie_name = field_b
+    elif re.fullmatch("[1-9][0-9]*", field_b):
+        plushie_name = field_a
+        quantity = field_b
+    else:
         raise InvalidInputException(user_input)
 
     if re.fullmatch(cloth_p, plushie_name):

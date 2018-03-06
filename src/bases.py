@@ -1,9 +1,8 @@
 from abc import ABC
 import os
 import pickle
-
-class InsufficentQuantityError(Exception):
-    pass
+import logging
+from exceptions import InsufficentQuantityError
 
 class Base(ABC):
 
@@ -17,7 +16,7 @@ class Base(ABC):
         try:
             return self.__dict__[item]
         except KeyError as e:
-            print(self.__dict__)
+            logging.ERROR(self.__dict__)
             raise e
 
     def __setitem__(self, key, value):
@@ -82,7 +81,7 @@ class BaseInt(ABC):
     def __sub__(self, other):
         self.item -= other
         if self.item < 0:
-            raise InsufficentQuantity
+            raise InsufficentQuantityError
         return self.item
 
     def __isub__(self, other):
@@ -116,14 +115,13 @@ class BaseInt(ABC):
         if not file_name:
             file_name = self.__class__.__name__ + "_save.pkl"
         if not os.path.isdir(file_path):
-            print(f"File path {file_path} does not exist.")
+            logging.ERROR(f"File path {file_path} does not exist.")
             raise FileNotFoundError
         if not os.path.isfile(file_path + file_name):
-            print(f"File {file_name} does not exist in specified directory {file_path}.")
+            logging.ERROR(f"File {file_name} does not exist in specified "
+                          f"directory {file_path}.")
             raise FileNotFoundError
         with open(file_path + file_name, "rb") as file:
             self.item = pickle.load(file)
         return True
-
-# TODO: write tests for this
 
