@@ -6,11 +6,11 @@ def repeat_if_invalid_input(func):
     def wrapper(*args, **kwargs):
         while True:
             try:
-                logging.DEBUG("Performing " + func.__name__ + "\n")
+                logging.debug("Performing " + func.__name__ + "\n")
                 return func(*args, **kwargs)
             except InvalidInputException as e:
                 if hasattr(e, "message"):
-                    logging.WARNING(f"Invalid input. You have entered "
+                    logging.warning(f"Invalid input. You have entered "
                                     f"{e.message}. Please try again.")
                 else:
                     print(f"Invalid input. Please try again.")
@@ -94,7 +94,7 @@ def action():
     elif desired_action == "save_game":
         return ("save_game",)
     elif desired_action == "load_game":
-        logging.DEBUG("Game Loaded.")
+        logging.debug("Game Loaded.")
         return ("load_game",)
     elif desired_action == "next_turn":
         return ("next_turn",)

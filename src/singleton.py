@@ -6,6 +6,6 @@ class Singleton(type):
         if cls not in cls._instances:
             cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
         else:
-            logging.ERROR(f"{cls.__name__} should only be initialised once.")
+            logging.error(f"{cls.__name__} should only be initialised once.")
             raise Exception
         return cls._instances[cls]

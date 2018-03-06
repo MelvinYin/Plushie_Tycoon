@@ -16,7 +16,7 @@ class Base(ABC):
         try:
             return self.__dict__[item]
         except KeyError as e:
-            logging.ERROR(self.__dict__)
+            logging.error(self.__dict__)
             raise e
 
     def __setitem__(self, key, value):
@@ -115,10 +115,10 @@ class BaseInt(ABC):
         if not file_name:
             file_name = self.__class__.__name__ + "_save.pkl"
         if not os.path.isdir(file_path):
-            logging.ERROR(f"File path {file_path} does not exist.")
+            logging.error(f"File path {file_path} does not exist.")
             raise FileNotFoundError
         if not os.path.isfile(file_path + file_name):
-            logging.ERROR(f"File {file_name} does not exist in specified "
+            logging.error(f"File {file_name} does not exist in specified "
                           f"directory {file_path}.")
             raise FileNotFoundError
         with open(file_path + file_name, "rb") as file:

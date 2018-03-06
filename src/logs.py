@@ -54,7 +54,7 @@ def set_logging_level(low_pass_stream="stdout", high_pass_stream="stderr",
         log_lvl = log_lvl_mapping[log_lvl]
         log_filter_lvl = log_lvl_mapping[log_filter_lvl]
     except KeyError:
-        logging.CRITICAL(f"Invalid Input {low_pass_stream}, {high_pass_stream}, "
+        logging.error(f"Invalid Input {low_pass_stream}, {high_pass_stream}, "
               f"{log_lvl}, {log_filter_lvl} for set_logging_level.")
         raise Exception
 

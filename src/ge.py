@@ -21,6 +21,7 @@ class GEM:
 
         while callstack:
             call = callstack.pop(0)
+            logging.debug(f"Currently running: {call}")
             func, args = call[0], call[1:]
 
             if func in GEM_methods:
@@ -45,10 +46,10 @@ class GEM:
         if not file_name:
             file_name = "plushie" + "_save.pkl"
         if not os.path.isdir(file_path):
-            logging.ERROR(f"File path {file_path} does not exist.")
+            logging.error(f"File path {file_path} does not exist.")
             raise FileNotFoundError
         if not os.path.isfile(file_path + file_name):
-            logging.ERROR(f"File {file_name} does not exist in specified "
+            logging.error(f"File {file_name} does not exist in specified "
                              f"directory {file_path}.")
             raise FileNotFoundError
         with open(file_path + file_name, "rb") as file:
@@ -59,11 +60,11 @@ class GEM:
         if not file_name:
             file_name = "plushie" + "_save.pkl"
         if not file_name.endswith(".pkl"):
-            logging.WARNING(f"Warning: File name {file_name} provided does not"
+            logging.warning(f"Warning: File name {file_name} provided does not"
                             f" end with .pkl. Suffix will be added.")
             file_name += ".pkl"
         if not os.path.isdir(file_path):
-            logging.WARNING(f"Warning: File_path {file_path} provided does not"
+            logging.warning(f"Warning: File_path {file_path} provided does not"
                             f" exist. Directory will be created.")
             os.makedirs(file_path)
         with open(file_path + file_name, "wb") as file:
@@ -107,7 +108,7 @@ class GEI:
             func = self.show_prices
 
         else:
-            logging.ERROR(func_in_str)
+            logging.error(func_in_str)
             raise Exception
         return func
 
@@ -115,7 +116,7 @@ class GEI:
         func_in_str, args = self.call[0], self.call[1:]
         func = self.interpret_call(func_in_str)
         if args:
-            func(args)
+            func(*args)
         else:
             func()
         return self.GSI
@@ -162,28 +163,28 @@ class GEI:
 
 
     def show_stats(self):
-        logging.INFO("Current Inventory:")
-        logging.INFO(self.GSI.resources)
-        logging.INFO(self.GSI.plushies)
+        logging.info("Current Inventory:")
+        logging.info(self.GSI.resources)
+        logging.info(self.GSI.plushies)
 
-        logging.INFO("Current Budget:")
-        logging.INFO(self.GSI.budget)
+        logging.info("Current Budget:")
+        logging.info(self.GSI.budget)
 
-        logging.INFO("Current Market Prices:")
-        logging.INFO(self.GSI.m_plushie)
-        logging.INFO(self.GSI.m_resource)
+        logging.info("Current Market Prices:")
+        logging.info(self.GSI.m_plushie)
+        logging.info(self.GSI.m_resource)
 
-        logging.INFO("Fixed Costs:")
-        logging.INFO(self.GSI.resource_cost)
-        logging.INFO(self.GSI.production_cost)
+        logging.info("Fixed Costs:")
+        logging.info(self.GSI.resource_cost)
+        logging.info(self.GSI.production_cost)
 
-        logging.INFO("Time elapsed:")
-        logging.INFO(self.GSI.time_steps)
+        logging.info("Time elapsed:")
+        logging.info(self.GSI.time_steps)
         return True
 
     def show_prices(self):
-        logging.INFO("Current Market Prices:")
-        logging.INFO(self.GSI.m_plushie)
-        logging.INFO(self.GSI.m_resource)
-        logging.INFO("\n")
+        logging.info("Current Market Prices:")
+        logging.info(self.GSI.m_plushie)
+        logging.info(self.GSI.m_resource)
+        logging.info("\n")
         return
