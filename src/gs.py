@@ -27,3 +27,5 @@ class GSM:
         cost = prod_time_required * self.cost_per_hour
         return cost
 
+    def _fluctuation(self):
+        

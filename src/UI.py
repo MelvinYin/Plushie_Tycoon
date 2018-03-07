@@ -14,7 +14,7 @@ def repeat_if_invalid_input(func):
                     logging.warning(f"Invalid input. You have entered "
                                     f"{e.message}. Please try again.")
                 else:
-                    print(f"Invalid input. Please try again.")
+                    logging.warning(f"Invalid input. Please try again.")
                 continue
     return wrapper
 
