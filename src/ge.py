@@ -145,40 +145,37 @@ class GEI:
         return True
 
     def make_prod(self, type, quantity):
-        res_for_type = self.GSI.res_price[type]
+        res_for_type = self.GSI.prod_res_cost[type]
         total_res = res_for_type * quantity
-        for category, quantity in total_res.items():
+        for category, quantity in total_res.iteritems():
             self.GSI.res[category] -= quantity
 
-        cost_to_produce = self.GSI.production_cost(type, quantity)
+        cost_to_produce = self.GSI.cost_to_produce(type, quantity)
         self.GSI.budget -= cost_to_produce
 
         self.GSI.prod[type] += quantity
         return True
 
     def show_stats(self):
-        logging.info("Current Inventory:")
-        logging.info(self.GSI.res)
-        logging.info(self.GSI.prod)
+        logging.info("Current Inventory: \n"
+                     + "Resources\n" + str(self.GSI.res) + "\n"
+                     + "Products\n" + str(self.GSI.prod))
 
-        logging.info("Current Budget:")
-        logging.info(self.GSI.budget)
+        logging.info("Current Budget: " + str(self.GSI.budget))
 
-        logging.info("Current Market Prices:")
-        logging.info(self.GSI.prod_price)
-        logging.info(self.GSI.res_price)
+        logging.info("Current Market Prices: \n"
+                     + "Resources\n" + str(self.GSI.res_price) + "\n"
+                     + "Products\n" + str(self.GSI.prod_price))
 
-        logging.info("Fixed Costs:")
-        logging.info(self.GSI.prod_res_cost)
-        logging.info(self.GSI.production_cost)
+        logging.info("Fixed Costs: \n"
+                     + str(self.GSI.prod_res_cost) + "\n"
+                     + "Cost per hour: " + str(self.GSI.cost_per_hour))
 
-        logging.info("Time elapsed:")
-        logging.info(self.GSI.time_steps)
+        logging.info("Time elapsed: " + str(self.GSI.time_steps))
         return True
 
     def show_price(self):
-        logging.info("Current Market Prices:")
-        logging.info(self.GSI.prod_price)
-        logging.info(self.GSI.res_price)
-        logging.info("\n")
+        logging.info("Current Market Prices: \n"
+                     + "Resources\n" + str(self.GSI.res_price) + "\n"
+                     + "Products\n" + str(self.GSI.prod_price))
         return
