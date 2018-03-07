@@ -2,22 +2,22 @@ from singleton import Singleton
 from abc import ABC
 import pickle
 from bases import Base
-import default_values
+import defaults
 
 class ResourceInventory(Base):
     __metaclass__ = Singleton
     def __init__(self):
-        self.cloth = default_values.starting_cloth
-        self.stuff = default_values.starting_stuff
-        self.accessory = default_values.starting_accessory
-        self.packaging = default_values.starting_packaging
+        self.cloth = defaults.starting_res.cloth
+        self.stuff = defaults.starting_res.stuff
+        self.accessory = defaults.starting_res.accessory
+        self.packaging = defaults.starting_res.packaging
 
 class PlushieInventory(Base):
     __metaclass__ = Singleton
     def __init__(self):
-        self.aisha = default_values.starting_aisha
-        self.beta = default_values.starting_beta
-        self.chama = default_values.starting_chama
+        self.aisha = defaults.starting_prod.aisha
+        self.beta = defaults.starting_prod.beta
+        self.chama = defaults.starting_prod.chama
 
 #
 #

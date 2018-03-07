@@ -8,9 +8,9 @@ from exceptions import InvalidInputException
 buy_res_p = re.compile("buy[ _]res(ource(s)?)?(\.)?", re.IGNORECASE)
 sell_res_p = re.compile("sell[ _]res(ource(s)?)?(\.)?", re.IGNORECASE)
 
-buy_plush_p = re.compile("buy[ _]plush(ie(s)?)?(\.)?", re.IGNORECASE)
-sell_plush_p = re.compile("sell[ _]plush(ie(s)?)?(\.)?", re.IGNORECASE)
-make_plush_p = re.compile("make[ _]plush(ie(s)?)?(\.)?", re.IGNORECASE)
+buy_prod_p = re.compile("buy[ _]prod(ie(s)?)?(\.)?", re.IGNORECASE)
+sell_prod_p = re.compile("sell[ _]prod(ie(s)?)?(\.)?", re.IGNORECASE)
+make_prod_p = re.compile("make[ _]prod(ie(s)?)?(\.)?", re.IGNORECASE)
 
 save_game_p = re.compile("save([ _]game)?(\.)?", re.IGNORECASE)
 load_game_p = re.compile("load([ _]game)?(\.)?", re.IGNORECASE)
@@ -30,12 +30,12 @@ def interpret_action(user_input):
     elif re.fullmatch(sell_res_p, user_input):
         return "sell_res"
 
-    elif re.fullmatch(buy_plush_p, user_input):
-        return "buy_plush"
-    elif re.fullmatch(make_plush_p, user_input):
-        return "make_plush"
-    elif re.fullmatch(sell_plush_p, user_input):
-        return "sell_plush"
+    elif re.fullmatch(buy_prod_p, user_input):
+        return "buy_prod"
+    elif re.fullmatch(make_prod_p, user_input):
+        return "make_prod"
+    elif re.fullmatch(sell_prod_p, user_input):
+        return "sell_prod"
 
     elif re.fullmatch(show_stats_p, user_input):
         return "show_stats"
@@ -58,22 +58,22 @@ aisha_p = re.compile("aisha", re.IGNORECASE)
 beta_p = re.compile("beta", re.IGNORECASE)
 chama_p = re.compile("chama", re.IGNORECASE)
 
-def interpret_plushie(user_input):
+def interpret_prod(user_input):
     """
     For now this can be replaced with a simple .lower(), more for in case of
     future changes.
     """
 
     user_input = user_input.strip()
-    plushie_name, quantity = re.split("[, ]+", user_input, maxsplit=2)
+    prod_name, quantity = re.split("[, ]+", user_input, maxsplit=2)
     if not re.fullmatch("[1-9][0-9]*", quantity):
         raise InvalidInputException(user_input)
 
-    if re.fullmatch(aisha_p, plushie_name):
+    if re.fullmatch(aisha_p, prod_name):
         matched_name = "aisha"
-    elif re.fullmatch(beta_p, plushie_name):
+    elif re.fullmatch(beta_p, prod_name):
         matched_name = "beta"
-    elif re.fullmatch(chama_p, plushie_name):
+    elif re.fullmatch(chama_p, prod_name):
         matched_name = "chama"
     else:
         raise InvalidInputException(user_input)
@@ -97,20 +97,20 @@ def interpret_resource(user_input):
 
     if re.fullmatch("[1-9][0-9]*", field_a):
         quantity = field_a
-        plushie_name = field_b
+        prod_name = field_b
     elif re.fullmatch("[1-9][0-9]*", field_b):
-        plushie_name = field_a
+        prod_name = field_a
         quantity = field_b
     else:
         raise InvalidInputException(user_input)
 
-    if re.fullmatch(cloth_p, plushie_name):
+    if re.fullmatch(cloth_p, prod_name):
         matched_name = "cloth"
-    elif re.fullmatch(stuff_p, plushie_name):
+    elif re.fullmatch(stuff_p, prod_name):
         matched_name = "stuff"
-    elif re.fullmatch(accessory_p, plushie_name):
+    elif re.fullmatch(accessory_p, prod_name):
         matched_name = "accessory"
-    elif re.fullmatch(packaging_p, plushie_name):
+    elif re.fullmatch(packaging_p, prod_name):
         matched_name = "packaging"
     else:
         raise InvalidInputException(user_input)

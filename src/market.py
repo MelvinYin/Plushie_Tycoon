@@ -1,18 +1,13 @@
 from singleton import Singleton
 from bases import Base
+import defaults
 
-class MarketResource(Base):
+class MarketRes(Base):
     __metaclass__ = Singleton
     def __init__(self):
-        self.cloth = 10
-        self.stuff = 20
-        self.accessory = 18
-        self.packaging = 12
+        self.res_price = defaults.starting_res_price
 
-
-class MarketPlushie(Base):
+class MarketProd(Base):
     __metaclass__ = Singleton
     def __init__(self):
-        self.aisha = 80
-        self.beta = 76
-        self.chama = 52
+        self.prod_price = defaults.starting_prod_price

@@ -1,6 +1,7 @@
-from interpreters import interpret_action, interpret_plushie, interpret_resource, interpret_yes_no
+from interpreters import interpret_action, interpret_prod, interpret_resource, interpret_yes_no
 from exceptions import InvalidInputException
 import logging
+from defaults import func
 
 def repeat_if_invalid_input(func):
     def wrapper(*args, **kwargs):
@@ -31,35 +32,35 @@ def buy_resource():
     user_input = ask_cat_quan()
     interpreted = interpret_resource(user_input)
     category, quantity = interpreted
-    return ("buy_res", category, quantity)
+    return (func, category, quantity)
 
 @repeat_if_invalid_input
 def sell_resource():
     user_input = ask_cat_quan()
     interpreted = interpret_resource(user_input)
     category, quantity = interpreted
-    return ("sell_res", category, quantity)
+    return (func.buy_res, category, quantity)
 
 @repeat_if_invalid_input
-def buy_plushie():
+def buy_prod():
     user_input = ask_cat_quan()
-    interpreted = interpret_plushie(user_input)
+    interpreted = interpret_prod(user_input)
     category, quantity = interpreted
-    return ("buy_plush", category, quantity)
+    return (func, category, quantity)
 
 @repeat_if_invalid_input
-def make_plushie():
+def make_prod():
     user_input = ask_cat_quan()
-    interpreted = interpret_plushie(user_input)
+    interpreted = interpret_prod(user_input)
     category, quantity = interpreted
-    return ("make_plush", category, quantity)
+    return ("make_prod", category, quantity)
 
 @repeat_if_invalid_input
-def sell_plushie():
+def sell_prod():
     user_input = ask_cat_quan()
-    interpreted = interpret_plushie(user_input)
+    interpreted = interpret_prod(user_input)
     category, quantity = interpreted
-    return ("sell_plush", category, quantity)
+    return ("sell_prod", category, quantity)
 
 @repeat_if_invalid_input
 def if_save():
@@ -79,12 +80,12 @@ def action():
     if desired_action == "sell_res":
         return sell_resource()
 
-    elif desired_action == "buy_plush":
-        return buy_plushie()
-    elif desired_action == "make_plush":
-        return make_plushie()
-    elif desired_action == "sell_plush":
-        return sell_plushie()
+    elif desired_action == "buy_prod":
+        return buy_prod()
+    elif desired_action == "make_prod":
+        return make_prod()
+    elif desired_action == "sell_prod":
+        return sell_prod()
 
     elif desired_action == "show_stats":
         return ("show_stats",)

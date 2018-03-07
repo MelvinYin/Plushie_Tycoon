@@ -1,20 +1,20 @@
-from resources import ResourceCost
 from inventory import ResourceInventory, PlushieInventory
-from market import MarketResource, MarketPlushie
 from production import ProductionCost
-from budget import Budget
 from singleton import Singleton
+from market import MarketRes, MarketProd
+import defaults
+from budget import Budget
 
 
 class GSM:
     __metaclass__ = Singleton
     def __init__(self):
-        self.m_resource = MarketResource()
-        self.m_plushie = MarketPlushie()
-        self.resource_cost = ResourceCost()
-        self.resources = ResourceInventory()
-        self.plushies = PlushieInventory()
-        self.budget = Budget()
+        self.res_price = MarketRes()
+        self.prod_price = MarketProd()
+        self.prod_res_cost = defaults.prod_res_cost
+        self.res = ResourceInventory()
+        self.prod = PlushieInventory()
+        self.budget = Budget().budget
         self.production_cost = ProductionCost()
         self.time_steps = 0
 

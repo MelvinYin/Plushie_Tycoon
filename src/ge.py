@@ -4,6 +4,7 @@ import os
 import pickle
 import sys
 import logging
+from defaults import func
 
 
 class GEM:
@@ -13,22 +14,22 @@ class GEM:
     def __call__(self, callstack):
         """ callstack should be a list. """
 
-        GEM_methods = dict(save_game=self.save_game,
-                           load_game=self.load_game,
-                           quit_game=self.quit_game,
-                           save_quit=self.save_quit,
-                           next_turn=self.next_turn)
+        GEM_methods = dict([(func.save_game, self.save_game),
+                            (func.load_game, self.load_game),
+                            (func.quit_game, self.quit_game),
+                            (func.save_quit, self.save_quit),
+                            (func.next_turn, self.next_turn)])
 
         while callstack:
             call = callstack.pop(0)
             logging.debug(f"Currently running: {call}")
-            func, args = call[0], call[1:]
+            func_signal, args = call[0], call[1:]
 
-            if func in GEM_methods:
+            if func_signal in GEM_methods:
                 if args:
-                    GEM_methods[func](*args)
+                    GEM_methods[func_signal](*args)
                 else:
-                    GEM_methods[func]()
+                    GEM_methods[func_signal]()
                 continue
 
             GSI = copy.deepcopy(self.GSM)
@@ -44,7 +45,7 @@ class GEM:
 
     def load_game(self, file_path="../save/", file_name=None):
         if not file_name:
-            file_name = "plushie" + "_save.pkl"
+            file_name = "game" + "_save.pkl"
         if not os.path.isdir(file_path):
             logging.error(f"File path {file_path} does not exist.")
             raise FileNotFoundError
@@ -58,7 +59,7 @@ class GEM:
 
     def save_game(self, file_path="../save/", file_name=None):
         if not file_name:
-            file_name = "plushie" + "_save.pkl"
+            file_name = "game" + "_save.pkl"
         if not file_name.endswith(".pkl"):
             logging.warning(f"Warning: File name {file_name} provided does not"
                             f" end with .pkl. Suffix will be added.")
@@ -89,102 +90,95 @@ class GEI:
         self.call = call
         self.GSI = GSI
 
-    def interpret_call(self, func_in_str):
-        if func_in_str == "buy_res":
-            func = self.buy_res
-        elif func_in_str == "sell_res":
-            func = self.sell_res
-
-        elif func_in_str == "buy_plush":
-            func = self.buy_plushie
-        elif func_in_str == "make_plush":
-            func = self.make_plushie
-        elif func_in_str == "sell_plush":
-            func = self.sell_plushie
-
-        elif func_in_str == "show_stats":
-            func = self.show_stats
-        elif func_in_str == "show_prices":
-            func = self.show_prices
-
-        else:
-            logging.error(func_in_str)
-            raise Exception
-        return func
-
     def __call__(self):
         func_in_str, args = self.call[0], self.call[1:]
-        func = self.interpret_call(func_in_str)
+        called_func = self.interpret_call(func_in_str)
         if args:
-            func(*args)
+            called_func(*args)
         else:
-            func()
+            called_func()
         return self.GSI
 
+    def interpret_call(self, func_signal):
+
+        GEI_methods = dict([(func.buy_res, self.buy_res),
+                            (func.sell_res, self.sell_res),
+                            (func.buy_prod, self.buy_prod),
+                            (func.make_prod, self.make_prod),
+                            (func.sell_prod, self.sell_prod),
+                            (func.show_stats, self.show_stats),
+                            (func.show_price, self.show_price)])
+        try:
+            called_func = GEI_methods[func_signal]
+        except KeyError:
+            logging.error(func_signal)
+            raise Exception
+        return called_func
+
+
     def buy_res(self, category, quantity):
-        curr_res_p = self.GSI.m_resource[category]
+        curr_res_p = self.GSI.res_price[category]
         cost_to_buy = curr_res_p * quantity
         self.GSI.budget -= cost_to_buy
-        self.GSI.resources[category] += quantity
+        self.GSI.res[category] += quantity
         return True
 
     def sell_res(self, category, quantity):
-        curr_res_p = self.GSI.m_resource[category]
+        curr_res_p = self.GSI.res_price[category]
         earnings = curr_res_p * quantity
         self.GSI.budget += earnings
-        self.GSI.resources[category] -= quantity
+        self.GSI.res[category] -= quantity
         return True
 
-    def buy_plushie(self, category, quantity):
-        curr_prices = self.GSI.m_plushie[category]
+    def buy_prod(self, category, quantity):
+        curr_prices = self.GSI.prod_price[category]
         cost_to_buy = curr_prices * quantity
         self.GSI.budget -= cost_to_buy
-        self.GSI.plushies[category] += quantity
+        self.GSI.prod[category] += quantity
         return True
 
-    def sell_plushie(self, category, quantity):
-        curr_prices = self.GSI.m_plushie[category]
-        self.GSI.plushies[category] -= quantity
+    def sell_prod(self, category, quantity):
+        curr_prices = self.GSI.prod_price[category]
+        self.GSI.prod[category] -= quantity
         earnings = curr_prices * quantity
         self.GSI.budget += earnings
         return True
 
-    def make_plushie(self, type, quantity):
-        res_for_type = self.GSI.resource_cost[type]
+    def make_prod(self, type, quantity):
+        res_for_type = self.GSI.res_price[type]
         total_res = res_for_type * quantity
         for category, quantity in total_res.items():
-            self.GSI.resources[category] -= quantity
+            self.GSI.res[category] -= quantity
 
         cost_to_produce = self.GSI.production_cost(type, quantity)
         self.GSI.budget -= cost_to_produce
 
-        self.GSI.plushies[type] += quantity
+        self.GSI.prod[type] += quantity
         return True
-
 
     def show_stats(self):
         logging.info("Current Inventory:")
-        logging.info(self.GSI.resources)
-        logging.info(self.GSI.plushies)
+        logging.info(self.GSI.res)
+        logging.info(self.GSI.prod)
 
         logging.info("Current Budget:")
         logging.info(self.GSI.budget)
 
         logging.info("Current Market Prices:")
-        logging.info(self.GSI.m_plushie)
-        logging.info(self.GSI.m_resource)
+        logging.info(self.GSI.prod_price)
+        logging.info(self.GSI.res_price)
 
         logging.info("Fixed Costs:")
-        logging.info(self.GSI.resource_cost)
+        logging.info(self.GSI.prod_res_cost)
         logging.info(self.GSI.production_cost)
 
         logging.info("Time elapsed:")
         logging.info(self.GSI.time_steps)
         return True
 
-    def show_prices(self):
+    def show_price(self):
         logging.info("Current Market Prices:")
-        logging.info(self.GSI.m_plushie)
-        logging.info(self.GSI.m_resource)
+        logging.info(self.GSI.prod_price)
+        logging.info(self.GSI.res_price)
         logging.info("\n")
         return

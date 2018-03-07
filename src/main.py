@@ -13,7 +13,7 @@ gsm = GSM()
 #     gem(callstack)
 
 callstack = [("show_stats",), ("buy_res","stuff", 20), ("sell_res","stuff", 20),
-             ("buy_plush", "aisha", 10), ("make_plush", "beta", 5), ("sell_plush","chama", 7),
+             ("buy_prod", "aisha", 10), ("make_prod", "beta", 5), ("sell_prod","chama", 7),
              ("load_game",), ("save_game",), ("quit_game",)]
 gem = GEM(gsm)
 gem(callstack)
