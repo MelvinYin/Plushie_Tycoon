@@ -32,35 +32,35 @@ def buy_resource():
     user_input = ask_cat_quan()
     interpreted = interpret_resource(user_input)
     category, quantity = interpreted
-    return (func, category, quantity)
+    return (func.buy_res, category, quantity)
 
 @repeat_if_invalid_input
 def sell_resource():
     user_input = ask_cat_quan()
     interpreted = interpret_resource(user_input)
     category, quantity = interpreted
-    return (func.buy_res, category, quantity)
+    return (func.sell_res, category, quantity)
 
 @repeat_if_invalid_input
 def buy_prod():
     user_input = ask_cat_quan()
     interpreted = interpret_prod(user_input)
     category, quantity = interpreted
-    return (func, category, quantity)
+    return (func.buy_prod, category, quantity)
 
 @repeat_if_invalid_input
 def make_prod():
     user_input = ask_cat_quan()
     interpreted = interpret_prod(user_input)
     category, quantity = interpreted
-    return ("make_prod", category, quantity)
+    return (func.make_prod, category, quantity)
 
 @repeat_if_invalid_input
 def sell_prod():
     user_input = ask_cat_quan()
     interpreted = interpret_prod(user_input)
     category, quantity = interpreted
-    return ("sell_prod", category, quantity)
+    return (func.sell_prod, category, quantity)
 
 @repeat_if_invalid_input
 def if_save():
@@ -75,34 +75,34 @@ def action():
     user_input = ask_action()
     desired_action = interpret_action(user_input)
 
-    if desired_action == "buy_res":
+    if desired_action == func.buy_res:
         return buy_resource()
-    if desired_action == "sell_res":
+    if desired_action == func.sell_res:
         return sell_resource()
 
-    elif desired_action == "buy_prod":
+    elif desired_action == func.buy_prod:
         return buy_prod()
-    elif desired_action == "make_prod":
+    elif desired_action == func.make_prod:
         return make_prod()
-    elif desired_action == "sell_prod":
+    elif desired_action == func.sell_prod:
         return sell_prod()
 
-    elif desired_action == "show_stats":
-        return ("show_stats",)
-    elif desired_action == "show prices":
-        return ("show_prices",)
+    elif desired_action == func.show_stats:
+        return (func.show_stats,)
+    elif desired_action == func.show_prices:
+        return (func.show_prices,)
 
-    elif desired_action == "save_game":
-        return ("save_game",)
-    elif desired_action == "load_game":
+    elif desired_action == func.save_game:
+        return (func.save_game,)
+    elif desired_action == func.load_game:
         logging.debug("Game Loaded.")
-        return ("load_game",)
-    elif desired_action == "next_turn":
-        return ("next_turn",)
-    elif desired_action == "quit_game":
+        return (func.load_game,)
+    elif desired_action == func.next_turn:
+        return (func.next_turn,)
+    elif desired_action == func.quit_game:
         if if_save():
-            return ("save_quit",)
-        return ("quit_game",)
+            return (func.save_quit,)
+        return (func.quit_game,)
     else:
         raise InvalidInputException(user_input)
 

@@ -12,7 +12,7 @@ class ResourceInventory(Base):
         self.accessory = defaults.starting_res.accessory
         self.packaging = defaults.starting_res.packaging
 
-class PlushieInventory(Base):
+class ProductInventory(Base):
     __metaclass__ = Singleton
     def __init__(self):
         self.aisha = defaults.starting_prod.aisha

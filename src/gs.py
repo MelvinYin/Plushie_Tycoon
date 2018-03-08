@@ -1,4 +1,4 @@
-from inventory import ResourceInventory, PlushieInventory
+from inventory import ResourceInventory, ProductInventory
 from production import ProductionCost
 from singleton import Singleton
 from market import MarketRes, MarketProd
@@ -9,14 +9,22 @@ from budget import Budget
 class GSM:
     __metaclass__ = Singleton
     def __init__(self):
-        self.res_price = defaults.starting_res_price
-        self.prod_price = defaults.starting_prod_price
+        self.MarketRes = MarketRes()
+        self.MarketProd = MarketProd()
+        self.ResourceInv = ResourceInventory()
+        self.ProductInv = ProductInventory()
+        self.Budget = Budget()
+        self.ProductionCost = ProductionCost()
+
+
+        self.res_price = self.MarketRes.price
+        self.prod_price = self.MarketProd.price
         self.prod_res_cost = defaults.prod_res_cost
-        self.res = defaults.starting_res
-        self.prod = defaults.starting_prod
-        self.budget = defaults.starting_budget
+        self.res = self.ResourceInv
+        self.prod = self.ProductInv
+        self.budget = self.Budget.budget
         self.cost_per_hour = defaults.cost_per_hour
-        self.prod_hours = defaults.prod_hours   # can be moved into a Production class
+        self.prod_hours = self.ProductionCost.prod_hours
         self.time_steps = 0
 
     def update(self, GS):
@@ -27,5 +35,22 @@ class GSM:
         cost = prod_time_required * self.cost_per_hour
         return cost
 
-    def _fluctuation(self):
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

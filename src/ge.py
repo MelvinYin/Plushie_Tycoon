@@ -21,10 +21,13 @@ class GEM:
                             (func.next_turn, self.next_turn)])
 
         while callstack:
-            call = callstack.pop(0)
+            if not isinstance(callstack, list):
+                call = copy.deepcopy(callstack)
+                callstack = None
+            else:
+                call = callstack.pop(0)
             logging.debug(f"Currently running: {call}")
             func_signal, args = call[0], call[1:]
-
             if func_signal in GEM_methods:
                 if args:
                     GEM_methods[func_signal](*args)

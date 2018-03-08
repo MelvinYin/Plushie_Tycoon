@@ -37,7 +37,7 @@ log_lvl = logging.DEBUG  # "DEBUG" < "INFO" < "WARNING" < "ERROR" < "CRITICAL"
 log_filter_lvl = logging.WARNING  # Min inclusive log level for which messages will be sent to stderr
 
 def set_logging_level(low_pass_stream="stdout", high_pass_stream="stderr",
-                      log_lvl="info", log_filter_lvl="warning"):
+                      log_lvl="debug", log_filter_lvl="warning"):
     """
     Allow output from logs below a certain level to be sent to stdout, and the rest to stderr (default for logging).
     Changing stdout/stderr allows for sending to alternative StreamHandler.
@@ -69,7 +69,7 @@ def set_logging_level(low_pass_stream="stdout", high_pass_stream="stderr",
 
     handler_low = logging.StreamHandler(low_pass_stream)
     handler_low.addFilter(LessThanFilter(log_filter_lvl))  # Responsible for logs below LOG_FILTER_LVL
-    handler_low.setFormatter(logging.Formatter('%(levelname)s: \n%(message)s\n'))
+    handler_low.setFormatter(logging.Formatter('%(levelname)s: %(message)s\n'))
 
     handler_high = logging.StreamHandler(high_pass_stream)
     handler_high.setLevel(log_filter_lvl)  # Responsible for logs LOG_FILTER_LVL and above

@@ -35,6 +35,15 @@ Action flow:
     QUESTION: where do you want the instance of GSMain to live? Currently will
     live in GE.
 
+
+Inflation over time.
+
+Current p_model has excessive counter-vailing force against price changes?
+
+Replace singleton with borg design pattern, which will resolve the subclassing
+metaclass thing, maybe.
+
+First build a pricing model that relates demand to supply.
 """
 
 # todo: ADD dict for function call from ge, otherwise need to change too
