@@ -11,15 +11,19 @@ Once fixed, they select next turn, and all actions are executed.
 
 Then repeat.
 
-Now they're two levels of nesting: GSM, GSI.
+Implement enum
 
-To merge the two with a history, of the dict of the GS. So, if need to roll back
-by one, retrieve previous. If need to commit aka next turn, goto the last one
-and refresh history. In case of exceptions, retrieve previous. If we wish
-to look at the GS before the turn aka discard changes, goto the first history.
+History function of each variable, for subsequent plotting (of say budget over
+turns)
+With corresponding record of callstacks, etc.
+Save the whole dict essentially, but in variable as column order.
 
-This can be implemented together with callstack? No need callstack anymore, it
-will be saved as part of history in GE.
+Information reading from GSM should be perfectly fine, but modifications should
+be fed to the respective classes for them to implement separately, as this may
+change their internal state
+
+Bases need to add an abstract method add, that all composed classes of GSM
+should have.
 
 
 """

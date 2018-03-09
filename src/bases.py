@@ -2,7 +2,7 @@ from abc import ABC
 import os
 import pickle
 import logging
-from exceptions import InsufficentQuantityError
+from exceptions import InsufficientQuantityError
 
 class Base(ABC):
 
@@ -21,14 +21,18 @@ class Base(ABC):
 
     def __setitem__(self, key, value):
         if value < 0:
-            raise InsufficentQuantityError
+            logging.warning(f"Insufficient quantity in {self.__class__}. "
+                            f"{value} in {key} is negative.")
+            raise InsufficientQuantityError
         self.__dict__[key] = value
         return True
 
     def __setattr__(self, key, value):
         if value is int:
             if value < 0:
-                raise InsufficentQuantityError
+                logging.warning(f"Insufficient quantity in {self.__class__}. "
+                                f"{value} in {key} is negative.")
+                raise InsufficientQuantityError
         super().__setattr__(key, value)
         return
 
@@ -37,30 +41,6 @@ class Base(ABC):
             return True
         else:
             return False
-    #
-    # def dump(self, file_path="../save/", file_name=None):
-    #     if not file_name:
-    #         file_name = self.__class__.__name__ + "_save.pkl"
-    #     if not file_name.endswith(".pkl"):
-    #         file_name += ".pkl"
-    #     if not os.path.isdir(file_path):
-    #         os.makedirs(file_path)
-    #     with open(file_path + file_name, "wb") as file:
-    #         pickle.dump(self.__dict__, file, -1)
-    #     return True
-    #
-    # def load(self, file_path="../save/", file_name=None):
-    #     if not file_name:
-    #         file_name = self.__class__.__name__ + "_save.pkl"
-    #     if not os.path.isdir(file_path):
-    #         print(f"File path {file_path} does not exist.")
-    #         raise FileNotFoundError
-    #     if not os.path.isfile(file_path + file_name):
-    #         print(f"File {file_name} does not exist in specified directory {file_path}.")
-    #         raise FileNotFoundError
-    #     with open(file_path + file_name, "rb") as file:
-    #         self.__dict__ = pickle.load(file)
-    #     return True
 
 
 class BaseInt(ABC):
@@ -81,7 +61,9 @@ class BaseInt(ABC):
     def __sub__(self, other):
         self.item -= other
         if self.item < 0:
-            raise InsufficentQuantityError
+            logging.warning(f"Insufficient quantity in {self.__class__}. "
+                            f"Attempting to deduct {other} from {self.item}.")
+            raise InsufficientQuantityError
         return self.item
 
     def __isub__(self, other):

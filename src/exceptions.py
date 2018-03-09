@@ -1,5 +1,8 @@
 class InvalidInputException(Exception):
     pass
 
-class InsufficentQuantityError(Exception):
+class InsufficientQuantityError(Exception):
+    pass
+
+class RepeatUIAction(Exception):
     pass

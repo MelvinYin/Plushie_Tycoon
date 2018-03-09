@@ -26,6 +26,8 @@ next_turn_p = re.compile("((skip)|(next))([ _]turn)?(\.)?", re.IGNORECASE)
 
 back_p = re.compile("((back)|(return))(\.)?", re.IGNORECASE)
 
+show_history_p = re.compile("(show[ _])?((call(stack)?(s)?)|(history))(\.)?", re.IGNORECASE)
+
 # Products
 aisha_p = re.compile("aisha", re.IGNORECASE)
 beta_p = re.compile("beta", re.IGNORECASE)
@@ -60,6 +62,8 @@ def interpret_action(user_input):
         return func.show_stats
     elif re.fullmatch(show_prices_p, user_input):
         return func.show_prices
+    elif re.fullmatch(show_history_p, user_input):
+        return func.show_history
 
     elif re.fullmatch(save_game_p, user_input):
         return func.save_game

@@ -3,6 +3,10 @@ from exceptions import InvalidInputException
 import logging
 from defaults import func
 
+def user_input(prompt=None):
+    string = input(prompt)
+    return string
+
 def repeat_if_invalid_input(func):
     def wrapper(*args, **kwargs):
         while True:
@@ -19,13 +23,13 @@ def repeat_if_invalid_input(func):
     return wrapper
 
 def ask_cat_quan():
-    return input("How many of which?")
+    return user_input("How many of which?")
 
 def ask_if_save():
-    return input("Do you wish to save before quitting?")
+    return user_input("Do you wish to save before quitting?")
 
 def ask_action():
-    return input("What would you like to do?")
+    return user_input("What would you like to do?")
 
 @repeat_if_invalid_input
 def buy_resource():
@@ -91,6 +95,8 @@ def action():
         return (func.show_stats,)
     elif desired_action == func.show_prices:
         return (func.show_prices,)
+    elif desired_action == func.show_history:
+        return (func.show_history,)
 
     elif desired_action == func.save_game:
         return (func.save_game,)

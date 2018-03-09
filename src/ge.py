@@ -1,49 +1,45 @@
-from exceptions import InsufficentQuantityError
+from exceptions import InsufficientQuantityError, RepeatUIAction
 import copy
 import os
 import pickle
 import sys
 import logging
 from defaults import func
+from gs import GSM
+
 
 
 class GEM:
-    def __init__(self, GSM):
-        self.GSM = GSM
+    def __init__(self):
+        self.GSM = GSM()
 
-    def __call__(self, callstack):
-        """ callstack should be a list. """
-
-        GEM_methods = dict([(func.save_game, self.save_game),
+    def __call__(self, call):
+        methods = dict([(func.save_game, self.save_game),
                             (func.load_game, self.load_game),
                             (func.quit_game, self.quit_game),
                             (func.save_quit, self.save_quit),
-                            (func.next_turn, self.next_turn)])
+                            (func.next_turn, self.next_turn),
+                            (func.buy_res, self.buy_res),
+                            (func.sell_res, self.sell_res),
+                            (func.buy_prod, self.buy_prod),
+                            (func.make_prod, self.make_prod),
+                            (func.sell_prod, self.sell_prod),
+                            (func.show_stats, self.show_stats),
+                            (func.show_prices, self.show_prices),
+                            (func.show_history, self.show_history)
+                            ])
 
-        while callstack:
-            if not isinstance(callstack, list):
-                call = copy.deepcopy(callstack)
-                callstack = None
+
+        logging.debug(f"Currently running: {call}")
+        func_signal, args = call[0], call[1:]
+        try:
+            if args:
+                methods[func_signal](*args)
             else:
-                call = callstack.pop(0)
-            logging.debug(f"Currently running: {call}")
-            func_signal, args = call[0], call[1:]
-            if func_signal in GEM_methods:
-                if args:
-                    GEM_methods[func_signal](*args)
-                else:
-                    GEM_methods[func_signal]()
-                continue
-
-            GSI = copy.deepcopy(self.GSM)
-            loaded_GEI = GEI(call, GSI)
-            try:
-                updated_GSI = loaded_GEI()
-            except InsufficentQuantityError:
-                callstack.insert(0, call)
-                return ("insufficient_quantity", callstack)
-
-            self.GSM.__dict__ = updated_GSI.__dict__
+                methods[func_signal]()
+        except InsufficientQuantityError as e:
+            self.GSM.reverse_call(remove_last_call=False)
+            raise RepeatUIAction
         return
 
     def load_game(self, file_path="../save/", file_name=None):
@@ -57,7 +53,8 @@ class GEM:
                              f"directory {file_path}.")
             raise FileNotFoundError
         with open(file_path + file_name, "rb") as file:
-            self.GSM = pickle.load(file)
+            self.GSM.__dict__ = pickle.load(file)
+        self.GSM.push()
         return True
 
     def save_game(self, file_path="../save/", file_name=None):
@@ -72,7 +69,8 @@ class GEM:
                             f" exist. Directory will be created.")
             os.makedirs(file_path)
         with open(file_path + file_name, "wb") as file:
-            pickle.dump(self.GSM, file, -1)
+            pickle.dump(self.GSM.value_history[0], file, -1)
+        self.GSM.push()
         return True
 
     def quit_game(self):
@@ -83,102 +81,81 @@ class GEM:
         self.quit_game()
 
     def next_turn(self):
-        """ Will have more stuff in the future. """
+        self.GSM.push()
         self.GSM.time_steps += 1
         return
 
-
-class GEI:
-    def __init__(self, call, GSI):
-        self.call = call
-        self.GSI = GSI
-
-    def __call__(self):
-        func_in_str, args = self.call[0], self.call[1:]
-        called_func = self.interpret_call(func_in_str)
-        if args:
-            called_func(*args)
-        else:
-            called_func()
-        return self.GSI
-
-    def interpret_call(self, func_signal):
-
-        GEI_methods = dict([(func.buy_res, self.buy_res),
-                            (func.sell_res, self.sell_res),
-                            (func.buy_prod, self.buy_prod),
-                            (func.make_prod, self.make_prod),
-                            (func.sell_prod, self.sell_prod),
-                            (func.show_stats, self.show_stats),
-                            (func.show_price, self.show_price)])
-        try:
-            called_func = GEI_methods[func_signal]
-        except KeyError:
-            logging.error(func_signal)
-            raise Exception
-        return called_func
-
-
     def buy_res(self, category, quantity):
-        curr_res_p = self.GSI.res_price[category]
+        curr_res_p = self.GSM.res_price[category]
         cost_to_buy = curr_res_p * quantity
-        self.GSI.budget -= cost_to_buy
-        self.GSI.res[category] += quantity
+        self.GSM.budget -= cost_to_buy
+        self.GSM.res[category] += quantity
+        self.GSM.commit(call=func.buy_res)
         return True
 
     def sell_res(self, category, quantity):
-        curr_res_p = self.GSI.res_price[category]
+        curr_res_p = self.GSM.res_price[category]
         earnings = curr_res_p * quantity
-        self.GSI.budget += earnings
-        self.GSI.res[category] -= quantity
+        self.GSM.budget += earnings
+        self.GSM.res[category] -= quantity
+        self.GSM.commit(call=func.buy_res)
         return True
 
     def buy_prod(self, category, quantity):
-        curr_prices = self.GSI.prod_price[category]
+        curr_prices = self.GSM.prod_price[category]
         cost_to_buy = curr_prices * quantity
-        self.GSI.budget -= cost_to_buy
-        self.GSI.prod[category] += quantity
+        self.GSM.budget -= cost_to_buy
+        self.GSM.prod[category] += quantity
+        self.GSM.commit(call=func.buy_res)
         return True
 
     def sell_prod(self, category, quantity):
-        curr_prices = self.GSI.prod_price[category]
-        self.GSI.prod[category] -= quantity
+        curr_prices = self.GSM.prod_price[category]
+        self.GSM.prod[category] -= quantity
         earnings = curr_prices * quantity
-        self.GSI.budget += earnings
+        self.GSM.budget += earnings
+        self.GSM.commit(call=func.buy_res)
         return True
 
     def make_prod(self, type, quantity):
-        res_for_type = self.GSI.prod_res_cost[type]
+        res_for_type = self.GSM.prod_res_cost[type]
         total_res = res_for_type * quantity
         for category, quantity in total_res.iteritems():
-            self.GSI.res[category] -= quantity
+            self.GSM.res[category] -= quantity
 
-        cost_to_produce = self.GSI.cost_to_produce(type, quantity)
-        self.GSI.budget -= cost_to_produce
+        cost_to_produce = self.GSM.cost_to_produce(type, quantity)
+        self.GSM.budget -= cost_to_produce
 
-        self.GSI.prod[type] += quantity
+        self.GSM.prod[type] += quantity
+        self.GSM.commit(call=func.buy_res)
         return True
 
     def show_stats(self):
         logging.info("Current Inventory: \n"
-                     + "Resources\n" + str(self.GSI.res) + "\n"
-                     + "Products\n" + str(self.GSI.prod))
+                     + "Resources\n" + str(self.GSM.res) + "\n"
+                     + "Products\n" + str(self.GSM.prod))
 
-        logging.info("Current Budget: " + str(self.GSI.budget))
+        logging.info("Current Budget: " + str(self.GSM.budget))
 
         logging.info("Current Market Prices: \n"
-                     + "Resources\n" + str(self.GSI.res_price) + "\n"
-                     + "Products\n" + str(self.GSI.prod_price))
+                     + "Resources\n" + str(self.GSM.res_price) + "\n"
+                     + "Products\n" + str(self.GSM.prod_price))
 
         logging.info("Fixed Costs: \n"
-                     + str(self.GSI.prod_res_cost) + "\n"
-                     + "Cost per hour: " + str(self.GSI.cost_per_hour))
+                     + str(self.GSM.prod_res_cost) + "\n"
+                     + "Cost per hour: " + str(self.GSM.cost_per_hour))
 
-        logging.info("Time elapsed: " + str(self.GSI.time_steps))
+        logging.info("Time elapsed: " + str(self.GSM.time_steps))
         return True
 
-    def show_price(self):
+    def show_prices(self):
         logging.info("Current Market Prices: \n"
-                     + "Resources\n" + str(self.GSI.res_price) + "\n"
-                     + "Products\n" + str(self.GSI.prod_price))
-        return
+                     + "Resources\n" + str(self.GSM.res_price) + "\n"
+                     + "Products\n" + str(self.GSM.prod_price))
+        return True
+
+    def show_history(self):
+        logging.info(self.GSM.callstack)
+        logging.info(self.GSM.value_history)
+        return True
+
