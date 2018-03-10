@@ -1,35 +1,22 @@
 from singleton import Singleton
 from abc import ABC
 import pickle
-from bases import Base
+from bases import BaseInventory
 import defaults
+import pandas as pd
 
-class ResourceInventory(Base):
+class ResourceInventory(BaseInventory):
     __metaclass__ = Singleton
     def __init__(self):
-        self.cloth = defaults.starting_res.cloth
-        self.stuff = defaults.starting_res.stuff
-        self.accessory = defaults.starting_res.accessory
-        self.packaging = defaults.starting_res.packaging
+        super().__init__(defaults.starting_res)
 
-class ProductInventory(Base):
+    def test_func(self):
+        return True
+
+class ProductInventory(BaseInventory):
     __metaclass__ = Singleton
     def __init__(self):
-        self.aisha = defaults.starting_prod.aisha
-        self.beta = defaults.starting_prod.beta
-        self.chama = defaults.starting_prod.chama
+        super().__init__(defaults.starting_prod)
 
-#
-#
-# x = ResourceInventory()
-# print(x)
-# print(x.cloth)
-# print(x["cloth"])
-# x.cloth += 1
-# x["stuff"] += 3
-# print(x)
-# print(x.cloth + 34)
-# x.cloth = x.cloth + 35
-# x.dump()
-# x.load()
-# print(x)
+    def test_func(self):
+        return True

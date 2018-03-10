@@ -25,10 +25,10 @@ class GSM:
         self.prod_res_cost = defaults.prod_res_cost
         self.res = self.ResourceInv
         self.prod = self.ProductInv
-        self.budget = self.Budget.budget
-        self.cost_per_hour = defaults.cost_per_hour
+        self.budget = self.Budget
+        self.cost_per_hour = self.ProductionCost.cost_per_hour
         self.prod_hours = self.ProductionCost.prod_hours
-        self.time_steps = self.TimeSteps.time_steps
+        self.time_steps = self.TimeSteps
 
         self.value_history = []
         self.callstack = []

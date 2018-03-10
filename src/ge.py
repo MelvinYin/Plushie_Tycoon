@@ -13,6 +13,12 @@ class GEM:
     def __init__(self):
         self.GSM = GSM()
 
+    def __str__(self):
+        tmp = dict()
+        for key, value in self.GSM.__dict__.items():
+            tmp[str(key)] = str(value)
+        return str(tmp)
+
     def __call__(self, call):
         methods = dict([(func.save_game, self.save_game),
                             (func.load_game, self.load_game),
@@ -98,7 +104,7 @@ class GEM:
         earnings = curr_res_p * quantity
         self.GSM.budget += earnings
         self.GSM.res[category] -= quantity
-        self.GSM.commit(call=func.buy_res)
+        self.GSM.commit(call=func.sell_res)
         return True
 
     def buy_prod(self, category, quantity):
@@ -106,7 +112,7 @@ class GEM:
         cost_to_buy = curr_prices * quantity
         self.GSM.budget -= cost_to_buy
         self.GSM.prod[category] += quantity
-        self.GSM.commit(call=func.buy_res)
+        self.GSM.commit(call=func.buy_prod)
         return True
 
     def sell_prod(self, category, quantity):
@@ -114,14 +120,13 @@ class GEM:
         self.GSM.prod[category] -= quantity
         earnings = curr_prices * quantity
         self.GSM.budget += earnings
-        self.GSM.commit(call=func.buy_res)
+        self.GSM.commit(call=func.sell_prod)
         return True
 
     def make_prod(self, type, quantity):
         res_for_type = self.GSM.prod_res_cost[type]
         total_res = res_for_type * quantity
-        for category, quantity in total_res.iteritems():
-            self.GSM.res[category] -= quantity
+        self.GSM.res -= total_res
 
         cost_to_produce = self.GSM.cost_to_produce(type, quantity)
         self.GSM.budget -= cost_to_produce

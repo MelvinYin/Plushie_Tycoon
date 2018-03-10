@@ -25,5 +25,10 @@ change their internal state
 Bases need to add an abstract method add, that all composed classes of GSM
 should have.
 
+Add a .copy() mtd to base
 
+Completely abstract out res and prod
+
+Check why baseinventory need complicated __add__ thing.
+base inventory no __eq__???
 """

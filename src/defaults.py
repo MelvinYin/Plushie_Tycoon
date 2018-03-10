@@ -23,7 +23,7 @@ prod_res_cost = pd.DataFrame(res_cost, index=res_index)
 
 # Plushie Production Hours
 p_hours = [30, 24, 36]
-prod_hours = pd.Series(p_hours, prod_index, name="prod_hours")
+prod_hours = pd.Series(p_hours, prod_index)
 
 # Cost Per Production Hour
 cost_per_hour = 3
