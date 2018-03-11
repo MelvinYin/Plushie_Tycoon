@@ -9,7 +9,7 @@ import pandas as pd
 ge_file_path = "ge"
 ge_file = importlib.import_module(ge_file_path)
 
-test_GE = False
+test_GE = True
 
 
 
@@ -69,56 +69,57 @@ class TestGE(unittest.TestCase):
 
     def test_show_stats(self):
         GE = ge_file.GEM()
+        print(dir(GE))
         GE_test = copy.deepcopy(GE)
         GE(("show_stats",))
         self.assert_GE_equal(GE, GE_test)
 
-    def test_buy_res_stuff(self):
-        GE = ge_file.GEM()
-        GE_test = copy.deepcopy(GE)
-        GE(("buy_res","stuff", 20))
-        GE_test.GSM.res.stuff += 20
-        cost = GE_test.GSM.res_price.stuff * 20
-        GE_test.GSM.budget -= cost
-        self.assert_GE_equal(GE, GE_test)
-
-    def test_sell_res_cloth(self):
-        GE = ge_file.GEM()
-        GE_test = copy.deepcopy(GE)
-        GE(("sell_res","cloth", 20))
-        GE_test.GSM.res.cloth -= 20
-        cost = GE_test.GSM.res_price.cloth * 20
-        GE_test.GSM.budget += cost
-        self.assert_GE_equal(GE, GE_test)
-
-    def test_buy_prod_aisha(self):
-        GE = ge_file.GEM()
-        GE_test = copy.deepcopy(GE)
-        GE(("buy_prod", "aisha", 5))
-        GE_test.GSM.prod.aisha += 5
-        cost = GE_test.GSM.prod_price.aisha * 5
-        GE_test.GSM.budget -= cost
-        self.assert_GE_equal(GE, GE_test)
-
-    def test_make_prod_beta(self):
-        GE = ge_file.GEM()
-        GE_test = copy.deepcopy(GE)
-        GE(("make_prod", "beta", 5))
-        GE_test.GSM.prod.beta += 5
-        res_needed = GE_test.GSM.prod_res_cost.beta * 5
-        GE_test.GSM.res -= res_needed
-        cost = GE_test.GSM.prod_hours.beta * GE_test.GSM.cost_per_hour
-        GE_test.GSM.budget -= cost
-        self.assert_GE_equal(GE, GE_test)
-
-    def test_sell_prod_chama(self):
-        GE = ge_file.GEM()
-        GE_test = copy.deepcopy(GE)
-        GE(("sell_prod", "chama", 7))
-        GE_test.GSM.prod.chama -= 7
-        cost = GE_test.GSM.prod_price.chama * 7
-        GE_test.GSM.budget += cost
-        self.assert_GE_equal(GE, GE_test)
+    # def test_buy_res_stuff(self):
+    #     GE = ge_file.GEM()
+    #     GE_test = copy.deepcopy(GE)
+    #     GE(("buy_res","stuff", 20))
+    #     GE_test.GSM.res.stuff += 20
+    #     cost = GE_test.GSM.res_price.stuff * 20
+    #     GE_test.GSM.budget -= cost
+    #     self.assert_GE_equal(GE, GE_test)
+    #
+    # def test_sell_res_cloth(self):
+    #     GE = ge_file.GEM()
+    #     GE_test = copy.deepcopy(GE)
+    #     GE(("sell_res","cloth", 20))
+    #     GE_test.GSM.res.cloth -= 20
+    #     cost = GE_test.GSM.res_price.cloth * 20
+    #     GE_test.GSM.budget += cost
+    #     self.assert_GE_equal(GE, GE_test)
+    #
+    # def test_buy_prod_aisha(self):
+    #     GE = ge_file.GEM()
+    #     GE_test = copy.deepcopy(GE)
+    #     GE(("buy_prod", "aisha", 5))
+    #     GE_test.GSM.prod.aisha += 5
+    #     cost = GE_test.GSM.prod_price.aisha * 5
+    #     GE_test.GSM.budget -= cost
+    #     self.assert_GE_equal(GE, GE_test)
+    #
+    # def test_make_prod_beta(self):
+    #     GE = ge_file.GEM()
+    #     GE_test = copy.deepcopy(GE)
+    #     GE(("make_prod", "beta", 5))
+    #     GE_test.GSM.prod.beta += 5
+    #     res_needed = GE_test.GSM.prod_res_cost.beta * 5
+    #     GE_test.GSM.res -= res_needed
+    #     cost = GE_test.GSM.prod_hours.beta * GE_test.GSM.cost_per_hour
+    #     GE_test.GSM.budget -= cost
+    #     self.assert_GE_equal(GE, GE_test)
+    #
+    # def test_sell_prod_chama(self):
+    #     GE = ge_file.GEM()
+    #     GE_test = copy.deepcopy(GE)
+    #     GE(("sell_prod", "chama", 7))
+    #     GE_test.GSM.prod.chama -= 7
+    #     cost = GE_test.GSM.prod_price.chama * 7
+    #     GE_test.GSM.budget += cost
+    #     self.assert_GE_equal(GE, GE_test)
 
 
 

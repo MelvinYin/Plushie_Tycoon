@@ -31,4 +31,9 @@ Completely abstract out res and prod
 
 Check why baseinventory need complicated __add__ thing.
 base inventory no __eq__???
+
+Changing code, back to no more bases.
+
+Add, sub, replace
+Otherwise, .value give a view-only.
 """

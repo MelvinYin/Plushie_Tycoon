@@ -143,7 +143,10 @@ class BaseMarket(ABC):
             raise e
 
     def __getattr__(self, item):
-        return self.pd_data[item]
+        try:
+            return self.pd_data[item]
+        except KeyError:
+            raise AttributeError
 
     def __add__(self, other):
         if isinstance(other, pd.Series):

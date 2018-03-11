@@ -20,8 +20,8 @@ class GSM:
         self.ProductionCost = ProductionCost()
         self.TimeSteps = TimeSteps()
 
-        self.res_price = self.MarketRes.price
-        self.prod_price = self.MarketProd.price
+        self.res_price = self.MarketRes
+        self.prod_price = self.MarketProd
         self.prod_res_cost = defaults.prod_res_cost
         self.res = self.ResourceInv
         self.prod = self.ProductInv
@@ -41,7 +41,7 @@ class GSM:
         return cost
 
     def commit(self, call=None, ignore_no_call=False):
-        self.value_history.append(copy.deepcopy(self.__dict__))
+        self.value_history.append(self.__dict__.copy())
         if call:
             assert call in defaults.func
             self.callstack.append(call)
