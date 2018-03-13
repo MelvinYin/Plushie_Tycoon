@@ -1,14 +1,13 @@
 from singleton import Singleton
 import defaults
 
-class ProductionCost:
+class Production:
     __metaclass__ = Singleton
     def __init__(self):
-        self.prod_hours = defaults.prod_hours
+        self.hours_needed = defaults.hours_needed
         self.cost_per_hour = defaults.cost_per_hour
+        self.res_cost = defaults.prod_res_cost
 
-    def __call__(self, category, quantity):
-        hours_per_prod = self.prod_hours[category]
-        cost = sum(hours_per_prod * self.cost_per_hour * quantity)
-        return cost
+    def test_func(self):
+        return True
 

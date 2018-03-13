@@ -6,6 +6,7 @@ import sys
 import logging
 from defaults import func
 from gs import GSM
+import defaults
 
 
 
@@ -32,10 +33,9 @@ class GEM:
                             (func.sell_prod, self.sell_prod),
                             (func.show_stats, self.show_stats),
                             (func.show_prices, self.show_prices),
-                            (func.show_history, self.show_history)
+                            (func.show_history, self.show_history),
+                            (func.back, self.back)
                             ])
-
-
         logging.debug(f"Currently running: {call}")
         func_signal, args = call[0], call[1:]
         try:
@@ -48,9 +48,9 @@ class GEM:
             raise RepeatUIAction
         return
 
-    def load_game(self, file_path="../save/", file_name=None):
+    def load_game(self, file_path=defaults.def_save_folder, file_name=None):
         if not file_name:
-            file_name = "game" + "_save.pkl"
+            file_name = defaults.def_save_file_name
         if not os.path.isdir(file_path):
             logging.error(f"File path {file_path} does not exist.")
             raise FileNotFoundError
@@ -87,55 +87,69 @@ class GEM:
         self.quit_game()
 
     def next_turn(self):
-        self.GSM.push()
         self.GSM.time_steps += 1
+        self.GSM.push()
         return
 
     def buy_res(self, category, quantity):
-        curr_res_p = self.GSM.res_price[category]
+        self.GSM.commit(call=(func.buy_res, category, quantity))
+        curr_res_p = self.GSM.res_price.value[category]
         cost_to_buy = curr_res_p * quantity
-        self.GSM.budget -= cost_to_buy
-        self.GSM.res[category] += quantity
-        self.GSM.commit(call=func.buy_res)
+        self.GSM.budget.sub(cost_to_buy)
+        self.GSM.res.add(category, quantity)
         return True
 
     def sell_res(self, category, quantity):
-        curr_res_p = self.GSM.res_price[category]
+        self.GSM.commit(call=(func.sell_res, category, quantity))
+        curr_res_p = self.GSM.res_price.value[category]
         earnings = curr_res_p * quantity
-        self.GSM.budget += earnings
-        self.GSM.res[category] -= quantity
-        self.GSM.commit(call=func.sell_res)
+        self.GSM.budget.add(earnings)
+        self.GSM.res.sub(category, quantity)
         return True
 
     def buy_prod(self, category, quantity):
-        curr_prices = self.GSM.prod_price[category]
+        self.GSM.commit(call=(func.buy_prod, category, quantity))
+        curr_prices = self.GSM.prod_price.value[category]
         cost_to_buy = curr_prices * quantity
-        self.GSM.budget -= cost_to_buy
-        self.GSM.prod[category] += quantity
-        self.GSM.commit(call=func.buy_prod)
+        self.GSM.budget.sub(cost_to_buy)
+        self.GSM.prod.add(category, quantity)
         return True
 
     def sell_prod(self, category, quantity):
-        curr_prices = self.GSM.prod_price[category]
-        self.GSM.prod[category] -= quantity
+        self.GSM.commit(call=(func.sell_prod, category, quantity))
+        curr_prices = self.GSM.prod_price.value[category]
+        self.GSM.prod.sub(category, quantity)
         earnings = curr_prices * quantity
-        self.GSM.budget += earnings
-        self.GSM.commit(call=func.sell_prod)
+        self.GSM.budget.add(earnings)
         return True
 
-    def make_prod(self, type, quantity):
-        res_for_type = self.GSM.prod_res_cost[type]
+    def make_prod(self, category, quantity):
+        self.GSM.commit(call=(func.make_prod, category, quantity))
+        res_for_type = self.GSM.production.res_cost[category]
         total_res = res_for_type * quantity
-        self.GSM.res -= total_res
+        self.GSM.res.sub(total_res)
 
-        cost_to_produce = self.GSM.cost_to_produce(type, quantity)
-        self.GSM.budget -= cost_to_produce
+        cost_to_produce = self.GSM.cost_to_produce(category, quantity)
+        self.GSM.budget.sub(cost_to_produce)
 
-        self.GSM.prod[type] += quantity
-        self.GSM.commit(call=func.buy_res)
+        self.GSM.prod.add(category, quantity)
         return True
 
-    def show_stats(self):
+    def back(self):# TODO: need to deal with previous actions that did nothing? like show stats. perhaps a warning.
+        if not self.GSM.callstack:
+            logging.info("No previous action logged.")
+            return False
+        self.GSM.reverse_call(remove_last_call=True)
+        #
+        # prev_values = self.GSM.value_history.pop()
+        # tmp = copy.deepcopy(self.GSM.value_history)
+        # self.GSM.__dict__ = prev_values
+        # self.GSM.__dict__["value_history"] = tmp
+        # del self.GSM.callstack[-1]
+        return True
+
+
+    def show_stats(self):   # this should be moved to GS
         logging.info("Current Inventory: \n"
                      + "Resources\n" + str(self.GSM.res) + "\n"
                      + "Products\n" + str(self.GSM.prod))
@@ -147,8 +161,8 @@ class GEM:
                      + "Products\n" + str(self.GSM.prod_price))
 
         logging.info("Fixed Costs: \n"
-                     + str(self.GSM.prod_res_cost) + "\n"
-                     + "Cost per hour: " + str(self.GSM.cost_per_hour))
+                     + str(self.GSM.production.hours_needed) + "\n"
+                     + "Cost per hour: " + str(self.GSM.production.cost_per_hour))
 
         logging.info("Time elapsed: " + str(self.GSM.time_steps))
         return True
@@ -163,4 +177,24 @@ class GEM:
         logging.info(self.GSM.callstack)
         logging.info(self.GSM.value_history)
         return True
+
+    def copy(self):
+        return copy.deepcopy(self)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

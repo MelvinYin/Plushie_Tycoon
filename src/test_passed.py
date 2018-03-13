@@ -11,8 +11,15 @@ ui_file = importlib.import_module(ui_file_path)
 test_UI = True
 
 
+
+class TestCaseBase(unittest.TestCase):
+
+    def assert_pd_series_equal(self, *args, **kwargs):
+        return pd.testing.assert_series_equal(*args, **kwargs)
+
+
 @unittest.skipIf(test_UI==False, "")
-class TestUI(unittest.TestCase):
+class TestUI(TestCaseBase):
     class MockedInput:
         def __init__(self, values):
             self.count = -1
@@ -43,202 +50,103 @@ class TestUI(unittest.TestCase):
 file_path = "inventory"
 inventory = importlib.import_module(file_path)
 import defaults
-class TestResourceInventory(unittest.TestCase):
+class TestResourceInventory(TestCaseBase):
     def test_ResourceInventory(self):
-        ResInv = inventory.ResourceInventory()
+        res = inventory.ResourceInventory()
         def_cloth = defaults.starting_res.cloth
         def_stuff = defaults.starting_res.stuff
         def_accessory = defaults.starting_res.accessory
         def_packaging = defaults.starting_res.packaging
-        self.assertEqual(ResInv.cloth, def_cloth)
-        self.assertEqual(ResInv.stuff, def_stuff)
-        self.assertEqual(ResInv.accessory, def_accessory)
-        self.assertEqual(ResInv.packaging, def_packaging)
 
-        self.assertEqual(ResInv["cloth"], def_cloth)
-        self.assertEqual(ResInv["stuff"], def_stuff)
-        self.assertEqual(ResInv["accessory"], def_accessory)
-        self.assertEqual(ResInv["packaging"], def_packaging)
+        self.assertEqual(res.value.cloth, def_cloth)
+        self.assertEqual(res.value.stuff, def_stuff)
+        self.assertEqual(res.value.accessory, def_accessory)
+        self.assertEqual(res.value.packaging, def_packaging)
 
-        value = ResInv.cloth + 13
+        self.assertEqual(res.value["cloth"], def_cloth)
+        self.assertEqual(res.value["stuff"], def_stuff)
+        self.assertEqual(res.value["accessory"], def_accessory)
+        self.assertEqual(res.value["packaging"], def_packaging)
+
+        value = res.value.cloth + 13
         self.assertEqual(value, def_cloth + 13)
-        self.assertEqual(ResInv.cloth, def_cloth)
+        self.assertEqual(res.value.cloth, def_cloth)
 
-        value = ResInv.stuff - 7
+        value = res.value.stuff - 7
         self.assertEqual(value, def_stuff - 7)
-        self.assertEqual(ResInv.stuff, def_stuff)
+        self.assertEqual(res.value.stuff, def_stuff)
 
-        ResInv.accessory += 6
-        self.assertEqual(ResInv.accessory, def_accessory + 6)
-        ResInv.accessory -= 6
+        res.value.accessory += 6
+        self.assertEqual(res.value.accessory, def_accessory + 6)
+        res.value.accessory -= 6
 
-        ResInv.packaging -= 3
-        self.assertEqual(ResInv.packaging, def_packaging - 3)
-        ResInv.packaging += 3
-
-        value = ResInv.cloth * 13
+        value = res.value.cloth * 13
         self.assertEqual(value, def_cloth * 13)
-        self.assertEqual(ResInv.cloth, def_cloth)
+        self.assertEqual(res.value.cloth, def_cloth)
 
-        value = ResInv["stuff"] / 7
+        value = res.value["stuff"] / 7
         self.assertEqual(value, def_stuff / 7)
-        self.assertEqual(ResInv.stuff, def_stuff)
+        self.assertEqual(res.value.stuff, def_stuff)
+        res.add(defaults.starting_res)
+        self.assert_pd_series_equal(res.value, defaults.starting_res * 2)
 
-        ResInv.stuff *= 6
-        self.assertEqual(ResInv.stuff, def_stuff * 6)
-        ResInv.stuff /= 6
+        res.sub(defaults.starting_res)
+        self.assert_pd_series_equal(res.value, defaults.starting_res)
 
-        ResInv["cloth"] /= 3
-        self.assertEqual(ResInv.cloth, def_cloth / 3)
-        ResInv.cloth *= 3
+        res.replace(defaults.starting_res * 2)
+        self.assert_pd_series_equal(res.value, defaults.starting_res * 2)
+        res.sub(defaults.starting_res)
 
-        value = ResInv.cloth
-        self.assertEqual(value, def_cloth)
-
-        self.assertTrue(ResInv.test_func())
+        self.assertTrue(res.test_func())
 
 
-class TestProductInventory(unittest.TestCase):
+class TestProductInventory(TestCaseBase):
     def test_ProductInventory(self):
-        ProdInv = inventory.ProductInventory()
+        prod = inventory.ProductInventory()
         def_aisha = defaults.starting_prod.aisha
         def_beta = defaults.starting_prod.beta
         def_chama = defaults.starting_prod.chama
 
-        self.assertEqual(ProdInv.aisha, def_aisha)
-        self.assertEqual(ProdInv.beta, def_beta)
-        self.assertEqual(ProdInv.chama, def_chama)
+        self.assertEqual(prod.value.aisha, def_aisha)
+        self.assertEqual(prod.value.beta, def_beta)
+        self.assertEqual(prod.value.chama, def_chama)
 
-        self.assertEqual(ProdInv["aisha"], def_aisha)
-        self.assertEqual(ProdInv["beta"], def_beta)
-        self.assertEqual(ProdInv["chama"], def_chama)
+        self.assertEqual(prod.value["aisha"], def_aisha)
+        self.assertEqual(prod.value["beta"], def_beta)
+        self.assertEqual(prod.value["chama"], def_chama)
 
-        value = ProdInv.aisha + 13
+        value = prod.value.aisha + 13
         self.assertEqual(value, def_aisha + 13)
-        self.assertEqual(ProdInv.aisha, def_aisha)
+        self.assertEqual(prod.value.aisha, def_aisha)
 
-        value = ProdInv.beta - 7
+        value = prod.value.beta - 7
         self.assertEqual(value, def_beta - 7)
-        self.assertEqual(ProdInv.beta, def_beta)
+        self.assertEqual(prod.value.beta, def_beta)
 
-        ProdInv.chama += 6
-        self.assertEqual(ProdInv.chama, def_chama + 6)
-        ProdInv.chama -= 6
+        prod.value.chama += 6
+        self.assertEqual(prod.value.chama, def_chama + 6)
+        prod.value.chama -= 6
 
-        ProdInv.beta -= 3
-        self.assertEqual(ProdInv.beta, def_beta - 3)
-        ProdInv.beta += 3
-
-        value = ProdInv.aisha * 13
+        value = prod.value.aisha * 13
         self.assertEqual(value, def_aisha * 13)
-        self.assertEqual(ProdInv.aisha, def_aisha)
+        self.assertEqual(prod.value.aisha, def_aisha)
 
-        value = ProdInv["beta"] / 7
+        value = prod.value["beta"] / 7
         self.assertEqual(value, def_beta / 7)
-        self.assertEqual(ProdInv.beta, def_beta)
+        self.assertEqual(prod.value.beta, def_beta)
 
-        ProdInv.beta *= 6
-        self.assertEqual(ProdInv.beta, def_beta * 6)
-        ProdInv.beta /= 6
+        prod.add(defaults.starting_prod)
+        self.assert_pd_series_equal(prod.value, defaults.starting_prod * 2)
 
-        ProdInv["aisha"] /= 3
-        self.assertEqual(ProdInv.aisha, def_aisha / 3)
-        ProdInv.aisha *= 3
+        prod.sub(defaults.starting_prod)
+        self.assert_pd_series_equal(prod.value, defaults.starting_prod)
 
-        value = ProdInv.aisha
-        self.assertEqual(value, def_aisha)
+        prod.replace(defaults.starting_prod * 2)
+        self.assert_pd_series_equal(prod.value, defaults.starting_prod * 2)
+        prod.sub(defaults.starting_prod)
 
-        self.assertTrue(ProdInv.test_func())
-
-file_path = "budget"
-budget_file = importlib.import_module(file_path)
-
-class TestBudget(unittest.TestCase):
-    def test_budget(self):
-        budget = budget_file.Budget()
-        def_budget = defaults.starting_budget
-
-        self.assertEqual(budget, def_budget)
-
-        value = budget + 13
-        self.assertEqual(value, def_budget + 13)
-        self.assertEqual(budget, def_budget)
-
-        value = budget - 7
-        self.assertEqual(value, def_budget - 7)
-        self.assertEqual(budget, def_budget)
-
-        budget += 6
-        self.assertEqual(budget, def_budget + 6)
-        budget -= 6
-
-        budget -= 3
-        self.assertEqual(budget, def_budget - 3)
-        budget += 3
-
-        value = budget * 13
-        self.assertEqual(value, def_budget * 13)
-        self.assertEqual(budget, def_budget)
-
-        value = budget / 7
-        self.assertEqual(value, def_budget / 7)
-        self.assertEqual(budget, def_budget)
-
-        budget *= 6
-        self.assertEqual(budget, def_budget * 6)
-        budget /= 6
-
-        budget /= 3
-        self.assertEqual(budget, def_budget / 3)
-        budget *= 3
-
-        value = budget
-        self.assertEqual(value, def_budget)
-
-        self.assertTrue(budget.test_func())
+        self.assertTrue(prod.test_func())
 
 
-import market
-
-class TestMarketRes(unittest.TestCase):
-    def test_MarketRes(self):
-        res_price = market.MarketRes()
-        def_price = defaults.starting_res_price
-        self.assertEqual(res_price, def_price)
-
-        actual = res_price.stuff
-        expect = def_price.stuff
-        self.assertEqual(actual, expect)
-
-        actual = res_price['stuff']
-        expect = def_price.stuff
-        self.assertEqual(actual, expect)
-
-        actual = res_price * def_price  # to simulate price * quantity
-        expected = def_price * def_price
-        pd.testing.assert_series_equal(actual, expected)
-        self.assertEqual(sum(actual), sum(expected))
-
-        self.assertTrue(res_price.test_func())
-
-
-class TestMarketProd(unittest.TestCase):
-    def test_MarketProd(self):
-        prod_price = market.MarketProd()
-        def_price = defaults.starting_prod_price
-        self.assertEqual(prod_price, def_price)
-
-        actual = prod_price.aisha
-        expect = def_price.aisha
-        self.assertEqual(actual, expect)
-
-        actual = prod_price['beta']
-        expect = def_price.beta
-        self.assertEqual(actual, expect)
-
-        actual = prod_price * def_price  # to simulate price * quantity
-        expected = def_price * def_price
-        pd.testing.assert_series_equal(actual, expected)
-        self.assertEqual(sum(actual), sum(expected))
-
-        self.assertTrue(prod_price.test_func())
+if __name__ == '__main__':
+    unittest.main(verbosity=0)

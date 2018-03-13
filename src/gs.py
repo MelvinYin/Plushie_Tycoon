@@ -1,10 +1,9 @@
 from inventory import ResourceInventory, ProductInventory
-from production import ProductionCost
+from production import Production
 from singleton import Singleton
 from market import MarketRes, MarketProd
 import defaults
 from budget import Budget
-from time_stuff import TimeSteps
 import copy
 import logging
 
@@ -12,38 +11,31 @@ import logging
 class GSM:
     __metaclass__ = Singleton
     def __init__(self):
-        self.MarketRes = MarketRes()
-        self.MarketProd = MarketProd()
-        self.ResourceInv = ResourceInventory()
-        self.ProductInv = ProductInventory()
-        self.Budget = Budget()
-        self.ProductionCost = ProductionCost()
-        self.TimeSteps = TimeSteps()
+        self.res_price = MarketRes()
+        self.prod_price = MarketProd()
+        self.res = ResourceInventory()
+        self.prod = ProductInventory()
+        self.budget = Budget()
+        self.production = Production()
 
-        self.res_price = self.MarketRes
-        self.prod_price = self.MarketProd
-        self.prod_res_cost = defaults.prod_res_cost
-        self.res = self.ResourceInv
-        self.prod = self.ProductInv
-        self.budget = self.Budget
-        self.cost_per_hour = self.ProductionCost.cost_per_hour
-        self.prod_hours = self.ProductionCost.prod_hours
-        self.time_steps = self.TimeSteps
+        self.time_steps = defaults.starting_time
 
         self.value_history = []
         self.callstack = []
 
-        self.commit(call=None, ignore_no_call=True)
+    def cost_to_produce(self, category, quantity):
 
-    def cost_to_produce(self, type, quantity):
-        prod_time_required = self.prod_hours[type] * quantity
-        cost = prod_time_required * self.cost_per_hour
+        hour_per_prod = self.production.hours_needed[category]
+        total_hours = hour_per_prod * quantity
+        cost = total_hours * self.production.cost_per_hour
         return cost
 
     def commit(self, call=None, ignore_no_call=False):
-        self.value_history.append(self.__dict__.copy())
+        values = self.__dict__.copy()
+        del values["value_history"] # to avoid recurrent nesting.
+        self.value_history.append(copy.deepcopy(values))
         if call:
-            assert call in defaults.func
+            assert call[0] in defaults.func
             self.callstack.append(call)
         elif not ignore_no_call:
             logging.warning("GSM history added but no call added to"
@@ -51,16 +43,28 @@ class GSM:
         return True
 
     def push(self):
-        self.value_history = [copy.deepcopy(self.__dict__)]
         self.callstack = []
+        values = self.__dict__.copy()
+        # load_game means values does not have value_history
+        if "value_history" in values:
+            del values["value_history"]
+        self.value_history = [values]
+
 
     def reverse_call(self, remove_last_call=False):
         """ Called either by user with back, or due to errors encountered
-        during function call. """
+        during function call.
+
+        remove_last_call should be called if commit has been called, aka when
+        the user initiates a back button. Otherwise, if it's exceptions
+        enountered, remove_last_call should be False.
+        """
         if remove_last_call:
             assert self.callstack, "No previous call in current turn."
             del self.callstack[-1]
-        self.__dict__ = self.value_history.pop()
+        values_to_replace = self.value_history.pop()
+        values_to_replace["value_history"] = self.value_history.copy()
+        self.__dict__ = values_to_replace
         return True
 
 
