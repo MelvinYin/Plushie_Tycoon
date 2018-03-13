@@ -1,6 +1,7 @@
 from exceptions import RepeatUIAction
 from ge import GEM
 import ui
+import defaults
 import logs
 import logging
 import copy
@@ -8,9 +9,7 @@ import copy
 def main_func():
     GE = GEM()
     while True:
-        print(GE.GSM.__dict__['MarketRes'].price)
         action = ui.action()
-
         try:
             GE(action)
         except RepeatUIAction:

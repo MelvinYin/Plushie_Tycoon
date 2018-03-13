@@ -23,6 +23,10 @@ class GSM:
         self.value_history = []
         self.callstack = []
 
+    def __str__(self):
+        return defaults.generic_str_fn(self)
+
+
     def cost_to_produce(self, category, quantity):
 
         hour_per_prod = self.production.hours_needed[category]
@@ -66,7 +70,6 @@ class GSM:
         values_to_replace["value_history"] = self.value_history.copy()
         self.__dict__ = values_to_replace
         return True
-
 
 
 

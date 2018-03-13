@@ -1,17 +1,13 @@
 import importlib
 import unittest
 from unittest.mock import patch
-import copy
 import pandas as pd
 from defaults import Func, Res, Prod
-
-ui_file_path = "ui"
-ui_file = importlib.import_module(ui_file_path)
-
+import ui
+import inventory
+import defaults
 
 test_UI = True
-
-
 
 class TestCaseBase(unittest.TestCase):
 
@@ -43,14 +39,10 @@ class TestUI(TestCaseBase):
         mock_input.side_effect = self.mocked_input
         output = []
         for __ in range(len(self.desired_output)):
-            output += [ui_file.action()]
+            output += [ui.action()]
         self.assertListEqual(output, self.desired_output)
 
 
-
-file_path = "inventory"
-inventory = importlib.import_module(file_path)
-import defaults
 class TestResourceInventory(TestCaseBase):
     def test_ResourceInventory(self):
         res = inventory.ResourceInventory()
@@ -63,11 +55,6 @@ class TestResourceInventory(TestCaseBase):
         self.assertEqual(res.value[Res.stuff], def_stuff)
         self.assertEqual(res.value[Res.accessory], def_accessory)
         self.assertEqual(res.value[Res.packaging], def_packaging)
-        #
-        # self.assertEqual(res.value["cloth"], def_cloth)
-        # self.assertEqual(res.value["stuff"], def_stuff)
-        # self.assertEqual(res.value["accessory"], def_accessory)
-        # self.assertEqual(res.value["packaging"], def_packaging)
 
         value = res.value[Res.cloth] + 13
         self.assertEqual(value, def_cloth + 13)
@@ -111,10 +98,6 @@ class TestProductInventory(TestCaseBase):
         self.assertEqual(prod.value[Prod.aisha], def_aisha)
         self.assertEqual(prod.value[Prod.beta], def_beta)
         self.assertEqual(prod.value[Prod.chama], def_chama)
-        #
-        # self.assertEqual(prod.value["aisha"], def_aisha)
-        # self.assertEqual(prod.value["beta"], def_beta)
-        # self.assertEqual(prod.value["chama"], def_chama)
 
         value = prod.value[Prod.aisha]+ 13
         self.assertEqual(value, def_aisha + 13)

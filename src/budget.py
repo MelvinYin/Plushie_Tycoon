@@ -9,6 +9,9 @@ class Budget:
     def __init__(self):
         self.value = defaults.starting_budget
 
+    def __str__(self):
+        return defaults.generic_str_fn(self)
+
     def test_func(self):
         return True
 

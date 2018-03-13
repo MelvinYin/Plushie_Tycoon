@@ -97,6 +97,5 @@ class ClearingHouse:
 # plt.plot(supply_q, "x-", color="g")
 # plt.show()
 
-print(ClearingHouse()())
 
 

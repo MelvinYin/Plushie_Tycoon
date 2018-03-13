@@ -85,3 +85,33 @@ def_save_file_name = "game_save.pkl"
 
 # TODO: some form of a signatures template for others to compare with,
 # TODO: like using an isinstance
+
+# def generic_str_fn(self):
+#     string = f"Class: {self.__class__.__name__}\n"
+#     for key, value in self.__dict__.items():
+#         tmp = "\tAttr: " + key + "\n\t" + str(value).replace("\t", "\t\t").replace("\n", "\n\t").replace("Class", "\tClass") + "\n"
+#         string += tmp
+#     return string
+
+def generic_str_fn(self):
+    string = f"Class: {self.__class__.__name__}\n"
+    for key, value in self.__dict__.items():
+        tmp = "\tAttr: " + key + "\n\t" + str(value).replace("\n", "\n\t") + "\n"
+        string += tmp
+    return string
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

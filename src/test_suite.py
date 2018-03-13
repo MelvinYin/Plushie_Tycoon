@@ -6,10 +6,7 @@ import pandas as pd
 import pickle
 import copy
 from defaults import Func, Res, Prod
-
-
-ge_file_path = "ge"
-ge_file = importlib.import_module(ge_file_path)
+import ge as ge_file
 
 test_GE = True
 

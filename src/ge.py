@@ -8,17 +8,12 @@ from defaults import Func
 from gs import GSM
 import defaults
 
-
-
 class GEM:
     def __init__(self):
         self.GSM = GSM()
 
     def __str__(self):
-        tmp = dict()
-        for key, value in self.GSM.__dict__.items():
-            tmp[str(key)] = str(value)
-        return str(tmp)
+        return defaults.generic_str_fn(self)
 
     def __call__(self, call):
         methods = dict([(Func.save_game, self.save_game),
@@ -43,8 +38,8 @@ class GEM:
                 methods[func_signal](*args)
             else:
                 methods[func_signal]()
-        except InsufficientQuantityError as e:
-            self.GSM.reverse_call(remove_last_call=False)
+        except InsufficientQuantityError:
+            self.GSM.reverse_call(remove_last_call=True)
             raise RepeatUIAction
         return
 
@@ -135,17 +130,12 @@ class GEM:
         self.GSM.prod.add(category, quantity)
         return True
 
-    def back(self):# TODO: need to deal with previous actions that did nothing? like show stats. perhaps a warning.
+    def back(self):
         if not self.GSM.callstack:
             logging.info("No previous action logged.")
             return False
         self.GSM.reverse_call(remove_last_call=True)
-        #
-        # prev_values = self.GSM.value_history.pop()
-        # tmp = copy.deepcopy(self.GSM.value_history)
-        # self.GSM.__dict__ = prev_values
-        # self.GSM.__dict__["value_history"] = tmp
-        # del self.GSM.callstack[-1]
+
         return True
 
 
@@ -180,9 +170,6 @@ class GEM:
 
     def copy(self):
         return copy.deepcopy(self)
-
-
-
 
 
 

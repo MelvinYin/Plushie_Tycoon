@@ -12,6 +12,9 @@ class MarketRes:
     def __init__(self):
         self.value = defaults.starting_res_price
 
+    def __str__(self):
+        return defaults.generic_str_fn(self)
+
     def test_func(self):
         return True
 
@@ -20,6 +23,8 @@ class MarketProd:
     def __init__(self):
         self.value = defaults.starting_prod_price
 
+    def __str__(self):
+        return defaults.generic_str_fn(self)
+
     def test_func(self):
         return True
-
