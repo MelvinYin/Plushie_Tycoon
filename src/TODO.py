@@ -1,39 +1,21 @@
-# TODO: Build a back button
-
 
 """
-Workflow of user:
+Workflow
 
-They will key in several things to do for this turn.
-Implicit checking to see if actions are valid.
+Move show_stats and etc to GS
 
-Once fixed, they select next turn, and all actions are executed.
+Plotting function using history.
+Also, need history over turns too? For plotting.
 
-Then repeat.
+Callstack shown should be the values themselves as well, not the enum values.
 
-Implement enum
+Maybe. Maybe focus on the plotting first. Price model, probably later, make a
+working prototype first.
 
-History function of each variable, for subsequent plotting (of say budget over
-turns)
-With corresponding record of callstacks, etc.
-Save the whole dict essentially, but in variable as column order.
+It is plausible that during next_turn or save_game, the entire history will then
+be placed inside long-term storage. Or, next turn will wipe current callstack
+and current history, but place them inside a long-term storage, with the time
+elapsed as a marker. A dict of list maybe.
 
-Information reading from GSM should be perfectly fine, but modifications should
-be fed to the respective classes for them to implement separately, as this may
-change their internal state
-
-Bases need to add an abstract method add, that all composed classes of GSM
-should have.
-
-Add a .copy() mtd to base
-
-Completely abstract out res and prod
-
-Check why baseinventory need complicated __add__ thing.
-base inventory no __eq__???
-
-Changing code, back to no more bases.
-
-Add, sub, replace
-Otherwise, .value give a view-only.
+Then, plot can be made to run on this data structure. Maybe.
 """

@@ -28,7 +28,6 @@ class GSM:
 
 
     def cost_to_produce(self, category, quantity):
-
         hour_per_prod = self.production.hours_needed[category]
         total_hours = hour_per_prod * quantity
         cost = total_hours * self.production.cost_per_hour
@@ -71,6 +70,37 @@ class GSM:
         self.__dict__ = values_to_replace
         return True
 
+    def show_stats(self):   # this should be moved to GS
+        logging.info("Current Inventory: \n"
+                     + "Resources\n" + str(self.res) + "\n"
+                     + "Products\n" + str(self.prod))
+
+        logging.info("Current Budget: " + str(self.budget))
+
+        logging.info("Current Market Prices: \n"
+                     + "Resources\n" + str(self.res_price) + "\n"
+                     + "Products\n" + str(self.prod_price))
+
+        logging.info("Fixed Costs: \n"
+                     + str(self.production.hours_needed) + "\n"
+                     + "Cost per hour: " + str(self.production.cost_per_hour))
+
+        logging.info("Callstack: \n" + str(self.callstack))
+        # logging.info("History: \n" + str(self.value_history))
+
+        logging.info("Time elapsed: " + str(self.time_steps))
+        return True
+
+    def show_prices(self):
+        logging.info("Current Market Prices: \n"
+                     + "Resources\n" + str(self.res_price) + "\n"
+                     + "Products\n" + str(self.prod_price))
+        return True
+
+    def show_history(self):
+        logging.info(self.callstack)
+        logging.info(self.value_history)
+        return True
 
 
 

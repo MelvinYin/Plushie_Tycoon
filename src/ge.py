@@ -16,21 +16,23 @@ class GEM:
         return defaults.generic_str_fn(self)
 
     def __call__(self, call):
-        methods = dict([(Func.save_game, self.save_game),
-                            (Func.load_game, self.load_game),
-                            (Func.quit_game, self.quit_game),
-                            (Func.save_quit, self.save_quit),
-                            (Func.next_turn, self.next_turn),
-                            (Func.buy_res, self.buy_res),
-                            (Func.sell_res, self.sell_res),
-                            (Func.buy_prod, self.buy_prod),
-                            (Func.make_prod, self.make_prod),
-                            (Func.sell_prod, self.sell_prod),
-                            (Func.show_stats, self.show_stats),
-                            (Func.show_prices, self.show_prices),
-                            (Func.show_history, self.show_history),
-                            (Func.back, self.back)
-                            ])
+        methods = dict([
+            (Func.save_game, self.save_game),
+            (Func.load_game, self.load_game),
+            (Func.quit_game, self.quit_game),
+            (Func.save_quit, self.save_quit),
+            (Func.next_turn, self.next_turn),
+            (Func.buy_res, self.buy_res),
+            (Func.sell_res, self.sell_res),
+            (Func.buy_prod, self.buy_prod),
+            (Func.make_prod, self.make_prod),
+            (Func.sell_prod, self.sell_prod),
+            (Func.show_stats, self.show_stats),
+            (Func.show_prices, self.show_prices),
+            (Func.show_history, self.show_history),
+            (Func.back, self.back)
+            ])
+
         logging.debug(f"Currently running: {call}")
         func_signal, args = call[0], call[1:]
         try:
@@ -138,35 +140,14 @@ class GEM:
 
         return True
 
-
-    def show_stats(self):   # this should be moved to GS
-        logging.info("Current Inventory: \n"
-                     + "Resources\n" + str(self.GSM.res) + "\n"
-                     + "Products\n" + str(self.GSM.prod))
-
-        logging.info("Current Budget: " + str(self.GSM.budget))
-
-        logging.info("Current Market Prices: \n"
-                     + "Resources\n" + str(self.GSM.res_price) + "\n"
-                     + "Products\n" + str(self.GSM.prod_price))
-
-        logging.info("Fixed Costs: \n"
-                     + str(self.GSM.production.hours_needed) + "\n"
-                     + "Cost per hour: " + str(self.GSM.production.cost_per_hour))
-
-        logging.info("Time elapsed: " + str(self.GSM.time_steps))
-        return True
+    def show_stats(self):
+        return self.GSM.show_stats()
 
     def show_prices(self):
-        logging.info("Current Market Prices: \n"
-                     + "Resources\n" + str(self.GSM.res_price) + "\n"
-                     + "Products\n" + str(self.GSM.prod_price))
-        return True
+        return self.GSM.show_prices()
 
     def show_history(self):
-        logging.info(self.GSM.callstack)
-        logging.info(self.GSM.value_history)
-        return True
+        return self.GSM.show_history()
 
     def copy(self):
         return copy.deepcopy(self)
