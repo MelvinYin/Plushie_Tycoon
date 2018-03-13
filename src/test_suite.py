@@ -5,6 +5,7 @@ import defaults
 import pandas as pd
 import pickle
 import copy
+from defaults import Func, Res, Prod
 
 
 ge_file_path = "ge"
@@ -104,22 +105,20 @@ class TestGE(unittest.TestCase):
     def test_show_stats(self):
         GE = ge_file.GEM()
         GE_test = GE.copy()
-        GE(("show_stats",))
+        GE((Func.show_stats,))
         self.assert_GE_equal(GE, GE_test)
 
     def test_buy_res_stuff(self):
         GE = ge_file.GEM()
         GE_test = GE.copy()
-        GE(("buy_res","stuff", 20))
+        GE((Func.buy_res, Res.stuff, 20))
 
         val_hist = copy.deepcopy(GE_test.GSM.__dict__)
         del val_hist["value_history"]
-        print(val_hist['res'].value)
         GE_test.GSM.value_history.append(val_hist)
-        GE_test.GSM.callstack.append(("buy_res", "stuff", 20))
-        GE_test.GSM.res.add("stuff", 20)
-        print(val_hist['res'].value)
-        cost = defaults.starting_res_price.stuff * 20
+        GE_test.GSM.callstack.append((Func.buy_res, Res.stuff, 20))
+        GE_test.GSM.res.add(Res.stuff, 20)
+        cost = defaults.starting_res_price[Res.stuff] * 20
         GE_test.GSM.budget.sub(cost)
         self.assert_GE_equal(GE, GE_test)
 
@@ -129,10 +128,10 @@ class TestGE(unittest.TestCase):
         val_hist = copy.deepcopy(GE_test.GSM.__dict__)
         del val_hist["value_history"]
         GE_test.GSM.value_history.append(val_hist)
-        GE_test.GSM.callstack.append(("sell_res","cloth", 20))
-        GE(("sell_res","cloth", 20))
-        GE_test.GSM.res.sub("cloth", 20)
-        cost = defaults.starting_res_price.cloth * 20
+        GE_test.GSM.callstack.append((Func.sell_res, Res.cloth, 20))
+        GE((Func.sell_res, Res.cloth, 20))
+        GE_test.GSM.res.sub(Res.cloth, 20)
+        cost = defaults.starting_res_price[Res.cloth] * 20
         GE_test.GSM.budget.add(cost)
         self.assert_GE_equal(GE, GE_test)
 
@@ -142,10 +141,10 @@ class TestGE(unittest.TestCase):
         val_hist = copy.deepcopy(GE_test.GSM.__dict__)
         del val_hist["value_history"]
         GE_test.GSM.value_history.append(val_hist)
-        GE_test.GSM.callstack.append(("buy_prod", "aisha", 5))
-        GE(("buy_prod", "aisha", 5))
-        GE_test.GSM.prod.add("aisha", 5)
-        cost = defaults.starting_prod_price.aisha * 5
+        GE_test.GSM.callstack.append((Func.buy_prod, Prod.aisha, 5))
+        GE((Func.buy_prod, Prod.aisha, 5))
+        GE_test.GSM.prod.add(Prod.aisha, 5)
+        cost = defaults.starting_prod_price[Prod.aisha] * 5
         GE_test.GSM.budget.sub(cost)
         self.assert_GE_equal(GE, GE_test)
 
@@ -155,12 +154,12 @@ class TestGE(unittest.TestCase):
         val_hist = copy.deepcopy(GE_test.GSM.__dict__)
         del val_hist["value_history"]
         GE_test.GSM.value_history.append(val_hist)
-        GE_test.GSM.callstack.append(("make_prod", "beta", 10))
-        GE(("make_prod", "beta", 10))
-        GE_test.GSM.prod.add("beta", 10)
-        res_needed = defaults.prod_res_cost.beta * 10
+        GE_test.GSM.callstack.append((Func.make_prod, Prod.beta, 10))
+        GE((Func.make_prod, Prod.beta, 10))
+        GE_test.GSM.prod.add(Prod.beta, 10)
+        res_needed = defaults.prod_res_cost[Prod.beta] * 10
         GE_test.GSM.res.sub(res_needed)
-        cost = defaults.hours_needed.beta * defaults.cost_per_hour * 10
+        cost = defaults.hours_needed[Prod.beta] * defaults.cost_per_hour * 10
         GE_test.GSM.budget.sub(cost)
         self.assert_GE_equal(GE, GE_test)
 
@@ -170,17 +169,17 @@ class TestGE(unittest.TestCase):
         val_hist = copy.deepcopy(GE_test.GSM.__dict__)
         del val_hist["value_history"]
         GE_test.GSM.value_history.append(val_hist)
-        GE_test.GSM.callstack.append(("sell_prod", "chama", 7))
-        GE(("sell_prod", "chama", 7))
-        GE_test.GSM.prod.sub("chama", 7)
-        cost = GE_test.GSM.prod_price.value.chama * 7
+        GE_test.GSM.callstack.append((Func.sell_prod, Prod.chama, 7))
+        GE((Func.sell_prod, Prod.chama, 7))
+        GE_test.GSM.prod.sub(Prod.chama, 7)
+        cost = GE_test.GSM.prod_price.value[Prod.chama] * 7
         GE_test.GSM.budget.add(cost)
         self.assert_GE_equal(GE, GE_test)
 
     def test_next_turn(self):
         GE = ge_file.GEM()
         GE_test = GE.copy()
-        GE(("next_turn",))
+        GE((Func.next_turn,))
         GE_test.GSM.time_steps = defaults.starting_time + 1
         val_hist = copy.deepcopy(GE_test.GSM.__dict__)
         del val_hist["value_history"]
@@ -191,15 +190,15 @@ class TestGE(unittest.TestCase):
         GE = ge_file.GEM()
         GE_loaded = GE.copy()
         GE_test = GE.copy()
-        GE(("sell_prod", "chama", 7))
-        GE(("make_prod", "beta", 10))
-        GE(("buy_res", "stuff", 20))
-        GE(("next_turn",))
-        GE(("save_game",))
-        GE_test(("sell_prod", "chama", 7))
-        GE_test(("make_prod", "beta", 10))
-        GE_test(("buy_res", "stuff", 20))
-        GE_test(("next_turn",))
+        GE((Func.sell_prod, Prod.chama, 7))
+        GE((Func.make_prod, Prod.beta, 10))
+        GE((Func.buy_res, Res.stuff, 20))
+        GE((Func.next_turn,))
+        GE((Func.save_game,))
+        GE_test((Func.sell_prod, Prod.chama, 7))
+        GE_test((Func.make_prod, Prod.beta, 10))
+        GE_test((Func.buy_res, Res.stuff, 20))
+        GE_test((Func.next_turn,))
         file = open(defaults.def_save_folder + defaults.def_save_file_name, "rb")
         GE_loaded.GSM.__dict__ = pickle.load(file)
         values = copy.deepcopy(GE_loaded.GSM.__dict__)
@@ -210,32 +209,32 @@ class TestGE(unittest.TestCase):
         GE = ge_file.GEM()
         GE_loaded = GE.copy()
         GE_test = GE.copy()
-        GE(("sell_prod", "chama", 7))
-        GE(("make_prod", "beta", 10))
-        GE(("buy_res", "stuff", 20))
-        GE(("next_turn",))
-        GE(("save_game",))
-        GE_loaded(("load_game",))
-        GE_test(("sell_prod", "chama", 7))
-        GE_test(("make_prod", "beta", 10))
-        GE_test(("buy_res", "stuff", 20))
-        GE_test(("next_turn",))
+        GE((Func.sell_prod, Prod.chama, 7))
+        GE((Func.make_prod, Prod.beta, 10))
+        GE((Func.buy_res, Res.stuff, 20))
+        GE((Func.next_turn,))
+        GE((Func.save_game,))
+        GE_loaded((Func.load_game,))
+        GE_test((Func.sell_prod, Prod.chama, 7))
+        GE_test((Func.make_prod, Prod.beta, 10))
+        GE_test((Func.buy_res, Res.stuff, 20))
+        GE_test((Func.next_turn,))
         self.assert_GE_equal(GE_test, GE_loaded)
 
     def test_back(self):
         GE = ge_file.GEM()
         GE_test = GE.copy()
-        GE(("sell_prod", "chama", 7))
+        GE((Func.sell_prod, Prod.chama, 7))
+        GE((Func.make_prod, Prod.beta, 10))
+        GE((Func.buy_res, Res.stuff, 20))
+        GE((Func.back,))
 
-        GE(("make_prod", "beta", 10))
-        GE(("buy_res", "stuff", 20))
-        GE(("back",))
-
-        GE_test(("sell_prod", "chama", 7))
-        GE_test(("make_prod", "beta", 10))
+        GE_test((Func.sell_prod, Prod.chama, 7))
+        GE_test((Func.make_prod, Prod.beta, 10))
 
         self.assert_GE_equal(GE, GE_test)
 
 
 if __name__ == '__main__':
     unittest.main(verbosity=0)
+

@@ -4,7 +4,7 @@ import os
 import pickle
 import sys
 import logging
-from defaults import func
+from defaults import Func
 from gs import GSM
 import defaults
 
@@ -21,20 +21,20 @@ class GEM:
         return str(tmp)
 
     def __call__(self, call):
-        methods = dict([(func.save_game, self.save_game),
-                            (func.load_game, self.load_game),
-                            (func.quit_game, self.quit_game),
-                            (func.save_quit, self.save_quit),
-                            (func.next_turn, self.next_turn),
-                            (func.buy_res, self.buy_res),
-                            (func.sell_res, self.sell_res),
-                            (func.buy_prod, self.buy_prod),
-                            (func.make_prod, self.make_prod),
-                            (func.sell_prod, self.sell_prod),
-                            (func.show_stats, self.show_stats),
-                            (func.show_prices, self.show_prices),
-                            (func.show_history, self.show_history),
-                            (func.back, self.back)
+        methods = dict([(Func.save_game, self.save_game),
+                            (Func.load_game, self.load_game),
+                            (Func.quit_game, self.quit_game),
+                            (Func.save_quit, self.save_quit),
+                            (Func.next_turn, self.next_turn),
+                            (Func.buy_res, self.buy_res),
+                            (Func.sell_res, self.sell_res),
+                            (Func.buy_prod, self.buy_prod),
+                            (Func.make_prod, self.make_prod),
+                            (Func.sell_prod, self.sell_prod),
+                            (Func.show_stats, self.show_stats),
+                            (Func.show_prices, self.show_prices),
+                            (Func.show_history, self.show_history),
+                            (Func.back, self.back)
                             ])
         logging.debug(f"Currently running: {call}")
         func_signal, args = call[0], call[1:]
@@ -63,9 +63,9 @@ class GEM:
         self.GSM.push()
         return True
 
-    def save_game(self, file_path="../save/", file_name=None):
+    def save_game(self, file_path=defaults.def_save_folder, file_name=None):
         if not file_name:
-            file_name = "game" + "_save.pkl"
+            file_name = defaults.def_save_file_name
         if not file_name.endswith(".pkl"):
             logging.warning(f"Warning: File name {file_name} provided does not"
                             f" end with .pkl. Suffix will be added.")
@@ -92,7 +92,7 @@ class GEM:
         return
 
     def buy_res(self, category, quantity):
-        self.GSM.commit(call=(func.buy_res, category, quantity))
+        self.GSM.commit(call=(Func.buy_res, category, quantity))
         curr_res_p = self.GSM.res_price.value[category]
         cost_to_buy = curr_res_p * quantity
         self.GSM.budget.sub(cost_to_buy)
@@ -100,7 +100,7 @@ class GEM:
         return True
 
     def sell_res(self, category, quantity):
-        self.GSM.commit(call=(func.sell_res, category, quantity))
+        self.GSM.commit(call=(Func.sell_res, category, quantity))
         curr_res_p = self.GSM.res_price.value[category]
         earnings = curr_res_p * quantity
         self.GSM.budget.add(earnings)
@@ -108,7 +108,7 @@ class GEM:
         return True
 
     def buy_prod(self, category, quantity):
-        self.GSM.commit(call=(func.buy_prod, category, quantity))
+        self.GSM.commit(call=(Func.buy_prod, category, quantity))
         curr_prices = self.GSM.prod_price.value[category]
         cost_to_buy = curr_prices * quantity
         self.GSM.budget.sub(cost_to_buy)
@@ -116,7 +116,7 @@ class GEM:
         return True
 
     def sell_prod(self, category, quantity):
-        self.GSM.commit(call=(func.sell_prod, category, quantity))
+        self.GSM.commit(call=(Func.sell_prod, category, quantity))
         curr_prices = self.GSM.prod_price.value[category]
         self.GSM.prod.sub(category, quantity)
         earnings = curr_prices * quantity
@@ -124,7 +124,7 @@ class GEM:
         return True
 
     def make_prod(self, category, quantity):
-        self.GSM.commit(call=(func.make_prod, category, quantity))
+        self.GSM.commit(call=(Func.make_prod, category, quantity))
         res_for_type = self.GSM.production.res_cost[category]
         total_res = res_for_type * quantity
         self.GSM.res.sub(total_res)

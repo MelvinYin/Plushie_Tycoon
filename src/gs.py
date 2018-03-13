@@ -35,7 +35,7 @@ class GSM:
         del values["value_history"] # to avoid recurrent nesting.
         self.value_history.append(copy.deepcopy(values))
         if call:
-            assert call[0] in defaults.func
+            assert call[0] in defaults.Func
             self.callstack.append(call)
         elif not ignore_no_call:
             logging.warning("GSM history added but no call added to"
@@ -44,7 +44,7 @@ class GSM:
 
     def push(self):
         self.callstack = []
-        values = self.__dict__.copy()
+        values = copy.deepcopy(self.__dict__)
         # load_game means values does not have value_history
         if "value_history" in values:
             del values["value_history"]

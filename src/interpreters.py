@@ -1,6 +1,6 @@
 import re
 from exceptions import InvalidInputException
-from defaults import func, prod, res
+from defaults import Func, Prod, Res
 
 
 # TODO: We don't really want to make that tolerant a ui at this point,
@@ -47,32 +47,32 @@ no_p = re.compile("n(o(pe)?)?", re.IGNORECASE)
 def interpret_action(user_input):
     user_input = user_input.strip()
     if re.fullmatch(buy_res_p, user_input):
-        return func.buy_res
+        return Func.buy_res
     elif re.fullmatch(sell_res_p, user_input):
-        return func.sell_res
+        return Func.sell_res
 
     elif re.fullmatch(buy_prod_p, user_input):
-        return func.buy_prod
+        return Func.buy_prod
     elif re.fullmatch(make_prod_p, user_input):
-        return func.make_prod
+        return Func.make_prod
     elif re.fullmatch(sell_prod_p, user_input):
-        return func.sell_prod
+        return Func.sell_prod
 
     elif re.fullmatch(show_stats_p, user_input):
-        return func.show_stats
+        return Func.show_stats
     elif re.fullmatch(show_prices_p, user_input):
-        return func.show_prices
+        return Func.show_prices
     elif re.fullmatch(show_history_p, user_input):
-        return func.show_history
+        return Func.show_history
 
     elif re.fullmatch(save_game_p, user_input):
-        return func.save_game
+        return Func.save_game
     elif re.fullmatch(load_game_p, user_input):
-        return func.load_game
+        return Func.load_game
     elif re.fullmatch(next_turn_p, user_input):
-        return func.next_turn
+        return Func.next_turn
     elif re.fullmatch(quit_game_p, user_input):
-        return func.quit_game
+        return Func.quit_game
 
     else:
         raise InvalidInputException(user_input)
@@ -89,11 +89,11 @@ def interpret_prod(user_input):
         raise InvalidInputException(user_input)
 
     if re.fullmatch(aisha_p, prod_name):
-        matched_name = prod.aisha
+        matched_name = Prod.aisha
     elif re.fullmatch(beta_p, prod_name):
-        matched_name = prod.beta
+        matched_name = Prod.beta
     elif re.fullmatch(chama_p, prod_name):
-        matched_name = prod.chama
+        matched_name = Prod.chama
     else:
         raise InvalidInputException(user_input)
 
@@ -117,13 +117,13 @@ def interpret_resource(user_input):
         raise InvalidInputException(user_input)
 
     if re.fullmatch(cloth_p, prod_name):
-        matched_name = res.cloth
+        matched_name = Res.cloth
     elif re.fullmatch(stuff_p, prod_name):
-        matched_name = res.stuff
+        matched_name = Res.stuff
     elif re.fullmatch(accessory_p, prod_name):
-        matched_name = res.accessory
+        matched_name = Res.accessory
     elif re.fullmatch(packaging_p, prod_name):
-        matched_name = res.packaging
+        matched_name = Res.packaging
     else:
         raise InvalidInputException(user_input)
 

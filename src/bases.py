@@ -4,6 +4,7 @@ import pickle
 import logging
 from exceptions import InsufficientQuantityError
 import pandas as pd
+from enum import Enum
 
 class BaseInventory(ABC):
     def __init__(self, value):
@@ -20,7 +21,7 @@ class BaseInventory(ABC):
             self.value += val_add
         elif len(args) == 2:
             category, quantity = args
-            assert isinstance(category, str), add_error_msg
+            assert isinstance(category, Enum), add_error_msg
             assert category in self.value.index, add_error_msg
             assert isinstance(quantity, int), add_error_msg
             self.value[category] += quantity
@@ -39,7 +40,7 @@ class BaseInventory(ABC):
             self.value -= val_sub
         elif len(args) == 2:
             category, quantity = args
-            assert isinstance(category, str), sub_error_msg
+            assert isinstance(category, Enum), sub_error_msg
             assert category in self.value.index, sub_error_msg
             assert isinstance(quantity, int), sub_error_msg
             self.value[category] += quantity
