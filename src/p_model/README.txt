@@ -1,0 +1,1 @@
+Will use a simple sinusoidal price curve for now, with no limit on quantity.

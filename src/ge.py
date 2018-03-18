@@ -8,6 +8,23 @@ from defaults import Func
 from gs import GSM
 import defaults
 
+
+def commit_decr(func_signal):
+    def decr(func):
+        def wrapper(*args, **kwargs):
+            call = tuple([func_signal, *args])
+            self.GSM.commit(call=call)
+            try:
+                return func(*args, **kwargs)
+            except:
+                self.GSM.reverse_call(remove_last_call=True)
+                logging.error(f"Exception thrown: {call}")
+                raise
+
+        return wrapper
+
+    return decr
+
 class GEM:
     def __init__(self):
         self.GSM = GSM()
@@ -45,6 +62,7 @@ class GEM:
             raise RepeatUIAction
         return
 
+
     def load_game(self, file_path=defaults.def_save_folder, file_name=None):
         if not file_name:
             file_name = defaults.def_save_file_name
@@ -57,7 +75,6 @@ class GEM:
             raise FileNotFoundError
         with open(file_path + file_name, "rb") as file:
             self.GSM.__dict__ = pickle.load(file)
-        self.GSM.push()
         return True
 
     def save_game(self, file_path=defaults.def_save_folder, file_name=None):
@@ -72,8 +89,7 @@ class GEM:
                             f" exist. Directory will be created.")
             os.makedirs(file_path)
         with open(file_path + file_name, "wb") as file:
-            pickle.dump(self.GSM.value_history[0], file, -1)
-        self.GSM.push()
+            pickle.dump(self.GSM.__dict__, file, -1)
         return True
 
     def quit_game(self):
@@ -84,8 +100,8 @@ class GEM:
         self.quit_game()
 
     def next_turn(self):
-        self.GSM.time_steps += 1
         self.GSM.push()
+        self.GSM.time_steps += 1
         return
 
     def buy_res(self, category, quantity):
@@ -137,7 +153,6 @@ class GEM:
             logging.info("No previous action logged.")
             return False
         self.GSM.reverse_call(remove_last_call=True)
-
         return True
 
     def show_stats(self):

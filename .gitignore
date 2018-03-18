@@ -2,3 +2,6 @@
 **/Data
 **.pkl
 **/__pycache__
+**/.idea
+**/.cache
+**/.ipynb_checkpoints

@@ -45,6 +45,3 @@ metaclass thing, maybe.
 
 First build a pricing model that relates demand to supply.
 """
-
-# todo: ADD dict for function call from ge, otherwise need to change too
-# TODO: many places at once

@@ -3,9 +3,6 @@ from exceptions import InvalidInputException
 from defaults import Func, Prod, Res
 
 
-# TODO: We don't really want to make that tolerant a ui at this point,
-# TODO: intention is to wrap it up in a gui afterwards.
-
 
 # Functions
 buy_res_p = re.compile("buy[ _]res(ource(s)?)?(\.)?", re.IGNORECASE)
