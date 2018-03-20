@@ -1,3 +1,11 @@
+import os
+import webbrowser
+import bokeh.settings
+# print(webbrowser._browsers)
+# bokeh.settings.settings.browser(webbrowser._browsers['c:\\program files\\internet explorer\\iexplore.exe'][1])
+# print(webbrowser._browsers['c:\\program files\\internet explorer\\iexplore.exe'][1])
+# webbrowser.register('windows-default', None, webbrowser._browsers['c:\\program files\\internet explorer\\iexplore.exe'][1])
+
 
 class Base(ABC):
     """ No longer used. """

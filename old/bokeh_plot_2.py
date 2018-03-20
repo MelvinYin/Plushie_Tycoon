@@ -5,17 +5,15 @@ from bokeh.models import CDSView, HoverTool, BoxSelectTool, BoxZoomTool, \
     ZoomInTool, ZoomOutTool, CrosshairTool, TapTool, Button, Text, DataRange1d
 from bokeh.models.plots import Plot
 import math
-from bokeh.layouts import gridplot, layout
+from bokeh.layouts import gridplot, layout, widgetbox
 from bokeh.events import ButtonClick
 import sys
-import os
-
 
 output_file("../bokeh_tmp/line.html")
 
 xdr = DataRange1d()
 ydr = DataRange1d()
-p3 = Plot(x_range=xdr, y_range=ydr, plot_width=300, plot_height=300)
+p3 = Plot(x_range=xdr, y_range=ydr, plot_width=1000, plot_height=1000)
 
 text_raw = dict(xs=[0, 10, 20], ys=[0, 10, 20], text=["one", "two", "three"])
 text_CDS = ColumnDataSource(data=text_raw)
@@ -28,7 +26,17 @@ def callback(buttonclick_event):
 button = Button(label="Press Me")
 button.label = "jursg"
 button.on_event(ButtonClick, callback)
-p3.add_glyph(button, callback)
 
-# layout_ = layout([button])
-curdoc().add_root(p3)
+button2 = Button(label="Press Me")
+button2.label = "g"
+button2.on_event(ButtonClick, callback)
+
+button3 = Button(label="Press Me")
+button3.label = "gfrrf"
+button3.on_event(ButtonClick, callback)
+
+
+
+
+layout_ = gridplot([[p3], [button, button2], [button3, button2]])
+curdoc().add_root(layout_)

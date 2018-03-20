@@ -1,14 +1,10 @@
-from bokeh.models.tickers import FixedTicker, AdaptiveTicker
-from bokeh.plotting import figure, output_file, show, ColumnDataSource, curdoc
-from bokeh.models import CDSView, HoverTool, BoxSelectTool, BoxZoomTool, \
-    PanTool, WheelPanTool, WheelZoomTool, ResetTool, UndoTool, RedoTool, \
-    ZoomInTool, ZoomOutTool, CrosshairTool, TapTool, Button, Text, DataRange1d
-from bokeh.models.plots import Plot
+from bokeh.models.tickers import AdaptiveTicker
+from bokeh.plotting import figure, output_file, show, ColumnDataSource
+from bokeh.models import HoverTool, BoxZoomTool, PanTool, WheelZoomTool, \
+    ResetTool, UndoTool
 import math
-from bokeh.layouts import gridplot, layout
-from bokeh.events import ButtonClick
-import sys
-import os
+from bokeh.layouts import row, column
+
 
 output_file("../bokeh_tmp/line.html")
 
@@ -59,53 +55,44 @@ def gen_default_fig():
     return p
 
 def gen_generic_func():
-    """ Because figure cannot be called by copy.deepcopy. """
+    raw_data = gen_raw_input_data()
+    CDS = convert_to_CDS(raw_data)
+
     p_def = gen_default_fig()
     p = figure(plot_width=p_def.plot_width, plot_height=p_def.plot_height,
                tools=p_def.tools,title=p_def.title,
                toolbar=p_def.toolbar)
+    p.x("xs", "ys", source=CDS, name="points", size=10)
+    p.line("xs", "ys", source=CDS)
     p.xaxis.ticker = AdaptiveTicker(min_interval=1, num_minor_ticks=0)
     p.xgrid.ticker = AdaptiveTicker(min_interval=1, num_minor_ticks=0)
     p.xaxis.axis_label = "Time Steps"
     p.yaxis.axis_label = "Placeholder"
+    p.toolbar.logo = None
     return p
 
+def couple_range(*args):
+    p1 = args[0]
+    return_p = [p1]
+    for p in args[1:]:
+        p.x_range = p1.x_range
+        p.y_range = p1.y_range
+        return_p.append(p)
+    return return_p
 
-def gen_generic_func2():
-    """ Because figure cannot be called by copy.deepcopy. """
-    p_def = gen_default_fig()
-    p = figure(plot_width=p_def.plot_width, plot_height=p_def.plot_height,
-               tools=p_def.tools,title=p_def.title,
-               toolbar=p_def.toolbar)
-    p.xaxis.ticker = AdaptiveTicker(min_interval=1, num_minor_ticks=0)
-    p.xgrid.ticker = AdaptiveTicker(min_interval=1, num_minor_ticks=0)
-    p.xaxis.axis_label = "Time Steps"
-    p.yaxis.axis_label = "Placeholder"
-    return p
-
-raw_data = gen_raw_input_data()
-CDS = convert_to_CDS(raw_data)
 
 p1 = gen_generic_func()
-p1.x("xs", "ys", source=CDS, name="points", size=10)
-p1.line("xs", "ys", source=CDS)
+p2 = gen_generic_func()
+p3 = gen_generic_func()
+p4 = gen_generic_func()
+p5 = gen_generic_func()
+p6 = gen_generic_func()
+p1, p2, p3, p4, p5, p6 = couple_range(p1, p2, p3, p4, p5, p6)
 
-def callback(buttonclick_event):
-    button.label = "jursvbniugsrfg"
-    sys.exit()
-p2 = gen_generic_func2()
-p2.x("xs", "ys", source=CDS, name="points2", size=10)
-p2.line("xs", "ys", source=CDS)
-p2.x_range = p1.x_range
-p2.y_range = p1.y_range
-button = Button(label="Press Me")
-button.label = "jursg"
-button.on_event(ButtonClick, callback)
+layout1 = row(p1, p2, p3)
+layout2 = row(p4, p5, p6)
+layout_ = column(layout1, layout2)
+# curdoc().add_root(layout_)
 
-layout_ = layout([p1, p2], [button])
-curdoc().add_root(layout_)
-
-
-
-# show(layout_)
+show(layout_)
 
