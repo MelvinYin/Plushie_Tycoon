@@ -29,4 +29,6 @@ Sort out widget layout first, before working on testing callbacks.
 Can implement callbacks for now.
 
 Integrate bokeh into UI once buttons corresponding to each function work.
+
+Create global directory that all refer to.
 """

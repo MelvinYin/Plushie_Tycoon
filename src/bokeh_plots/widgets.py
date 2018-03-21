@@ -5,38 +5,29 @@ from bokeh.models import DataRange1d
 from bokeh.models.widgets.inputs import TextInput
 from bokeh.models.widgets import RadioButtonGroup
 
-from bokeh.models.tickers import AdaptiveTicker
-from bokeh.plotting import figure, output_file, show, ColumnDataSource, curdoc
-from bokeh.models import HoverTool, BoxZoomTool, PanTool, WheelZoomTool, \
-    ResetTool, UndoTool
-import math
+from bokeh.plotting import output_file, show, ColumnDataSource, curdoc
 from bokeh.layouts import row, column
 import re
 import sys
 
-output_file("../bokeh_tmp/line.html")
-# TODO: each set of widgets need to be considered as a separate class, for callback and final output of results to GE to make sense, and for it to scale.
-# TODO: need a quit button
-# WIDGETS
-
-class WidgetSet:
+class IndiWidgetSet:
     def __init__(self):
         self.set_title = "1Placeholder"
         self.button_label = "place"
         self.TI_placeholder = "Placeholder"
         self.RBG_labels = ["one", "two", "three", "reset", "quit"]
         self.RBG_active = None
-        self.text_intrinsic_dim = [300, 50]
-        self.text_display_dim = [200, 40]
+        self.text_intrinsic_dim = [250, 50] # width, height of text box
+        self.text_display_dim = [0, 40] # text width no diff, height determine how near RBG is.
 
         # CBG_intrinsic makes no diff
-        self.RBG_display_dim = [100, 40]
+        self.RBG_display_dim = [0, 40]  # width no diff, height determine how close input and button is
 
-        self.TI_intrinsic_dim = [1, 1]
-        self.TI_display_dim = [190, 50]
+        self.TI_intrinsic_dim = [1, 1]  # size of text_box, with a minimum
+        self.TI_display_dim = [180, 0] # for width, fix overall widget width together with button_display_dim, min taken of the 2.
 
-        self.button_intrinsic_dim = [50, 50]    # no diff for now
-        self.button_display_dim = [50, 50]      # no diff for now
+        self.button_intrinsic_dim = [50, 0]    # no diff for now
+        self.button_display_dim = [100, 0]      # no diff for now
 
         self.input_val = None
         self.active_RBG = None
@@ -91,7 +82,7 @@ class WidgetSet:
         elif not re.fullmatch("[0-9]+", self.input_val):
             print("Invalid input value.")
         else:
-            print(tuple([self.active_RBG, self.input_val]))
+            print(tuple([self.set_title, self.active_RBG, self.input_val]))
         return
 
     def set_header(self):
@@ -123,6 +114,39 @@ class WidgetSet:
         self.widget_set = column(header_disp, RBG_disp, TI_and_button)
         return self.widget_set
 
-layout1 = WidgetSet().widget_set
-# show(layout1)
-curdoc().add_root(layout1)
+class WholeWidgetSet:
+    def __init__(self):
+        self.row_width = 5000   # no diff
+        self.row_height = 200   # Distance between widget set rows
+        self.WidgetSet = IndiWidgetSet
+        self.full_set = self.get_widget_set()
+
+    def get_widget_set(self):
+        layout1 = self.WidgetSet().widget_set
+        layout2 = self.WidgetSet().widget_set
+        layout3 = self.WidgetSet().widget_set
+        layout4 = self.WidgetSet().widget_set
+        layout5 = self.WidgetSet().widget_set
+        layout6 = self.WidgetSet().widget_set
+        layout7 = self.WidgetSet().widget_set
+        layout8 = self.WidgetSet().widget_set
+        layout9 = self.WidgetSet().widget_set
+
+        layout_1 = row(layout1, layout2, layout3)
+        layout_1.width = self.row_width
+        layout_1.height = self.row_height
+        layout_2 = row(layout4, layout5, layout6)
+        layout_2.width = self.row_width
+        layout_2.height = self.row_height
+        layout_3 = row(layout7, layout8, layout9)
+        layout_3.width = self.row_width
+        layout_3.height = self.row_height
+        layout_w = column(layout_1, layout_2, layout_3)
+        return layout_w
+
+
+if __name__ == "__main__":
+    output_file("../../bokeh_tmp/line.html")
+    layout_w = IndiWidgetSet().widget_set
+    show(layout_w)
+    # curdoc().add_root(layout_)
