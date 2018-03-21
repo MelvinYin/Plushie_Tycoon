@@ -11,7 +11,7 @@ import re
 import sys
 
 class IndiWidgetSet:
-    def __init__(self):
+    def __init__(self, widget_callback):
         self.set_title = "1Placeholder"
         self.button_label = "place"
         self.TI_placeholder = "Placeholder"
@@ -19,6 +19,7 @@ class IndiWidgetSet:
         self.RBG_active = None
         self.text_intrinsic_dim = [250, 50] # width, height of text box
         self.text_display_dim = [0, 40] # text width no diff, height determine how near RBG is.
+        self.w_callback = widget_callback
 
         # CBG_intrinsic makes no diff
         self.RBG_display_dim = [0, 40]  # width no diff, height determine how close input and button is
@@ -83,6 +84,7 @@ class IndiWidgetSet:
             print("Invalid input value.")
         else:
             print(tuple([self.set_title, self.active_RBG, self.input_val]))
+            self.w_callback(tuple([self.set_title, self.active_RBG, self.input_val]))
         return
 
     def set_header(self):
@@ -115,22 +117,24 @@ class IndiWidgetSet:
         return self.widget_set
 
 class WholeWidgetSet:
-    def __init__(self):
+    def __init__(self, widget_callback):
         self.row_width = 5000   # no diff
         self.row_height = 200   # Distance between widget set rows
         self.WidgetSet = IndiWidgetSet
+        self.widget_callback = widget_callback
         self.full_set = self.get_widget_set()
 
+
     def get_widget_set(self):
-        layout1 = self.WidgetSet().widget_set
-        layout2 = self.WidgetSet().widget_set
-        layout3 = self.WidgetSet().widget_set
-        layout4 = self.WidgetSet().widget_set
-        layout5 = self.WidgetSet().widget_set
-        layout6 = self.WidgetSet().widget_set
-        layout7 = self.WidgetSet().widget_set
-        layout8 = self.WidgetSet().widget_set
-        layout9 = self.WidgetSet().widget_set
+        layout1 = self.WidgetSet(self.widget_callback).widget_set
+        layout2 = self.WidgetSet(self.widget_callback).widget_set
+        layout3 = self.WidgetSet(self.widget_callback).widget_set
+        layout4 = self.WidgetSet(self.widget_callback).widget_set
+        layout5 = self.WidgetSet(self.widget_callback).widget_set
+        layout6 = self.WidgetSet(self.widget_callback).widget_set
+        layout7 = self.WidgetSet(self.widget_callback).widget_set
+        layout8 = self.WidgetSet(self.widget_callback).widget_set
+        layout9 = self.WidgetSet(self.widget_callback).widget_set
 
         layout_1 = row(layout1, layout2, layout3)
         layout_1.width = self.row_width
@@ -145,8 +149,8 @@ class WholeWidgetSet:
         return layout_w
 
 
-if __name__ == "__main__":
-    output_file("../../bokeh_tmp/line.html")
-    layout_w = IndiWidgetSet().widget_set
-    show(layout_w)
+# if __name__ == "__main__":
+#     output_file("../../bokeh_tmp/line.html")
+#     layout_w = IndiWidgetSet().widget_set
+#     show(layout_w)
     # curdoc().add_root(layout_)

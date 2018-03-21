@@ -7,8 +7,6 @@ from bokeh.models import HoverTool, BoxZoomTool, PanTool, WheelZoomTool, \
 import math
 from bokeh.layouts import row, column
 
-# TODO: create individual plot class first, then create one that merge them all?
-
 def gen_raw_input_data_1():
     data = dict()
     data[0] = [1,13, 23]
@@ -36,25 +34,31 @@ def gen_raw_input_data_2():
 class IndiFigure:
     def __init__(self, raw_data):
         self.raw_data = raw_data
-        self.CDS = self.convert_to_CDS()
+        self.CDS = self.convert_to_CDS(self.raw_data)
         self.x_axis_label = "Time Steps"
         self.y_axis_label = "Placeholder"
         self.plot_title = "2Placeholder"
         self.x_range = DataRange1d(follow="end", follow_interval=3)
         self.y_range = DataRange1d(range_padding=0.3)
         self.x_axis_ticker = AdaptiveTicker(min_interval=1, num_minor_ticks=0)
-        self.fig = self.gen_fig()
+        self.fig = self.gen_default_fig()
+        self.gen_fig()
 
-
-    def convert_to_CDS(self):
+    def convert_to_CDS(self, data_to_convert):
         xs = []
         ys = []
-        for time_steps, values in self.raw_data.items():
-            xs += [int(time_steps) + i/len(values) for i in range(len(values))]
-            ys += values
+        print("Convert to CDS")
+        print(type(data_to_convert))
+        time_steps = list(data_to_convert.keys())
+        values = list(data_to_convert.values())
+        for j in range(len(time_steps)):
+            xs += [int(time_steps[j]) + i/len(values[j]) for i in range(len(values[j]))]
+            ys += values[j]
         time_steps_for_hover = [math.floor(i) for i in xs]
         tmp = dict(xs=xs, ys=ys, time_steps_for_hover=time_steps_for_hover)
-        return ColumnDataSource(data=tmp)
+        x = ColumnDataSource(data=tmp)
+        print("Conversion complete.\n")
+        return x
 
     def gen_default_fig(self):
         hover = HoverTool(tooltips=[
@@ -86,38 +90,70 @@ class IndiFigure:
         return p
 
     def gen_fig(self):
-        p = self.gen_default_fig()
-        p.x("xs", "ys", source=self.CDS, name="points", size=10)
-        p.line("xs", "ys", source=self.CDS)
-        return p
+        self.fig.x("xs", "ys", source=self.CDS, name="points", size=10)
+        self.fig.line("xs", "ys", source=self.CDS)
+        return
+
+    def ind_fig_update(self, raw_input):
+        print("Fig update")
+        print(raw_input)
+        self.CDS.stream(raw_input)
+        print(self.CDS.data)
+        print("\n")
+
+        # CDS_addition = self.convert_to_CDS(raw_input)
+
+        return True
 
 class WholeFigSet:
     def __init__(self):
         self.IndiFigure = IndiFigure
         self.disp_dim = [100, 100]
-        self.full_fig_set = self.get_figure_set()
 
-    def couple_range(self, *args):
-        p1 = args[0]
-        return_p = [p1]
-        for p in args[1:]:
-            p.x_range = p1.x_range
-            return_p.append(p)
-        return return_p
+        self.p1 = self.IndiFigure(gen_raw_input_data_1())
+        self.p2 = self.IndiFigure(gen_raw_input_data_1())
+        self.p3 = self.IndiFigure(gen_raw_input_data_2())
+        self.p4 = self.IndiFigure(gen_raw_input_data_2())
+        self.p5 = self.IndiFigure(gen_raw_input_data_2())
+        self.p6 = self.IndiFigure(gen_raw_input_data_1())
+
+        self.full_fig_set = self.get_figure_set()
+        self.couple_range()
+        self.get_figure_set()
+
+    def couple_range(self):
+        self.p2.fig.x_range = self.p1.fig.x_range
+        self.p3.fig.x_range = self.p1.fig.x_range
+        self.p4.fig.x_range = self.p1.fig.x_range
+        self.p5.fig.x_range = self.p1.fig.x_range
+        self.p6.fig.x_range = self.p1.fig.x_range
+        return True
 
     def get_figure_set(self):
-        p1 = self.IndiFigure(gen_raw_input_data_1()).fig
-        p2 = self.IndiFigure(gen_raw_input_data_1()).fig
-        p3 = self.IndiFigure(gen_raw_input_data_2()).fig
-        p4 = self.IndiFigure(gen_raw_input_data_2()).fig
-        p5 = self.IndiFigure(gen_raw_input_data_2()).fig
-        p6 = self.IndiFigure(gen_raw_input_data_1()).fig
-        p1, p2, p3, p4, p5, p6 = self.couple_range(p1, p2, p3, p4, p5, p6)
+        layout1 = row(self.p1.fig, self.p2.fig, self.p3.fig)
+        layout2 = row(self.p4.fig, self.p5.fig, self.p6.fig)
+        self.full_fig_set = column(layout1, layout2)
+        return
 
-        layout1 = row(p1, p2, p3)
-        layout2 = row(p4, p5, p6)
-        full_fig_set = column(layout1, layout2)
-        return full_fig_set
+    def fig_update(self, data_to_add):
+        fig_label = data_to_add[0]
+        data_to_add = data_to_add[1]
+        if fig_label == "p1":
+            self.p1.ind_fig_update(data_to_add)
+        # elif fig_label == "p2":
+            self.p2.ind_fig_update(data_to_add)
+        # elif fig_label == "p3":
+            self.p3.ind_fig_update(data_to_add)
+        # elif fig_label == "p4":
+            self.p4.ind_fig_update(data_to_add)
+        # elif fig_label == "p5":
+            self.p5.ind_fig_update(data_to_add)
+        # elif fig_label == "p6":
+            self.p6.ind_fig_update(data_to_add)
+        else:
+            print("Wrong figure label")
+            raise Exception
+        return True
 
 if __name__ == "__main__":
     output_file("../../bokeh_tmp/line.html")
