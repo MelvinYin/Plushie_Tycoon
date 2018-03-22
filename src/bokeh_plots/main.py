@@ -1,39 +1,43 @@
-from ui_interface import UIInterface
-# TODO: defaults need to add in label of individual widgets, and figs
-from widgets import WholeWidgetSet
-from figures import WholeFigSet
+import sys
+sys.path.append("../")
+from widgets import WidgetSet
+from figures import FigureSet
 from bokeh.plotting import output_file, show, curdoc
 from bokeh.layouts import column
+# TODO: defaults need to add in label of individual widgets, and figs
 
 output_file("../../bokeh_tmp/line.html")
 
 class main:
     def __init__(self):
-        self.fig_set = WholeFigSet()
+        self.figure_set = FigureSet()
         self.i = 8
-        self.wid_set = WholeWidgetSet(self.widget_callback)
-
+        self.wid_set = WidgetSet(self.widget_callback)
 
     def figure_update(self, update_values):
         self.i += 1
-        return self.fig_set.fig_update(update_values)
+        return self.figure_set.figure_update(update_values)
 
     def widget_callback(self, *args):
         data_to_append = dict()
-        data_to_append["xs"] = [self.i]
-        data_to_append["ys"] = [self.i+12]
-        data_to_append["time_steps_for_hover"] = [self.i]
+        data_to_append[self.i] = [self.i+12]
 
-        self.figure_update(["p1", data_to_append])
+        self.figure_update(["fig_4", data_to_append])
 
     def main(self):
-        layout_w = self.wid_set.get_widget_set()
-        layout_f = self.fig_set.full_fig_set
+        layout_w = self.wid_set.widget_layout
+        layout_f = self.figure_set.figure_layout
 
         layout_full = column(layout_f, layout_w)
 
         # show(layout_full)
         curdoc().add_root(layout_full)
+
+
+# if __name__ == "__main__":
+#     output_file("../../bokeh_tmp/line.html")
+#     figure_set = main().main()
+#     show(figure_set)
 
 main().main()
 
