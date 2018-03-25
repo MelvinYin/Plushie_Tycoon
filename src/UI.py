@@ -98,17 +98,17 @@ def action():
     elif desired_action == Func.show_history:
         return (Func.show_history,)
 
-    elif desired_action == Func.save_game:
-        return (Func.save_game,)
-    elif desired_action == Func.load_game:
+    elif desired_action == Func.save:
+        return (Func.save,)
+    elif desired_action == Func.load:
         logging.debug("Game Loaded.")
-        return (Func.load_game,)
+        return (Func.load,)
     elif desired_action == Func.next_turn:
         return (Func.next_turn,)
-    elif desired_action == Func.quit_game:
+    elif desired_action == Func.quit:
         if if_save():
             return (Func.save_quit,)
-        return (Func.quit_game,)
+        return (Func.quit,)
     else:
         raise InvalidInputException(user_input)
 

@@ -7,8 +7,8 @@ from bokeh.models.widgets import RadioButtonGroup
 
 from bokeh.plotting import output_file, show, ColumnDataSource, curdoc
 from bokeh.layouts import row, column
-import re
 import sys
+import re
 sys.path.append("../")
 import defaults
 from defaults import widget_gspecs
@@ -19,13 +19,14 @@ from defaults import widget_gspecs
 # TODO: variable names need to match as well.
 
 class IndividualWidget:
-    def __init__(self, specs, widget_callback):
+    def __init__(self, widget_callback, specs):
         self.title = specs.title
+        self.name = specs.name
         self.button_label = specs.button_label
         self.TI_placeholder = specs.TI_placeholder
         self.RBG_labels = specs.RBG_labels
         self.RBG_active = None
-        self.w_callback = widget_callback
+        self.widget_callback = widget_callback
 
         self.input_val = None
         self.active_RBG = None
@@ -33,7 +34,7 @@ class IndividualWidget:
         self.text_intrinsic_dim = widget_gspecs.text_intrinsic_dim
         self.text_display_dim = widget_gspecs.text_display_dim
 
-        # CBG_intrinsic makes no diff
+        self.RBG_intrinsic_dim = widget_gspecs.RBG_intrinsic_dim
         self.RBG_display_dim = widget_gspecs.RBG_display_dim
 
         self.TI_intrinsic_dim = widget_gspecs.TI_intrinsic_dim
@@ -47,7 +48,7 @@ class IndividualWidget:
         self.RBG = self._set_RBG()
         self.button = self._set_button()
 
-        self.widget = self._widget_assemble()
+        self.widget_layout = self._widget_assemble()
 
     def _RBG_callback(self, active_button):
         # when resetting, RBG_callback is called through on_click, hence
@@ -55,7 +56,7 @@ class IndividualWidget:
         if not active_button:
             return
         if self.RBG_labels[active_button] == "quit":
-            sys.exit()
+            sys.exit()  # TODO: modified eventually
         if self.RBG_labels[active_button] == "reset":
             self.active_RBG = None
             self.RBG.active = None
@@ -64,7 +65,9 @@ class IndividualWidget:
 
     def _set_RBG(self):
         RBG = RadioButtonGroup()
-        RBG.labels = self.RBG_labels
+        RBG.width = self.RBG_intrinsic_dim[0]
+        RBG.height = self.RBG_intrinsic_dim[1]
+        RBG.labels = [label.name for label in self.RBG_labels]
         RBG.active = self.RBG_active
         RBG.on_click(self._RBG_callback)
         return RBG
@@ -86,11 +89,12 @@ class IndividualWidget:
             print("Value not set.")
         elif not self.active_RBG:
             print("No category selected.")
-        elif not re.fullmatch("[0-9]+", self.input_val):
+        elif not re.fullmatch("[0-9]+", self.input_val.strip()):
+            print("Invalid input value.")
+        elif self.input_val.startswith("0"):
             print("Invalid input value.")
         else:
-            print(tuple([self.title, self.active_RBG, self.input_val]))
-            self.w_callback(tuple([self.title, self.active_RBG, self.input_val]))
+            self.widget_callback(tuple([self.name, self.active_RBG, int(self.input_val)]))
         return
 
     def _set_button(self):
@@ -121,11 +125,68 @@ class IndividualWidget:
         header_disp = row(self.header, width=self.text_display_dim[0], height=self.text_display_dim[1])
         button_disp = row(self.button, width=self.button_display_dim[0], height=self.button_display_dim[1])
         TI_and_button = row(TI_disp, button_disp)
-        widget = column(header_disp, RBG_disp, TI_and_button)
-        return widget
+        widget_layout = column(header_disp, RBG_disp, TI_and_button)
+        return widget_layout
 
 
 # if __name__ == "__main__":
 #     output_file("../../bokeh_tmp/line.html")
 #     figure_set = IndividualWidget().widget_set
 #     show(figure_set)
+
+# For testing
+
+
+
+if __name__ == "__main__" or str(__name__).startswith("bk_script"):
+    def main():
+        from collections import namedtuple
+        from enum import Enum, auto
+        class Func(Enum):
+            buy_res = auto()
+            sell_res = auto()
+            buy_prod = auto()
+            make_prod = auto()
+            sell_prod = auto()
+            show_stats = auto()
+            show_prices = auto()
+            save = auto()
+            load = auto()
+            quit = auto()
+            save_quit = auto()
+            next_turn = auto()
+            show_history = auto()
+            back = auto()
+            start = auto()
+
+        class Res(Enum):
+            cloth = 1
+            stuff = 2
+            accessory = 3
+            packaging = 4
+
+        class Others(Enum):
+            reset = auto()
+
+        widget_iindices = ["name", "title", "button_label", "TI_placeholder",
+                           "RBG_labels"]
+        WidgetIspecs = namedtuple("WidgetIspecs", widget_iindices)
+        widget_ispecs_1 = WidgetIspecs(
+            name=Func.buy_res,
+            title="buy_res",
+            button_label="buy",
+            TI_placeholder="Placeholder",
+            RBG_labels=list(Res) + [Others.reset])
+
+        def widget_callback(command_to_run):
+            print("from widget callback")
+            print(command_to_run)
+            return
+
+        output_file("../../bokeh_tmp/line.html")
+        layout_w = IndividualWidget(widget_callback, widget_ispecs_1).widget_layout
+        curdoc().add_root(layout_w)
+        # show(layout_w)
+    main()
+
+# Expected output: tuple(<Func.something>, <Res.something>, int of quantity)

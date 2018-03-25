@@ -12,8 +12,13 @@ class MarketRes:
     def __init__(self):
         self.value = defaults.starting_res_price
 
-    def __str__(self):
-        return defaults.generic_str_fn(self)
+    def prettyp(self):
+        string = f"Class: {self.__class__.__name__}\n"
+        for key, value in self.__dict__.items():
+            tmp = "\tAttr: " + key + "\n\t" \
+                  + str(value).replace("\n", "\n\t") + "\n"
+            string += tmp
+        return string
 
     def test_func(self):
         return True
@@ -23,8 +28,13 @@ class MarketProd:
     def __init__(self):
         self.value = defaults.starting_prod_price
 
-    def __str__(self):
-        return defaults.generic_str_fn(self)
+    def prettyp(self):
+        string = f"Class: {self.__class__.__name__}\n"
+        for key, value in self.__dict__.items():
+            tmp = "\tAttr: " + key + "\n\t" \
+                  + str(value).replace("\n", "\n\t") + "\n"
+            string += tmp
+        return string
 
     def test_func(self):
         return True

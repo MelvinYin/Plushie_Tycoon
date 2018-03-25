@@ -4,7 +4,6 @@ from widgets import WidgetSet
 from figures import FigureSet
 from bokeh.plotting import output_file, show, curdoc
 from bokeh.layouts import column
-# TODO: defaults need to add in label of individual widgets, and figs
 
 output_file("../../bokeh_tmp/line.html")
 

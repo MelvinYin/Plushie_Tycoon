@@ -11,7 +11,7 @@ def main_func():
     while True:
         action = ui.action()
         try:
-            GE(action)
+            callback = GE(action)
         except RepeatUIAction:
             pass
         continue
@@ -19,5 +19,5 @@ def main_func():
 
 # callstack = [("show_stats",), ("buy_res","stuff", 20), ("sell_res","stuff", 20),
 #              ("buy_prod", "aisha", 10), ("make_prod", "beta", 5), ("sell_prod","chama", 7),
-#              ("save_game",), ("load_game",), ("show_stats",), ("quit_game",)]
+#              ("save",), ("load",), ("show_stats",), ("quit",)]
 main_func()

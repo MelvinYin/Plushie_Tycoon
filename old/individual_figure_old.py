@@ -1,7 +1,7 @@
 from bokeh.plotting import figure, output_file, show, ColumnDataSource, curdoc
 from bokeh.models import DataRange1d, HoverTool, BoxZoomTool, PanTool, \
     WheelZoomTool, ResetTool, UndoTool
-from bokeh.models.tickers import AdaptiveTicker, FixedTicker
+from bokeh.models.tickers import AdaptiveTicker
 import math
 import sys
 sys.path.append("../")
@@ -21,13 +21,11 @@ def example_data_1():
 def convert_to_desired_format(data):
     xs = []
     ys = []
-    time_steps_for_hover = []
-    counter = 0
     for time_steps, values in data.items():
-        xs += list(range(counter, counter + len(values)))
+        xs += [int(time_steps) + i / len(values) for i in
+               range(len(values))]
         ys += values
-        time_steps_for_hover += [time_steps for _ in range(len(values))]
-        counter += len(values)
+    time_steps_for_hover = [math.floor(i) for i in xs]
     converted = dict(xs=xs, ys=ys, time_steps_for_hover=time_steps_for_hover)
     return converted
 
@@ -44,10 +42,9 @@ class IndividualFigure:
         self.y_label = specs.y_label
         self.title = specs.title
         self.name = specs.name
-        self.xaxis_labels = self._get_xaxis_labels(raw_data)
         self.x_range = DataRange1d(follow="end", follow_interval=3)
         self.y_range = DataRange1d(follow="end", range_padding=0.3)
-        self.ticker = self._set_ticker(raw_data)
+        self.ticker = AdaptiveTicker(min_interval=1, num_minor_ticks=0)
         self.hover = HoverTool(
             tooltips=[("Point No.", "$index"),
                       ("Time Step", "@time_steps_for_hover")],
@@ -55,24 +52,6 @@ class IndividualFigure:
 
         self.figure = self._figure_config()
         self._plot()
-
-    def _get_ticker_vales(self, raw_data):
-        values = [0]
-        counter = 0
-        for val in raw_data.values():
-            counter += len(val)
-            values += [counter]
-        return values
-
-    def _set_ticker(self, raw_data):
-        values = self._get_ticker_vales(raw_data)
-        ticker = FixedTicker(ticks=values)
-        return ticker
-
-    def _get_xaxis_labels(self, raw_data):
-        values = self._get_ticker_vales(raw_data)
-        dict_ = dict([(values[i], str(i)) for i in range(len(values))])
-        return dict_
 
     def _figure_config(self):
         hover = self.hover
@@ -93,8 +72,6 @@ class IndividualFigure:
         p.toolbar.logo = None
 
         p.xaxis.ticker = self.ticker
-        print(self.xaxis_labels)
-        p.xaxis.major_label_overrides = self.xaxis_labels
         p.xgrid.ticker = self.ticker
         p.title.text = self.title
         p.title.align = 'center'
@@ -162,3 +139,6 @@ if __name__ == "__main__":
 
     show(figure_set)
     # curdoc().add_root(layout_)
+
+# TODO: first, try changing axis tick labels such that 1, 2, etc can be displayed
+# TODO: at non-1, non02 po

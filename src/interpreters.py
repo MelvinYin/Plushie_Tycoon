@@ -12,9 +12,9 @@ buy_prod_p = re.compile("buy[ _]((prod)|(plush))(ie(s)?)?(\.)?", re.IGNORECASE)
 sell_prod_p = re.compile("sell[ _]((prod)|(plush))(ie(s)?)?(\.)?", re.IGNORECASE)
 make_prod_p = re.compile("make[ _]((prod)|(plush))(ie(s)?)?(\.)?", re.IGNORECASE)
 
-save_game_p = re.compile("save([ _]game)?(\.)?", re.IGNORECASE)
-load_game_p = re.compile("load([ _]game)?(\.)?", re.IGNORECASE)
-quit_game_p = re.compile("quit([ _]game)?(\.)?", re.IGNORECASE)
+save_p = re.compile("save([ _]game)?(\.)?", re.IGNORECASE)
+load_p = re.compile("load([ _]game)?(\.)?", re.IGNORECASE)
+quit_p = re.compile("quit([ _]game)?(\.)?", re.IGNORECASE)
 
 show_stats_p = re.compile("(show[ _])?stats(\.)?", re.IGNORECASE)
 show_prices_p = re.compile("(show[ _])?price(s)?(\.)?", re.IGNORECASE)
@@ -62,14 +62,14 @@ def interpret_action(user_input):
     elif re.fullmatch(show_history_p, user_input):
         return Func.show_history
 
-    elif re.fullmatch(save_game_p, user_input):
-        return Func.save_game
-    elif re.fullmatch(load_game_p, user_input):
-        return Func.load_game
+    elif re.fullmatch(save_p, user_input):
+        return Func.save
+    elif re.fullmatch(load_p, user_input):
+        return Func.load
     elif re.fullmatch(next_turn_p, user_input):
         return Func.next_turn
-    elif re.fullmatch(quit_game_p, user_input):
-        return Func.quit_game
+    elif re.fullmatch(quit_p, user_input):
+        return Func.quit
 
     else:
         raise InvalidInputException(user_input)

@@ -31,7 +31,7 @@ class TestUI(TestCaseBase):
               "chama 7", "save game", "load game", "quit game", "no"]
     desired_output = [(Func.show_stats,), (Func.buy_res, Res.stuff, 20), (Func.sell_res, Res.stuff, 20),
               (Func.buy_prod, Prod.aisha, 10), (Func.make_prod, Prod.beta, 5), (Func.sell_prod, Prod.chama, 7),
-              (Func.save_game,), (Func.load_game,), (Func.quit_game,)]
+              (Func.save,), (Func.load,), (Func.quit,)]
     mocked_input = MockedInput(input_values)
 
     @patch("ui.user_input")
