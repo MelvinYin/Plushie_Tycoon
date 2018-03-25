@@ -19,8 +19,8 @@ class UIInterface:
         layout_w = self.widget_set.widget_layout
         layout_main = layout_w
         layout_main = column(layout_f, layout_w)
-        show(layout_main)
-        # curdoc().add_root(layout_main)
+        # show(layout_main)
+        curdoc().add_root(layout_main)
 
     def widget_callback(self, call):
         """

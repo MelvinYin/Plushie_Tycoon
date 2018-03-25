@@ -23,11 +23,15 @@ def convert_to_desired_format(data):
     ys = []
     time_steps_for_hover = []
     counter = 0
+
     for time_steps, values in data.items():
-        xs += list(range(counter, counter + len(values)))
+        if not hasattr(values, "__len__"):
+            values = [values]
+        value_length = len(values)
+        xs += list(range(counter, counter + value_length))
         ys += values
-        time_steps_for_hover += [time_steps for _ in range(len(values))]
-        counter += len(values)
+        time_steps_for_hover += [time_steps for _ in range(value_length)]
+        counter += value_length
     converted = dict(xs=xs, ys=ys, time_steps_for_hover=time_steps_for_hover)
     return converted
 
