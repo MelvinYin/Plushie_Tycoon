@@ -84,8 +84,19 @@ class FigureSet:
             found_fig = False
             for FigureInstance in self.FigureInstances:
                 if FigureInstance.name == fig_label:
-                    print(value)
                     FigureInstance.figure_update(value)
+                    found_fig = True
+                    break
+            if not found_fig:
+                raise Exception
+        return True
+
+    def figure_update_next_turn(self, data_to_add):
+        for fig_label, value in data_to_add.items():
+            found_fig = False
+            for FigureInstance in self.FigureInstances:
+                if FigureInstance.name == fig_label:
+                    FigureInstance.figure_update_next_turn(value)
                     found_fig = True
                     break
             if not found_fig:

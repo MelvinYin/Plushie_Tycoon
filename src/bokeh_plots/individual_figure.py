@@ -2,10 +2,13 @@ from bokeh.plotting import figure, output_file, show, ColumnDataSource, curdoc
 from bokeh.models import DataRange1d, HoverTool, BoxZoomTool, PanTool, \
     WheelZoomTool, ResetTool, UndoTool
 from bokeh.models.tickers import AdaptiveTicker, FixedTicker
+import bokeh.util.plot_utils as utils
 import math
+import copy
 import sys
 sys.path.append("../")
 import defaults
+
 def example_data_1():
     data = dict()
     data[0] = [1,13, 23]
@@ -18,32 +21,9 @@ def example_data_1():
     data[7] = [2]
     return data
 
-def convert_to_desired_format(data):
-    xs = []
-    ys = []
-    time_steps_for_hover = []
-    counter = 0
-
-    for time_steps, values in data.items():
-        if not hasattr(values, "__len__"):
-            values = [values]
-        value_length = len(values)
-        xs += list(range(counter, counter + value_length))
-        ys += values
-        time_steps_for_hover += [time_steps for _ in range(value_length)]
-        counter += value_length
-    converted = dict(xs=xs, ys=ys, time_steps_for_hover=time_steps_for_hover)
-    return converted
-
-def convert_to_CDS(data):
-    data_formatted = convert_to_desired_format(data)
-    CDS = ColumnDataSource(data=data_formatted)
-    return CDS
-
-
 class IndividualFigure:
     def __init__(self, raw_data, specs):
-        self.CDS = convert_to_CDS(raw_data)
+        self.CDS = self._convert_to_CDS(raw_data)
         self.x_label = specs.x_label
         self.y_label = specs.y_label
         self.title = specs.title
@@ -58,7 +38,26 @@ class IndividualFigure:
             names=["x", "points2"])
 
         self.figure = self._figure_config()
+        self.current_time_steps = max(raw_data.keys())
+        self.current_function_count = sum([len(value) for value in raw_data.values()])
         self._plot()
+
+    def _convert_to_CDS(self, data):
+        xs = []
+        ys = []
+        time_steps_for_hover = []
+        counter = 0
+
+        for time_steps, values in data.items():
+            value_length = len(values)
+            xs += list(range(counter, counter + value_length))
+            ys += values
+            time_steps_for_hover += [time_steps for _ in
+                                     range(value_length)]
+            counter += value_length
+        converted = dict(xs=xs, ys=ys, time_steps_for_hover=time_steps_for_hover)
+        CDS = ColumnDataSource(data=converted)
+        return CDS
 
     def _get_ticker_vales(self, raw_data):
         values = [0]
@@ -97,7 +96,6 @@ class IndividualFigure:
         p.toolbar.logo = None
 
         p.xaxis.ticker = self.ticker
-        print(self.xaxis_labels)
         p.xaxis.major_label_overrides = self.xaxis_labels
         p.xgrid.ticker = self.ticker
         p.title.text = self.title
@@ -111,15 +109,36 @@ class IndividualFigure:
         self.figure.line("xs", "ys", source=self.CDS)
         return True
 
+    def _update_xaxis_labels(self, xs):
+        for x in xs:
+            self.xaxis_labels[x] = str(self.current_time_steps)
+        self.figure.xaxis.major_label_overrides = self.xaxis_labels
+        return True
+
     def figure_update(self, data_to_add):
         """
         Format: data_to_add, a dict with time_
         steps as key and new value of plot as value.
         """
-        formatted_to_add = convert_to_desired_format(data_to_add)
+        ys = list(data_to_add.values())
+        xs = list(range(self.current_function_count, self.current_function_count + len(ys)))
+        time_steps_for_hover = [self.current_time_steps]
+        formatted_to_add = dict(xs=xs, ys=ys,
+                         time_steps_for_hover=time_steps_for_hover)
         self.CDS.stream(formatted_to_add)
+        self._update_xaxis_labels(xs)
+        self.current_function_count += len(ys)
         return True
 
+    def figure_update_next_turn(self, data_to_add):
+        self.current_time_steps += 1
+        self.ticker.ticks += [self.current_function_count]
+        # Using self.ticker does not work, and self.ticker cannot do deepcopy().
+        ticker = FixedTicker(ticks=self.ticker.ticks)
+        self.figure.xaxis.ticker = ticker
+        self.figure.xgrid.ticker = ticker
+        self.figure_update(data_to_add)
+        return True
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
@@ -164,5 +183,5 @@ if __name__ == "__main__":
     output_file("../../bokeh_tmp/line.html")
     figure_set = IndividualFigure(example_data_1(), defaults.figure_spec_1).figure
 
-    show(figure_set)
+    # show(figure_set)
     # curdoc().add_root(layout_)

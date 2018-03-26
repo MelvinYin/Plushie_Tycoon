@@ -35,7 +35,9 @@ class ProdPrice(Enum):
 
 @unique
 class Others(Enum):
-    reset = auto()
+    next = 1
+    reset = 2
+    quit = 3
 
 # Function signal values for internal use
 @unique
@@ -213,14 +215,14 @@ name=Func.sell_res,
     RBG_labels=list(Res) + [Others.reset])
 
 widget_ispecs_3 = WidgetIspecs(
-name=Func.buy_prod,
+    name=Func.buy_prod,
     title = "buy_prod",
     button_label = "buy",
     TI_placeholder = "Placeholder",
     RBG_labels=list(Prod) + [Others.reset])
 
 widget_ispecs_4 = WidgetIspecs(
-name=Func.make_prod,
+    name=Func.make_prod,
     title = "make_prod",
     button_label = "make",
     TI_placeholder = "Placeholder",
@@ -228,19 +230,21 @@ name=Func.make_prod,
 
 
 widget_ispecs_5 = WidgetIspecs(
-name=Func.sell_prod,
+    name=Func.sell_prod,
     title = "sell_prod",
     button_label = "sell",
     TI_placeholder = "Placeholder",
     RBG_labels=list(Prod) + [Others.reset])
 
-# widget_ispecs_6 = WidgetIspecs(
-# name=Func.show_stats,
-#     title = "6Placeholder",
-#     button_label = "place",
-#     TI_placeholder = "Placeholder",
-#     RBG_labels = ["one", "two", "three", "reset", "quit"])
-#
+# TODO: Transition eventually to a set of buttons alone, no TI
+# TODO: Turn on/off widgets based on Ispecs?
+widget_ispecs_6 = WidgetIspecs(
+    name=Others,
+    title = "Others",
+    button_label = "Submit",
+    TI_placeholder = "Placeholder",
+    RBG_labels = list(Others))
+
 # widget_ispecs_7 = WidgetIspecs(
 # name=Func.buy_res,
 #     title = "7Placeholder",
@@ -249,12 +253,10 @@ name=Func.sell_prod,
 #     RBG_labels = ["one", "two", "three", "reset", "quit"])
 
 widget_ispecs = [widget_ispecs_1, widget_ispecs_2, widget_ispecs_3,
-                 widget_ispecs_4, widget_ispecs_5]
+                 widget_ispecs_4, widget_ispecs_5, widget_ispecs_6]
 
 figures_per_row = 3
 widgets_per_row = 3
-
-
 
 
 

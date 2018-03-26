@@ -55,7 +55,7 @@ class GEM:
         ])
 
         logging.debug(f"Currently running: {call}")
-        func_signal, args = call[0], call[1:]
+        func_signal, args = call[0], call[1]
         try:
             if args:
                 methods[func_signal](*args)
@@ -122,7 +122,7 @@ class GEM:
             ])
 
         logging.debug(f"Currently running: {call}")
-        func_signal, args = call[0], call[1:]
+        func_signal, args = call[0], call[1]
         try:
             if args:
                 methods[func_signal](*args)

@@ -12,6 +12,7 @@ import re
 sys.path.append("../")
 import defaults
 from defaults import widget_gspecs
+from collections import namedtuple
 
 
 # TODO: eventually when parameters are pulled into a config file, spin TI and
@@ -30,7 +31,6 @@ class IndividualWidget:
 
         self.input_val = None
         self.active_RBG = None
-
         self.text_intrinsic_dim = widget_gspecs.text_intrinsic_dim
         self.text_display_dim = widget_gspecs.text_display_dim
 
@@ -53,11 +53,9 @@ class IndividualWidget:
     def _RBG_callback(self, active_button):
         # when resetting, RBG_callback is called through on_click, hence
         # ignore the None value.
-        if not active_button:
+        if active_button is None:   # this wipe out the first 0
             return
-        if self.RBG_labels[active_button] == "quit":
-            sys.exit()  # TODO: modified eventually
-        if self.RBG_labels[active_button] == "reset":
+        elif self.RBG_labels[active_button] == "reset":
             self.active_RBG = None
             self.RBG.active = None
         else:
@@ -85,7 +83,9 @@ class IndividualWidget:
         return TI
 
     def _button_callback(self):
-        if not self.input_val:
+        if self.active_RBG.name in defaults.Others.__members__:
+            self.widget_callback((self.active_RBG,))
+        elif not self.input_val:
             print("Value not set.")
         elif not self.active_RBG:
             print("No category selected.")
@@ -94,7 +94,7 @@ class IndividualWidget:
         elif self.input_val.startswith("0"):
             print("Invalid input value.")
         else:
-            self.widget_callback(tuple([self.name, self.active_RBG, int(self.input_val)]))
+            self.widget_callback(tuple([self.name, (self.active_RBG, int(self.input_val))]))
         return
 
     def _set_button(self):
