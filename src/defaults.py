@@ -2,7 +2,7 @@ import pandas as pd
 from enum import Enum, auto, unique
 from collections import namedtuple
 
-
+# TODO: check if widget_ispecs is only sent to individual widgets. Seems like a good idea.
 # Resource signal values for internal use
 @unique
 class Res(Enum):
@@ -111,47 +111,53 @@ def_save_file_name = "game_save.pkl"
 loaded_figures = [Res.cloth, Res.stuff, Res.accessory, Res.packaging,
 Prod.aisha, Prod.beta, Prod.chama]
 
-fig_indices = ("name", "title", "x_label", "y_label")
+figure_gindices = ("figures_per_row",)
+FigureGspec = namedtuple("FigureGspec", figure_gindices)
+figure_gspecs = FigureGspec(figures_per_row=3)
 
-FigureSpec = namedtuple("FigureSpec", fig_indices)
+figure_iindices = ("name", "title", "x_label", "y_label")
 
-figure_spec_1 = FigureSpec(Res.cloth, "Res.cloth", "x_", "y_")
-figure_spec_2 = FigureSpec(Res.stuff, "Res.stuff", "x_", "y_")
-figure_spec_3 = FigureSpec(Res.accessory, "Res.accessory", "x_", "y_")
-figure_spec_4 = FigureSpec(Res.packaging, "Res.packaging", "x_", "y_")
+FigureIspec = namedtuple("FigureIspec", figure_iindices)
 
-figure_spec_5 = FigureSpec(Prod.aisha, "Prod.aisha", "x_", "y_")
-figure_spec_6 = FigureSpec(Prod.beta, "Prod.beta", "x_", "y_")
-figure_spec_7 = FigureSpec(Prod.chama, "Prod.chama", "x_", "y_")
+figure_ispec_1 = FigureIspec(Res.cloth, "Res.cloth", "x_", "y_")
+figure_ispec_2 = FigureIspec(Res.stuff, "Res.stuff", "x_", "y_")
+figure_ispec_3 = FigureIspec(Res.accessory, "Res.accessory", "x_", "y_")
+figure_ispec_4 = FigureIspec(Res.packaging, "Res.packaging", "x_", "y_")
 
-figure_spec_8 = FigureSpec(ResPrice.cloth, "ResPrice.cloth", "x_", "y_")
-figure_spec_9 = FigureSpec(ResPrice.stuff, "ResPrice.stuff", "x_", "y_")
-figure_spec_10 = FigureSpec(ResPrice.accessory, "ResPrice.accessory", "x_", "y_")
-figure_spec_11 = FigureSpec(ResPrice.packaging, "ResPrice.packaging", "x_", "y_")
+figure_ispec_5 = FigureIspec(Prod.aisha, "Prod.aisha", "x_", "y_")
+figure_ispec_6 = FigureIspec(Prod.beta, "Prod.beta", "x_", "y_")
+figure_ispec_7 = FigureIspec(Prod.chama, "Prod.chama", "x_", "y_")
 
-figure_spec_12 = FigureSpec(ProdPrice.aisha, "ProdPrice.aisha", "x_", "y_")
-figure_spec_13 = FigureSpec(ProdPrice.beta, "ProdPrice.beta", "x_", "y_")
-figure_spec_14 = FigureSpec(ProdPrice.chama, "ProdPrice.chama", "x_", "y_")
-figure_spec_15 = FigureSpec(Production.hours_needed, "Production.hours_needed", "x_", "y_")
-figure_spec_16 = FigureSpec(Production.cost_per_hour, "Production.cost_per_hour", "x_", "y_")
-figure_spec_17 = FigureSpec(Production.res_cost, "Production.res_cost", "x_", "y_")
-figure_spec_18 = FigureSpec("current_call", "current_call", "x_", "y_")
-figure_spec_19 = FigureSpec("time_steps", "time_steps", "x_", "y_")
+figure_ispec_8 = FigureIspec(ResPrice.cloth, "ResPrice.cloth", "x_", "y_")
+figure_ispec_9 = FigureIspec(ResPrice.stuff, "ResPrice.stuff", "x_", "y_")
+figure_ispec_10 = FigureIspec(ResPrice.accessory, "ResPrice.accessory", "x_", "y_")
+figure_ispec_11 = FigureIspec(ResPrice.packaging, "ResPrice.packaging", "x_", "y_")
 
-figure_specs = [figure_spec_1, figure_spec_2, figure_spec_3, figure_spec_4,
-                figure_spec_5, figure_spec_6, figure_spec_7, figure_spec_8,
-                figure_spec_9, figure_spec_10, figure_spec_11, figure_spec_12,
-                figure_spec_13, figure_spec_14, figure_spec_15, figure_spec_16,
-                figure_spec_17, figure_spec_18, figure_spec_19]
+figure_ispec_12 = FigureIspec(ProdPrice.aisha, "ProdPrice.aisha", "x_", "y_")
+figure_ispec_13 = FigureIspec(ProdPrice.beta, "ProdPrice.beta", "x_", "y_")
+figure_ispec_14 = FigureIspec(ProdPrice.chama, "ProdPrice.chama", "x_", "y_")
+figure_ispec_15 = FigureIspec(Production.hours_needed, "Production.hours_needed", "x_", "y_")
+figure_ispec_16 = FigureIspec(Production.cost_per_hour, "Production.cost_per_hour", "x_", "y_")
+figure_ispec_17 = FigureIspec(Production.res_cost, "Production.res_cost", "x_", "y_")
+figure_ispec_18 = FigureIspec("current_call", "current_call", "x_", "y_")
+figure_ispec_19 = FigureIspec("time_steps", "time_steps", "x_", "y_")
 
-# figure_specs = [figure_spec_1, figure_spec_2, figure_spec_3, figure_spec_4,
-#                 figure_spec_5, figure_spec_6, figure_spec_7]
+figure_ispecs = [figure_ispec_1, figure_ispec_2, figure_ispec_3, figure_ispec_4,
+                figure_ispec_5, figure_ispec_6, figure_ispec_7, figure_ispec_8,
+                figure_ispec_9, figure_ispec_10, figure_ispec_11, figure_ispec_12,
+                figure_ispec_13, figure_ispec_14, figure_ispec_15, figure_ispec_16,
+                figure_ispec_17, figure_ispec_18, figure_ispec_19]
+
+# figure_ispecs = [figure_ispec_1, figure_ispec_2, figure_ispec_3, figure_ispec_4,
+#                 figure_ispec_5, figure_ispec_6, figure_ispec_7]
 
 widget_gindices = ["text_intrinsic_dim", "text_display_dim", "RBG_intrinsic_dim", "RBG_display_dim",
                   "TI_intrinsic_dim", "TI_display_dim", "button_intrinsic_dim",
-                   "button_display_dim"]
+                   "button_display_dim", "widgets_per_row"]
 
 WidgetGspecs = namedtuple("WidgetGspecs", widget_gindices)
+
+
 
 widget_gspecs = WidgetGspecs(
     text_intrinsic_dim = [250, 50],  # width, height of text box
@@ -164,8 +170,11 @@ widget_gspecs = WidgetGspecs(
     TI_display_dim = [180, 0],  # for width, fix overall widget width together with button_display_dim
 
     button_intrinsic_dim = [50, 0],  # Size of button
-    button_display_dim = [150, 100]  # height determine spacing between widget cols
-    )   # width determine spacing between widgets in same row.
+    button_display_dim = [150, 100],  # height determine spacing between widget cols
+    # width determine spacing between widgets in same row.
+
+    widgets_per_row = 3
+    )
 
 widget_iindices = ["name", "title", "button_label", "TI_placeholder", "RBG_labels"]
 
@@ -219,8 +228,7 @@ widget_ispecs_6 = WidgetIspecs(
 widget_ispecs = [widget_ispecs_1, widget_ispecs_2, widget_ispecs_3,
                  widget_ispecs_4, widget_ispecs_5, widget_ispecs_6]
 
-figures_per_row = 3
-widgets_per_row = 3
+
 
 
 

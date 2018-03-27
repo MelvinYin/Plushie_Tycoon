@@ -2,16 +2,6 @@ from bokeh.plotting import figure, output_file, show, ColumnDataSource, curdoc
 from bokeh.models import DataRange1d, HoverTool, BoxZoomTool, PanTool, \
     WheelZoomTool, ResetTool, UndoTool
 from bokeh.models.tickers import FixedTicker
-import random
-
-# TODO: change in architecture: IF need to receive an ordered list of tuple,
-# TODO: with first element as time_step, second as func_step, third as
-# TODO: value at that func_step. This allows growth later on, for perhaps
-# TODO: an additional arg-msg at the end of the tuple.
-
-# TODO: need a initialisation call, and a update call.
-# TODO: actually, hmm try not to merge the two. Might slow down when loading
-# TODO: game.
 
 """
 Only data that needs to be reflected in graph or hover, should be in CDS.
@@ -22,7 +12,7 @@ be retrieved.
 Func_steps start from len(initial_data) so it is always about the next function
 call.
 """
-
+# TODO: back function
 
 class IndividualFigure:
     def __init__(self, initial_data, specs, initial_func_count = None):
@@ -56,16 +46,14 @@ class IndividualFigure:
 
     def _get_initial_ticks_label_mapping(self):   # assuming time_step has more than 1?
         time_steps = self.CDS.data["time_steps"]
-        prev_time_step = time_steps[0]
+        current_time = time_steps[0]
         func_steps = self.func_steps
         tick_label_map = dict()
-        tick_label_map[func_steps] = str(prev_time_step)
+        tick_label_map[func_steps] = str(current_time)
         for i in range(len(time_steps)):
-            if time_steps[i] == prev_time_step:
-                func_steps += 1
-                continue
-            prev_time_step = time_steps[i]
-            tick_label_map[func_steps] = str(prev_time_step)
+            if time_steps[i] != current_time:
+                current_time = time_steps[i]
+                tick_label_map[func_steps] = str(current_time)
             func_steps += 1
         return tick_label_map
 
@@ -90,8 +78,8 @@ class IndividualFigure:
         p.toolbar.active_inspect = hover
         p.toolbar.logo = None
 
-        p.x_range = DataRange1d(follow="end", follow_interval=3)
-        p.y_range = DataRange1d(follow="end", range_padding=0.3)
+        p.x_range = DataRange1d(follow="end", follow_interval=5, range_padding=0.05)
+        p.y_range = DataRange1d(follow="end", range_padding=0.1)
 
         initial_ticks = list(self.tick_label_map.keys())
         ticker = FixedTicker(ticks=initial_ticks)
@@ -128,6 +116,7 @@ class IndividualFigure:
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
+    import random
     random.seed(10)
     def example_data_1():
         data = []
@@ -165,4 +154,4 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
         show(layout_w)
     main()
 
-# Expected output: tuple(<Func.something>, <Res.something>, int of quantity)
+# Expected Input: tuple(time_step, quantity)

@@ -82,7 +82,19 @@ GEM now has a callback mtd that can be sent.
 
 
 
+"""
 
+    def _get_example_data(self):
+        full_data = []
+        for i in range(len(self.figure_specs)):
+            if i % 2 == 0:
+                full_data.append(example_data_1())
+            else:
+                full_data.append(example_data_2())
+        return full_data
+
+
+"""
 
 
 
