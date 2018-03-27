@@ -1,6 +1,5 @@
 from figures import FigureSet
 from widgets import WidgetSet
-from exceptions import RepeatUIAction
 from bokeh.plotting import curdoc, show
 from bokeh.layouts import column
 from defaults import Func, Res, Prod
@@ -8,11 +7,22 @@ from collections import defaultdict
 import defaults
 import sys
 
+# TODO: settle next
+
 class UIInterface:
-    def __init__(self):
+    def __init__(self, UI_callback=None):
+        """
+        UI_callback: Takes in as input (<Func:...>, (args)), return as output
+        a dict that is used to update figure_set.
+        """
+        if not UI_callback:
+            self.UI_callback = self.mocked_mapping
+        else:
+            self.UI_callback = UI_callback
         self.figure_set = FigureSet()
         self.widget_set = WidgetSet(self.widget_callback)
         self.tmp_i = 10
+        self.ui_layout = self.plot()
 
     def plot(self):
         layout_f = self.figure_set.figure_layout
@@ -23,12 +33,12 @@ class UIInterface:
 
     def widget_callback(self, call):
         if call[0] == defaults.Others.next:
-            to_add = self.mocked_mapping(call)
+            to_add = self.UI_callback(call)
             self.figure_set.figure_update_next_turn(to_add)
         elif call[0] == defaults.Others.quit:
             sys.exit()
         else:
-            to_add = self.mocked_mapping(call)
+            to_add = self.UI_callback(call)
             self.figure_set.figure_update(to_add)
         return True
 
@@ -44,22 +54,12 @@ class UIInterface:
         self.tmp_i += 1
         return return_value
 
-    def mock_call(self):
-        mock_call_1 = (Func.buy_res, (Res.cloth, [10]))
-        self.widget_callback(mock_call_1)
-
 if __name__ == "__main__":
     x = UIInterface()
-    # x.mock_call()
-    layout = x.plot()
-    show(layout)
+    show(x.ui_layout)
 elif str(__name__).startswith("bk_script"):
     x = UIInterface()
-    # x.mock_call()
-    layout = x.plot()
-    curdoc().add_root(layout)
-
-
+    curdoc().add_root(x.ui_layout)
 
 
 

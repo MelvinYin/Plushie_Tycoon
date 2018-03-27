@@ -103,39 +103,10 @@ history_add = namedtuple("history_add", field_names=history_columns)
 
 history_init = pd.DataFrame(columns=history_columns)
 
-
-# Split between delayed and active func.
-# Copy of Function signal values above.
-# to_actual_delayed_i = ["buy_res", "sell_res", "buy_prod", "make_prod", "sell_prod",]
-#
-# to_actual_now_i = ["show_stats", "show_prices", "save", "load",
-#                  "quit", "save_quit", "next_turn"]
-#
-# to_tmp_i = ["show_stats", ]
-
-# func_to_actual_delayed = pd.Series(to_actual_delayed_i, to_actual_delayed_i, name="func_to_actual_delayed")
-# func_to_actual_now = pd.Series(to_actual_now_i, to_actual_now_i, name="func_to_actual_now")
-# func_to_tmp = pd.Series(to_tmp_i, to_tmp_i, name="func_to_tmp")
-
 starting_time = 0
 
 def_save_folder = "../save/"
 def_save_file_name = "game_save.pkl"
-
-# def generic_str_fn(self):
-#     print("String printed for ")
-#     print(self.__class__)
-#     string = f"Class: {self.__class__.__name__}\n"
-#     for key, value in self.__dict__.items():
-#         tmp = "\tAttr: " + key + "\n\t" + str(value).replace("\n", "\n\t") + "\n"
-#         string += tmp
-#     return string
-
-# loaded_figures = [Res.cloth, Res.stuff, Res.accessory, Res.packaging,
-# Prod.aisha, Prod.beta, Prod.chama, ResPrice.cloth, ResPrice.stuff,
-# ResPrice.accessory, ResPrice.packaging, ProdPrice.aisha, ProdPrice.beta,
-# ProdPrice.chama, Production.hours_needed, Production.cost_per_hour,
-# Production.res_cost, "current_call", "time_steps"]
 
 loaded_figures = [Res.cloth, Res.stuff, Res.accessory, Res.packaging,
 Prod.aisha, Prod.beta, Prod.chama]
@@ -167,14 +138,14 @@ figure_spec_17 = FigureSpec(Production.res_cost, "Production.res_cost", "x_", "y
 figure_spec_18 = FigureSpec("current_call", "current_call", "x_", "y_")
 figure_spec_19 = FigureSpec("time_steps", "time_steps", "x_", "y_")
 
-# figure_specs = [figure_spec_1, figure_spec_2, figure_spec_3, figure_spec_4,
-#                 figure_spec_5, figure_spec_6, figure_spec_7, figure_spec_8,
-#                 figure_spec_9, figure_spec_10, figure_spec_11, figure_spec_12,
-#                 figure_spec_13, figure_spec_14, figure_spec_15, figure_spec_16,
-#                 figure_spec_17, figure_spec_18, figure_spec_19]
-
 figure_specs = [figure_spec_1, figure_spec_2, figure_spec_3, figure_spec_4,
-                figure_spec_5, figure_spec_6, figure_spec_7]
+                figure_spec_5, figure_spec_6, figure_spec_7, figure_spec_8,
+                figure_spec_9, figure_spec_10, figure_spec_11, figure_spec_12,
+                figure_spec_13, figure_spec_14, figure_spec_15, figure_spec_16,
+                figure_spec_17, figure_spec_18, figure_spec_19]
+
+# figure_specs = [figure_spec_1, figure_spec_2, figure_spec_3, figure_spec_4,
+#                 figure_spec_5, figure_spec_6, figure_spec_7]
 
 widget_gindices = ["text_intrinsic_dim", "text_display_dim", "RBG_intrinsic_dim", "RBG_display_dim",
                   "TI_intrinsic_dim", "TI_display_dim", "button_intrinsic_dim",
@@ -201,28 +172,28 @@ widget_iindices = ["name", "title", "button_label", "TI_placeholder", "RBG_label
 WidgetIspecs = namedtuple("WidgetIspecs", widget_iindices)
 
 widget_ispecs_1 = WidgetIspecs(
-    name=Func.buy_res,
+    name = Func.buy_res,
     title = "buy_res",
     button_label = "buy",
     TI_placeholder = "Placeholder",
     RBG_labels=list(Res) + [Others.reset])
 
 widget_ispecs_2 = WidgetIspecs(
-name=Func.sell_res,
+    name = Func.sell_res,
     title = "sell_res",
     button_label = "sell",
     TI_placeholder = "Placeholder",
     RBG_labels=list(Res) + [Others.reset])
 
 widget_ispecs_3 = WidgetIspecs(
-    name=Func.buy_prod,
+    name = Func.buy_prod,
     title = "buy_prod",
     button_label = "buy",
     TI_placeholder = "Placeholder",
     RBG_labels=list(Prod) + [Others.reset])
 
 widget_ispecs_4 = WidgetIspecs(
-    name=Func.make_prod,
+    name = Func.make_prod,
     title = "make_prod",
     button_label = "make",
     TI_placeholder = "Placeholder",
@@ -230,7 +201,7 @@ widget_ispecs_4 = WidgetIspecs(
 
 
 widget_ispecs_5 = WidgetIspecs(
-    name=Func.sell_prod,
+    name = Func.sell_prod,
     title = "sell_prod",
     button_label = "sell",
     TI_placeholder = "Placeholder",
@@ -239,18 +210,11 @@ widget_ispecs_5 = WidgetIspecs(
 # TODO: Transition eventually to a set of buttons alone, no TI
 # TODO: Turn on/off widgets based on Ispecs?
 widget_ispecs_6 = WidgetIspecs(
-    name=Others,
+    name = Others,
     title = "Others",
     button_label = "Submit",
     TI_placeholder = "Placeholder",
     RBG_labels = list(Others))
-
-# widget_ispecs_7 = WidgetIspecs(
-# name=Func.buy_res,
-#     title = "7Placeholder",
-#     button_label = "place",
-#     TI_placeholder = "Placeholder",
-#     RBG_labels = ["one", "two", "three", "reset", "quit"])
 
 widget_ispecs = [widget_ispecs_1, widget_ispecs_2, widget_ispecs_3,
                  widget_ispecs_4, widget_ispecs_5, widget_ispecs_6]

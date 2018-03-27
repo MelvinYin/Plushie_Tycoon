@@ -8,7 +8,7 @@ from defaults import Func
 from gs import GSM
 import defaults
 from defaults import Res, Prod, ResPrice, ProdPrice, Production
-
+# TODO: time_steps should be handled by GE, not by UI.
 
 # def commit_decr(func_signal):
 #     def decr(func):
@@ -25,12 +25,9 @@ from defaults import Res, Prod, ResPrice, ProdPrice, Production
 #     return decr
 
 class GEM:
-    def __init__(self, callback=None):
+    def __init__(self):
         self.GSM = GSM()
-        if callback:
-            self.callback = callback
-        else:
-            self.callback = self.alt_callback
+        self.callback = self.alt_callback
 
     def _default_callback(self):
         GSM_update = self._convert_GSM_to_dict()
