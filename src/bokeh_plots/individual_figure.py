@@ -19,31 +19,55 @@ Only data that needs to be reflected in graph or hover, should be in CDS.
 self.current_ticks need to be pulled out, because figure.xaxis.ticker cannot 
 be retrieved.
 
-Keeping func_steps for now in case of future changes.
+Func_steps start from len(initial_data) so it is always about the next function
+call.
 """
 
 
-
 class IndividualFigure:
-    def __init__(self, initial_data, specs):
-        self.initial_data = initial_data
+    def __init__(self, initial_data, specs, initial_func_count = None):
         self.specs = specs
-        self.CDS = self._create_initial_CDS()
+        if not initial_func_count:
+            self.func_steps = 0
+        else:
+            assert isinstance(initial_func_count, int) and initial_func_count >= 0
+            self.func_steps = initial_func_count
 
-        self.current_ticks = self._get_initial_ticks()
-
+        self.CDS = self._create_initial_CDS(initial_data)
+        self.tick_label_map = self._get_initial_ticks_label_mapping()
         self.figure = self._set_initial_figure()
+        self._update_initial_func_steps()
         self._update_xaxis()
 
-    def _create_initial_CDS(self):
+
+    def _update_initial_func_steps(self):
+        self.func_steps += len(self.CDS.data['time_steps'])
+        return True
+
+    def _create_initial_CDS(self, initial_data):
         """
         Dict sent to CDS should have list instead of tuple as values, otherwise
         CDS.stream will fail.
         """
-        time_steps, func_steps, ys = zip(*self.initial_data)
-        to_CDS = dict(func_steps=list(func_steps), ys=list(ys), time_steps=list(time_steps))
+        time_steps, ys = zip(*initial_data)
+        to_CDS = dict(func_steps=list(range(self.func_steps, self.func_steps + len(time_steps))), ys=list(ys), time_steps=list(time_steps))
         CDS = ColumnDataSource(data=to_CDS)
         return CDS
+
+    def _get_initial_ticks_label_mapping(self):   # assuming time_step has more than 1?
+        time_steps = self.CDS.data["time_steps"]
+        prev_time_step = time_steps[0]
+        func_steps = self.func_steps
+        tick_label_map = dict()
+        tick_label_map[func_steps] = str(prev_time_step)
+        for i in range(len(time_steps)):
+            if time_steps[i] == prev_time_step:
+                func_steps += 1
+                continue
+            prev_time_step = time_steps[i]
+            tick_label_map[func_steps] = str(prev_time_step)
+            func_steps += 1
+        return tick_label_map
 
     def _set_initial_figure(self):
         hover = HoverTool(
@@ -69,12 +93,12 @@ class IndividualFigure:
         p.x_range = DataRange1d(follow="end", follow_interval=3)
         p.y_range = DataRange1d(follow="end", range_padding=0.3)
 
-        initial_ticks = self._get_initial_ticks()
+        initial_ticks = list(self.tick_label_map.keys())
         ticker = FixedTicker(ticks=initial_ticks)
         p.xaxis.ticker = ticker
         p.xgrid.ticker = ticker
 
-        p.xaxis.major_label_overrides = self._get_xaxis_labels()
+        p.xaxis.major_label_overrides = self.tick_label_map
 
         p.title.text = self.specs.title
         p.title.align = 'center'
@@ -84,41 +108,22 @@ class IndividualFigure:
         p.line("func_steps", "ys", source=self.CDS)
         return p
 
-    def _get_initial_ticks(self):   # assuming time_step has more than 1???
-        time_steps = self.CDS.data["time_steps"]
-        func_steps = self.CDS.data["func_steps"]
-        prev_time_step = time_steps[0]
-        ticks = [prev_time_step]
-        for i in range(len(time_steps)):
-            if time_steps[i] == prev_time_step:
-                continue
-            prev_time_step = time_steps[i]
-            ticks.append(func_steps[i])
-        return ticks
-
-    def _get_xaxis_labels(self):
-        ticks = self.current_ticks
-        mapping = dict([(ticks[i], str(i)) for i in range(len(ticks))])
-        return mapping
-
     def _update_xaxis(self):
-        ticks = self.current_ticks
-        ticks.append(self.CDS.data['func_steps'][-1])
-        ticker = FixedTicker(ticks=ticks)
+        ticker = FixedTicker(ticks=list(self.tick_label_map.keys()))
         self.figure.xaxis.ticker = ticker
         self.figure.xgrid.ticker = ticker
-        xaxis_labels = self._get_xaxis_labels()
-        self.figure.xaxis.major_label_overrides = xaxis_labels
+        self.figure.xaxis.major_label_overrides = self.tick_label_map
         return True
 
     def figure_update(self, add_line):
         time_step = add_line[0]
-        func_step = add_line[1]
-        y = add_line[2]
-        to_cds = dict(func_steps=[func_step], ys=[y], time_steps=[time_step])
-        self.CDS.stream(to_cds)
-        if time_step > self.CDS.data['time_steps'][-2]:
+        y = add_line[1]
+        to_cds = dict(func_steps=[self.func_steps], ys=[y], time_steps=[time_step])
+        if time_step > self.CDS.data['time_steps'][-1]:
+            self.tick_label_map[self.func_steps] = str(time_step)
             self._update_xaxis()
+        self.CDS.stream(to_cds)
+        self.func_steps += 1
         return True
 
 
@@ -126,10 +131,10 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     random.seed(10)
     def example_data_1():
         data = []
-        for i in range(5):
+        for i in range(3, 8):
             length = random.randint(1, 4)
             for j in range(length):
-                data.append((i, len(data), random.randint(1, 50)))
+                data.append((i, random.randint(1, 50)))
         return data
 
     def main():
@@ -150,12 +155,10 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
 
         output_file("../../bokeh_tmp/line.html")
         initial_data = example_data_1()
-        Figure = IndividualFigure(initial_data, figure_spec_1)
+        Figure = IndividualFigure(initial_data, figure_spec_1, initial_func_count=123)
         last_time_step = initial_data[-1][0]
-        last_func_step = initial_data[-1][1]
-        Figure.figure_update((last_time_step, last_func_step+1, 12))
-        Figure.figure_update((last_time_step+1, last_func_step + 2, 24))
-
+        Figure.figure_update((last_time_step, 12))
+        Figure.figure_update((last_time_step+1, 24))
 
         layout_w = Figure.figure
         # curdoc().add_root(layout_w)
