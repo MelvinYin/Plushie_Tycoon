@@ -7,11 +7,8 @@ from bokeh.models.widgets import RadioButtonGroup
 
 from bokeh.plotting import output_file, show, ColumnDataSource, curdoc
 from bokeh.layouts import row, column
-import sys
 import re
-sys.path.append("../")
-import defaults
-from defaults import widget_gspecs
+
 from collections import namedtuple
 
 
@@ -21,111 +18,153 @@ from collections import namedtuple
 
 class IndividualWidget:
     def __init__(self, widget_callback, specs):
-        self.title = specs.title
         self.name = specs.name
-        self.button_label = specs.button_label
-        self.TI_placeholder = specs.TI_placeholder
         self.RBG_labels = specs.RBG_labels
-        self.RBG_active = None
         self.widget_callback = widget_callback
 
         self.input_val = None
-        self.active_RBG = None
-        self.text_intrinsic_dim = widget_gspecs.text_intrinsic_dim
-        self.text_display_dim = widget_gspecs.text_display_dim
 
-        self.RBG_intrinsic_dim = widget_gspecs.RBG_intrinsic_dim
-        self.RBG_display_dim = widget_gspecs.RBG_display_dim
-
-        self.TI_intrinsic_dim = widget_gspecs.TI_intrinsic_dim
-        self.TI_display_dim = widget_gspecs.TI_display_dim
-
-        self.button_intrinsic_dim = widget_gspecs.button_intrinsic_dim
-        self.button_display_dim = widget_gspecs.button_display_dim
-
-        self.TI = self._set_TI()
-        self.header = self._set_header()
-        self.RBG = self._set_RBG()
-        self.button = self._set_button()
-
-        self.widget_layout = self._widget_assemble()
+        self.TI = self._set_TI(specs)
+        self.header = self._set_header(specs)
+        self.RBG = self._set_RBG(specs)
+        self.button = self._set_button(specs)
+        self.widget_layout = self._widget_assemble(specs)
 
     def _RBG_callback(self, active_button):
         # when resetting, RBG_callback is called through on_click, hence
         # ignore the None value.
-        if active_button is None:   # this wipe out the first 0
-            return
-        elif self.RBG_labels[active_button] == "reset":
-            self.active_RBG = None
+        if self.RBG_labels[active_button].name == 'reset':
             self.RBG.active = None
-        else:
-            self.active_RBG = self.RBG_labels[active_button]
+        return
 
-    def _set_RBG(self):
+    def _set_RBG(self, specs):
         RBG = RadioButtonGroup()
-        RBG.width = self.RBG_intrinsic_dim[0]
-        RBG.height = self.RBG_intrinsic_dim[1]
+        RBG.width = specs.RBG_intrinsic_dim[0]
+        RBG.height = specs.RBG_intrinsic_dim[1]
         RBG.labels = [label.name for label in self.RBG_labels]
-        RBG.active = self.RBG_active
+        RBG.active = None
         RBG.on_click(self._RBG_callback)
         return RBG
 
     def _text_callback(self, attr, old, new):
         self.input_val = new
 
-    def _set_TI(self):
+    def _set_TI(self, specs):
         TI = TextInput()
-        TI.width = self.TI_intrinsic_dim[0]
-        TI.height = self.TI_intrinsic_dim[1]
-        TI.placeholder = self.TI_placeholder
+        TI.width = specs.TI_intrinsic_dim[0]
+        TI.height = specs.TI_intrinsic_dim[1]
+        TI.placeholder = specs.TI_placeholder
         TI.on_change("value", self._text_callback)
         TI.title = None
         return TI
 
     def _button_callback(self):
-        if self.active_RBG.name in defaults.Others.__members__:
-            self.widget_callback((self.active_RBG,))
-        elif not self.input_val:
+        if not self.input_val:
             print("Value not set.")
-        elif not self.active_RBG:
+        elif self.RBG.active is None:
             print("No category selected.")
         elif not re.fullmatch("[0-9]+", self.input_val.strip()):
             print("Invalid input value.")
         elif self.input_val.startswith("0"):
             print("Invalid input value.")
         else:
-            self.widget_callback(tuple([self.name, (self.active_RBG, int(self.input_val))]))
+            self.widget_callback(tuple([self.name, (self.RBG_labels[self.RBG.active], int(self.input_val))]))
         return
 
-    def _set_button(self):
+    def _set_button(self, specs):
         button = Button()
-        button.label = self.button_label
-        button.width = self.button_intrinsic_dim[0]
-        button.height = self.button_intrinsic_dim[1]
+        button.label = specs.button_label
+        button.width = specs.button_intrinsic_dim[0]
+        button.height = specs.button_intrinsic_dim[1]
         button.on_click(self._button_callback)
         return button
 
-    def _set_header(self):
+    def _set_header(self, specs):
         header = Plot()
         header.x_range = DataRange1d()
         header.y_range = DataRange1d()
-        header.width = self.text_intrinsic_dim[0]
-        header.height = self.text_intrinsic_dim[1]
+        header.width = specs.text_intrinsic_dim[0]
+        header.height = specs.text_intrinsic_dim[1]
         header.x_range = DataRange1d()
         header.toolbar.logo = None
-        text_raw = dict(xs=[0], ys=[0], text=[self.title])
+        text_raw = dict(xs=[0], ys=[0], text=[specs.title])
         text_CDS = ColumnDataSource(data=text_raw)
         text = Text(x="xs", y="ys", text="text", text_align="center")
         header.add_glyph(text_CDS, text)
         return header
 
-    def _widget_assemble(self):
-        TI_disp = row(self.TI, width=self.TI_display_dim[0], height=self.TI_display_dim[1])
-        RBG_disp = row(self.RBG, width=self.RBG_display_dim[0], height=self.RBG_display_dim[1])
-        header_disp = row(self.header, width=self.text_display_dim[0], height=self.text_display_dim[1])
-        button_disp = row(self.button, width=self.button_display_dim[0], height=self.button_display_dim[1])
+    def _widget_assemble(self, specs):
+        TI_disp = row(self.TI, width=specs.TI_display_dim[0], height=specs.TI_display_dim[1])
+        RBG_disp = row(self.RBG, width=specs.RBG_display_dim[0], height=specs.RBG_display_dim[1])
+        header_disp = row(self.header, width=specs.text_display_dim[0], height=specs.text_display_dim[1])
+        button_disp = row(self.button, width=specs.button_display_dim[0], height=specs.button_display_dim[1])
         TI_and_button = row(TI_disp, button_disp)
         widget_layout = column(header_disp, RBG_disp, TI_and_button)
+        return widget_layout
+
+
+class ButtonWidget:
+    def __init__(self, widget_callback, specs):
+        self.name = specs.name
+        self.RBG_labels = specs.RBG_labels
+        self.widget_callback = widget_callback
+
+        self.header = self._set_header(specs)
+        self.RBG = self._set_RBG(specs)
+        self.button = self._set_button(specs)
+
+        self.widget_layout = self._widget_assemble(specs)
+
+    def _RBG_callback(self, active_button):
+        # when resetting, RBG_callback is called through on_click, hence
+        # ignore the None value.
+        if self.RBG_labels[active_button].name == 'reset':
+            self.RBG.active = None
+        return
+
+    def _set_RBG(self, specs):
+        RBG = RadioButtonGroup()
+        RBG.width = specs.RBG_intrinsic_dim[0]
+        RBG.height = specs.RBG_intrinsic_dim[1]
+        RBG.labels = [label.name for label in self.RBG_labels]
+        RBG.active = None
+        RBG.on_click(self._RBG_callback)
+        return RBG
+
+    def _button_callback(self):
+        if self.RBG.active is None:
+            print("No category selected.")
+        else:
+            self.widget_callback((self.RBG_labels[self.RBG.active],))
+        return
+
+    def _set_button(self, specs):
+        button = Button()
+        button.label = specs.button_label
+        button.width = specs.button_intrinsic_dim[0]
+        button.height = specs.button_intrinsic_dim[1]
+        button.on_click(self._button_callback)
+        return button
+
+    def _set_header(self, specs):
+        header = Plot()
+        header.x_range = DataRange1d()
+        header.y_range = DataRange1d()
+        header.width = specs.text_intrinsic_dim[0]
+        header.height = specs.text_intrinsic_dim[1]
+        header.x_range = DataRange1d()
+        header.toolbar.logo = None
+        text_raw = dict(xs=[0], ys=[0], text=[specs.title])
+        text_CDS = ColumnDataSource(data=text_raw)
+        text = Text(x="xs", y="ys", text="text", text_align="center")
+        header.add_glyph(text_CDS, text)
+        return header
+
+    def _widget_assemble(self, specs):
+        RBG_disp = row(self.RBG, width=specs.RBG_display_dim[0], height=specs.RBG_display_dim[1])
+        header_disp = row(self.header, width=specs.text_display_dim[0], height=specs.text_display_dim[1])
+        button_disp = row(self.button, width=specs.button_display_dim[0], height=specs.button_display_dim[1])
+        widget_layout = column(header_disp, RBG_disp, button_disp)
         return widget_layout
 
 
@@ -139,54 +178,34 @@ class IndividualWidget:
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    def main():
-        from collections import namedtuple
-        from enum import Enum, auto
-        class Func(Enum):
-            buy_res = auto()
-            sell_res = auto()
-            buy_prod = auto()
-            make_prod = auto()
-            sell_prod = auto()
-            show_stats = auto()
-            show_prices = auto()
-            save = auto()
-            load = auto()
-            quit = auto()
-            save_quit = auto()
-            next_turn = auto()
-            show_history = auto()
-            back = auto()
-            start = auto()
+    from collections import namedtuple
+    import sys
+    import os
+    sys.path.append(os.getcwd().rsplit("\\", 1)[0])
+    from defaults import widget_ispecs_1, widget_ispecs_6, widget_gspecs
 
-        class Res(Enum):
-            cloth = 1
-            stuff = 2
-            accessory = 3
-            packaging = 4
+    def widget_callback(command_to_run):
+        print("from widget callback")
+        print(command_to_run)
+        return
 
-        class Others(Enum):
-            reset = auto()
+    MergedSpec = namedtuple("widget_spec", widget_ispecs_1._fields + widget_gspecs._fields)
+    merged_spec_1 = MergedSpec(*(widget_ispecs_1 + widget_gspecs))
+    merged_spec_2 = MergedSpec(*(widget_ispecs_6 + widget_gspecs))
 
-        widget_iindices = ["name", "title", "button_label", "TI_placeholder",
-                           "RBG_labels"]
-        WidgetIspecs = namedtuple("WidgetIspecs", widget_iindices)
-        widget_ispecs_1 = WidgetIspecs(
-            name=Func.buy_res,
-            title="buy_res",
-            button_label="buy",
-            TI_placeholder="Placeholder",
-            RBG_labels=list(Res) + [Others.reset])
+    output_file("../../bokeh_tmp/line.html")
 
-        def widget_callback(command_to_run):
-            print("from widget callback")
-            print(command_to_run)
-            return
+    widget_1 = IndividualWidget(widget_callback, merged_spec_1)
+    widget_2 = ButtonWidget(widget_callback, merged_spec_2)
 
-        output_file("../../bokeh_tmp/line.html")
-        layout_w = IndividualWidget(widget_callback, widget_ispecs_1).widget_layout
-        curdoc().add_root(layout_w)
-        # show(layout_w)
-    main()
+    widget_1.widget_callback((merged_spec_1.name, (merged_spec_1.RBG_labels[0], 10)))
+    widget_2.widget_callback(
+        (merged_spec_2.name, (merged_spec_2.RBG_labels[0], 10)))
+    widget_2._button_callback()
+
+    layout_w1 = widget_1.widget_layout
+    layout_w2 = widget_2.widget_layout
+    show(row(layout_w1, layout_w2))
+    curdoc().add_root(row(layout_w1, layout_w2))
 
 # Expected output: tuple(<Func.something>, <Res.something>, int of quantity)

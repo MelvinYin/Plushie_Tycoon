@@ -34,6 +34,7 @@ class GEM:
         return GSM_update
 
     def alt_callback(self, call):
+        print(call)
         methods = dict([
             (Func.save, self.save),
             (Func.load, self.load),
@@ -52,7 +53,11 @@ class GEM:
         ])
 
         logging.debug(f"Currently running: {call}")
-        func_signal, args = call[0], call[1]
+        if hasattr(call, "__len__") and len(call) == 1:
+            func_signal = call[0]
+            args = None
+        else:
+            func_signal, args = call[0], call[1]
         try:
             if args:
                 methods[func_signal](*args)
@@ -75,20 +80,20 @@ class GEM:
         GSM_update[Prod.beta] = self.GSM.prod.value[Prod.beta]
         GSM_update[Prod.chama] = self.GSM.prod.value[Prod.chama]
 
-        GSM_update[ResPrice.cloth] = self.GSM.res.value[ResPrice.cloth]
-        GSM_update[ResPrice.stuff] = self.GSM.res.value[ResPrice.stuff]
-        GSM_update[ResPrice.accessory] = self.GSM.res.value[ResPrice.accessory]
-        GSM_update[ResPrice.packaging] = self.GSM.res.value[ResPrice.packaging]
+        GSM_update[ResPrice.cloth] = self.GSM.res_price.value[Res.cloth]
+        GSM_update[ResPrice.stuff] = self.GSM.res_price.value[Res.stuff]
+        GSM_update[ResPrice.accessory] = self.GSM.res_price.value[Res.accessory]
+        GSM_update[ResPrice.packaging] = self.GSM.res_price.value[Res.packaging]
 
-        GSM_update[ProdPrice.aisha] = self.GSM.res.value[ProdPrice.aisha]
-        GSM_update[ProdPrice.beta] = self.GSM.res.value[ProdPrice.beta]
-        GSM_update[ProdPrice.chama] = self.GSM.res.value[ProdPrice.chama]
+        GSM_update[ProdPrice.aisha] = self.GSM.prod_price.value[Prod.aisha]
+        GSM_update[ProdPrice.beta] = self.GSM.prod_price.value[Prod.beta]
+        GSM_update[ProdPrice.chama] = self.GSM.prod_price.value[Prod.chama]
 
-        GSM_update[Production.hours_needed] = self.GSM.res.value[Production.hours_needed]
-        GSM_update[Production.cost_per_hour] = self.GSM.res.value[Production.cost_per_hour]
-        GSM_update[Production.res_cost] = self.GSM.res.value[Production.res_cost]
+        # GSM_update[Production.hours_needed] = self.GSM.production.hours_needed
+        # GSM_update[Production.cost_per_hour] = self.GSM.production.cost_per_hour
+        # GSM_update[Production.res_cost] = self.GSM.production.res_cost
 
-        GSM_update["current_call"] = self.GSM.current_call
+        # GSM_update["current_call"] = self.GSM.current_call
         GSM_update["time_steps"] = self.GSM.time_steps
         return GSM_update
 
@@ -184,6 +189,7 @@ class GEM:
         earnings = curr_res_p * quantity
         self.GSM.budget.add(earnings)
         self.GSM.res.sub(category, quantity)
+        print(self.GSM.res.value)
         return True
 
     def buy_prod(self, category, quantity):

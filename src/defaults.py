@@ -35,7 +35,7 @@ class ProdPrice(Enum):
 
 @unique
 class Others(Enum):
-    next = 1
+    next_turn = 1
     reset = 2
     quit = 3
 
@@ -139,25 +139,20 @@ figure_ispec_14 = FigureIspec(ProdPrice.chama, "ProdPrice.chama", "x_", "y_")
 figure_ispec_15 = FigureIspec(Production.hours_needed, "Production.hours_needed", "x_", "y_")
 figure_ispec_16 = FigureIspec(Production.cost_per_hour, "Production.cost_per_hour", "x_", "y_")
 figure_ispec_17 = FigureIspec(Production.res_cost, "Production.res_cost", "x_", "y_")
-figure_ispec_18 = FigureIspec("current_call", "current_call", "x_", "y_")
-figure_ispec_19 = FigureIspec("time_steps", "time_steps", "x_", "y_")
 
 figure_ispecs = [figure_ispec_1, figure_ispec_2, figure_ispec_3, figure_ispec_4,
                 figure_ispec_5, figure_ispec_6, figure_ispec_7, figure_ispec_8,
                 figure_ispec_9, figure_ispec_10, figure_ispec_11, figure_ispec_12,
-                figure_ispec_13, figure_ispec_14, figure_ispec_15, figure_ispec_16,
-                figure_ispec_17, figure_ispec_18, figure_ispec_19]
+                figure_ispec_13, figure_ispec_14]
 
 # figure_ispecs = [figure_ispec_1, figure_ispec_2, figure_ispec_3, figure_ispec_4,
 #                 figure_ispec_5, figure_ispec_6, figure_ispec_7]
 
 widget_gindices = ["text_intrinsic_dim", "text_display_dim", "RBG_intrinsic_dim", "RBG_display_dim",
                   "TI_intrinsic_dim", "TI_display_dim", "button_intrinsic_dim",
-                   "button_display_dim", "widgets_per_row"]
+                   "button_display_dim", "widgets_per_row", "row_width", "row_height"]
 
 WidgetGspecs = namedtuple("WidgetGspecs", widget_gindices)
-
-
 
 widget_gspecs = WidgetGspecs(
     text_intrinsic_dim = [250, 50],  # width, height of text box
@@ -173,14 +168,18 @@ widget_gspecs = WidgetGspecs(
     button_display_dim = [150, 100],  # height determine spacing between widget cols
     # width determine spacing between widgets in same row.
 
-    widgets_per_row = 3
+    widgets_per_row = 3,
+
+    row_width = 5000,  # no diff
+    row_height = 200  # Distance between widget set rows
     )
 
-widget_iindices = ["name", "title", "button_label", "TI_placeholder", "RBG_labels"]
+widget_iindices = ["format", "name", "title", "button_label", "TI_placeholder", "RBG_labels"]
 
 WidgetIspecs = namedtuple("WidgetIspecs", widget_iindices)
 
 widget_ispecs_1 = WidgetIspecs(
+    format = "standard",
     name = Func.buy_res,
     title = "buy_res",
     button_label = "buy",
@@ -188,6 +187,7 @@ widget_ispecs_1 = WidgetIspecs(
     RBG_labels=list(Res) + [Others.reset])
 
 widget_ispecs_2 = WidgetIspecs(
+    format = "standard",
     name = Func.sell_res,
     title = "sell_res",
     button_label = "sell",
@@ -195,6 +195,7 @@ widget_ispecs_2 = WidgetIspecs(
     RBG_labels=list(Res) + [Others.reset])
 
 widget_ispecs_3 = WidgetIspecs(
+    format = "standard",
     name = Func.buy_prod,
     title = "buy_prod",
     button_label = "buy",
@@ -202,27 +203,27 @@ widget_ispecs_3 = WidgetIspecs(
     RBG_labels=list(Prod) + [Others.reset])
 
 widget_ispecs_4 = WidgetIspecs(
+    format = "standard",
     name = Func.make_prod,
     title = "make_prod",
     button_label = "make",
     TI_placeholder = "Placeholder",
     RBG_labels=list(Prod) + [Others.reset])
 
-
 widget_ispecs_5 = WidgetIspecs(
+    format = "standard",
     name = Func.sell_prod,
     title = "sell_prod",
     button_label = "sell",
     TI_placeholder = "Placeholder",
     RBG_labels=list(Prod) + [Others.reset])
 
-# TODO: Transition eventually to a set of buttons alone, no TI
-# TODO: Turn on/off widgets based on Ispecs?
 widget_ispecs_6 = WidgetIspecs(
+    format = "button",
     name = Others,
     title = "Others",
     button_label = "Submit",
-    TI_placeholder = "Placeholder",
+    TI_placeholder = "",
     RBG_labels = list(Others))
 
 widget_ispecs = [widget_ispecs_1, widget_ispecs_2, widget_ispecs_3,

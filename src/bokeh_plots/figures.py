@@ -11,18 +11,15 @@ Assume initial_func_count must be an int => equal across all figures.
 """
 
 class FigureSet:
-    def __init__(self, full_data, figure_ispecs, figure_gspecs, initial_func_count=None):
-        self.full_data = full_data
-        self.figure_ispecs = figure_ispecs
-        assert len(self.full_data) == len(self.figure_ispecs)
-        self.figure_gspecs = figure_gspecs
-        self.FigureInstances = self._construct_individual_figures(initial_func_count)
+    def __init__(self, full_data, figure_gspecs, figure_ispecs, initial_func_count=0):
+        self.FigureInstances = self._construct_individual_figures(full_data, initial_func_count, figure_ispecs)
         self._couple_range()
-        self.figure_layout = self._get_figure_layout()
+        self.figure_layout = self._get_figure_layout(figure_gspecs)
 
-    def _construct_individual_figures(self, initial_func_count=None):
+    def _construct_individual_figures(self, full_data, initial_func_count, figure_ispecs):
         FigureInstances = []
-        for data, figure_spec in zip(self.full_data, self.figure_ispecs):
+        for figure_spec in figure_ispecs:
+            data = full_data[figure_spec.name]
             FigureInstances.append(IndividualFigure(data, figure_spec, initial_func_count))
         return FigureInstances
 
@@ -32,12 +29,12 @@ class FigureSet:
             FigureInstances.figure.x_range = ref_x_range
         return True
 
-    def _get_figure_layout(self):
+    def _get_figure_layout(self, figure_gspecs):
         row_layouts = []
         tmp_row = []
         for FigureInstances in self.FigureInstances:
             tmp_row.append(FigureInstances.figure)
-            if len(tmp_row) == self.figure_gspecs.figures_per_row:
+            if len(tmp_row) == figure_gspecs.figures_per_row:
                 row_layouts.append(row(tmp_row))
                 tmp_row = []
         if tmp_row:
@@ -59,13 +56,14 @@ class FigureSet:
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     def main():
-        from collections import namedtuple
-        from enum import Enum
+        import sys
+        import os
+        sys.path.append(os.getcwd().rsplit("\\", 1)[0])
+        from defaults import figure_ispec_1, figure_ispec_5, figure_gspecs
+
         import random
         random.seed(10)
-
         example_max_points=15
-
         def example_data_1(max_pts=example_max_points):
             data = []
             for i in range(3, 11):
@@ -86,29 +84,20 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
                     max_pts -= 1
             return data
 
-        class Prod(Enum):
-            aisha = 1
-            beta = 2
-            chama = 3
-
-        class Res(Enum):
-            cloth = 1
-            stuff = 2
-            accessory = 3
-            packaging = 4
-
-        fig_iindices = ("name", "title", "x_label", "y_label")
-        FigureIspecs = namedtuple("FigureIspecs", fig_iindices)
-        figure_spec_1 = FigureIspecs(Res.cloth, "title", "x_", "y_")
-        figure_spec_5 = FigureIspecs(Prod.aisha, "title", "x_", "y_")
-
-        figure_gindices = ("figures_per_row",)
-        FigureGspec = namedtuple("FigureGspec", figure_gindices)
-        figure_gspecs = FigureGspec(figures_per_row=3)
-
         output_file("../../bokeh_tmp/line.html")
-        layout_w = FigureSet([example_data_1(), example_data_2()],
-                             [figure_spec_1, figure_spec_5], figure_gspecs, initial_func_count=12).figure_layout
+        fig = FigureSet([example_data_1(), example_data_2()], figure_gspecs,
+                             [figure_ispec_1, figure_ispec_5], initial_func_count=12)
+        data_to_add = dict()
+        data_to_add[figure_ispec_1.name] = (example_data_1()[-1][0], 23)
+        data_to_add[figure_ispec_5.name] = (example_data_2()[-1][0], 34)
+        fig.figure_update(data_to_add)
+        data_to_add[figure_ispec_1.name] = (example_data_1()[-1][0]+1, 45)
+        data_to_add[figure_ispec_5.name] = (example_data_2()[-1][0]+1, 56)
+        fig.figure_update(data_to_add)
+        data_to_add[figure_ispec_1.name] = (example_data_1()[-1][0], 23)
+        data_to_add[figure_ispec_5.name] = (example_data_2()[-1][0], 34)
+        fig.figure_update(data_to_add)
+        layout_w = fig.figure_layout
         if __name__ == "__main__":
             show(layout_w)
         else:

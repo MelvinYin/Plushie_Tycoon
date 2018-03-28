@@ -43,7 +43,7 @@ class BaseInventory(ABC):
             assert isinstance(category, Enum), sub_error_msg
             assert category in self.value.index, sub_error_msg
             assert isinstance(quantity, int), sub_error_msg
-            self.value[category] += quantity
+            self.value[category] -= quantity
         else:
             raise AssertionError(sub_error_msg)
         return True
