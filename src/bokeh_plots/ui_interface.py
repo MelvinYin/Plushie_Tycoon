@@ -16,8 +16,8 @@ class UIInterface:
         a dict that is used to update figure_set.
         """
         self.ui_callback = ui_callback
-        # self.initial_data = self.temp_bulk_adapt_ge_to_ui(initial_data)
-        self.initial_data = initial_data
+        self.initial_data = self.temp_bulk_adapt_ge_to_ui(initial_data)
+        # self.initial_data = initial_data
         self.figure_set = FigureSet(self.initial_data, defaults.figure_gspecs, defaults.figure_ispecs)
         self.widget_set = WidgetSet(self.widget_callback, defaults.widget_gspecs, defaults.widget_ispecs)
         self.ui_layout = self.plot()

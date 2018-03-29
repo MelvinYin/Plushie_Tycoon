@@ -224,7 +224,7 @@ widget_ispecs_6 = WidgetIspecs(
     title = "Others",
     button_label = "Submit",
     TI_placeholder = "",
-    RBG_labels = list(Others))
+    RBG_labels = list([Func.next_turn, Others.reset, Func.quit]))
 
 widget_ispecs = [widget_ispecs_1, widget_ispecs_2, widget_ispecs_3,
                  widget_ispecs_4, widget_ispecs_5, widget_ispecs_6]

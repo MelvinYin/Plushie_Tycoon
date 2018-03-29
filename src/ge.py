@@ -34,7 +34,6 @@ class GEM:
         return GSM_update
 
     def alt_callback(self, call):
-        print(call)
         methods = dict([
             (Func.save, self.save),
             (Func.load, self.load),
@@ -189,7 +188,6 @@ class GEM:
         earnings = curr_res_p * quantity
         self.GSM.budget.add(earnings)
         self.GSM.res.sub(category, quantity)
-        print(self.GSM.res.value)
         return True
 
     def buy_prod(self, category, quantity):

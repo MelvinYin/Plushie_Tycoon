@@ -19,6 +19,8 @@ class FigureSet:
     def _construct_individual_figures(self, full_data, initial_func_count, figure_ispecs):
         FigureInstances = []
         for figure_spec in figure_ispecs:
+            print(full_data)
+            print("")
             data = full_data[figure_spec.name]
             FigureInstances.append(IndividualFigure(data, figure_spec, initial_func_count))
         return FigureInstances
