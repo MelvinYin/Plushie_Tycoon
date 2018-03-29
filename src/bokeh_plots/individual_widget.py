@@ -19,35 +19,35 @@ from collections import namedtuple
 class IndividualWidget:
     def __init__(self, widget_callback, specs):
         self.name = specs.name
-        self.RBG_labels = specs.RBG_labels
         self.widget_callback = widget_callback
-
-        self.input_val = None
-
-        self.TI = self._set_TI(specs)
-        self.header = self._set_header(specs)
-        self.RBG = self._set_RBG(specs)
-        self.button = self._set_button(specs)
         self.widget_layout = self._widget_assemble(specs)
+
+        self._input_val = None
+        self._RBG_labels = specs.RBG_labels
+        self._TI = self._set_TI(specs)
+        self._header = self._set_header(specs)
+        self._RBG = self._set_RBG(specs)
+        self._button = self._set_button(specs)
+
 
     def _RBG_callback(self, active_button):
         # when resetting, RBG_callback is called through on_click, hence
         # ignore the None value.
-        if self.RBG_labels[active_button].name == 'reset':
-            self.RBG.active = None
+        if self._RBG_labels[active_button].name == 'reset':
+            self._RBG.active = None
         return
 
     def _set_RBG(self, specs):
         RBG = RadioButtonGroup()
         RBG.width = specs.RBG_intrinsic_dim[0]
         RBG.height = specs.RBG_intrinsic_dim[1]
-        RBG.labels = [label.name for label in self.RBG_labels]
+        RBG.labels = [label.name for label in self._RBG_labels]
         RBG.active = None
         RBG.on_click(self._RBG_callback)
         return RBG
 
     def _text_callback(self, attr, old, new):
-        self.input_val = new
+        self._input_val = new
 
     def _set_TI(self, specs):
         TI = TextInput()
@@ -59,16 +59,16 @@ class IndividualWidget:
         return TI
 
     def _button_callback(self):
-        if not self.input_val:
+        if not self._input_val:
             print("Value not set.")
-        elif self.RBG.active is None:
+        elif self._RBG.active is None:
             print("No category selected.")
-        elif not re.fullmatch("[0-9]+", self.input_val.strip()):
+        elif not re.fullmatch("[0-9]+", self._input_val.strip()):
             print("Invalid input value.")
-        elif self.input_val.startswith("0"):
+        elif self._input_val.startswith("0"):
             print("Invalid input value.")
         else:
-            self.widget_callback(tuple([self.name, (self.RBG_labels[self.RBG.active], int(self.input_val))]))
+            self.widget_callback(tuple([self.name, (self._RBG_labels[self._RBG.active], int(self._input_val))]))
         return
 
     def _set_button(self, specs):
@@ -94,10 +94,10 @@ class IndividualWidget:
         return header
 
     def _widget_assemble(self, specs):
-        TI_disp = row(self.TI, width=specs.TI_display_dim[0], height=specs.TI_display_dim[1])
-        RBG_disp = row(self.RBG, width=specs.RBG_display_dim[0], height=specs.RBG_display_dim[1])
-        header_disp = row(self.header, width=specs.text_display_dim[0], height=specs.text_display_dim[1])
-        button_disp = row(self.button, width=specs.button_display_dim[0], height=specs.button_display_dim[1])
+        TI_disp = row(self._TI, width=specs.TI_display_dim[0], height=specs.TI_display_dim[1])
+        RBG_disp = row(self._RBG, width=specs.RBG_display_dim[0], height=specs.RBG_display_dim[1])
+        header_disp = row(self._header, width=specs.text_display_dim[0], height=specs.text_display_dim[1])
+        button_disp = row(self._button, width=specs.button_display_dim[0], height=specs.button_display_dim[1])
         TI_and_button = row(TI_disp, button_disp)
         widget_layout = column(header_disp, RBG_disp, TI_and_button)
         return widget_layout
@@ -106,36 +106,35 @@ class IndividualWidget:
 class ButtonWidget:
     def __init__(self, widget_callback, specs):
         self.name = specs.name
-        self.RBG_labels = specs.RBG_labels
         self.widget_callback = widget_callback
-
-        self.header = self._set_header(specs)
-        self.RBG = self._set_RBG(specs)
-        self.button = self._set_button(specs)
-
         self.widget_layout = self._widget_assemble(specs)
+
+        self._RBG_labels = specs.RBG_labels
+        self._header = self._set_header(specs)
+        self._RBG = self._set_RBG(specs)
+        self._button = self._set_button(specs)
 
     def _RBG_callback(self, active_button):
         # when resetting, RBG_callback is called through on_click, hence
         # ignore the None value.
-        if self.RBG_labels[active_button].name == 'reset':
-            self.RBG.active = None
+        if self._RBG_labels[active_button].name == 'reset':
+            self._RBG.active = None
         return
 
     def _set_RBG(self, specs):
         RBG = RadioButtonGroup()
         RBG.width = specs.RBG_intrinsic_dim[0]
         RBG.height = specs.RBG_intrinsic_dim[1]
-        RBG.labels = [label.name for label in self.RBG_labels]
+        RBG.labels = [label.name for label in self._RBG_labels]
         RBG.active = None
         RBG.on_click(self._RBG_callback)
         return RBG
 
     def _button_callback(self):
-        if self.RBG.active is None:
+        if self._RBG.active is None:
             print("No category selected.")
         else:
-            self.widget_callback((self.RBG_labels[self.RBG.active],))
+            self.widget_callback((self._RBG_labels[self._RBG.active],))
         return
 
     def _set_button(self, specs):
@@ -161,9 +160,9 @@ class ButtonWidget:
         return header
 
     def _widget_assemble(self, specs):
-        RBG_disp = row(self.RBG, width=specs.RBG_display_dim[0], height=specs.RBG_display_dim[1])
-        header_disp = row(self.header, width=specs.text_display_dim[0], height=specs.text_display_dim[1])
-        button_disp = row(self.button, width=specs.button_display_dim[0], height=specs.button_display_dim[1])
+        RBG_disp = row(self._RBG, width=specs.RBG_display_dim[0], height=specs.RBG_display_dim[1])
+        header_disp = row(self._header, width=specs.text_display_dim[0], height=specs.text_display_dim[1])
+        button_disp = row(self._button, width=specs.button_display_dim[0], height=specs.button_display_dim[1])
         widget_layout = column(header_disp, RBG_disp, button_disp)
         return widget_layout
 

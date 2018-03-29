@@ -75,36 +75,6 @@ class GSM:
         self.__dict__.update(new_values)
         return True
 
-    def show_stats(self):   # this should be moved to GS
-        logging.info("Current Inventory: \n"
-                     + "Resources\n" + str(self.res.prettyp()) + "\n"
-                     + "Products\n" + str(self.prod.prettyp()))
-
-        logging.info("Current Budget: " + str(self.budget.prettyp()))
-
-        logging.info("Current Market Prices: \n"
-                     + "Resources\n" + str(self.res_price.prettyp()) + "\n"
-                     + "Products\n" + str(self.prod_price.prettyp()))
-
-        logging.info("Fixed Costs: \n"
-                     + str(self.production.hours_needed) + "\n"
-                     + "Cost per hour: " + str(self.production.cost_per_hour))
-
-        logging.info("History: \n" + str(self.prettyp_ext(self.local_history)))
-
-        logging.info("Time elapsed: " + str(self.time_steps))
-        return True
-
-    def show_prices(self):
-        logging.info("Current Market Prices: \n"
-                     + "Resources\n" + str(self.res_price.prettyp()) + "\n"
-                     + "Products\n" + str(self.prod_price.prettyp()))
-        return True
-
-    def show_history(self):
-        logging.info(self.local_history)
-        return True
-
     def copy(self):
         return copy.deepcopy(self)
 

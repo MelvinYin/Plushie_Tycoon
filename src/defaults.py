@@ -2,7 +2,8 @@ import pandas as pd
 from enum import Enum, auto, unique
 from collections import namedtuple
 
-# TODO: check if widget_ispecs is only sent to individual widgets. Seems like a good idea.
+###############################################################################
+
 # Resource signal values for internal use
 @unique
 class Res(Enum):
@@ -47,14 +48,10 @@ class Func(Enum):
     buy_prod = auto()
     make_prod = auto()
     sell_prod = auto()
-    show_stats = auto()
-    show_prices = auto()
     save = auto()
     load = auto()
     quit = auto()
-    save_quit = auto()
     next_turn = auto()
-    show_history = auto()
     back = auto()
     start = auto()
 
@@ -65,17 +62,18 @@ class Production(Enum):
     cost_per_hour = auto()
     res_cost = auto()
 
+###############################################################################
 
 # Plushie Resource Cost
-res_cost = dict()
-res_cost[Prod.aisha] = [3,6,2,1]
-res_cost[Prod.beta] = [1,4,1,2]
-res_cost[Prod.chama] = [2,5,1,4]
-prod_res_cost = pd.DataFrame(res_cost, index=Res)
+_res_cost = dict()
+_res_cost[Prod.aisha] = [3,6,2,1]
+_res_cost[Prod.beta] = [1,4,1,2]
+_res_cost[Prod.chama] = [2,5,1,4]
+prod_res_cost = pd.DataFrame(_res_cost, index=Res)
 
 # Plushie Production Hours
-p_hours = [30, 24, 36]
-hours_needed = pd.Series(p_hours, Prod)
+_p_hours = [30, 24, 36]
+hours_needed = pd.Series(_p_hours, Prod)
 
 # Cost Per Production Hour
 cost_per_hour = 3
@@ -83,153 +81,194 @@ cost_per_hour = 3
 # Starting Statistics
 starting_budget = 10000000
 
-s_res = [1000,1000,1000,1000]
-starting_res = pd.Series(s_res, Res, name="starting_res")
+_s_res = [1000,1000,1000,1000]
+starting_res = pd.Series(_s_res, Res, name="starting_res")
 
-s_prod = [100,100,100]
-starting_prod = pd.Series(s_prod, Prod, name="starting_prod")
+_s_prod = [100,100,100]
+starting_prod = pd.Series(_s_prod, Prod, name="starting_prod")
 
-s_res_price = [10,20,18,12]
-starting_res_price = pd.Series(s_res_price, Res, name="starting_res_price")
+_s_res_price = [10,20,18,12]
+starting_res_price = pd.Series(_s_res_price, Res, name="starting_res_price")
 
-s_prod_price = [80,76,52]
-starting_prod_price = pd.Series(s_prod_price, Prod, name="starting_prod_price")
+_s_prod_price = [80,76,52]
+starting_prod_price = pd.Series(_s_prod_price, Prod, name="starting_prod_price")
 
 
-history_columns = ["res", "prod", "res_price", "prod_price", "budget", "production",
+_history_columns = ["res", "prod", "res_price", "prod_price", "budget", "production",
            "time_steps", "current_call"]
 
-history_add = namedtuple("history_add", field_names=history_columns)
-
-history_init = pd.DataFrame(columns=history_columns)
+history_init = pd.Series("history_add", field_names=_history_columns)
 
 starting_time = 0
 
-def_save_folder = "../save/"
-def_save_file_name = "game_save.pkl"
+save_folder = "../save/"
+save_file_name = "game_save.pkl"
 
-loaded_figures = [Res.cloth, Res.stuff, Res.accessory, Res.packaging,
-Prod.aisha, Prod.beta, Prod.chama]
+###############################################################################
+# Figure Attributes
+_figure_set_indices = ("figures_per_row",)
+_FigureSetSpecsBase = namedtuple("FigureSetSpecs", _figure_set_indices)
+FigureSetSpecs = _FigureSetSpecsBase(figures_per_row=3)
 
-figure_gindices = ("figures_per_row",)
-FigureGspec = namedtuple("FigureGspec", figure_gindices)
-figure_gspecs = FigureGspec(figures_per_row=3)
+_figure_iindices = ("name", "title", "x_label", "y_label")
+_FigureSpecBase = namedtuple("FigureIspec", _figure_iindices)
 
-figure_iindices = ("name", "title", "x_label", "y_label")
+_FigureSpec1 = _FigureSpecBase(Res.cloth, "Res.cloth", "x_", "y_")
+_FigureSpec2 = _FigureSpecBase(Res.stuff, "Res.stuff", "x_", "y_")
+_FigureSpec3 = _FigureSpecBase(Res.accessory, "Res.accessory", "x_", "y_")
+_FigureSpec4 = _FigureSpecBase(Res.packaging, "Res.packaging", "x_", "y_")
 
-FigureIspec = namedtuple("FigureIspec", figure_iindices)
+_FigureSpec5 = _FigureSpecBase(Prod.aisha, "Prod.aisha", "x_", "y_")
+_FigureSpec6 = _FigureSpecBase(Prod.beta, "Prod.beta", "x_", "y_")
+_FigureSpec7 = _FigureSpecBase(Prod.chama, "Prod.chama", "x_", "y_")
 
-figure_ispec_1 = FigureIspec(Res.cloth, "Res.cloth", "x_", "y_")
-figure_ispec_2 = FigureIspec(Res.stuff, "Res.stuff", "x_", "y_")
-figure_ispec_3 = FigureIspec(Res.accessory, "Res.accessory", "x_", "y_")
-figure_ispec_4 = FigureIspec(Res.packaging, "Res.packaging", "x_", "y_")
+_FigureSpec8 = _FigureSpecBase(ResPrice.cloth, "ResPrice.cloth", "x_", "y_")
+_FigureSpec9 = _FigureSpecBase(ResPrice.stuff, "ResPrice.stuff", "x_", "y_")
+_FigureSpec10 = _FigureSpecBase(ResPrice.accessory, "ResPrice.accessory", "x_", "y_")
+_FigureSpec11 = _FigureSpecBase(ResPrice.packaging, "ResPrice.packaging", "x_", "y_")
 
-figure_ispec_5 = FigureIspec(Prod.aisha, "Prod.aisha", "x_", "y_")
-figure_ispec_6 = FigureIspec(Prod.beta, "Prod.beta", "x_", "y_")
-figure_ispec_7 = FigureIspec(Prod.chama, "Prod.chama", "x_", "y_")
+_FigureSpec12 = _FigureSpecBase(ProdPrice.aisha, "ProdPrice.aisha", "x_", "y_")
+_FigureSpec13 = _FigureSpecBase(ProdPrice.beta, "ProdPrice.beta", "x_", "y_")
+_FigureSpec14 = _FigureSpecBase(ProdPrice.chama, "ProdPrice.chama", "x_", "y_")
+_FigureSpec15 = _FigureSpecBase(Production.hours_needed, "Production.hours_needed", "x_", "y_")
+_FigureSpec16 = _FigureSpecBase(Production.cost_per_hour, "Production.cost_per_hour", "x_", "y_")
+_FigureSpec17 = _FigureSpecBase(Production.res_cost, "Production.res_cost", "x_", "y_")
 
-figure_ispec_8 = FigureIspec(ResPrice.cloth, "ResPrice.cloth", "x_", "y_")
-figure_ispec_9 = FigureIspec(ResPrice.stuff, "ResPrice.stuff", "x_", "y_")
-figure_ispec_10 = FigureIspec(ResPrice.accessory, "ResPrice.accessory", "x_", "y_")
-figure_ispec_11 = FigureIspec(ResPrice.packaging, "ResPrice.packaging", "x_", "y_")
+FigureSpecs = [_FigureSpec1, _FigureSpec2, _FigureSpec3, _FigureSpec4,
+               _FigureSpec5, _FigureSpec6, _FigureSpec7, _FigureSpec8,
+               _FigureSpec9, _FigureSpec10, _FigureSpec11, _FigureSpec12,
+               _FigureSpec13, _FigureSpec14]
 
-figure_ispec_12 = FigureIspec(ProdPrice.aisha, "ProdPrice.aisha", "x_", "y_")
-figure_ispec_13 = FigureIspec(ProdPrice.beta, "ProdPrice.beta", "x_", "y_")
-figure_ispec_14 = FigureIspec(ProdPrice.chama, "ProdPrice.chama", "x_", "y_")
-figure_ispec_15 = FigureIspec(Production.hours_needed, "Production.hours_needed", "x_", "y_")
-figure_ispec_16 = FigureIspec(Production.cost_per_hour, "Production.cost_per_hour", "x_", "y_")
-figure_ispec_17 = FigureIspec(Production.res_cost, "Production.res_cost", "x_", "y_")
 
-figure_ispecs = [figure_ispec_1, figure_ispec_2, figure_ispec_3, figure_ispec_4,
-                figure_ispec_5, figure_ispec_6, figure_ispec_7, figure_ispec_8,
-                figure_ispec_9, figure_ispec_10, figure_ispec_11, figure_ispec_12,
-                figure_ispec_13, figure_ispec_14]
+# Widget Attributes
+_widget_set_indices = ("widgets_per_row", "row_width", "row_height")
+_WidgetSetSpecsBase = namedtuple("WidgetSetSpecs", _widget_set_indices)
+WidgetSetSpecs = _WidgetSetSpecsBase(widgets_per_row=3,
+                                  row_width=5000,
+                                  row_height=200)    # Distance between widget set rows
 
-# figure_ispecs = [figure_ispec_1, figure_ispec_2, figure_ispec_3, figure_ispec_4,
-#                 figure_ispec_5, figure_ispec_6, figure_ispec_7]
+_widget_gindices = ["text_intrinsic_width", "text_intrinsic_height",
+                   "text_display_width", "text_display_height",
+                   "RBG_intrinsic_width", "RBG_intrinsic_height",
+                   "RBG_display_width", "RBG_display_height",
+                   "TI_intrinsic_width", "TI_intrinsic_height",
+                   "TI_display_width", "TI_display_height",
+                   "button_intrinsic_width", "button_intrinsic_height",
+                   "button_display_width", "button_display_height"]
 
-widget_gindices = ["text_intrinsic_dim", "text_display_dim", "RBG_intrinsic_dim", "RBG_display_dim",
-                  "TI_intrinsic_dim", "TI_display_dim", "button_intrinsic_dim",
-                   "button_display_dim", "widgets_per_row", "row_width", "row_height"]
+_WidgetGspecsBase = namedtuple("WidgetGspecs", _widget_gindices)
 
-WidgetGspecs = namedtuple("WidgetGspecs", widget_gindices)
+_widget_gspecs = _WidgetGspecsBase(
+    text_intrinsic_width=250, # Text box
+    text_intrinsic_height=50,
+    text_display_width=0,
+    text_display_height=40,   # Determine how close RBG is
 
-widget_gspecs = WidgetGspecs(
-    text_intrinsic_dim = [250, 50],  # width, height of text box
-    text_display_dim = [0, 40],  # text width no diff, height determine how near RBG is.
+    RBG_intrinsic_width=400,  # Determine when break between rows happen
+    RBG_intrinsic_height=0,
+    RBG_display_width=0,
+    RBG_display_height=40,    # determine how close TI and button is
 
-    RBG_intrinsic_dim = [400, 0],   # width affects when break between rows happen
-    RBG_display_dim = [0, 40],  # width no diff, height determine how close input and button is
+    TI_intrinsic_width=1,     # size of text_box, with a minimum
+    TI_intrinsic_height=1,
+    TI_display_width=180,     # fix overall widget width together with
+    TI_display_height=0,      # button_display_width
 
-    TI_intrinsic_dim = [1, 1],  # size of text_box, with a minimum
-    TI_display_dim = [180, 0],  # for width, fix overall widget width together with button_display_dim
+    button_intrinsic_width=50,  # Size of button
+    button_intrinsic_height=0,
+    button_display_width=150,   # Spacing between widgets in same row.
+    button_display_height=100)   # Spacing between widget cols
 
-    button_intrinsic_dim = [50, 0],  # Size of button
-    button_display_dim = [150, 100],  # height determine spacing between widget cols
-    # width determine spacing between widgets in same row.
+_widget_iindices = ["format", "name", "title", "button_label", "TI_placeholder", "RBG_labels"]
 
-    widgets_per_row = 3,
+_WidgetIspecsBase = namedtuple("WidgetIspecs", _widget_iindices)
 
-    row_width = 5000,  # no diff
-    row_height = 200  # Distance between widget set rows
-    )
-
-widget_iindices = ["format", "name", "title", "button_label", "TI_placeholder", "RBG_labels"]
-
-WidgetIspecs = namedtuple("WidgetIspecs", widget_iindices)
-
-widget_ispecs_1 = WidgetIspecs(
-    format = "standard",
-    name = Func.buy_res,
-    title = "buy_res",
-    button_label = "buy",
-    TI_placeholder = "Placeholder",
+_widget_ispecs_1 = _WidgetIspecsBase(
+    format="standard",
+    name=Func.buy_res,
+    title=Func.buy_res.name,
+    button_label="buy",
+    TI_placeholder="Placeholder",
     RBG_labels=list(Res) + [Others.reset])
 
-widget_ispecs_2 = WidgetIspecs(
-    format = "standard",
-    name = Func.sell_res,
-    title = "sell_res",
-    button_label = "sell",
-    TI_placeholder = "Placeholder",
+_widget_ispecs_2 = _WidgetIspecsBase(
+    format="standard",
+    name=Func.sell_res,
+    title=Func.sell_res.name,
+    button_label="sell",
+    TI_placeholder="Placeholder",
     RBG_labels=list(Res) + [Others.reset])
 
-widget_ispecs_3 = WidgetIspecs(
-    format = "standard",
-    name = Func.buy_prod,
-    title = "buy_prod",
-    button_label = "buy",
-    TI_placeholder = "Placeholder",
+_widget_ispecs_3 = _WidgetIspecsBase(
+    format="standard",
+    name=Func.buy_prod,
+    title=Func.buy_prod.name,
+    button_label="buy",
+    TI_placeholder="Placeholder",
     RBG_labels=list(Prod) + [Others.reset])
 
-widget_ispecs_4 = WidgetIspecs(
-    format = "standard",
-    name = Func.make_prod,
-    title = "make_prod",
-    button_label = "make",
-    TI_placeholder = "Placeholder",
+_widget_ispecs_4 = _WidgetIspecsBase(
+    format="standard",
+    name=Func.make_prod,
+    title=Func.make_prod.name,
+    button_label="make",
+    TI_placeholder="Placeholder",
     RBG_labels=list(Prod) + [Others.reset])
 
-widget_ispecs_5 = WidgetIspecs(
-    format = "standard",
-    name = Func.sell_prod,
-    title = "sell_prod",
-    button_label = "sell",
-    TI_placeholder = "Placeholder",
+_widget_ispecs_5 = _WidgetIspecsBase(
+    format="standard",
+    name=Func.sell_prod,
+    title=Func.sell_prod.name,
+    button_label="sell",
+    TI_placeholder="Placeholder",
     RBG_labels=list(Prod) + [Others.reset])
 
-widget_ispecs_6 = WidgetIspecs(
-    format = "button",
-    name = Others,
-    title = "Others",
-    button_label = "Submit",
-    TI_placeholder = "",
-    RBG_labels = list([Func.next_turn, Others.reset, Func.quit]))
+_widget_ispecs_6 = _WidgetIspecsBase(
+    format="button",
+    name=Others,
+    title="Others",
+    button_label="Submit",
+    TI_placeholder="",
+    RBG_labels=list([Func.next_turn, Others.reset, Func.quit]))
 
-widget_ispecs = [widget_ispecs_1, widget_ispecs_2, widget_ispecs_3,
-                 widget_ispecs_4, widget_ispecs_5, widget_ispecs_6]
+_widget_ispecs = [_widget_ispecs_1, _widget_ispecs_2, _widget_ispecs_3,
+                 _widget_ispecs_4, _widget_ispecs_5, _widget_ispecs_6]
 
+_WidgetSpecsBase = namedtuple("WidgetSpecsBase", field_names=_WidgetIspecsBase._fields + _WidgetGspecsBase._fields)
+WidgetSpecs = list([_WidgetSpecsBase(*(ispecs + _widget_gspecs)) for ispecs in _widget_ispecs])
+# Order in *() need to be same as order in fields_, otherwise wrong values
+# get assigned to the field names.
 
+###############################################################################
+
+"""
+For convenience, available values:
+Res
+Prod
+ResPrice
+ProdPrice
+Others
+Func
+Production
+
+prod_res_cost
+hours_needed
+cost_per_hour
+starting_budget
+starting_res
+starting_prod
+starting_res_price
+starting_prod_price
+history_init
+starting_time
+save_folder
+save_file_name
+
+FigureSetSpecs
+FigureSpecs
+WidgetSetSpecs
+WidgetSpecs
+"""
 
 
 
