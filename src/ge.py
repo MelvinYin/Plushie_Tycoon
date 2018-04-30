@@ -6,8 +6,7 @@ import sys
 import logging
 from defaults import Func
 from gs import GSM
-import defaults
-from defaults import Res, Prod, ResPrice, ProdPrice, Production
+from defaults import Res, Prod, ResPrice, ProdPrice, Production, save_folder, save_file_name
 # TODO: time_steps should be handled by GE, not by UI.
 
 # def commit_decr(func_signal):
@@ -27,31 +26,23 @@ from defaults import Res, Prod, ResPrice, ProdPrice, Production
 class GEM:
     def __init__(self):
         self.GSM = GSM()
-        self.callback = self.alt_callback
+        self.GSM.commit(call=Func.start)
+        self.callback = self._default_callback
 
-    def _default_callback(self):
-        GSM_update = self._convert_GSM_to_dict()
-        return GSM_update
-
-    def alt_callback(self, call):
+    def _default_callback(self, call):
         methods = dict([
             (Func.save, self.save),
             (Func.load, self.load),
             (Func.quit, self.quit),
-            (Func.save_quit, self.save_quit),
             (Func.next_turn, self.next_turn),
             (Func.buy_res, self.buy_res),
             (Func.sell_res, self.sell_res),
             (Func.buy_prod, self.buy_prod),
             (Func.make_prod, self.make_prod),
             (Func.sell_prod, self.sell_prod),
-            (Func.show_stats, self.show_stats),
-            (Func.show_prices, self.show_prices),
-            (Func.show_history, self.show_history),
-            (Func.back, self.back)
-        ])
+            (Func.back, self.back)])
 
-        logging.debug(f"Currently running: {call}")
+        logging.debug(f"Callback in GEM: {call}")
         if hasattr(call, "__len__") and len(call) == 1:
             func_signal = call[0]
             args = None
@@ -93,51 +84,10 @@ class GEM:
         # GSM_update[Production.res_cost] = self.GSM.production.res_cost
 
         # GSM_update["current_call"] = self.GSM.current_call
-        GSM_update["time_steps"] = self.GSM.time_steps
+        GSM_update["time_steps"] = self.GSM.current_time
         return GSM_update
 
-    def prettyp(self):
-        string = f"Class: {self.__class__.__name__}\n"
-        for key, value in self.__dict__.items():
-            tmp = "\tAttr: " + key + "\n\t" \
-                  + str(value).replace("\n", "\n\t") + "\n"
-            string += tmp
-        return string
-
-    def __call__(self, call):
-        methods = dict([
-            (Func.save, self.save),
-            (Func.load, self.load),
-            (Func.quit, self.quit),
-            (Func.save_quit, self.save_quit),
-            (Func.next_turn, self.next_turn),
-            (Func.buy_res, self.buy_res),
-            (Func.sell_res, self.sell_res),
-            (Func.buy_prod, self.buy_prod),
-            (Func.make_prod, self.make_prod),
-            (Func.sell_prod, self.sell_prod),
-            (Func.show_stats, self.show_stats),
-            (Func.show_prices, self.show_prices),
-            (Func.show_history, self.show_history),
-            (Func.back, self.back)
-            ])
-
-        logging.debug(f"Currently running: {call}")
-        func_signal, args = call[0], call[1]
-        try:
-            if args:
-                methods[func_signal](*args)
-            else:
-                methods[func_signal]()
-        except InsufficientQuantityError:
-            self.GSM.reverse_call()
-            raise RepeatUIAction
-        return self.callback()
-
-
-    def load(self, file_path=defaults.def_save_folder, file_name=None):
-        if not file_name:
-            file_name = defaults.def_save_file_name
+    def load(self, file_path=save_folder, file_name=save_file_name):
         if not os.path.isdir(file_path):
             logging.error(f"File path {file_path} does not exist.")
             raise FileNotFoundError
@@ -149,9 +99,7 @@ class GEM:
             self.GSM.__dict__ = pickle.load(file)
         return True
 
-    def save(self, file_path=defaults.def_save_folder, file_name=None):
-        if not file_name:
-            file_name = defaults.def_save_file_name
+    def save(self, file_path=save_folder, file_name=save_file_name):
         if not file_name.endswith(".pkl"):
             logging.warning(f"Warning: File name {file_name} provided does not"
                             f" end with .pkl. Suffix will be added.")
@@ -167,12 +115,9 @@ class GEM:
     def quit(self):
         sys.exit()
 
-    def save_quit(self):
-        self.save()
-        self.quit()
-
     def next_turn(self):
-        self.GSM.push()
+        self.GSM.current_time += 1
+        self.GSM.commit(call=Func.next_turn)
         return
 
     def buy_res(self, category, quantity):
@@ -184,8 +129,9 @@ class GEM:
         return True
 
     def sell_res(self, category, quantity):
-        curr_res_p = self.GSM.res_price.value[category]
-        earnings = curr_res_p * quantity
+        self.GSM.commit(call=(Func.sell_res, category, quantity))
+        curr_prices = self.GSM.res_price.value[category]
+        earnings = curr_prices * quantity
         self.GSM.budget.add(earnings)
         self.GSM.res.sub(category, quantity)
         return True
@@ -201,9 +147,9 @@ class GEM:
     def sell_prod(self, category, quantity):
         self.GSM.commit(call=(Func.sell_prod, category, quantity))
         curr_prices = self.GSM.prod_price.value[category]
-        self.GSM.prod.sub(category, quantity)
         earnings = curr_prices * quantity
         self.GSM.budget.add(earnings)
+        self.GSM.prod.sub(category, quantity)
         return True
 
     def make_prod(self, category, quantity):
@@ -211,10 +157,8 @@ class GEM:
         res_for_type = self.GSM.production.res_cost[category]
         total_res = res_for_type * quantity
         self.GSM.res.sub(total_res)
-
         cost_to_produce = self.GSM.cost_to_produce(category, quantity)
         self.GSM.budget.sub(cost_to_produce)
-
         self.GSM.prod.add(category, quantity)
         return True
 
@@ -224,15 +168,6 @@ class GEM:
             logging.info("No previous action logged.")
             return False
         return True
-
-    def show_stats(self):
-        return self.GSM.show_stats()
-
-    def show_prices(self):
-        return self.GSM.show_prices()
-
-    def show_history(self):
-        return self.GSM.show_history()
 
     def copy(self):
         return copy.deepcopy(self)

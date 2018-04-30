@@ -2,13 +2,10 @@ from figures import FigureSet
 from widgets import WidgetSet
 from bokeh.plotting import curdoc, show
 from bokeh.layouts import column
-from defaults import Func, Res, Prod, figure_gspecs, figure_ispecs, widget_gspecs, widget_ispecs
+from defaults import FigureSetSpecs, FigureSpecs, WidgetSetSpecs, WidgetSpecs
 from collections import defaultdict
 import defaults
-import sys
 
-# TODO: settle next
-# TODO: UIInterface should probably have some tests on viable outputs from widgets...?
 class UIInterface:
     def __init__(self, initial_data, ui_callback):
         """
@@ -18,8 +15,8 @@ class UIInterface:
         self.ui_callback = ui_callback
         self.initial_data = self.temp_bulk_adapt_ge_to_ui(initial_data)
         # self.initial_data = initial_data
-        self.figure_set = FigureSet(self.initial_data, defaults.figure_gspecs, defaults.figure_ispecs)
-        self.widget_set = WidgetSet(self.widget_callback, defaults.widget_gspecs, defaults.widget_ispecs)
+        self.figure_set = FigureSet(self.initial_data, FigureSetSpecs, FigureSpecs)
+        self.widget_set = WidgetSet(self.widget_callback, WidgetSetSpecs, WidgetSpecs)
         self.ui_layout = self.plot()
 
     def _mock_call(self):

@@ -9,17 +9,6 @@ class Budget:
     def __init__(self):
         self.value = defaults.starting_budget
 
-    def __repr__(self):
-        return super().__repr__()
-
-    def prettyp(self):
-        string = f"Class: {self.__class__.__name__}\n"
-        for key, value in self.__dict__.items():
-            tmp = "\tAttr: " + key + "\n\t" \
-                  + str(value).replace("\n", "\n\t") + "\n"
-            string += tmp
-        return string
-
     def test_func(self):
         return True
 

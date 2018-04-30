@@ -66,4 +66,45 @@ Also need a back function for bokeh plots.
 # https://bokeh.pydata.org/en/latest/docs/gallery/bar_colormapped.html
 prettyp is a temp solution. with plots, there won't be a need for the function
 show_stats anymore.
+
+# Changing of structure: Nested widget, with RBG_labels updated every time
+preceding RBG is selected. So, buy => item category: Res => Res category:
+cloth, then TI.
+
+Also, change GE such that call first commits. Then, GE take first command
+out (buy), and send it to buy(). Buy then take the next command out (Res), and
+send it to either buy_res, or to a generic buy algorithm, with certain
+values substituted (e.g. self.res_price, to identify which price would Res
+correspond to.).
+
+Therefore, a nested variable type? That say send to Res, and Res class in turn
+has a price() and cost(), maybe, then it execute buy().
+
+Structure of the code can be as such:
+
+First, separate Inventory, Market (for prices) objects.
+
+Then, each of them will have a generic callback function.
+
+When GS creates them, it retrieves these callback functions. These functions
+can be used to get information about prices, inventory levels, etc.
+
+Now, GE will have product classes, such as Res and Prod.
+
+When GE creates them, it will supply them with these callback functions, the
+relevant ones for each.
+
+Later on, when say buy_res called:
+GE sees buy_res, call Res.buy(*args)
+
+Res implement buy by using the callback functions supplied to do stuff, either
+retrieve prices and update inventory.
+
+So, GE only deal with these product objects. These are methods to implement
+what the UI wants.
+
+While GS will deal with things like commit, and with the "backend" functions,
+such as Inventory updating itself and market modelling and etc.
+
+
 """

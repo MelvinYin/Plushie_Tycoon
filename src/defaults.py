@@ -97,7 +97,7 @@ starting_prod_price = pd.Series(_s_prod_price, Prod, name="starting_prod_price")
 _history_columns = ["res", "prod", "res_price", "prod_price", "budget", "production",
            "time_steps", "current_call"]
 
-history_init = pd.Series("history_add", field_names=_history_columns)
+history_init = pd.DataFrame(columns=_history_columns)
 
 starting_time = 0
 
@@ -111,7 +111,7 @@ _FigureSetSpecsBase = namedtuple("FigureSetSpecs", _figure_set_indices)
 FigureSetSpecs = _FigureSetSpecsBase(figures_per_row=3)
 
 _figure_iindices = ("name", "title", "x_label", "y_label")
-_FigureSpecBase = namedtuple("FigureIspec", _figure_iindices)
+_FigureSpecBase = namedtuple("FigureSpec", _figure_iindices)
 
 _FigureSpec1 = _FigureSpecBase(Res.cloth, "Res.cloth", "x_", "y_")
 _FigureSpec2 = _FigureSpecBase(Res.stuff, "Res.stuff", "x_", "y_")
@@ -187,7 +187,7 @@ _widget_ispecs_1 = _WidgetIspecsBase(
     format="standard",
     name=Func.buy_res,
     title=Func.buy_res.name,
-    button_label="buy",
+    button_label="button1",
     TI_placeholder="Placeholder",
     RBG_labels=list(Res) + [Others.reset])
 
@@ -195,7 +195,7 @@ _widget_ispecs_2 = _WidgetIspecsBase(
     format="standard",
     name=Func.sell_res,
     title=Func.sell_res.name,
-    button_label="sell",
+    button_label="button2",
     TI_placeholder="Placeholder",
     RBG_labels=list(Res) + [Others.reset])
 
@@ -234,7 +234,7 @@ _widget_ispecs_6 = _WidgetIspecsBase(
 _widget_ispecs = [_widget_ispecs_1, _widget_ispecs_2, _widget_ispecs_3,
                  _widget_ispecs_4, _widget_ispecs_5, _widget_ispecs_6]
 
-_WidgetSpecsBase = namedtuple("WidgetSpecsBase", field_names=_WidgetIspecsBase._fields + _WidgetGspecsBase._fields)
+_WidgetSpecsBase = namedtuple("WidgetSpecs", field_names=_WidgetIspecsBase._fields + _WidgetGspecsBase._fields)
 WidgetSpecs = list([_WidgetSpecsBase(*(ispecs + _widget_gspecs)) for ispecs in _widget_ispecs])
 # Order in *() need to be same as order in fields_, otherwise wrong values
 # get assigned to the field names.

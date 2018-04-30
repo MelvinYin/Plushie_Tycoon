@@ -12,51 +12,100 @@ import re
 from collections import namedtuple
 
 
-# TODO: eventually when parameters are pulled into a config file, spin TI and
-# TODO: other individual widgets into their own separate class.
-# TODO: variable names need to match as well.
-
-class IndividualWidget:
-    def __init__(self, widget_callback, specs):
-        self.name = specs.name
+class ButtonComponent:
+    def __init__(self, specs, widget_callback):
         self.widget_callback = widget_callback
-        self.widget_layout = self._widget_assemble(specs)
+        self.widget = self._set_button(specs)
 
-        self._input_val = None
+    def _set_button(self, specs):
+        button = Button()
+        button.label = specs.button_label
+        button.width = specs.button_intrinsic_width
+        button.height = specs.button_intrinsic_height
+        button.on_click(self.widget_callback)
+        return button
+
+class RBGComponent:
+    def __init__(self, specs, widget_callback=None):
+        if not widget_callback:
+            self.widget_callback = self._default_RBG_callback
+        else:
+            self.widget_callback = widget_callback
         self._RBG_labels = specs.RBG_labels
-        self._TI = self._set_TI(specs)
-        self._header = self._set_header(specs)
-        self._RBG = self._set_RBG(specs)
-        self._button = self._set_button(specs)
-
-
-    def _RBG_callback(self, active_button):
-        # when resetting, RBG_callback is called through on_click, hence
-        # ignore the None value.
-        if self._RBG_labels[active_button].name == 'reset':
-            self._RBG.active = None
-        return
+        self.widget = self._set_RBG(specs)
 
     def _set_RBG(self, specs):
         RBG = RadioButtonGroup()
-        RBG.width = specs.RBG_intrinsic_dim[0]
-        RBG.height = specs.RBG_intrinsic_dim[1]
+        RBG.width = specs.RBG_intrinsic_width
+        RBG.height = specs.RBG_intrinsic_height
         RBG.labels = [label.name for label in self._RBG_labels]
         RBG.active = None
-        RBG.on_click(self._RBG_callback)
+        RBG.on_click(self.widget_callback)
         return RBG
 
-    def _text_callback(self, attr, old, new):
-        self._input_val = new
+    def _default_RBG_callback(self, active_button):
+        """
+        Bokeh RBG on_click triggers, when RBG value has changed, not when it
+        is clicked. Hence, when setting self._RBG.active, _RBG_callback
+        will be called again, leading to an error due to None being sent to
+        self._RBG_labels, hence the need for if not active_button.
+        """
+        if not active_button:
+            return
+        if self._RBG_labels[active_button].name == 'reset':
+            self.widget.active = None
+        return
 
-    def _set_TI(self, specs):
+class TextInputComponent:
+    def __init__(self, Specs, widget_callback):
+        self.widget_callback = widget_callback
+        self.widget = self._set_TI(Specs)
+        self._input_val = None
+
+    def _set_TI(self, Specs):
         TI = TextInput()
-        TI.width = specs.TI_intrinsic_dim[0]
-        TI.height = specs.TI_intrinsic_dim[1]
-        TI.placeholder = specs.TI_placeholder
-        TI.on_change("value", self._text_callback)
+        TI.width = Specs.TI_intrinsic_width
+        TI.height = Specs.TI_intrinsic_height
+        TI.placeholder = Specs.TI_placeholder
+        TI.on_change("value", self.widget_callback)
         TI.title = None
         return TI
+
+class TextBoxComponent:
+    def __init__(self, Specs):
+        self.widget = self._set_TB(Specs)
+
+    def _set_TB(self, Specs):
+        TB = Plot()
+        TB.x_range = DataRange1d()
+        TB.y_range = DataRange1d()
+        TB.width = Specs.text_intrinsic_width
+        TB.height = Specs.text_intrinsic_height
+        TB.x_range = DataRange1d()
+        TB.toolbar.logo = None
+        text_raw = dict(xs=[0], ys=[0], text=[Specs.title])
+        text_CDS = ColumnDataSource(data=text_raw)
+        text = Text(x="xs", y="ys", text="text", text_align="center")
+        TB.add_glyph(text_CDS, text)
+        return TB
+
+
+class IndividualWidget:
+    def __init__(self, widget_callback, Specs):
+        self.name = Specs.name
+        self.widget_callback = widget_callback
+
+        self._input_val = None
+        self._RBG_labels = Specs.RBG_labels
+
+        self._TI = TextInputComponent(Specs, self._TI_callback).widget
+        self._TB = TextBoxComponent(Specs).widget
+        self._RBG = RBGComponent(Specs).widget
+        self._button = ButtonComponent(Specs, self._button_callback).widget
+        self.widget_layout = self._widget_assemble(Specs)
+
+    def _TI_callback(self, attr, old, new):
+        self._input_val = new
 
     def _button_callback(self):
         if not self._input_val:
@@ -71,64 +120,26 @@ class IndividualWidget:
             self.widget_callback(tuple([self.name, (self._RBG_labels[self._RBG.active], int(self._input_val))]))
         return
 
-    def _set_button(self, specs):
-        button = Button()
-        button.label = specs.button_label
-        button.width = specs.button_intrinsic_dim[0]
-        button.height = specs.button_intrinsic_dim[1]
-        button.on_click(self._button_callback)
-        return button
-
-    def _set_header(self, specs):
-        header = Plot()
-        header.x_range = DataRange1d()
-        header.y_range = DataRange1d()
-        header.width = specs.text_intrinsic_dim[0]
-        header.height = specs.text_intrinsic_dim[1]
-        header.x_range = DataRange1d()
-        header.toolbar.logo = None
-        text_raw = dict(xs=[0], ys=[0], text=[specs.title])
-        text_CDS = ColumnDataSource(data=text_raw)
-        text = Text(x="xs", y="ys", text="text", text_align="center")
-        header.add_glyph(text_CDS, text)
-        return header
-
-    def _widget_assemble(self, specs):
-        TI_disp = row(self._TI, width=specs.TI_display_dim[0], height=specs.TI_display_dim[1])
-        RBG_disp = row(self._RBG, width=specs.RBG_display_dim[0], height=specs.RBG_display_dim[1])
-        header_disp = row(self._header, width=specs.text_display_dim[0], height=specs.text_display_dim[1])
-        button_disp = row(self._button, width=specs.button_display_dim[0], height=specs.button_display_dim[1])
+    def _widget_assemble(self, Specs):
+        TI_disp = row(self._TI, width=Specs.TI_display_width, height=Specs.TI_display_height)
+        RBG_disp = row(self._RBG, width=Specs.RBG_display_width, height=Specs.RBG_display_height)
+        header_disp = row(self._TB, width=Specs.text_display_width, height=Specs.text_display_height)
+        button_disp = row(self._button, width=Specs.button_display_width, height=Specs.button_display_height)
         TI_and_button = row(TI_disp, button_disp)
         widget_layout = column(header_disp, RBG_disp, TI_and_button)
         return widget_layout
 
 
 class ButtonWidget:
-    def __init__(self, widget_callback, specs):
-        self.name = specs.name
+    def __init__(self, widget_callback, Specs):
+        self.name = Specs.name
         self.widget_callback = widget_callback
-        self.widget_layout = self._widget_assemble(specs)
 
-        self._RBG_labels = specs.RBG_labels
-        self._header = self._set_header(specs)
-        self._RBG = self._set_RBG(specs)
-        self._button = self._set_button(specs)
-
-    def _RBG_callback(self, active_button):
-        # when resetting, RBG_callback is called through on_click, hence
-        # ignore the None value.
-        if self._RBG_labels[active_button].name == 'reset':
-            self._RBG.active = None
-        return
-
-    def _set_RBG(self, specs):
-        RBG = RadioButtonGroup()
-        RBG.width = specs.RBG_intrinsic_dim[0]
-        RBG.height = specs.RBG_intrinsic_dim[1]
-        RBG.labels = [label.name for label in self._RBG_labels]
-        RBG.active = None
-        RBG.on_click(self._RBG_callback)
-        return RBG
+        self._RBG_labels = Specs.RBG_labels
+        self._TB = TextBoxComponent(Specs).widget
+        self._RBG = RBGComponent(Specs).widget
+        self._button = ButtonComponent(Specs, self._button_callback).widget
+        self.widget_layout = self._widget_assemble(Specs)
 
     def _button_callback(self):
         if self._RBG.active is None:
@@ -137,34 +148,13 @@ class ButtonWidget:
             self.widget_callback((self._RBG_labels[self._RBG.active],))
         return
 
-    def _set_button(self, specs):
-        button = Button()
-        button.label = specs.button_label
-        button.width = specs.button_intrinsic_dim[0]
-        button.height = specs.button_intrinsic_dim[1]
-        button.on_click(self._button_callback)
-        return button
-
-    def _set_header(self, specs):
-        header = Plot()
-        header.x_range = DataRange1d()
-        header.y_range = DataRange1d()
-        header.width = specs.text_intrinsic_dim[0]
-        header.height = specs.text_intrinsic_dim[1]
-        header.x_range = DataRange1d()
-        header.toolbar.logo = None
-        text_raw = dict(xs=[0], ys=[0], text=[specs.title])
-        text_CDS = ColumnDataSource(data=text_raw)
-        text = Text(x="xs", y="ys", text="text", text_align="center")
-        header.add_glyph(text_CDS, text)
-        return header
-
-    def _widget_assemble(self, specs):
-        RBG_disp = row(self._RBG, width=specs.RBG_display_dim[0], height=specs.RBG_display_dim[1])
-        header_disp = row(self._header, width=specs.text_display_dim[0], height=specs.text_display_dim[1])
-        button_disp = row(self._button, width=specs.button_display_dim[0], height=specs.button_display_dim[1])
+    def _widget_assemble(self, Specs):
+        RBG_disp = row(self._RBG, width=Specs.RBG_display_width, height=Specs.RBG_display_height)
+        header_disp = row(self._TB, width=Specs.text_display_width, height=Specs.text_display_height)
+        button_disp = row(self._button, width=Specs.button_display_width, height=Specs.button_display_height)
         widget_layout = column(header_disp, RBG_disp, button_disp)
         return widget_layout
+
 
 
 # if __name__ == "__main__":

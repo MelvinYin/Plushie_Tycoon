@@ -1,6 +1,6 @@
 from bokeh.plotting import figure, output_file, show, ColumnDataSource, curdoc
 from bokeh.models import DataRange1d, HoverTool, BoxZoomTool, PanTool, \
-    WheelZoomTool, ResetTool, UndoTool
+    WheelZoomTool, ResetTool, UndoTool, Plot, Text
 from bokeh.models.tickers import FixedTicker
 
 """
@@ -18,13 +18,13 @@ initial_func_count when fed in should be positive int.
 
 
 class IndividualFigure:
-    def __init__(self, initial_data, specs, initial_func_count = 0):
+    def __init__(self, initial_data, Specs, initial_func_count = 0):
         self.CDS = self._create_initial_CDS(initial_data, initial_func_count)
         self.tick_label_map = self._get_initial_ticks_label_mapping()
-        self.figure = self._set_initial_figure(specs)
+        self.figure = self._set_initial_figure(Specs)
         self._update_xaxis()
 
-        self.name = specs.name
+        self.name = Specs.name
 
     def _create_initial_CDS(self, initial_data, initial_func_count):
         """
@@ -50,7 +50,7 @@ class IndividualFigure:
             func_steps += 1
         return tick_label_map
 
-    def _set_initial_figure(self, specs):
+    def _set_initial_figure(self, Specs):
         hover = HoverTool(
             tooltips=[("Point No.", "@func_steps"),
                       ("Time Step", "@time_steps")],
@@ -81,10 +81,10 @@ class IndividualFigure:
 
         p.xaxis.major_label_overrides = self.tick_label_map
 
-        p.title.text = specs.title
+        p.title.text = Specs.title
         p.title.align = 'center'
-        p.xaxis.axis_label = specs.x_label
-        p.yaxis.axis_label = specs.y_label
+        p.xaxis.axis_label = Specs.x_label
+        p.yaxis.axis_label = Specs.y_label
         p.x("func_steps", "ys", source=self.CDS, name="x", size=10)
         p.line("func_steps", "ys", source=self.CDS)
         return p
@@ -106,6 +106,8 @@ class IndividualFigure:
             self._update_xaxis()
         self.CDS.stream(to_cds)
         return True
+
+
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):

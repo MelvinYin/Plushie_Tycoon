@@ -6,8 +6,8 @@ import defaults
 from budget import Budget
 import copy
 import logging
-from defaults import Func
 import sys
+from collections import defaultdict
 
 
 class GSM:
@@ -21,19 +21,10 @@ class GSM:
         self.production = Production()
         self.current_call = None
 
-        self.time_steps = defaults.starting_time
+        self.current_time = defaults.starting_time
 
-        self.local_history = defaults.history_init
-        self.history = defaults.history_init
-        self.commit(call=Func.start)
+        self.history = defaultdict(list)
 
-    def prettyp(self):
-        string = f"Class: {self.__class__.__name__}\n"
-        for key, value in self.__dict__.items():
-            tmp = "\tAttr: " + key + "\n\t" \
-                  + str(value).replace("\n", "\n\t") + "\n"
-            string += tmp
-        return string
 
     def cost_to_produce(self, category, quantity):
         hour_per_prod = self.production.hours_needed[category]
@@ -43,36 +34,19 @@ class GSM:
 
     def commit(self, call):
         self.current_call = call
-        to_add = defaults.history_add(
-            self.res, self.prod, self.res_price, self.prod_price, self.budget,
-            self.production, self.time_steps, self.current_call)
-        last_index = self.local_history.last_valid_index()
-        if not last_index:
-            self.local_history.loc[0] = to_add
-        else:
-            self.local_history.loc[last_index + 1] = to_add
+        to_add = {key: self.__dict__[key] for key in self.__dict__ if
+                  key != 'history'}
+        self.history[self.current_time].append(to_add)
         return True
-
-    def push(self): # SEE IF CAN REMOVE
-        self.history = self.history.append(self.local_history, ignore_index=True)
-        self.time_steps += 1
-        self.local_history = defaults.history_init
-        self.commit(call=Func.next_turn)
 
     def reverse_call(self):
         """ Called either by user with back, or due to errors encountered
         during function call.
-
-        remove_last_call should be called if commit has been called, aka when
-        the user initiates a back button. Otherwise, if it's exceptions
-        enountered, remove_last_call should be False.
         """
-        last_index = self.local_history.last_valid_index()
-        if not last_index:
+        if len(self.history[self.current_time] == 1):
             return False
-        new_values = self.local_history.iloc[last_index].to_dict()
-        self.local_history.drop(index=last_index, inplace=True)
-        self.__dict__.update(new_values)
+        previous_state = self.history[self.current_time].pop()
+        self.__dict__.update(previous_state)
         return True
 
     def copy(self):

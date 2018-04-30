@@ -8,41 +8,39 @@ from collections import namedtuple
 
 
 class WidgetSet:
-    def __init__(self, widget_callback, widget_gspecs, widget_ispecs):
+    def __init__(self, widget_callback, WidgetSetSpecs, WidgetSpecs):
         self.widget_callback = widget_callback
-        self.widgets = self._construct_individual_widgets(widget_ispecs, widget_gspecs)
-        self.widget_layout = self._get_widget_layout(widget_gspecs)
+        self.widgets = self._construct_individual_widgets(WidgetSpecs)
+        self.widget_layout = self._get_widget_layout(WidgetSetSpecs)
 
-    def _construct_individual_widgets(self, widget_ispecs, widget_gspecs):
+    def _construct_individual_widgets(self, WidgetSpecs):
         widgets = []
-        MergedSpec = namedtuple("widget_spec", widget_ispecs[0]._fields + widget_gspecs._fields)
-        for ispec in widget_ispecs:
-            merged_spec = MergedSpec(*(ispec + widget_gspecs))
-            if ispec.format == "standard":
-                widgets.append(IndividualWidget(self.widget_callback, merged_spec).widget_layout)
-            elif ispec.format == "button":
+        for WidgetSpec in WidgetSpecs:
+            if WidgetSpec.format == "standard":
+                widgets.append(IndividualWidget(self.widget_callback, WidgetSpec))
+            elif WidgetSpec.format == "button":
                 widgets.append(ButtonWidget(self.widget_callback,
-                                                merged_spec).widget_layout)
+                                            WidgetSpec))
             else:
                 print("Unrecognised widget format.")
                 raise Exception
         return widgets
 
-    def _get_widget_layout(self, widget_gspecs):
+    def _get_widget_layout(self, WidgetSetSpecs):
         row_layouts = []
         tmp_row = []
         for widget in self.widgets:
-            tmp_row.append(widget)
-            if len(tmp_row) == widget_gspecs.widgets_per_row:
+            tmp_row.append(widget.widget_layout)
+            if len(tmp_row) == WidgetSetSpecs.widgets_per_row:
                 _row = row(tmp_row)
-                _row.width = widget_gspecs.row_width
-                _row.height = widget_gspecs.row_height
+                _row.width = WidgetSetSpecs.row_width
+                _row.height = WidgetSetSpecs.row_height
                 row_layouts.append(_row)
                 tmp_row = []
         if tmp_row:
             _row = row(tmp_row)
-            _row.width = widget_gspecs.row_width
-            _row.height = widget_gspecs.row_height
+            _row.width = WidgetSetSpecs.row_width
+            _row.height = WidgetSetSpecs.row_height
             row_layouts.append(_row)
         widget_layout = column(*row_layouts)
         return widget_layout

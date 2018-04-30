@@ -11,18 +11,16 @@ Assume initial_func_count must be an int => equal across all figures.
 """
 
 class FigureSet:
-    def __init__(self, full_data, figure_gspecs, figure_ispecs, initial_func_count=0):
-        self.FigureInstances = self._construct_individual_figures(full_data, initial_func_count, figure_ispecs)
+    def __init__(self, full_data, FigureSetSpecs, FigureSpecs, initial_func_count=0):
+        self.FigureInstances = self._construct_individual_figures(full_data, initial_func_count, FigureSpecs)
         self._couple_range()
-        self.figure_layout = self._get_figure_layout(figure_gspecs)
+        self.figure_layout = self._get_figure_layout(FigureSetSpecs)
 
-    def _construct_individual_figures(self, full_data, initial_func_count, figure_ispecs):
+    def _construct_individual_figures(self, full_data, initial_func_count, FigureSpecs):
         FigureInstances = []
-        for figure_spec in figure_ispecs:
-            print(full_data)
-            print("")
-            data = full_data[figure_spec.name]
-            FigureInstances.append(IndividualFigure(data, figure_spec, initial_func_count))
+        for FigureSpec in FigureSpecs:
+            data = full_data[FigureSpec.name]
+            FigureInstances.append(IndividualFigure(data, FigureSpec, initial_func_count))
         return FigureInstances
 
     def _couple_range(self):
@@ -31,12 +29,12 @@ class FigureSet:
             FigureInstances.figure.x_range = ref_x_range
         return True
 
-    def _get_figure_layout(self, figure_gspecs):
+    def _get_figure_layout(self, FigureSetSpecs):
         row_layouts = []
         tmp_row = []
         for FigureInstances in self.FigureInstances:
             tmp_row.append(FigureInstances.figure)
-            if len(tmp_row) == figure_gspecs.figures_per_row:
+            if len(tmp_row) == FigureSetSpecs.figures_per_row:
                 row_layouts.append(row(tmp_row))
                 tmp_row = []
         if tmp_row:
@@ -52,8 +50,8 @@ class FigureSet:
                     FigureInstance.figure_update(value)
                     found_fig = True
                     break
-            if not found_fig:
-                raise Exception
+            # if not found_fig:
+            #     raise Exception
         return True
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
@@ -61,7 +59,7 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
         import sys
         import os
         sys.path.append(os.getcwd().rsplit("\\", 1)[0])
-        from defaults import figure_ispec_1, figure_ispec_5, figure_gspecs
+        from defaults import FigureSpecs, FigureSetSpecs
 
         import random
         random.seed(10)
