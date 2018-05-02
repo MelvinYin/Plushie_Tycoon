@@ -1,16 +1,12 @@
-from bokeh.models import Text
-from bokeh.models.widgets import Button
-from bokeh.models.plots import Plot
-from bokeh.models import DataRange1d
+from bokeh.models.widgets import Button, Div
 from bokeh.models.widgets.inputs import TextInput
 from bokeh.models.widgets import RadioButtonGroup
 
-from bokeh.plotting import output_file, show, ColumnDataSource, curdoc
+from bokeh.plotting import output_file, show, curdoc
 from bokeh.layouts import row, column
 import re
-
-from collections import namedtuple
-
+import sys
+sys.path.append("../")
 
 class ButtonComponent:
     def __init__(self, specs, widget_callback):
@@ -19,182 +15,203 @@ class ButtonComponent:
 
     def _set_button(self, specs):
         button = Button()
-        button.label = specs.button_label
-        button.width = specs.button_intrinsic_width
-        button.height = specs.button_intrinsic_height
+        button.label = specs.label
+        button.width = specs.width
+        button.height = specs.height
         button.on_click(self.widget_callback)
         return button
 
 class RBGComponent:
-    def __init__(self, specs, widget_callback=None):
-        if not widget_callback:
-            self.widget_callback = self._default_RBG_callback
-        else:
-            self.widget_callback = widget_callback
-        self._RBG_labels = specs.RBG_labels
-        self.widget = self._set_RBG(specs)
+    def __init__(self, specs, callback=None):
+        self.widget = self._set_RBG(specs, callback)
 
-    def _set_RBG(self, specs):
+    def _set_RBG(self, specs, callback):
         RBG = RadioButtonGroup()
-        RBG.width = specs.RBG_intrinsic_width
-        RBG.height = specs.RBG_intrinsic_height
-        RBG.labels = [label.name for label in self._RBG_labels]
+        RBG.width = specs.width
+        RBG.height = specs.height
+        RBG.labels = [specs.labelmap[label] for label in specs.labels]
         RBG.active = None
-        RBG.on_click(self.widget_callback)
+        if callback:
+            RBG.on_click(callback)
         return RBG
 
-    def _default_RBG_callback(self, active_button):
-        """
-        Bokeh RBG on_click triggers, when RBG value has changed, not when it
-        is clicked. Hence, when setting self._RBG.active, _RBG_callback
-        will be called again, leading to an error due to None being sent to
-        self._RBG_labels, hence the need for if not active_button.
-        """
-        if not active_button:
-            return
-        if self._RBG_labels[active_button].name == 'reset':
-            self.widget.active = None
-        return
-
 class TextInputComponent:
-    def __init__(self, Specs, widget_callback):
+    def __init__(self, specs, widget_callback):
         self.widget_callback = widget_callback
-        self.widget = self._set_TI(Specs)
+        self.widget = self._set_TI(specs)
         self._input_val = None
 
-    def _set_TI(self, Specs):
+    def _set_TI(self, specs):
         TI = TextInput()
-        TI.width = Specs.TI_intrinsic_width
-        TI.height = Specs.TI_intrinsic_height
-        TI.placeholder = Specs.TI_placeholder
+        TI.width = specs.width
+        TI.height = specs.height
+        TI.placeholder = specs.placeholder
         TI.on_change("value", self.widget_callback)
         TI.title = None
         return TI
 
 class TextBoxComponent:
-    def __init__(self, Specs):
-        self.widget = self._set_TB(Specs)
+    def __init__(self, specs):
+        self.widget = self._set_TB(specs)
 
-    def _set_TB(self, Specs):
-        TB = Plot()
-        TB.x_range = DataRange1d()
-        TB.y_range = DataRange1d()
-        TB.width = Specs.text_intrinsic_width
-        TB.height = Specs.text_intrinsic_height
-        TB.x_range = DataRange1d()
-        TB.toolbar.logo = None
-        text_raw = dict(xs=[0], ys=[0], text=[Specs.title])
-        text_CDS = ColumnDataSource(data=text_raw)
-        text = Text(x="xs", y="ys", text="text", text_align="center")
-        TB.add_glyph(text_CDS, text)
+    def _set_TB(self, specs):
+        TB = Div(text=specs.title)
+        TB.width = specs.width
+        TB.height = specs.height
         return TB
 
 
 class IndividualWidget:
-    def __init__(self, widget_callback, Specs):
-        self.name = Specs.name
+    def __init__(self, widget_callback, specs):
+        self.name = specs.name
+        self.specs = specs
         self.widget_callback = widget_callback
-
         self._input_val = None
-        self._RBG_labels = Specs.RBG_labels
 
-        self._TI = TextInputComponent(Specs, self._TI_callback).widget
-        self._TB = TextBoxComponent(Specs).widget
-        self._RBG = RBGComponent(Specs).widget
-        self._button = ButtonComponent(Specs, self._button_callback).widget
-        self.widget_layout = self._widget_assemble(Specs)
+        self._input_box = TextInputComponent(specs.TI, self._TI_callback).widget
+        self._header = TextBoxComponent(specs.header).widget
+        self._RBG1 = RBGComponent(specs.RBG1).widget
+        self._RBG2 = RBGComponent(specs.RBG2, self._RBG2_callback).widget
+        self._RBG3 = RBGComponent(specs.RBG3).widget
+        self._button = ButtonComponent(specs.button, self._button_callback).widget
+        self.layout = self._assemble_layout(specs.width, specs.height, specs.layout)
+
+    def _RBG2_callback(self, active_button):
+        label_string = self._RBG2.labels[active_button]
+        for key, label in self.specs.RBG2.labelmap.items():
+            if label == label_string:
+                category = key
+                break
+        # noinspection PyUnboundLocalVariable
+        self._RBG3.labels = list(
+            [self.specs.RBG3.labelmap[val] for val in list(category)])
+        self._RBG3.active = None
+        return
+
+    def _build_row(self, specs, components):
+        assert len(specs.spacers) == len(components)
+        row_elements = []
+        for i in range(len(components)):
+            row_elements.append(Div(width=specs.spacers[i]))
+            row_elements.append(components[i])
+        to_display = row(*row_elements, height=specs.height, width=specs.width)
+        return to_display
+
+    def _assemble_layout(self, width, height, specs):
+        header = self._build_row(specs[0], [self._header])
+        rbg1 = self._build_row(specs[1], [self._RBG1])
+        rbg2 = self._build_row(specs[2], [self._RBG2])
+        rbg3 = self._build_row(specs[3], [self._RBG3])
+        inputbox = self._build_row(specs[4], [self._input_box])
+        button = self._build_row(specs[5], [self._button])
+        layout = column(header, rbg1, rbg2, rbg3, inputbox, button, width=width, height=height)
+        return layout
 
     def _TI_callback(self, attr, old, new):
         self._input_val = new
 
     def _button_callback(self):
-        if not self._input_val:
-            print("Value not set.")
-        elif self._RBG.active is None:
+        if self._RBG1.active is None:
             print("No category selected.")
+        elif self._RBG2.active is None:
+            print("No category selected.")
+        elif self._RBG3.active is None:
+            print("No category selected.")
+        elif not self._input_val:
+            print("Value not set.")
         elif not re.fullmatch("[0-9]+", self._input_val.strip()):
             print("Invalid input value.")
         elif self._input_val.startswith("0"):
             print("Invalid input value.")
         else:
-            self.widget_callback(tuple([self.name, (self._RBG_labels[self._RBG.active], int(self._input_val))]))
+            RBG1_label = self._RBG1.labels[self._RBG1.active]
+            for key, label in self.specs.RBG1.labelmap.items():
+                if label == RBG1_label:
+                    RBG1_key = key
+                    break
+            RBG2_label = self._RBG2.labels[self._RBG2.active]
+            for key, label in self.specs.RBG2.labelmap.items():
+                if label == RBG2_label:
+                    RBG2_key = key
+                    break
+            RBG3_label = self._RBG3.labels[self._RBG3.active]
+            for key, label in self.specs.RBG3.labelmap.items():
+                if label == RBG3_label:
+                    RBG3_key = key
+                    break
+            if 'RBG1_key' not in locals() or \
+                    'RBG2_key' not in locals() or \
+                    'RBG3_key' not in locals():
+                raise Exception
+            # noinspection PyUnboundLocalVariable
+            self.widget_callback([
+                self.name,
+                (RBG1_key, RBG2_key, RBG3_key,
+                int(self._input_val))])
         return
-
-    def _widget_assemble(self, Specs):
-        TI_disp = row(self._TI, width=Specs.TI_display_width, height=Specs.TI_display_height)
-        RBG_disp = row(self._RBG, width=Specs.RBG_display_width, height=Specs.RBG_display_height)
-        header_disp = row(self._TB, width=Specs.text_display_width, height=Specs.text_display_height)
-        button_disp = row(self._button, width=Specs.button_display_width, height=Specs.button_display_height)
-        TI_and_button = row(TI_disp, button_disp)
-        widget_layout = column(header_disp, RBG_disp, TI_and_button)
-        return widget_layout
 
 
 class ButtonWidget:
-    def __init__(self, widget_callback, Specs):
-        self.name = Specs.name
-        self.widget_callback = widget_callback
-
-        self._RBG_labels = Specs.RBG_labels
-        self._TB = TextBoxComponent(Specs).widget
-        self._RBG = RBGComponent(Specs).widget
-        self._button = ButtonComponent(Specs, self._button_callback).widget
-        self.widget_layout = self._widget_assemble(Specs)
+    def __init__(self, callback, specs):
+        self.name = specs.name
+        self.callback = callback
+        self._header = TextBoxComponent(specs.header).widget
+        self._RBG = RBGComponent(specs.RBG).widget
+        self._button = ButtonComponent(specs.button, self._button_callback).widget
+        self.layout = self._assemble_layout(specs.width, specs.height, specs.layout)
 
     def _button_callback(self):
         if self._RBG.active is None:
             print("No category selected.")
         else:
-            self.widget_callback((self._RBG_labels[self._RBG.active],))
+            self.callback((
+                self.name,
+                (self._RBG.labels[self._RBG.active],)))
         return
 
-    def _widget_assemble(self, Specs):
-        RBG_disp = row(self._RBG, width=Specs.RBG_display_width, height=Specs.RBG_display_height)
-        header_disp = row(self._TB, width=Specs.text_display_width, height=Specs.text_display_height)
-        button_disp = row(self._button, width=Specs.button_display_width, height=Specs.button_display_height)
-        widget_layout = column(header_disp, RBG_disp, button_disp)
-        return widget_layout
+    def _build_row(self, specs, components):
+        assert len(specs.spacers) == len(components)
+        row_elements = []
+        for i in range(len(components)):
+            row_elements.append(Div(width=specs.spacers[i]))
+            row_elements.append(components[i])
+        to_display = row(*row_elements, height=specs.height, width=specs.width)
+        return to_display
+
+    def _assemble_layout(self, width, height, specs):
+        row0 = self._build_row(specs[0], [self._header])
+        row1 = self._build_row(specs[1], [self._RBG, self._button])
+        layout = column(row0, row1, width=width, height=height)
+        return layout
 
 
 
-# if __name__ == "__main__":
-#     output_file("../../bokeh_tmp/line.html")
-#     figure_set = IndividualWidget().widget_set
-#     show(figure_set)
 
 # For testing
 
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from collections import namedtuple
-    import sys
-    import os
-    sys.path.append(os.getcwd().rsplit("\\", 1)[0])
-    from defaults import widget_ispecs_1, widget_ispecs_6, widget_gspecs
+    from defaults import widget_specs
 
     def widget_callback(command_to_run):
         print("from widget callback")
         print(command_to_run)
         return
 
-    MergedSpec = namedtuple("widget_spec", widget_ispecs_1._fields + widget_gspecs._fields)
-    merged_spec_1 = MergedSpec(*(widget_ispecs_1 + widget_gspecs))
-    merged_spec_2 = MergedSpec(*(widget_ispecs_6 + widget_gspecs))
+    widget_1 = IndividualWidget(widget_callback, widget_specs[0])
 
-    output_file("../../bokeh_tmp/line.html")
+    widget_1.widget_callback((widget_specs[0].name,
+                              (widget_specs[0].RBG1.labels[0],
+                               widget_specs[0].RBG2.labels[0],
+                               widget_specs[0].RBG3.labels[0],
+                               10)))
 
-    widget_1 = IndividualWidget(widget_callback, merged_spec_1)
-    widget_2 = ButtonWidget(widget_callback, merged_spec_2)
+    widget_2 = ButtonWidget(widget_callback, widget_specs[1])
 
-    widget_1.widget_callback((merged_spec_1.name, (merged_spec_1.RBG_labels[0], 10)))
-    widget_2.widget_callback(
-        (merged_spec_2.name, (merged_spec_2.RBG_labels[0], 10)))
-    widget_2._button_callback()
-
-    layout_w1 = widget_1.widget_layout
-    layout_w2 = widget_2.widget_layout
-    show(row(layout_w1, layout_w2))
-    curdoc().add_root(row(layout_w1, layout_w2))
+    layout_w1 = widget_1.layout
+    layout2 = widget_2.layout
+    show(row(layout_w1, layout2))
+    curdoc().add_root(row(layout_w1))
 
 # Expected output: tuple(<Func.something>, <Res.something>, int of quantity)

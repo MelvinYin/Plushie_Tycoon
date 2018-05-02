@@ -37,21 +37,18 @@ class ProdPrice(Enum):
 @unique
 class Others(Enum):
     next_turn = 1
-    reset = 2
     quit = 3
 
 # Function signal values for internal use
 @unique
 class Func(Enum):
-    buy_res = auto()
-    sell_res = auto()
-    buy_prod = auto()
-    make_prod = auto()
-    sell_prod = auto()
+    buy = auto()
+    sell = auto()
+    make = auto()
     save = auto()
     load = auto()
     quit = auto()
-    next_turn = auto()
+    next = auto()
     back = auto()
     start = auto()
 
@@ -107,20 +104,15 @@ save_file_name = "game_save.pkl"
 ###############################################################################
 # Figure Attributes
 _figure_set_indices = ("figures_per_row",)
-_FigureSetSpecsBase = namedtuple("FigureSetSpecs", _figure_set_indices)
-FigureSetSpecs = _FigureSetSpecsBase(figures_per_row=3)
+_FigureSetSpecs = namedtuple("FigureSetSpecs", _figure_set_indices)
+figure_setspecs = _FigureSetSpecs(figures_per_row=3)
 
 _figure_iindices = ("name", "title", "x_label", "y_label")
 _FigureSpecBase = namedtuple("FigureSpec", _figure_iindices)
 
-_FigureSpec1 = _FigureSpecBase(Res.cloth, "Res.cloth", "x_", "y_")
-_FigureSpec2 = _FigureSpecBase(Res.stuff, "Res.stuff", "x_", "y_")
-_FigureSpec3 = _FigureSpecBase(Res.accessory, "Res.accessory", "x_", "y_")
-_FigureSpec4 = _FigureSpecBase(Res.packaging, "Res.packaging", "x_", "y_")
+_FigureSpec1 = _FigureSpecBase(Res, "Res plot", "x_", "y_")
 
-_FigureSpec5 = _FigureSpecBase(Prod.aisha, "Prod.aisha", "x_", "y_")
-_FigureSpec6 = _FigureSpecBase(Prod.beta, "Prod.beta", "x_", "y_")
-_FigureSpec7 = _FigureSpecBase(Prod.chama, "Prod.chama", "x_", "y_")
+_FigureSpec5 = _FigureSpecBase(Prod, "Prod plot", "x_", "y_")
 
 _FigureSpec8 = _FigureSpecBase(ResPrice.cloth, "ResPrice.cloth", "x_", "y_")
 _FigureSpec9 = _FigureSpecBase(ResPrice.stuff, "ResPrice.stuff", "x_", "y_")
@@ -134,110 +126,195 @@ _FigureSpec15 = _FigureSpecBase(Production.hours_needed, "Production.hours_neede
 _FigureSpec16 = _FigureSpecBase(Production.cost_per_hour, "Production.cost_per_hour", "x_", "y_")
 _FigureSpec17 = _FigureSpecBase(Production.res_cost, "Production.res_cost", "x_", "y_")
 
-FigureSpecs = [_FigureSpec1, _FigureSpec2, _FigureSpec3, _FigureSpec4,
-               _FigureSpec5, _FigureSpec6, _FigureSpec7, _FigureSpec8,
-               _FigureSpec9, _FigureSpec10, _FigureSpec11, _FigureSpec12,
-               _FigureSpec13, _FigureSpec14]
+# FigureSpecs = [_FigureSpec1, _FigureSpec5, _FigureSpec9, _FigureSpec10, _FigureSpec11, _FigureSpec12,
+#                _FigureSpec13, _FigureSpec14]
+
+figure_specs = [_FigureSpec1, _FigureSpec5]
 
 
 # Widget Attributes
-_widget_set_indices = ("widgets_per_row", "row_width", "row_height")
-_WidgetSetSpecsBase = namedtuple("WidgetSetSpecs", _widget_set_indices)
-WidgetSetSpecs = _WidgetSetSpecsBase(widgets_per_row=3,
-                                  row_width=5000,
-                                  row_height=200)    # Distance between widget set rows
+_widget_set_indices = ("widgets_per_row", "width", "height")
+_WidgetSetSpecs = namedtuple("WidgetSetSpecs", _widget_set_indices)
+widget_setspecs = _WidgetSetSpecs(widgets_per_row=3,
+                                  width=0,
+                                  height=0)    # Distance between widget set rows
+class Tmp1(Enum):
+    Function=auto()
+    Two=auto()
+    Three=auto()
 
-_widget_gindices = ["text_intrinsic_width", "text_intrinsic_height",
-                   "text_display_width", "text_display_height",
-                   "RBG_intrinsic_width", "RBG_intrinsic_height",
-                   "RBG_display_width", "RBG_display_height",
-                   "TI_intrinsic_width", "TI_intrinsic_height",
-                   "TI_display_width", "TI_display_height",
-                   "button_intrinsic_width", "button_intrinsic_height",
-                   "button_display_width", "button_display_height"]
+class Tmp2(Enum):
+    Category=auto()
+    Two2=auto()
 
-_WidgetGspecsBase = namedtuple("WidgetGspecs", _widget_gindices)
+class Tmp3(Enum):
+    Specific=auto()
+    Two2=auto()
+    Three2=auto()
+    Four2=auto()
 
-_widget_gspecs = _WidgetGspecsBase(
-    text_intrinsic_width=250, # Text box
-    text_intrinsic_height=50,
-    text_display_width=0,
-    text_display_height=40,   # Determine how close RBG is
 
-    RBG_intrinsic_width=400,  # Determine when break between rows happen
-    RBG_intrinsic_height=0,
-    RBG_display_width=0,
-    RBG_display_height=40,    # determine how close TI and button is
 
-    TI_intrinsic_width=1,     # size of text_box, with a minimum
-    TI_intrinsic_height=1,
-    TI_display_width=180,     # fix overall widget width together with
-    TI_display_height=0,      # button_display_width
+class Widget_1_Specs:
+    def __init__(self):
+        self.id = 'standard'
+        self.name = Func
+        self.width = 350
+        self.height = 0
+        self.header = self.set_header()
+        self.RBG1 = self.set_RBG1()
+        self.RBG2 = self.set_RBG2()
+        self.RBG3 = self.set_RBG3()
+        self.TI = self.set_TI()
+        self.button = self.set_button()
+        self.layout = self.set_layout()
 
-    button_intrinsic_width=50,  # Size of button
-    button_intrinsic_height=0,
-    button_display_width=150,   # Spacing between widgets in same row.
-    button_display_height=100)   # Spacing between widget cols
+    def set_header(self):
+        Header = namedtuple("Header", 'width height title')
+        header = Header(width=0,  # Text box
+                        height=0,
+                        title='TITLE123')
+        return header
 
-_widget_iindices = ["format", "name", "title", "button_label", "TI_placeholder", "RBG_labels"]
+    def set_RBG1(self):
+        labelmap = dict()
+        labelmap[Func.buy] = "Func 1"
+        labelmap[Func.sell] = "Func 2"
+        RBG_ = namedtuple("RBG", 'width height labels labelmap')
+        RBG = RBG_(width=400,
+                   height=17,
+                   labels=[Func.buy, Func.sell],
+                   labelmap = labelmap)
+        return RBG
 
-_WidgetIspecsBase = namedtuple("WidgetIspecs", _widget_iindices)
+    def set_RBG2(self):
+        labelmap = dict()
+        labelmap[Res] = "Cat 1"
+        labelmap[Prod] = "Cat 2"
+        RBG_ = namedtuple("RBG", 'width height labels labelmap')
+        RBG = RBG_(width=400,
+                   height=17,
+                   labels=[Res, Prod],
+                   labelmap = labelmap)
+        return RBG
 
-_widget_ispecs_1 = _WidgetIspecsBase(
-    format="standard",
-    name=Func.buy_res,
-    title=Func.buy_res.name,
-    button_label="button1",
-    TI_placeholder="Placeholder",
-    RBG_labels=list(Res) + [Others.reset])
+    def set_RBG3(self):
+        labelmap = dict()
+        labelmap[Res.cloth] = "Prod 1"
+        labelmap[Res.stuff] = "Prod 2"
+        labelmap[Res.accessory] = "Prod 3"
+        labelmap[Res.packaging] = "Prod 4"
+        labelmap[Prod.aisha] = "Prod 5"
+        labelmap[Prod.beta] = "Prod 6"
+        labelmap[Prod.chama] = "Prod 7"
+        RBG_ = namedtuple("RBG", 'width height labels labelmap')
+        RBG = RBG_(width=400,
+                   height=17,
+                   labels=list(Res),
+                   labelmap=labelmap)
+        return RBG
 
-_widget_ispecs_2 = _WidgetIspecsBase(
-    format="standard",
-    name=Func.sell_res,
-    title=Func.sell_res.name,
-    button_label="button2",
-    TI_placeholder="Placeholder",
-    RBG_labels=list(Res) + [Others.reset])
+    def set_TI(self):
+        TI_ = namedtuple("Header", 'width height placeholder')
+        TI = TI_(width=1,  # Text box
+                 height=1,
+                 placeholder='PLACEHOLDER123')
+        return TI
 
-_widget_ispecs_3 = _WidgetIspecsBase(
-    format="standard",
-    name=Func.buy_prod,
-    title=Func.buy_prod.name,
-    button_label="buy",
-    TI_placeholder="Placeholder",
-    RBG_labels=list(Prod) + [Others.reset])
+    def set_button(self):
+        Button = namedtuple("Header", 'width height label')
+        button = Button(width=50,  # Size of button
+                        height=0,
+                        label="button123")
+        return button
 
-_widget_ispecs_4 = _WidgetIspecsBase(
-    format="standard",
-    name=Func.make_prod,
-    title=Func.make_prod.name,
-    button_label="make",
-    TI_placeholder="Placeholder",
-    RBG_labels=list(Prod) + [Others.reset])
+    def set_layout(self):
+        Row_Specs = namedtuple("Row_Specs",
+            field_names=['height', 'width', 'spacers'])
 
-_widget_ispecs_5 = _WidgetIspecsBase(
-    format="standard",
-    name=Func.sell_prod,
-    title=Func.sell_prod.name,
-    button_label="sell",
-    TI_placeholder="Placeholder",
-    RBG_labels=list(Prod) + [Others.reset])
+        header = Row_Specs(height=30,
+                         width=100,  # Determine how close RBG is
+                         spacers=[0])
 
-_widget_ispecs_6 = _WidgetIspecsBase(
-    format="button",
-    name=Others,
-    title="Others",
-    button_label="Submit",
-    TI_placeholder="",
-    RBG_labels=list([Func.next_turn, Others.reset, Func.quit]))
+        rbg1 = Row_Specs(height=40,
+                         width=50,  # Determine when break between rows happen
+                         spacers=[0])
 
-_widget_ispecs = [_widget_ispecs_1, _widget_ispecs_2, _widget_ispecs_3,
-                 _widget_ispecs_4, _widget_ispecs_5, _widget_ispecs_6]
+        rbg2 = Row_Specs(height=40,
+                         width=20,  # Determine how close RBG is
+                         spacers=[0])
 
-_WidgetSpecsBase = namedtuple("WidgetSpecs", field_names=_WidgetIspecsBase._fields + _WidgetGspecsBase._fields)
-WidgetSpecs = list([_WidgetSpecsBase(*(ispecs + _widget_gspecs)) for ispecs in _widget_ispecs])
-# Order in *() need to be same as order in fields_, otherwise wrong values
-# get assigned to the field names.
+        rbg3 = Row_Specs(height=30,
+                         width=0,  # Determine how close RBG is
+                         spacers=[0])
+
+        ti = Row_Specs(height=17,  # Spacing between widget cols
+                         width=10,  # Spacing between widgets in same row.
+                         spacers=[0])
+
+        button = Row_Specs(height=0,  # Spacing between widget cols
+                         width=200,  # Spacing between widgets in same row.
+                         spacers=[0])
+
+        layout = [header, rbg1, rbg2, rbg3, ti, button]
+        return layout
+
+
+
+class Widget_2_Specs:
+    def __init__(self):
+        self.id = 'button'
+        self.name = Func
+        self.width = 0
+        self.height = 0
+        self.header = self.set_header()
+        self.RBG = self.set_RBG()
+        self.button = self.set_button()
+        self.layout = self.set_layout()
+
+    def set_header(self):
+        Header = namedtuple("Header", 'width height title')
+        header = Header(width=0,  # Text box
+                        height=0,
+                        title='TITLE123')
+        return header
+
+    def set_RBG(self):
+
+        labelmap = dict()
+        labelmap[Func.next] = "Func 1"
+        labelmap[Func.save] = "Func 2"
+        labelmap[Func.quit] = "Func 3"
+        RBG_ = namedtuple("RBG", 'width height labels labelmap')
+        RBG = RBG_(width=250,
+                   height=17,
+                   labels=[Func.next, Func.save, Func.quit],
+                   labelmap=labelmap)
+        return RBG
+
+    def set_button(self):
+        Button = namedtuple("Header", 'width height label')
+        button = Button(width=0,  # Size of button
+                        height=0,
+                        label="button123")
+        return button
+
+    def set_layout(self):
+        Row_Specs = namedtuple("Row_Specs",
+            field_names=['height', 'width', 'spacers'])
+
+        row0 = Row_Specs(height=30,
+                         width=100,  # Determine how close RBG is
+                         spacers=[0])
+
+        row1 = Row_Specs(height=40,
+                         width=0,  # Determine when break between rows happen
+                         spacers=[0, 0])
+
+        layout = [row0, row1]
+        return layout
+
+widget_specs = [Widget_1_Specs(), Widget_2_Specs()]
 
 ###############################################################################
 

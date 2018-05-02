@@ -108,3 +108,8 @@ such as Inventory updating itself and market modelling and etc.
 
 
 """
+
+
+# TODO: Task 1: merge Res, Prod, Res Price, Prod Price
+# TODO: Task 2: create a widget button that alternate between displaying
+# TODO: each Res, prod, etc, with a display_all.

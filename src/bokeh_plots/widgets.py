@@ -8,49 +8,44 @@ from collections import namedtuple
 
 
 class WidgetSet:
-    def __init__(self, widget_callback, WidgetSetSpecs, WidgetSpecs):
-        self.widget_callback = widget_callback
-        self.widgets = self._construct_individual_widgets(WidgetSpecs)
-        self.widget_layout = self._get_widget_layout(WidgetSetSpecs)
+    def __init__(self, callback, setspecs, specs):
+        self.widgets = self._construct_individual_widgets(specs, callback)
+        self.layout = self._assemble_layout(setspecs)
 
-    def _construct_individual_widgets(self, WidgetSpecs):
+    def _construct_individual_widgets(self, specs, callback):
         widgets = []
-        for WidgetSpec in WidgetSpecs:
-            if WidgetSpec.format == "standard":
-                widgets.append(IndividualWidget(self.widget_callback, WidgetSpec))
-            elif WidgetSpec.format == "button":
-                widgets.append(ButtonWidget(self.widget_callback,
-                                            WidgetSpec))
+        for spec in specs:
+            if spec.id == "standard":
+                widgets.append(IndividualWidget(callback, spec))
+            elif spec.id == "button":
+                widgets.append(ButtonWidget(callback, spec))
             else:
                 print("Unrecognised widget format.")
                 raise Exception
         return widgets
 
-    def _get_widget_layout(self, WidgetSetSpecs):
+    def _assemble_layout(self, setspecs):
         row_layouts = []
         tmp_row = []
         for widget in self.widgets:
-            tmp_row.append(widget.widget_layout)
-            if len(tmp_row) == WidgetSetSpecs.widgets_per_row:
+            tmp_row.append(widget.layout)
+            if len(tmp_row) == setspecs.widgets_per_row:
                 _row = row(tmp_row)
-                _row.width = WidgetSetSpecs.row_width
-                _row.height = WidgetSetSpecs.row_height
+                _row.width = setspecs.width
+                _row.height = setspecs.height
                 row_layouts.append(_row)
                 tmp_row = []
         if tmp_row:
             _row = row(tmp_row)
-            _row.width = WidgetSetSpecs.row_width
-            _row.height = WidgetSetSpecs.row_height
+            _row.width = setspecs.width
+            _row.height = setspecs.height
             row_layouts.append(_row)
-        widget_layout = column(*row_layouts)
-        return widget_layout
+        layout = column(*row_layouts)
+        return layout
 
 # For testing
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    import sys
-    import os
-    sys.path.append(os.getcwd().rsplit("\\", 1)[0])
-    from defaults import widget_ispecs_1, widget_ispecs_3, widget_gspecs, widget_ispecs_6
+    from defaults import widget_setspecs, widget_specs
 
     def widget_callback(command_to_run):
         print("from widget callback")
@@ -58,8 +53,7 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
         return
 
     output_file("../../bokeh_tmp/line.html")
-    layout_w = WidgetSet(widget_callback, widget_gspecs,
-                         [widget_ispecs_1, widget_ispecs_3, widget_ispecs_6]).widget_layout
+    layout_w = WidgetSet(widget_callback, widget_setspecs, widget_specs).layout
     if __name__ == "__main__":
         show(layout_w)
     else:

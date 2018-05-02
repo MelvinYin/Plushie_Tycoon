@@ -2,6 +2,7 @@ from bokeh.plotting import figure, output_file, show, ColumnDataSource, curdoc
 from bokeh.models import DataRange1d, HoverTool, BoxZoomTool, PanTool, \
     WheelZoomTool, ResetTool, UndoTool, Plot, Text
 from bokeh.models.tickers import FixedTicker
+import numpy as np
 
 """
 Only data that needs to be reflected in graph or hover, should be in CDS.
@@ -13,47 +14,78 @@ Func_steps start from len(initial_data) so it is always about the next function
 call.
 
 initial_func_count when fed in should be positive int.
-"""
+
 # TODO: back function
+"""
+
+
+"""
+xs = func_steps
+
+Initial data should have key as each of the key, no time_step.
+
+Because when loading data, we 
+"""
+
+
+
 
 
 class IndividualFigure:
-    def __init__(self, initial_data, Specs, initial_func_count = 0):
-        self.CDS = self._create_initial_CDS(initial_data, initial_func_count)
+    def __init__(self, initial_data, Specs):
+        self._check_initial_data(initial_data)
+        self.initial_data = initial_data
+        self.CDS = self._create_initial_CDS(initial_data)
         self.tick_label_map = self._get_initial_ticks_label_mapping()
         self.figure = self._set_initial_figure(Specs)
         self._update_xaxis()
-
         self.name = Specs.name
 
-    def _create_initial_CDS(self, initial_data, initial_func_count):
+    def _check_initial_data(self, data):
+        assert data
+        num_values = None
+        for value in data.values():
+            assert isinstance(value, list)
+            if num_values is None:
+                num_values = len(value)
+                continue
+            assert len(value) == num_values
+        return True
+
+    def _check_add_data(self, data):
+        assert data
+        for value in data.values():
+            assert isinstance(value, list)
+            assert len(value) == 1
+        return True
+
+    def _create_initial_CDS(self, initial_data):
         """
         Dict sent to CDS should have list instead of tuple as values, otherwise
         CDS.stream will fail.
         """
-        time_steps, ys = zip(*initial_data)
-        func_steps = max(0, initial_func_count)
-        to_CDS = dict(func_steps=list(range(func_steps, func_steps + len(time_steps))), ys=list(ys), time_steps=list(time_steps))
-        CDS = ColumnDataSource(data=to_CDS)
+        num_values = len(next(iter(initial_data.values())))
+        initial_data['xs'] = list(range(num_values))
+        CDS = ColumnDataSource(data=initial_data)
         return CDS
 
     def _get_initial_ticks_label_mapping(self):
-        time_steps = self.CDS.data["time_steps"]
-        current_time = time_steps[0]
-        func_steps = self.CDS.data["func_steps"][0]
+        time = self.CDS.data["time"]
+        xs = self.CDS.data['xs']
+
+        time_values, counts = np.unique(time, return_counts=True)
         tick_label_map = dict()
-        tick_label_map[func_steps] = str(current_time)
-        for i in range(len(time_steps)):
-            if time_steps[i] != current_time:
-                current_time = time_steps[i]
-                tick_label_map[func_steps] = str(current_time)
-            func_steps += 1
+        counter = 0
+        for time, count in zip(time_values, counts):
+            tick_label_map[xs[counter]] = str(time)
+            counter += count
+
         return tick_label_map
 
     def _set_initial_figure(self, Specs):
         hover = HoverTool(
-            tooltips=[("Point No.", "@func_steps"),
-                      ("Time Step", "@time_steps")],
+            tooltips=[("Point No.", "@xs"),
+                      ("Time Step", "@time")],
             names=["x", "points2"])
 
         boxzoom = BoxZoomTool()
@@ -85,8 +117,10 @@ class IndividualFigure:
         p.title.align = 'center'
         p.xaxis.axis_label = Specs.x_label
         p.yaxis.axis_label = Specs.y_label
-        p.x("func_steps", "ys", source=self.CDS, name="x", size=10)
-        p.line("func_steps", "ys", source=self.CDS)
+        for key in self.CDS.column_names:
+            if key != 'time' and key != 'xs':
+                p.x("xs", key, source=self.CDS, name=key, size=10)
+                p.line("xs", key, source=self.CDS)
         return p
 
     def _update_xaxis(self):
@@ -97,41 +131,46 @@ class IndividualFigure:
         return True
 
     def figure_update(self, add_line):
-        time_step = add_line[0]
-        y = add_line[1]
-        curr_func_step = self.CDS.data['func_steps'][-1] + 1
-        to_cds = dict(func_steps=[curr_func_step], ys=[y], time_steps=[time_step])
-        if time_step > self.CDS.data['time_steps'][-1]:
-            self.tick_label_map[curr_func_step] = str(time_step)
+        # self._check_initial_data(add_line)
+        current_time = add_line['time'][0]
+        current_x = self.CDS.data['xs'][-1] + 1
+        add_line['xs'] = [current_x]
+
+        if current_time > self.CDS.data['time'][-1]:
+            self.tick_label_map[current_x] = str(current_time)
             self._update_xaxis()
-        self.CDS.stream(to_cds)
+        self.CDS.stream(add_line)
         return True
 
 
-
-
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    import random
-    random.seed(10)
-    def example_data_1():
-        data = []
-        for i in range(3, 8):
-            length = random.randint(1, 4)
-            for j in range(length):
-                data.append((i, random.randint(1, 50)))
+    from defaults import _FigureSpec1
+
+    def get_initial_data():
+        data = dict()
+        data['key_1'] = [1,1,2,2,3]
+        data['key_2'] = [2,3,4,5,6]
+        data['key_3'] = [5,1,4,2,4]
+        data['time'] = [1,2,3,4,5]
         return data
 
-    import sys
-    import os
-    sys.path.append(os.getcwd().rsplit("\\", 1)[0])
-    from defaults import figure_ispec_1
+    init = get_initial_data()
 
-    output_file("../../bokeh_tmp/line.html")
-    initial_data = example_data_1()
-    Figure = IndividualFigure(initial_data, figure_ispec_1, initial_func_count=123)
-    last_time_step = initial_data[-1][0]
-    # Figure.figure_update((last_time_step, 12))
-    # Figure.figure_update((last_time_step+1, 24))
+    to_add = dict()
+    to_add['key_1'] = [1]
+    to_add['key_2'] = [2]
+    to_add['key_3'] = [5]
+    to_add['time'] = [4]
+
+
+    to_add2 = dict()
+    to_add2['key_1'] = [1]
+    to_add2['key_2'] = [2]
+    to_add2['key_3'] = [6]
+    to_add2['time'] = [5]
+    Figure = IndividualFigure(init, _FigureSpec1)
+    # Figure.figure_update(to_add)
+    # Figure.figure_update(to_add2)
 
     layout_w = Figure.figure
     if __name__ == "__main__":
