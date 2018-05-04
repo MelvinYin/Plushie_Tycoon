@@ -2,13 +2,14 @@ import sys
 sys.path.append("../")
 from bokeh.plotting import figure, output_file, show, ColumnDataSource, curdoc
 from bokeh.layouts import row, column
-from bokeh_plots.individual_figure import IndividualFigure
+from individual_figure import IndividualFigure
+from figure_config import res_specs, prod_specs, set_specs
 
 class FigureSet:
-    def __init__(self, full_data, FigureSetSpecs, FigureSpecs):
-        self.FigureInstances = self._construct_individual_figures(full_data, FigureSpecs)
+    def __init__(self, full_data, setspecs=set_specs, specs=(res_specs, prod_specs)):
+        self.FigureInstances = self._construct_individual_figures(full_data, specs)
         self._couple_range()
-        self.layout = self._get_figure_layout(FigureSetSpecs)
+        self.layout = self._get_figure_layout(setspecs)
 
     def _construct_individual_figures(self, full_data, FigureSpecs):
         FigureInstances = []

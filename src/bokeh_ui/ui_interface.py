@@ -5,6 +5,7 @@ from bokeh.layouts import column
 from defaults import figure_setspecs, figure_specs, widget_setspecs, widget_specs
 import defaults
 import sys
+from defaults import Res, Prod
 
 class UIInterface:
     def __init__(self, initial_data, ui_callback):
@@ -31,6 +32,37 @@ class UIInterface:
             to_add = self.ui_callback(call)
             self.figure_set.figure_update(to_add)
         return True
+
+    def check_inputs(self, initial_data, ui_callback):
+        assert isinstance(initial_data, dict)
+        keys1 = list(initial_data.keys())
+        assert len(keys1) == 2
+        assert Res in keys1
+        assert Prod in keys1
+
+        Res_values = initial_data[Res]
+        keys = list(Res_values.keys())
+        assert sorted(list(Res) + ['time']) == sorted(keys)
+
+        Prod_values = initial_data[Prod]
+        keys = list(Prod_values.keys())
+        assert sorted(list(Prod) + ['time']) == sorted(keys)
+
+        assert sorted(Res_values['time']) == Res_values['time']
+        assert sorted(Prod_values['time']) == Prod_values['time']
+
+        Res_cat_values = list(Res_values.values())
+        ref_len = len(Res_cat_values[0])
+        assert all([len(x) == ref_len for x in Res_cat_values])
+
+        Prod_cat_values = list(Prod_values.values())
+        ref_len = len(Prod_cat_values[0])
+        assert all([len(x) == ref_len for x in Prod_cat_values])
+
+        ###
+
+
+
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):

@@ -1,27 +1,24 @@
 
-from individual_widget import IndividualWidget, ButtonWidget
+from individual import TransactionWidget, ButtonWidget
 from bokeh.layouts import row, column
 from bokeh.plotting import output_file, show, curdoc
 import sys
 sys.path.append("../")
-from collections import namedtuple
 
+from widget_config import set_specs
+
+# TO USE
+# layout_w = WidgetSet(widget_callback).layout
 
 class WidgetSet:
-    def __init__(self, callback, setspecs, specs):
-        self.widgets = self._construct_individual_widgets(specs, callback)
+    def __init__(self, callback, setspecs=set_specs):
+        self.widgets = self._construct_individual_widgets(callback)
         self.layout = self._assemble_layout(setspecs)
 
-    def _construct_individual_widgets(self, specs, callback):
+    def _construct_individual_widgets(self, callback):
         widgets = []
-        for spec in specs:
-            if spec.id == "standard":
-                widgets.append(IndividualWidget(callback, spec))
-            elif spec.id == "button":
-                widgets.append(ButtonWidget(callback, spec))
-            else:
-                print("Unrecognised widget format.")
-                raise Exception
+        widgets.append(TransactionWidget(callback))
+        widgets.append(ButtonWidget(callback))
         return widgets
 
     def _assemble_layout(self, setspecs):
@@ -45,15 +42,13 @@ class WidgetSet:
 
 # For testing
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from defaults import widget_setspecs, widget_specs
 
     def widget_callback(command_to_run):
         print("from widget callback")
         print(command_to_run)
         return
 
-    output_file("../../bokeh_tmp/line.html")
-    layout_w = WidgetSet(widget_callback, widget_setspecs, widget_specs).layout
+    layout_w = WidgetSet(widget_callback).layout
     if __name__ == "__main__":
         show(layout_w)
     else:

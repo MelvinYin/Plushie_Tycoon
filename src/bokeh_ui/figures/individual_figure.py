@@ -1,4 +1,4 @@
-from bokeh.plotting import figure, output_file, show, ColumnDataSource, curdoc
+from bokeh.plotting import figure, show, ColumnDataSource, curdoc
 from bokeh.models import DataRange1d, HoverTool, BoxZoomTool, PanTool, \
     WheelZoomTool, ResetTool, UndoTool, Plot, Text
 from bokeh.models.tickers import FixedTicker
@@ -32,14 +32,14 @@ Because when loading data, we
 
 
 class IndividualFigure:
-    def __init__(self, initial_data, Specs):
+    def __init__(self, initial_data, specs):
         self._check_initial_data(initial_data)
         self.initial_data = initial_data
         self.CDS = self._create_initial_CDS(initial_data)
         self.tick_label_map = self._get_initial_ticks_label_mapping()
-        self.figure = self._set_initial_figure(Specs)
+        self.figure = self._set_initial_figure(specs)
         self._update_xaxis()
-        self.name = Specs.name
+        self.name = specs.name
 
     def _check_initial_data(self, data):
         assert data
@@ -144,7 +144,8 @@ class IndividualFigure:
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from defaults import _FigureSpec1
+    from figure_config import res_specs, prod_specs
+    from bokeh.layouts import row
 
     def get_initial_data():
         data = dict()
@@ -162,20 +163,22 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     to_add['key_3'] = [5]
     to_add['time'] = [4]
 
-
     to_add2 = dict()
     to_add2['key_1'] = [1]
     to_add2['key_2'] = [2]
     to_add2['key_3'] = [6]
     to_add2['time'] = [5]
-    Figure = IndividualFigure(init, _FigureSpec1)
+    res_fig = IndividualFigure(init, res_specs)
+    prod_fig = IndividualFigure(init, prod_specs)
     # Figure.figure_update(to_add)
     # Figure.figure_update(to_add2)
 
-    layout_w = Figure.figure
+    layout_w = res_fig.figure
+    layout_ = prod_fig.figure
+    layout = row(layout_w, layout_)
     if __name__ == "__main__":
-        show(layout_w)
+        show(layout)
     else:
-        curdoc().add_root(layout_w)
+        curdoc().add_root(layout)
 
 # Expected Input: tuple(time_step, quantity)

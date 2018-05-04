@@ -7,24 +7,47 @@ import logging
 from defaults import Func
 from gs import GSM
 from defaults import Res, Prod, ResPrice, ProdPrice, Production, save_folder, save_file_name
-# TODO: time_steps should be handled by GE, not by UI.
+from enum import Enum, auto
 
-# def commit_decr(func_signal):
-#     def decr(func):
-#         def wrapper(*args, **kwargs):
-#             call = tuple([func_signal, *args])
-#             self.GSM.commit(call=call)
-#             try:
-#                 return func(*args, **kwargs)
-#             except:
-#                 self.GSM.reverse_call(remove_last_call=True)
-#                 logging.error(f"Exception thrown: {call}")
-#                 raise
-#         return wrapper
-#     return decr
+class Func(Enum):
+    buy = auto()
+    sell = auto()
+    make = auto()
 
-# TODO: GSM commit to be independent of call commands, directly send from UI
-# TODO: to commit, for call.
+class Other_Func(Enum):
+    save = auto()
+    load = auto()
+    quit = auto()
+
+
+
+class GEM:
+    def __init__(self):
+        self.GSM = GSM()
+        self.GSM.commit(call=Func.start)
+        self.callback = self._default_callback
+        self.func_map = self.get_func_map()
+        self.other_func_map = self.get_other_func_map()
+        self.category_map = self.get_category_map()
+
+    def _default_callback(self, call):
+        func_signal = call.pop(0)
+        if func_signal in self.func_map:
+            return_value = self.passed(self.func_map[func_signal], call)
+        elif func_signal in self.other_func_map:
+            return_value = self.passed(self.other_func_map[func_signal], call)
+        else:
+            raise Exception
+
+    def passed(self, func, call):
+        category = call.pop(0)
+        if category in self.category_map:
+            return func(self.category_map[category], call)
+
+
+
+
+
 
 class GEM:
     def __init__(self):
@@ -33,6 +56,11 @@ class GEM:
         self.callback = self._default_callback
 
     def _default_callback(self, call):
+
+
+
+
+
         methods = dict([
             (Func.save, self.save),
             (Func.load, self.load),
@@ -174,18 +202,3 @@ class GEM:
 
     def copy(self):
         return copy.deepcopy(self)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

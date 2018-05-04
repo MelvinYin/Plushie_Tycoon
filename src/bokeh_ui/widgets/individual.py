@@ -7,6 +7,7 @@ from bokeh.layouts import row, column
 import re
 import sys
 sys.path.append("../")
+from widget_config import transaction_specs, button_specs
 
 class ButtonComponent:
     def __init__(self, specs, widget_callback):
@@ -61,11 +62,11 @@ class TextBoxComponent:
         return TB
 
 
-class IndividualWidget:
-    def __init__(self, widget_callback, specs):
+class TransactionWidget:
+    def __init__(self, callback, specs=transaction_specs):
         self.name = specs.name
         self.specs = specs
-        self.widget_callback = widget_callback
+        self.widget_callback = callback
         self._input_val = None
 
         self._input_box = TextInputComponent(specs.TI, self._TI_callback).widget
@@ -144,15 +145,13 @@ class IndividualWidget:
                     'RBG3_key' not in locals():
                 raise Exception
             # noinspection PyUnboundLocalVariable
-            self.widget_callback([
-                self.name,
-                (RBG1_key, RBG2_key, RBG3_key,
-                int(self._input_val))])
+            self.widget_callback([RBG1_key, RBG2_key, RBG3_key,
+                int(self._input_val)])
         return
 
 
 class ButtonWidget:
-    def __init__(self, callback, specs):
+    def __init__(self, callback, specs=button_specs):
         self.name = specs.name
         self.callback = callback
         self._header = TextBoxComponent(specs.header).widget
@@ -164,9 +163,7 @@ class ButtonWidget:
         if self._RBG.active is None:
             print("No category selected.")
         else:
-            self.callback((
-                self.name,
-                (self._RBG.labels[self._RBG.active],)))
+            self.callback([self._RBG.labels[self._RBG.active]])
         return
 
     def _build_row(self, specs, components):
@@ -192,22 +189,21 @@ class ButtonWidget:
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from defaults import widget_specs
+    from widget_config import transaction_specs, button_specs
 
     def widget_callback(command_to_run):
         print("from widget callback")
         print(command_to_run)
         return
 
-    widget_1 = IndividualWidget(widget_callback, widget_specs[0])
+    widget_1 = TransactionWidget(widget_callback)
 
-    widget_1.widget_callback((widget_specs[0].name,
-                              (widget_specs[0].RBG1.labels[0],
-                               widget_specs[0].RBG2.labels[0],
-                               widget_specs[0].RBG3.labels[0],
-                               10)))
+    widget_1.widget_callback([transaction_specs.RBG1.labels[0],
+                              transaction_specs.RBG2.labels[0],
+                              transaction_specs.RBG3.labels[0],
+                               10])
 
-    widget_2 = ButtonWidget(widget_callback, widget_specs[1])
+    widget_2 = ButtonWidget(widget_callback, button_specs)
 
     layout_w1 = widget_1.layout
     layout2 = widget_2.layout
