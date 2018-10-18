@@ -1,36 +1,29 @@
-from inventory import ResourceInventory, ProductInventory
+from inventory import Inventory
 from production import Production
 from singleton import Singleton
-from market import MarketRes, MarketProd
-import defaults
+from market import Market
+from global_config import starting_time, save_folder, save_file_name
 from budget import Budget
 import copy
 import logging
 import sys
+import os
+import pickle
 from collections import defaultdict
 
 
-class GSM:
+class GS:
     __metaclass__ = Singleton
     def __init__(self):
-        self.res = ResourceInventory()
-        self.prod = ProductInventory()
-        self.res_price = MarketRes()
-        self.prod_price = MarketProd()
+        self.inventory = Inventory()
+        self.market = Market()
         self.budget = Budget()
         self.production = Production()
         self.current_call = None
 
-        self.current_time = defaults.starting_time
+        self.current_time = starting_time
 
         self.history = defaultdict(list)
-
-
-    def cost_to_produce(self, category, quantity):
-        hour_per_prod = self.production.hours_needed[category]
-        total_hours = hour_per_prod * quantity
-        cost = total_hours * self.production.cost_per_hour
-        return cost
 
     def commit(self, call):
         self.current_call = call
@@ -52,6 +45,30 @@ class GSM:
     def copy(self):
         return copy.deepcopy(self)
 
+    def load(self, file_path=save_folder, file_name=save_file_name):
+        if not os.path.isdir(file_path):
+            logging.error(f"File path {file_path} does not exist.")
+            raise FileNotFoundError
+        if not os.path.isfile(file_path + file_name):
+            logging.error(f"File {file_name} does not exist in specified "
+                             f"directory {file_path}.")
+            raise FileNotFoundError
+        with open(file_path + file_name, "rb") as file:
+            self.__dict__ = pickle.load(file)
+        return True
+
+    def save(self, file_path=save_folder, file_name=save_file_name):
+        if not file_name.endswith(".pkl"):
+            logging.warning(f"Warning: File name {file_name} provided does not"
+                            f" end with .pkl. Suffix will be added.")
+            file_name += ".pkl"
+        if not os.path.isdir(file_path):
+            logging.warning(f"Warning: File_path {file_path} provided does not"
+                            f" exist. Directory will be created.")
+            os.makedirs(file_path)
+        with open(file_path + file_name, "wb") as file:
+            pickle.dump(self.GS.__dict__, file, -1)
+        return True
 
 
 

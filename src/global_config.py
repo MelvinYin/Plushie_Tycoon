@@ -103,7 +103,6 @@ save_folder = "../save/"
 save_file_name = "game_save.pkl"
 
 ###############################################################################
-###############################################################################
 
 """
 For convenience, available values:
@@ -128,10 +127,6 @@ starting_time
 save_folder
 save_file_name
 
-FigureSetSpecs
-FigureSpecs
-WidgetSetSpecs
-WidgetSpecs
 """
 
 

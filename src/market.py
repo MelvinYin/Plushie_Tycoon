@@ -1,40 +1,24 @@
 from singleton import Singleton
 
-import defaults
-from bases import BaseMarket
+from global_config import Res, Prod, starting_res_price, starting_prod_price
 
-class MarketRes:
+class Market:
     """
     Does not have external setting capabilities unless value
     explicitly called.
     """
     __metaclass__ = Singleton
     def __init__(self):
-        self.value = defaults.starting_res_price
+        self.res = starting_res_price
+        self.prod = starting_prod_price
+        self.type_map = self._get_type_map()
 
-    def prettyp(self):
-        string = f"Class: {self.__class__.__name__}\n"
-        for key, value in self.__dict__.items():
-            tmp = "\tAttr: " + key + "\n\t" \
-                  + str(value).replace("\n", "\n\t") + "\n"
-            string += tmp
-        return string
+    def get_price(self, category):
+        item = self.type_map(type(category))
+        return item[category]
 
-    def test_func(self):
-        return True
-
-class MarketProd:
-    __metaclass__ = Singleton
-    def __init__(self):
-        self.value = defaults.starting_prod_price
-
-    def prettyp(self):
-        string = f"Class: {self.__class__.__name__}\n"
-        for key, value in self.__dict__.items():
-            tmp = "\tAttr: " + key + "\n\t" \
-                  + str(value).replace("\n", "\n\t") + "\n"
-            string += tmp
-        return string
-
-    def test_func(self):
-        return True
+    def _get_type_map(self):
+        mapping = dict()
+        mapping[Res] = self.res
+        mapping[Prod] = self.prod
+        return mapping

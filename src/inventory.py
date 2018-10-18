@@ -1,26 +1,41 @@
 from singleton import Singleton
-from abc import ABC
-import pickle
 from bases import BaseInventory
-import defaults
-import pandas as pd
 import logging
 import copy
+from global_config import starting_res, starting_prod, Res, Prod
 
 
-class ResourceInventory(BaseInventory):
+class Inventory(BaseInventory):
     __metaclass__ = Singleton
     def __init__(self):
-        super().__init__(copy.deepcopy(defaults.starting_res))
+        self.res = copy.deepcopy(starting_res)  # pd.series
+        self.prod = copy.deepcopy(starting_prod)
+        self.type_map = self._get_type_map()
 
-    def test_func(self):
+    def add(self, category, quantity):
+        item_signal = type(category)
+        item = self.type_map[item_signal]
+        item[category] += quantity
         return True
 
-
-class ProductInventory(BaseInventory):
-    __metaclass__ = Singleton
-    def __init__(self):
-        super().__init__(copy.deepcopy(defaults.starting_prod))
-
-    def test_func(self):
+    def sub(self, category, quantity):
+        item_signal = type(category)
+        item = self.type_map[item_signal]
+        item[category] -= quantity
         return True
+
+    def replace(self, category, quantity):
+        item_signal = type(category)
+        item = self.type_map[item_signal]
+        item[category] = quantity
+        return True
+
+    def _get_type_map(self):
+        mapping = dict()
+        mapping[Res] = self.res
+        mapping[Prod] = self.prod
+
+    def get(self, category):
+        item_signal = type(category)
+        item = self.type_map[item_signal]
+        return item[category]

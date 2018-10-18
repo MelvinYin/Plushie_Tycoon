@@ -27,14 +27,9 @@ Initial data should have key as each of the key, no time_step.
 Because when loading data, we 
 """
 
-
-
-
-
 class IndividualFigure:
     def __init__(self, initial_data, specs):
         self._check_initial_data(initial_data)
-        self.initial_data = initial_data
         self.CDS = self._create_initial_CDS(initial_data)
         self.tick_label_map = self._get_initial_ticks_label_mapping()
         self.figure = self._set_initial_figure(specs)
@@ -131,7 +126,6 @@ class IndividualFigure:
         return True
 
     def figure_update(self, add_line):
-        # self._check_initial_data(add_line)
         current_time = add_line['time'][0]
         current_x = self.CDS.data['xs'][-1] + 1
         add_line['xs'] = [current_x]
@@ -139,6 +133,8 @@ class IndividualFigure:
         if current_time > self.CDS.data['time'][-1]:
             self.tick_label_map[current_x] = str(current_time)
             self._update_xaxis()
+        # print(add_line)
+        # print(self.CDS.data)
         self.CDS.stream(add_line)
         return True
 
@@ -146,32 +142,21 @@ class IndividualFigure:
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     from figure_config import res_specs, prod_specs
     from bokeh.layouts import row
+    from mocked import mock_init, mock_update1, mock_update2, mock_update3
+    from global_config import Res, Prod
 
-    def get_initial_data():
-        data = dict()
-        data['key_1'] = [1,1,2,2,3]
-        data['key_2'] = [2,3,4,5,6]
-        data['key_3'] = [5,1,4,2,4]
-        data['time'] = [1,2,3,4,5]
-        return data
 
-    init = get_initial_data()
+    res_fig = IndividualFigure(mock_init[Res], res_specs)
+    prod_fig = IndividualFigure(mock_init[Prod], prod_specs)
 
-    to_add = dict()
-    to_add['key_1'] = [1]
-    to_add['key_2'] = [2]
-    to_add['key_3'] = [5]
-    to_add['time'] = [4]
 
-    to_add2 = dict()
-    to_add2['key_1'] = [1]
-    to_add2['key_2'] = [2]
-    to_add2['key_3'] = [6]
-    to_add2['time'] = [5]
-    res_fig = IndividualFigure(init, res_specs)
-    prod_fig = IndividualFigure(init, prod_specs)
-    # Figure.figure_update(to_add)
-    # Figure.figure_update(to_add2)
+    res_fig.figure_update(mock_update1[Res])
+    res_fig.figure_update(mock_update2[Res])
+    res_fig.figure_update(mock_update3[Res])
+
+    prod_fig.figure_update(mock_update1[Prod])
+    prod_fig.figure_update(mock_update2[Prod])
+    prod_fig.figure_update(mock_update3[Prod])
 
     layout_w = res_fig.figure
     layout_ = prod_fig.figure
@@ -180,5 +165,3 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
         show(layout)
     else:
         curdoc().add_root(layout)
-
-# Expected Input: tuple(time_step, quantity)

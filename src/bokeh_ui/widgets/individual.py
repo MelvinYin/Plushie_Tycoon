@@ -2,12 +2,14 @@ from bokeh.models.widgets import Button, Div
 from bokeh.models.widgets.inputs import TextInput
 from bokeh.models.widgets import RadioButtonGroup
 
-from bokeh.plotting import output_file, show, curdoc
+from bokeh.plotting import show, curdoc
 from bokeh.layouts import row, column
 import re
-import sys
-sys.path.append("../")
-from widget_config import transaction_specs, button_specs
+try:
+    from .widget_config import transaction_specs, button_specs
+except: # ImportError or ModuleNotFoundError
+    from widget_config import transaction_specs, button_specs
+
 
 class ButtonComponent:
     def __init__(self, specs, widget_callback):
@@ -125,11 +127,6 @@ class TransactionWidget:
         elif self._input_val.startswith("0"):
             print("Invalid input value.")
         else:
-            RBG1_label = self._RBG1.labels[self._RBG1.active]
-            for key, label in self.specs.RBG1.labelmap.items():
-                if label == RBG1_label:
-                    RBG1_key = key
-                    break
             RBG2_label = self._RBG2.labels[self._RBG2.active]
             for key, label in self.specs.RBG2.labelmap.items():
                 if label == RBG2_label:
@@ -140,12 +137,11 @@ class TransactionWidget:
                 if label == RBG3_label:
                     RBG3_key = key
                     break
-            if 'RBG1_key' not in locals() or \
-                    'RBG2_key' not in locals() or \
+            if 'RBG2_key' not in locals() or \
                     'RBG3_key' not in locals():
                 raise Exception
             # noinspection PyUnboundLocalVariable
-            self.widget_callback([RBG1_key, RBG2_key, RBG3_key,
+            self.widget_callback([RBG2_key, RBG3_key,
                 int(self._input_val)])
         return
 
@@ -182,12 +178,6 @@ class ButtonWidget:
         return layout
 
 
-
-
-# For testing
-
-
-
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     from widget_config import transaction_specs, button_specs
 
@@ -199,7 +189,6 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     widget_1 = TransactionWidget(widget_callback)
 
     widget_1.widget_callback([transaction_specs.RBG1.labels[0],
-                              transaction_specs.RBG2.labels[0],
                               transaction_specs.RBG3.labels[0],
                                10])
 
@@ -209,5 +198,3 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     layout2 = widget_2.layout
     show(row(layout_w1, layout2))
     curdoc().add_root(row(layout_w1))
-
-# Expected output: tuple(<Func.something>, <Res.something>, int of quantity)

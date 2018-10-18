@@ -1,11 +1,14 @@
-
-from individual import TransactionWidget, ButtonWidget
 from bokeh.layouts import row, column
-from bokeh.plotting import output_file, show, curdoc
-import sys
-sys.path.append("../")
+from bokeh.plotting import show, curdoc
 
-from widget_config import set_specs
+
+try:
+    from .individual import TransactionWidget, ButtonWidget
+    from .widget_config import set_specs
+except ModuleNotFoundError:
+    from individual import TransactionWidget, ButtonWidget
+    from widget_config import set_specs
+
 
 # TO USE
 # layout_w = WidgetSet(widget_callback).layout
