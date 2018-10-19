@@ -4,169 +4,101 @@ import os
 import pickle
 import sys
 import logging
-from defaults import Func
-from gs import GSM
-from defaults import Res, Prod, ResPrice, ProdPrice, Production, save_folder, save_file_name
-# TODO: time_steps should be handled by GE, not by UI.
+from global_config import Func, Res, Prod, ResPrice, ProdPrice, Production, save_folder, save_file_name
+from gs import GS
 
-# def commit_decr(func_signal):
-#     def decr(func):
-#         def wrapper(*args, **kwargs):
-#             call = tuple([func_signal, *args])
-#             self.GSM.commit(call=call)
-#             try:
-#                 return func(*args, **kwargs)
-#             except:
-#                 self.GSM.reverse_call(remove_last_call=True)
-#                 logging.error(f"Exception thrown: {call}")
-#                 raise
-#         return wrapper
-#     return decr
 
-# TODO: GSM commit to be independent of call commands, directly send from UI
-# TODO: to commit, for call.
-
-class GEM:
+class GE:
     def __init__(self):
-        self.GSM = GSM()
-        self.GSM.commit(call=Func.start)
+        self.GS = GS()
+        self.GS.commit(call=Func.start)
         self.callback = self._default_callback
+        self.func_map = self.get_func_map()
 
     def _default_callback(self, call):
-        methods = dict([
-            (Func.save, self.save),
-            (Func.load, self.load),
-            (Func.quit, self.quit),
-            (Func.next_turn, self.next_turn),
-            (Func.buy_res, self.buy_res),
-            (Func.sell_res, self.sell_res),
-            (Func.buy_prod, self.buy_prod),
-            (Func.make_prod, self.make_prod),
-            (Func.sell_prod, self.sell_prod),
-            (Func.back, self.back)])
-
-        logging.debug(f"Callback in GEM: {call}")
-        if hasattr(call, "__len__") and len(call) == 1:
-            func_signal = call[0]
-            args = None
-        else:
-            func_signal, args = call[0], call[1]
+        func_signal = call.pop(0)
+        func = self.func_map[func_signal]
         try:
-            if args:
-                methods[func_signal](*args)
-            else:
-                methods[func_signal]()
+            return_value = func(call)
         except InsufficientQuantityError:
-            self.GSM.reverse_call()
+            self.GS.reverse_call()
             raise RepeatUIAction
-        GSM_update = self._convert_GSM_to_dict()
-        return GSM_update
+        GS_update = self._convert_GS_to_dict()
+        return GS_update
 
-    def _convert_GSM_to_dict(self):
-        GSM_update = dict()
-        GSM_update[Res.cloth] = self.GSM.res.value[Res.cloth]
-        GSM_update[Res.stuff] = self.GSM.res.value[Res.stuff]
-        GSM_update[Res.accessory] = self.GSM.res.value[Res.accessory]
-        GSM_update[Res.packaging] = self.GSM.res.value[Res.packaging]
-
-        GSM_update[Prod.aisha] = self.GSM.prod.value[Prod.aisha]
-        GSM_update[Prod.beta] = self.GSM.prod.value[Prod.beta]
-        GSM_update[Prod.chama] = self.GSM.prod.value[Prod.chama]
-
-        GSM_update[ResPrice.cloth] = self.GSM.res_price.value[Res.cloth]
-        GSM_update[ResPrice.stuff] = self.GSM.res_price.value[Res.stuff]
-        GSM_update[ResPrice.accessory] = self.GSM.res_price.value[Res.accessory]
-        GSM_update[ResPrice.packaging] = self.GSM.res_price.value[Res.packaging]
-
-        GSM_update[ProdPrice.aisha] = self.GSM.prod_price.value[Prod.aisha]
-        GSM_update[ProdPrice.beta] = self.GSM.prod_price.value[Prod.beta]
-        GSM_update[ProdPrice.chama] = self.GSM.prod_price.value[Prod.chama]
-
-        # GSM_update[Production.hours_needed] = self.GSM.production.hours_needed
-        # GSM_update[Production.cost_per_hour] = self.GSM.production.cost_per_hour
-        # GSM_update[Production.res_cost] = self.GSM.production.res_cost
-
-        # GSM_update["current_call"] = self.GSM.current_call
-        GSM_update["time_steps"] = self.GSM.current_time
-        return GSM_update
-
-    def load(self, file_path=save_folder, file_name=save_file_name):
-        if not os.path.isdir(file_path):
-            logging.error(f"File path {file_path} does not exist.")
-            raise FileNotFoundError
-        if not os.path.isfile(file_path + file_name):
-            logging.error(f"File {file_name} does not exist in specified "
-                             f"directory {file_path}.")
-            raise FileNotFoundError
-        with open(file_path + file_name, "rb") as file:
-            self.GSM.__dict__ = pickle.load(file)
+    def buy(self, call):
+        self.GS.commit(call=(Func.buy, *call))
+        category = call.pop(0)
+        quantity = call.pop()
+        self.GS.inventory.add(category, quantity)
+        price = self.GS.market.get_price(category)
+        total_cost = price * quantity
+        self.GS.budget.sub(total_cost)
         return True
 
-    def save(self, file_path=save_folder, file_name=save_file_name):
-        if not file_name.endswith(".pkl"):
-            logging.warning(f"Warning: File name {file_name} provided does not"
-                            f" end with .pkl. Suffix will be added.")
-            file_name += ".pkl"
-        if not os.path.isdir(file_path):
-            logging.warning(f"Warning: File_path {file_path} provided does not"
-                            f" exist. Directory will be created.")
-            os.makedirs(file_path)
-        with open(file_path + file_name, "wb") as file:
-            pickle.dump(self.GSM.__dict__, file, -1)
+    def sell(self, call):
+        self.GS.commit(call=(Func.sell, *call))
+        category = call.pop(0)
+        quantity = call.pop()
+        self.GS.inventory.sub(category, quantity)
+        price = self.GS.market.get_price(category)
+        total_cost = price * quantity
+        self.GS.budget.add(total_cost)
+        return True
+
+    def make(self, call):
+        self.GS.commit(call=(Func.make, *call))
+        category = call.pop(0)
+        quantity = call.pop()
+        assert not call
+        cost, materials = self.GS.production.get_cost(category)
+        for _category, material in materials.items():
+            self.GS.inventory.sub(_category, material * quantity)
+        self.GS.budget.sub(cost * quantity)
+        self.GS.inventory.add(category, quantity)
         return True
 
     def quit(self):
         sys.exit()
 
+    def get_func_map(self):
+        mapping = dict()
+        mapping[Func.buy] = self.buy
+        mapping[Func.sell] = self.sell
+        mapping[Func.quit] = self.quit
+        mapping[Func.make] = self.make
+        mapping[Func.save] = self.GS.save
+        mapping[Func.load] = self.GS.load
+        mapping[Func.quit] = self.quit
+        mapping[Func.next] = self.next_turn
+        return mapping
+
     def next_turn(self):
-        self.GSM.current_time += 1
-        self.GSM.commit(call=Func.next_turn)
+        self.GS.current_time += 1
+        self.GS.commit(call=Func.next_turn)
         return
 
-    def buy_res(self, category, quantity):
-        self.GSM.commit(call=(Func.buy_res, category, quantity))
-        curr_res_p = self.GSM.res_price.value[category]
-        cost_to_buy = curr_res_p * quantity
-        self.GSM.budget.sub(cost_to_buy)
-        self.GSM.res.add(category, quantity)
-        return True
+    def _convert_GS_to_dict(self):
+        GS_update = dict()
+        GS_update[Res] = {item: self.GS.market.get_price(item) for item in Res}
+        GS_update[Res]["time"] = self.GS.current_time
+        GS_update[Prod] = {item: self.GS.market.get_price(item) for item in Prod}
+        GS_update[Prod]["time"] = self.GS.current_time
+        GS_update[ResPrice] = {item: self.GS.market.get_price(item) for item in ResPrice}
+        GS_update[ResPrice]["time"] = self.GS.current_time
+        GS_update[ProdPrice] = {item: self.GS.market.get_price(item) for item in ProdPrice}
+        GS_update[ProdPrice]["time"] = self.GS.current_time
 
-    def sell_res(self, category, quantity):
-        self.GSM.commit(call=(Func.sell_res, category, quantity))
-        curr_prices = self.GSM.res_price.value[category]
-        earnings = curr_prices * quantity
-        self.GSM.budget.add(earnings)
-        self.GSM.res.sub(category, quantity)
-        return True
 
-    def buy_prod(self, category, quantity):
-        self.GSM.commit(call=(Func.buy_prod, category, quantity))
-        curr_prices = self.GSM.prod_price.value[category]
-        cost_to_buy = curr_prices * quantity
-        self.GSM.budget.sub(cost_to_buy)
-        self.GSM.prod.add(category, quantity)
-        return True
+        # GS_update[Production.hours_needed] = self.GS.production.hours_needed
+        # GS_update[Production.cost_per_hour] = self.GS.production.cost_per_hour
+        # GS_update[Production.res_cost] = self.GS.production.res_cost
 
-    def sell_prod(self, category, quantity):
-        self.GSM.commit(call=(Func.sell_prod, category, quantity))
-        curr_prices = self.GSM.prod_price.value[category]
-        earnings = curr_prices * quantity
-        self.GSM.budget.add(earnings)
-        self.GSM.prod.sub(category, quantity)
-        return True
-
-    def make_prod(self, category, quantity):
-        self.GSM.commit(call=(Func.make_prod, category, quantity))
-        res_for_type = self.GSM.production.res_cost[category]
-        total_res = res_for_type * quantity
-        self.GSM.res.sub(total_res)
-        cost_to_produce = self.GSM.cost_to_produce(category, quantity)
-        self.GSM.budget.sub(cost_to_produce)
-        self.GSM.prod.add(category, quantity)
-        return True
+        # GS_update["current_call"] = self.GS.current_call
+        return GS_update
 
     def back(self):
-        ret_value = self.GSM.reverse_call()
+        ret_value = self.GS.reverse_call()
         if not ret_value:
             logging.info("No previous action logged.")
             return False
@@ -174,18 +106,4 @@ class GEM:
 
     def copy(self):
         return copy.deepcopy(self)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

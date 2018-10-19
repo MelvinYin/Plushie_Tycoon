@@ -36,7 +36,7 @@ class GS:
         """ Called either by user with back, or due to errors encountered
         during function call.
         """
-        if len(self.history[self.current_time] == 1):
+        if len(self.history[self.current_time]) == 1:
             return False
         previous_state = self.history[self.current_time].pop()
         self.__dict__.update(previous_state)
