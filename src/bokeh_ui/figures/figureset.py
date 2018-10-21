@@ -56,7 +56,8 @@ class FigureSet:
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     def main():
-        from mocked import mock_init, mock_update1, mock_update2, mock_update3
+        from mocked_data.mock_figure import mock_init, mock_update1, mock_update2, \
+            mock_update3
         from config.figure import FigureSpecs
 
         fig = FigureSet(mock_init, FigureSpecs())

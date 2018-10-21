@@ -141,7 +141,8 @@ class IndividualFigure:
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     from bokeh.layouts import row
-    from mocked import mock_init, mock_update1, mock_update2, mock_update3
+    from mocked_data.mock_figure import mock_init, mock_update1, mock_update2, \
+        mock_update3
     from config.global_config import Res, Prod
     from config.figure import ResSpec, ProdSpec
 

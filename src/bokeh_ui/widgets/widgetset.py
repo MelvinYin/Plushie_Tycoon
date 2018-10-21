@@ -1,15 +1,11 @@
 from bokeh.layouts import row, column
 from bokeh.plotting import show, curdoc
 
-
 try:
     from .individual import TransactionWidget, ButtonWidget
 except ModuleNotFoundError:
     from individual import TransactionWidget, ButtonWidget
 
-
-# TO USE
-# layout_w = WidgetSet(widget_callback).layout
 
 class WidgetSet:
     def __init__(self, callback, specs):

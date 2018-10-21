@@ -34,6 +34,7 @@ class Inventory(BaseInventory):
         mapping = dict()
         mapping[Res] = self.res
         mapping[Prod] = self.prod
+        return mapping
 
     def get(self, category):
         item_signal = type(category)
