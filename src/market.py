@@ -14,7 +14,7 @@ class Market:
         self.type_map = self._get_type_map()
 
     def get_price(self, category):
-        item = self.type_map(type(category))
+        item = self.type_map[type(category)]
         return item[category]
 
     def _get_type_map(self):

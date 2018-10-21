@@ -31,7 +31,7 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     from figures.mocked import mock_init, mock_update1, mock_update2, \
         mock_update3
     from widgets.mocked import mock_callbacks
-    from global_config import UISpecs
+    from config.global_config import UISpecs
 
     call_count = 0
     def callback(call):

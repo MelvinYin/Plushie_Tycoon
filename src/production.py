@@ -1,5 +1,5 @@
 from singleton import Singleton
-from global_config import hours_needed, cost_per_hour, prod_res_cost
+from config.global_config import hours_needed, cost_per_hour, prod_res_cost
 
 class Production:
     __metaclass__ = Singleton

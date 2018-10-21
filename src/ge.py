@@ -4,7 +4,9 @@ import os
 import pickle
 import sys
 import logging
-from global_config import Func, Res, Prod, ResPrice, ProdPrice, Production, save_folder, save_file_name
+from config.global_config import Func, Res, Prod, ResPrice, ProdPrice, \
+    save_folder, \
+    save_file_name, res_members, prod_members
 from gs import GS
 
 
@@ -16,7 +18,7 @@ class GE:
         self.func_map = self.get_func_map()
 
     def _default_callback(self, call):
-        func_signal = call.pop(0)
+        func_signal = call['command']
         func = self.func_map[func_signal]
         try:
             return_value = func(call)
@@ -28,8 +30,8 @@ class GE:
 
     def buy(self, call):
         self.GS.commit(call=(Func.buy, *call))
-        category = call.pop(0)
-        quantity = call.pop()
+        category = call['category']
+        quantity = call['quantity']
         self.GS.inventory.add(category, quantity)
         price = self.GS.market.get_price(category)
         total_cost = price * quantity
@@ -38,8 +40,8 @@ class GE:
 
     def sell(self, call):
         self.GS.commit(call=(Func.sell, *call))
-        category = call.pop(0)
-        quantity = call.pop()
+        category = call['category']
+        quantity = call['quantity']
         self.GS.inventory.sub(category, quantity)
         price = self.GS.market.get_price(category)
         total_cost = price * quantity
@@ -48,9 +50,8 @@ class GE:
 
     def make(self, call):
         self.GS.commit(call=(Func.make, *call))
-        category = call.pop(0)
-        quantity = call.pop()
-        assert not call
+        category = call['category']
+        quantity = call['quantity']
         cost, materials = self.GS.production.get_cost(category)
         for _category, material in materials.items():
             self.GS.inventory.sub(_category, material * quantity)
@@ -80,15 +81,36 @@ class GE:
 
     def _convert_GS_to_dict(self):
         GS_update = dict()
-        GS_update[Res] = {item: self.GS.market.get_price(item) for item in Res}
+        GS_update[Res] = {item: self.GS.market.get_price(item) for item in res_members}
         GS_update[Res]["time"] = self.GS.current_time
-        GS_update[Prod] = {item: self.GS.market.get_price(item) for item in Prod}
+        GS_update[Prod] = {item: self.GS.market.get_price(item) for item in prod_members}
         GS_update[Prod]["time"] = self.GS.current_time
-        GS_update[ResPrice] = {item: self.GS.market.get_price(item) for item in ResPrice}
+        GS_update[ResPrice] = {item: self.GS.market.get_price(item) for item in res_members}
         GS_update[ResPrice]["time"] = self.GS.current_time
-        GS_update[ProdPrice] = {item: self.GS.market.get_price(item) for item in ProdPrice}
+        GS_update[ProdPrice] = {item: self.GS.market.get_price(item) for item in prod_members}
         GS_update[ProdPrice]["time"] = self.GS.current_time
 
+        # GS_update[Production.hours_needed] = self.GS.production.hours_needed
+        # GS_update[Production.cost_per_hour] = self.GS.production.cost_per_hour
+        # GS_update[Production.res_cost] = self.GS.production.res_cost
+
+        # GS_update["current_call"] = self.GS.current_call
+        return GS_update
+
+    def get_init_data(self):
+        GS_update = dict()
+        GS_update[Res] = {item.name: [self.GS.market.get_price(item)]
+                          for item in res_members}
+        GS_update[Res]["time"] = [self.GS.current_time]
+        GS_update[Prod] = {item.name: [self.GS.market.get_price(item)]
+                           for item in prod_members}
+        GS_update[Prod]["time"] = [self.GS.current_time]
+        GS_update[ResPrice] = {item.name: [self.GS.market.get_price(item)]
+                               for item in res_members}
+        GS_update[ResPrice]["time"] = [self.GS.current_time]
+        GS_update[ProdPrice] = {item.name: [self.GS.market.get_price(item)]
+                                for item in prod_members}
+        GS_update[ProdPrice]["time"] = [self.GS.current_time]
 
         # GS_update[Production.hours_needed] = self.GS.production.hours_needed
         # GS_update[Production.cost_per_hour] = self.GS.production.cost_per_hour

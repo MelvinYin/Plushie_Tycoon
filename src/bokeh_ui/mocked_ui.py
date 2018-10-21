@@ -1,4 +1,4 @@
-from global_config import Res, Prod
+from config.global_config import Res, Prod
 from widgets.mocked import mock_callbacks
 
 class mock_UI:
@@ -24,7 +24,6 @@ class mock_UI:
                     continue
                 assert length == len(initial_data[category][item.name])
         return True
-
 
     def check_callback(self, callback):
         for call in mock_callbacks:

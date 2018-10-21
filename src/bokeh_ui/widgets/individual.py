@@ -137,8 +137,8 @@ class TransactionWidget:
                     'RBG3_key' not in locals():
                 raise Exception
             # noinspection PyUnboundLocalVariable
-            self.widget_callback([RBG2_key, RBG3_key,
-                int(self._input_val)])
+            callback = dict(command=RBG2_key, category=RBG3_key, quantity=int(self._input_val))
+            self.widget_callback(callback)
         return
 
 
@@ -155,7 +155,8 @@ class ButtonWidget:
         if self._RBG.active is None:
             print("No category selected.")
         else:
-            self.callback([self._RBG.labels[self._RBG.active]])
+            callback = dict(command=self._RBG.labels[self._RBG.active])
+            self.callback(callback)
         return
 
     def _build_row(self, specs, components):
@@ -175,21 +176,21 @@ class ButtonWidget:
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from global_config import FullWidgetSpecs
-
+    from config.widget import WidgetIndividualSpecs
 
     def widget_callback(command_to_run):
         print("from widget callback")
         print(command_to_run)
         return
 
-    widget_1 = TransactionWidget(widget_callback, FullWidgetSpecs().transactionw1)
+    widget_1 = TransactionWidget(widget_callback, WidgetIndividualSpecs().transaction_1)
 
-    widget_1.widget_callback([FullWidgetSpecs().transactionw1.RBG1.labels[0],
-                              FullWidgetSpecs().transactionw1.RBG3.labels[0],
-                               10])
+    widget_1.widget_callback([
+        WidgetIndividualSpecs().transaction_1.RBG1.labels[0],
+        WidgetIndividualSpecs().transaction_1.RBG3.labels[0],
+        10])
 
-    widget_2 = ButtonWidget(widget_callback, FullWidgetSpecs().buttonw1)
+    widget_2 = ButtonWidget(widget_callback, WidgetIndividualSpecs().button_1)
 
     layout_w1 = widget_1.layout
     layout2 = widget_2.layout
