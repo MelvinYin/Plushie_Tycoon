@@ -5,10 +5,6 @@ from bokeh.models.widgets import RadioButtonGroup
 from bokeh.plotting import show, curdoc
 from bokeh.layouts import row, column
 import re
-try:
-    from .widget_config import transaction_specs, button_specs
-except: # ImportError or ModuleNotFoundError
-    from widget_config import transaction_specs, button_specs
 
 
 class ButtonComponent:
@@ -65,7 +61,7 @@ class TextBoxComponent:
 
 
 class TransactionWidget:
-    def __init__(self, callback, specs=transaction_specs):
+    def __init__(self, callback, specs):
         self.name = specs.name
         self.specs = specs
         self.widget_callback = callback
@@ -147,7 +143,7 @@ class TransactionWidget:
 
 
 class ButtonWidget:
-    def __init__(self, callback, specs=button_specs):
+    def __init__(self, callback, specs):
         self.name = specs.name
         self.callback = callback
         self._header = TextBoxComponent(specs.header).widget
@@ -179,20 +175,21 @@ class ButtonWidget:
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from widget_config import transaction_specs, button_specs
+    from global_config import FullWidgetSpecs
+
 
     def widget_callback(command_to_run):
         print("from widget callback")
         print(command_to_run)
         return
 
-    widget_1 = TransactionWidget(widget_callback)
+    widget_1 = TransactionWidget(widget_callback, FullWidgetSpecs().transactionw1)
 
-    widget_1.widget_callback([transaction_specs.RBG1.labels[0],
-                              transaction_specs.RBG3.labels[0],
+    widget_1.widget_callback([FullWidgetSpecs().transactionw1.RBG1.labels[0],
+                              FullWidgetSpecs().transactionw1.RBG3.labels[0],
                                10])
 
-    widget_2 = ButtonWidget(widget_callback, button_specs)
+    widget_2 = ButtonWidget(widget_callback, FullWidgetSpecs().buttonw1)
 
     layout_w1 = widget_1.layout
     layout2 = widget_2.layout

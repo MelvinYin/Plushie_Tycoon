@@ -4,24 +4,22 @@ from bokeh.plotting import show, curdoc
 
 try:
     from .individual import TransactionWidget, ButtonWidget
-    from .widget_config import set_specs
 except ModuleNotFoundError:
     from individual import TransactionWidget, ButtonWidget
-    from widget_config import set_specs
 
 
 # TO USE
 # layout_w = WidgetSet(widget_callback).layout
 
 class WidgetSet:
-    def __init__(self, callback, setspecs=set_specs):
-        self.widgets = self._construct_individual_widgets(callback)
-        self.layout = self._assemble_layout(setspecs)
+    def __init__(self, callback, specs):
+        self.widgets = self._construct_individual_widgets(callback, specs)
+        self.layout = self._assemble_layout(specs.setspecs)
 
-    def _construct_individual_widgets(self, callback):
+    def _construct_individual_widgets(self, callback, specs):
         widgets = []
-        widgets.append(TransactionWidget(callback))
-        widgets.append(ButtonWidget(callback))
+        widgets.append(TransactionWidget(callback, specs.transactionw1))
+        widgets.append(ButtonWidget(callback, specs.buttonw1))
         return widgets
 
     def _assemble_layout(self, setspecs):

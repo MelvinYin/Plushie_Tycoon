@@ -4,7 +4,7 @@ from bokeh.plotting import curdoc, show
 from bokeh.layouts import column
 
 class UI:
-    def __init__(self, initial_data, ui_callback):
+    def __init__(self, initial_data, ui_callback, specs):
         """
         UI_callback: Takes in as input (<Func:...>, (args)), return as output
         a dict that is used to update figure_set.
@@ -12,7 +12,7 @@ class UI:
         self.ui_callback = ui_callback
         self.initial_data = initial_data
         self.figure_set = FigureSet(self.initial_data)
-        self.widget_set = WidgetSet(self.widget_callback)
+        self.widget_set = WidgetSet(self.widget_callback, specs)
         self.ui_layout = self.plot()
 
     def plot(self):
@@ -31,6 +31,7 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     from figures.mocked import mock_init, mock_update1, mock_update2, \
         mock_update3
     from widgets.mocked import mock_callbacks
+    from global_config import FullWidgetSpecs
 
     call_count = 0
     def callback(call):
@@ -46,10 +47,10 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
             return mock_update3
 
     if __name__ == "__main__":
-        x = UIInterface(mock_init, callback)
+        x = UI(mock_init, callback, FullWidgetSpecs())
         show(x.ui_layout)
     else:
-        x = UIInterface(mock_init, callback)
+        x = UI(mock_init, callback, FullWidgetSpecs())
         curdoc().add_root(x.ui_layout)
 
 
