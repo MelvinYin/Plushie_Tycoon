@@ -140,13 +140,13 @@ class IndividualFigure:
 
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from figure_config import res_specs, prod_specs
     from bokeh.layouts import row
     from mocked import mock_init, mock_update1, mock_update2, mock_update3
-    from global_config import Res, Prod
+    from config.global_config import Res, Prod
+    from config.figure import ResSpec, ProdSpec
 
-    res_fig = IndividualFigure(mock_init[Res], res_specs)
-    prod_fig = IndividualFigure(mock_init[Prod], prod_specs)
+    res_fig = IndividualFigure(mock_init[Res], ResSpec())
+    prod_fig = IndividualFigure(mock_init[Prod], ProdSpec())
 
     res_fig.figure_update(mock_update1[Res])
     res_fig.figure_update(mock_update2[Res])

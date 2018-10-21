@@ -1,28 +1,35 @@
-from collections import namedtuple
-from enum import Enum, auto, unique
-
-# TO USE:
-# from figure_config import res_specs, prod_specs, set_specs
-
-##############################################################################
-# Global
-
-from global_config import Res, Prod
-
 ##############################################################################
 # Figure Attributes
 
-set_indices = ("figures_per_row",)
-SetSpecs = namedtuple("FigureSetSpecs", set_indices)
-set_specs = SetSpecs(figures_per_row=3)
+from base import Res, Prod
 
-figure_indices = ("name", "title", "x_label", "y_label")
-FigureSpecBase = namedtuple("FigureSpec", figure_indices)
+class ResSpec:
+    def __init__(self):
+        self.name = Res
+        self.title = "Res plot"
+        self.x_label = "x_"
+        self.y_label = "y_"
 
-res_specs = FigureSpecBase(Res, "Res plot", "x_", "y_")
+class ProdSpec:
+    def __init__(self):
+        self.name = Prod
+        self.title = "Prod plot"
+        self.x_label = "x_"
+        self.y_label = "y_"
 
-prod_specs = FigureSpecBase(Prod, "Prod plot", "x_", "y_")
+class FigureSetSpecs:
+    def __init__(self):
+        self.figures_per_row = 3
 
+class FigureIndividualSpecs:
+    def __init__(self):
+        self.res = ResSpec()
+        self.prod = ProdSpec()
+
+class FigureSpecs:
+    def __init__(self):
+        self.set = FigureSetSpecs()
+        self.figure = FigureIndividualSpecs()
 
 """
 UNUSED
@@ -44,4 +51,12 @@ _FigureSpec17 = _FigureSpecBase(Production.res_cost, "Production.res_cost", "x_"
 
 
 """
+
+
+
+
+
+
+
+
 

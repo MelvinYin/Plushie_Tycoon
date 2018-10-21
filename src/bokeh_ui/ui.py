@@ -11,8 +11,8 @@ class UI:
         """
         self.ui_callback = ui_callback
         self.initial_data = initial_data
-        self.figure_set = FigureSet(self.initial_data)
-        self.widget_set = WidgetSet(self.widget_callback, specs)
+        self.figure_set = FigureSet(self.initial_data, specs.figures)
+        self.widget_set = WidgetSet(self.widget_callback, specs.widgets)
         self.ui_layout = self.plot()
 
     def plot(self):
@@ -31,7 +31,7 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     from figures.mocked import mock_init, mock_update1, mock_update2, \
         mock_update3
     from widgets.mocked import mock_callbacks
-    from global_config import FullWidgetSpecs
+    from global_config import UISpecs
 
     call_count = 0
     def callback(call):
@@ -47,10 +47,10 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
             return mock_update3
 
     if __name__ == "__main__":
-        x = UI(mock_init, callback, FullWidgetSpecs())
+        x = UI(mock_init, callback, UISpecs())
         show(x.ui_layout)
     else:
-        x = UI(mock_init, callback, FullWidgetSpecs())
+        x = UI(mock_init, callback, UISpecs())
         curdoc().add_root(x.ui_layout)
 
 

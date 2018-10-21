@@ -2,24 +2,25 @@ import sys
 sys.path.append("../")
 from bokeh.plotting import figure, show, ColumnDataSource, curdoc
 from bokeh.layouts import row, column
+from config.global_config import Res, Prod
 try:
     from .individual_figure import IndividualFigure
-    from .figure_config import res_specs, prod_specs, set_specs
 except:
     from individual_figure import IndividualFigure
-    from figure_config import res_specs, prod_specs, set_specs
 
 class FigureSet:
-    def __init__(self, full_data, setspecs=set_specs, specs=(res_specs, prod_specs)):
-        self.FigureInstances = self._construct_individual_figures(full_data, specs)
+    def __init__(self, full_data, specs):
+        self.FigureInstances = self._construct_individual_figures(full_data,
+                                                                  specs.figure)
         self._couple_range()
-        self.layout = self._get_figure_layout(setspecs)
+        self.layout = self._get_figure_layout(specs.set)
 
-    def _construct_individual_figures(self, full_data, FigureSpecs):
+    def _construct_individual_figures(self, full_data, specs):
         FigureInstances = []
-        for FigureSpec in FigureSpecs:
-            data = full_data[FigureSpec.name]
-            FigureInstances.append(IndividualFigure(data, FigureSpec))
+        res_data = full_data[Res]
+        FigureInstances.append(IndividualFigure(res_data, specs.res))
+        prod_data = full_data[Prod]
+        FigureInstances.append(IndividualFigure(prod_data, specs.prod))
         return FigureInstances
 
     def _couple_range(self):
@@ -45,7 +46,7 @@ class FigureSet:
         for fig_label, value in data_to_add.items():
             found_fig = False
             for FigureInstance in self.FigureInstances:
-                if FigureInstance.name == fig_label:
+                if FigureInstance.name.tag == fig_label.tag:
                     FigureInstance.figure_update(value)
                     found_fig = True
                     break
@@ -56,8 +57,9 @@ class FigureSet:
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     def main():
         from mocked import mock_init, mock_update1, mock_update2, mock_update3
+        from config.figure import FigureSpecs
 
-        fig = FigureSet(mock_init)
+        fig = FigureSet(mock_init, FigureSpecs())
         fig.figure_update(mock_update1)
         fig.figure_update(mock_update2)
         fig.figure_update(mock_update3)

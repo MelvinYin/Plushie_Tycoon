@@ -1,10 +1,8 @@
-from global_config import Res, Prod
+from config.global_config import Res, Prod
 import random
 from collections import defaultdict
 import copy
 random.seed(1)
-
-# from mocked import mock_init, mock_update1, mock_update2, mock_update3
 
 mocked_time = [2,2,3,4,5,6,6,7,8,8]
 
