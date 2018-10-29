@@ -56,8 +56,8 @@ class TransactionWidgetSpecs:
 
     def set_RBG2(self):
         labelmap = dict()
-        labelmap[Res] = "Cat 1"
-        labelmap[Prod] = "Cat 2"
+        labelmap[Res] = "Res"
+        labelmap[Prod] = "Prod"
         RBG_ = namedtuple("RBG", 'width height labels labelmap')
         RBG = RBG_(width=400,
                    height=17,

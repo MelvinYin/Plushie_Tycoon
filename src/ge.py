@@ -17,15 +17,21 @@ class GE:
         self.callback = self._default_callback
         self.func_map = self.get_func_map()
 
+
     def _default_callback(self, call):
+        logging.debug("<Callback Called\ncall: {}".format(call))
         func_signal = call['command']
+        logging.debug("func_signal: {}".format(func_signal))
         func = self.func_map[func_signal]
+        logging.debug("func: {}".format(func))
         try:
             return_value = func(call)
         except InsufficientQuantityError:
             self.GS.reverse_call()
+            logging.debug("InsufficientQuantityError>\n\n")
             raise RepeatUIAction
         GS_update = self._convert_GS_to_dict()
+        logging.debug("GS_update: {}".format(GS_update))
         return GS_update
 
     def buy(self, call):
@@ -81,14 +87,18 @@ class GE:
 
     def _convert_GS_to_dict(self):
         GS_update = dict()
-        GS_update[Res] = {item: self.GS.market.get_price(item) for item in res_members}
-        GS_update[Res]["time"] = self.GS.current_time
-        GS_update[Prod] = {item: self.GS.market.get_price(item) for item in prod_members}
-        GS_update[Prod]["time"] = self.GS.current_time
-        GS_update[ResPrice] = {item: self.GS.market.get_price(item) for item in res_members}
-        GS_update[ResPrice]["time"] = self.GS.current_time
-        GS_update[ProdPrice] = {item: self.GS.market.get_price(item) for item in prod_members}
-        GS_update[ProdPrice]["time"] = self.GS.current_time
+        GS_update[Res] = {item.name: [self.GS.market.get_price(item)] for item\
+                in res_members}
+        GS_update[Res]["time"] = [self.GS.current_time]
+        GS_update[Prod] = {item.name: [self.GS.market.get_price(item)] for
+                                       item in prod_members}
+        GS_update[Prod]["time"] = [self.GS.current_time]
+        GS_update[ResPrice] = {item.name: [self.GS.market.get_price(item)] for
+                                           item in res_members}
+        GS_update[ResPrice]["time"] = [self.GS.current_time]
+        GS_update[ProdPrice] = {item.name: [self.GS.market.get_price(item)]
+                                            for item in prod_members}
+        GS_update[ProdPrice]["time"] = [self.GS.current_time]
 
         # GS_update[Production.hours_needed] = self.GS.production.hours_needed
         # GS_update[Production.cost_per_hour] = self.GS.production.cost_per_hour

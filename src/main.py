@@ -12,6 +12,7 @@ from global_config import UISpecs
 from bokeh.plotting import curdoc, show
 from mock_figure import mock_init, mock_update1, mock_update2, mock_update3
 from mock_widget import mocked_transaction_callbacks
+import logs
 
 def main():
     ge = GE()

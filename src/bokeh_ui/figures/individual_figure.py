@@ -61,6 +61,8 @@ class IndividualFigure:
         """
         num_values = len(next(iter(initial_data.values())))
         initial_data['xs'] = list(range(num_values))
+        print("initial_data: {}".format(initial_data))
+        print("\n\n\n\n\n\n")
         CDS = ColumnDataSource(data=initial_data)
         return CDS
 
@@ -133,7 +135,6 @@ class IndividualFigure:
         if current_time > self.CDS.data['time'][-1]:
             self.tick_label_map[current_x] = str(current_time)
             self._update_xaxis()
-        # print(add_line)
         # print(self.CDS.data)
         self.CDS.stream(add_line)
         return True

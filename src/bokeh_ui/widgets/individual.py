@@ -83,7 +83,10 @@ class TransactionWidget:
                 break
         # noinspection PyUnboundLocalVariable
         self._RBG3.labels = list(
-            [self.specs.RBG3.labelmap[val] for val in list(category)])
+            [self.specs.RBG3.labelmap[val] for val in list(category)
+             if val in self.specs.RBG3.labelmap])
+        # self.specs.RBG3.labelmap has res_members and prod_members, but
+        # category is Enum(Res), so calling list gives tag and other members
         self._RBG3.active = None
         return
 
@@ -123,21 +126,22 @@ class TransactionWidget:
         elif self._input_val.startswith("0"):
             print("Invalid input value.")
         else:
-            RBG2_label = self._RBG2.labels[self._RBG2.active]
-            for key, label in self.specs.RBG2.labelmap.items():
-                if label == RBG2_label:
-                    RBG2_key = key
+            RBG1_label = self._RBG1.labels[self._RBG1.active]
+            for key, label in self.specs.RBG1.labelmap.items():
+                if label == RBG1_label:
+                    RBG1_key = key
                     break
+
             RBG3_label = self._RBG3.labels[self._RBG3.active]
             for key, label in self.specs.RBG3.labelmap.items():
                 if label == RBG3_label:
                     RBG3_key = key
                     break
-            if 'RBG2_key' not in locals() or \
+            if 'RBG1_key' not in locals() or \
                     'RBG3_key' not in locals():
                 raise Exception
             # noinspection PyUnboundLocalVariable
-            callback = dict(command=RBG2_key, category=RBG3_key, quantity=int(self._input_val))
+            callback = dict(command=RBG1_key, category=RBG3_key, quantity=int(self._input_val))
             self.widget_callback(callback)
         return
 
