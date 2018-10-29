@@ -44,9 +44,9 @@ class TransactionWidgetSpecs:
 
     def set_RBG1(self):
         labelmap = dict()
-        labelmap[Func.buy] = "Func 1"
-        labelmap[Func.sell] = "Func 2"
-        labelmap[Func.make] = "Func 3"
+        labelmap[Func.buy] = "Buy"
+        labelmap[Func.sell] = "Sell"
+        labelmap[Func.make] = "Make"
         RBG_ = namedtuple("RBG", 'width height labels labelmap')
         RBG = RBG_(width=400,
                    height=17,
@@ -67,13 +67,13 @@ class TransactionWidgetSpecs:
 
     def set_RBG3(self):
         labelmap = dict()
-        labelmap[Res.cloth] = "Prod 1"
-        labelmap[Res.stuff] = "Prod 2"
-        labelmap[Res.accessory] = "Prod 3"
-        labelmap[Res.packaging] = "Prod 4"
-        labelmap[Prod.aisha] = "Prod 5"
-        labelmap[Prod.beta] = "Prod 6"
-        labelmap[Prod.chama] = "Prod 7"
+        labelmap[Res.cloth] = "cloth"
+        labelmap[Res.stuff] = "stuff"
+        labelmap[Res.accessory] = "accessory"
+        labelmap[Res.packaging] = "packaging"
+        labelmap[Prod.aisha] = "aisha"
+        labelmap[Prod.beta] = "beta"
+        labelmap[Prod.chama] = "chama"
         # noinspection PyTypeChecker
         assert len(labelmap) == len(res_members) + len(prod_members)
         RBG_ = namedtuple("RBG", 'width height labels labelmap')
@@ -87,14 +87,14 @@ class TransactionWidgetSpecs:
         TI_ = namedtuple("Header", 'width height placeholder')
         TI = TI_(width=1,  # Text box
                  height=1,
-                 placeholder='PLACEHOLDER123')
+                 placeholder='Quantity')
         return TI
 
     def set_button(self):
         Button = namedtuple("Header", 'width height label')
         button = Button(width=50,  # Size of button
                         height=0,
-                        label="button123")
+                        label="Send")
         return button
 
     def set_layout(self):
@@ -148,10 +148,10 @@ class ButtonWidgetSpecs:
 
     def set_RBG(self):
         labelmap = dict()
-        labelmap[Func.next] = "Func 1"
-        labelmap[Func.save] = "Func 2"
-        labelmap[Func.load] = "Func 3"
-        labelmap[Func.quit] = "Func 4"
+        labelmap[Func.next] = "next"
+        labelmap[Func.save] = "save"
+        labelmap[Func.load] = "load"
+        labelmap[Func.quit] = "quit"
         RBG_ = namedtuple("RBG", 'width height labels labelmap')
         RBG = RBG_(width=250,
                    height=17,
@@ -163,7 +163,7 @@ class ButtonWidgetSpecs:
         Button = namedtuple("Header", 'width height label')
         button = Button(width=0,  # Size of button
                         height=0,
-                        label="button123")
+                        label="Send")
         return button
 
     def set_layout(self):

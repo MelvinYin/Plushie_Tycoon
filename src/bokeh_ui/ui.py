@@ -2,6 +2,7 @@ from figures.figureset import FigureSet
 from widgets.widgetset import WidgetSet
 from bokeh.plotting import curdoc, show
 from bokeh.layouts import column
+from exceptions import InvalidInputException, InsufficientQuantityError
 
 class UI:
     def __init__(self, initial_data, ui_callback, specs):
@@ -22,7 +23,14 @@ class UI:
         return layout_main
 
     def widget_callback(self, call):
-        to_add = self.ui_callback(call)
+        try:
+            to_add = self.ui_callback(call)
+        except InvalidInputException:
+            return False
+        except InsufficientQuantityError:
+            return False
+        except:
+            raise
         self.figure_set.figure_update(to_add)
         return True
 

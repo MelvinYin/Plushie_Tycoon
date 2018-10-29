@@ -13,9 +13,10 @@ from bokeh.plotting import curdoc, show
 from mock_figure import mock_init, mock_update1, mock_update2, mock_update3
 from mock_widget import mocked_transaction_callbacks
 import logs
+from mock_GE import mock_ge
 
 def main():
-    ge = GE()
+    ge = mock_ge()
     callback = ge.callback
     init_data = ge.get_init_data()
     ui = UI(init_data, callback, UISpecs())

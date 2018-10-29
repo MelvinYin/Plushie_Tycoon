@@ -133,7 +133,9 @@ class IndividualFigure:
         if current_time > self.CDS.data['time'][-1]:
             self.tick_label_map[current_x] = str(current_time)
             self._update_xaxis()
-        # print(self.CDS.data)
+        print("\n<")
+        print(self.CDS.data)
+        print(">\n\n")
         self.CDS.stream(add_line)
         return True
 

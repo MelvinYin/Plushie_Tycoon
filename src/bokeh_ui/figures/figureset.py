@@ -44,14 +44,10 @@ class FigureSet:
 
     def figure_update(self, data_to_add):
         for fig_label, value in data_to_add.items():
-            found_fig = False
             for FigureInstance in self.FigureInstances:
                 if FigureInstance.name.tag == fig_label.tag:
                     FigureInstance.figure_update(value)
-                    found_fig = True
                     break
-            if not found_fig:
-                raise Exception
         return True
 
 if __name__ == "__main__" or str(__name__).startswith("bk_script"):

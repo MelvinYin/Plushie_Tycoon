@@ -1,6 +1,9 @@
-from global_config import Res, Prod, Func, ResPrice, ProdPrice, res_members, \
-    prod_members
+import logging
+import sys
 
+from exceptions import InvalidInputException
+from global_config import Res, Prod, Func, ResPrice, ProdPrice, res_members, \
+                          prod_members
 
 class mock_ge:
     def __init__(self):
@@ -19,6 +22,8 @@ class mock_ge:
 
     def make(self, call):
         category = call['category']
+        if type(category) != Prod:
+            raise InvalidInputException
         quantity = call['quantity']
         all_res_costs = self.res_cost[category]
         for res, cost in all_res_costs.items():
@@ -36,7 +41,7 @@ class mock_ge:
         else:
             raise Exception
         self.data['budget'] -= cost
-        self.data[Prod][category] += quantity
+        self.data[type(category)][category] += quantity
         return
 
     def sell(self, call):
@@ -49,7 +54,7 @@ class mock_ge:
         else:
             raise Exception
         self.data['budget'] += cost
-        self.data[Prod][category] -= quantity
+        self.data[type(category)][category] -= quantity
         return
 
     def callback(self, call):
@@ -59,45 +64,52 @@ class mock_ge:
             self.buy(call)
         elif call['command'] == Func.sell:
             self.sell(call)
+        elif call['command'] == Func.next:
+            self.data['time'] += 1
+        elif call['command'] == Func.quit:
+            sys.exit()
         else:
-            pass
+            logging.error("Command not implemented in mock_ge.")
+            raise InvalidInputException
         self.update_store()
         return self.store
 
     def create_init_data(self):
         data = dict()
-        data[Res] = {item.name: 100 for item in res_members}
+        data[Res] = {item: 100 for item in res_members}
         data['time'] = 0
         data['budget'] = 100000
-        data[Prod] = {item.name: 100 for item in prod_members}
-        data[ResPrice] = {item.name: i+1 for i, item in enumerate(
+        data[Prod] = {item: 100 for item in prod_members}
+        data[ResPrice] = {item: i+1 for i, item in enumerate(
             res_members)}
-        data[ProdPrice] = {item.name: 100+i+1 for i, item in enumerate(
-            res_members)}
+        data[ProdPrice] = {item: 100+i+1 for i, item in enumerate(
+            prod_members)}
         return data
+
+    def get_init_data(self):
+        return self.store
 
     def update_store(self):
         for res in res_members:
-            self.store[Res][res].append(self.data[Res][res])
-            self.store[ResPrice][res].append(self.data[ResPrice][res])
+            self.store[Res][res.name] = [self.data[Res][res]]
+            self.store[ResPrice][res.name] = [self.data[ResPrice][res]]
         for prod in prod_members:
-            self.store[Prod][prod].append(self.data[Prod][prod])
-            self.store[ProdPrice][prod].append(self.data[ProdPrice][prod])
-        self.store[Res]['time'].append(self.data['time'])
-        self.store[ResPrice]['time'].append(self.data['time'])
-        self.store[Prod]['time'].append(self.data['time'])
-        self.store[ProdPrice]['time'].append(self.data['time'])
+            self.store[Prod][prod.name] = [self.data[Prod][prod]]
+            self.store[ProdPrice][prod.name] = [self.data[ProdPrice][prod]]
+        self.store[Res]['time'] = [self.data['time']]
+        self.store[ResPrice]['time'] = [self.data['time']]
+        self.store[Prod]['time'] = [self.data['time']]
+        self.store[ProdPrice]['time'] = [self.data['time']]
         return
 
     def create_init_store(self):
         store = dict()
         store[Res] = {item.name: [100] for item in res_members}
-        store['budget'] = 100000
         store[Prod] = {item.name: [100] for item in prod_members}
         store[ResPrice] = {item.name: [i+1] for i, item in enumerate(
             res_members)}
         store[ProdPrice] = {item.name: [100+i+1] for i, item in enumerate(
-            res_members)}
+            prod_members)}
         store[Res]["time"] = [0]
         store[Prod]["time"] = [0]
         store[ResPrice]["time"] = [0]
