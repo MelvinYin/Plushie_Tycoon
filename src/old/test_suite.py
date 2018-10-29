@@ -12,7 +12,6 @@ test_GE = True
 
 @unittest.skipIf(test_GE == False, "")
 class TestGE(unittest.TestCase):
-
     def check_list_equal(self, var_1, var_2):
         try:
             self.assertListEqual(var_1, var_2)

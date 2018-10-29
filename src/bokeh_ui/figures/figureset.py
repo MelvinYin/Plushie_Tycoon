@@ -49,21 +49,3 @@ class FigureSet:
                     FigureInstance.figure_update(value)
                     break
         return True
-
-if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    def main():
-        from mocked_data.mock_figure import mock_init, mock_update1, mock_update2, \
-            mock_update3
-        from config.figure import FigureSpecs
-
-        fig = FigureSet(mock_init, FigureSpecs())
-        fig.figure_update(mock_update1)
-        fig.figure_update(mock_update2)
-        fig.figure_update(mock_update3)
-        layout_w = fig.layout
-        if __name__ == "__main__":
-            show(layout_w)
-        else:
-            curdoc().add_root(layout_w)
-
-    main()

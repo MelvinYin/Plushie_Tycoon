@@ -133,35 +133,6 @@ class IndividualFigure:
         if current_time > self.CDS.data['time'][-1]:
             self.tick_label_map[current_x] = str(current_time)
             self._update_xaxis()
-        print("\n<")
-        print(self.CDS.data)
-        print(">\n\n")
+
         self.CDS.stream(add_line)
         return True
-
-
-if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from bokeh.layouts import row
-    from mocked_data.mock_figure import mock_init, mock_update1, mock_update2, \
-        mock_update3
-    from config.global_config import Res, Prod
-    from config.figure import ResSpec, ProdSpec
-
-    res_fig = IndividualFigure(mock_init[Res], ResSpec())
-    prod_fig = IndividualFigure(mock_init[Prod], ProdSpec())
-
-    res_fig.figure_update(mock_update1[Res])
-    res_fig.figure_update(mock_update2[Res])
-    res_fig.figure_update(mock_update3[Res])
-
-    prod_fig.figure_update(mock_update1[Prod])
-    prod_fig.figure_update(mock_update2[Prod])
-    prod_fig.figure_update(mock_update3[Prod])
-
-    layout_w = res_fig.figure
-    layout_ = prod_fig.figure
-    layout = row(layout_w, layout_)
-    if __name__ == "__main__":
-        show(layout)
-    else:
-        curdoc().add_root(layout)
