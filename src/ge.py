@@ -13,7 +13,7 @@ from gs import GS
 class GE:
     def __init__(self):
         self.GS = GS()
-        self.GS.commit(call=Func.start)
+        self.GS.commit(call=dict(command=Func.start))
         self.callback = self._default_callback
         self.func_map = self.get_func_map()
 
@@ -35,7 +35,7 @@ class GE:
         return GS_update
 
     def buy(self, call):
-        self.GS.commit(call=(Func.buy, *call))
+        self.GS.commit(call=call)
         category = call['category']
         quantity = call['quantity']
         self.GS.inventory.add(category, quantity)
@@ -45,7 +45,7 @@ class GE:
         return True
 
     def sell(self, call):
-        self.GS.commit(call=(Func.sell, *call))
+        self.GS.commit(call=call)
         category = call['category']
         quantity = call['quantity']
         self.GS.inventory.sub(category, quantity)
@@ -55,7 +55,7 @@ class GE:
         return True
 
     def make(self, call):
-        self.GS.commit(call=(Func.make, *call))
+        self.GS.commit(call=call)
         category = call['category']
         quantity = call['quantity']
         cost, materials = self.GS.production.get_cost(category)
@@ -82,7 +82,7 @@ class GE:
 
     def next_turn(self):
         self.GS.current_time += 1
-        self.GS.commit(call=Func.next_turn)
+        self.GS.commit(call=dict(command=Func.next_turn))
         return
 
     def _convert_GS_to_dict(self):

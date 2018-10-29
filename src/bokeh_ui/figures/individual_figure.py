@@ -61,8 +61,6 @@ class IndividualFigure:
         """
         num_values = len(next(iter(initial_data.values())))
         initial_data['xs'] = list(range(num_values))
-        print("initial_data: {}".format(initial_data))
-        print("\n\n\n\n\n\n")
         CDS = ColumnDataSource(data=initial_data)
         return CDS
 
