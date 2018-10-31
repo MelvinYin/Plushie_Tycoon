@@ -38,19 +38,4 @@ class WidgetSet:
         layout = column(*row_layouts)
         return layout
 
-# For testing
-if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from global_config import UISpecs
-
-    def widget_callback(command_to_run):
-        print("from widget callback")
-        print(command_to_run)
-        return
-
-    layout_w = WidgetSet(widget_callback, UISpecs().widgets).layout
-    if __name__ == "__main__":
-        show(layout_w)
-    else:
-        curdoc().add_root(layout_w)
-    # Expected output: tuple(<Func.something>, <Res.something>, int of quantity)
 

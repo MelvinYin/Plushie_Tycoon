@@ -196,15 +196,3 @@ class WidgetSpecs:
     def __init__(self):
         self.set = WidgetSetSpecs()
         self.widget = WidgetIndividualSpecs()
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-np.seterr("print")
 
 try:
     from base import Res, Prod, ResPrice, ProdPrice, Others, Func, res_members, \

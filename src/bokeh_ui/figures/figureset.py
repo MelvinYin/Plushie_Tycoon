@@ -1,6 +1,3 @@
-import sys
-sys.path.append("../")
-from bokeh.plotting import figure, show, ColumnDataSource, curdoc
 from bokeh.layouts import row, column
 from config.global_config import Res, Prod
 try:

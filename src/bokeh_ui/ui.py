@@ -1,6 +1,5 @@
 from figures.figureset import FigureSet
 from widgets.widgetset import WidgetSet
-from bokeh.plotting import curdoc, show
 from bokeh.layouts import column
 from exceptions import InvalidInputException, InsufficientQuantityError
 
@@ -33,54 +32,3 @@ class UI:
             raise
         self.figure_set.figure_update(to_add)
         return True
-
-
-if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from mock_figure import mock_init, mock_update1, mock_update2, \
-        mock_update3
-    from mock_widget import mock_callbacks
-    from config.global_config import UISpecs
-
-    call_count = 0
-    def callback(call):
-        global call_count
-        assert call in mock_callbacks
-        if call_count == 0:
-            call_count += 1
-            return mock_update1
-        elif call_count == 1:
-            call_count += 1
-            return mock_update2
-        else:
-            return mock_update3
-
-    if __name__ == "__main__":
-        x = UI(mock_init, callback, UISpecs())
-        show(x.ui_layout)
-    else:
-        x = UI(mock_init, callback, UISpecs())
-        curdoc().add_root(x.ui_layout)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

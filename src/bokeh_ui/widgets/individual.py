@@ -1,9 +1,8 @@
 from bokeh.models.widgets import Button, Div
 from bokeh.models.widgets.inputs import TextInput
 from bokeh.models.widgets import RadioButtonGroup
-
-from bokeh.plotting import show, curdoc
 from bokeh.layouts import row, column
+import logging
 import re
 
 
@@ -114,17 +113,17 @@ class TransactionWidget:
 
     def _button_callback(self):
         if self._RBG1.active is None:
-            print("No category selected.")
+            logging.info("No category selected.")
         elif self._RBG2.active is None:
-            print("No category selected.")
+            logging.info("No category selected.")
         elif self._RBG3.active is None:
-            print("No category selected.")
+            logging.info("No category selected.")
         elif not self._input_val:
-            print("Value not set.")
+            logging.info("Value not set.")
         elif not re.fullmatch("[0-9]+", self._input_val.strip()):
-            print("Invalid input value.")
+            logging.info("Invalid input value.")
         elif self._input_val.startswith("0"):
-            print("Invalid input value.")
+            logging.info("Invalid input value.")
         else:
             RBG1_label = self._RBG1.labels[self._RBG1.active]
             for key, label in self.specs.RBG1.labelmap.items():
@@ -157,7 +156,7 @@ class ButtonWidget:
 
     def _button_callback(self):
         if self._RBG.active is None:
-            print("No category selected.")
+            logging.info("No category selected.")
         else:
             callback = dict(command=self._RBG.labels[self._RBG.active])
             self.callback(callback)
@@ -177,26 +176,3 @@ class ButtonWidget:
         row1 = self._build_row(specs[1], [self._RBG, self._button])
         layout = column(row0, row1, width=width, height=height)
         return layout
-
-
-if __name__ == "__main__" or str(__name__).startswith("bk_script"):
-    from config.widget import WidgetIndividualSpecs
-
-    def widget_callback(command_to_run):
-        print("from widget callback")
-        print(command_to_run)
-        return
-
-    widget_1 = TransactionWidget(widget_callback, WidgetIndividualSpecs().transaction_1)
-
-    widget_1.widget_callback([
-        WidgetIndividualSpecs().transaction_1.RBG1.labels[0],
-        WidgetIndividualSpecs().transaction_1.RBG3.labels[0],
-        10])
-
-    widget_2 = ButtonWidget(widget_callback, WidgetIndividualSpecs().button_1)
-
-    layout_w1 = widget_1.layout
-    layout2 = widget_2.layout
-    show(row(layout_w1, layout2))
-    curdoc().add_root(row(layout_w1))
