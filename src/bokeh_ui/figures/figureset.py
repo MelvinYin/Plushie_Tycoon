@@ -1,9 +1,7 @@
 from bokeh.layouts import row, column
+
 from config.global_config import Res, Prod
-try:
-    from .individual_figure import IndividualFigure
-except:
-    from individual_figure import IndividualFigure
+from .individual_figure import IndividualFigure
 
 class FigureSet:
     def __init__(self, full_data, specs):

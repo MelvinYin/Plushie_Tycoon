@@ -1,5 +1,5 @@
-from figures.figureset import FigureSet
-from widgets.widgetset import WidgetSet
+from .figures.figureset import FigureSet
+from .widgets.widgetset import WidgetSet
 from bokeh.layouts import column
 from exceptions import InvalidInputException, InsufficientQuantityError
 

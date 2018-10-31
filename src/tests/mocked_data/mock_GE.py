@@ -2,8 +2,8 @@ import logging
 import sys
 
 from exceptions import InvalidInputException
-from global_config import Res, Prod, Func, ResPrice, ProdPrice, res_members, \
-                          prod_members
+from config.global_config import Res, Prod, Func, ResPrice, ProdPrice, \
+    res_members, prod_members
 
 class mock_ge:
     def __init__(self):

@@ -1,16 +1,9 @@
 import pandas as pd
-import numpy as np
 
-try:
-    from base import Res, Prod, ResPrice, ProdPrice, Others, Func, res_members, \
-        prod_members
-    from figure import FigureSpecs
-    from widget import WidgetSpecs
-except:
-    from .base import Res, Prod, ResPrice, ProdPrice, Others, Func, \
-        res_members, prod_members
-    from .figure import FigureSpecs
-    from .widget import WidgetSpecs
+from .base import Res, Prod, ResPrice, ProdPrice, Others, Func, \
+    res_members, prod_members
+from .figure import FigureSpecs
+from .widget import WidgetSpecs
 
 
 

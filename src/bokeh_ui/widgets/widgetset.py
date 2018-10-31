@@ -1,5 +1,4 @@
 from bokeh.layouts import row, column
-from bokeh.plotting import show, curdoc
 
 try:
     from .individual import TransactionWidget, ButtonWidget

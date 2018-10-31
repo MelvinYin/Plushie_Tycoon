@@ -3,20 +3,21 @@ from bokeh.layouts import row
 import logging
 import os
 import sys
-
-sys.path.insert(1, os.path.join(sys.path[0], '..'))
+src_path = sys.path[0].rsplit("/", maxsplit=1)[0]
+sys.path.append(src_path)
+print(sys.path)
 
 from bokeh_ui.figures.individual_figure import IndividualFigure
 from config.figure import FigureSpecs, ResSpec, ProdSpec
 from config.global_config import Res, Prod, UISpecs
 from config.widget import WidgetIndividualSpecs
-from figureset import FigureSet
+from bokeh_ui.figures.figureset import FigureSet
 from mocked_data.mock_figure import mock_init, mock_update1, mock_update2, \
     mock_update3
-from mocked_data.mock_widget import mock_callbacks
+from mocked_data.mock_GE import mock_ge
 from bokeh_ui.ui import UI
-from widgets.individual import TransactionWidget, ButtonWidget
-from widgets.widgetset import WidgetSet
+from bokeh_ui.widgets.individual import TransactionWidget, ButtonWidget
+from bokeh_ui.widgets.widgetset import WidgetSet
 
 test_figureset = False
 test_individual_figure = False
@@ -74,20 +75,8 @@ def widgetset():
     return layout_w
 
 def ui():
-    call_count = 0
-    def callback(call):
-        logging.debug("Call: <{}>".format(call))
-        global call_count
-        assert call in mock_callbacks
-        if call_count == 0:
-            call_count += 1
-            return mock_update1
-        elif call_count == 1:
-            call_count += 1
-            return mock_update2
-        else:
-            return mock_update3
-
+    ge = mock_ge()
+    callback = ge.callback
     x = UI(mock_init, callback, UISpecs())
     return x.ui_layout
 
@@ -98,14 +87,16 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     func_map[test_individual_widget] = individual_widget
     func_map[test_widgetset] = WidgetSet
     func_map[test_ui] = ui
-
+    print("Called")
     layout = None
     for key, function in func_map.items():
         if key:
             layout = function()
             break
+    print(layout)
     if layout is None:
         sys.exit()
+
     if __name__ == "__main__":
         show(layout)
     else:

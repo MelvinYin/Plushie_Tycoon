@@ -1,4 +1,4 @@
-from mock_widget import mock_callbacks
+from .mock_widget import mock_callbacks
 
 class mock_UI:
     def __init__(self, initial_data, callback, specs):

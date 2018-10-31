@@ -1,10 +1,7 @@
 ##############################################################################
 # Figure Attributes
 
-try:
-    from base import Res, Prod
-except:
-    from .base import Res, Prod
+from .base import Res, Prod
 
 class ResSpec:
     def __init__(self):
