@@ -1,7 +1,6 @@
 from config.global_config import Func, Res, Prod, res_members, prod_members
 import random
 random.seed(1)
-# from mocked import mock_init, mock_update1, mock_update2, mock_update3
 
 def mocked_transaction_callbacks():
     callbacks = []

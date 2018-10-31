@@ -3,7 +3,7 @@ import copy
 import os
 import pickle
 import sys
-import logging
+from logs import log
 from config.global_config import Func, Res, Prod, ResPrice, ProdPrice, \
     save_folder, \
     save_file_name, res_members, prod_members
@@ -19,19 +19,19 @@ class GE:
 
 
     def _default_callback(self, call):
-        logging.debug("<Callback Called\ncall: {}".format(call))
+        log(os.getcwd(), "<Callback Called\ncall: {}".format(call))
         func_signal = call['command']
-        logging.debug("func_signal: {}".format(func_signal))
+        log(os.getcwd(), "func_signal: {}".format(func_signal))
         func = self.func_map[func_signal]
-        logging.debug("func: {}".format(func))
+        log(os.getcwd(), "func: {}".format(func))
         try:
             return_value = func(call)
         except InsufficientQuantityError:
             self.GS.reverse_call()
-            logging.debug("InsufficientQuantityError>\n\n")
+            log(os.getcwd(), "InsufficientQuantityError>\n\n")
             raise RepeatUIAction
         GS_update = self._convert_GS_to_dict()
-        logging.debug("GS_update: {}".format(GS_update))
+        log(os.getcwd(), "GS_update: {}".format(GS_update))
         return GS_update
 
     def buy(self, call):
@@ -132,7 +132,7 @@ class GE:
     def back(self):
         ret_value = self.GS.reverse_call()
         if not ret_value:
-            logging.info("No previous action logged.")
+            log(os.getcwd(), "No previous action logged.")
             return False
         return True
 

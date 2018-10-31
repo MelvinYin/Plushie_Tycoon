@@ -1,6 +1,5 @@
 from singleton import Singleton
 from bases import BaseInventory
-import logging
 import copy
 from config.global_config import starting_res, starting_prod, Res, Prod
 

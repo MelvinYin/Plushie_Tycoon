@@ -5,8 +5,6 @@ from .base import Res, Prod, ResPrice, ProdPrice, Others, Func, \
 from .figure import FigureSpecs
 from .widget import WidgetSpecs
 
-
-
 # Plushie Resource Cost
 _res_cost = dict()
 _res_cost[Prod.aisha] = [3,6,2,1]

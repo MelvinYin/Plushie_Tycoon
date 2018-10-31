@@ -1,6 +1,7 @@
 from singleton import Singleton
-import logging
 from config import global_config
+from logs import log
+import os
 from exceptions import InsufficientQuantityError
 
 
@@ -15,7 +16,7 @@ class Budget:
     def sub(self, other):
         item = self.value - other
         if item < 0:
-            logging.warning(f"Insufficient quantity in {self.__class__}. "
+            log(os.getcwd(), f"Insufficient quantity in {self.__class__}. "
                             f"Attempting to deduct {other} from {self.value}.")
             raise InsufficientQuantityError
         self.value = item

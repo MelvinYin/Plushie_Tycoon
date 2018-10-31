@@ -1,7 +1,8 @@
-import logging
+import os
 import sys
 
 from exceptions import InvalidInputException
+from logs import log
 from config.global_config import Res, Prod, Func, ResPrice, ProdPrice, \
     res_members, prod_members
 
@@ -57,7 +58,12 @@ class mock_ge:
         self.data[type(category)][category] -= quantity
         return
 
+    def next(self, call):
+        self.data['time'] += 1
+        return
+
     def callback(self, call):
+        log(os.getcwd(), "mock_GE callback: {}".format(call))
         if call['command'] == Func.make:
             self.make(call)
         elif call['command'] == Func.buy:
@@ -69,7 +75,7 @@ class mock_ge:
         elif call['command'] == Func.quit:
             sys.exit()
         else:
-            logging.error("Command not implemented in mock_ge.")
+            log(os.getcwd(), "Command not implemented in mock_ge.")
             raise InvalidInputException
         self.update_store()
         return self.store

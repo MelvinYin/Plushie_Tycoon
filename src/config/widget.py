@@ -41,42 +41,39 @@ class TransactionWidgetSpecs:
 
     def set_RBG1(self):
         labelmap = dict()
-        labelmap[Func.buy] = "Buy"
-        labelmap[Func.sell] = "Sell"
-        labelmap[Func.make] = "Make"
-        RBG_ = namedtuple("RBG", 'width height labels labelmap')
+        labelmap["Buy"] = Func.buy
+        labelmap["Sell"] = Func.sell
+        labelmap["Make"] = Func.make
+        RBG_ = namedtuple("RBG", 'width height labelmap')
         RBG = RBG_(width=400,
                    height=17,
-                   labels=[Func.buy, Func.sell, Func.make],
                    labelmap = labelmap)
         return RBG
 
     def set_RBG2(self):
         labelmap = dict()
-        labelmap[Res] = "Res"
-        labelmap[Prod] = "Prod"
-        RBG_ = namedtuple("RBG", 'width height labels labelmap')
+        labelmap["Res"] = Res
+        labelmap["Prod"] = Prod
+        RBG_ = namedtuple("RBG", 'width height labelmap')
         RBG = RBG_(width=400,
                    height=17,
-                   labels=[Res, Prod],
-                   labelmap = labelmap)
+                   labelmap=labelmap)
         return RBG
 
     def set_RBG3(self):
         labelmap = dict()
-        labelmap[Res.cloth] = "cloth"
-        labelmap[Res.stuff] = "stuff"
-        labelmap[Res.accessory] = "accessory"
-        labelmap[Res.packaging] = "packaging"
-        labelmap[Prod.aisha] = "aisha"
-        labelmap[Prod.beta] = "beta"
-        labelmap[Prod.chama] = "chama"
+        labelmap["cloth"] = Res.cloth
+        labelmap["stuff"] = Res.stuff
+        labelmap["accessory"] = Res.accessory
+        labelmap["packaging"] = Res.packaging
+        labelmap["aisha"] = Prod.aisha
+        labelmap["beta"] = Prod.beta
+        labelmap["chama"] = Prod.chama
         # noinspection PyTypeChecker
-        assert len(labelmap) == len(res_members) + len(prod_members)
-        RBG_ = namedtuple("RBG", 'width height labels labelmap')
+        # assert len(labelmap) == len(res_members) + len(prod_members)
+        RBG_ = namedtuple("RBG", 'width height labelmap')
         RBG = RBG_(width=400,
                    height=17,
-                   labels=res_members,
                    labelmap=labelmap)
         return RBG
 
@@ -145,14 +142,13 @@ class ButtonWidgetSpecs:
 
     def set_RBG(self):
         labelmap = dict()
-        labelmap[Func.next] = "next"
-        labelmap[Func.save] = "save"
-        labelmap[Func.load] = "load"
-        labelmap[Func.quit] = "quit"
-        RBG_ = namedtuple("RBG", 'width height labels labelmap')
+        labelmap["next"] = Func.next
+        labelmap["save"] = Func.save
+        labelmap["load"] = Func.load
+        labelmap["quit"] = Func.quit
+        RBG_ = namedtuple("RBG", 'width height labelmap')
         RBG = RBG_(width=250,
                    height=17,
-                   labels=[Func.next, Func.save, Func.load, Func.quit],
                    labelmap=labelmap)
         return RBG
 

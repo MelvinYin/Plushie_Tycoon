@@ -1,29 +1,31 @@
 from bokeh.plotting import curdoc, show
 from bokeh.layouts import row
-import logging
-import os
 import sys
+import os
 src_path = sys.path[0].rsplit("/", maxsplit=1)[0]
 sys.path.append(src_path)
-print(sys.path)
 
+from bokeh_ui.figures.figureset import FigureSet
 from bokeh_ui.figures.individual_figure import IndividualFigure
 from config.figure import FigureSpecs, ResSpec, ProdSpec
 from config.global_config import Res, Prod, UISpecs
 from config.widget import WidgetIndividualSpecs
-from bokeh_ui.figures.figureset import FigureSet
+from logs import log
 from mocked_data.mock_figure import mock_init, mock_update1, mock_update2, \
     mock_update3
 from mocked_data.mock_GE import mock_ge
 from bokeh_ui.ui import UI
 from bokeh_ui.widgets.individual import TransactionWidget, ButtonWidget
 from bokeh_ui.widgets.widgetset import WidgetSet
+import old_logs
+
+old_logs.set_logging_level()
 
 test_figureset = False
 test_individual_figure = False
-test_individual_widget = False
+test_individual_widget = True
 test_widgetset = False
-test_ui = True
+test_ui = False
 
 def individual_figure():
     res_fig = IndividualFigure(mock_init[Res], ResSpec())
@@ -52,14 +54,16 @@ def figureset():
 
 def individual_widget():
     def widget_callback(command_to_run):
-        logging.debug("from widget callback")
-        logging.debug(command_to_run)
+        log(os.getcwd(), "from widget callback")
+        log(os.getcwd(), command_to_run)
         return
 
-    widget_1 = TransactionWidget(widget_callback, WidgetIndividualSpecs().transaction_1)
+    widget_1 = TransactionWidget(widget_callback,
+                                 WidgetIndividualSpecs().transaction_1)
     widget_1.widget_callback([
-        WidgetIndividualSpecs().transaction_1.RBG1.labels[0],
-        WidgetIndividualSpecs().transaction_1.RBG3.labels[0], 10])
+        list(WidgetIndividualSpecs().transaction_1.RBG1.labelmap.keys())[0],
+        list(WidgetIndividualSpecs().transaction_1.RBG3.labelmap.keys())[0],
+        10])
     widget_2 = ButtonWidget(widget_callback, WidgetIndividualSpecs().button_1)
     layout_w1 = widget_1.layout
     layout2 = widget_2.layout
@@ -68,8 +72,8 @@ def individual_widget():
 
 def widgetset():
     def widget_callback(command_to_run):
-        logging.debug("from widget callback")
-        logging.debug(command_to_run)
+        log(os.getcwd(), "from widget callback")
+        log(os.getcwd(), command_to_run)
         return
     layout_w = WidgetSet(widget_callback, UISpecs().widgets).layout
     return layout_w
@@ -87,13 +91,11 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     func_map[test_individual_widget] = individual_widget
     func_map[test_widgetset] = WidgetSet
     func_map[test_ui] = ui
-    print("Called")
     layout = None
     for key, function in func_map.items():
         if key:
             layout = function()
             break
-    print(layout)
     if layout is None:
         sys.exit()
 

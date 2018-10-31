@@ -1,7 +1,6 @@
 from abc import ABC
 import os
 import pickle
-import logging
 from exceptions import InsufficientQuantityError
 import pandas as pd
 from enum import Enum

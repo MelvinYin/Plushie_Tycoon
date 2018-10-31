@@ -5,7 +5,7 @@ from market import Market
 from global_config import starting_time, save_folder, save_file_name
 from budget import Budget
 import copy
-import logging
+from logs import log
 import sys
 import os
 import pickle
@@ -47,10 +47,10 @@ class GS:
 
     def load(self, file_path=save_folder, file_name=save_file_name):
         if not os.path.isdir(file_path):
-            logging.error(f"File path {file_path} does not exist.")
+            log(os.getcwd(), f"File path {file_path} does not exist.")
             raise FileNotFoundError
         if not os.path.isfile(file_path + file_name):
-            logging.error(f"File {file_name} does not exist in specified "
+            log(os.getcwd(), f"File {file_name} does not exist in specified "
                              f"directory {file_path}.")
             raise FileNotFoundError
         with open(file_path + file_name, "rb") as file:
@@ -59,11 +59,11 @@ class GS:
 
     def save(self, file_path=save_folder, file_name=save_file_name):
         if not file_name.endswith(".pkl"):
-            logging.warning(f"Warning: File name {file_name} provided does not"
+            log(os.getcwd(), f"Warning: File name {file_name} provided does not"
                             f" end with .pkl. Suffix will be added.")
             file_name += ".pkl"
         if not os.path.isdir(file_path):
-            logging.warning(f"Warning: File_path {file_path} provided does not"
+            log(os.getcwd(), f"Warning: File_path {file_path} provided does not"
                             f" exist. Directory will be created.")
             os.makedirs(file_path)
         with open(file_path + file_name, "wb") as file:

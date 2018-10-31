@@ -1,0 +1,84 @@
+        <Command not implemented in mock_ge.>
+</>
+        <Command not implemented in mock_ge.>
+</>
+        <Command not implemented in mock_ge.>
+</>
+        <Invalid input value.>
+</>
+        <Invalid input value.>
+</>
+        <Invalid input value.>
+</>
+        <Invalid input value.>
+</>
+        <Invalid input value.>
+</>
+        <Command not implemented in mock_ge.>
+<['/home/melvin/anaconda3/bin', '/home/melvin/anaconda3/lib/python36.zip', '/home/melvin/anaconda3/lib/python3.6', '/home/melvin/anaconda3/lib/python3.6/lib-dynload', '/home/melvin/anaconda3/lib/python3.6/site-packages', '/home/melvin/anaconda3/lib/python3.6/site-packages/pyrosetta-2018.26+release.757388b-py3.6-linux-x86_64.egg']>
+        <Command not implemented in mock_ge.>
+<['/home/melvin/anaconda3/bin', '/home/melvin/anaconda3/lib/python36.zip', '/home/melvin/anaconda3/lib/python3.6', '/home/melvin/anaconda3/lib/python3.6/lib-dynload', '/home/melvin/anaconda3/lib/python3.6/site-packages', '/home/melvin/anaconda3/lib/python3.6/site-packages/pyrosetta-2018.26+release.757388b-py3.6-linux-x86_64.egg']>
+        <Command not implemented in mock_ge.>
+<['/home/melvin/anaconda3/bin', '/home/melvin/anaconda3/lib/python36.zip', '/home/melvin/anaconda3/lib/python3.6', '/home/melvin/anaconda3/lib/python3.6/lib-dynload', '/home/melvin/anaconda3/lib/python3.6/site-packages', '/home/melvin/anaconda3/lib/python3.6/site-packages/pyrosetta-2018.26+release.757388b-py3.6-linux-x86_64.egg']>
+        <Command not implemented in mock_ge.>
+<['/home/melvin/anaconda3/bin', '/home/melvin/anaconda3/lib/python36.zip', '/home/melvin/anaconda3/lib/python3.6', '/home/melvin/anaconda3/lib/python3.6/lib-dynload', '/home/melvin/anaconda3/lib/python3.6/site-packages', '/home/melvin/anaconda3/lib/python3.6/site-packages/pyrosetta-2018.26+release.757388b-py3.6-linux-x86_64.egg']>
+<mock_GE callback: call>
+<Command not implemented in mock_ge.>
+<mock_GE callback: call>
+<Command not implemented in mock_ge.>
+<mock_GE callback: call>
+<mock_GE callback: {'command': 'next'}>
+<Command not implemented in mock_ge.>
+<mock_GE callback: {'command': 'next'}>
+<Command not implemented in mock_ge.>
+<mock_GE callback: {'command': 'next'}>
+<Command not implemented in mock_ge.>
+<mock_GE callback: {'command': 'save'}>
+<Command not implemented in mock_ge.>
+<mock_GE callback: {'command': 'save'}>
+<Command not implemented in mock_ge.>
+<mock_GE callback: {'command': 'save'}>
+<Command not implemented in mock_ge.>
+<No category selected<0>.>
+<mock_GE callback: {'command': 'next'}>
+<Command not implemented in mock_ge.>
+<No category selected<0>.>
+<mock_GE callback: {'command': 'next'}>
+<Command not implemented in mock_ge.>
+<No category selected<0>.>
+<mock_GE callback: {'command': 'next'}>
+<Command not implemented in mock_ge.>
+<No category selected<1>.>
+<mock_GE callback: {'command': 'save'}>
+<Command not implemented in mock_ge.>
+<No category selected<1>.>
+<mock_GE callback: {'command': 'save'}>
+<Command not implemented in mock_ge.>
+<from widget callback>
+<[<Func.buy: -3356818799807392049>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: -4965401211367386185>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: 6973944750931680194>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: 336695683262445646>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: 4001616874522698444>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: 6347676013616562070>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: -6643419758748626822>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: 7968457490893895845>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: 9108348497773611696>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: 1179732191061208027>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: 1616239206646232612>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<[<Func.buy: -5695153401490805241>, <Res.cloth: 1>, 10]>
+<from widget callback>
+<['Buy', 'cloth', 10]>
+<from widget callback>
+<['Buy', 'cloth', 10]>
