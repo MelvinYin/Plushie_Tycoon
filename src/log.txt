@@ -82,3 +82,5 @@
 <['Buy', 'cloth', 10]>
 <from widget callback>
 <['Buy', 'cloth', 10]>
+<from widget callback>
+<['Buy', 'cloth', 10]>

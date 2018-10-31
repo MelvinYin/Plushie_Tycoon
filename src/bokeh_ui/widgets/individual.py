@@ -101,7 +101,6 @@ class TransactionWidget:
 
     def _RBG2_callback(self, active_button):
         RBG2_selected_category = self._RBG2.get_active()
-        # noinspection PyUnboundLocalVariable
         self._RBG3.set_label_to_category(RBG2_selected_category)
         # self.specs.RBG3.labelmap has res_members and prod_members, but
         # category is Enum(Res), so calling list gives tag and other members

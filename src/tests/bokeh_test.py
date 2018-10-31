@@ -23,9 +23,9 @@ old_logs.set_logging_level()
 
 test_figureset = False
 test_individual_figure = False
-test_individual_widget = True
+test_individual_widget = False
 test_widgetset = False
-test_ui = False
+test_ui = True
 
 def individual_figure():
     res_fig = IndividualFigure(mock_init[Res], ResSpec())
