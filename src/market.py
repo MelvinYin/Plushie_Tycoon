@@ -1,6 +1,6 @@
 from singleton import Singleton
 
-from config.global_config import Res, Prod, starting_res_price, \
+from global_config import Res, Prod, starting_res_price, \
     starting_prod_price
 
 class Market:

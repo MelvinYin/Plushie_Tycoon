@@ -1,7 +1,7 @@
 from singleton import Singleton
 from bases import BaseInventory
 import copy
-from config.global_config import starting_res, starting_prod, Res, Prod
+from global_config import starting_res, starting_prod, Res, Prod
 
 
 class Inventory(BaseInventory):

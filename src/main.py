@@ -1,7 +1,12 @@
 import sys
-src_path = sys.path[0].rsplit("/", maxsplit=1)[0]
-sys.path.append(src_path)
+from sys_path_adder import folders_to_add
+from bokeh.plotting import show, curdoc
 
+folders_to_add(['bokeh_ui', 'config', 'p_model', 'tests'])
+folders_to_add(['figures', 'widgets'], suffix='bokeh_ui')
+folders_to_add(['mocked_data'], suffix='tests')
+
+from ui_interface import UIInterface
 import inspect
 from logs import log, remake_log
 import old_logs
@@ -9,7 +14,7 @@ from ge import GE
 
 old_logs.set_logging_level()
 
-from config.global_config import Res, Prod, Func, res_members, prod_members
+from global_config import Res, Prod, Func, UISpecs
 import random
 from collections import defaultdict
 import copy
@@ -23,13 +28,12 @@ def main():
     callback = ge.callback
     init_data = ge._convert_GS_to_dict()
     log(init_data, inspect.currentframe())
-    print(init_data)
-    print(callback(dict(command=Func.buy, category=Res.cloth, quantity=10)))
+    callback(dict(command=Func.buy, category=Res.cloth, quantity=10))
 
-    # ui = UI(init_data, callback, UISpecs())
+    ui = UIInterface(init_data, callback, UISpecs())
     # calls = mocked_transaction_callbacks()
     # ui.ui_callback(calls[0])
     # show(ui.ui_layout)
-    # curdoc().add_root(ui.ui_layout)
+    curdoc().add_root(ui.ui_layout)
 
 main()

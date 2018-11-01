@@ -1,4 +1,4 @@
-from config.global_config import Res, Prod, res_members, prod_members
+from global_config import Res, Prod, res_members, prod_members
 import random
 from collections import defaultdict
 import copy

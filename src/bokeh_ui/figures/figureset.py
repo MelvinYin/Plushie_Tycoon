@@ -2,7 +2,7 @@ from bokeh.layouts import row, column
 import inspect
 
 from logs import log
-from config.global_config import Res, Prod
+from global_config import Res, Prod, FigureNames
 from .individual_figure import IndividualFigure
 
 class FigureSet:
@@ -14,10 +14,21 @@ class FigureSet:
 
     def _construct_individual_figures(self, full_data, specs):
         FigureInstances = []
-        res_data = full_data['Res']
-        FigureInstances.append(IndividualFigure(res_data, specs.res))
-        prod_data = full_data['Prod']
-        FigureInstances.append(IndividualFigure(prod_data, specs.prod))
+        FigureInstances.append(
+            IndividualFigure(full_data[FigureNames.inventory_res],
+                             specs.inventory_res))
+        FigureInstances.append(
+            IndividualFigure(full_data[FigureNames.inventory_prod],
+                             specs.inventory_prod))
+        FigureInstances.append(
+            IndividualFigure(full_data[FigureNames.price_res],
+                             specs.price_res))
+        FigureInstances.append(
+            IndividualFigure(full_data[FigureNames.price_prod],
+                             specs.price_prod))
+        FigureInstances.append(
+            IndividualFigure(full_data[FigureNames.budget],
+                             specs.budget))
         return FigureInstances
 
     def _couple_range(self):

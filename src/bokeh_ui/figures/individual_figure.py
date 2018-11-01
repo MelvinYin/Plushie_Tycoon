@@ -6,8 +6,6 @@ import numpy as np
 import copy
 
 """
-Only data that needs to be reflected in graph or hover, should be in CDS.
-
 self.current_ticks need to be pulled out, because figure.xaxis.ticker cannot 
 be retrieved.
 
@@ -28,7 +26,6 @@ Initial data should have key as each of the key, no time_step.
 Because when loading data, we 
 """
 from logs import log
-import os
 import inspect
 
 class IndividualFigure:
@@ -130,13 +127,12 @@ class IndividualFigure:
         return True
 
     def figure_update(self, add_line):
-        log(add_line, inspect.currentframe())
         current_time = add_line['time'][0]
         current_x = self.CDS.data['xs'][-1] + 1
         add_line['xs'] = [current_x]
-        if current_time > self.CDS.data['time'][-1]:
+        if current_time != self.CDS.data['time'][-1]:
             self.tick_label_map[current_x] = str(current_time)
             self._update_xaxis()
-
+        log(add_line, inspect.currentframe())
         self.CDS.stream(add_line)
         return True

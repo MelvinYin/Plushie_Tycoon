@@ -1,28 +1,60 @@
 ##############################################################################
 # Figure Attributes
+from enum import Enum, auto, unique
 
-class ResSpec:
-    def __init__(self):
-        self.name = 'Res'
-        self.title = "Res plot"
-        self.x_label = "x_"
-        self.y_label = "y_"
+class FigureNames(Enum):
+    inventory_res = auto()
+    inventory_prod = auto()
+    price_res = auto()
+    price_prod = auto()
+    budget = auto()
 
-class ProdSpec:
+class InventoryResSpecs:
     def __init__(self):
-        self.name = 'Prod'
-        self.title = "Prod plot"
-        self.x_label = "x_"
-        self.y_label = "y_"
+        self.name = FigureNames.inventory_res
+        self.title = "Inventory Res"
+        self.x_label = "Time"
+        self.y_label = "Number"
+
+class InventoryProdSpecs:
+    def __init__(self):
+        self.name = FigureNames.inventory_prod
+        self.title = "Inventory Prod"
+        self.x_label = "Time"
+        self.y_label = "Number"
+
+class PriceResSpecs:
+    def __init__(self):
+        self.name = FigureNames.price_res
+        self.title = "Price Res"
+        self.x_label = "Time"
+        self.y_label = "Dollars"
+
+class PriceProdSpecs:
+    def __init__(self):
+        self.name = FigureNames.price_prod
+        self.title = "Price Res"
+        self.x_label = "Time"
+        self.y_label = "Dollars"
+
+class BudgetSpecs:
+    def __init__(self):
+        self.name = FigureNames.budget
+        self.title = "Budget_"
+        self.x_label = "Time"
+        self.y_label = "Dollars"
 
 class FigureSetSpecs:
     def __init__(self):
-        self.figures_per_row = 3
+        self.figures_per_row = 5
 
 class FigureIndividualSpecs:
     def __init__(self):
-        self.res = ResSpec()
-        self.prod = ProdSpec()
+        self.inventory_res = InventoryResSpecs()
+        self.inventory_prod = InventoryProdSpecs()
+        self.price_res = PriceResSpecs()
+        self.price_prod = PriceProdSpecs()
+        self.budget = BudgetSpecs()
 
 class FigureSpecs:
     def __init__(self):

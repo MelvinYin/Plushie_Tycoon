@@ -5,7 +5,6 @@ from enum import Enum, auto, unique
 # Resource signal values for internal use
 @unique
 class Res(Enum):
-    tag = hash("Res")
     cloth = 1
     stuff = 2
     accessory = 3
@@ -18,29 +17,6 @@ class Prod(Enum):
     aisha = 1
     beta = 2
     chama = 3
-
-# Resource price signal values for internal use
-@unique
-class ResPrice(Enum):
-    tag = hash("ResPrice")
-    cloth = 1
-    stuff = 2
-    accessory = 3
-    packaging = 4
-
-# Plushie price signal values for internal use
-@unique
-class ProdPrice(Enum):
-    tag = hash("ProdPrice")
-    aisha = 1
-    beta = 2
-    chama = 3
-
-@unique
-class Others(Enum):
-    tag = hash("Others")
-    next_turn = 1
-    quit = 3
 
 # Function signal values for internal use
 @unique

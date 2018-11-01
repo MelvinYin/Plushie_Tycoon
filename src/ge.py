@@ -3,7 +3,7 @@ import copy
 import inspect
 import sys
 from logs import log
-from config.global_config import Func, Res, Prod, res_members, prod_members
+from global_config import Func, Res, Prod, res_members, prod_members
 from gs import GS
 
 
@@ -59,7 +59,7 @@ class GE:
         self.GS.inventory.add(category, quantity)
         return True
 
-    def quit(self):
+    def quit(self, call):
         sys.exit()
 
     def get_func_map(self):
@@ -74,9 +74,9 @@ class GE:
         mapping[Func.next] = self.next_turn
         return mapping
 
-    def next_turn(self):
+    def next_turn(self, call):
         self.GS.current_time += 1
-        self.GS.commit(call=dict(command=Func.next_turn))
+        self.GS.commit(call=dict(command=Func.next))
         return
 
     def _convert_GS_to_dict(self):
@@ -90,6 +90,7 @@ class GE:
                                            item in res_members}
         GS_update['price'][Prod] = {item: [self.GS.market.get(item)]
                                             for item in prod_members}
+        GS_update["budget"] = dict(budget=[self.GS.budget.get()])
 
         GS_update["time"] = [self.GS.current_time]
         # GS_update[Production.hours_needed] = self.GS.production.hours_needed

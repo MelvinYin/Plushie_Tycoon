@@ -7,8 +7,8 @@ import unittest
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 
 from bokeh_ui.figures.individual_figure import IndividualFigure
-from config.global_config import Res, Prod
-from config.figure import ResSpec, ProdSpec
+from global_config import Res, Prod
+from figure import ResSpec, ProdSpec
 from mocked_data.mock_figure import mock_init, mock_update1, mock_update2, \
     mock_update3
 

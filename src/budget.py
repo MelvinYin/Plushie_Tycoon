@@ -1,5 +1,5 @@
 from singleton import Singleton
-from config import global_config
+import global_config
 from logs import log
 import inspect
 from exceptions import InsufficientQuantityError
@@ -9,6 +9,9 @@ class Budget:
     __metaclass__ = Singleton
     def __init__(self):
         self.value = global_config.starting_budget
+
+    def get(self):
+        return self.value
 
     def test_func(self):
         return True

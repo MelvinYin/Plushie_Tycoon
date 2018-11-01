@@ -2,7 +2,7 @@ from inventory import Inventory
 from production import Production
 from singleton import Singleton
 from market import Market
-from config.global_config import starting_time, save_folder, save_file_name
+from global_config import starting_time, save_folder, save_file_name
 from budget import Budget
 import copy
 from logs import log
@@ -45,7 +45,7 @@ class GS:
     def copy(self):
         return copy.deepcopy(self)
 
-    def load(self, file_path=save_folder, file_name=save_file_name):
+    def load(self, call, file_path=save_folder, file_name=save_file_name):
         if not os.path.isdir(file_path):
             msg = f"File path {file_path} does not exist."
             log(msg, inspect.currentframe())
@@ -59,7 +59,7 @@ class GS:
             self.__dict__ = pickle.load(file)
         return True
 
-    def save(self, file_path=save_folder, file_name=save_file_name):
+    def save(self, call, file_path=save_folder, file_name=save_file_name):
         if not file_name.endswith(".pkl"):
             msg = f"Warning: File name {file_name} provided does not" \
                   f" end with .pkl. Suffix will be added."
@@ -71,7 +71,7 @@ class GS:
             log(msg, inspect.currentframe())
             os.makedirs(file_path)
         with open(file_path + file_name, "wb") as file:
-            pickle.dump(self.GS.__dict__, file, -1)
+            pickle.dump(self.__dict__, file, -1)
         return True
 
 

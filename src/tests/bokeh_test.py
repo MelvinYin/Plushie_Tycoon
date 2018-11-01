@@ -7,9 +7,9 @@ sys.path.append(src_path)
 
 from bokeh_ui.figures.figureset import FigureSet
 from bokeh_ui.figures.individual_figure import IndividualFigure
-from config.figure import FigureSpecs, ResSpec, ProdSpec
-from config.global_config import Res, Prod, UISpecs
-from config.widget import WidgetIndividualSpecs
+from figure import FigureSpecs, InventoryResSpecs, InventoryProdSpecs
+from global_config import Res, Prod, UISpecs
+from widget import WidgetIndividualSpecs
 from logs import log
 from mocked_data.mock_figure import mock_init, mock_update1, mock_update2, \
     mock_update3
@@ -28,8 +28,8 @@ test_widgetset = False
 test_ui = True
 
 def individual_figure():
-    res_fig = IndividualFigure(mock_init[Res], ResSpec())
-    prod_fig = IndividualFigure(mock_init[Prod], ProdSpec())
+    res_fig = IndividualFigure(mock_init[Res], InventoryResSpecs())
+    prod_fig = IndividualFigure(mock_init[Prod], InventoryProdSpecs())
 
     res_fig.figure_update(mock_update1[Res])
     res_fig.figure_update(mock_update2[Res])

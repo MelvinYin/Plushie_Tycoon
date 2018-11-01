@@ -1,13 +1,12 @@
 import pandas as pd
 try:
-    from .base import Res, Prod, ResPrice, ProdPrice, Others, Func, \
+    from .base import Res, Prod, ProdPrice, Func, \
         res_members, prod_members
-    from .figure import FigureSpecs
+    from .figure import FigureSpecs, FigureNames
     from .widget import WidgetSpecs
 except:
-    from base import Res, Prod, ResPrice, ProdPrice, Others, Func, \
-        res_members, prod_members
-    from figure import FigureSpecs
+    from base import Res, Prod, Func, res_members, prod_members
+    from figure import FigureSpecs, FigureNames
     from widget import WidgetSpecs
 
 # Plushie Resource Cost
