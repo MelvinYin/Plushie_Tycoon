@@ -46,15 +46,15 @@ class Others(Enum):
 @unique
 class Func(Enum):
     tag = hash("Func")
-    buy = auto()
-    sell = auto()
-    make = auto()
-    save = auto()
-    load = auto()
-    quit = auto()
-    next = auto()
-    back = auto()
-    start = auto()
+    buy = 1
+    sell = 2
+    make = 3
+    save = 4
+    load = 5
+    quit = 6
+    next = 7
+    back = 8
+    start = 9
 
 # Production signal values for internal use
 @unique

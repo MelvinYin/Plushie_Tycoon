@@ -2,7 +2,7 @@ from inventory import Inventory
 from production import Production
 from singleton import Singleton
 from market import Market
-from global_config import starting_time, save_folder, save_file_name
+from config.global_config import starting_time, save_folder, save_file_name
 from budget import Budget
 import copy
 from logs import log

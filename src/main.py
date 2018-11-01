@@ -1,28 +1,35 @@
 import sys
-import os
-sys.path.append(os.getcwd() + '/config')
-sys.path.append(os.getcwd() + '/bokeh_ui')
-sys.path.append(os.getcwd() + '/mocked_data')
+src_path = sys.path[0].rsplit("/", maxsplit=1)[0]
+sys.path.append(src_path)
 
+import inspect
+from logs import log, remake_log
+import old_logs
 from ge import GE
-from gs import GS
-from bokeh_ui.ui import UI
-from mock_ui import mock_UI
-from global_config import UISpecs
-from bokeh.plotting import curdoc, show
-from mock_figure import mock_init, mock_update1, mock_update2, mock_update3
-from mock_widget import mocked_transaction_callbacks
-import logs
-from mock_GE import mock_ge
+
+old_logs.set_logging_level()
+
+from config.global_config import Res, Prod, Func, res_members, prod_members
+import random
+from collections import defaultdict
+import copy
+random.seed(1)
+
+mocked_time = [2,2,3,4,5,6,6,7,8,8]
 
 def main():
-    ge = mock_ge()
+    remake_log()
+    ge = GE()
     callback = ge.callback
-    init_data = ge.get_init_data()
-    ui = UI(init_data, callback, UISpecs())
+    init_data = ge._convert_GS_to_dict()
+    log(init_data, inspect.currentframe())
+    print(init_data)
+    print(callback(dict(command=Func.buy, category=Res.cloth, quantity=10)))
+
+    # ui = UI(init_data, callback, UISpecs())
     # calls = mocked_transaction_callbacks()
     # ui.ui_callback(calls[0])
     # show(ui.ui_layout)
-    curdoc().add_root(ui.ui_layout)
+    # curdoc().add_root(ui.ui_layout)
 
 main()

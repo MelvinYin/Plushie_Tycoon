@@ -104,7 +104,7 @@ class mock_ge:
             self.store[Res][res] = [self.data[Res][res]]
             self.store['price'][Res][res] = [self.data['price'][Res][res]]
         for prod in prod_members:
-            self.store[Prod][prod.name] = [self.data[Prod][prod]]
+            self.store[Prod][prod] = [self.data[Prod][prod]]
             self.store['price'][Prod][prod] = [self.data['price'][Prod][
                                                         prod]]
         self.store['time'] = [self.data['time']]

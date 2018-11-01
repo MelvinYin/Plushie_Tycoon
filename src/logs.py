@@ -37,9 +37,13 @@ def log(msg, curframe):
     filepath = curframe.f_code.co_filename
     funcname = curframe.f_code.co_name
     # Trim preceding directory
-    filepath = filepath.split("/", maxsplit=5)[-1]
-    logged_msg = "\n\nThis:: " + filepath + ": " + funcname + " <" + str(msg)\
-                 + ">\n"
+    filepath = filepath.split("/", maxsplit=7)[-1]
+    logged_msg = filepath + ": " + funcname + " <" + str(msg)\
+                 + ">\n\n"
 
     with open(log_filename, 'a') as file:
         file.write(logged_msg)
+
+def remake_log():
+    with open(log_filename, 'w') as file:
+        pass

@@ -3,6 +3,7 @@ from bokeh.models import DataRange1d, HoverTool, BoxZoomTool, PanTool, \
     WheelZoomTool, ResetTool, UndoTool, Plot, Text
 from bokeh.models.tickers import FixedTicker
 import numpy as np
+import copy
 
 """
 Only data that needs to be reflected in graph or hover, should be in CDS.
@@ -64,7 +65,7 @@ class IndividualFigure:
         """
         num_values = len(next(iter(initial_data.values())))
         initial_data['xs'] = list(range(num_values))
-        CDS = ColumnDataSource(data=initial_data)
+        CDS = ColumnDataSource(data=copy.deepcopy(initial_data))
         return CDS
 
     def _get_initial_ticks_label_mapping(self):
@@ -133,7 +134,6 @@ class IndividualFigure:
         current_time = add_line['time'][0]
         current_x = self.CDS.data['xs'][-1] + 1
         add_line['xs'] = [current_x]
-
         if current_time > self.CDS.data['time'][-1]:
             self.tick_label_map[current_x] = str(current_time)
             self._update_xaxis()

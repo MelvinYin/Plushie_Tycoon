@@ -1,6 +1,7 @@
 from singleton import Singleton
 
-from global_config import Res, Prod, starting_res_price, starting_prod_price
+from config.global_config import Res, Prod, starting_res_price, \
+    starting_prod_price
 
 class Market:
     """
@@ -13,7 +14,7 @@ class Market:
         self.prod = starting_prod_price
         self.type_map = self._get_type_map()
 
-    def get_price(self, category):
+    def get(self, category):
         item = self.type_map[type(category)]
         return item[category]
 

@@ -2,8 +2,10 @@ from .figures.figureset import FigureSet
 from .widgets.widgetset import WidgetSet
 from bokeh.layouts import column
 from exceptions import InvalidInputException, InsufficientQuantityError
-from global_config import Res, Prod
+from config.global_config import Res, Prod
 from collections import defaultdict
+import inspect
+from logs import log
 
 class UI:
     def __init__(self, initial_data, ui_callback, specs):
@@ -11,6 +13,8 @@ class UI:
         UI_callback: Takes in as input (<Func:...>, (args)), return as output
         a dict that is used to update figure_set.
         """
+        log("UI Initialisation", inspect.currentframe())
+        log(initial_data, inspect.currentframe())
         self.ui_callback = ui_callback
         self.initial_data = self._clean_ui_input(initial_data)
         self.figure_set = FigureSet(self.initial_data, specs.figures)
@@ -33,6 +37,8 @@ class UI:
         except:
             raise
         to_add = self._clean_ui_input(to_add)
+        log("UI Callback to_add", inspect.currentframe())
+        log(to_add, inspect.currentframe())
         self.figure_set.figure_update(to_add)
         return True
 
@@ -40,12 +46,11 @@ class UI:
         to_ui = defaultdict(dict)
         input_to_res = ui_input[Res]
         for key, values in input_to_res.items():
-            print(input_to_res)
             to_ui['Res'][key.name] = values
-        to_ui['Res']['time'] = ui_input['time']
+            to_ui['Res']['time'] = ui_input['time']
         input_to_prod = ui_input[Prod]
         for key, values in input_to_prod.items():
             to_ui['Prod'][key.name] = values
-        to_ui['Res']['time'] = ui_input['time']
+            to_ui['Prod']['time'] = ui_input['time']
         to_ui = dict(to_ui)
         return to_ui
