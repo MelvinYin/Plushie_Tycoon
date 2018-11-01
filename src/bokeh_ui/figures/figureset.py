@@ -1,5 +1,7 @@
 from bokeh.layouts import row, column
+import inspect
 
+from logs import log
 from config.global_config import Res, Prod
 from .individual_figure import IndividualFigure
 
@@ -12,9 +14,9 @@ class FigureSet:
 
     def _construct_individual_figures(self, full_data, specs):
         FigureInstances = []
-        res_data = full_data[Res]
+        res_data = full_data['Res']
         FigureInstances.append(IndividualFigure(res_data, specs.res))
-        prod_data = full_data[Prod]
+        prod_data = full_data['Prod']
         FigureInstances.append(IndividualFigure(prod_data, specs.prod))
         return FigureInstances
 
@@ -38,9 +40,10 @@ class FigureSet:
         return figure_layout
 
     def figure_update(self, data_to_add):
+        log(data_to_add, inspect.currentframe())
         for fig_label, value in data_to_add.items():
             for FigureInstance in self.FigureInstances:
-                if FigureInstance.name.tag == fig_label.tag:
+                if FigureInstance.name == fig_label:
                     FigureInstance.figure_update(value)
                     break
         return True

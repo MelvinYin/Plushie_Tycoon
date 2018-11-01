@@ -1,9 +1,9 @@
 import pandas as pd
 
-from .base import Res, Prod, ResPrice, ProdPrice, Others, Func, \
+from base import Res, Prod, ResPrice, ProdPrice, Others, Func, \
     res_members, prod_members
-from .figure import FigureSpecs
-from .widget import WidgetSpecs
+from figure import FigureSpecs
+from widget import WidgetSpecs
 
 # Plushie Resource Cost
 _res_cost = dict()

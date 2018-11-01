@@ -32,16 +32,14 @@ Continue?:  No
 """
 log_filename = "/home/melvin/Desktop/pipeline2/Prod-Disp/src/log.txt"
 
-def log(sys_path, msg):
-    # Doesn't work when using bokeh server
+def log(msg, curframe):
+    # sys.path doesn't work when using bokeh server
+    filepath = curframe.f_code.co_filename
+    funcname = curframe.f_code.co_name
+    # Trim preceding directory
+    filepath = filepath.split("/", maxsplit=5)[-1]
+    logged_msg = "\n\nThis:: " + filepath + ": " + funcname + " <" + str(msg)\
+                 + ">\n"
 
-    # sys_path = sys_path[0]
-    # nestled_layer = 0
-    # while sys_path.rsplit("/", maxsplit=1)[-1] != 'src':
-    #     sys_path = sys_path.rsplit("/", maxsplit=1)[0]
-    #     nestled_layer += 1
-    nestled_layer = 0
     with open(log_filename, 'a') as file:
-        for __ in range(nestled_layer):
-            file.write("    ")
-        file.write("<{}>\n".format(msg))
+        file.write(logged_msg)

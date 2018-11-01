@@ -5,6 +5,7 @@ from bokeh.layouts import row, column
 from logs import log
 import re
 import os
+import inspect
 
 
 class ButtonComponent:
@@ -135,18 +136,21 @@ class TransactionWidget:
         RBG1_key = self._RBG1.get_active()
         _RBG2_key = self._RBG2.get_active()
         RBG3_key = self._RBG3.get_active()
+        msg = None
         if not RBG1_key or not _RBG2_key or not RBG3_key:
-            log(os.getcwd(), "No category selected.")
+            msg = "No category selected."
         elif not self._input_val:
-            log(os.getcwd(), "Value not set.")
+            msg = "Value not set."
         elif not re.fullmatch("[0-9]+", self._input_val.strip()):
-            log(os.getcwd(), "Invalid input value.")
+            msg = "Invalid input value."
         elif self._input_val.startswith("0"):
-            log(os.getcwd(), "Invalid input value.")
+            msg = "Invalid input value."
         else:
             callback = dict(command=RBG1_key, category=RBG3_key,
                             quantity=int(self._input_val))
             self.widget_callback(callback)
+        if msg:
+            log(msg, inspect.currentframe())
         return
 
     def _set_init_RBG3(self):
@@ -169,7 +173,8 @@ class ButtonWidget:
 
     def _button_callback(self):
         if self._RBG.get_active() is None:
-            log(os.getcwd(), "No category selected.")
+            msg = "No category selected."
+            log(msg, inspect.currentframe())
         else:
             callback = dict(command=self._RBG.get_active())
             self.callback(callback)

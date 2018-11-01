@@ -2,6 +2,7 @@ from bokeh.plotting import curdoc, show
 from bokeh.layouts import row
 import sys
 import os
+import inspect
 src_path = sys.path[0].rsplit("/", maxsplit=1)[0]
 sys.path.append(src_path)
 
@@ -54,8 +55,8 @@ def figureset():
 
 def individual_widget():
     def widget_callback(command_to_run):
-        log(os.getcwd(), "from widget callback")
-        log(os.getcwd(), command_to_run)
+        log("from widget callback", inspect.currentframe())
+        log(command_to_run, inspect.currentframe())
         return
 
     widget_1 = TransactionWidget(widget_callback,
@@ -72,8 +73,8 @@ def individual_widget():
 
 def widgetset():
     def widget_callback(command_to_run):
-        log(os.getcwd(), "from widget callback")
-        log(os.getcwd(), command_to_run)
+        log("from widget callback", inspect.currentframe())
+        log(command_to_run, inspect.currentframe())
         return
     layout_w = WidgetSet(widget_callback, UISpecs().widgets).layout
     return layout_w
@@ -99,8 +100,8 @@ if __name__ == "__main__" or str(__name__).startswith("bk_script"):
     if layout is None:
         sys.exit()
 
-    if __name__ == "__main__":
-        show(layout)
-    else:
-        curdoc().add_root(layout)
+    # if __name__ == "__main__":
+    #     show(layout)
+    # else:
+    #     curdoc().add_root(layout)
 

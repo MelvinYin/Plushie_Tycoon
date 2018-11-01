@@ -6,7 +6,7 @@ from enum import Enum, auto, unique
 
 ##############################################################################
 # Global
-from .base import Res, Prod, Func, res_members, prod_members
+from base import Res, Prod, Func, res_members, prod_members
 
 ##############################################################################
 # Internal

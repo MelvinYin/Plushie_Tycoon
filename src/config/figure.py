@@ -1,18 +1,16 @@
 ##############################################################################
 # Figure Attributes
 
-from .base import Res, Prod
-
 class ResSpec:
     def __init__(self):
-        self.name = Res
+        self.name = 'Res'
         self.title = "Res plot"
         self.x_label = "x_"
         self.y_label = "y_"
 
 class ProdSpec:
     def __init__(self):
-        self.name = Prod
+        self.name = 'Prod'
         self.title = "Prod plot"
         self.x_label = "x_"
         self.y_label = "y_"

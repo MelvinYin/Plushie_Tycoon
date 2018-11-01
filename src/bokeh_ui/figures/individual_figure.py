@@ -26,6 +26,9 @@ Initial data should have key as each of the key, no time_step.
 
 Because when loading data, we 
 """
+from logs import log
+import os
+import inspect
 
 class IndividualFigure:
     def __init__(self, initial_data, specs):
@@ -126,6 +129,7 @@ class IndividualFigure:
         return True
 
     def figure_update(self, add_line):
+        log(add_line, inspect.currentframe())
         current_time = add_line['time'][0]
         current_x = self.CDS.data['xs'][-1] + 1
         add_line['xs'] = [current_x]

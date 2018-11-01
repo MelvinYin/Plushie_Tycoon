@@ -1,86 +1,93 @@
-        <Command not implemented in mock_ge.>
-</>
-        <Command not implemented in mock_ge.>
-</>
-        <Command not implemented in mock_ge.>
-</>
-        <Invalid input value.>
-</>
-        <Invalid input value.>
-</>
-        <Invalid input value.>
-</>
-        <Invalid input value.>
-</>
-        <Invalid input value.>
-</>
-        <Command not implemented in mock_ge.>
-<['/home/melvin/anaconda3/bin', '/home/melvin/anaconda3/lib/python36.zip', '/home/melvin/anaconda3/lib/python3.6', '/home/melvin/anaconda3/lib/python3.6/lib-dynload', '/home/melvin/anaconda3/lib/python3.6/site-packages', '/home/melvin/anaconda3/lib/python3.6/site-packages/pyrosetta-2018.26+release.757388b-py3.6-linux-x86_64.egg']>
-        <Command not implemented in mock_ge.>
-<['/home/melvin/anaconda3/bin', '/home/melvin/anaconda3/lib/python36.zip', '/home/melvin/anaconda3/lib/python3.6', '/home/melvin/anaconda3/lib/python3.6/lib-dynload', '/home/melvin/anaconda3/lib/python3.6/site-packages', '/home/melvin/anaconda3/lib/python3.6/site-packages/pyrosetta-2018.26+release.757388b-py3.6-linux-x86_64.egg']>
-        <Command not implemented in mock_ge.>
-<['/home/melvin/anaconda3/bin', '/home/melvin/anaconda3/lib/python36.zip', '/home/melvin/anaconda3/lib/python3.6', '/home/melvin/anaconda3/lib/python3.6/lib-dynload', '/home/melvin/anaconda3/lib/python3.6/site-packages', '/home/melvin/anaconda3/lib/python3.6/site-packages/pyrosetta-2018.26+release.757388b-py3.6-linux-x86_64.egg']>
-        <Command not implemented in mock_ge.>
-<['/home/melvin/anaconda3/bin', '/home/melvin/anaconda3/lib/python36.zip', '/home/melvin/anaconda3/lib/python3.6', '/home/melvin/anaconda3/lib/python3.6/lib-dynload', '/home/melvin/anaconda3/lib/python3.6/site-packages', '/home/melvin/anaconda3/lib/python3.6/site-packages/pyrosetta-2018.26+release.757388b-py3.6-linux-x86_64.egg']>
-<mock_GE callback: call>
-<Command not implemented in mock_ge.>
-<mock_GE callback: call>
-<Command not implemented in mock_ge.>
-<mock_GE callback: call>
-<mock_GE callback: {'command': 'next'}>
-<Command not implemented in mock_ge.>
-<mock_GE callback: {'command': 'next'}>
-<Command not implemented in mock_ge.>
-<mock_GE callback: {'command': 'next'}>
-<Command not implemented in mock_ge.>
-<mock_GE callback: {'command': 'save'}>
-<Command not implemented in mock_ge.>
-<mock_GE callback: {'command': 'save'}>
-<Command not implemented in mock_ge.>
-<mock_GE callback: {'command': 'save'}>
-<Command not implemented in mock_ge.>
-<No category selected<0>.>
-<mock_GE callback: {'command': 'next'}>
-<Command not implemented in mock_ge.>
-<No category selected<0>.>
-<mock_GE callback: {'command': 'next'}>
-<Command not implemented in mock_ge.>
-<No category selected<0>.>
-<mock_GE callback: {'command': 'next'}>
-<Command not implemented in mock_ge.>
-<No category selected<1>.>
-<mock_GE callback: {'command': 'save'}>
-<Command not implemented in mock_ge.>
-<No category selected<1>.>
-<mock_GE callback: {'command': 'save'}>
-<Command not implemented in mock_ge.>
-<from widget callback>
-<[<Func.buy: -3356818799807392049>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: -4965401211367386185>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: 6973944750931680194>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: 336695683262445646>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: 4001616874522698444>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: 6347676013616562070>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: -6643419758748626822>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: 7968457490893895845>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: 9108348497773611696>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: 1179732191061208027>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: 1616239206646232612>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<[<Func.buy: -5695153401490805241>, <Res.cloth: 1>, 10]>
-<from widget callback>
-<['Buy', 'cloth', 10]>
-<from widget callback>
-<['Buy', 'cloth', 10]>
-<from widget callback>
-<['Buy', 'cloth', 10]>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: -6215805541597034021>, 'category': <Prod.beta: 2>, 'quantity': 132}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: -6215805541597034021>, 'category': <Prod.beta: 2>, 'quantity': 132}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: -6215805541597034021>, 'category': <Prod.beta: 2>, 'quantity': 132}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: 3189240247373356935>, 'category': <Prod.beta: 2>, 'quantity': 213}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: 1240804895540912026>, 'category': <Prod.beta: 2>, 'quantity': 213}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100]}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.buy: 107945428110244716>, 'category': <Prod.beta: 2>, 'quantity': 132}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100], 'time': [0]}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [100], 'beta': [232], 'chama': [100], 'time': [0]}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: 1080058867436423567>, 'category': <Prod.beta: 2>, 'quantity': 12}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100], 'time': [0]}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [100], 'beta': [88], 'chama': [100], 'time': [0]}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: 7925073720823069331>, 'category': <Prod.beta: 2>, 'quantity': 132}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: 7925073720823069331>, 'category': <Prod.beta: 2>, 'quantity': 132}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: 7925073720823069331>, 'category': <Prod.beta: 2>, 'quantity': 132}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: -1918274135797234024>, 'category': <Prod.beta: 2>, 'quantity': 213}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/figureset.py: figure_update <{<enum 'Res'>: {'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100]}, <enum 'Prod'>: {'aisha': [100], 'beta': [-113], 'chama': [100]}, 'price': {<enum 'Res'>: {'cloth': [1], 'stuff': [2], 'accessory': [3], 'packaging': [4]}, <enum 'Prod'>: {'aisha': [101], 'beta': [102], 'chama': [103]}}, 'time': [0]}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100], 'time': [0]}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [100], 'beta': [-113], 'chama': [100], 'time': [0]}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: -1918274135797234024>, 'category': <Prod.beta: 2>, 'quantity': 213}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/figureset.py: figure_update <{<enum 'Res'>: {'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100], 'time': [0], 'xs': [10]}, <enum 'Prod'>: {'aisha': [100], 'beta': [-326], 'chama': [100], 'time': [0], 'xs': [10]}, 'price': {<enum 'Res'>: {'cloth': [1], 'stuff': [2], 'accessory': [3], 'packaging': [4]}, <enum 'Prod'>: {'aisha': [101], 'beta': [102], 'chama': [103]}}, 'time': [0]}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100], 'time': [0], 'xs': [10]}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [100], 'beta': [-326], 'chama': [100], 'time': [0], 'xs': [10]}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: -1918274135797234024>, 'category': <Prod.beta: 2>, 'quantity': 213}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/figureset.py: figure_update <{<enum 'Res'>: {'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100], 'time': [0], 'xs': [11]}, <enum 'Prod'>: {'aisha': [100], 'beta': [-539], 'chama': [100], 'time': [0], 'xs': [11]}, 'price': {<enum 'Res'>: {'cloth': [1], 'stuff': [2], 'accessory': [3], 'packaging': [4]}, <enum 'Prod'>: {'aisha': [101], 'beta': [102], 'chama': [103]}}, 'time': [0]}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100], 'time': [0], 'xs': [11]}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [100], 'beta': [-539], 'chama': [100], 'time': [0], 'xs': [11]}>
+
+
+This:: Prod-Disp/src/tests/mocked_data/mock_GE.py: callback <mock_GE callback: {'command': <Func.sell: -1918274135797234024>, 'category': <Prod.beta: 2>, 'quantity': 213}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/figureset.py: figure_update <{<enum 'Res'>: {'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100], 'time': [0], 'xs': [12]}, <enum 'Prod'>: {'aisha': [100], 'beta': [-752], 'chama': [100], 'time': [0], 'xs': [12]}, 'price': {<enum 'Res'>: {'cloth': [1], 'stuff': [2], 'accessory': [3], 'packaging': [4]}, <enum 'Prod'>: {'aisha': [101], 'beta': [102], 'chama': [103]}}, 'time': [0]}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [100], 'stuff': [100], 'accessory': [100], 'packaging': [100], 'time': [0], 'xs': [12]}>
+
+
+This:: Prod-Disp/src/bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [100], 'beta': [-752], 'chama': [100], 'time': [0], 'xs': [12]}>
