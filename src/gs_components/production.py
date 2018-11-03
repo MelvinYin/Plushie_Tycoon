@@ -1,7 +1,7 @@
 from singleton import Singleton
 from global_config import hours_needed, cost_per_hour, prod_res_cost
 
-class Production:
+class ProductionBackend:
     __metaclass__ = Singleton
     def __init__(self):
         self.hours_needed = hours_needed

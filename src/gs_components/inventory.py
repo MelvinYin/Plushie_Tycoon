@@ -3,9 +3,7 @@ from bases import BaseInventory
 import copy
 from global_config import starting_res, starting_prod, Res, Prod
 
-
-class Inventory(BaseInventory):
-    __metaclass__ = Singleton
+class InventoryBackend:
     def __init__(self):
         self.res = copy.deepcopy(starting_res)  # pd.series
         self.prod = copy.deepcopy(starting_prod)
@@ -39,3 +37,5 @@ class Inventory(BaseInventory):
         item_signal = type(category)
         item = self.type_map[item_signal]
         return item[category]
+
+

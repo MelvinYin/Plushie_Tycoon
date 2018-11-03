@@ -1,10 +1,12 @@
 import sys
-from sys_path_adder import folders_to_add
+from utils.sys_path_adder import folders_to_add
 from bokeh.plotting import show, curdoc
 
-folders_to_add(['bokeh_ui', 'config', 'p_model', 'tests'])
+folders_to_add(['bokeh_ui', 'config', 'p_model', 'tests', 'gs_components',
+                'utils'])
 folders_to_add(['figures', 'widgets'], suffix='bokeh_ui')
 folders_to_add(['mocked_data'], suffix='tests')
+folders_to_add(['p_model'], suffix='gs_components')
 
 from ui_interface import UIInterface
 import inspect

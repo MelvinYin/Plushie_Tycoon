@@ -1,9 +1,5 @@
-from inventory import Inventory
-from production import Production
-from singleton import Singleton
-from market import Market
+from gs_subclass import Inventory, Market, Budget, Production
 from global_config import starting_time, save_folder, save_file_name
-from budget import Budget
 import copy
 from logs import log
 import inspect
@@ -13,7 +9,6 @@ from collections import defaultdict
 
 
 class GS:
-    __metaclass__ = Singleton
     def __init__(self):
         self.inventory = Inventory()
         self.market = Market()
@@ -22,6 +17,39 @@ class GS:
         self.current_call = None
         self.current_time = starting_time
         self.history = defaultdict(list)
+
+    def get(self, classification, *args):
+        if classification == 'inventory':
+            return self.inventory.get(*args)
+        elif classification == 'market':
+            return self.market.get(*args)
+        elif classification == 'budget':
+            return self.budget.get()
+        elif classification == 'production':
+            return self.production.get_cost(*args)
+        elif classification == 'time':
+            return self.current_time
+        else:
+            raise Exception
+
+    def sub(self, classification, *args):
+        if classification == 'inventory':
+            return self.inventory.sub(*args)
+        elif classification == 'budget':
+            return self.budget.sub(*args)
+        else:
+            raise Exception
+
+    def add(self, classification, *args):
+        if classification == 'inventory':
+            return self.inventory.add(*args)
+        elif classification == 'budget':
+            return self.budget.add(*args)
+        elif classification == 'time':
+            self.current_time += 1
+            return True
+        else:
+            raise Exception
 
     def commit(self, call):
         self.current_call = call
@@ -39,9 +67,6 @@ class GS:
         previous_state = self.history[self.current_time].pop()
         self.__dict__.update(previous_state)
         return True
-
-    def copy(self):
-        return copy.deepcopy(self)
 
     def load(self, call, file_path=save_folder, file_name=save_file_name):
         if not os.path.isdir(file_path):

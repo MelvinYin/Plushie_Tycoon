@@ -1,6 +1,6 @@
 import sys
 import inspect
-src_path = inspect.currentframe().f_code.co_filename.rsplit("/", maxsplit=1)[0]
+src_path = inspect.currentframe().f_code.co_filename.rsplit("/", maxsplit=2)[0]
 sys.path.append(src_path)
 
 def folders_to_add(folders, suffix=None):

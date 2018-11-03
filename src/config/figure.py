@@ -1,6 +1,8 @@
 ##############################################################################
 # Figure Attributes
 from enum import Enum, auto, unique
+from bokeh.palettes import Category10
+from base import res_members, prod_members
 
 class FigureNames(Enum):
     inventory_res = auto()
@@ -15,6 +17,14 @@ class InventoryResSpecs:
         self.title = "Inventory Res"
         self.x_label = "Time"
         self.y_label = "Number"
+        self.colormap = self._entry_to_color()
+
+    def _entry_to_color(self):
+        colormap = dict()
+        entries = [res.name for res in res_members]
+        for i, entry in enumerate(entries):
+            colormap[entry] = Category10[10][i]
+        return colormap
 
 class InventoryProdSpecs:
     def __init__(self):
@@ -22,6 +32,15 @@ class InventoryProdSpecs:
         self.title = "Inventory Prod"
         self.x_label = "Time"
         self.y_label = "Number"
+        self.colormap = self._entry_to_color()
+
+    def _entry_to_color(self):
+        colormap = dict()
+        entries = [prod.name for prod in prod_members]
+        for i, entry in enumerate(entries):
+            colormap[entry] = Category10[10][i]
+        return colormap
+
 
 class PriceResSpecs:
     def __init__(self):
@@ -29,6 +48,14 @@ class PriceResSpecs:
         self.title = "Price Res"
         self.x_label = "Time"
         self.y_label = "Dollars"
+        self.colormap = self._entry_to_color()
+
+    def _entry_to_color(self):
+        colormap = dict()
+        entries = [res.name for res in res_members]
+        for i, entry in enumerate(entries):
+            colormap[entry] = Category10[10][i]
+        return colormap
 
 class PriceProdSpecs:
     def __init__(self):
@@ -36,6 +63,14 @@ class PriceProdSpecs:
         self.title = "Price Res"
         self.x_label = "Time"
         self.y_label = "Dollars"
+        self.colormap = self._entry_to_color()
+
+    def _entry_to_color(self):
+        colormap = dict()
+        entries = [prod.name for prod in prod_members]
+        for i, entry in enumerate(entries):
+            colormap[entry] = Category10[10][i]
+        return colormap
 
 class BudgetSpecs:
     def __init__(self):
@@ -43,6 +78,11 @@ class BudgetSpecs:
         self.title = "Budget_"
         self.x_label = "Time"
         self.y_label = "Dollars"
+        self.colormap = self._entry_to_color()
+
+    def _entry_to_color(self):
+        colormap = dict(budget=Category10[10][0])
+        return colormap
 
 class FigureSetSpecs:
     def __init__(self):

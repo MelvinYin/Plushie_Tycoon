@@ -1,20 +1,15 @@
-from singleton import Singleton
 import global_config
 from logs import log
 import inspect
 from exceptions import InsufficientQuantityError
 
 
-class Budget:
-    __metaclass__ = Singleton
+class BudgetBackend:
     def __init__(self):
         self.value = global_config.starting_budget
 
     def get(self):
         return self.value
-
-    def test_func(self):
-        return True
 
     def sub(self, other):
         item = self.value - other

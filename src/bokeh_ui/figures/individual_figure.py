@@ -30,7 +30,6 @@ from logs import log
 import inspect
 import sys
 
-
 class IndividualFigure:
     def __init__(self, initial_data, specs):
         self._check_initial_data(initial_data)
@@ -126,8 +125,12 @@ class IndividualFigure:
         # legend plot will show data values instead of key (str) value,
         # reported in bokeh issues, see #8394
         for key in keys_in_figure:
-            p.x("xs", key, source=self.CDS, name=key, size=10, legend=key + "_")
-            p.line("xs", key, source=self.CDS, legend=key + "_")
+            legend_key = key + "_"
+            color_value = Specs.colormap[key]
+            p.x("xs", key, source=self.CDS, name=key, size=10,
+                legend=legend_key, color=color_value)
+            p.line("xs", key, source=self.CDS, legend=legend_key,
+                   color=color_value)
 
         p.legend.location = "top_left"
         p.legend.click_policy = "hide"

@@ -1,14 +1,11 @@
-from singleton import Singleton
-
 from global_config import Res, Prod, starting_res_price, \
     starting_prod_price
 
-class Market:
+class MarketBackend:
     """
     Does not have external setting capabilities unless value
     explicitly called.
     """
-    __metaclass__ = Singleton
     def __init__(self):
         self.res = starting_res_price
         self.prod = starting_prod_price
