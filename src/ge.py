@@ -26,7 +26,7 @@ class GE:
         GS_update = self._convert_GS_to_dict()
         log("GE Call: {}\n Return: {}".format(call, GS_update),
             inspect.currentframe())
-        return GS_update
+        return GS_update, return_value
 
     def buy(self, call):
         self.GS.commit(call=call)
@@ -36,7 +36,7 @@ class GE:
         price = self.GS.market.get(category)
         total_cost = price * quantity
         self.GS.budget.sub(total_cost)
-        return True
+        return 'update'
 
     def sell(self, call):
         self.GS.commit(call=call)
@@ -46,7 +46,7 @@ class GE:
         price = self.GS.market.get(category)
         total_cost = price * quantity
         self.GS.budget.add(total_cost)
-        return True
+        return 'update'
 
     def make(self, call):
         self.GS.commit(call=call)
@@ -57,7 +57,7 @@ class GE:
             self.GS.inventory.sub(_category, material * quantity)
         self.GS.budget.sub(cost * quantity)
         self.GS.inventory.add(category, quantity)
-        return True
+        return 'update'
 
     def quit(self, call):
         sys.exit()
@@ -77,7 +77,7 @@ class GE:
     def next_turn(self, call):
         self.GS.current_time += 1
         self.GS.commit(call=dict(command=Func.next))
-        return
+        return 'update'
 
     def _convert_GS_to_dict(self):
         GS_update = dict()
@@ -105,7 +105,7 @@ class GE:
         if not ret_value:
             log("No previous action logged.", inspect.currentframe())
             return False
-        return True
+        return 'update'
 
     def copy(self):
         return copy.deepcopy(self)

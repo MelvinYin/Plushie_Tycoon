@@ -2,7 +2,7 @@ from figures.figureset import FigureSet
 from widgets.widgetset import WidgetSet
 from bokeh.layouts import column
 from exceptions import InvalidInputException, InsufficientQuantityError
-from global_config import Res, Prod
+from global_config import Res, Prod, Func
 from collections import defaultdict
 import inspect
 from logs import log
@@ -14,8 +14,14 @@ class UI:
         a dict that is used to update figure_set.
         """
         self.ui_callback = ui_callback
+        self.specs = specs
         self.figure_set = FigureSet(initial_data, specs.figures)
         self.widget_set = WidgetSet(self.widget_callback, specs.widgets)
+        self.ui_layout = self.plot()
+
+    def reload(self, new_data):
+        self.figure_set = FigureSet(new_data, self.specs.figures)
+        self.widget_set = WidgetSet(self.widget_callback, self.specs.widgets)
         self.ui_layout = self.plot()
 
     def plot(self):
@@ -25,13 +31,7 @@ class UI:
         return layout_main
 
     def widget_callback(self, call):
-        try:
-            to_add = self.ui_callback(call)
-        except InvalidInputException:
-            return False
-        except InsufficientQuantityError:
-            return False
-        except:
-            raise
-        self.figure_set.figure_update(to_add)
+        updated_data = self.ui_callback(call)
+        if updated_data:
+            self.figure_set.figure_update(updated_data)
         return True

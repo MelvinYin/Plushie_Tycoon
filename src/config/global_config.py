@@ -26,10 +26,10 @@ cost_per_hour = 3
 # Starting Statistics
 starting_budget = 10000000
 
-_s_res = [1000,1000,1000,1000]
+_s_res = [1001,1002,1003,1004]
 starting_res = pd.Series(_s_res, res_members, name="starting_res")
 
-_s_prod = [100,100,100]
+_s_prod = [101,102,103]
 starting_prod = pd.Series(_s_prod, prod_members, name="starting_prod")
 
 _s_res_price = [10,20,18,12]

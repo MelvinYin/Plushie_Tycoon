@@ -21,6 +21,10 @@ import copy
 random.seed(1)
 
 mocked_time = [2,2,3,4,5,6,6,7,8,8]
+from bokeh.sampledata.stocks import AAPL
+# print(AAPL.keys())
+# sys.exit()
+
 
 def main():
     remake_log()
@@ -28,12 +32,12 @@ def main():
     callback = ge.callback
     init_data = ge._convert_GS_to_dict()
     log(init_data, inspect.currentframe())
-    callback(dict(command=Func.buy, category=Res.cloth, quantity=10))
+    # callback(dict(command=Func.buy, category=Res.cloth, quantity=10))
 
     ui = UIInterface(init_data, callback, UISpecs())
     # calls = mocked_transaction_callbacks()
     # ui.ui_callback(calls[0])
-    # show(ui.ui_layout)
+    show(ui.ui_layout)
     curdoc().add_root(ui.ui_layout)
 
 main()

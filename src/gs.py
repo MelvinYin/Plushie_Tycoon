@@ -20,9 +20,7 @@ class GS:
         self.budget = Budget()
         self.production = Production()
         self.current_call = None
-
         self.current_time = starting_time
-
         self.history = defaultdict(list)
 
     def commit(self, call):
@@ -57,7 +55,7 @@ class GS:
             raise FileNotFoundError
         with open(file_path + file_name, "rb") as file:
             self.__dict__ = pickle.load(file)
-        return True
+        return 'reload'
 
     def save(self, call, file_path=save_folder, file_name=save_file_name):
         if not file_name.endswith(".pkl"):
@@ -72,7 +70,7 @@ class GS:
             os.makedirs(file_path)
         with open(file_path + file_name, "wb") as file:
             pickle.dump(self.__dict__, file, -1)
-        return True
+        return 'pause'
 
 
 

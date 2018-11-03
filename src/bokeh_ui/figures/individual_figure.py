@@ -4,6 +4,7 @@ from bokeh.models import DataRange1d, HoverTool, BoxZoomTool, PanTool, \
 from bokeh.models.tickers import FixedTicker
 import numpy as np
 import copy
+import pandas as pd
 
 """
 self.current_ticks need to be pulled out, because figure.xaxis.ticker cannot 
@@ -27,6 +28,8 @@ Because when loading data, we
 """
 from logs import log
 import inspect
+import sys
+
 
 class IndividualFigure:
     def __init__(self, initial_data, specs):
@@ -36,6 +39,7 @@ class IndividualFigure:
         self.figure = self._set_initial_figure(specs)
         self._update_xaxis()
         self.name = specs.name
+        self._count = 0
 
     def _check_initial_data(self, data):
         assert data
@@ -99,8 +103,10 @@ class IndividualFigure:
         p.toolbar.active_inspect = hover
         p.toolbar.logo = None
 
-        p.x_range = DataRange1d(follow="end", follow_interval=5, range_padding=1, range_padding_units='absolute')
-        p.y_range = DataRange1d(follow="end", range_padding=2, range_padding_units='absolute')
+        p.x_range = DataRange1d(follow="end", follow_interval=5,
+                                range_padding=1, range_padding_units='absolute')
+        p.y_range = DataRange1d(follow="end", range_padding=2,
+                                range_padding_units='absolute')
 
         initial_ticks = list(self.tick_label_map.keys())
         ticker = FixedTicker(ticks=initial_ticks)
@@ -113,10 +119,19 @@ class IndividualFigure:
         p.title.align = 'center'
         p.xaxis.axis_label = Specs.x_label
         p.yaxis.axis_label = Specs.y_label
-        for key in self.CDS.column_names:
-            if key != 'time' and key != 'xs':
-                p.x("xs", key, source=self.CDS, name=key, size=10)
-                p.line("xs", key, source=self.CDS)
+        keys_in_figure = list([key for key in self.CDS.column_names
+                               if key != 'time' and key != 'xs'])
+
+        # Additional "_" because if legend key is same as data x/y key,
+        # legend plot will show data values instead of key (str) value,
+        # reported in bokeh issues, see #8394
+        for key in keys_in_figure:
+            p.x("xs", key, source=self.CDS, name=key, size=10, legend=key + "_")
+            p.line("xs", key, source=self.CDS, legend=key + "_")
+
+        p.legend.location = "top_left"
+        p.legend.click_policy = "hide"
+
         return p
 
     def _update_xaxis(self):
@@ -134,5 +149,8 @@ class IndividualFigure:
             self.tick_label_map[current_x] = str(current_time)
             self._update_xaxis()
         log(add_line, inspect.currentframe())
+
+        # Load does not work at this stage because figures do not appear to
+        # be able to refresh themselves
         self.CDS.stream(add_line)
         return True
