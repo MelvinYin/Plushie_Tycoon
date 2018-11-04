@@ -4,9 +4,9 @@ import copy
 from global_config import starting_res, starting_prod, Res, Prod
 
 class InventoryBackend:
-    def __init__(self):
-        self.res = copy.deepcopy(starting_res)  # pd.series
-        self.prod = copy.deepcopy(starting_prod)
+    def __init__(self, inventory_values):
+        self.res = inventory_values[Res]  # Maybe pd.series
+        self.prod = inventory_values[Prod]
         self.type_map = self._get_type_map()
 
     def add(self, category, quantity):

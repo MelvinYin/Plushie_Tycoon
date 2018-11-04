@@ -22,12 +22,6 @@ from collections import defaultdict
 import copy
 random.seed(1)
 
-mocked_time = [2,2,3,4,5,6,6,7,8,8]
-from bokeh.sampledata.stocks import AAPL
-# print(AAPL.keys())
-# sys.exit()
-
-
 def main():
     remake_log()
     ge = GE()

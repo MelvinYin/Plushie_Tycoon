@@ -6,9 +6,9 @@ class MarketBackend:
     Does not have external setting capabilities unless value
     explicitly called.
     """
-    def __init__(self):
-        self.res = starting_res_price
-        self.prod = starting_prod_price
+    def __init__(self, market_values):
+        self.res = market_values[Res]
+        self.prod = market_values[Prod]
         self.type_map = self._get_type_map()
 
     def get(self, category):

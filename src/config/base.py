@@ -13,7 +13,7 @@ class Res(Enum):
 # Plushie signal values for internal use
 @unique
 class Prod(Enum):
-    tag = hash("Prod")
+    # tag = hash("Prod")
     aisha = 1
     beta = 2
     chama = 3

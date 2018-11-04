@@ -3,12 +3,16 @@ import pickle
 from collections import defaultdict
 from gs import GS
 from gs_subclass import Inventory, Market, Budget, Production
-from global_config import starting_time, save_folder, save_file_name
+from global_config import save_folder, save_file_name
+
 
 
 class GSGlobal:
-    def __init__(self):
-        self.gs_current = GS()
+    def __init__(self, GSDataClass):
+        self.gs_current = GS(GSDataClass)
+
+    def return_data(self):
+        return self.gs_current.return_data()
 
     def get(self, *args):
         return self.gs_current.get(*args)

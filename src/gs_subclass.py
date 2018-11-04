@@ -8,8 +8,8 @@ from production import ProductionBackend
 
 
 class Inventory:
-    def __init__(self):
-        self.inventory = InventoryBackend()
+    def __init__(self, inventory_values):
+        self.inventory = InventoryBackend(inventory_values)
 
     def add(self, category, quantity):
         return self.inventory.add(category, quantity)
@@ -24,15 +24,15 @@ class Inventory:
         return self.inventory.get(category)
 
 class Market:
-    def __init__(self):
-        self.market = MarketBackend()
+    def __init__(self, market_values):
+        self.market = MarketBackend(market_values)
 
     def get(self, category):
         return self.market.get(category)
 
 class Budget:
-    def __init__(self):
-        self.budget = BudgetBackend()
+    def __init__(self, init_values):
+        self.budget = BudgetBackend(init_values)
 
     def get(self):
         return self.budget.get()
@@ -47,8 +47,8 @@ class Budget:
         return self.budget.replace(other)
 
 class Production:
-    def __init__(self):
-        self.production = ProductionBackend()
+    def __init__(self, init_values):
+        self.production = ProductionBackend(init_values)
 
     def get_cost(self, category):
         return self.production.get_cost(category)

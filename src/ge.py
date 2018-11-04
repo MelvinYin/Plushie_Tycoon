@@ -6,11 +6,15 @@ from logs import log
 from global_config import Func, Res, Prod, res_members, prod_members
 from gs_global import GSGlobal
 from gs import GS
+from global_config import GSConstructor
 
 
 class GE:
     def __init__(self):
-        self.GS = GSGlobal()
+        GS_dataclass = GSConstructor()
+        GS_dataclass.load_init()
+        assert GS_dataclass.is_complete()
+        self.GS = GSGlobal(GS_dataclass)
         self.GS.commit(call=dict(command=Func.start))
         self.callback = self._default_callback
         self.func_map = self.get_func_map()

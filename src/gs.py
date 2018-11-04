@@ -1,5 +1,5 @@
 from gs_subclass import Inventory, Market, Budget, Production
-from global_config import starting_time, save_folder, save_file_name
+from global_config import GSConstructor, save_folder, save_file_name
 import copy
 from logs import log
 import inspect
@@ -9,14 +9,46 @@ from collections import defaultdict
 
 
 class GS:
-    def __init__(self):
-        self.inventory = Inventory()
-        self.market = Market()
-        self.budget = Budget()
-        self.production = Production()
+    def __init__(self, GSDataClass):
+        self.inventory = Inventory(GSDataClass.inventory)
+        self.market = Market(GSDataClass.market)
+        self.budget = Budget(GSDataClass.budget)
+        self.production = Production(GSDataClass.production)
         self.current_call = None
-        self.current_time = starting_time
+        self.current_time = GSDataClass.time
         self.history = defaultdict(list)
+
+    def _convert_GS_to_dict(self):
+        GS_update = dict()
+        GS_update['price'] = dict()
+        GS_update[Res] = {item: [self.GS.get('inventory', item)] for item\
+                in res_members}
+        GS_update[Prod] = {item: [self.GS.get('inventory', item)] for
+                                       item in prod_members}
+        GS_update['price'][Res] = {item: [self.GS.get('market', item)] for
+                                           item in res_members}
+        GS_update['price'][Prod] = {item: [self.GS.get('market', item)]
+                                            for item in prod_members}
+        GS_update["budget"] = dict(budget=[self.GS.get('budget')])
+
+        GS_update["time"] = [self.GS.get('time')]
+        # GS_update[Production.hours_needed] = self.GS.production.hours_needed
+        # GS_update[Production.cost_per_hour] = self.GS.production.cost_per_hour
+        # GS_update[Production.res_cost] = self.GS.production.res_cost
+
+        # GS_update["current_call"] = self.GS.current_call
+        return GS_update
+
+    def return_data(self):
+        # Hard-coding var name instead of putting it in a __dict__ loop,
+        # so name changes can be made to both.
+        GS_dataclass = GSConstructor()
+        GS_dataclass.production = self.production
+        GS_dataclass.budget = self.budget
+        GS_dataclass.inventory = self.inventory
+        GS_dataclass.market = self.market
+        GS_dataclass.time = self.current_time
+        return GS_dataclass
 
     def get(self, classification, *args):
         if classification == 'inventory':

@@ -5,8 +5,8 @@ from exceptions import InsufficientQuantityError
 
 
 class BudgetBackend:
-    def __init__(self):
-        self.value = global_config.starting_budget
+    def __init__(self, init_values):
+        self.value = init_values['budget']
 
     def get(self):
         return self.value
