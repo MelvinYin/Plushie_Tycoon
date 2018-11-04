@@ -3,9 +3,8 @@ import copy
 import inspect
 import sys
 from logs import log
-from global_config import Func, Res, Prod, res_members, prod_members
+from global_config import Func
 from gs_global import GSGlobal
-from gs import GS
 from global_config import GSConstructor
 
 
@@ -19,6 +18,9 @@ class GE:
         self.callback = self._default_callback
         self.func_map = self.get_func_map()
 
+    def return_data(self):
+        return self.GS.return_data()
+
     def _default_callback(self, call):
         func_signal = call['command']
         func = self.func_map[func_signal]
@@ -28,7 +30,7 @@ class GE:
             self.GS.reverse_call()
             log("InsufficientQuantityError>\n\n", inspect.currentframe())
             raise RepeatUIAction
-        GS_update = self._convert_GS_to_dict()
+        GS_update = self.GS.return_data()
         log("GE Call: {}\n Return: {}".format(call, GS_update),
             inspect.currentframe())
         return GS_update, return_value
@@ -84,26 +86,26 @@ class GE:
         self.GS.commit(call=dict(command=Func.next))
         return 'update'
 
-    def _convert_GS_to_dict(self):
-        GS_update = dict()
-        GS_update['price'] = dict()
-        GS_update[Res] = {item: [self.GS.get('inventory', item)] for item\
-                in res_members}
-        GS_update[Prod] = {item: [self.GS.get('inventory', item)] for
-                                       item in prod_members}
-        GS_update['price'][Res] = {item: [self.GS.get('market', item)] for
-                                           item in res_members}
-        GS_update['price'][Prod] = {item: [self.GS.get('market', item)]
-                                            for item in prod_members}
-        GS_update["budget"] = dict(budget=[self.GS.get('budget')])
-
-        GS_update["time"] = [self.GS.get('time')]
-        # GS_update[Production.hours_needed] = self.GS.production.hours_needed
-        # GS_update[Production.cost_per_hour] = self.GS.production.cost_per_hour
-        # GS_update[Production.res_cost] = self.GS.production.res_cost
-
-        # GS_update["current_call"] = self.GS.current_call
-        return GS_update
+    # def _convert_GS_to_dict(self):
+    #     GS_update = dict()
+    #     GS_update['price'] = dict()
+    #     GS_update[Res] = {item: [self.GS.get('inventory', item)] for item\
+    #             in res_members}
+    #     GS_update[Prod] = {item: [self.GS.get('inventory', item)] for
+    #                                    item in prod_members}
+    #     GS_update['price'][Res] = {item: [self.GS.get('market', item)] for
+    #                                        item in res_members}
+    #     GS_update['price'][Prod] = {item: [self.GS.get('market', item)]
+    #                                         for item in prod_members}
+    #     GS_update["budget"] = dict(budget=[self.GS.get('budget')])
+    #
+    #     GS_update["time"] = [self.GS.get('time')]
+    #     # GS_update[Production.hours_needed] = self.GS.production.hours_needed
+    #     # GS_update[Production.cost_per_hour] = self.GS.production.cost_per_hour
+    #     # GS_update[Production.res_cost] = self.GS.production.res_cost
+    #
+    #     # GS_update["current_call"] = self.GS.current_call
+    #     return GS_update
 
     def back(self):
         ret_value = self.GS.reverse_call()

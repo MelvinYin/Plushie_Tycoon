@@ -26,7 +26,7 @@ def main():
     remake_log()
     ge = GE()
     callback = ge.callback
-    init_data = ge._convert_GS_to_dict()
+    init_data = ge.return_data()
     log(init_data, inspect.currentframe())
     # callback(dict(command=Func.buy, category=Res.cloth, quantity=10))
 

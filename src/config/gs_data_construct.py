@@ -17,7 +17,7 @@ class GSConstructor:
 
     def load_init(self, to_load=None):
         init_values = InitValues()
-        for var_name, value in init_values.__dict__:
+        for var_name, value in init_values.__dict__.items():
             if (to_load is None or var_name in to_load)\
                     and var_name in self.__dict__:
                 self.__dict__[var_name] = value

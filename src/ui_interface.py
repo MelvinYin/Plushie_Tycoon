@@ -39,32 +39,32 @@ class UIInterface:
             raise Exception
         return cleaned_output
 
-    def _adapt_for_ui(self, raw_data):
+    def _adapt_for_ui(self, GSDataClass):
         adapted = defaultdict(dict)
-        input_to_res = raw_data[Res]
+        input_to_res = GSDataClass.inventory[Res]
         for key, values in input_to_res.items():
-            adapted[FigureNames.inventory_res][key.name] = values
-        adapted[FigureNames.inventory_res]['time'] = raw_data['time']
+            adapted[FigureNames.inventory_res][key.name] = [values]
+        adapted[FigureNames.inventory_res]['time'] = [GSDataClass.time]
 
-        input_to_prod = raw_data[Prod]
+        input_to_prod = GSDataClass.inventory[Prod]
         for key, values in input_to_prod.items():
-            adapted[FigureNames.inventory_prod][key.name] = values
-        adapted[FigureNames.inventory_prod]['time'] = raw_data['time']
+            adapted[FigureNames.inventory_prod][key.name] = [values]
+        adapted[FigureNames.inventory_prod]['time'] = [GSDataClass.time]
 
-        input_to_prod = raw_data['price'][Res]
-        for key, values in input_to_prod.items():
-            adapted[FigureNames.price_res][key.name] = values
-        adapted[FigureNames.price_res]['time'] = raw_data['time']
+        input_to_res = GSDataClass.market[Res]
+        for key, values in input_to_res.items():
+            adapted[FigureNames.price_res][key.name] = [values]
+        adapted[FigureNames.price_res]['time'] = [GSDataClass.time]
 
-        input_to_prod = raw_data['price'][Prod]
+        input_to_prod = GSDataClass.market[Prod]
         for key, values in input_to_prod.items():
-            adapted[FigureNames.price_prod][key.name] = values
-        adapted[FigureNames.price_prod]['time'] = raw_data['time']
+            adapted[FigureNames.price_prod][key.name] = [values]
+        adapted[FigureNames.price_prod]['time'] = [GSDataClass.time]
 
-        input_to_prod = raw_data['budget']
+        input_to_prod = GSDataClass.budget
         for key, values in input_to_prod.items():
-            adapted[FigureNames.budget][key] = values
-        adapted[FigureNames.budget]['time'] = raw_data['time']
+            adapted[FigureNames.budget][key] = [values]
+        adapted[FigureNames.budget]['time'] = [GSDataClass.time]
 
         adapted = dict(adapted)
         log(adapted, inspect.currentframe())
