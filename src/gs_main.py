@@ -11,8 +11,8 @@ nested_defaultdict = defaultdict(lambda: defaultdict(int))
 
 class GSM:
     def __init__(self, GSDataClass):
-        self.gs_current = GS(GSDataClass)
-        self.gsm = GSGlobal(GSDataClass)
+        self.gs_current = GS(deepcopy(GSDataClass))
+        self.gsm = GSGlobal(deepcopy(GSDataClass))
         self._callstack = []
 
     def commit_call(self, call):
