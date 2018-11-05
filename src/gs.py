@@ -22,10 +22,18 @@ class GS:
         # Hard-coding var name instead of putting it in a __dict__ loop,
         # so name changes can be made to both.
         GS_dataclass = GSConstructor()
-        GS_dataclass.production = self.production.return_data()
-        GS_dataclass.budget = self.budget.return_data()
-        GS_dataclass.inventory = self.inventory.return_data()
-        GS_dataclass.market = self.market.return_data()
+        _production = self.production.return_data()
+        GS_dataclass.load_production(_production['hours_needed'],
+                                     _production['res_cost'],
+                                     _production['cost_per_hour'])
+        _budget = self.budget.return_data()
+        GS_dataclass.load_budget(_budget['budget'])
+
+        _inventory = self.inventory.return_data()
+        GS_dataclass.load_inventory(_inventory['res'], _inventory['prod'])
+
+        _market = self.market.return_data()
+        GS_dataclass.load_market(_market['res'], _market['prod'])
         GS_dataclass.time = self.current_time
         return GS_dataclass
 

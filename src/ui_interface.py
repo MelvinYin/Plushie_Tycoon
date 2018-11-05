@@ -41,29 +41,28 @@ class UIInterface:
 
     def _adapt_for_ui(self, GSDataClass):
         adapted = defaultdict(dict)
-        input_to_res = GSDataClass.inventory[Res]
+        input_to_res = GSDataClass.inventory.res
         for key, values in input_to_res.items():
             adapted[FigureNames.inventory_res][key.name] = [values]
         adapted[FigureNames.inventory_res]['time'] = [GSDataClass.time]
 
-        input_to_prod = GSDataClass.inventory[Prod]
+        input_to_prod = GSDataClass.inventory.prod
         for key, values in input_to_prod.items():
             adapted[FigureNames.inventory_prod][key.name] = [values]
         adapted[FigureNames.inventory_prod]['time'] = [GSDataClass.time]
 
-        input_to_res = GSDataClass.market[Res]
+        input_to_res = GSDataClass.market.res
         for key, values in input_to_res.items():
             adapted[FigureNames.price_res][key.name] = [values]
         adapted[FigureNames.price_res]['time'] = [GSDataClass.time]
 
-        input_to_prod = GSDataClass.market[Prod]
+        input_to_prod = GSDataClass.market.prod
         for key, values in input_to_prod.items():
             adapted[FigureNames.price_prod][key.name] = [values]
         adapted[FigureNames.price_prod]['time'] = [GSDataClass.time]
 
-        input_to_prod = GSDataClass.budget
-        for key, values in input_to_prod.items():
-            adapted[FigureNames.budget][key] = [values]
+        budget = GSDataClass.budget.budget
+        adapted[FigureNames.budget]['budget'] = [budget]
         adapted[FigureNames.budget]['time'] = [GSDataClass.time]
 
         adapted = dict(adapted)

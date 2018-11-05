@@ -18,36 +18,16 @@ class GSM:
     def commit_call(self, call):
         self._callstack.append(call)
 
-    def _build_default_callstack(self):
-        callstack = dict()
-        default_for_buy_sell_make = dict()
-        default_for_buy_sell_make['inventory'] = defaultdict(int)
-        default_for_buy_sell_make['market'] = defaultdict(int)
-        callstack['buy_sell'] = deepcopy(default_for_buy_sell_make)
-        callstack['make'] = deepcopy(default_for_buy_sell_make)
-        default_for_add_sub = dict()
-        default_for_add_sub['inventory'] = defaultdict(int)
-        default_for_add_sub['market'] = defaultdict(int)
-        default_for_add_sub['budget'] = defaultdict(int)
-        callstack['add_sub'] = deepcopy(default_for_add_sub)
-        return callstack
-
     def _compress_callstack(self):
         # Keeping this separate, instead of updating callstack directly when
         # the functions (buy/sell/etc) are called, so if call signature is
         # changed, we just need to change this function.
         callstack = nested_defaultdict
         for call in self._callstack:
-            assert len(call) == 3
-            action, category, quantity = call
-            if action == 'buy':
-                callstack['buy_sell'][category] += quantity
-            elif action == 'sell':
-                callstack['buy_sell'][category] -= quantity
-            elif action == 'make':
-                callstack['make'][category] += quantity
-            else:
-                raise Exception
+            action = call['command']
+            category = call['category']
+            quantity = call['quantity']
+            callstack[action][category] += quantity
         return callstack
 
     def return_data(self):
@@ -73,9 +53,10 @@ class GSM:
 
     def next_turn(self):
         self._callstack = self._compress_callstack()
-        self._callstack = defaultdict(list)
-        self.gs_current.add('time')
-
+        self.gsm.implement_callstack(self._callstack)
+        GS_newturn_dataclass = self.gsm.return_data()
+        self.gs_current = GS(GS_newturn_dataclass)
+        self._callstack = []
         return 'update'
 
     def commit(self, call):

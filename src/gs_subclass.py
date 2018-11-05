@@ -1,13 +1,7 @@
-import copy
-from global_config import starting_res, starting_prod, Res, Prod
-
 from inventory import InventoryBackend
 from market import MarketBackend
 from budget import BudgetBackend
 from production import ProductionBackend
-
-from collections import defaultdict
-
 
 class Inventory:
     def __init__(self, inventory_values):
@@ -26,12 +20,9 @@ class Inventory:
         return self.inventory.get(category)
 
     def return_data(self):
-        data = defaultdict(dict)
-        for key in Res:
-            data[Res][key] = self.get(key)
-        for key in Prod:
-            data[Prod][key] = self.get(key)
-        data = dict(data)
+        data = dict()
+        data['res'] = self.inventory.res
+        data['prod'] = self.inventory.prod
         return data
 
 class Market:
@@ -42,12 +33,9 @@ class Market:
         return self.market.get(category)
 
     def return_data(self):
-        data = defaultdict(dict)
-        for key in Res:
-            data[Res][key] = self.get(key)
-        for key in Prod:
-            data[Prod][key] = self.get(key)
-        data = dict(data)
+        data = dict()
+        data['res'] = self.market.res
+        data['prod'] = self.market.prod
         return data
 
 class Budget:
@@ -80,10 +68,12 @@ class Production:
         return self.production.get_cost(category)
 
     def return_data(self):
-        data = defaultdict(dict)
-        for key in Prod:
-            data[Prod][key] = self.get(key)
-        data = dict(data)
+        # I may not want to return everything from production, so hard-coded
+        # instead of looping from self.production.__dict__ for now
+        data = dict()
+        data['hours_needed'] = self.production.hours_needed
+        data['cost_per_hour'] = self.production.cost_per_hour
+        data['res_cost'] = self.production.res_cost
         return data
 
 

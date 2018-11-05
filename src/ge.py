@@ -3,10 +3,8 @@ import copy
 import inspect
 import sys
 from logs import log
-from global_config import Func
+from global_config import Func, GSConstructor
 from gs_main import GSM
-from global_config import GSConstructor
-
 
 class GE:
     def __init__(self):

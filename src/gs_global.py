@@ -1,5 +1,5 @@
 from gs_subclass import Inventory, Market, Budget, Production
-from global_config import GSConstructor, save_folder, save_file_name
+from global_config import GSConstructor, save_folder, save_file_name, Func
 import copy
 from logs import log
 import inspect
@@ -19,15 +19,32 @@ class GSGlobal:
         self.history = defaultdict(list)
 
     def return_data(self):
-        # Hard-coding var name instead of putting it in a __dict__ loop,
-        # so name changes can be made to both.
         GS_dataclass = GSConstructor()
-        GS_dataclass.production = self.production.return_data()
-        GS_dataclass.budget = self.budget.return_data()
-        GS_dataclass.inventory = self.inventory.return_data()
-        GS_dataclass.market = self.market.return_data()
+        _production = self.production.return_data()
+        GS_dataclass.load_production(_production['hours_needed'],
+                                     _production['res_cost'],
+                                     _production['cost_per_hour'])
+        _budget = self.budget.return_data()
+        GS_dataclass.load_budget(_budget['budget'])
+
+        _inventory = self.inventory.return_data()
+        GS_dataclass.load_inventory(_inventory['res'], _inventory['prod'])
+
+        _market = self.market.return_data()
+        GS_dataclass.load_market(_market['res'], _market['prod'])
         GS_dataclass.time = self.current_time
         return GS_dataclass
+
+    # def return_data(self):
+    #     # Hard-coding var name instead of putting it in a __dict__ loop,
+    #     # so name changes can be made to both.
+    #     GS_dataclass = GSConstructor()
+    #     GS_dataclass.production = self.production.return_data()
+    #     GS_dataclass.budget = self.budget.return_data()
+    #     GS_dataclass.inventory = self.inventory.return_data()
+    #     GS_dataclass.market = self.market.return_data()
+    #     GS_dataclass.time = self.current_time
+    #     return GS_dataclass
 
     def get(self, classification, *args):
         if classification == 'inventory':
@@ -63,16 +80,41 @@ class GSGlobal:
             raise Exception
 
     def implement_callstack(self, callstack):
-        for action, calls in callstack.items():
-            if action == 'buy_sell':
-                # _class is 'inventory', etc
-                # category is <Prod.aisha>, etc
-                for _class, category_dict in calls.items():
-                    if _class == 'inventory':
-                        for category, quantity in category_dict.items():
-                            self.inventory.add(category, quantity)
-                    elif _class == 'market':
-                        for category, quantity in category_dict.items():
-                            self.market.add(category, quantity)
+        # Weird format for now
+        for action, cat_quantity in callstack.items():
+            for category, quantity in cat_quantity.items():
+                if action == Func.buy:
+                    self.buy(category, quantity)
+                elif action == Func.sell:
+                    self.sell(category, quantity)
+                elif action == Func.make:
+                    self.make(category, quantity)
+                else:
+                    raise Exception
+        self.current_time += 1
+        return True
 
+    # Taken from GE
+    def buy(self, category, quantity):
+        self.inventory.add(category, quantity)
+        price = self.market.get(category)
+        total_cost = price * quantity
+        self.budget.sub('budget', total_cost)
+        return 'update'
+
+    def sell(self, category, quantity):
+        self.inventory.sub(category, quantity)
+        price = self.market.get(category)
+        total_cost = price * quantity
+        self.budget.add('budget', total_cost)
+        return 'update'
+
+    def make(self, category, quantity):
+        cost, materials = self.production.get(category)
+        for _category, material in materials.items():
+            self.inventory.sub(_category, material * quantity)
+        self.budget.sub('budget', cost * quantity)
+        self.inventory.add(category, quantity)
+        return 'update'
+#     Taken from GE end
 

@@ -1,5 +1,5 @@
 from enum import Enum, auto, unique
-
+from collections import namedtuple
 ###############################################################################
 
 # Resource signal values for internal use
@@ -42,5 +42,11 @@ class Production(Enum):
 
 res_members = [Res.cloth, Res.stuff, Res.accessory, Res.packaging]
 prod_members = [Prod.aisha, Prod.beta, Prod.chama]
+
+ProductionTuple = namedtuple('ProductionTuple',
+                             'hours_needed prod_res_cost cost_per_hour')
+BudgetTuple = namedtuple('BudgetTuple', 'budget')
+MarketTuple = namedtuple('MarketTuple', 'res prod')
+InventoryTuple = namedtuple('InventoryTuple', 'res prod')
 
 ###############################################################################

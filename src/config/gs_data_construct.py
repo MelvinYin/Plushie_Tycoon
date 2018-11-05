@@ -1,5 +1,8 @@
 from init_values import InitValues
-
+from collections import namedtuple
+from base import res_members, prod_members, ProductionTuple, InventoryTuple, \
+    MarketTuple, BudgetTuple
+import pandas as pd
 
 class GSConstructor:
     def __init__(self):
@@ -15,12 +18,46 @@ class GSConstructor:
             all_full = False
         return all_full
 
-    def load_init(self, to_load=None):
+    def load_init(self):
         init_values = InitValues()
         for var_name, value in init_values.__dict__.items():
-            if (to_load is None or var_name in to_load)\
-                    and var_name in self.__dict__:
+            if var_name in self.__dict__:
                 self.__dict__[var_name] = value
+
+    def load_production(self, hours_needed, prod_res_cost, cost_per_hour):
+        assert isinstance(prod_res_cost, pd.DataFrame)
+        assert isinstance(hours_needed, dict)
+        assert set(hours_needed.keys()) == set(prod_members)
+        assert isinstance(list(hours_needed.values())[0], int)
+        assert isinstance(cost_per_hour, int)
+        self.production = ProductionTuple(hours_needed, prod_res_cost,
+                                          cost_per_hour)
+        return True
+
+    def load_budget(self, budget):
+        assert isinstance(budget, int)
+        self.budget = BudgetTuple(budget)
+        return True
+
+    def load_market(self, res, prod):
+        assert isinstance(res, dict)
+        assert isinstance(prod, dict)
+        assert set(res.keys()) == set(res_members)
+        assert set(prod.keys()) == set(prod_members)
+        assert isinstance(list(res.values())[0], int)
+        assert isinstance(list(prod.values())[0], int)
+        self.market = MarketTuple(res, prod)
+        return True
+
+    def load_inventory(self, res, prod):
+        assert isinstance(res, dict)
+        assert isinstance(prod, dict)
+        assert set(res.keys()) == set(res_members)
+        assert set(prod.keys()) == set(prod_members)
+        assert isinstance(list(res.values())[0], int)
+        assert isinstance(list(prod.values())[0], int)
+        self.inventory = InventoryTuple(res, prod)
+        return True
 
 
 

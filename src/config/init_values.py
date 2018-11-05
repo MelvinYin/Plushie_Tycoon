@@ -1,24 +1,22 @@
 import pandas as pd
 from collections import namedtuple
 try:
-    from .base import Res, Prod, ProdPrice, Func, \
-        res_members, prod_members
+    from .base import Res, Prod, Func, res_members, prod_members, \
+        ProductionTuple, BudgetTuple, MarketTuple, InventoryTuple
     from .figure import FigureSpecs, FigureNames
     from .widget import WidgetSpecs
 except:
-    from base import Res, Prod, Func, res_members, prod_members
+    from base import Res, Prod, Func, res_members, prod_members, \
+        ProductionTuple, BudgetTuple, MarketTuple, InventoryTuple
     from figure import FigureSpecs, FigureNames
     from widget import WidgetSpecs
-
-ProductionTuple = namedtuple('production', 'hours_needed prod_res_cost '
-                                         'cost_per_hour')
 
 class InitValues:
     def __init__(self):
         self.production = self._get_production()
         self.budget = self._get_budget()
         self.inventory = self._get_inventory()
-        self.market = self._get_price()
+        self.market = self._get_market()
         self.time = 0
 
     def _get_production(self):
@@ -26,6 +24,11 @@ class InitValues:
         hours_needed = self._get_hours_needed()
         cost_per_hour = self._get_cost_per_hour()
         production = ProductionTuple(hours_needed, prod_res_cost, cost_per_hour)
+        assert isinstance(prod_res_cost, pd.DataFrame)
+        assert isinstance(hours_needed, dict)
+        assert set(hours_needed.keys()) == set(prod_members)
+        assert isinstance(list(hours_needed.values())[0], int)
+        assert isinstance(cost_per_hour, int)
         return production
 
     def _get_prod_res_cost(self):
@@ -52,21 +55,34 @@ class InitValues:
 
     def _get_budget(self):
         # Starting Statistics
-        budget = dict()
-        budget['budget'] = 10000000
+        _init_budget = 1000000
+        budget = BudgetTuple(_init_budget)
+        assert isinstance(_init_budget, int)
         return budget
 
     def _get_inventory(self):
-        inventory = dict()
-        inventory[Res] = self._get_res()
-        inventory[Prod] = self._get_prod()
+        res = self._get_res()
+        prod = self._get_prod()
+        inventory = InventoryTuple(res, prod)
+        assert isinstance(res, dict)
+        assert isinstance(prod, dict)
+        assert set(res.keys()) == set(res_members)
+        assert set(prod.keys()) == set(prod_members)
+        assert isinstance(list(res.values())[0], int)
+        assert isinstance(list(prod.values())[0], int)
         return inventory
 
-    def _get_price(self):
-        prices = dict()
-        prices[Res] = self._get_res_price()
-        prices[Prod] = self._get_prod_price()
-        return prices
+    def _get_market(self):
+        res = self._get_res_price()
+        prod = self._get_prod_price()
+        market = MarketTuple(res, prod)
+        assert isinstance(res, dict)
+        assert isinstance(prod, dict)
+        assert set(res.keys()) == set(res_members)
+        assert set(prod.keys()) == set(prod_members)
+        assert isinstance(list(res.values())[0], int)
+        assert isinstance(list(prod.values())[0], int)
+        return market
 
     def _get_res(self):
         _s_res = [1001, 1002, 1003, 1004]
