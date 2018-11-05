@@ -1,88 +1,67 @@
-main.py: main <<gs_data_construct.GSConstructor object at 0x7ff3fa221e48>>
+main.py: main <<gs_data_construct.GSConstructor object at 0x7f88420fc0f0>>
 
 ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [10000000], 'time': [0]}}>
 
-ui_interface.py: callback <{'command': <Func.make: 3>, 'category': <Prod.beta: 2>, 'quantity': 21}>
+ui_interface.py: callback <{'command': <Func.buy: 1>, 'category': <Prod.beta: 2>, 'quantity': 12}>
 
-ge.py: _default_callback <GE Call: {'command': <Func.make: 3>, 'category': <Prod.beta: 2>, 'quantity': 21}
- Return: <gs_data_construct.GSConstructor object at 0x7ff3f9e50e10>>
+ge.py: _default_callback <GE Call: {'command': <Func.buy: 1>, 'category': <Prod.beta: 2>, 'quantity': 12}
+ Return: <gs_data_construct.GSConstructor object at 0x7f8841e658d0>>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [980], 'stuff': [918], 'accessory': [982], 'packaging': [962], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [123], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9998488], 'time': [0]}}>
+ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [114], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9999088], 'time': [0]}}>
 
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [980], 'stuff': [918], 'accessory': [982], 'packaging': [962], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [123], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9998488], 'time': [0]}}>
+ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [114], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9999088], 'time': [0]}}>
 
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [980], 'stuff': [918], 'accessory': [982], 'packaging': [962], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [123], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9998488], 'time': [0]}}>
+bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [114], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9999088], 'time': [0]}}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [980], 'stuff': [918], 'accessory': [982], 'packaging': [962], 'time': [0], 'xs': [1]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0], 'xs': [1]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [123], 'chama': [103], 'time': [0], 'xs': [1]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [114], 'chama': [103], 'time': [0], 'xs': [1]}>
 
 bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0], 'xs': [1]}>
 
 bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0], 'xs': [1]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [9998488], 'time': [0], 'xs': [1]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [9999088], 'time': [0], 'xs': [1]}>
 
-ui_interface.py: callback <{'command': <Func.make: 3>, 'category': <Prod.beta: 2>, 'quantity': 21}>
+ui_interface.py: callback <{'command': <Func.buy: 1>, 'category': <Prod.beta: 2>, 'quantity': 12}>
 
-ge.py: _default_callback <GE Call: {'command': <Func.make: 3>, 'category': <Prod.beta: 2>, 'quantity': 21}
- Return: <gs_data_construct.GSConstructor object at 0x7ff3f9f1e8d0>>
+ge.py: _default_callback <GE Call: {'command': <Func.buy: 1>, 'category': <Prod.beta: 2>, 'quantity': 12}
+ Return: <gs_data_construct.GSConstructor object at 0x7f8841e565f8>>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [959], 'stuff': [834], 'accessory': [961], 'packaging': [920], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [144], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9996976], 'time': [0]}}>
+ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [126], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9998176], 'time': [0]}}>
 
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [959], 'stuff': [834], 'accessory': [961], 'packaging': [920], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [144], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9996976], 'time': [0]}}>
+ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [126], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9998176], 'time': [0]}}>
 
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [959], 'stuff': [834], 'accessory': [961], 'packaging': [920], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [144], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9996976], 'time': [0]}}>
+bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [126], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9998176], 'time': [0]}}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [959], 'stuff': [834], 'accessory': [961], 'packaging': [920], 'time': [0], 'xs': [2]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0], 'xs': [2]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [144], 'chama': [103], 'time': [0], 'xs': [2]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [126], 'chama': [103], 'time': [0], 'xs': [2]}>
 
 bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0], 'xs': [2]}>
 
 bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0], 'xs': [2]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [9996976], 'time': [0], 'xs': [2]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [9998176], 'time': [0], 'xs': [2]}>
 
-ui_interface.py: callback <{'command': <Func.make: 3>, 'category': <Prod.beta: 2>, 'quantity': 21}>
+ui_interface.py: callback <{'command': <Func.next: 7>}>
 
-ge.py: _default_callback <GE Call: {'command': <Func.make: 3>, 'category': <Prod.beta: 2>, 'quantity': 21}
- Return: <gs_data_construct.GSConstructor object at 0x7ff3f9f1ef60>>
+ge.py: _default_callback <GE Call: {'command': <Func.next: 7>}
+ Return: <gs_data_construct.GSConstructor object at 0x7f8841e5ba58>>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [938], 'stuff': [750], 'accessory': [940], 'packaging': [878], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [165], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9995464], 'time': [0]}}>
+ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [126], 'chama': [103], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [9998176], 'time': [1]}}>
 
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [938], 'stuff': [750], 'accessory': [940], 'packaging': [878], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [165], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9995464], 'time': [0]}}>
+ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [126], 'chama': [103], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [9998176], 'time': [1]}}>
 
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [938], 'stuff': [750], 'accessory': [940], 'packaging': [878], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [165], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9995464], 'time': [0]}}>
+bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [126], 'chama': [103], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [9998176], 'time': [1]}}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [938], 'stuff': [750], 'accessory': [940], 'packaging': [878], 'time': [0], 'xs': [3]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [1], 'xs': [3]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [165], 'chama': [103], 'time': [0], 'xs': [3]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [126], 'chama': [103], 'time': [1], 'xs': [3]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0], 'xs': [3]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [1], 'xs': [3]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0], 'xs': [3]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [1], 'xs': [3]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [9995464], 'time': [0], 'xs': [3]}>
-
-ui_interface.py: callback <{'command': <Func.make: 3>, 'category': <Prod.beta: 2>, 'quantity': 21}>
-
-ge.py: _default_callback <GE Call: {'command': <Func.make: 3>, 'category': <Prod.beta: 2>, 'quantity': 21}
- Return: <gs_data_construct.GSConstructor object at 0x7ff3f9e50898>>
-
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [917], 'stuff': [666], 'accessory': [919], 'packaging': [836], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [186], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9993952], 'time': [0]}}>
-
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [917], 'stuff': [666], 'accessory': [919], 'packaging': [836], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [186], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9993952], 'time': [0]}}>
-
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [917], 'stuff': [666], 'accessory': [919], 'packaging': [836], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [186], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [9993952], 'time': [0]}}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [917], 'stuff': [666], 'accessory': [919], 'packaging': [836], 'time': [0], 'xs': [4]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [186], 'chama': [103], 'time': [0], 'xs': [4]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0], 'xs': [4]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0], 'xs': [4]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [9993952], 'time': [0], 'xs': [4]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [9998176], 'time': [1], 'xs': [3]}>
 

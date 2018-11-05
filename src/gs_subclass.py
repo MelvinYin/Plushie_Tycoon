@@ -57,13 +57,14 @@ class Budget:
     def get(self):
         return self.budget.get()
 
-    def sub(self, other):
+    def sub(self, _category, other):
+        # _category == 'budget', only so budget follows call signature of others
         return self.budget.sub(other)
 
-    def add(self, other):
+    def add(self, _category, other):
         return self.budget.add(other)
 
-    def replace(self, other):
+    def replace(self, _category, other):
         return self.budget.replace(other)
 
     def return_data(self):
