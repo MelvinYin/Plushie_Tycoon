@@ -21,7 +21,7 @@ class InitValues:
         self.time = 0
 
     def _get_console(self):
-        return "Init_text"
+        return "Init_text<p>"
 
     def _get_production(self):
         prod_res_cost = self._get_prod_res_cost()

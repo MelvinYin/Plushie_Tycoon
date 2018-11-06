@@ -29,9 +29,23 @@ class GSGlobal:
         GS_dataclass.load_market(_market['res'], _market['prod'])
         GS_dataclass.time = self.current_time
 
-        GS_dataclass.load_console(str(self.callstack))
+        GS_dataclass.load_console(self.html_formatter(self.callstack))
         assert GS_dataclass.is_complete()
         return GS_dataclass
+
+    def html_formatter(self, to_write):
+        output = ""
+        output += "<br />[End of turn]<br />"
+        output += "Commands implemented: "
+        for action, cat_quantity in to_write.items():
+            for category, quantity in cat_quantity.items():
+                if 'name' in action.__dict__:
+                    action = action.name
+                if 'name' in category.__dict__:
+                    category = category.name
+                output += "<br />{} {} {}".format(action, category, quantity)
+        output += "<br />End."
+        return output
 
     def get(self, classification, *args):
         if classification == 'inventory':

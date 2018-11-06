@@ -34,9 +34,23 @@ class GS:
         _market = self.market.return_data()
         GS_dataclass.load_market(_market['res'], _market['prod'])
         GS_dataclass.time = self.current_time
-        GS_dataclass.load_console("Called")
+        GS_dataclass.load_console(self.html_formatter(self.current_call))
         assert GS_dataclass.is_complete()
         return GS_dataclass
+
+    def html_formatter(self, to_write):
+        output = ""
+        assert 'command' in to_write, to_write
+        command = to_write['command']
+        category = ""
+        quantity = ""
+        if 'category' in to_write:
+            category = to_write['category']
+        if 'quantity' in to_write:
+            quantity = to_write['quantity']
+        output += "Command called: {} {} {}".format(command, category,
+                                                       quantity)
+        return output
 
     def get(self, classification, *args):
         if classification == 'inventory':

@@ -14,6 +14,7 @@ class GSM:
         self._return_from_global = False
 
     def commit_call(self, call):
+        self.gs_current.current_call = call
         self._callstack.append(call)
 
     def _compress_callstack(self):

@@ -4,6 +4,7 @@ from bokeh.models import DataRange1d, HoverTool, BoxZoomTool, PanTool, \
 from bokeh.models.tickers import FixedTicker
 import numpy as np
 import copy
+import re
 
 """
 self.current_ticks need to be pulled out, because figure.xaxis.ticker cannot 
@@ -28,7 +29,7 @@ Because when loading data, we
 from logs import log
 import inspect
 from bokeh.layouts import row, column
-from bokeh.models.widgets import Paragraph
+from bokeh.models.widgets import Paragraph, Div
 from bokeh.models.layouts import WidgetBox, Spacer
 
 class ConsoleOutput:
@@ -37,10 +38,16 @@ class ConsoleOutput:
         self.specs = specs
         self._paragraph = self._build_paragraph()
         self.figure = self._set_textbox(specs)
+        self._rollover_count = 20
 
     def _build_paragraph(self):
-        paragraph = Paragraph(width=self.specs.textbox_width,
-                            text=self.specs.text)
+        _style = dict()
+        _style['overflow-y'] = 'scroll'
+        _style['draggable'] = 'true'
+        _style['height'] = '{}px'.format(self.specs.html_height)
+        paragraph = Div(width=self.specs.textbox_width,
+                        height=self.specs.textbox_height,
+                        text=self.specs.text, style=_style)
         return paragraph
 
     def _set_textbox(self, specs):
@@ -49,9 +56,19 @@ class ConsoleOutput:
         return fig
 
     def figure_update(self, add_line):
-        print(add_line)
-        self._paragraph.text = add_line['console']
+        self._paragraph.text = self._paragraph.text + "<br />" \
+                               + add_line['console']
+        # self._paragraph.text = self._rollover_old_output(full_text)
         return True
+
+    # def _rollover_old_output(self, text):
+    #     count = len(re.findall(r"<br />", text))
+    #     if count > self._rollover_count:
+    #         num_to_remove = count - self._rollover_count
+    #         output = text.split(r"<br />", maxsplit=num_to_remove)[-1]
+    #     else:
+    #         output = text
+    #     return output
 
 class IndividualFigure:
     def __init__(self, initial_data, specs):
@@ -100,7 +117,6 @@ class IndividualFigure:
         for time, count in zip(time_values, counts):
             tick_label_map[xs[counter]] = str(time)
             counter += count
-
         return tick_label_map
 
     def _set_initial_figure(self, Specs):

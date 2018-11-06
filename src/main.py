@@ -16,7 +16,7 @@ from ge import GE
 
 old_logs.set_logging_level()
 
-from global_config import Res, Prod, Func, UISpecs
+from global_config import UISpecs
 import random
 from collections import defaultdict
 import copy

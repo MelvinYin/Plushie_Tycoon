@@ -16,10 +16,13 @@ class ConsoleOutputSpecs:
     def __init__(self):
         self.name = FigureNames.console_output
         self.title = "Console"
-        self.text = 'text_in_textbox'
+        self.text = 'Initial<p>'
         self.width = 50
         self.height = 20
-        self.textbox_width = 1000
+        self.textbox_width = 400
+        self.textbox_height = 500
+        # Division by 2 so it fits well and within what bokeh uses.
+        self.html_height = int(self.textbox_height / 2)
 
 class InventoryResSpecs:
     def __init__(self):
