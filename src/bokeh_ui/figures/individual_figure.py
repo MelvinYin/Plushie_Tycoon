@@ -42,9 +42,10 @@ class ConsoleOutput:
 
     def _build_paragraph(self):
         _style = dict()
-        _style['overflow-y'] = 'scroll'
-        _style['draggable'] = 'true'
+        _style['overflow-y'] = 'auto'
         _style['height'] = '{}px'.format(self.specs.html_height)
+
+        # objDiv.scrollTop = objDiv.scrollHeight
         paragraph = Div(width=self.specs.textbox_width,
                         height=self.specs.textbox_height,
                         text=self.specs.text, style=_style)
@@ -56,19 +57,11 @@ class ConsoleOutput:
         return fig
 
     def figure_update(self, add_line):
-        self._paragraph.text = self._paragraph.text + "<br />" \
-                               + add_line['console']
-        # self._paragraph.text = self._rollover_old_output(full_text)
+        # Can't get bokeh div to scroll to end, it'll always reset to top
+        # even if scrollHeight==scrollTop, etc. Keep it like this for now.
+        self._paragraph.text = add_line['console'] + "<br />" \
+                             + self._paragraph.text
         return True
-
-    # def _rollover_old_output(self, text):
-    #     count = len(re.findall(r"<br />", text))
-    #     if count > self._rollover_count:
-    #         num_to_remove = count - self._rollover_count
-    #         output = text.split(r"<br />", maxsplit=num_to_remove)[-1]
-    #     else:
-    #         output = text
-    #     return output
 
 class IndividualFigure:
     def __init__(self, initial_data, specs):
