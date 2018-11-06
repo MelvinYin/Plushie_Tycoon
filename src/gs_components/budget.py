@@ -1,4 +1,3 @@
-import global_config
 from logs import log
 import inspect
 from exceptions import InsufficientQuantityError

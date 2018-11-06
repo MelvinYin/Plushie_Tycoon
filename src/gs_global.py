@@ -1,12 +1,6 @@
 from gs_subclass import Inventory, Market, Budget, Production
 from global_config import GSConstructor, save_folder, save_file_name, Func
-import copy
-from logs import log
-import inspect
-import os
-import pickle
 from collections import defaultdict
-
 
 class GSGlobal:
     def __init__(self, GSDataClass):
@@ -17,6 +11,7 @@ class GSGlobal:
         self.current_call = None
         self.current_time = GSDataClass.time
         self.history = defaultdict(list)
+        self.callstack = None
 
     def return_data(self):
         GS_dataclass = GSConstructor()
@@ -33,18 +28,10 @@ class GSGlobal:
         _market = self.market.return_data()
         GS_dataclass.load_market(_market['res'], _market['prod'])
         GS_dataclass.time = self.current_time
-        return GS_dataclass
 
-    # def return_data(self):
-    #     # Hard-coding var name instead of putting it in a __dict__ loop,
-    #     # so name changes can be made to both.
-    #     GS_dataclass = GSConstructor()
-    #     GS_dataclass.production = self.production.return_data()
-    #     GS_dataclass.budget = self.budget.return_data()
-    #     GS_dataclass.inventory = self.inventory.return_data()
-    #     GS_dataclass.market = self.market.return_data()
-    #     GS_dataclass.time = self.current_time
-    #     return GS_dataclass
+        GS_dataclass.load_console(str(self.callstack))
+        assert GS_dataclass.is_complete()
+        return GS_dataclass
 
     def get(self, classification, *args):
         if classification == 'inventory':
@@ -80,6 +67,7 @@ class GSGlobal:
             raise Exception
 
     def implement_callstack(self, callstack):
+        self.callstack = callstack
         # Weird format for now
         for action, cat_quantity in callstack.items():
             for category, quantity in cat_quantity.items():

@@ -65,6 +65,9 @@ class UIInterface:
         adapted[FigureNames.budget]['budget'] = [budget]
         adapted[FigureNames.budget]['time'] = [GSDataClass.time]
 
+        console_log = GSDataClass.console
+        adapted[FigureNames.console_output]['console'] = console_log
+
         adapted = dict(adapted)
         log(adapted, inspect.currentframe())
         return adapted

@@ -3,7 +3,7 @@ import inspect
 
 from logs import log
 from global_config import Res, Prod, FigureNames
-from .individual_figure import IndividualFigure
+from .individual_figure import IndividualFigure, ConsoleOutput
 
 class FigureSet:
     def __init__(self, full_data, specs):
@@ -27,14 +27,16 @@ class FigureSet:
             IndividualFigure(full_data[FigureNames.price_prod],
                              specs.price_prod))
         FigureInstances.append(
-            IndividualFigure(full_data[FigureNames.budget],
-                             specs.budget))
+            IndividualFigure(full_data[FigureNames.budget], specs.budget))
+        FigureInstances.append(ConsoleOutput(specs.console))
         return FigureInstances
 
     def _couple_range(self):
         ref_x_range = self.FigureInstances[0].figure.x_range
-        for FigureInstances in self.FigureInstances:
-            FigureInstances.figure.x_range = ref_x_range
+        self.FigureInstances[1].figure.x_range = ref_x_range
+        self.FigureInstances[2].figure.x_range = ref_x_range
+        self.FigureInstances[3].figure.x_range = ref_x_range
+        self.FigureInstances[4].figure.x_range = ref_x_range
         return True
 
     def _get_figure_layout(self, FigureSetSpecs):

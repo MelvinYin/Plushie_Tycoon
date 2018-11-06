@@ -4,7 +4,6 @@ from bokeh.models import DataRange1d, HoverTool, BoxZoomTool, PanTool, \
 from bokeh.models.tickers import FixedTicker
 import numpy as np
 import copy
-import pandas as pd
 
 """
 self.current_ticks need to be pulled out, because figure.xaxis.ticker cannot 
@@ -28,7 +27,31 @@ Because when loading data, we
 """
 from logs import log
 import inspect
-import sys
+from bokeh.layouts import row, column
+from bokeh.models.widgets import Paragraph
+from bokeh.models.layouts import WidgetBox, Spacer
+
+class ConsoleOutput:
+    def __init__(self, specs):
+        self.name = specs.name
+        self.specs = specs
+        self._paragraph = self._build_paragraph()
+        self.figure = self._set_textbox(specs)
+
+    def _build_paragraph(self):
+        paragraph = Paragraph(width=self.specs.textbox_width,
+                            text=self.specs.text)
+        return paragraph
+
+    def _set_textbox(self, specs):
+        fig = column(row(Spacer(height=specs.height)),
+                     row(Spacer(width=specs.width), self._paragraph))
+        return fig
+
+    def figure_update(self, add_line):
+        print(add_line)
+        self._paragraph.text = add_line['console']
+        return True
 
 class IndividualFigure:
     def __init__(self, initial_data, specs):
@@ -38,7 +61,6 @@ class IndividualFigure:
         self.figure = self._set_initial_figure(specs)
         self._update_xaxis()
         self.name = specs.name
-        self._count = 0
 
     def _check_initial_data(self, data):
         assert data

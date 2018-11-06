@@ -1,6 +1,5 @@
 from gs_subclass import Inventory, Market, Budget, Production
 from global_config import GSConstructor, save_folder, save_file_name
-import copy
 from logs import log
 import inspect
 import os
@@ -35,6 +34,8 @@ class GS:
         _market = self.market.return_data()
         GS_dataclass.load_market(_market['res'], _market['prod'])
         GS_dataclass.time = self.current_time
+        GS_dataclass.load_console("Called")
+        assert GS_dataclass.is_complete()
         return GS_dataclass
 
     def get(self, classification, *args):

@@ -1,5 +1,4 @@
 from init_values import InitValues
-from collections import namedtuple
 from base import res_members, prod_members, ProductionTuple, InventoryTuple, \
     MarketTuple, BudgetTuple
 import pandas as pd
@@ -11,6 +10,7 @@ class GSConstructor:
         self.inventory = None
         self.market = None
         self.time = None
+        self.console = None
 
     def is_complete(self):
         all_full = True
@@ -23,6 +23,11 @@ class GSConstructor:
         for var_name, value in init_values.__dict__.items():
             if var_name in self.__dict__:
                 self.__dict__[var_name] = value
+
+    def load_console(self, text):
+        assert isinstance(text, str)
+        self.console = text
+        return True
 
     def load_production(self, hours_needed, prod_res_cost, cost_per_hour):
         assert isinstance(prod_res_cost, pd.DataFrame)

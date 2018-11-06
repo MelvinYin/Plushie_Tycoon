@@ -17,7 +17,11 @@ class InitValues:
         self.budget = self._get_budget()
         self.inventory = self._get_inventory()
         self.market = self._get_market()
+        self.console = self._get_console()
         self.time = 0
+
+    def _get_console(self):
+        return "Init_text"
 
     def _get_production(self):
         prod_res_cost = self._get_prod_res_cost()

@@ -1,6 +1,3 @@
-from singleton import Singleton
-from global_config import hours_needed, cost_per_hour, prod_res_cost
-
 class ProductionBackend:
     def __init__(self, init_values):
         self.hours_needed = init_values.hours_needed

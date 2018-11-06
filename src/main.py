@@ -33,7 +33,7 @@ def main():
     ui = UIInterface(init_data, callback, UISpecs())
     # calls = mocked_transaction_callbacks()
     # ui.ui_callback(calls[0])
-    show(ui.ui_layout)
+    # show(ui.ui_layout)
     curdoc().add_root(ui.ui_layout)
 
 main()

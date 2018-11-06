@@ -10,6 +10,16 @@ class FigureNames(Enum):
     price_res = auto()
     price_prod = auto()
     budget = auto()
+    console_output = auto()
+
+class ConsoleOutputSpecs:
+    def __init__(self):
+        self.name = FigureNames.console_output
+        self.title = "Console"
+        self.text = 'text_in_textbox'
+        self.width = 50
+        self.height = 20
+        self.textbox_width = 1000
 
 class InventoryResSpecs:
     def __init__(self):
@@ -86,7 +96,7 @@ class BudgetSpecs:
 
 class FigureSetSpecs:
     def __init__(self):
-        self.figures_per_row = 5
+        self.figures_per_row = 3
 
 class FigureIndividualSpecs:
     def __init__(self):
@@ -95,6 +105,7 @@ class FigureIndividualSpecs:
         self.price_res = PriceResSpecs()
         self.price_prod = PriceProdSpecs()
         self.budget = BudgetSpecs()
+        self.console = ConsoleOutputSpecs()
 
 class FigureSpecs:
     def __init__(self):
