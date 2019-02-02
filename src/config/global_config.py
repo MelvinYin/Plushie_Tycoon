@@ -1,12 +1,13 @@
 import pandas as pd
 try:
-    from .base import Res, Prod, ProdPrice, Func, \
-        res_members, prod_members
+    from .base import Res, Prod, Func, res_members, prod_members, \
+        ProductionTuple, BudgetTuple, MarketTuple, InventoryTuple
     from .figure import FigureSpecs, FigureNames
     from .widget import WidgetSpecs
     from .gs_data_construct import GSConstructor
 except:
-    from base import Res, Prod, Func, res_members, prod_members
+    from base import Res, Prod, Func, res_members, prod_members, \
+        ProductionTuple, BudgetTuple, MarketTuple, InventoryTuple
     from figure import FigureSpecs, FigureNames
     from widget import WidgetSpecs
     from gs_data_construct import GSConstructor

@@ -45,7 +45,6 @@ class ConsoleOutput:
         _style['overflow-y'] = 'auto'
         _style['height'] = '{}px'.format(self.specs.html_height)
 
-        # objDiv.scrollTop = objDiv.scrollHeight
         paragraph = Div(width=self.specs.textbox_width,
                         height=self.specs.textbox_height,
                         text=self.specs.text, style=_style)
