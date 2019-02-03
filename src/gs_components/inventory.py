@@ -1,7 +1,18 @@
 from global_config import Res, Prod
 
+class InventoryCostCalculator:
+    def __init__(self, warehouse_tier):
+        self.warehouse_tier = warehouse_tier
+
+    # def remove(self, category, quantity):
+    #     if self.warehouse_tier == 0:
+    #         price =
+
 class InventoryBackend:
     def __init__(self, inventory_values):
+        """
+        :param inventory_values: InventoryTuple(res={res.cloth:1001,...})
+        """
         self.res = inventory_values.res  # Maybe pd.series
         self.prod = inventory_values.prod
         self.type_map = self._get_type_map()
