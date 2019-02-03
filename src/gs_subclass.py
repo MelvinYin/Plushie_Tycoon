@@ -1,40 +1,7 @@
-from inventory import InventoryBackend
-from market import MarketBackend
+from inventory import Inventory
+from market import Market
 from budget import BudgetBackend
 from production import ProductionBackend
-
-class Inventory:
-    def __init__(self, inventory_values):
-        self.inventory = InventoryBackend(inventory_values)
-
-    def add(self, category, quantity):
-        return self.inventory.add(category, quantity)
-
-    def sub(self, category, quantity):
-        return self.inventory.sub(category, quantity)
-
-    def replace(self, category, quantity):
-        return self.inventory.replace(category, quantity)
-
-    def get(self, category):
-        return self.inventory.get(category)
-
-    def return_data(self):
-        return self.inventory.inventory
-        # data = dict()
-        # data['res'] = self.inventory.res
-        # data['prod'] = self.inventory.prod
-        # return data
-
-class Market:
-    def __init__(self, market_values):
-        self.market = MarketBackend(market_values)
-
-    def get(self, category):
-        return self.market.get(category)
-
-    def return_data(self):
-        return self.market.market
 
 class Budget:
     def __init__(self, init_values):

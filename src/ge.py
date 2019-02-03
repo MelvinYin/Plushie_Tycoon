@@ -39,8 +39,9 @@ class GE:
         category = call['category']
         quantity = call['quantity']
         self.GS.buy('inventory', category, quantity)
+        movein_cost = self.GS.movein_cost(category, quantity)
         price = self.GS.get('market', category)
-        total_cost = price * quantity
+        total_cost = price * quantity + movein_cost
         self.GS.sub('budget', 'budget', total_cost)
         return 'update'
 
@@ -50,8 +51,9 @@ class GE:
         category = call['category']
         quantity = call['quantity']
         self.GS.sell('inventory', category, quantity)
+        moveout_cost = self.GS.moveout_cost(category, quantity)
         price = self.GS.get('market', category)
-        total_cost = price * quantity
+        total_cost = price * quantity - moveout_cost
         self.GS.add('budget', 'budget', total_cost)
         return 'update'
 
@@ -60,10 +62,16 @@ class GE:
         self.GS.commit(call=call)
         category = call['category']
         quantity = call['quantity']
-        cost, materials = self.GS.get('production', category)
+        cost = 0
+        production_cost, materials = self.GS.get('production', category)
+        cost += production_cost * quantity
         for _category, material in materials.items():
             self.GS.sub('inventory', _category, material * quantity)
-        self.GS.sub('budget', 'budget', cost * quantity)
+            moveout_cost = self.GS.moveout_cost(_category, material * quantity)
+            cost += moveout_cost
+        movein_cost = self.GS.movein_cost(category, quantity)
+        cost += movein_cost
+        self.GS.sub('budget', 'budget', cost)
         self.GS.make('inventory', category, quantity)
         return 'update'
 
@@ -84,6 +92,8 @@ class GE:
 
     def next_turn(self, call):
         self.GS.commit(call=dict(command=Func.next))
+        storage_cost = self.GS.storage_cost()
+        self.GS.sub('budget', 'budget', storage_cost)
         return self.GS.next_turn()
 
     def back(self):

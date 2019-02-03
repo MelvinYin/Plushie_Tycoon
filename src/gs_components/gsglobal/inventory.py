@@ -1,6 +1,5 @@
 from global_config import Res, Prod, Properties, WarehouseStats
 
-
 class InventoryCostCalculator:
     def __init__(self, tier, inventory):
         assert isinstance(tier, int)
@@ -54,47 +53,31 @@ class InventoryCostCalculator:
         return cost
 
 
-
 class InventoryBackend:
     def __init__(self, inventory_values):
         self.inventory = inventory_values
-        # self.res = inventory_values.res  # Maybe pd.series
-        # self.prod = inventory_values.prod
-        # self.type_map = self._get_type_map()
         self.calculator = InventoryCostCalculator(0, inventory_values)
 
-    def cost_of(self, action, category, quantity):
-        pass
+    def movein_cost(self, category, quantity):
+        return self.calculator.movein_cost(category, quantity)
+
+    def moveout_cost(self, category, quantity):
+        return self.calculator.moveout_cost(category, quantity)
+
+    def storage_cost(self):
+        return self.calculator.storage_cost()
 
     def add(self, category, quantity):
         self.inventory[category] += quantity
-        # item_signal = type(category)
-        # item = self.type_map[item_signal]
-        # item[category] += quantity
         return True
 
     def sub(self, category, quantity):
         self.inventory[category] -= quantity
-        # item_signal = type(category)
-        # item = self.type_map[item_signal]
-        # item[category] -= quantity
         return True
 
     def replace(self, category, quantity):
         self.inventory[category] = quantity
-        # item_signal = type(category)
-        # item = self.type_map[item_signal]
-        # item[category] = quantity
         return True
-
-    # def _get_type_map(self):
-    #     mapping = dict()
-    #     mapping[Res] = self.res
-    #     mapping[Prod] = self.prod
-    #     return mapping
 
     def get(self, category):
         return self.inventory[category]
-        # item_signal = type(category)
-        # item = self.type_map[item_signal]
-        # return item[category]

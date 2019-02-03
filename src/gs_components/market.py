@@ -1,6 +1,6 @@
 from global_config import Res, Prod
 
-class MarketBackend:
+class Market:
     """
     Does not have external setting capabilities unless value
     explicitly called.
@@ -10,3 +10,6 @@ class MarketBackend:
 
     def get(self, category):
         return self.market[category]
+
+    def return_data(self):
+        return self.market

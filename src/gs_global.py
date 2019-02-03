@@ -1,4 +1,4 @@
-from gsglobal_subclass import Inventory, Market, Budget, Production
+from gs_subclass import Inventory, Market, Budget, Production
 from global_config import GSConstructor, save_folder, save_file_name, Func
 from collections import defaultdict
 

@@ -52,6 +52,15 @@ class GS:
                                                        quantity)
         return output
 
+    def movein_cost(self, category, quantity):
+        return self.inventory.movein_cost(category, quantity)
+
+    def moveout_cost(self, category, quantity):
+        return self.inventory.moveout_cost(category, quantity)
+
+    def storage_cost(self):
+        return self.inventory.storage_cost()
+
     def get(self, classification, *args):
         if classification == 'inventory':
             return self.inventory.get(*args)

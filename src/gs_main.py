@@ -37,6 +37,15 @@ class GSM:
             to_return = self.gs_current.return_data()
         return to_return
 
+    def movein_cost(self, category, quantity):
+        return self.gs_current.movein_cost(category, quantity)
+
+    def moveout_cost(self, category, quantity):
+        return self.gs_current.moveout_cost(category, quantity)
+
+    def storage_cost(self):
+        return self.gs_current.storage_cost()
+
     def get(self, *args):
         return self.gs_current.get(*args)
 
