@@ -103,8 +103,6 @@ class TransactionWidget:
     def _RBG2_callback(self, active_button):
         RBG2_selected_category = self._RBG2.get_active()
         self._RBG3.set_label_to_category(RBG2_selected_category)
-        # self.specs.RBG3.labelmap has res_members and prod_members, but
-        # category is Enum(Res), so calling list gives tag and other members
         self._RBG3.set_active(None)
         return
 
@@ -162,7 +160,6 @@ class TransactionWidget:
 
 class ButtonWidget:
     def __init__(self, callback, specs):
-        # specs.__dict__ = {name, width, height, header, RBG, button, layout}
         self.name = specs.name
         self.callback = callback
         self._header = TextBoxComponent(specs.header)

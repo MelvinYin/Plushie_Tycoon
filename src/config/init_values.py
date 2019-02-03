@@ -2,12 +2,12 @@ import pandas as pd
 from collections import namedtuple
 try:
     from .base import Res, Prod, Func, res_members, prod_members, \
-        ProductionTuple, BudgetTuple, MarketTuple, InventoryTuple
+        ProductionTuple, BudgetTuple
     from .figure import FigureSpecs, FigureNames
     from .widget import WidgetSpecs
 except:
     from base import Res, Prod, Func, res_members, prod_members, \
-        ProductionTuple, BudgetTuple, MarketTuple, InventoryTuple
+        ProductionTuple, BudgetTuple
     from figure import FigureSpecs, FigureNames
     from widget import WidgetSpecs
 
@@ -67,19 +67,16 @@ class InitValues:
     def _get_inventory(self):
         res = self._get_res()
         prod = self._get_prod()
-        inventory = InventoryTuple(res, prod)
-        assert isinstance(res, dict)
-        assert isinstance(prod, dict)
-        assert set(res.keys()) == set(res_members)
-        assert set(prod.keys()) == set(prod_members)
-        assert isinstance(list(res.values())[0], int)
-        assert isinstance(list(prod.values())[0], int)
+        inventory = {**res, **prod}
+        assert isinstance(inventory, dict)
+        assert set(inventory.keys()) == {*set(res_members), *set(prod_members)}
+        assert isinstance(list(inventory.values())[0], int)
         return inventory
 
     def _get_market(self):
         res = self._get_res_price()
         prod = self._get_prod_price()
-        market = MarketTuple(res, prod)
+        market = {**res, **prod}
         assert isinstance(res, dict)
         assert isinstance(prod, dict)
         assert set(res.keys()) == set(res_members)

@@ -23,10 +23,10 @@ class GSGlobal:
         GS_dataclass.load_budget(_budget['budget'])
 
         _inventory = self.inventory.return_data()
-        GS_dataclass.load_inventory(_inventory['res'], _inventory['prod'])
+        GS_dataclass.load_inventory(_inventory)
 
         _market = self.market.return_data()
-        GS_dataclass.load_market(_market['res'], _market['prod'])
+        GS_dataclass.load_market(_market)
         GS_dataclass.time = self.current_time
 
         GS_dataclass.load_console(self.html_formatter(self.callstack))

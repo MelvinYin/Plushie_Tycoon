@@ -41,24 +41,28 @@ class UIInterface:
 
     def _adapt_for_ui(self, GSDataClass):
         adapted = defaultdict(dict)
-        input_to_res = GSDataClass.inventory.res
+        input_to_res = GSDataClass.inventory
         for key, values in input_to_res.items():
-            adapted[FigureNames.inventory_res][key.name] = [values]
+            if key in Res:
+                adapted[FigureNames.inventory_res][key.name] = [values]
         adapted[FigureNames.inventory_res]['time'] = [GSDataClass.time]
 
-        input_to_prod = GSDataClass.inventory.prod
+        input_to_prod = GSDataClass.inventory
         for key, values in input_to_prod.items():
-            adapted[FigureNames.inventory_prod][key.name] = [values]
+            if key in Prod:
+                adapted[FigureNames.inventory_prod][key.name] = [values]
         adapted[FigureNames.inventory_prod]['time'] = [GSDataClass.time]
 
-        input_to_res = GSDataClass.market.res
+        input_to_res = GSDataClass.market
         for key, values in input_to_res.items():
-            adapted[FigureNames.price_res][key.name] = [values]
+            if key in Res:
+                adapted[FigureNames.price_res][key.name] = [values]
         adapted[FigureNames.price_res]['time'] = [GSDataClass.time]
 
-        input_to_prod = GSDataClass.market.prod
+        input_to_prod = GSDataClass.market
         for key, values in input_to_prod.items():
-            adapted[FigureNames.price_prod][key.name] = [values]
+            if key in Prod:
+                adapted[FigureNames.price_prod][key.name] = [values]
         adapted[FigureNames.price_prod]['time'] = [GSDataClass.time]
 
         budget = GSDataClass.budget.budget

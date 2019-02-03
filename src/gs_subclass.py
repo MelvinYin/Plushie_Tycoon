@@ -20,10 +20,11 @@ class Inventory:
         return self.inventory.get(category)
 
     def return_data(self):
-        data = dict()
-        data['res'] = self.inventory.res
-        data['prod'] = self.inventory.prod
-        return data
+        return self.inventory.inventory
+        # data = dict()
+        # data['res'] = self.inventory.res
+        # data['prod'] = self.inventory.prod
+        # return data
 
 class Market:
     def __init__(self, market_values):
@@ -33,10 +34,7 @@ class Market:
         return self.market.get(category)
 
     def return_data(self):
-        data = dict()
-        data['res'] = self.market.res
-        data['prod'] = self.market.prod
-        return data
+        return self.market.market
 
 class Budget:
     def __init__(self, init_values):

@@ -1,6 +1,6 @@
 from init_values import InitValues
-from base import res_members, prod_members, ProductionTuple, InventoryTuple, \
-    MarketTuple, BudgetTuple
+from base import res_members, prod_members, ProductionTuple, \
+    BudgetTuple
 import pandas as pd
 
 class GSConstructor:
@@ -44,24 +44,18 @@ class GSConstructor:
         self.budget = BudgetTuple(budget)
         return True
 
-    def load_market(self, res, prod):
-        assert isinstance(res, dict)
-        assert isinstance(prod, dict)
-        assert set(res.keys()) == set(res_members)
-        assert set(prod.keys()) == set(prod_members)
-        assert isinstance(list(res.values())[0], int)
-        assert isinstance(list(prod.values())[0], int)
-        self.market = MarketTuple(res, prod)
+    def load_market(self, market):
+        self.market = market
+        assert isinstance(market, dict)
+        assert set(market.keys()) == {*set(res_members), *set(prod_members)}
+        assert isinstance(list(market.values())[0], int)
         return True
 
-    def load_inventory(self, res, prod):
-        assert isinstance(res, dict)
-        assert isinstance(prod, dict)
-        assert set(res.keys()) == set(res_members)
-        assert set(prod.keys()) == set(prod_members)
-        assert isinstance(list(res.values())[0], int)
-        assert isinstance(list(prod.values())[0], int)
-        self.inventory = InventoryTuple(res, prod)
+    def load_inventory(self, inventory):
+        assert isinstance(inventory, dict)
+        assert set(inventory.keys()) == {*set(res_members), *set(prod_members)}
+        assert isinstance(list(inventory.values())[0], int)
+        self.inventory = inventory
         return True
 
 

@@ -2,11 +2,10 @@ from market import MarketBackend
 from global_config import res_members, prod_members, Market
 
 def _create_init_data():
-
     def _get_market(self):
         res = self._get_res_price()
         prod = self._get_prod_price()
-        market = MarketTuple(res, prod)
+        market = {**res, **prod}
         assert isinstance(res, dict)
         assert isinstance(prod, dict)
         assert set(res.keys()) == set(res_members)
