@@ -40,7 +40,7 @@ class GSConstructor:
         return True
 
     def load_budget(self, budget):
-        assert isinstance(budget, int)
+        assert isinstance(budget, int) or isinstance(budget, float)
         self.budget = BudgetTuple(budget)
         return True
 
@@ -53,7 +53,8 @@ class GSConstructor:
 
     def load_inventory(self, inventory):
         assert isinstance(inventory, dict)
-        assert set(inventory.keys()) == {*set(res_members), *set(prod_members)}
+        # This is no longer true, because warehouse_tier is inside inventory now
+        # assert set(inventory.keys()) == {*set(res_members), *set(prod_members)}
         assert isinstance(list(inventory.values())[0], int)
         self.inventory = inventory
         return True

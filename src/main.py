@@ -1,3 +1,5 @@
+# TODO: Finish up console_output for warehouse, in test.py
+
 import sys
 from utils.sys_path_adder import folders_to_add
 from bokeh.plotting import show, curdoc

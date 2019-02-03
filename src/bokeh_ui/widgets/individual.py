@@ -82,6 +82,9 @@ class TextBoxComponent:
         TB.height = specs.height
         return TB
 
+# class WarehouseTierWidget:
+
+
 
 class TransactionWidget:
     def __init__(self, callback, specs):

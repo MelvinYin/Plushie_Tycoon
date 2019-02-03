@@ -68,8 +68,8 @@ class InitValues:
         res = self._get_res()
         prod = self._get_prod()
         inventory = {**res, **prod}
+        inventory['tier'] = 0
         assert isinstance(inventory, dict)
-        assert set(inventory.keys()) == {*set(res_members), *set(prod_members)}
         assert isinstance(list(inventory.values())[0], int)
         return inventory
 
