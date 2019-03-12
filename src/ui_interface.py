@@ -2,7 +2,7 @@ from figures.figureset import FigureSet
 from widgets.widgetset import WidgetSet
 from bokeh.layouts import column
 from exceptions import InvalidInputException, InsufficientQuantityError
-from global_config import Res, Prod, FigureNames
+from global_config import Res, Prod, FigureNames, Func
 from collections import defaultdict
 import inspect
 from logs import log
@@ -14,12 +14,17 @@ class UIInterface:
         self.specs = specs
         self.ui = UI(self._adapt_for_ui(initial_data), self.callback, specs)
 
+    def _check_for_invalid_input(self, call):
+        if call['command'] == Func.make and call['category'] not in Prod:
+            return False
+        return True
+
     def callback(self, call):
         log(call, inspect.currentframe())
+        if not self._check_for_invalid_input(call):
+            return False
         try:
             updated_data, to_do = self.raw_callback(call)
-        except InvalidInputException:
-            return False
         except InsufficientQuantityError:
             return False
         except:
