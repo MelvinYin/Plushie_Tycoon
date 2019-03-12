@@ -19,6 +19,8 @@ _history_columns = ["res", "prod", "res_price", "prod_price", "budget", "product
 
 history_init = pd.DataFrame(columns=_history_columns)
 
+UI_FAIL = hash('UI_FAIL')
+
 # starting_time = 0
 
 save_folder = "../save/"

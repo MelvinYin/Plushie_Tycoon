@@ -2,6 +2,7 @@ from bokeh.models.widgets import Button, Div
 from bokeh.models.widgets.inputs import TextInput
 from bokeh.models.widgets import RadioButtonGroup
 from bokeh.layouts import row, column
+from global_config import UI_FAIL
 from logs import log
 import re
 import os
@@ -151,6 +152,8 @@ class TransactionWidget:
                             quantity=int(self._input_val))
             self.widget_callback(callback)
         if msg:
+            callback = dict(command=UI_FAIL, message=msg)
+            self.widget_callback(callback)
             log(msg, inspect.currentframe())
         return
 
