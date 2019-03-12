@@ -34,7 +34,6 @@ class GE:
         return GS_update, return_value
 
     def buy(self, call):
-        self.GS.commit_call(call)
         self.GS.commit(call=call)
         category = call['category']
         quantity = call['quantity']
@@ -46,7 +45,6 @@ class GE:
         return 'update'
 
     def sell(self, call):
-        self.GS.commit_call(call)
         self.GS.commit(call=call)
         category = call['category']
         quantity = call['quantity']
@@ -58,7 +56,6 @@ class GE:
         return 'update'
 
     def make(self, call):
-        self.GS.commit_call(call)
         self.GS.commit(call=call)
         category = call['category']
         quantity = call['quantity']
@@ -91,7 +88,7 @@ class GE:
         return mapping
 
     def next_turn(self, call):
-        self.GS.commit(call=dict(command=Func.next))
+        self.GS.commit(call=call)
         storage_cost = self.GS.storage_cost()
         self.GS.sub('budget', 'budget', storage_cost)
         return self.GS.next_turn()

@@ -1,6 +1,6 @@
 from collections import defaultdict
 from gs import GS
-from global_config import save_folder, save_file_name
+from global_config import Func, save_folder, save_file_name
 from gs_global import GSGlobal
 from copy import deepcopy
 
@@ -13,17 +13,16 @@ class GSM:
         self._callstack = []
         self._return_from_global = False
 
-    def commit_call(self, call):
-        self.gs_current.current_call = call
-        self._callstack.append(call)
-
     def _compress_callstack(self):
         # Keeping this separate, instead of updating callstack directly when
         # the functions (buy/sell/etc) are called, so if call signature is
         # changed, we just need to change this function.
         callstack = deepcopy(nested_defaultdict)
         for call in self._callstack:
+            if call['command'] in (Func.start, Func.next):
+                continue
             action = call['command']
+            assert action in (Func.buy, Func.sell, Func.make)
             category = call['category']
             quantity = call['quantity']
             callstack[action][category] += quantity
@@ -74,7 +73,9 @@ class GSM:
         return 'update'
 
     def commit(self, call):
-        return self.gs_current.commit(call)
+        self._callstack.append(call)
+        self.gs_current.commit(call)
+        return True
 
     def reverse_call(self):
         return self.gs_current.reverse_call()
