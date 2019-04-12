@@ -1,7 +1,4 @@
-from figures.figureset import FigureSet
-from widgets.widgetset import WidgetSet
-from bokeh.layouts import column
-from exceptions import InvalidInputException, InsufficientQuantityError
+from exceptions import InsufficientQuantityError
 from global_config import Res, Prod, FigureNames, Func, UI_FAIL
 from collections import defaultdict
 import inspect

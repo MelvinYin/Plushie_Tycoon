@@ -78,7 +78,7 @@ class TextBoxComponent:
         self.widget = self._set_TB(specs)
 
     def _set_TB(self, specs):
-        TB = Div(text=specs.title)
+        TB = Div(text=specs.text)
         TB.width = specs.width
         TB.height = specs.height
         return TB
