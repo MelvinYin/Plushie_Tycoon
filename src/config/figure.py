@@ -11,11 +11,6 @@ class FigureNames(Enum):
     price_prod = auto()
     budget = auto()
     console_output = auto()
-# do whatever
-
-def func():
-    pass
-
 
 class ConsoleOutputSpecs:
     def __init__(self):

@@ -19,6 +19,9 @@ class WidgetNames(Enum):
     Transaction = auto()
     Action = auto()
 
+_WidgetWithText = namedtuple("WidgetWithText", 'width height text')
+_RBG = namedtuple("_RBG", 'width height labelmap')
+
 ##############################################################################
 # Widget Attributes
 
@@ -36,10 +39,9 @@ class TransactionWidgetSpecs:
         self.layout = self.set_layout()
 
     def set_header(self):
-        Header = namedtuple("Header", 'width height title')
-        header = Header(width=0,  # Text box
+        header = _WidgetWithText(width=0,  # Text box
                         height=0,
-                        title='TITLE123')
+                        text='TITLE123')
         return header
 
     def set_RBG1(self):
@@ -47,18 +49,16 @@ class TransactionWidgetSpecs:
         labelmap["Buy"] = Func.buy
         labelmap["Sell"] = Func.sell
         labelmap["Make"] = Func.make
-        RBG_ = namedtuple("RBG", 'width height labelmap')
-        RBG = RBG_(width=400,
+        RBG = _RBG(width=400,
                    height=17,
-                   labelmap = labelmap)
+                   labelmap=labelmap)
         return RBG
 
     def set_RBG2(self):
         labelmap = dict()
         labelmap["Res"] = Res
         labelmap["Prod"] = Prod
-        RBG_ = namedtuple("RBG", 'width height labelmap')
-        RBG = RBG_(width=400,
+        RBG = _RBG(width=400,
                    height=17,
                    labelmap=labelmap)
         return RBG
@@ -74,24 +74,21 @@ class TransactionWidgetSpecs:
         labelmap["chama"] = Prod.chama
         # noinspection PyTypeChecker
         # assert len(labelmap) == len(res_members) + len(prod_members)
-        RBG_ = namedtuple("RBG", 'width height labelmap')
-        RBG = RBG_(width=400,
+        RBG = _RBG(width=400,
                    height=17,
                    labelmap=labelmap)
         return RBG
 
     def set_TI(self):
-        TI_ = namedtuple("Header", 'width height placeholder')
-        TI = TI_(width=1,  # Text box
-                 height=1,
-                 placeholder='Quantity')
+        TI = _WidgetWithText(width=1,
+                              height=1,
+                              text='Quantity')
         return TI
 
     def set_button(self):
-        Button = namedtuple("Header", 'width height label')
-        button = Button(width=50,  # Size of button
-                        height=0,
-                        label="Send")
+        button = _WidgetWithText(width=50,  # Size of button
+                                  height=0,
+                                  text="Send")
         return button
 
     def set_layout(self):
@@ -137,10 +134,9 @@ class ButtonWidgetSpecs:
         self.layout = self.set_layout()
 
     def set_header(self):
-        Header = namedtuple("Header", 'width height title')
-        header = Header(width=0,  # Text box
+        header = _WidgetWithText(width=0,  # Text box
                         height=0,
-                        title='TITLE123')
+                        text='TITLE123')
         return header
 
     def set_RBG(self):
@@ -148,18 +144,17 @@ class ButtonWidgetSpecs:
         labelmap["next"] = Func.next
         labelmap["save"] = Func.save
         labelmap["load"] = Func.load
+        labelmap["back"] = Func.back
         labelmap["quit"] = Func.quit
-        RBG_ = namedtuple("RBG", 'width height labelmap')
-        RBG = RBG_(width=250,
+        RBG = _RBG(width=250,
                    height=17,
                    labelmap=labelmap)
         return RBG
 
     def set_button(self):
-        Button = namedtuple("Header", 'width height label')
-        button = Button(width=0,  # Size of button
+        button = _WidgetWithText(width=0,  # Size of button
                         height=0,
-                        label="Send")
+                        text="Send")
         return button
 
     def set_layout(self):

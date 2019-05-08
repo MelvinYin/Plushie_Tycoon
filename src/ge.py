@@ -83,21 +83,22 @@ class GE:
         mapping[Func.make] = self.make
         mapping[Func.save] = self.GS.save
         mapping[Func.load] = self.GS.load
-        mapping[Func.quit] = self.quit
         mapping[Func.next] = self.next_turn
+        mapping[Func.back] = self.back
         return mapping
 
     def next_turn(self, call):
-        self.GS.commit(call=call)
         storage_cost = self.GS.storage_cost()
         self.GS.sub('budget', 'budget', storage_cost)
-        return self.GS.next_turn()
+        ret_value = self.GS.next_turn()
+        self.GS.commit(call=call)
+        return ret_value
 
-    def back(self):
+    def back(self, call):
         ret_value = self.GS.reverse_call()
         if not ret_value:
             log("No previous action logged.", inspect.currentframe())
-            return False
+            return 'pause'
         return 'update'
 
     def copy(self):

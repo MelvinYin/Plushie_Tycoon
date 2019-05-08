@@ -16,7 +16,7 @@ class ButtonComponent:
 
     def _set_button(self, specs):
         button = Button()
-        button.label = specs.label
+        button.label = specs.text
         button.width = specs.width
         button.height = specs.height
         button.on_click(self.widget_callback)
@@ -47,7 +47,6 @@ class RBGComponent:
         return True
 
     def _set_RBG(self, callback):
-        # specs=namedtuple(typename=RBG, width, height, labels, labelmap)
         RBG = RadioButtonGroup()
         RBG.width = self.specs.width
         RBG.height = self.specs.height
@@ -59,7 +58,6 @@ class RBGComponent:
 
 class TextInputComponent:
     def __init__(self, specs, widget_callback):
-        # specs=namedtuple(typename=Header, width, height, placeholder)
         self.widget_callback = widget_callback
         self.widget = self._set_TI(specs)
         self._input_val = None
@@ -68,7 +66,7 @@ class TextInputComponent:
         TI = TextInput()
         TI.width = specs.width
         TI.height = specs.height
-        TI.placeholder = specs.placeholder
+        TI.placeholder = specs.text
         TI.on_change("value", self.widget_callback)
         TI.title = None
         return TI
@@ -84,7 +82,6 @@ class TextBoxComponent:
         return TB
 
 # class WarehouseTierWidget:
-
 
 
 class TransactionWidget:

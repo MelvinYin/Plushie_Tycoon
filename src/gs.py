@@ -1,11 +1,12 @@
-from gs_subclass import Inventory, Market, Budget, Production
-from global_config import GSConstructor, save_folder, save_file_name
-from logs import log
+from collections import defaultdict
+import copy
 import inspect
 import os
 import pickle
-from collections import defaultdict
 
+from global_config import GSConstructor, save_folder, save_file_name
+from gs_subclass import Inventory, Market, Budget, Production
+from logs import log
 
 class GS:
     def __init__(self, GSDataClass):
@@ -96,7 +97,11 @@ class GS:
 
     def commit(self, call):
         self.current_call = call
-        to_add = {key: self.__dict__[key] for key in self.__dict__ if
+        # if self.__dict__ is used directly in to_add, when to_add is
+        # updated, every entry in self.history[self.current_time] gets
+        # updated as well.
+        copied_dict = copy.deepcopy(self.__dict__)
+        to_add = {key: copied_dict[key] for key in copied_dict if
                   key != 'history'}
         self.history[self.current_time].append(to_add)
         return True

@@ -78,6 +78,9 @@ class GSM:
         return True
 
     def reverse_call(self):
+        if len(self._callstack) == 0:
+            return False
+        del self._callstack[-1]
         return self.gs_current.reverse_call()
 
     def load(self, call, file_path=save_folder, file_name=save_file_name):
