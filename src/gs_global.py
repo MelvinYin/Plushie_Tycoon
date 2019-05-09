@@ -8,31 +8,9 @@ class GSGlobal:
         self.market = Market(GSDataClass.market)
         self.budget = Budget(GSDataClass.budget)
         self.production = Production(GSDataClass.production)
-        self.current_call = None
         self.current_time = GSDataClass.time
         self.history = defaultdict(list)
-        # self.console_logger = ConsoleLogger()
         self.callstack = None
-
-    # def return_data(self):
-    #     GS_dataclass = GSConstructor()
-    #     _production = self.production.return_data()
-    #     GS_dataclass.load_production(_production['hours_needed'],
-    #                                  _production['res_cost'],
-    #                                  _production['cost_per_hour'])
-    #     _budget = self.budget.return_data()
-    #     GS_dataclass.load_budget(_budget['budget'])
-    #
-    #     _inventory = self.inventory.return_data()
-    #     GS_dataclass.load_inventory(_inventory)
-    #
-    #     _market = self.market.return_data()
-    #     GS_dataclass.load_market(_market)
-    #     GS_dataclass.time = self.current_time
-    #
-    #     GS_dataclass.load_console("")
-    #     assert GS_dataclass.is_complete()
-    #     return GS_dataclass
 
     def format_output(self):
         output = ""

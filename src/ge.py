@@ -6,8 +6,6 @@ from logs import log
 from global_config import Func, GSConstructor
 from gs_main import GSM
 
-# test
-
 class GE:
     def __init__(self):
         GS_dataclass = GSConstructor()
