@@ -85,7 +85,8 @@ class GSM:
     def next_turn(self):
         self._callstack = self._compress_callstack()
         self.gsm.implement_callstack(self._callstack)
-        GS_newturn_dataclass = self.gsm.return_data()
+        self._return_from_global = True
+        GS_newturn_dataclass = self.return_data()
         self.gs_current = GS(deepcopy(GS_newturn_dataclass))
         self._callstack = []
         self._return_from_global = True

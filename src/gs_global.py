@@ -1,8 +1,6 @@
 from gs_subclass import Inventory, Market, Budget, Production
-from global_config import GSConstructor, save_folder, save_file_name, Func
+from global_config import Func
 from collections import defaultdict
-
-from utils.generic import ConsoleLogger
 
 class GSGlobal:
     def __init__(self, GSDataClass):
@@ -13,28 +11,28 @@ class GSGlobal:
         self.current_call = None
         self.current_time = GSDataClass.time
         self.history = defaultdict(list)
-        self.console_logger = ConsoleLogger()
+        # self.console_logger = ConsoleLogger()
         self.callstack = None
 
-    def return_data(self):
-        GS_dataclass = GSConstructor()
-        _production = self.production.return_data()
-        GS_dataclass.load_production(_production['hours_needed'],
-                                     _production['res_cost'],
-                                     _production['cost_per_hour'])
-        _budget = self.budget.return_data()
-        GS_dataclass.load_budget(_budget['budget'])
-
-        _inventory = self.inventory.return_data()
-        GS_dataclass.load_inventory(_inventory)
-
-        _market = self.market.return_data()
-        GS_dataclass.load_market(_market)
-        GS_dataclass.time = self.current_time
-
-        GS_dataclass.load_console("")
-        assert GS_dataclass.is_complete()
-        return GS_dataclass
+    # def return_data(self):
+    #     GS_dataclass = GSConstructor()
+    #     _production = self.production.return_data()
+    #     GS_dataclass.load_production(_production['hours_needed'],
+    #                                  _production['res_cost'],
+    #                                  _production['cost_per_hour'])
+    #     _budget = self.budget.return_data()
+    #     GS_dataclass.load_budget(_budget['budget'])
+    #
+    #     _inventory = self.inventory.return_data()
+    #     GS_dataclass.load_inventory(_inventory)
+    #
+    #     _market = self.market.return_data()
+    #     GS_dataclass.load_market(_market)
+    #     GS_dataclass.time = self.current_time
+    #
+    #     GS_dataclass.load_console("")
+    #     assert GS_dataclass.is_complete()
+    #     return GS_dataclass
 
     def format_output(self):
         output = ""

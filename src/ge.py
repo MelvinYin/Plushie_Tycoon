@@ -31,8 +31,8 @@ class GE:
             log("InsufficientQuantityError>\n\n", inspect.currentframe())
             raise RepeatUIAction
         GS_update = self.GS.return_data()
-        log("GE Call: {}\n Return: {}".format(call, GS_update),
-            inspect.currentframe())
+        # log("GE Call: {}\n Return: {}".format(call, GS_update),
+        #     inspect.currentframe())
         return GS_update, return_value
 
     def buy(self, call):

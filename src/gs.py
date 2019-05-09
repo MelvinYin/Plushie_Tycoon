@@ -4,8 +4,7 @@ import inspect
 import os
 import pickle
 
-from utils.generic import ConsoleLogger
-from global_config import GSConstructor, save_folder, save_file_name
+from global_config import save_folder, save_file_name
 from gs_subclass import Inventory, Market, Budget, Production
 from logs import log
 
@@ -15,7 +14,6 @@ class GS:
         self.market = Market(GSDataClass.market)
         self.budget = Budget(GSDataClass.budget)
         self.production = Production(GSDataClass.production)
-        self.console_logger = ConsoleLogger()
         self.current_call = None
         self.current_time = GSDataClass.time
         self.history = defaultdict(list)
