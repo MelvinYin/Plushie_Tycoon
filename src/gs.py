@@ -4,6 +4,7 @@ import inspect
 import os
 import pickle
 
+from utils.generic import ConsoleLogger
 from global_config import GSConstructor, save_folder, save_file_name
 from gs_subclass import Inventory, Market, Budget, Production
 from logs import log
@@ -14,44 +15,46 @@ class GS:
         self.market = Market(GSDataClass.market)
         self.budget = Budget(GSDataClass.budget)
         self.production = Production(GSDataClass.production)
+        self.console_logger = ConsoleLogger()
         self.current_call = None
         self.current_time = GSDataClass.time
         self.history = defaultdict(list)
 
-    def return_data(self):
-        # Hard-coding var name instead of putting it in a __dict__ loop,
-        # so name changes can be made to both.
-        GS_dataclass = GSConstructor()
-        _production = self.production.return_data()
-        GS_dataclass.load_production(_production['hours_needed'],
-                                     _production['res_cost'],
-                                     _production['cost_per_hour'])
-        _budget = self.budget.return_data()
-        GS_dataclass.load_budget(_budget['budget'])
-
-        _inventory = self.inventory.return_data()
-        GS_dataclass.load_inventory(_inventory)
-
-        _market = self.market.return_data()
-        GS_dataclass.load_market(_market)
-        GS_dataclass.time = self.current_time
-        GS_dataclass.load_console(self.html_formatter(self.current_call))
-        assert GS_dataclass.is_complete()
-        return GS_dataclass
-
-    def html_formatter(self, to_write):
+    def format_output(self):
         output = ""
-        assert 'command' in to_write, to_write
-        command = to_write['command']
+        assert 'command' in self.current_call, self.current_call
+        command = self.current_call['command']
         category = ""
         quantity = ""
-        if 'category' in to_write:
-            category = to_write['category']
-        if 'quantity' in to_write:
-            quantity = to_write['quantity']
-        output += "Command called: {} {} {}".format(command, category,
-                                                       quantity)
+        if 'category' in self.current_call:
+            category = self.current_call['category']
+        if 'quantity' in self.current_call:
+            quantity = self.current_call['quantity']
+        output += "<br />Command called: {} {} {}<br />"\
+            .format(command, category, quantity)
         return output
+
+    # def return_data(self):
+    #     # Hard-coding var name instead of putting it in a __dict__ loop,
+    #     # so name changes can be made to both.
+    #     GS_dataclass = GSConstructor()
+    #     _production = self.production.return_data()
+    #     GS_dataclass.load_production(_production['hours_needed'],
+    #                                  _production['res_cost'],
+    #                                  _production['cost_per_hour'])
+    #     _budget = self.budget.return_data()
+    #     GS_dataclass.load_budget(_budget['budget'])
+    #
+    #     _inventory = self.inventory.return_data()
+    #     GS_dataclass.load_inventory(_inventory)
+    #
+    #     _market = self.market.return_data()
+    #     GS_dataclass.load_market(_market)
+    #     GS_dataclass.time = self.current_time
+    #     self.console_logger.add_text(self.current_call)
+    #     GS_dataclass.load_console(self.console_logger.text)
+    #     assert GS_dataclass.is_complete()
+    #     return GS_dataclass
 
     def movein_cost(self, category, quantity):
         return self.inventory.movein_cost(category, quantity)

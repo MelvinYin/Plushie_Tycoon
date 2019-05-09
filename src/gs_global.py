@@ -2,6 +2,8 @@ from gs_subclass import Inventory, Market, Budget, Production
 from global_config import GSConstructor, save_folder, save_file_name, Func
 from collections import defaultdict
 
+from utils.generic import ConsoleLogger
+
 class GSGlobal:
     def __init__(self, GSDataClass):
         self.inventory = Inventory(GSDataClass.inventory)
@@ -11,6 +13,7 @@ class GSGlobal:
         self.current_call = None
         self.current_time = GSDataClass.time
         self.history = defaultdict(list)
+        self.console_logger = ConsoleLogger()
         self.callstack = None
 
     def return_data(self):
@@ -29,15 +32,15 @@ class GSGlobal:
         GS_dataclass.load_market(_market)
         GS_dataclass.time = self.current_time
 
-        GS_dataclass.load_console(self.html_formatter(self.callstack))
+        GS_dataclass.load_console("")
         assert GS_dataclass.is_complete()
         return GS_dataclass
 
-    def html_formatter(self, to_write):
+    def format_output(self):
         output = ""
         output += "<br />[End of turn]<br />"
         output += "Commands implemented: "
-        for action, cat_quantity in to_write.items():
+        for action, cat_quantity in self.callstack.items():
             for category, quantity in cat_quantity.items():
                 if 'name' in action.__dict__:
                     action = action.name

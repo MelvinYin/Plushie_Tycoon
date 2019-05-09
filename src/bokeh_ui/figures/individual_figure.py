@@ -32,6 +32,50 @@ from bokeh.layouts import row, column
 from bokeh.models.widgets import Paragraph, Div
 from bokeh.models.layouts import WidgetBox, Spacer
 
+class ItemisedBill:
+    def __init__(self, specs):
+        self.name = specs.name
+        self.specs = specs
+        self._paragraph = self._build_paragraph()
+        self.figure = self._set_textbox(specs)
+        self._rollover_count = 20
+
+    def _generate_bill(self, order_data):
+        main_boilerplate = "Itemised Bill\n" \
+                           "---------------\n" \
+                           "{}\n" \
+                           "---------------\n" \
+                           "Summary\n" \
+                           "Change in Inventory:\n" \
+                           "{}\n" \
+                           "Change in Budget:\n" \
+                           "{}\n"
+        if len(order_data) == 0:
+            text = main_boilerplate.format("N.A.", "None", "None")
+            return text
+
+    def _build_paragraph(self):
+        _style = dict()
+        _style['overflow-y'] = 'auto'
+        _style['height'] = '{}px'.format(self.specs.html_height)
+        paragraph = Div(width=self.specs.textbox_width,
+                        height=self.specs.textbox_height,
+                        text=self.specs.text, style=_style)
+        return paragraph
+
+    def _set_textbox(self, specs):
+        fig = column(row(Spacer(height=specs.height)),
+                     row(Spacer(width=specs.width), self._paragraph))
+        return fig
+
+    def figure_update(self, add_line):
+        # Can't get bokeh div to scroll to end, it'll always reset to top
+        # even if scrollHeight==scrollTop, etc. Keep it like this for now.
+        self._paragraph.text = add_line['console'] + "<br />" \
+                             + self._paragraph.text
+        return True
+
+
 class ConsoleOutput:
     def __init__(self, specs):
         self.name = specs.name
@@ -58,8 +102,9 @@ class ConsoleOutput:
     def figure_update(self, add_line):
         # Can't get bokeh div to scroll to end, it'll always reset to top
         # even if scrollHeight==scrollTop, etc. Keep it like this for now.
-        self._paragraph.text = add_line['console'] + "<br />" \
-                             + self._paragraph.text
+        # self._paragraph.text = add_line['console'] + "<br />" \
+        #                      + self._paragraph.text
+        self._paragraph.text = add_line['console']
         return True
 
 class IndividualFigure:

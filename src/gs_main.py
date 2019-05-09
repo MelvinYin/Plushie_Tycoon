@@ -1,6 +1,6 @@
 from collections import defaultdict
 from gs import GS
-from global_config import Func, save_folder, save_file_name
+from global_config import Func, save_folder, save_file_name, GSConstructor
 from gs_global import GSGlobal
 from copy import deepcopy
 
@@ -12,6 +12,7 @@ class GSM:
         self.gsm = GSGlobal(deepcopy(GSDataClass))
         self._callstack = []
         self._return_from_global = False
+        self.console_text = ""
 
     def _compress_callstack(self):
         # Keeping this separate, instead of updating callstack directly when
@@ -30,11 +31,29 @@ class GSM:
 
     def return_data(self):
         if self._return_from_global:
-            to_return = self.gsm.return_data()
+            gs_tmp = self.gsm
             self._return_from_global = False
         else:
-            to_return = self.gs_current.return_data()
-        return to_return
+            gs_tmp = self.gs_current
+
+        GS_dataclass = GSConstructor()
+        _production = gs_tmp.production.return_data()
+        GS_dataclass.load_production(_production['hours_needed'],
+                                     _production['res_cost'],
+                                     _production['cost_per_hour'])
+        _budget = gs_tmp.budget.return_data()
+        GS_dataclass.load_budget(_budget['budget'])
+
+        _inventory = gs_tmp.inventory.return_data()
+        GS_dataclass.load_inventory(_inventory)
+
+        _market = gs_tmp.market.return_data()
+        GS_dataclass.load_market(_market)
+        GS_dataclass.time = gs_tmp.current_time
+        self.console_text += gs_tmp.format_output()
+        GS_dataclass.load_console(self.console_text)
+        assert GS_dataclass.is_complete()
+        return GS_dataclass
 
     def movein_cost(self, category, quantity):
         return self.gs_current.movein_cost(category, quantity)
