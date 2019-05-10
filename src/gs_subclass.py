@@ -1,6 +1,7 @@
 from inventory import Inventory
 from market import Market
 from g_market import GlobalMarket
+from g_inventory import GlobalInventory
 from budget import BudgetBackend
 from production import ProductionBackend
 

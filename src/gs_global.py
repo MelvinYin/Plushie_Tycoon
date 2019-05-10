@@ -1,4 +1,4 @@
-from gs_subclass import Inventory, Budget, Production, GlobalMarket
+from gs_subclass import GlobalInventory, Budget, Production, GlobalMarket
 from global_config import Func
 from collections import defaultdict
 from copy import deepcopy
@@ -7,7 +7,7 @@ nested_defaultdict = defaultdict(lambda: defaultdict(int))
 
 class GSGlobal:
     def __init__(self, GSDataClass):
-        self.inventory = Inventory(GSDataClass.inventory)
+        self.inventory = GlobalInventory(GSDataClass.inventory)
         self.market = GlobalMarket(GSDataClass.market)
         self.budget = Budget(GSDataClass.budget)
         self.production = Production(GSDataClass.production)
@@ -86,6 +86,10 @@ class GSGlobal:
                     self.make(category, quantity)
                 else:
                     raise Exception
+        movement_cost = self.inventory.get_movement_cost()
+        storage_cost = self.inventory.storage_cost()
+        self.budget.sub('budget', movement_cost)
+        self.budget.sub('budget', storage_cost)
         self.current_time += 1
         return True
 

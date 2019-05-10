@@ -110,7 +110,7 @@ class IndividualMarket:
         con_buy = ConsolidatedBuyer(buyers)
         con_sell = ConsolidatedSeller(sellers)
         house = ClearingHouse(buyer=con_buy, seller=con_sell)
-        price = house.clear()
+        price = int(house.clear())
         self.current_price = price
         return price
 

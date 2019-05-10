@@ -46,6 +46,7 @@ class GSConstructor:
 
     def load_market(self, market):
         self.market = market
+        print(market)
         assert isinstance(market, dict)
         assert set(market.keys()) == {*set(res_members), *set(prod_members)}
         assert isinstance(list(market.values())[0], int)
