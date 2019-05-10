@@ -1,4 +1,4 @@
-from gs_subclass import Inventory, Market, Budget, Production, GlobalMarket
+from gs_subclass import Inventory, Budget, Production, GlobalMarket
 from global_config import Func
 from collections import defaultdict
 from copy import deepcopy
@@ -63,6 +63,7 @@ class GSGlobal:
             raise Exception
 
     def _convert_callstack_to_market(self):
+        # Callstack should be collapsed
         calls_for_market = deepcopy(nested_defaultdict)
         for action, cat_quantity in self.callstack.items():
             for category, quantity in cat_quantity.items():
@@ -88,7 +89,6 @@ class GSGlobal:
         self.current_time += 1
         return True
 
-    # Taken from GE
     def buy(self, category, quantity):
         self.inventory.add(category, quantity)
         price = self.market.get(category)
