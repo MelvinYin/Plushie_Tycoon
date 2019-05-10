@@ -20,7 +20,7 @@ class ConsoleOutputSpecs:
         self.width = 50
         self.height = 20
         self.textbox_width = 400
-        self.textbox_height = 500
+        self.textbox_height = 380
         # Division by 2 so it fits well and within what bokeh uses.
         self.html_height = int(self.textbox_height / 2)
 
@@ -73,7 +73,7 @@ class PriceResSpecs:
 class PriceProdSpecs:
     def __init__(self):
         self.name = FigureNames.price_prod
-        self.title = "Price Res"
+        self.title = "Price Prod"
         self.x_label = "Time"
         self.y_label = "Dollars"
         self.colormap = self._entry_to_color()

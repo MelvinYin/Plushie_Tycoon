@@ -44,7 +44,6 @@ class ConsoleOutput:
         _style = dict()
         _style['overflow-y'] = 'auto'
         _style['height'] = '{}px'.format(self.specs.html_height)
-
         paragraph = Div(width=self.specs.textbox_width,
                         height=self.specs.textbox_height,
                         text=self.specs.text, style=_style)
