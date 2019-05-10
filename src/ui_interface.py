@@ -50,8 +50,6 @@ class UIInterface:
         elif to_do == 'pause':
             return None
         else:
-            print(to_do)
-            print('kick')
             raise Exception
         return cleaned_output
 

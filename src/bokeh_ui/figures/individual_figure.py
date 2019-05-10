@@ -56,10 +56,7 @@ class ConsoleOutput:
         return fig
 
     def figure_update(self, add_line):
-        # Can't get bokeh div to scroll to end, it'll always reset to top
-        # even if scrollHeight==scrollTop, etc. Keep it like this for now.
-        self._paragraph.text = add_line['console'] + "<br />" \
-                             + self._paragraph.text
+        self._paragraph.text = add_line['console']
         return True
 
 class IndividualFigure:

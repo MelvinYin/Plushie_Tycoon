@@ -58,6 +58,14 @@ class Inventory:
         self.inventory = inventory_values
         self.calculator = InventoryCostCalculator(inventory_values)
 
+    def set_values(self, values):
+    #   Should only be used for load/any other non-call functions.
+    #   Can eventually be used for setting calculator values too,
+    #   like warehouse tier
+        for category, quantity in values.items():
+            self.inventory[category] = quantity
+        return True
+
     def return_data(self):
         return self.inventory
 

@@ -1,10 +1,15 @@
-from exceptions import InsufficientQuantityError, RepeatUIAction
+from collections import defaultdict
 import copy
 import inspect
+import pickle
 import sys
+
+from exceptions import InsufficientQuantityError, RepeatUIAction
 from logs import log
-from global_config import Func, GSConstructor
+from global_config import Func, GSConstructor, save_folder, save_file_name
 from gs_main import GSM
+
+nested_defaultdict = defaultdict(lambda: defaultdict(int))
 
 class GE:
     def __init__(self):
@@ -15,6 +20,7 @@ class GE:
         self.GS.commit(call=dict(command=Func.start))
         self.callback = self._default_callback
         self.func_map = self.get_func_map()
+        self.text = ""
 
     def return_data(self):
         return self.GS.return_data()
@@ -29,14 +35,15 @@ class GE:
             log("InsufficientQuantityError>\n\n", inspect.currentframe())
             raise RepeatUIAction
         GS_update = self.GS.return_data()
-        log("GE Call: {}\n Return: {}".format(call, GS_update),
-            inspect.currentframe())
+        # log("GE Call: {}\n Return: {}".format(call, GS_update),
+        #     inspect.currentframe())
         return GS_update, return_value
 
     def buy(self, call):
         self.GS.commit(call=call)
         category = call['category']
         quantity = call['quantity']
+        self.text += f"Buy: {category} x {quantity}\n"
         self.GS.buy('inventory', category, quantity)
         movein_cost = self.GS.movein_cost(category, quantity)
         price = self.GS.get('market', category)
@@ -81,8 +88,8 @@ class GE:
         mapping[Func.sell] = self.sell
         mapping[Func.quit] = self.quit
         mapping[Func.make] = self.make
-        mapping[Func.save] = self.GS.save
-        mapping[Func.load] = self.GS.load
+        mapping[Func.save] = self.save
+        mapping[Func.load] = self.load
         mapping[Func.next] = self.next_turn
         mapping[Func.back] = self.back
         return mapping
@@ -103,4 +110,19 @@ class GE:
 
     def copy(self):
         return copy.deepcopy(self)
+
+    def save(self, call):
+        self.GS.commit(call)
+        GS_dataclass = self.GS.return_data()
+        with open(save_folder + save_file_name, "wb") as file:
+            pickle.dump(GS_dataclass, file, -1)
+        return 'pause'
+
+    def load(self, call):
+        with open(save_folder + save_file_name, "rb") as file:
+            GS_dataclass = pickle.load(file)
+        self.GS = GSM(GS_dataclass)
+        self.GS.commit(call)
+        return 'update'
+
 
