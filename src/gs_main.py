@@ -6,8 +6,6 @@ from copy import deepcopy
 
 nested_defaultdict = defaultdict(lambda: defaultdict(int))
 
-
-
 class GSM:
     def __init__(self, GSDataClass):
         self.gs_current = GS(deepcopy(GSDataClass))
