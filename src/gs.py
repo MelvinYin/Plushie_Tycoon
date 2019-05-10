@@ -32,28 +32,6 @@ class GS:
             .format(command, category, quantity)
         return output
 
-    # def return_data(self):
-    #     # Hard-coding var name instead of putting it in a __dict__ loop,
-    #     # so name changes can be made to both.
-    #     GS_dataclass = GSConstructor()
-    #     _production = self.production.return_data()
-    #     GS_dataclass.load_production(_production['hours_needed'],
-    #                                  _production['res_cost'],
-    #                                  _production['cost_per_hour'])
-    #     _budget = self.budget.return_data()
-    #     GS_dataclass.load_budget(_budget['budget'])
-    #
-    #     _inventory = self.inventory.return_data()
-    #     GS_dataclass.load_inventory(_inventory)
-    #
-    #     _market = self.market.return_data()
-    #     GS_dataclass.load_market(_market)
-    #     GS_dataclass.time = self.current_time
-    #     self.console_logger.add_text(self.current_call)
-    #     GS_dataclass.load_console(self.console_logger.text)
-    #     assert GS_dataclass.is_complete()
-    #     return GS_dataclass
-
     def movein_cost(self, category, quantity):
         return self.inventory.movein_cost(category, quantity)
 

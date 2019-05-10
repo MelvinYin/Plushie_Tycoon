@@ -6,6 +6,8 @@ from copy import deepcopy
 
 nested_defaultdict = defaultdict(lambda: defaultdict(int))
 
+
+
 class GSM:
     def __init__(self, GSDataClass):
         self.gs_current = GS(deepcopy(GSDataClass))
@@ -84,12 +86,12 @@ class GSM:
 
     def next_turn(self):
         self._callstack = self._compress_callstack()
-        self.gsm.implement_callstack(self._callstack)
+        self.gsm.callstack = self._callstack
+        self.gsm.implement_callstack()
         self._return_from_global = True
         GS_newturn_dataclass = self.return_data()
         self.gs_current = GS(deepcopy(GS_newturn_dataclass))
         self._callstack = []
-        self._return_from_global = True
         return 'update'
 
     def commit(self, call):

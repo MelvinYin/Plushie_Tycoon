@@ -59,10 +59,8 @@ class GSGlobal:
         else:
             raise Exception
 
-    def implement_callstack(self, callstack):
-        self.callstack = callstack
-        # Weird format for now
-        for action, cat_quantity in callstack.items():
+    def implement_callstack(self):
+        for action, cat_quantity in self.callstack.items():
             for category, quantity in cat_quantity.items():
                 if action == Func.buy:
                     self.buy(category, quantity)
@@ -97,5 +95,4 @@ class GSGlobal:
         self.budget.sub('budget', cost * quantity)
         self.inventory.add(category, quantity)
         return 'update'
-#     Taken from GE end
 

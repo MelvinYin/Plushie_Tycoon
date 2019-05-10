@@ -1,3 +1,5 @@
+from collections import defaultdict
+from copy import deepcopy
 from exceptions import InsufficientQuantityError, RepeatUIAction
 import copy
 import inspect
@@ -5,6 +7,146 @@ import sys
 from logs import log
 from global_config import Func, GSConstructor
 from gs_main import GSM
+
+nested_defaultdict = defaultdict(lambda: defaultdict(int))
+
+# class BillGenerator:
+#     """
+#     todo: generate a new bill for every new order, to display.
+#     """
+#     def __init__(self):
+#         self.text = ""
+#         self.orders = deepcopy(nested_defaultdict)
+#         self.callstack = []
+#
+#     def _generate_boilerplate(self):
+#         boilerplate = "Itemised Bill\n" \
+#                       "---------------\n" \
+#                       "{}\n" \
+#                       "---------------\n" \
+#                       "Summary\n" \
+#                       "Change in Inventory:\n" \
+#                       "{}\n" \
+#                       "Change in Budget:\n" \
+#                       "{}\n"
+#         return boilerplate
+#
+#     def add_item(self, call):
+#         self.callstack.append(call)
+#
+#     # todo: buy and sell should be different, so we can eventually have
+#     #  execution algorithms and delayed execution, see how gs_global
+#     #  implement this.
+#     def _compress_callstack(self):
+#         callstack = deepcopy(nested_defaultdict)
+#         for call in self.callstack:
+#             action = call['command']
+#             assert action in (Func.buy, Func.sell, Func.make)
+#             category = call['category']
+#             quantity = call['quantity']
+#             callstack[action][category] += quantity
+#         return callstack
+#
+#     def generate_bill(self, pricing_data):
+#         orders = deepcopy(nested_defaultdict)
+#         movements = defaultdict(int)
+#         text = ""
+#         for call in self.callstack:
+#             command = call['command']
+#             category = call['category']
+#             quantity = call['quantity']
+#             orders[command][category] += quantity
+#             if command == 'buy':
+#                 text += f"Order: Buy {category} x {quantity}"
+#                 movements[category] += quantity
+#             if command == 'sell':
+#                 text += f"Order: Sell {category} x {quantity}"
+#                 movements[category] -= quantity
+#             if command == 'make':
+#                 text += f"Order: Make {category} x {quantity}"
+#                 orders[command][category] += quantity
+#
+#         text += "-------------\n"
+#         text += "Summary\n"
+#         compressed_callstack = self._compress_callstack()
+#         for action, remainder in compressed_callstack.items():
+#             text += f"{action}:\n"
+#             for category, quantity in remainder.items():
+#                 text += f"{category} + {quantity}"
+#
+#     def _format_text(self, to_write):
+#         output = ""
+#         assert 'command' in to_write, to_write
+#         command = to_write['command']
+#         category = ""
+#         quantity = ""
+#         if 'category' in to_write:
+#             category = to_write['category']
+#         if 'quantity' in to_write:
+#             quantity = to_write['quantity']
+#         output += "Command called: {} {} {}".format(command, category,
+#                                                     quantity)
+#         return output
+#
+#     def add_text(self, text):
+#         formatted_text = self._format_text(text)
+#         self.text += formatted_text
+#         return True
+
+
+class BillGenerator:
+    """
+    todo: generate a new bill for every new order, to display.
+    """
+    def __init__(self):
+        self.text = ""
+        self.orders = deepcopy(nested_defaultdict)
+        self.pricing_data = defaultdict(dict)
+        self.callstack = []
+        self.order_section = ""
+
+
+    def _generate_boilerplate(self):
+        boilerplate = "Itemised Bill\n" \
+                      "---------------\n" \
+                      "{}\n" \
+                      "---------------\n" \
+                      "Summary\n" \
+                      "Change in Inventory:\n" \
+                      "{}\n" \
+                      "Change in Budget:\n" \
+                      "{}\n"
+        return boilerplate
+
+    def buy(self, category, quantity, cost_per_unit, movein_cost):
+        self.order_section += f"Buy: {category} x {quantity}"
+        self.pricing_data[category]['cost_per_unit'] = cost_per_unit
+        self.pricing_data[category]['movein_cost'] = movein_cost
+        self.callstack.append(dict(command='buy', category=category,
+                                   quantity=quantity))
+
+    def sell(self, category, quantity, cost_per_unit, moveout_cost):
+        self.order_section += f"Sell: {category} x {quantity}"
+        self.pricing_data[category]['cost_per_unit'] = cost_per_unit
+        self.pricing_data[category]['moveout_cost'] = moveout_cost
+        self.callstack.append(dict(command='sell', category=category,
+                                   quantity=quantity))
+
+    def make(self, category, quantity, cost_per_unit, movein_cost,
+             ingredients, ingredient_moveout_cost):
+
+
+    def _compress_callstack(self):
+        callstack = deepcopy(nested_defaultdict)
+        for call in self.callstack:
+            action = call['command']
+            assert action in (Func.buy, Func.sell, Func.make)
+            category = call['category']
+            quantity = call['quantity']
+            callstack[action][category] += quantity
+        return callstack
+
+
 
 class GE:
     def __init__(self):
@@ -15,6 +157,7 @@ class GE:
         self.GS.commit(call=dict(command=Func.start))
         self.callback = self._default_callback
         self.func_map = self.get_func_map()
+        self.text = ""
 
     def return_data(self):
         return self.GS.return_data()
@@ -37,6 +180,7 @@ class GE:
         self.GS.commit(call=call)
         category = call['category']
         quantity = call['quantity']
+        self.text += f"Buy: {category} x {quantity}\n"
         self.GS.buy('inventory', category, quantity)
         movein_cost = self.GS.movein_cost(category, quantity)
         price = self.GS.get('market', category)
