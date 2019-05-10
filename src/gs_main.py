@@ -20,7 +20,7 @@ class GSM:
         # changed, we just need to change this function.
         callstack = deepcopy(nested_defaultdict)
         for call in self._callstack:
-            if call['command'] in (Func.start, Func.next):
+            if call['command'] in (Func.start, Func.next, Func.save, Func.load):
                 continue
             action = call['command']
             assert action in (Func.buy, Func.sell, Func.make)
@@ -107,4 +107,4 @@ class GSM:
         return self.gs_current.load(call, file_path, file_name)
 
     def save(self, call, file_path=save_folder, file_name=save_file_name):
-        return self.gs_current.load(call, file_path, file_name)
+        return self.gs_current.save(call, file_path, file_name)

@@ -7,6 +7,10 @@ class Budget:
     def __init__(self, init_values):
         self.budget = BudgetBackend(init_values)
 
+    def set_values(self, values):
+        self.budget = values['budget']
+        return True
+
     def get(self):
         return self.budget.get()
 
@@ -28,6 +32,12 @@ class Budget:
 class Production:
     def __init__(self, init_values):
         self.production = ProductionBackend(init_values)
+
+    def set_values(self, values):
+        self.production.hours_needed = values['hours_needed']
+        self.production.cost_per_hour = values['cost_per_hour']
+        self.production.res_cost = values['res_cost']
+        return True
 
     def get(self, category):
         return self.production.get_cost(category)

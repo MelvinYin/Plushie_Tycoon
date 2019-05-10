@@ -107,7 +107,7 @@ class GS:
             raise FileNotFoundError
         with open(file_path + file_name, "rb") as file:
             self.__dict__ = pickle.load(file)
-        return 'reload'
+        return 'update'
 
     def save(self, call, file_path=save_folder, file_name=save_file_name):
         if not file_name.endswith(".pkl"):

@@ -8,6 +8,11 @@ class Market:
     def __init__(self, market_values):
         self.market = market_values
 
+    def set_values(self, values):
+        for category, quantity in values.items():
+            self.market[category] = quantity
+        return True
+
     def get(self, category):
         return self.market[category]
 
