@@ -1,5 +1,5 @@
 from inventory import Inventory
-from market import Market
+from market import Market, GlobalMarket
 from budget import BudgetBackend
 from production import ProductionBackend
 

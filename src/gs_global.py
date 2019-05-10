@@ -1,11 +1,14 @@
-from gs_subclass import Inventory, Market, Budget, Production
+from gs_subclass import Inventory, Market, Budget, Production, GlobalMarket
 from global_config import Func
 from collections import defaultdict
+from copy import deepcopy
+
+nested_defaultdict = defaultdict(lambda: defaultdict(int))
 
 class GSGlobal:
     def __init__(self, GSDataClass):
         self.inventory = Inventory(GSDataClass.inventory)
-        self.market = Market(GSDataClass.market)
+        self.market = GlobalMarket(GSDataClass.market)
         self.budget = Budget(GSDataClass.budget)
         self.production = Production(GSDataClass.production)
         self.current_time = GSDataClass.time
@@ -59,7 +62,19 @@ class GSGlobal:
         else:
             raise Exception
 
+    def _convert_callstack_to_market(self):
+        calls_for_market = deepcopy(nested_defaultdict)
+        for action, cat_quantity in self.callstack.items():
+            for category, quantity in cat_quantity.items():
+                if action == Func.buy:
+                    calls_for_market[category]['buy'] += quantity
+                elif action == Func.sell:
+                    calls_for_market[category]['sell'] += quantity
+        return calls_for_market
+
     def implement_callstack(self):
+        calls_for_market = self._convert_callstack_to_market()
+        self.market.clear_market(calls_for_market)
         for action, cat_quantity in self.callstack.items():
             for category, quantity in cat_quantity.items():
                 if action == Func.buy:

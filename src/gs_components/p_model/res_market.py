@@ -32,8 +32,45 @@ class GenericSeller:
         q = self.min_q + (p - self.min_p) * self.grad
         return bound(q, self.min_q, self.max_q)
 
+class ConsolidatedBuyer:
+    def __init__(self, buyers):
+        self.buyers = buyers
 
+    def buy(self, price):
+        total_quantity = 0
+        for buyer in self.buyers:
+            total_quantity += buyer.buy(price)
+        return total_quantity
 
+class ConsolidatedSeller:
+    def __init__(self, sellers):
+        self.sellers = sellers
+
+    def sell(self, price):
+        total_quantity = 0
+        for seller in self.sellers:
+            total_quantity += seller.sell(price)
+        return total_quantity
+
+class LinearBuyer:
+    def __init__(self, grad=0.9, ref_q=1000, ref_p=10):
+        self.grad = grad
+        self.ref_q = ref_q
+        self.ref_p = ref_p
+
+    def buy(self, price):
+        quantity = self.ref_q + (self.ref_p - price) * self.grad
+        return quantity
+
+class LinearSeller:
+    def __init__(self, grad=0.9, ref_q=1000, ref_p=10):
+        self.grad = grad
+        self.ref_q = ref_q
+        self.ref_p = ref_p
+
+    def sell(self, price):
+        quantity = self.ref_q + (price - self.ref_p) * self.grad
+        return quantity
 
 class ClearingHouse:
     """
@@ -52,9 +89,9 @@ class ClearingHouse:
     later on.
     """
     price_resolution = 0.1
-    def __init__(self):
-        self.seller = GenericSeller()
-        self.buyer = GenericBuyer()
+    def __init__(self, buyer=GenericBuyer(), seller=GenericSeller()):
+        self.seller = seller
+        self.buyer = buyer
 
     def __call__(self):
         """ possibility of a endless loop...? from while.
@@ -62,8 +99,8 @@ class ClearingHouse:
         current_price = 0
         past = ["low", "low", "low"]
         while True:
-            buyer_q = self.buyer(current_price)
-            seller_q = self.seller(current_price)
+            buyer_q = self.buyer.buy(current_price)
+            seller_q = self.seller.sell(current_price)
             if past[0] == past[2] and past[0] != past[1]:
                 break
             if buyer_q > seller_q:
@@ -76,15 +113,30 @@ class ClearingHouse:
                 past.append("high")
             else:
                 break
-        return current_price, buyer_q
+        return current_price
+
+class Mybuyer:
+    def __init__(self):
+        pass
+
+    def buy(self, price):
+        return 10
 
 
+class Myseller:
+    def __init__(self):
+        pass
+
+    def sell(self, price):
+        return 8
 
 
-
-
-
-
+def main():
+    buyers = [Mybuyer(), LinearBuyer()]
+    sellers = [Myseller(), LinearSeller()]
+    con_buy = ConsolidatedBuyer(buyers)
+    con_sell = ConsolidatedSeller(sellers)
+    house = ClearingHouse(buyer=con_buy, seller=con_sell)
 
 # buyer = GenericBuyer()
 # seller = GenericSeller()

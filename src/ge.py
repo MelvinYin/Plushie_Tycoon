@@ -32,7 +32,7 @@ class GE:
             return_value = func(call)
         except InsufficientQuantityError:
             self.GS.reverse_call()
-            log("InsufficientQuantityError>\n\n", inspect.currentframe())
+            log("InsufficientQuantityError\n\n", inspect.currentframe())
             raise RepeatUIAction
         GS_update = self.GS.return_data()
         # log("GE Call: {}\n Return: {}".format(call, GS_update),

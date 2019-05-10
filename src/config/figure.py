@@ -54,7 +54,6 @@ class InventoryProdSpecs:
             colormap[entry] = Category10[10][i]
         return colormap
 
-
 class PriceResSpecs:
     def __init__(self):
         self.name = FigureNames.price_res
