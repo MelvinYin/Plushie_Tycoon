@@ -1,15 +1,13 @@
 from collections import defaultdict
-from copy import deepcopy
-from exceptions import InsufficientQuantityError, RepeatUIAction
 import copy
 import inspect
-import sys
-from logs import log
-from global_config import Func, GSConstructor
-from gs_main import GSM
 import pickle
+import sys
 
-from global_config import save_folder, save_file_name
+from exceptions import InsufficientQuantityError, RepeatUIAction
+from logs import log
+from global_config import Func, GSConstructor, save_folder, save_file_name
+from gs_main import GSM
 
 nested_defaultdict = defaultdict(lambda: defaultdict(int))
 
@@ -92,8 +90,6 @@ class GE:
         mapping[Func.make] = self.make
         mapping[Func.save] = self.save
         mapping[Func.load] = self.load
-        # mapping[Func.save] = self.GS.save
-        # mapping[Func.load] = self.GS.load
         mapping[Func.next] = self.next_turn
         mapping[Func.back] = self.back
         return mapping
@@ -118,16 +114,12 @@ class GE:
     def save(self, call):
         self.GS.commit(call)
         GS_dataclass = self.GS.return_data()
-        file_path = save_folder
-        file_name = save_file_name
-        with open(file_path + file_name, "wb") as file:
+        with open(save_folder + save_file_name, "wb") as file:
             pickle.dump(GS_dataclass, file, -1)
         return 'pause'
 
     def load(self, call):
-        file_path = save_folder
-        file_name = save_file_name
-        with open(file_path + file_name, "rb") as file:
+        with open(save_folder + save_file_name, "rb") as file:
             GS_dataclass = pickle.load(file)
         self.GS = GSM(GS_dataclass)
         self.GS.commit(call)

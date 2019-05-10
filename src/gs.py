@@ -4,7 +4,6 @@ import inspect
 import os
 import pickle
 
-from global_config import save_folder, save_file_name
 from gs_subclass import Inventory, Market, Budget, Production
 from logs import log
 
@@ -94,32 +93,3 @@ class GS:
         previous_state = self.history[self.current_time].pop()
         self.__dict__.update(previous_state)
         return True
-
-    def load(self, call, file_path=save_folder, file_name=save_file_name):
-        if not os.path.isdir(file_path):
-            msg = f"File path {file_path} does not exist."
-            log(msg, inspect.currentframe())
-            raise FileNotFoundError
-        if not os.path.isfile(file_path + file_name):
-            msg = f"File {file_name} does not exist in specified " \
-                  f"directory {file_path}."
-            log(msg, inspect.currentframe())
-            raise FileNotFoundError
-        with open(file_path + file_name, "rb") as file:
-            self.__dict__ = pickle.load(file)
-        return 'update'
-
-    def save(self, call, file_path=save_folder, file_name=save_file_name):
-        if not file_name.endswith(".pkl"):
-            msg = f"Warning: File name {file_name} provided does not" \
-                  f" end with .pkl. Suffix will be added."
-            log(msg, inspect.currentframe())
-            file_name += ".pkl"
-        if not os.path.isdir(file_path):
-            msg = f"Warning: File_path {file_path} provided does not" \
-                            f" exist. Directory will be created."
-            log(msg, inspect.currentframe())
-            os.makedirs(file_path)
-        with open(file_path + file_name, "wb") as file:
-            pickle.dump(self.__dict__, file, -1)
-        return 'pause'

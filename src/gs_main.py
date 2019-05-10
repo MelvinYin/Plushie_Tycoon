@@ -1,6 +1,6 @@
 from collections import defaultdict
 from gs import GS
-from global_config import Func, save_folder, save_file_name, GSConstructor
+from global_config import Func, GSConstructor
 from gs_global import GSGlobal
 from copy import deepcopy
 
@@ -102,9 +102,3 @@ class GSM:
             return False
         del self._callstack[-1]
         return self.gs_current.reverse_call()
-
-    def load(self, call, file_path=save_folder, file_name=save_file_name):
-        return self.gs_current.load(call, file_path, file_name)
-
-    def save(self, call, file_path=save_folder, file_name=save_file_name):
-        return self.gs_current.save(call, file_path, file_name)
