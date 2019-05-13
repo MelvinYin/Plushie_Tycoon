@@ -31,6 +31,33 @@ import inspect
 from bokeh.layouts import row, column
 from bokeh.models.widgets import Paragraph, Div
 from bokeh.models.layouts import WidgetBox, Spacer
+from bokeh.models import DataTable, TableColumn, ColumnDataSource
+
+class ResourceRatioTable:
+    def __init__(self, specs):
+        self.name = specs.name
+        self.specs = specs
+        self._table = self._build_table()
+        self.figure = self._set_table()
+
+    def _build_table(self):
+        CDS_input = {**self.specs.index, **self.specs.data}
+        source = ColumnDataSource(CDS_input)
+        columns = [TableColumn(field=i, title=i, width=1000) for i in
+                       self.specs.index.keys()]
+        columns.extend([TableColumn(field=i, title=i) for i in self.specs.data.keys()])
+        data_table = DataTable(source=source, columns=columns,
+                               width=self.specs.width,
+                               height=self.specs.height, index_position=None)
+        return data_table
+
+    def _set_table(self):
+        fig = column(row(Spacer(width=15), Div(text=self.specs.title),
+                         height=22),
+                     self._table)
+        return fig
+
+
 
 class ConsoleOutput:
     def __init__(self, specs):

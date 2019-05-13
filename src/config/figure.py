@@ -2,7 +2,7 @@
 # Figure Attributes
 from enum import Enum, auto, unique
 from bokeh.palettes import Category10
-from base import res_members, prod_members
+from base import res_members, prod_members, Prod
 
 class FigureNames(Enum):
     inventory_res = auto()
@@ -11,6 +11,21 @@ class FigureNames(Enum):
     price_prod = auto()
     budget = auto()
     console_output = auto()
+    resource_ratio_table = auto()
+
+class ResourceRatioTableSpecs:
+    def __init__(self):
+        self.name = FigureNames.resource_ratio_table
+        self.title = "Production Resource Ratios"
+        self.index = dict()
+        self.index['Resource'] = [i.name for i in res_members]
+        self.data = dict()
+        self.data[Prod.aisha.name] = [3, 6, 2, 1]
+        self.data[Prod.beta.name] = [1, 4, 1, 2]
+        self.data[Prod.chama.name] = [2, 5, 1, 4]
+        self.width = 200
+        self.height = 200
+
 
 class ConsoleOutputSpecs:
     def __init__(self):
@@ -108,6 +123,7 @@ class FigureIndividualSpecs:
         self.price_prod = PriceProdSpecs()
         self.budget = BudgetSpecs()
         self.console = ConsoleOutputSpecs()
+        self.resource_ratio_table = ResourceRatioTableSpecs()
 
 class FigureSpecs:
     def __init__(self):

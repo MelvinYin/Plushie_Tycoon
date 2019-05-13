@@ -52,7 +52,6 @@ class InventoryCostCalculator:
         cost *= quantity
         return cost
 
-
 class GlobalInventory:
     def __init__(self, inventory_values):
         self.inventory = inventory_values

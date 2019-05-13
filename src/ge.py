@@ -11,6 +11,54 @@ from gs_main import GSM
 
 nested_defaultdict = defaultdict(lambda: defaultdict(int))
 
+class ItemisedBillLogger:
+    # Only for GS, not for GSGlobal
+    def __init__(self):
+        self.orders = dict()
+        
+    def buy(self, category, quantity, price, movein_cost):
+        self.orders['buy'] = (category, quantity, price, movein_cost)
+        return True
+    
+    def sell(self, category, quantity, price, moveout_cost):
+        self.orders['sell'] = (category, quantity, price, moveout_cost)
+        return True
+    
+    def make(self, category, quantity, movein_cost, res_ratio, moveout_costs):
+        self.orders['make'] = (category, quantity, movein_cost, res_ratio, 
+                              moveout_costs)
+        return True
+    
+    def generate_bill(self):
+        bill = ""
+        for action, details in self.orders.items():
+            if action == "buy":
+                category, quantity, price, movein_cost = details
+                cost = quantity * (price + movein_cost)
+                bill += f"Order: Buy {category} x {quantity}"
+                bill += f"Price per unit: {price}"
+                bill += f"Movein cost per unit: {movein_cost}"
+                bill += f"Total cost: {cost}"
+            elif action == 'sell':
+                category, quantity, price, moveout_cost = details
+                revenue = quantity * (price - moveout_cost)
+                bill += f"Order: Buy {category} x {quantity}"
+                bill += f"Price per unit: {price}"
+                bill += f"Moveout cost per unit: {moveout_cost}"
+                bill += f"Total Revenue: {revenue}"
+            elif action == 'make':
+                # what form should res_ratio take?
+                category, quantity, movein_cost, res_ratio, moveout_costs = \
+                    details
+                cost = quantity * (res_ratio * moveout_costs)
+                bill += f"Order: Make {category} x {quantity}"
+                bill += f"Required Resources: {res_ratio}"
+                bill += f"Moveout cost per unit: {moveout_costs}"
+                bill += f"Total Cost: {cost}"
+
+
+    
+
 class GE:
     def __init__(self):
         GS_dataclass = GSConstructor()

@@ -3,7 +3,7 @@ import inspect
 
 from logs import log
 from global_config import Res, Prod, FigureNames
-from .individual_figure import IndividualFigure, ConsoleOutput
+from .individual_figure import IndividualFigure, ConsoleOutput, ResourceRatioTable
 
 class FigureSet:
     def __init__(self, full_data, specs):
@@ -29,6 +29,7 @@ class FigureSet:
         FigureInstances.append(
             IndividualFigure(full_data[FigureNames.budget], specs.budget))
         FigureInstances.append(ConsoleOutput(specs.console))
+        FigureInstances.append(ResourceRatioTable(specs.resource_ratio_table))
         return FigureInstances
 
     def _couple_range(self):
