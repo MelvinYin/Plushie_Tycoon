@@ -18,15 +18,7 @@ class InitValues:
         self.inventory = self._get_inventory()
         self.market = self._get_market()
         self.console = self._get_console()
-        self.resource_ratio_table = self._get_resource_ratio_table()
         self.time = 0
-
-    def _get_resource_ratio_table(self):
-        table = dict()
-        table[Prod.aisha.name] = [3, 6, 2, 1]
-        table[Prod.beta.name] = [1, 4, 1, 2]
-        table[Prod.chama.name] = [2, 5, 1, 4]
-        return table
 
     def _get_console(self):
         return "Init_text<p>"

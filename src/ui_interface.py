@@ -86,7 +86,7 @@ class UIInterface:
         console_log = GSDataClass.console
         adapted[FigureNames.console_output]['console'] = console_log
 
-        adapted[FigureNames.resource_ratio_table] = GSDataClass.production.res_ratio
+        adapted[FigureNames.res_ratio_table] = GSDataClass.production.res_ratio
 
         adapted = dict(adapted)
         log(adapted, inspect.currentframe())

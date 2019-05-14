@@ -11,7 +11,6 @@ class GSConstructor:
         self.market = None
         self.time = None
         self.console = None
-        self.resource_ratio_table = ""    # Need not be filled
 
     def is_complete(self):
         all_full = True

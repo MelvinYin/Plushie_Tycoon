@@ -11,11 +11,11 @@ class FigureNames(Enum):
     price_prod = auto()
     budget = auto()
     console_output = auto()
-    resource_ratio_table = auto()
+    res_ratio_table = auto()
 
 class ResourceRatioTableSpecs:
     def __init__(self):
-        self.name = FigureNames.resource_ratio_table
+        self.name = FigureNames.res_ratio_table
         self.title = "Production Resource Ratios"
         self.index = dict()
         self.index['Resource'] = [i.name for i in res_members]
@@ -123,7 +123,7 @@ class FigureIndividualSpecs:
         self.price_prod = PriceProdSpecs()
         self.budget = BudgetSpecs()
         self.console = ConsoleOutputSpecs()
-        self.resource_ratio_table = ResourceRatioTableSpecs()
+        self.res_ratio_table = ResourceRatioTableSpecs()
 
 class FigureSpecs:
     def __init__(self):
