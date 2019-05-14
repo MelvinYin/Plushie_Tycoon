@@ -30,13 +30,13 @@ class GSConstructor:
         self.console = text
         return True
 
-    def load_production(self, hours_needed, prod_res_cost, cost_per_hour):
-        assert isinstance(prod_res_cost, pd.DataFrame)
+    def load_production(self, hours_needed, res_ratio, cost_per_hour):
+        assert isinstance(res_ratio, pd.DataFrame)
         assert isinstance(hours_needed, dict)
         assert set(hours_needed.keys()) == set(prod_members)
         assert isinstance(list(hours_needed.values())[0], int)
         assert isinstance(cost_per_hour, int)
-        self.production = ProductionTuple(hours_needed, prod_res_cost,
+        self.production = ProductionTuple(hours_needed, res_ratio,
                                           cost_per_hour)
         return True
 

@@ -43,7 +43,7 @@ Others
 Func
 Production
 
-prod_res_cost
+res_ratio
 hours_needed
 cost_per_hour
 starting_budget

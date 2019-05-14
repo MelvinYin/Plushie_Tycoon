@@ -36,12 +36,20 @@ from bokeh.models import DataTable, TableColumn, ColumnDataSource
 class ResourceRatioTable:
     def __init__(self, initial_data, specs):
         self.name = specs.name
+        initial_data = self._convert_input(initial_data)
         self._check_initial_data(initial_data)
         self.initial_data = initial_data
         self.specs = specs
         self._CDS = self._set_CDS()
         self._table = self._build_table()
         self.figure = self._set_table()
+
+    def _convert_input(self, data):
+        resource_ratios = dict()
+        for category in data:
+            resource_ratios[category.name] = \
+                [int(i) for i in data[category].values]
+        return resource_ratios
 
     def _check_initial_data(self, data):
         assert data
@@ -89,6 +97,7 @@ class ResourceRatioTable:
         return fig
 
     def figure_update(self, add_data):
+        add_data = self._convert_input(add_data)
         self._check_add_data(add_data)
         to_patch = dict()
         for category, ratios in add_data.items():

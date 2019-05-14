@@ -32,26 +32,26 @@ class InitValues:
         return "Init_text<p>"
 
     def _get_production(self):
-        prod_res_cost = self._get_prod_res_cost()
+        res_ratio = self._get_res_ratio()
         hours_needed = self._get_hours_needed()
         cost_per_hour = self._get_cost_per_hour()
-        production = ProductionTuple(hours_needed, prod_res_cost,
+        production = ProductionTuple(hours_needed, res_ratio,
                                      cost_per_hour)
-        assert isinstance(prod_res_cost, pd.DataFrame)
+        assert isinstance(res_ratio, pd.DataFrame)
         assert isinstance(hours_needed, dict)
         assert set(hours_needed.keys()) == set(prod_members)
         assert isinstance(list(hours_needed.values())[0], int)
         assert isinstance(cost_per_hour, int)
         return production
 
-    def _get_prod_res_cost(self):
+    def _get_res_ratio(self):
         # Plushie Resource Cost
-        _res_cost = dict()
-        _res_cost[Prod.aisha] = [3, 6, 2, 1]
-        _res_cost[Prod.beta] = [1, 4, 1, 2]
-        _res_cost[Prod.chama] = [2, 5, 1, 4]
-        prod_res_cost = pd.DataFrame(_res_cost, index=res_members)
-        return prod_res_cost
+        _res_ratio = dict()
+        _res_ratio[Prod.aisha] = [3, 6, 2, 1]
+        _res_ratio[Prod.beta] = [1, 4, 1, 2]
+        _res_ratio[Prod.chama] = [2, 5, 1, 4]
+        res_ratio = pd.DataFrame(_res_ratio, index=res_members)
+        return res_ratio
 
     def _get_hours_needed(self):
         # Plushie Production Hours

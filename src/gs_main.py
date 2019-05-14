@@ -54,8 +54,8 @@ class GSM:
         GS_dataclass.load_console(self.console_text)
         resource_ratios = dict()
         for category in _production['res_cost']:
-            resource_ratios[category.name] = [
-                int(i) for i in _production['res_cost'][category].values]
+            resource_ratios[category.name] = \
+                [int(i) for i in _production['res_cost'][category].values]
         GS_dataclass.resource_ratio_table = resource_ratios
         assert GS_dataclass.is_complete()
         return GS_dataclass
