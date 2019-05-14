@@ -2,19 +2,19 @@ import pandas as pd
 from collections import namedtuple
 try:
     from .base import Res, Prod, Func, res_members, prod_members, \
-        ProductionTuple, BudgetTuple
+        ProductionTuple
     from .figure import FigureSpecs, FigureNames
     from .widget import WidgetSpecs
 except:
     from base import Res, Prod, Func, res_members, prod_members, \
-        ProductionTuple, BudgetTuple
+        ProductionTuple
     from figure import FigureSpecs, FigureNames
     from widget import WidgetSpecs
 
 class InitValues:
     def __init__(self):
         self.production = self._get_production()
-        self.budget = self._get_budget()
+        self.budget = 1000000
         self.inventory = self._get_inventory()
         self.market = self._get_market()
         self.console = self._get_console()
@@ -61,9 +61,7 @@ class InitValues:
     def _get_budget(self):
         # Starting Statistics
         _init_budget = 1000000
-        budget = BudgetTuple(_init_budget)
-        assert isinstance(_init_budget, int)
-        return budget
+        return _init_budget
 
     def _get_inventory(self):
         res = self._get_res()

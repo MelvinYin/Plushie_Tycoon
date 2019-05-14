@@ -1,4 +1,4 @@
-main.py: main <<gs_data_construct.GSConstructor object at 0x7fe2ffb02e10>>
+main.py: main <<gs_data_construct.GSConstructor object at 0x7f02ae9cd978>>
 
 ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000000], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
 Res.cloth               3          1           2

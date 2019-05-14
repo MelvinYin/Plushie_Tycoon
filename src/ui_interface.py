@@ -79,7 +79,7 @@ class UIInterface:
                 adapted[FigureNames.price_prod][key.name] = [values]
         adapted[FigureNames.price_prod]['time'] = [GSDataClass.time]
 
-        budget = GSDataClass.budget.budget
+        budget = GSDataClass.budget
         adapted[FigureNames.budget]['budget'] = [budget]
         adapted[FigureNames.budget]['time'] = [GSDataClass.time]
 

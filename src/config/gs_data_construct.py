@@ -1,6 +1,5 @@
 from init_values import InitValues
-from base import res_members, prod_members, ProductionTuple, \
-    BudgetTuple
+from base import res_members, prod_members, ProductionTuple
 import pandas as pd
 
 class GSConstructor:
@@ -44,7 +43,7 @@ class GSConstructor:
 
     def load_budget(self, budget):
         assert isinstance(budget, int) or isinstance(budget, float)
-        self.budget = BudgetTuple(budget)
+        self.budget = budget
         return True
 
     def load_market(self, market):

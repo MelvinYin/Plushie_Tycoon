@@ -45,6 +45,6 @@ prod_members = [Prod.aisha, Prod.beta, Prod.chama]
 
 ProductionTuple = namedtuple('ProductionTuple',
                              'hours_needed res_ratio cost_per_hour')
-BudgetTuple = namedtuple('BudgetTuple', 'budget')
+# BudgetTuple = namedtuple('BudgetTuple', 'budget')
 
 ###############################################################################
