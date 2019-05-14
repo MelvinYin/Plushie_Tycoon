@@ -34,30 +34,68 @@ from bokeh.models.layouts import WidgetBox, Spacer
 from bokeh.models import DataTable, TableColumn, ColumnDataSource
 
 class ResourceRatioTable:
-    def __init__(self, specs):
+    def __init__(self, initial_data, specs):
         self.name = specs.name
+        self._check_initial_data(initial_data)
+        self.initial_data = initial_data
         self.specs = specs
+        self._CDS = self._set_CDS()
         self._table = self._build_table()
         self.figure = self._set_table()
 
-    def _build_table(self):
-        CDS_input = {**self.specs.index, **self.specs.data}
+    def _check_initial_data(self, data):
+        assert data
+        assert isinstance(data, dict)
+        ratio_len = None
+        for category, ratios in data.items():
+            assert isinstance(category, str)
+            if ratio_len is None:
+                ratio_len = len(ratios)
+                assert ratio_len > 0
+            else:
+                assert len(ratios) == ratio_len
+            for ratio in ratios:
+                assert isinstance(ratio, int), ratio
+                assert ratio >= 0
+        return True
+
+    def _check_add_data(self, data):
+        assert data
+        for category, ratios in data.items():
+            assert category in self.initial_data
+            assert len(ratios) == len(self.initial_data[category])
+            for ratio in ratios:
+                assert isinstance(ratio, int)
+                assert ratio >= 0
+        return True
+
+    def _set_CDS(self):
+        CDS_input = {**self.specs.index, **self.initial_data}
         source = ColumnDataSource(CDS_input)
+        return source
+
+    def _build_table(self):
         columns = [TableColumn(field=i, title=i, width=1000) for i in
                        self.specs.index.keys()]
-        columns.extend([TableColumn(field=i, title=i) for i in self.specs.data.keys()])
-        data_table = DataTable(source=source, columns=columns,
+        columns.extend([TableColumn(field=i, title=i) for i in self.initial_data.keys()])
+        data_table = DataTable(source=self._CDS, columns=columns,
                                width=self.specs.width,
                                height=self.specs.height, index_position=None)
         return data_table
 
     def _set_table(self):
         fig = column(row(Spacer(width=15), Div(text=self.specs.title),
-                         height=22),
-                     self._table)
+                         height=22), self._table)
         return fig
 
-
+    def figure_update(self, add_data):
+        self._check_add_data(add_data)
+        to_patch = dict()
+        for category, ratios in add_data.items():
+            for i, ratio in enumerate(ratios):
+                to_patch[category] = [(i, ratio)]
+        self._CDS.patch(to_patch)
+        return
 
 class ConsoleOutput:
     def __init__(self, specs):

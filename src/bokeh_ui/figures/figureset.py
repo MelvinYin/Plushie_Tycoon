@@ -29,7 +29,9 @@ class FigureSet:
         FigureInstances.append(
             IndividualFigure(full_data[FigureNames.budget], specs.budget))
         FigureInstances.append(ConsoleOutput(specs.console))
-        FigureInstances.append(ResourceRatioTable(specs.resource_ratio_table))
+        FigureInstances.append(ResourceRatioTable(
+            full_data[FigureNames.resource_ratio_table],
+            specs.resource_ratio_table))
         return FigureInstances
 
     def _couple_range(self):

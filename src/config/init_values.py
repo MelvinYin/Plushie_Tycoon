@@ -18,7 +18,15 @@ class InitValues:
         self.inventory = self._get_inventory()
         self.market = self._get_market()
         self.console = self._get_console()
+        self.resource_ratio_table = self._get_resource_ratio_table()
         self.time = 0
+
+    def _get_resource_ratio_table(self):
+        table = dict()
+        table[Prod.aisha.name] = [3, 6, 2, 1]
+        table[Prod.beta.name] = [1, 4, 1, 2]
+        table[Prod.chama.name] = [2, 5, 1, 4]
+        return table
 
     def _get_console(self):
         return "Init_text<p>"
@@ -27,7 +35,8 @@ class InitValues:
         prod_res_cost = self._get_prod_res_cost()
         hours_needed = self._get_hours_needed()
         cost_per_hour = self._get_cost_per_hour()
-        production = ProductionTuple(hours_needed, prod_res_cost, cost_per_hour)
+        production = ProductionTuple(hours_needed, prod_res_cost,
+                                     cost_per_hour)
         assert isinstance(prod_res_cost, pd.DataFrame)
         assert isinstance(hours_needed, dict)
         assert set(hours_needed.keys()) == set(prod_members)

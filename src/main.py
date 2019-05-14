@@ -1,12 +1,8 @@
-# TODO: Finish up console_output for warehouse, in test.py
-
 """
 Necessary boxes to display:
 1. Make tables, to show res consumption to make (perm)
 2. Current prices for each item?
 3. Current movein/moveout cost per item per unit
-
-
 
 """
 
