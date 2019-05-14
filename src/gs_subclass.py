@@ -32,19 +32,19 @@ class Budget:
 
 class Production:
     def __init__(self, init_values):
-        self.hours_needed = init_values.hours_needed
-        self.cost_per_hour = init_values.cost_per_hour
-        self.res_cost = init_values.res_ratio
+        self.hours_needed = init_values['hours_needed']
+        self.cost_per_hour = init_values['cost_per_hour']
+        self.res_ratio = init_values['res_ratio']
 
     def set_values(self, values):
         self.hours_needed = values['hours_needed']
         self.cost_per_hour = values['cost_per_hour']
-        self.res_cost = values['res_cost']
+        self.res_ratio = values['res_ratio']
         return True
 
     def get(self, category):
         hours = self.hours_needed[category]
-        materials = self.res_cost[category]
+        materials = self.res_ratio[category]
         cost = hours * self.cost_per_hour
         return cost, materials
 
@@ -54,7 +54,7 @@ class Production:
         data = dict()
         data['hours_needed'] = self.hours_needed
         data['cost_per_hour'] = self.cost_per_hour
-        data['res_cost'] = self.res_cost
+        data['res_ratio'] = self.res_ratio
         return data
 
 

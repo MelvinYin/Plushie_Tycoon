@@ -1,5 +1,5 @@
 from init_values import InitValues
-from base import res_members, prod_members, ProductionTuple
+from base import res_members, prod_members
 import pandas as pd
 
 class GSConstructor:
@@ -19,9 +19,17 @@ class GSConstructor:
 
     def load_init(self):
         init_values = InitValues()
-        for var_name, value in init_values.__dict__.items():
-            if var_name in self.__dict__:
-                self.__dict__[var_name] = value
+        self.load_production(init_values.production)
+        self.budget = init_values.budget
+        self.load_inventory(init_values.inventory)
+        self.load_market(init_values.market)
+        self.time = init_values.time
+        self.load_console(init_values.console)
+        return True
+
+        # for var_name, value in init_values.__dict__.items():
+        #     if var_name in self.__dict__:
+        #         self.__dict__[var_name] = value
 
     def load_console(self, text):
         assert isinstance(text, str)
@@ -30,15 +38,16 @@ class GSConstructor:
 
     def load_production(self, _production):
         hours_needed = _production['hours_needed']
-        res_ratio = _production['res_cost']
+        res_ratio = _production['res_ratio']
         cost_per_hour = _production['cost_per_hour']
         assert isinstance(res_ratio, pd.DataFrame)
         assert isinstance(hours_needed, dict)
         assert set(hours_needed.keys()) == set(prod_members)
         assert isinstance(list(hours_needed.values())[0], int)
         assert isinstance(cost_per_hour, int)
-        self.production = ProductionTuple(hours_needed, res_ratio,
-                                          cost_per_hour)
+        # self.production = ProductionTuple(hours_needed, res_ratio,
+        #                                   cost_per_hour)
+        self.production = _production
         return True
 
     def load_budget(self, budget):

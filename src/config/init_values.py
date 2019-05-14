@@ -1,13 +1,11 @@
 import pandas as pd
 from collections import namedtuple
 try:
-    from .base import Res, Prod, Func, res_members, prod_members, \
-        ProductionTuple
+    from .base import Res, Prod, Func, res_members, prod_members
     from .figure import FigureSpecs, FigureNames
     from .widget import WidgetSpecs
 except:
-    from base import Res, Prod, Func, res_members, prod_members, \
-        ProductionTuple
+    from base import Res, Prod, Func, res_members, prod_members
     from figure import FigureSpecs, FigureNames
     from widget import WidgetSpecs
 
@@ -27,8 +25,12 @@ class InitValues:
         res_ratio = self._get_res_ratio()
         hours_needed = self._get_hours_needed()
         cost_per_hour = self._get_cost_per_hour()
-        production = ProductionTuple(hours_needed, res_ratio,
-                                     cost_per_hour)
+        production = dict()
+        production['hours_needed'] = hours_needed
+        production['res_ratio'] = res_ratio
+        production['cost_per_hour'] = cost_per_hour
+        # production = ProductionTuple(hours_needed, res_ratio,
+        #                              cost_per_hour)
         assert isinstance(res_ratio, pd.DataFrame)
         assert isinstance(hours_needed, dict)
         assert set(hours_needed.keys()) == set(prod_members)
