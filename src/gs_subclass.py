@@ -3,7 +3,6 @@ from market import Market
 from g_market import GlobalMarket
 from g_inventory import GlobalInventory
 from budget import BudgetBackend
-from production import ProductionBackend
 
 class Budget:
     def __init__(self, init_values):
