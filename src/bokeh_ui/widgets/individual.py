@@ -160,7 +160,6 @@ class TransactionWidget:
             break
         return
 
-
 class ButtonWidget:
     def __init__(self, callback, specs):
         self.name = specs.name

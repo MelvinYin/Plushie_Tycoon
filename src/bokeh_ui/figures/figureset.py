@@ -3,7 +3,8 @@ import inspect
 
 from logs import log
 from global_config import Res, Prod, FigureNames
-from .individual_figure import IndividualFigure, ConsoleOutput, ResourceRatioTable
+from .individual_figure import IndividualFigure, ConsoleOutput, \
+    ResourceRatioTable
 
 class FigureSet:
     def __init__(self, full_data, specs):
