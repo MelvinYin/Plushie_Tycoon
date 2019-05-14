@@ -29,7 +29,10 @@ class GSConstructor:
         self.console = text
         return True
 
-    def load_production(self, hours_needed, res_ratio, cost_per_hour):
+    def load_production(self, _production):
+        hours_needed = _production['hours_needed']
+        res_ratio = _production['res_cost']
+        cost_per_hour = _production['cost_per_hour']
         assert isinstance(res_ratio, pd.DataFrame)
         assert isinstance(hours_needed, dict)
         assert set(hours_needed.keys()) == set(prod_members)

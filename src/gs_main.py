@@ -38,9 +38,7 @@ class GSM:
 
         GS_dataclass = GSConstructor()
         _production = gs_tmp.production.return_data()
-        GS_dataclass.load_production(_production['hours_needed'],
-                                     _production['res_cost'],
-                                     _production['cost_per_hour'])
+        GS_dataclass.load_production(_production)
         _budget = gs_tmp.budget.return_data()
         GS_dataclass.load_budget(_budget['budget'])
 
