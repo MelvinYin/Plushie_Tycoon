@@ -75,7 +75,7 @@ def widgetset():
         log(os.getcwd(), "from widget callback")
         log(os.getcwd(), command_to_run)
         return
-    layout_w = WidgetSet(widget_callback, UISpecs().widgets).layout
+    layout_w = WidgetSet(widget_callback).layout
     return layout_w
 
 def ui():

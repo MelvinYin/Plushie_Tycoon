@@ -2,13 +2,13 @@ import pandas as pd
 try:
     from .base import Res, Prod, Func, res_members, prod_members
     from .figure import FigureNames, FigSpecs
-    from .widget import WidgetSpecs
+    from .widget import WidgetSpecs, WidgetNames
     from .gs_data_construct import GSConstructor
     from .properties import WarehouseStats
 except:
     from base import Res, Prod, Func, res_members, prod_members
     from figure import FigureNames, FigSpecs
-    from widget import WidgetSpecs
+    from widget import WidgetSpecs, WidgetNames
     from gs_data_construct import GSConstructor
     from properties import WarehouseStats
 
