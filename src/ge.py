@@ -57,8 +57,6 @@ class ItemisedBillLogger:
                 bill += f"Total Cost: {cost}"
 
 
-    
-
 class GE:
     def __init__(self):
         GS_dataclass = GSConstructor()

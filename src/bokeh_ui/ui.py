@@ -15,12 +15,12 @@ class UI:
         """
         self.ui_callback = ui_callback
         self.specs = specs
-        self.figure_set = FigureSet(initial_data, specs.figures)
+        self.figure_set = FigureSet(initial_data)
         self.widget_set = WidgetSet(self.widget_callback, specs.widgets)
         self.ui_layout = self.plot()
 
     def reload(self, new_data):
-        self.figure_set = FigureSet(new_data, self.specs.figures)
+        self.figure_set = FigureSet(new_data)
         self.widget_set = WidgetSet(self.widget_callback, self.specs.widgets)
         self.ui_layout = self.plot()
 

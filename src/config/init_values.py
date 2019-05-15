@@ -2,11 +2,11 @@ import pandas as pd
 from collections import namedtuple
 try:
     from .base import Res, Prod, Func, res_members, prod_members
-    from .figure import FigureSpecs, FigureNames
+    from .figure import FigureNames
     from .widget import WidgetSpecs
 except:
     from base import Res, Prod, Func, res_members, prod_members
-    from figure import FigureSpecs, FigureNames
+    from figure import FigureNames
     from widget import WidgetSpecs
 
 class InitValues:
@@ -70,8 +70,29 @@ class InitValues:
         prod = self._get_prod()
         inventory = {**res, **prod}
         inventory['tier'] = 0
+
+        weights = dict()
+        weights[Res.cloth] = 0.1
+        weights[Res.stuff] = 0.05
+        weights[Res.accessory] = 0.3
+        weights[Res.packaging] = 0.05
+        weights[Prod.aisha] = 0.05
+        weights[Prod.beta] = 0.05
+        weights[Prod.chama] = 0.05
+        inventory['weight'] = weights
+
+        volume = dict()
+        volume[Res.cloth] = 0.1
+        volume[Res.stuff] = 0.3
+        volume[Res.accessory] = 0.01
+        volume[Res.packaging] = 0.2
+        volume[Prod.aisha] = 0.2
+        volume[Prod.beta] = 0.2
+        volume[Prod.chama] = 0.2
+        inventory['volume'] = volume
+
         assert isinstance(inventory, dict)
-        assert isinstance(list(inventory.values())[0], int)
+        # assert isinstance(list(inventory.values())[0], int)
         return inventory
 
     def _get_market(self):

@@ -32,6 +32,7 @@ from bokeh.layouts import row, column
 from bokeh.models.widgets import Paragraph, Div
 from bokeh.models.layouts import WidgetBox, Spacer
 from bokeh.models import DataTable, TableColumn, ColumnDataSource
+from global_config import FigureNames, res_members, Prod
 
 class MoveCostTable:
     def __init__(self, initial_data, specs):
@@ -72,7 +73,6 @@ class MoveCostTable:
             assert category in self.initial_data
             assert len(ratios) == len(self.initial_data[category])
             for ratio in ratios:
-                assert isinstance(ratio, int)
                 assert ratio >= 0
         return True
 
@@ -107,12 +107,21 @@ class MoveCostTable:
         return
 
 class ResourceRatioTable:
-    def __init__(self, initial_data, specs):
-        self.name = specs.name
+    def __init__(self, initial_data):
+        self.name = FigureNames.res_ratio_table
+        self.title = "Production Resource Ratios"
+        self.index = dict()
+        self.index['Resource'] = [i.name for i in res_members]
+        self.data = dict()
+        self.data[Prod.aisha.name] = [3, 6, 2, 1]
+        self.data[Prod.beta.name] = [1, 4, 1, 2]
+        self.data[Prod.chama.name] = [2, 5, 1, 4]
+        self.width = 200
+        self.height = 200
+
         initial_data = self._convert_input(initial_data)
         self._check_initial_data(initial_data)
         self.initial_data = initial_data
-        self.specs = specs
         self._CDS = self._set_CDS()
         self._table = self._build_table()
         self.figure = self._set_table()
@@ -151,22 +160,22 @@ class ResourceRatioTable:
         return True
 
     def _set_CDS(self):
-        CDS_input = {**self.specs.index, **self.initial_data}
+        CDS_input = {**self.index, **self.initial_data}
         source = ColumnDataSource(CDS_input)
         return source
 
     def _build_table(self):
         columns = [TableColumn(field=i, title=i, width=1000) for i in
-                       self.specs.index.keys()]
+                       self.index.keys()]
         columns.extend([TableColumn(field=i, title=i) for i in
                         self.initial_data.keys()])
         data_table = DataTable(source=self._CDS, columns=columns,
-                               width=self.specs.width,
-                               height=self.specs.height, index_position=None)
+                               width=self.width,
+                               height=self.height, index_position=None)
         return data_table
 
     def _set_table(self):
-        fig = column(row(Spacer(width=15), Div(text=self.specs.title),
+        fig = column(row(Spacer(width=15), Div(text=self.title),
                          height=22), self._table)
         return fig
 
@@ -182,24 +191,31 @@ class ResourceRatioTable:
 
 class ConsoleOutput:
     def __init__(self, specs):
-        self.name = specs.name
-        self.specs = specs
+        self.name = FigureNames.console_output
+        self.title = "Console"
+        self.text = 'Initial<p>'
+        self.width = 50
+        self.height = 20
+        self.textbox_width = 400
+        self.textbox_height = 380
+        # Division by 2 so it fits well and within what bokeh uses.
+        self.html_height = int(self.textbox_height / 2)
         self._paragraph = self._build_paragraph()
-        self.figure = self._set_textbox(specs)
+        self.figure = self._set_textbox()
         self._rollover_count = 20
 
     def _build_paragraph(self):
         _style = dict()
         _style['overflow-y'] = 'auto'
-        _style['height'] = '{}px'.format(self.specs.html_height)
-        paragraph = Div(width=self.specs.textbox_width,
-                        height=self.specs.textbox_height,
-                        text=self.specs.text, style=_style)
+        _style['height'] = '{}px'.format(self.html_height)
+        paragraph = Div(width=self.textbox_width,
+                        height=self.textbox_height,
+                        text=self.text, style=_style)
         return paragraph
 
-    def _set_textbox(self, specs):
-        fig = column(row(Spacer(height=specs.height)),
-                     row(Spacer(width=specs.width), self._paragraph))
+    def _set_textbox(self):
+        fig = column(row(Spacer(height=self.height)),
+                     row(Spacer(width=self.width), self._paragraph))
         return fig
 
     def figure_update(self, add_line):

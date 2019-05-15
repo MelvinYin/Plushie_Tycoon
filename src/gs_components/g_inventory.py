@@ -1,4 +1,4 @@
-from global_config import Res, Prod, Properties, WarehouseStats
+from global_config import Res, Prod, WarehouseStats
 from collections import defaultdict
 
 class InventoryCostCalculator:
@@ -7,19 +7,14 @@ class InventoryCostCalculator:
 
     def _calculate_total_weight(self):
         weight = 0
-        for item, count in self.inventory.items():
-            # tier not in Properties
-            if item in Properties:
-                per_item_weight = Properties[item].weight
-                weight += count * per_item_weight
+        for item, per_unit_weight in self.inventory['weight'].items():
+            weight += per_unit_weight * self.inventory[item]
         return weight
 
     def _calculate_total_volume(self):
         volume = 0
-        for item, count in self.inventory.items():
-            if item in Properties:
-                per_item_volume = Properties[item].volume
-                volume += count * per_item_volume
+        for item, per_unit_volume in self.inventory['volume'].items():
+            volume += per_unit_volume * self.inventory[item]
         return volume
 
     def storage_cost(self):
@@ -35,9 +30,9 @@ class InventoryCostCalculator:
     def movein_cost(self, item, quantity):
         cost = 0
         tier = self.inventory['tier']
-        weight = Properties[item].weight
+        weight = self.inventory['weight'][item]
         cost += WarehouseStats.movein_cost[tier].weight * weight
-        volume = Properties[item].volume
+        volume = self.inventory['volume'][item]
         cost += WarehouseStats.movein_cost[tier].volume * volume
         cost *= quantity
         return cost
@@ -45,9 +40,9 @@ class InventoryCostCalculator:
     def moveout_cost(self, item, quantity):
         cost = 0
         tier = self.inventory['tier']
-        weight = Properties[item].weight
+        weight = self.inventory['weight'][item]
         cost += WarehouseStats.moveout_cost[tier].weight * weight
-        volume = Properties[item].volume
+        volume = self.inventory['volume'][item]
         cost += WarehouseStats.moveout_cost[tier].volume * volume
         cost *= quantity
         return cost

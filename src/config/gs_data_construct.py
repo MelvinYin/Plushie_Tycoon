@@ -66,7 +66,7 @@ class GSConstructor:
         assert isinstance(inventory, dict)
         # This is no longer true, because warehouse_tier is inside inventory now
         # assert set(inventory.keys()) == {*set(res_members), *set(prod_members)}
-        assert isinstance(list(inventory.values())[0], int)
+        # assert isinstance(list(inventory.values())[0], int)
         self.inventory = inventory
         return True
 

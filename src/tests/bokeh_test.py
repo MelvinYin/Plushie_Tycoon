@@ -45,7 +45,7 @@ def individual_figure():
     return layout
 
 def figureset():
-    fig = FigureSet(mock_init, FigureSpecs())
+    fig = FigureSet(mock_init)
     fig.figure_update(mock_update1)
     fig.figure_update(mock_update2)
     fig.figure_update(mock_update3)

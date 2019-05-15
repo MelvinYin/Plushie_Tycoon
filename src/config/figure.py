@@ -12,6 +12,20 @@ class FigureNames(Enum):
     budget = auto()
     console_output = auto()
     res_ratio_table = auto()
+    move_cost_table = auto()
+
+class MoveCostTableSpecs:
+    def __init__(self):
+        self.name = FigureNames.move_cost_table
+        self.title = "Production Resource Ratios"
+        self.index = dict()
+        self.index['Resource'] = [i.name for i in res_members]
+        self.data = dict()
+        self.data[Prod.aisha.name] = [3, 6, 2, 1]
+        self.data[Prod.beta.name] = [1, 4, 1, 2]
+        self.data[Prod.chama.name] = [2, 5, 1, 4]
+        self.width = 200
+        self.height = 200
 
 class ResourceRatioTableSpecs:
     def __init__(self):
@@ -111,24 +125,36 @@ class BudgetSpecs:
         colormap = dict(budget=Category10[10][0])
         return colormap
 
-class FigureSetSpecs:
-    def __init__(self):
-        self.figures_per_row = 3
+# class FigureSetSpecs:
+#     def __init__(self):
+#         self.figures_per_row = 3
 
-class FigureIndividualSpecs:
-    def __init__(self):
-        self.inventory_res = InventoryResSpecs()
-        self.inventory_prod = InventoryProdSpecs()
-        self.price_res = PriceResSpecs()
-        self.price_prod = PriceProdSpecs()
-        self.budget = BudgetSpecs()
-        self.console = ConsoleOutputSpecs()
-        self.res_ratio_table = ResourceRatioTableSpecs()
+FigSpecs = dict()
+FigSpecs['inventory_res'] = InventoryResSpecs()
+FigSpecs['inventory_prod'] = InventoryProdSpecs()
+FigSpecs['price_res'] = PriceResSpecs()
+FigSpecs['price_prod'] = PriceProdSpecs()
+FigSpecs['budget'] = BudgetSpecs()
+FigSpecs['console'] = ConsoleOutputSpecs()
+FigSpecs['res_ratio_table'] = ResourceRatioTableSpecs()
+FigSpecs['move_cost_table'] = ResourceRatioTableSpecs()
 
-class FigureSpecs:
-    def __init__(self):
-        self.set = FigureSetSpecs()
-        self.figure = FigureIndividualSpecs()
+
+# class FigureIndividualSpecs:
+#     def __init__(self):
+#         self.inventory_res = InventoryResSpecs()
+#         self.inventory_prod = InventoryProdSpecs()
+#         self.price_res = PriceResSpecs()
+#         self.price_prod = PriceProdSpecs()
+#         self.budget = BudgetSpecs()
+#         self.console = ConsoleOutputSpecs()
+#         self.res_ratio_table = ResourceRatioTableSpecs()
+#         self.move_cost_table = MoveCostTableSpecs()
+#
+# class FigureSpecs:
+#     def __init__(self):
+#         self.set = FigureSetSpecs()
+#         self.figure = FigureIndividualSpecs()
 
 """
 UNUSED
