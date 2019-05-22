@@ -1,5 +1,6 @@
 import sys
 import os
+import inspect
 
 """
 Internal Logging Reference:
@@ -30,7 +31,8 @@ Example:    "Class/Type {class/type} does not have __add__ attribute."
 Continue?:  No
 
 """
-log_filename = "/home/melvin/Desktop/pipeline2/Prod-Disp/src/log.txt"
+src_path = inspect.currentframe().f_code.co_filename.rsplit("/", maxsplit=1)[0]
+log_filename = f"{src_path}log.txt"
 
 def log(msg, curframe):
     # sys.path doesn't work when using bokeh server
@@ -40,6 +42,8 @@ def log(msg, curframe):
     filepath = filepath.split("/", maxsplit=7)[-1]
     logged_msg = filepath + ": " + funcname + " <" + str(msg)\
                  + ">\n\n"
+    if not os.path.isfile(log_filename):
+        open(log_filename, 'w').close()
 
     with open(log_filename, 'a') as file:
         file.write(logged_msg)
