@@ -4,7 +4,7 @@ import inspect
 from logs import log
 from global_config import Res, Prod, FigureNames, FigSpecs
 from .individual_figure import IndividualFigure, ConsoleOutput, \
-    ResourceRatioTable, MoveCostTable
+    ResourceRatioTable, ItemPropertiesTable
 
 class FigureSet:
     def __init__(self, full_data):
@@ -30,9 +30,11 @@ class FigureSet:
         FigInstances.append(
             IndividualFigure(full_data[FigureNames.budget],
                              FigSpecs['budget']))
-        FigInstances.append(ConsoleOutput(FigSpecs['console']))
+        FigInstances.append(ConsoleOutput())
         FigInstances.append(ResourceRatioTable(
             full_data[FigureNames.res_ratio_table]))
+        FigInstances.append(ItemPropertiesTable(
+            full_data[FigureNames.item_properties_table]))
         # FigInstances.append(MoveCostTable(
         #     full_data[FigureNames.move_cost_table],
         #     specs.move_cost_table))

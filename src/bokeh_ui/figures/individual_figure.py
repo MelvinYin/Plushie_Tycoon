@@ -32,7 +32,7 @@ from bokeh.layouts import row, column
 from bokeh.models.widgets import Paragraph, Div
 from bokeh.models.layouts import WidgetBox, Spacer
 from bokeh.models import DataTable, TableColumn, ColumnDataSource
-from global_config import FigureNames, res_members, Prod
+from global_config import FigureNames, res_members, Prod, prod_members
 
 class MoveCostTable:
     def __init__(self, initial_data, specs):
@@ -101,6 +101,88 @@ class MoveCostTable:
         self._check_add_data(add_data)
         to_patch = dict()
         for category, ratios in add_data.items():
+            for i, ratio in enumerate(ratios):
+                to_patch[category] = [(i, ratio)]
+        self._CDS.patch(to_patch)
+        return
+
+
+class ItemPropertiesTable:
+    def __init__(self, inventory):
+        self.name = FigureNames.item_properties_table
+        self.title = "Properties"
+        self.index = self._get_index(inventory)
+        self.properties = self._get_properties(inventory)
+        self.width = 200
+        self.height = 200
+
+        self._CDS = self._set_CDS()
+        self._table = self._build_table()
+        self.figure = self._set_table()
+
+    def _get_properties(self, inventory):
+        weights = inventory.get('weight')
+        volumes = inventory.get('volume')
+        assert tuple(weights.keys()) == tuple(volumes.keys())
+        properties = dict()
+        properties['Weight'] = list(weights.values())
+        properties['Volume'] = list(volumes.values())
+        return properties
+
+    def _get_index(self, inventory):
+        weights = inventory.get('weight')
+        categories = list(weights.keys())
+        index = dict()
+        index['Item'] = list(i.name for i in categories)
+        for col in index.values():
+            for i in col:
+                assert isinstance(i, str)
+        return index
+
+    def _check_initial_data(self, data):
+        assert data
+        assert isinstance(data, dict)
+        ratio_len = None
+        for category, ratios in data.items():
+            assert isinstance(category, str)
+            if ratio_len is None:
+                ratio_len = len(ratios)
+                assert ratio_len > 0
+            else:
+                assert len(ratios) == ratio_len
+            for ratio in ratios:
+                assert isinstance(ratio, int), ratio
+                assert ratio >= 0
+        return True
+
+    def _set_CDS(self):
+        for i in self.properties.keys():
+            assert isinstance(i, str)
+        CDS_input = {**self.index, **self.properties}
+        source = ColumnDataSource(CDS_input)
+        return source
+
+    def _build_table(self):
+        columns = [TableColumn(field=i, title=i, width=800) for i in
+                       self.index.keys()]
+        columns.extend([TableColumn(field=i, title=i) for i in
+                        self.properties.keys()])
+        data_table = DataTable(source=self._CDS, columns=columns,
+                               width=self.width,
+                               height=self.height, index_position=None)
+        return data_table
+
+    def _set_table(self):
+        fig = column(row(Spacer(width=15), Div(text=self.title), height=22),
+                     self._table)
+        return fig
+
+    def figure_update(self, inventory):
+        # add_data = self._convert_input(add_data)
+        # self._check_add_data(add_data)
+        properties = self._get_properties(inventory)
+        to_patch = dict()
+        for category, ratios in properties.items():
             for i, ratio in enumerate(ratios):
                 to_patch[category] = [(i, ratio)]
         self._CDS.patch(to_patch)
@@ -190,7 +272,7 @@ class ResourceRatioTable:
         return
 
 class ConsoleOutput:
-    def __init__(self, specs):
+    def __init__(self):
         self.name = FigureNames.console_output
         self.title = "Console"
         self.text = 'Initial<p>'

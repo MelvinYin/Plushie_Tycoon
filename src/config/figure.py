@@ -13,6 +13,7 @@ class FigureNames(Enum):
     console_output = auto()
     res_ratio_table = auto()
     move_cost_table = auto()
+    item_properties_table = auto()
 
 class MoveCostTableSpecs:
     def __init__(self):

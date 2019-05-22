@@ -88,6 +88,8 @@ class UIInterface:
 
         adapted[FigureNames.res_ratio_table] = GSDataClass.production['res_ratio']
 
+        adapted[FigureNames.item_properties_table] = GSDataClass.inventory
+
         adapted = dict(adapted)
         log(adapted, inspect.currentframe())
         return adapted

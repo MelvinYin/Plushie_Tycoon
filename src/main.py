@@ -6,6 +6,8 @@ Necessary boxes to display:
 
 """
 
+# todo: individual_figure.py, CDS.
+
 import sys
 from utils.sys_path_adder import folders_to_add
 from bokeh.plotting import show, curdoc
@@ -36,7 +38,7 @@ def main():
     callback = ge.callback
     init_data = ge.return_data()
     log(init_data, inspect.currentframe())
-    # callback(dict(command=Func.buy, category=Res.cloth, quantity=10))
+    # callback(dict(command=Func.buy, category=Res.something, quantity=10))
 
     ui = UIInterface(init_data, callback, UISpecs())
     # calls = mocked_transaction_callbacks()
