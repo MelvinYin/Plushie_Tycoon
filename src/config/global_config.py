@@ -1,18 +1,16 @@
 import pandas as pd
 try:
-    from .base import Res, Prod, Func, res_members, prod_members, \
-        ProductionTuple, BudgetTuple
-    from .figure import FigureSpecs, FigureNames
-    from .widget import WidgetSpecs
+    from .base import Res, Prod, Func, res_members, prod_members
+    from .figure import FigureNames, FigSpecs
+    from .widget import WidgetSpecs, WidgetNames
     from .gs_data_construct import GSConstructor
-    from .properties import Properties, WarehouseStats
+    from .properties import WarehouseStats
 except:
-    from base import Res, Prod, Func, res_members, prod_members, \
-        ProductionTuple, BudgetTuple
-    from figure import FigureSpecs, FigureNames
-    from widget import WidgetSpecs
+    from base import Res, Prod, Func, res_members, prod_members
+    from figure import FigureNames, FigSpecs
+    from widget import WidgetSpecs, WidgetNames
     from gs_data_construct import GSConstructor
-    from properties import Properties, WarehouseStats
+    from properties import WarehouseStats
 
 _history_columns = ["res", "prod", "res_price", "prod_price", "budget", "production",
            "time_steps", "current_call"]
@@ -25,6 +23,10 @@ UI_FAIL = hash('UI_FAIL')
 
 save_folder = "../save/"
 save_file_name = "game_save.pkl"
+
+class FigureSpecs:
+    def __init__(self):
+        return
 
 class UISpecs:
     def __init__(self):
@@ -43,7 +45,7 @@ Others
 Func
 Production
 
-prod_res_cost
+res_ratio
 hours_needed
 cost_per_hour
 starting_budget

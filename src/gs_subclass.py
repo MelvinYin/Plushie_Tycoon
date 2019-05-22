@@ -1,7 +1,8 @@
 from inventory import Inventory
 from market import Market
+from g_market import GlobalMarket
+from g_inventory import GlobalInventory
 from budget import BudgetBackend
-from production import ProductionBackend
 
 class Budget:
     def __init__(self, init_values):
@@ -31,24 +32,29 @@ class Budget:
 
 class Production:
     def __init__(self, init_values):
-        self.production = ProductionBackend(init_values)
+        self.hours_needed = init_values['hours_needed']
+        self.cost_per_hour = init_values['cost_per_hour']
+        self.res_ratio = init_values['res_ratio']
 
     def set_values(self, values):
-        self.production.hours_needed = values['hours_needed']
-        self.production.cost_per_hour = values['cost_per_hour']
-        self.production.res_cost = values['res_cost']
+        self.hours_needed = values['hours_needed']
+        self.cost_per_hour = values['cost_per_hour']
+        self.res_ratio = values['res_ratio']
         return True
 
     def get(self, category):
-        return self.production.get_cost(category)
+        hours = self.hours_needed[category]
+        materials = self.res_ratio[category]
+        cost = hours * self.cost_per_hour
+        return cost, materials
 
     def return_data(self):
         # I may not want to return everything from production, so hard-coded
         # instead of looping from self.production.__dict__ for now
         data = dict()
-        data['hours_needed'] = self.production.hours_needed
-        data['cost_per_hour'] = self.production.cost_per_hour
-        data['res_cost'] = self.production.res_cost
+        data['hours_needed'] = self.hours_needed
+        data['cost_per_hour'] = self.cost_per_hour
+        data['res_ratio'] = self.res_ratio
         return data
 
 

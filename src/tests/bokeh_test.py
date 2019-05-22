@@ -45,7 +45,7 @@ def individual_figure():
     return layout
 
 def figureset():
-    fig = FigureSet(mock_init, FigureSpecs())
+    fig = FigureSet(mock_init)
     fig.figure_update(mock_update1)
     fig.figure_update(mock_update2)
     fig.figure_update(mock_update3)
@@ -75,7 +75,7 @@ def widgetset():
         log(os.getcwd(), "from widget callback")
         log(os.getcwd(), command_to_run)
         return
-    layout_w = WidgetSet(widget_callback, UISpecs().widgets).layout
+    layout_w = WidgetSet(widget_callback).layout
     return layout_w
 
 def ui():

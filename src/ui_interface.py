@@ -79,12 +79,16 @@ class UIInterface:
                 adapted[FigureNames.price_prod][key.name] = [values]
         adapted[FigureNames.price_prod]['time'] = [GSDataClass.time]
 
-        budget = GSDataClass.budget.budget
+        budget = GSDataClass.budget
         adapted[FigureNames.budget]['budget'] = [budget]
         adapted[FigureNames.budget]['time'] = [GSDataClass.time]
 
         console_log = GSDataClass.console
         adapted[FigureNames.console_output]['console'] = console_log
+
+        adapted[FigureNames.res_ratio_table] = GSDataClass.production['res_ratio']
+
+        adapted[FigureNames.item_properties_table] = GSDataClass.inventory
 
         adapted = dict(adapted)
         log(adapted, inspect.currentframe())

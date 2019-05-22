@@ -38,9 +38,7 @@ class GSM:
 
         GS_dataclass = GSConstructor()
         _production = gs_tmp.production.return_data()
-        GS_dataclass.load_production(_production['hours_needed'],
-                                     _production['res_cost'],
-                                     _production['cost_per_hour'])
+        GS_dataclass.load_production(_production)
         _budget = gs_tmp.budget.return_data()
         GS_dataclass.load_budget(_budget['budget'])
 
@@ -52,6 +50,7 @@ class GSM:
         GS_dataclass.time = gs_tmp.current_time
         self.console_text += gs_tmp.format_output()
         GS_dataclass.load_console(self.console_text)
+
         assert GS_dataclass.is_complete()
         return GS_dataclass
 

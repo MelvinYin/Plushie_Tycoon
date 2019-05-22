@@ -1,4 +1,12 @@
-# TODO: Finish up console_output for warehouse, in test.py
+"""
+Necessary boxes to display:
+1. Make tables, to show res consumption to make (perm)
+2. Current prices for each item?
+3. Current movein/moveout cost per item per unit
+
+"""
+
+# todo: individual_figure.py, CDS.
 
 import sys
 from utils.sys_path_adder import folders_to_add
@@ -30,7 +38,7 @@ def main():
     callback = ge.callback
     init_data = ge.return_data()
     log(init_data, inspect.currentframe())
-    # callback(dict(command=Func.buy, category=Res.cloth, quantity=10))
+    # callback(dict(command=Func.buy, category=Res.something, quantity=10))
 
     ui = UIInterface(init_data, callback, UISpecs())
     # calls = mocked_transaction_callbacks()

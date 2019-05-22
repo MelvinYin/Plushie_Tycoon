@@ -43,8 +43,8 @@ class Production(Enum):
 res_members = [Res.cloth, Res.stuff, Res.accessory, Res.packaging]
 prod_members = [Prod.aisha, Prod.beta, Prod.chama]
 
-ProductionTuple = namedtuple('ProductionTuple',
-                             'hours_needed prod_res_cost cost_per_hour')
-BudgetTuple = namedtuple('BudgetTuple', 'budget')
+# ProductionTuple = namedtuple('ProductionTuple',
+#                              'hours_needed res_ratio cost_per_hour')
+# BudgetTuple = namedtuple('BudgetTuple', 'budget')
 
 ###############################################################################

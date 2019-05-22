@@ -1,37 +1,3 @@
-def bound(value, low, high):
-    return max(low, min(high, value))
-
-
-import matplotlib.pyplot as plt
-
-class GenericBuyer:
-    def __init__(self):
-        self.grad = 0.7
-        self.min_q = 20
-        self.max_p = 70
-        self.max_q = 60
-
-    def __call__(self, p):
-        return self.demand_formula(p)
-
-    def demand_formula(self, p):
-        q = self.min_q + (self.max_p - p) * self.grad
-        return bound(q, self.min_q, self.max_q)
-
-class GenericSeller:
-    def __init__(self):
-        self.grad = 0.7
-        self.min_q = 30
-        self.min_p = 10
-        self.max_q = 60
-
-    def __call__(self, p):
-        return self.supply_formula(p)
-
-    def supply_formula(self, p):
-        q = self.min_q + (p - self.min_p) * self.grad
-        return bound(q, self.min_q, self.max_q)
-
 class ConsolidatedBuyer:
     def __init__(self, buyers):
         self.buyers = buyers
@@ -72,6 +38,22 @@ class LinearSeller:
         quantity = self.ref_q + (price - self.ref_p) * self.grad
         return quantity
 
+class Mybuyer:
+    def __init__(self, quantity):
+        self.quantity = quantity
+        pass
+
+    def buy(self, price):
+        return self.quantity
+
+class Myseller:
+    def __init__(self, quantity):
+        self.quantity = quantity
+        pass
+
+    def sell(self, price):
+        return self.quantity
+
 class ClearingHouse:
     """
     For now, we sell all q at equilibrium q.
@@ -89,11 +71,11 @@ class ClearingHouse:
     later on.
     """
     price_resolution = 0.1
-    def __init__(self, buyer=GenericBuyer(), seller=GenericSeller()):
+    def __init__(self, buyer, seller):
         self.seller = seller
         self.buyer = buyer
 
-    def __call__(self):
+    def clear(self):
         """ possibility of a endless loop...? from while.
         """
         current_price = 0
@@ -115,39 +97,57 @@ class ClearingHouse:
                 break
         return current_price
 
-class Mybuyer:
-    def __init__(self):
-        pass
+class IndividualMarket:
+    def __init__(self, price):
+        self.current_price = price
 
-    def buy(self, price):
-        return 10
+    def get(self):
+        return self.current_price
 
+    def clear_market(self, buy_q, sell_q):
+        buyers = [Mybuyer(buy_q), LinearBuyer(ref_p=self.current_price)]
+        sellers = [Myseller(sell_q), LinearSeller(ref_p=self.current_price)]
+        con_buy = ConsolidatedBuyer(buyers)
+        con_sell = ConsolidatedSeller(sellers)
+        house = ClearingHouse(buyer=con_buy, seller=con_sell)
+        price = int(house.clear())
+        self.current_price = price
+        return price
 
-class Myseller:
-    def __init__(self):
-        pass
+class GlobalMarket:
+    """
+    Does not have external setting capabilities unless value
+    explicitly called.
+    """
+    def __init__(self, market_values):
+        self.ind_markets = self.spawn_markets(market_values)
 
-    def sell(self, price):
-        return 8
+    def spawn_markets(self, values):
+        ind_markets = dict()
+        for category, price in values.items():
+            ind_market = IndividualMarket(price)
+            ind_markets[category] = ind_market
+        return ind_markets
 
+    def set_values(self, values):
+        for category, price in values.items():
+            self.ind_markets[category].current_price = price
+        return True
 
-def main():
-    buyers = [Mybuyer(), LinearBuyer()]
-    sellers = [Myseller(), LinearSeller()]
-    con_buy = ConsolidatedBuyer(buyers)
-    con_sell = ConsolidatedSeller(sellers)
-    house = ClearingHouse(buyer=con_buy, seller=con_sell)
+    def return_data(self):
+        output = dict()
+        for category, ind_market in self.ind_markets.items():
+            output[category] = ind_market.get()
+        return output
 
-# buyer = GenericBuyer()
-# seller = GenericSeller()
-# input_p = range(100)
-# demand_q = [buyer(p) for p in input_p]
-# supply_q = [seller(p) for p in input_p]
-#
-# plt.figure(1)
-# plt.plot(demand_q, "x-", color="r")
-# plt.plot(supply_q, "x-", color="g")
-# plt.show()
+    def get(self, category):
+        return self.ind_markets[category].get()
 
-
-
+    def clear_market(self, callstack):
+        # assumed callstack already collapsed
+        # this should be organised by category => action => quantity
+        for category, remainder in callstack.items():
+            buy_q = remainder['buy']
+            sell_q = remainder['sell']
+            self.ind_markets[category].clear_market(buy_q, sell_q)
+        return True

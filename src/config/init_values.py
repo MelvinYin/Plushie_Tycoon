@@ -1,20 +1,18 @@
 import pandas as pd
 from collections import namedtuple
 try:
-    from .base import Res, Prod, Func, res_members, prod_members, \
-        ProductionTuple, BudgetTuple
-    from .figure import FigureSpecs, FigureNames
+    from .base import Res, Prod, Func, res_members, prod_members
+    from .figure import FigureNames
     from .widget import WidgetSpecs
 except:
-    from base import Res, Prod, Func, res_members, prod_members, \
-        ProductionTuple, BudgetTuple
-    from figure import FigureSpecs, FigureNames
+    from base import Res, Prod, Func, res_members, prod_members
+    from figure import FigureNames
     from widget import WidgetSpecs
 
 class InitValues:
     def __init__(self):
         self.production = self._get_production()
-        self.budget = self._get_budget()
+        self.budget = 1000000
         self.inventory = self._get_inventory()
         self.market = self._get_market()
         self.console = self._get_console()
@@ -24,25 +22,30 @@ class InitValues:
         return "Init_text<p>"
 
     def _get_production(self):
-        prod_res_cost = self._get_prod_res_cost()
+        res_ratio = self._get_res_ratio()
         hours_needed = self._get_hours_needed()
         cost_per_hour = self._get_cost_per_hour()
-        production = ProductionTuple(hours_needed, prod_res_cost, cost_per_hour)
-        assert isinstance(prod_res_cost, pd.DataFrame)
+        production = dict()
+        production['hours_needed'] = hours_needed
+        production['res_ratio'] = res_ratio
+        production['cost_per_hour'] = cost_per_hour
+        # production = ProductionTuple(hours_needed, res_ratio,
+        #                              cost_per_hour)
+        assert isinstance(res_ratio, pd.DataFrame)
         assert isinstance(hours_needed, dict)
         assert set(hours_needed.keys()) == set(prod_members)
         assert isinstance(list(hours_needed.values())[0], int)
         assert isinstance(cost_per_hour, int)
         return production
 
-    def _get_prod_res_cost(self):
+    def _get_res_ratio(self):
         # Plushie Resource Cost
-        _res_cost = dict()
-        _res_cost[Prod.aisha] = [3, 6, 2, 1]
-        _res_cost[Prod.beta] = [1, 4, 1, 2]
-        _res_cost[Prod.chama] = [2, 5, 1, 4]
-        prod_res_cost = pd.DataFrame(_res_cost, index=res_members)
-        return prod_res_cost
+        _res_ratio = dict()
+        _res_ratio[Prod.aisha] = [3, 6, 2, 1]
+        _res_ratio[Prod.beta] = [1, 4, 1, 2]
+        _res_ratio[Prod.chama] = [2, 5, 1, 4]
+        res_ratio = pd.DataFrame(_res_ratio, index=res_members)
+        return res_ratio
 
     def _get_hours_needed(self):
         # Plushie Production Hours
@@ -60,17 +63,36 @@ class InitValues:
     def _get_budget(self):
         # Starting Statistics
         _init_budget = 1000000
-        budget = BudgetTuple(_init_budget)
-        assert isinstance(_init_budget, int)
-        return budget
+        return _init_budget
 
     def _get_inventory(self):
         res = self._get_res()
         prod = self._get_prod()
         inventory = {**res, **prod}
         inventory['tier'] = 0
+
+        weights = dict()
+        weights[Res.cloth] = 0.1
+        weights[Res.stuff] = 0.05
+        weights[Res.accessory] = 0.3
+        weights[Res.packaging] = 0.05
+        weights[Prod.aisha] = 0.05
+        weights[Prod.beta] = 0.05
+        weights[Prod.chama] = 0.05
+        inventory['weight'] = weights
+
+        volume = dict()
+        volume[Res.cloth] = 0.1
+        volume[Res.stuff] = 0.3
+        volume[Res.accessory] = 0.01
+        volume[Res.packaging] = 0.2
+        volume[Prod.aisha] = 0.2
+        volume[Prod.beta] = 0.2
+        volume[Prod.chama] = 0.2
+        inventory['volume'] = volume
+
         assert isinstance(inventory, dict)
-        assert isinstance(list(inventory.values())[0], int)
+        # assert isinstance(list(inventory.values())[0], int)
         return inventory
 
     def _get_market(self):
