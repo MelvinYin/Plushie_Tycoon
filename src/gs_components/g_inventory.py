@@ -72,7 +72,7 @@ class GlobalInventory:
             if quantity > 0:
                 cost += self.movein_cost(category, quantity)
             elif quantity < 0:
-                cost += self.moveout_cost(category, quantity)
+                cost += self.moveout_cost(category, abs(quantity))
         assert cost >= 0
         return cost
 
