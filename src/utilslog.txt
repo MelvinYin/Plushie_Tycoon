@@ -1,32 +1,12 @@
-main.py: main <<gs_data_construct.GSConstructor object at 0x7fe159abab38>>
+main.py: main <<ui_transporter.Transporter object at 0x7f5ab2623668>>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000000], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 1002, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+ui_interface.py: callback <{'command': <Func.buy: 1>, 'category': <Res.cloth: 1>, 'quantity': 12}>
 
-ui_interface.py: callback <{'command': <Func.sell: 2>, 'category': <Res.stuff: 2>, 'quantity': 12}>
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab2491f60>>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [990], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000239.979], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 990, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab2491f60>>
 
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [990], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000239.979], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 990, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [990], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000239.979], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 990, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [990], 'accessory': [1003], 'packaging': [1004], 'time': [0], 'xs': [1]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1013], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0], 'xs': [1]}>
 
 bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0], 'xs': [1]}>
 
@@ -34,29 +14,15 @@ bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [
 
 bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0], 'xs': [1]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [1000239.979], 'time': [0], 'xs': [1]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999879.988], 'time': [0], 'xs': [1]}>
 
-ui_interface.py: callback <{'command': <Func.sell: 2>, 'category': <Res.stuff: 2>, 'quantity': 12}>
+ui_interface.py: callback <{'command': <Func.buy: 1>, 'category': <Res.cloth: 1>, 'quantity': 12}>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [978], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000479.9580000001], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 978, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab246ddd8>>
 
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [978], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000479.9580000001], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 978, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab246ddd8>>
 
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [978], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000479.9580000001], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 978, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [978], 'accessory': [1003], 'packaging': [1004], 'time': [0], 'xs': [2]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1025], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [0], 'xs': [2]}>
 
 bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0], 'xs': [2]}>
 
@@ -64,335 +30,357 @@ bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [
 
 bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0], 'xs': [2]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [1000479.9580000001], 'time': [0], 'xs': [2]}>
-
-ui_interface.py: callback <{'command': <Func.sell: 2>, 'category': <Res.stuff: 2>, 'quantity': 12}>
-
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [966], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000719.9370000002], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 966, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [966], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000719.9370000002], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 966, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [966], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000719.9370000002], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 966, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [966], 'accessory': [1003], 'packaging': [1004], 'time': [0], 'xs': [3]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0], 'xs': [3]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0], 'xs': [3]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0], 'xs': [3]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [1000719.9370000002], 'time': [0], 'xs': [3]}>
-
-ui_interface.py: callback <{'command': <Func.sell: 2>, 'category': <Res.stuff: 2>, 'quantity': 12}>
-
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000959.9160000002], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000959.9160000002], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [0]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0]}, <FigureNames.budget: 5>: {'budget': [1000959.9160000002], 'time': [0]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [0], 'xs': [4]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [0], 'xs': [4]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [0], 'xs': [4]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [0], 'xs': [4]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [1000959.9160000002], 'time': [0], 'xs': [4]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999759.976], 'time': [0], 'xs': [2]}>
 
 ui_interface.py: callback <{'command': <Func.next: 7>}>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [999706.05335], 'time': [1]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab246dc50>>
 
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [999706.05335], 'time': [1]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab246dc50>>
 
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [999706.05335], 'time': [1]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1025], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [1], 'xs': [3]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [1], 'xs': [5]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [1], 'xs': [3]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [1], 'xs': [5]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [23], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [1], 'xs': [3]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [1], 'xs': [5]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [1], 'xs': [3]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [1], 'xs': [5]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999706.05335], 'time': [1], 'xs': [5]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999442.00535], 'time': [1], 'xs': [3]}>
 
 ui_interface.py: callback <{'command': <Func.next: 7>}>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [2]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [2]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [2]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [2]}, <FigureNames.budget: 5>: {'budget': [999700.1066999999], 'time': [2]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab23ec320>>
 
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [2]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [2]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [2]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [2]}, <FigureNames.budget: 5>: {'budget': [999700.1066999999], 'time': [2]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab23ec320>>
 
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [2]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [2]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [2]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [2]}, <FigureNames.budget: 5>: {'budget': [999700.1066999999], 'time': [2]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1025], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [2], 'xs': [4]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [2], 'xs': [6]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [2], 'xs': [4]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [2], 'xs': [6]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [23], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [2], 'xs': [4]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [2], 'xs': [6]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [2], 'xs': [4]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [2], 'xs': [6]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999700.1066999999], 'time': [2], 'xs': [6]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999436.0107], 'time': [2], 'xs': [4]}>
 
 ui_interface.py: callback <{'command': <Func.next: 7>}>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999694.1600499998], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab246ddd8>>
 
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999694.1600499998], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab246ddd8>>
 
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999694.1600499998], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 954, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1025], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [3], 'xs': [5]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [954], 'accessory': [1003], 'packaging': [1004], 'time': [3], 'xs': [7]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3], 'xs': [5]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3], 'xs': [7]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [23], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [3], 'xs': [5]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3], 'xs': [7]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3], 'xs': [5]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3], 'xs': [7]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999694.1600499998], 'time': [3], 'xs': [7]}>
-
-ui_interface.py: callback <{'command': <Func.sell: 2>, 'category': <Res.stuff: 2>, 'quantity': 12}>
-
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [942], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999622.1390499999], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 942, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [942], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999622.1390499999], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 942, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [942], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999622.1390499999], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 942, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [942], 'accessory': [1003], 'packaging': [1004], 'time': [3], 'xs': [8]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3], 'xs': [8]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3], 'xs': [8]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3], 'xs': [8]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999622.1390499999], 'time': [3], 'xs': [8]}>
-
-ui_interface.py: callback <{'command': <Func.sell: 2>, 'category': <Res.stuff: 2>, 'quantity': 12}>
-
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999550.1180499999], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999550.1180499999], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999550.1180499999], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [3], 'xs': [9]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3], 'xs': [9]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3], 'xs': [9]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3], 'xs': [9]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999550.1180499999], 'time': [3], 'xs': [9]}>
-
-ui_interface.py: callback <{'command': <Func.sell: 2>, 'category': <Res.stuff: 2>, 'quantity': 12}>
-
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [918], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999478.09705], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 918, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [918], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999478.09705], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 918, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [918], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999478.09705], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 918, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [918], 'accessory': [1003], 'packaging': [1004], 'time': [3], 'xs': [10]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3], 'xs': [10]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3], 'xs': [10]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3], 'xs': [10]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999478.09705], 'time': [3], 'xs': [10]}>
-
-ui_interface.py: callback <{'command': <Func.buy: 1>, 'category': <Res.stuff: 2>, 'quantity': 12}>
-
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999550.07605], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.buy Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999550.07605], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.buy Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [3]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3]}, <FigureNames.budget: 5>: {'budget': [999550.07605], 'time': [3]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.buy Res.stuff 12<br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [3], 'xs': [11]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [3], 'xs': [11]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [-6], 'accessory': [18], 'packaging': [12], 'time': [3], 'xs': [11]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [3], 'xs': [11]}>
-
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999550.07605], 'time': [3], 'xs': [11]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999430.01605], 'time': [3], 'xs': [5]}>
 
 ui_interface.py: callback <{'command': <Func.next: 7>}>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [4]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [4]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-19], 'accessory': [18], 'packaging': [12], 'time': [4]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [4]}, <FigureNames.budget: 5>: {'budget': [999232.2133999998], 'time': [4]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.buy Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 36<br />Func.buy Res.stuff 12<br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab24d1e10>>
 
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [4]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [4]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-19], 'accessory': [18], 'packaging': [12], 'time': [4]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [4]}, <FigureNames.budget: 5>: {'budget': [999232.2133999998], 'time': [4]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.buy Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 36<br />Func.buy Res.stuff 12<br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab24d1e10>>
 
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [4]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [4]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-19], 'accessory': [18], 'packaging': [12], 'time': [4]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [4]}, <FigureNames.budget: 5>: {'budget': [999232.2133999998], 'time': [4]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.buy Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 36<br />Func.buy Res.stuff 12<br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1025], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [4], 'xs': [6]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [4], 'xs': [12]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [4], 'xs': [6]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [4], 'xs': [12]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [23], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [4], 'xs': [6]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [-19], 'accessory': [18], 'packaging': [12], 'time': [4], 'xs': [12]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [4], 'xs': [6]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [4], 'xs': [12]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999424.0214], 'time': [4], 'xs': [6]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999232.2133999998], 'time': [4], 'xs': [12]}>
+ui_interface.py: callback <{'command': <Func.buy: 1>, 'category': <Res.cloth: 1>, 'quantity': 12}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab24730b8>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab24730b8>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1037], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [4], 'xs': [7]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [4], 'xs': [7]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [23], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [4], 'xs': [7]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [4], 'xs': [7]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999148.0094], 'time': [4], 'xs': [7]}>
+
+ui_interface.py: callback <{'command': <Func.buy: 1>, 'category': <Res.cloth: 1>, 'quantity': 12}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab24e9cc0>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab24e9cc0>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1049], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [4], 'xs': [8]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [4], 'xs': [8]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [23], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [4], 'xs': [8]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [4], 'xs': [8]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [998871.9974], 'time': [4], 'xs': [8]}>
+
+ui_interface.py: callback <{'command': <Func.buy: 1>, 'category': <Res.cloth: 1>, 'quantity': 12}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab27343c8>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab27343c8>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1061], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [4], 'xs': [9]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [4], 'xs': [9]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [23], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [4], 'xs': [9]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [4], 'xs': [9]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [998595.9854], 'time': [4], 'xs': [9]}>
 
 ui_interface.py: callback <{'command': <Func.next: 7>}>
 
-ui_interface.py: _adapt_for_ui <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [5]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [5]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-19], 'accessory': [18], 'packaging': [12], 'time': [5]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [5]}, <FigureNames.budget: 5>: {'budget': [999226.2667499997], 'time': [5]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.buy Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 36<br />Func.buy Res.stuff 12<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab2473cf8>>
 
-ui_interface.py: callback <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [5]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [5]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-19], 'accessory': [18], 'packaging': [12], 'time': [5]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [5]}, <FigureNames.budget: 5>: {'budget': [999226.2667499997], 'time': [5]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.buy Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 36<br />Func.buy Res.stuff 12<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab2473cf8>>
 
-bokeh_ui/figures/figureset.py: figure_update <{<FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [5]}, <FigureNames.inventory_prod: 2>: {'aisha': [101], 'beta': [102], 'chama': [103], 'time': [5]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuff': [-19], 'accessory': [18], 'packaging': [12], 'time': [5]}, <FigureNames.price_prod: 4>: {'aisha': [80], 'beta': [76], 'chama': [52], 'time': [5]}, <FigureNames.budget: 5>: {'budget': [999226.2667499997], 'time': [5]}, <FigureNames.console_output: 6>: {'console': '<br />Command called: Func.start  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 48<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.sell Res.stuff 12<br /><br />Command called: Func.buy Res.stuff 12<br /><br />[End of turn]<br />Commands implemented: <br />Func.sell Res.stuff 36<br />Func.buy Res.stuff 12<br />End.<br />Command called: Func.next  <br /><br />[End of turn]<br />Commands implemented: <br />End.<br />Command called: Func.next  <br />'}, <FigureNames.res_ratio_table: 7>:                Prod.aisha  Prod.beta  Prod.chama
-Res.cloth               3          1           2
-Res.stuff               6          4           5
-Res.accessory           2          1           1
-Res.packaging           1          2           4, <FigureNames.item_properties_table: 9>: {<Res.cloth: 1>: 1001, <Res.stuff: 2>: 930, <Res.accessory: 3>: 1003, <Res.packaging: 4>: 1004, <Prod.aisha: 1>: 101, <Prod.beta: 2>: 102, <Prod.chama: 3>: 103, 'tier': 0, 'weight': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.05, <Res.accessory: 3>: 0.3, <Res.packaging: 4>: 0.05, <Prod.aisha: 1>: 0.05, <Prod.beta: 2>: 0.05, <Prod.chama: 3>: 0.05}, 'volume': {<Res.cloth: 1>: 0.1, <Res.stuff: 2>: 0.3, <Res.accessory: 3>: 0.01, <Res.packaging: 4>: 0.2, <Prod.aisha: 1>: 0.2, <Prod.beta: 2>: 0.2, <Prod.chama: 3>: 0.2}}}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1061], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [5], 'xs': [10]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuff': [930], 'accessory': [1003], 'packaging': [1004], 'time': [5], 'xs': [13]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [5], 'xs': [10]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [5], 'xs': [13]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [5], 'xs': [10]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10], 'stuff': [-19], 'accessory': [18], 'packaging': [12], 'time': [5], 'xs': [13]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [5], 'xs': [10]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [5], 'xs': [13]}>
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997869.9547499999], 'time': [5], 'xs': [10]}>
 
-bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999226.2667499997], 'time': [5], 'xs': [13]}>
+ui_interface.py: callback <{'command': <Func.next: 7>}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab2473e80>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab2473e80>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1061], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [6], 'xs': [11]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [6], 'xs': [11]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [6], 'xs': [11]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [6], 'xs': [11]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997863.8880999999], 'time': [6], 'xs': [11]}>
+
+ui_interface.py: callback <{'command': <Func.next: 7>}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab2401550>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab2401550>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1061], 'stuff': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [7], 'xs': [12]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [103], 'time': [7], 'xs': [12]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [7], 'xs': [12]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [7], 'xs': [12]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997857.8214499998], 'time': [7], 'xs': [12]}>
+
+ui_interface.py: callback <{'command': <Func.make: 3>, 'category': <Prod.chama: 3>, 'quantity': 12}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab2365ef0>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab2365ef0>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1037], 'stuff': [942], 'accessory': [991], 'packaging': [956], 'time': [7], 'xs': [13]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [115], 'time': [7], 'xs': [13]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [7], 'xs': [13]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [7], 'xs': [13]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [996561.5988499998], 'time': [7], 'xs': [13]}>
+
+ui_interface.py: callback <{'command': <Func.make: 3>, 'category': <Prod.chama: 3>, 'quantity': 12}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab246d9e8>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab246d9e8>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1013], 'stuff': [882], 'accessory': [979], 'packaging': [908], 'time': [7], 'xs': [14]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [127], 'time': [7], 'xs': [14]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [7], 'xs': [14]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [7], 'xs': [14]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [995265.3762499999], 'time': [7], 'xs': [14]}>
+
+ui_interface.py: callback <{'command': <Func.next: 7>}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab23906a0>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab23906a0>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1013], 'stuff': [882], 'accessory': [979], 'packaging': [908], 'time': [8], 'xs': [15]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [127], 'time': [8], 'xs': [15]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [8], 'xs': [15]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [8], 'xs': [15]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [995259.7907999998], 'time': [8], 'xs': [15]}>
+
+ui_interface.py: callback <{'command': <Func.make: 3>, 'category': <Prod.chama: 3>, 'quantity': 12}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab24453c8>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab24453c8>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [989], 'stuff': [822], 'accessory': [967], 'packaging': [860], 'time': [8], 'xs': [16]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [139], 'time': [8], 'xs': [16]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [8], 'xs': [16]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [8], 'xs': [16]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [993963.5681999999], 'time': [8], 'xs': [16]}>
+
+ui_interface.py: callback <{'command': <Func.make: 3>, 'category': <Prod.chama: 3>, 'quantity': 12}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab242fbe0>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab242fbe0>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [965], 'stuff': [762], 'accessory': [955], 'packaging': [812], 'time': [8], 'xs': [17]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [151], 'time': [8], 'xs': [17]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [8], 'xs': [17]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [8], 'xs': [17]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [992667.3455999999], 'time': [8], 'xs': [17]}>
+
+ui_interface.py: callback <{'command': <Func.back: 8>}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab2445e80>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab2445e80>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [989], 'stuff': [822], 'accessory': [967], 'packaging': [860], 'time': [8], 'xs': [18]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [139], 'time': [8], 'xs': [18]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [8], 'xs': [18]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [8], 'xs': [18]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [993963.5681999999], 'time': [8], 'xs': [18]}>
+
+ui_interface.py: callback <{'command': <Func.make: 3>, 'category': <Prod.chama: 3>, 'quantity': 12}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab236ebe0>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab236ebe0>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [965], 'stuff': [762], 'accessory': [955], 'packaging': [812], 'time': [8], 'xs': [19]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [151], 'time': [8], 'xs': [19]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [8], 'xs': [19]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [8], 'xs': [19]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [992667.3455999999], 'time': [8], 'xs': [19]}>
+
+ui_interface.py: callback <{'command': <Func.make: 3>, 'category': <Prod.chama: 3>, 'quantity': 12}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab236e7f0>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab236e7f0>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [941], 'stuff': [702], 'accessory': [943], 'packaging': [764], 'time': [8], 'xs': [20]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [163], 'time': [8], 'xs': [20]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [8], 'xs': [20]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [8], 'xs': [20]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [991371.1229999999], 'time': [8], 'xs': [20]}>
+
+ui_interface.py: callback <{'command': <Func.back: 8>}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab24d1470>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab24d1470>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [965], 'stuff': [762], 'accessory': [955], 'packaging': [812], 'time': [8], 'xs': [21]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [151], 'time': [8], 'xs': [21]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [8], 'xs': [21]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [8], 'xs': [21]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [992667.3455999999], 'time': [8], 'xs': [21]}>
+
+ui_interface.py: callback <{'command': <Func.back: 8>}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab24735c0>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab24735c0>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [989], 'stuff': [822], 'accessory': [967], 'packaging': [860], 'time': [8], 'xs': [22]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [139], 'time': [8], 'xs': [22]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [8], 'xs': [22]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [8], 'xs': [22]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [993963.5681999999], 'time': [8], 'xs': [22]}>
+
+ui_interface.py: callback <{'command': <Func.next: 7>}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab24d16a0>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab24d16a0>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [989], 'stuff': [822], 'accessory': [967], 'packaging': [860], 'time': [9], 'xs': [23]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [139], 'time': [9], 'xs': [23]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [9], 'xs': [23]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [9], 'xs': [23]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [993957.7541499998], 'time': [9], 'xs': [23]}>
+
+ui_interface.py: callback <{'command': <Func.next: 7>}>
+
+ui_interface.py: callback <<ui_transporter.Transporter object at 0x7f5ab242f2b0>>
+
+bokeh_ui/figures/figureset.py: figure_update <<ui_transporter.Transporter object at 0x7f5ab242f2b0>>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [989], 'stuff': [822], 'accessory': [967], 'packaging': [860], 'time': [10], 'xs': [24]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [101], 'beta': [102], 'chama': [139], 'time': [10], 'xs': [24]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [43], 'stuff': [20], 'accessory': [18], 'packaging': [12], 'time': [10], 'xs': [24]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [80], 'beta': [76], 'chama': [52], 'time': [10], 'xs': [24]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [993951.7174999998], 'time': [10], 'xs': [24]}>
 

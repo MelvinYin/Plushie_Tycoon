@@ -36,7 +36,9 @@ def main():
     remake_log()
     ge = GE()
     callback = ge.callback
-    init_data = ge.return_data()
+    # this call should preferably be calling from callback. Then we can say
+    # all callbacks for ge are from ui.
+    init_data = ge.return_data_for_ui()
     log(init_data, inspect.currentframe())
     # callback(dict(command=Func.buy, category=Res.something, quantity=10))
 

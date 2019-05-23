@@ -71,6 +71,9 @@ class GE:
     def return_data(self):
         return self.GS.return_data()
 
+    def return_data_for_ui(self):
+        return self.GS.return_data_for_ui()
+
     def _default_callback(self, call):
         func_signal = call['command']
         func = self.func_map[func_signal]
@@ -80,7 +83,7 @@ class GE:
             self.GS.reverse_call()
             log("InsufficientQuantityError\n\n", inspect.currentframe())
             raise RepeatUIAction
-        GS_update = self.GS.return_data()
+        GS_update = self.GS.return_data_for_ui()
         # log("GE Call: {}\n Return: {}".format(call, GS_update),
         #     inspect.currentframe())
         return GS_update, return_value

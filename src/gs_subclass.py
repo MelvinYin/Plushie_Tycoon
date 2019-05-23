@@ -27,7 +27,7 @@ class Budget:
 
     def return_data(self):
         data = dict()
-        data['budget'] = self.get()
+        data['budget'] = [self.get()]
         return data
 
 class Production:
