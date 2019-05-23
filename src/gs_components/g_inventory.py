@@ -17,6 +17,16 @@ class InventoryCostCalculator:
             volume += per_unit_volume * self.inventory[item]
         return volume
 
+    def get_storage_cost_for(self, item):
+        cost = 0
+        tier = self.inventory['tier']
+        weight = self.inventory['weight'][item]
+        volume = self.inventory['volume'][item]
+        cost += WarehouseStats.store_cost[tier].weight * weight
+        cost += WarehouseStats.store_cost[tier].volume * volume
+        assert cost >= 0
+        return cost
+
     def storage_cost(self):
         cost = 0
         tier = self.inventory['tier']
@@ -53,6 +63,46 @@ class GlobalInventory:
         self.calculator = InventoryCostCalculator(inventory_values)
         self.movements = defaultdict(int)
 
+    def get_index(self):
+        index = list(self.inventory['weight'].keys())
+        return index
+
+    def get_all_movein_cost(self, factor=1):
+        costs = dict()
+        index = self.get_index()
+        for category in index:
+            costs[category] = self.get_movein_cost(category) * factor
+        return costs
+
+    def get_all_moveout_cost(self, factor=1):
+        costs = dict()
+        index = self.get_index()
+        for category in index:
+            costs[category] = self.get_moveout_cost(category) * factor
+        return costs
+
+    def get_all_storage_cost(self, factor=1):
+        costs = dict()
+        index = self.get_index()
+        for category in index:
+            costs[category] = self.get_storage_cost(category) * factor
+        return costs
+
+    def get_movein_cost(self, item):
+        value = self.calculator.movein_cost(item, 1)
+        assert value >= 0
+        return value
+
+    def get_moveout_cost(self, item):
+        value = self.calculator.moveout_cost(item, 1)
+        assert value >= 0
+        return value
+
+    def get_storage_cost(self, item):
+        value = self.calculator.get_storage_cost_for(item)
+        assert value >= 0
+        return value
+
     def reset_movements(self):
         self.movements = defaultdict(int)
         return True
@@ -72,7 +122,7 @@ class GlobalInventory:
             if quantity > 0:
                 cost += self.movein_cost(category, quantity)
             elif quantity < 0:
-                cost += self.moveout_cost(category, quantity)
+                cost += self.moveout_cost(category, abs(quantity))
         assert cost >= 0
         return cost
 

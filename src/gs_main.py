@@ -3,6 +3,7 @@ from gs import GS
 from global_config import Func, GSConstructor
 from gs_global import GSGlobal
 from copy import deepcopy
+from ui_transporter import Transporter
 
 nested_defaultdict = defaultdict(lambda: defaultdict(int))
 
@@ -29,6 +30,11 @@ class GSM:
             callstack[action][category] += quantity
         return callstack
 
+    def return_data_for_ui(self):
+        tp = Transporter()
+        tp.load(self.gs_current)
+        return tp
+
     def return_data(self):
         if self._return_from_global:
             gs_tmp = self.gsm
@@ -40,7 +46,7 @@ class GSM:
         _production = gs_tmp.production.return_data()
         GS_dataclass.load_production(_production)
         _budget = gs_tmp.budget.return_data()
-        GS_dataclass.load_budget(_budget['budget'])
+        GS_dataclass.load_budget(_budget['budget'][0])
 
         _inventory = gs_tmp.inventory.return_data()
         GS_dataclass.load_inventory(_inventory)

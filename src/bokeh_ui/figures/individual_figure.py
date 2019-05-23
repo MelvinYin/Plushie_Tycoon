@@ -28,29 +28,52 @@ Because when loading data, we
 """
 from logs import log
 import inspect
+from enum import Enum
 from bokeh.layouts import row, column
 from bokeh.models.widgets import Paragraph, Div
 from bokeh.models.layouts import WidgetBox, Spacer
 from bokeh.models import DataTable, TableColumn, ColumnDataSource
 from global_config import FigureNames, res_members, Prod, prod_members
 
-class MoveCostTable:
-    def __init__(self, initial_data, specs):
-        self.name = specs.name
-        initial_data = self._convert_input(initial_data)
-        self._check_initial_data(initial_data)
-        self.initial_data = initial_data
-        self.specs = specs
+def enum_to_str(enum_arr):
+    # This should convert enum representations to displayed names in UI.
+    # Currently rather trivial since we take the .name, but it can eventually
+    # be something more fancy. Maybe.
+    if isinstance(enum_arr, Enum):
+        return enum_arr.name
+    str_arr = list(i.name for i in enum_arr)
+    return str_arr
+
+
+class ItemCostTable:
+    def __init__(self, data):
+        self.name = FigureNames.item_cost_table
+        self.title = "Item Cost Table"
+        self.data = data
+        self.width = 200
+        self.height = 200
+
         self._CDS = self._set_CDS()
         self._table = self._build_table()
         self.figure = self._set_table()
 
-    def _convert_input(self, data):
-        resource_ratios = dict()
-        for category in data:
-            resource_ratios[category.name] = \
-                [int(i) for i in data[category].values]
-        return resource_ratios
+    def _get_fields(self, inventory):
+        movein_cost = inventory.get_all_movein_cost()
+        moveout_cost = inventory.get_all_moveout_cost()
+        storage_cost = inventory.get_all_storage_cost()
+        assert tuple(movein_cost.keys()) == tuple(moveout_cost.keys()) \
+               == tuple(storage_cost.keys())
+        fields = dict()
+        fields['Movein'] = list(movein_cost.values())
+        fields['Moveout'] = list(moveout_cost.values())
+        fields['Storage'] = list(storage_cost.values())
+        return fields
+
+    def _get_index(self, inventory):
+        index_in_enum = inventory.get_index()
+        index = dict()
+        index['Item/1000'] = enum_to_str(index_in_enum)
+        return index
 
     def _check_initial_data(self, data):
         assert data
@@ -67,40 +90,31 @@ class MoveCostTable:
                 assert ratio >= 0
         return True
 
-    def _check_add_data(self, data):
-        assert data
-        for category, ratios in data.items():
-            assert category in self.initial_data
-            assert len(ratios) == len(self.initial_data[category])
-            for ratio in ratios:
-                assert ratio >= 0
-        return True
-
     def _set_CDS(self):
-        CDS_input = {**self.specs.index, **self.initial_data}
-        source = ColumnDataSource(CDS_input)
+        source = ColumnDataSource(self.data['CDS'])
         return source
 
     def _build_table(self):
-        columns = [TableColumn(field=i, title=i, width=1000) for i in
-                       self.specs.index.keys()]
-        columns.extend([TableColumn(field=i, title=i) for i in
-                        self.initial_data.keys()])
+        columns = [TableColumn(field=i, title=i) for i in
+                        self.data['CDS'].keys()]
+        columns[0].width = 700
         data_table = DataTable(source=self._CDS, columns=columns,
-                               width=self.specs.width,
-                               height=self.specs.height, index_position=None)
+                               width=self.width,
+                               height=self.height, index_position=None)
         return data_table
 
     def _set_table(self):
-        fig = column(row(Spacer(width=15), Div(text=self.specs.title),
-                         height=22), self._table)
+        fig = column(row(Spacer(width=15), Div(text=self.title), height=22),
+                     self._table)
         return fig
 
-    def figure_update(self, add_data):
-        add_data = self._convert_input(add_data)
-        self._check_add_data(add_data)
+    def figure_update(self, data):
+        # todo: also need to settle using transporter
+        # add_data = self._convert_input(add_data)
+        # self._check_add_data(add_data)
         to_patch = dict()
-        for category, ratios in add_data.items():
+        for category, ratios in self.data['CDS'].items():
+            assert isinstance(category, str)
             for i, ratio in enumerate(ratios):
                 to_patch[category] = [(i, ratio)]
         self._CDS.patch(to_patch)
@@ -108,11 +122,10 @@ class MoveCostTable:
 
 
 class ItemPropertiesTable:
-    def __init__(self, inventory):
+    def __init__(self, data):
         self.name = FigureNames.item_properties_table
         self.title = "Properties"
-        self.index = self._get_index(inventory)
-        self.properties = self._get_properties(inventory)
+        self.data = data
         self.width = 200
         self.height = 200
 
@@ -130,13 +143,9 @@ class ItemPropertiesTable:
         return properties
 
     def _get_index(self, inventory):
-        weights = inventory.get('weight')
-        categories = list(weights.keys())
+        index_in_enum = inventory.get_index()
         index = dict()
-        index['Item'] = list(i.name for i in categories)
-        for col in index.values():
-            for i in col:
-                assert isinstance(i, str)
+        index['Item'] = enum_to_str(index_in_enum)
         return index
 
     def _check_initial_data(self, data):
@@ -156,17 +165,13 @@ class ItemPropertiesTable:
         return True
 
     def _set_CDS(self):
-        for i in self.properties.keys():
-            assert isinstance(i, str)
-        CDS_input = {**self.index, **self.properties}
-        source = ColumnDataSource(CDS_input)
+        source = ColumnDataSource(self.data['CDS'])
         return source
 
     def _build_table(self):
-        columns = [TableColumn(field=i, title=i, width=800) for i in
-                       self.index.keys()]
-        columns.extend([TableColumn(field=i, title=i) for i in
-                        self.properties.keys()])
+        columns = [TableColumn(field=i, title=i) for i in
+                        self.data['CDS'].keys()]
+        columns[0].width = 400
         data_table = DataTable(source=self._CDS, columns=columns,
                                width=self.width,
                                height=self.height, index_position=None)
@@ -177,12 +182,11 @@ class ItemPropertiesTable:
                      self._table)
         return fig
 
-    def figure_update(self, inventory):
+    def figure_update(self, data):
         # add_data = self._convert_input(add_data)
         # self._check_add_data(add_data)
-        properties = self._get_properties(inventory)
         to_patch = dict()
-        for category, ratios in properties.items():
+        for category, ratios in data['CDS'].items():
             for i, ratio in enumerate(ratios):
                 to_patch[category] = [(i, ratio)]
         self._CDS.patch(to_patch)
@@ -192,18 +196,10 @@ class ResourceRatioTable:
     def __init__(self, initial_data):
         self.name = FigureNames.res_ratio_table
         self.title = "Production Resource Ratios"
-        self.index = dict()
-        self.index['Resource'] = [i.name for i in res_members]
-        self.data = dict()
-        self.data[Prod.aisha.name] = [3, 6, 2, 1]
-        self.data[Prod.beta.name] = [1, 4, 1, 2]
-        self.data[Prod.chama.name] = [2, 5, 1, 4]
+        self.data = initial_data
         self.width = 200
         self.height = 200
 
-        initial_data = self._convert_input(initial_data)
-        self._check_initial_data(initial_data)
-        self.initial_data = initial_data
         self._CDS = self._set_CDS()
         self._table = self._build_table()
         self.figure = self._set_table()
@@ -215,42 +211,15 @@ class ResourceRatioTable:
                 [int(i) for i in data[category].values]
         return resource_ratios
 
-    def _check_initial_data(self, data):
-        assert data
-        assert isinstance(data, dict)
-        ratio_len = None
-        for category, ratios in data.items():
-            assert isinstance(category, str)
-            if ratio_len is None:
-                ratio_len = len(ratios)
-                assert ratio_len > 0
-            else:
-                assert len(ratios) == ratio_len
-            for ratio in ratios:
-                assert isinstance(ratio, int), ratio
-                assert ratio >= 0
-        return True
-
-    def _check_add_data(self, data):
-        assert data
-        for category, ratios in data.items():
-            assert category in self.initial_data
-            assert len(ratios) == len(self.initial_data[category])
-            for ratio in ratios:
-                assert isinstance(ratio, int)
-                assert ratio >= 0
-        return True
-
     def _set_CDS(self):
-        CDS_input = {**self.index, **self.initial_data}
-        source = ColumnDataSource(CDS_input)
+        source = ColumnDataSource(self.data['CDS'])
         return source
 
     def _build_table(self):
-        columns = [TableColumn(field=i, title=i, width=1000) for i in
-                       self.index.keys()]
-        columns.extend([TableColumn(field=i, title=i) for i in
-                        self.initial_data.keys()])
+        # todo: see if self.data can be replaced by a CDS call instead
+        columns = [TableColumn(field=i, title=i) for i in
+                        self.data['CDS'].keys()]
+        columns[0].width = 800
         data_table = DataTable(source=self._CDS, columns=columns,
                                width=self.width,
                                height=self.height, index_position=None)
@@ -262,17 +231,16 @@ class ResourceRatioTable:
         return fig
 
     def figure_update(self, add_data):
-        add_data = self._convert_input(add_data)
-        self._check_add_data(add_data)
+        # add_data = self._convert_input(add_data)
         to_patch = dict()
-        for category, ratios in add_data.items():
+        for category, ratios in add_data['CDS'].items():
             for i, ratio in enumerate(ratios):
                 to_patch[category] = [(i, ratio)]
         self._CDS.patch(to_patch)
         return
 
 class ConsoleOutput:
-    def __init__(self):
+    def __init__(self, input_):
         self.name = FigureNames.console_output
         self.title = "Console"
         self.text = 'Initial<p>'
@@ -301,44 +269,26 @@ class ConsoleOutput:
         return fig
 
     def figure_update(self, add_line):
-        self._paragraph.text = add_line['console']
+        self._paragraph.text = add_line
         return True
 
 class IndividualFigure:
     def __init__(self, initial_data, specs):
-        self._check_initial_data(initial_data)
         self.CDS = self._create_initial_CDS(initial_data)
         self.tick_label_map = self._get_initial_ticks_label_mapping()
         self.figure = self._set_initial_figure(specs)
         self._update_xaxis()
         self.name = specs.name
 
-    def _check_initial_data(self, data):
-        assert data
-        num_values = None
-        for value in data.values():
-            assert isinstance(value, list)
-            if num_values is None:
-                num_values = len(value)
-                continue
-            assert len(value) == num_values
-        return True
-
-    def _check_add_data(self, data):
-        assert data
-        for value in data.values():
-            assert isinstance(value, list)
-            assert len(value) == 1
-        return True
-
     def _create_initial_CDS(self, initial_data):
         """
         Dict sent to CDS should have list instead of tuple as values, otherwise
         CDS.stream will fail.
         """
+        # add test? to make sure all values used in this class is in init_data
         num_values = len(next(iter(initial_data.values())))
         initial_data['xs'] = list(range(num_values))
-        CDS = ColumnDataSource(data=copy.deepcopy(initial_data))
+        CDS = ColumnDataSource(initial_data)
         return CDS
 
     def _get_initial_ticks_label_mapping(self):

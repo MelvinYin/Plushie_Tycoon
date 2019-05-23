@@ -2,51 +2,45 @@ from bokeh.layouts import row, column
 import inspect
 
 from logs import log
-from global_config import Res, Prod, FigureNames, FigSpecs
+from global_config import Res, Prod, FigSpecs
+from global_config import FigureNames as FigNms
 from .individual_figure import IndividualFigure, ConsoleOutput, \
-    ResourceRatioTable, ItemPropertiesTable
+    ResourceRatioTable, ItemPropertiesTable, ItemCostTable
+from ui_transporter import Transporter
 
 class FigureSet:
     def __init__(self, full_data):
         self.FigInstances = self._construct_individual_figures(full_data)
-        self._couple_range()
         self.figures_per_row = 3
         self.layout = self._get_figure_layout()
 
-    def _construct_individual_figures(self, full_data):
-        FigInstances = []
-        FigInstances.append(
-            IndividualFigure(full_data[FigureNames.inventory_res],
-                             FigSpecs['inventory_res']))
-        FigInstances.append(
-            IndividualFigure(full_data[FigureNames.inventory_prod],
-                             FigSpecs['inventory_prod']))
-        FigInstances.append(
-            IndividualFigure(full_data[FigureNames.price_res],
-                             FigSpecs['price_res']))
-        FigInstances.append(
-            IndividualFigure(full_data[FigureNames.price_prod],
-                             FigSpecs['price_prod']))
-        FigInstances.append(
-            IndividualFigure(full_data[FigureNames.budget],
-                             FigSpecs['budget']))
-        FigInstances.append(ConsoleOutput())
-        FigInstances.append(ResourceRatioTable(
-            full_data[FigureNames.res_ratio_table]))
-        FigInstances.append(ItemPropertiesTable(
-            full_data[FigureNames.item_properties_table]))
-        # FigInstances.append(MoveCostTable(
-        #     full_data[FigureNames.move_cost_table],
-        #     specs.move_cost_table))
-        return FigInstances
+    def _construct_individual_figures(self, tp, couple_range=True):
+        assert isinstance(tp, Transporter)
+        inv_res = IndividualFigure(tp.get(FigNms.inventory_res),
+                             FigSpecs['inventory_res'])
+        inv_prod = IndividualFigure(tp.get(FigNms.inventory_prod),
+                             FigSpecs['inventory_prod'])
+        pr_res = IndividualFigure(tp.get(FigNms.price_res),
+                                  FigSpecs['price_res'])
+        pr_prod = IndividualFigure(tp.get(FigNms.price_prod),
+                                   FigSpecs['price_prod'])
+        budget = IndividualFigure(tp.get(FigNms.budget), FigSpecs['budget'])
+        # couple range
+        if couple_range:
+            ref_x_range = inv_res.figure.x_range
+            inv_prod.figure.x_range = ref_x_range
+            pr_res.figure.x_range = ref_x_range
+            pr_prod.figure.x_range = ref_x_range
+            budget.figure.x_range = ref_x_range
 
-    def _couple_range(self):
-        ref_x_range = self.FigInstances[0].figure.x_range
-        self.FigInstances[1].figure.x_range = ref_x_range
-        self.FigInstances[2].figure.x_range = ref_x_range
-        self.FigInstances[3].figure.x_range = ref_x_range
-        self.FigInstances[4].figure.x_range = ref_x_range
-        return True
+        console = ConsoleOutput(tp.get(FigNms.console_output))
+        ratio_t = ResourceRatioTable(tp.get(FigNms.res_ratio_table))
+        prop_t = ItemPropertiesTable(tp.get(FigNms.item_properties_table))
+        cost_t = ItemCostTable(tp.get(FigNms.item_cost_table))
+
+        FigInsts = [inv_res, inv_prod, pr_res, pr_prod, budget, console,
+                    ratio_t, prop_t, cost_t]
+        return FigInsts
 
     def _get_figure_layout(self):
         row_layouts = []
@@ -61,11 +55,10 @@ class FigureSet:
         figure_layout = column(*row_layouts)
         return figure_layout
 
-    def figure_update(self, data_to_add):
-        log(data_to_add, inspect.currentframe())
-        for fig_label, value in data_to_add.items():
-            for FigInstance in self.FigInstances:
-                if FigInstance.name == fig_label:
-                    FigInstance.figure_update(value)
-                    break
+    def figure_update(self, tp):
+        log(tp, inspect.currentframe())
+        for FigInstance in self.FigInstances:
+            value = tp.get(FigInstance.name)
+            if value is not None:
+                FigInstance.figure_update(value)
         return True

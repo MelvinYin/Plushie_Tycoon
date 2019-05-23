@@ -1,4 +1,6 @@
+import inspect
 import pandas as pd
+import sys
 try:
     from .base import Res, Prod, Func, res_members, prod_members
     from .figure import FigureNames, FigSpecs
@@ -21,7 +23,11 @@ UI_FAIL = hash('UI_FAIL')
 
 # starting_time = 0
 
-save_folder = "../save/"
+src_path = inspect.currentframe().f_code.co_filename.rsplit("/", maxsplit=1)[0]
+if src_path not in sys.path:
+    sys.path.append(src_path)
+
+save_folder = f"{src_path}save/"
 save_file_name = "game_save.pkl"
 
 class FigureSpecs:

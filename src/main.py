@@ -20,11 +20,10 @@ folders_to_add(['p_model'], suffix='gs_components')
 
 from ui_interface import UIInterface
 import inspect
-from logs import log, remake_log
-import old_logs
+from logs import log, remake_log, set_logging_level
 from ge import GE
 
-old_logs.set_logging_level()
+set_logging_level()
 
 from global_config import UISpecs
 import random
@@ -32,11 +31,14 @@ from collections import defaultdict
 import copy
 random.seed(1)
 
+
 def main():
     remake_log()
     ge = GE()
     callback = ge.callback
-    init_data = ge.return_data()
+    # this call should preferably be calling from callback. Then we can say
+    # all callbacks for ge are from ui.
+    init_data = ge.return_data_for_ui()
     log(init_data, inspect.currentframe())
     # callback(dict(command=Func.buy, category=Res.something, quantity=10))
 

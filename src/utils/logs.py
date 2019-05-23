@@ -1,5 +1,9 @@
 import sys
 import os
+import inspect
+
+import logging
+import sys
 
 """
 Internal Logging Reference:
@@ -30,7 +34,60 @@ Example:    "Class/Type {class/type} does not have __add__ attribute."
 Continue?:  No
 
 """
-log_filename = "/home/melvin/Desktop/pipeline2/Prod-Disp/src/log.txt"
+
+low_pass_stream = sys.stdout
+high_pass_stream = sys.stderr
+log_lvl = logging.DEBUG  # "DEBUG" < "INFO" < "WARNING" < "ERROR" < "CRITICAL"
+log_filter_lvl = logging.WARNING  # Min inclusive log level for which messages will be sent to stderr
+
+def set_logging_level(low_pass_stream="stdout", high_pass_stream="stderr",
+                      log_lvl="debug", log_filter_lvl="warning"):
+    """
+    Allow output from logs below a certain level to be sent to stdout, and the rest to stderr (default for logging).
+    Changing stdout/stderr allows for sending to alternative StreamHandler.
+    Adapted from SO.
+    """
+
+    stream_mapping = dict(stdout=sys.stdout, stderr=sys.stderr)
+    log_lvl_mapping = dict(debug=logging.DEBUG, info=logging.INFO,
+                           warning=logging.WARNING, error=logging.ERROR,
+                           critical=logging.CRITICAL)
+    try:
+        low_pass_stream = stream_mapping[low_pass_stream]
+        high_pass_stream = stream_mapping[high_pass_stream]
+        log_lvl = log_lvl_mapping[log_lvl]
+        log_filter_lvl = log_lvl_mapping[log_filter_lvl]
+    except KeyError:
+        logging.error(f"Invalid Input {low_pass_stream}, {high_pass_stream}, "
+              f"{log_lvl}, {log_filter_lvl} for set_logging_level.")
+        raise Exception
+
+    class LessThanFilter(logging.Filter):
+        def __init__(self, max_level):
+            super(LessThanFilter).__init__()
+            self.max_level = max_level
+
+        def filter(self, record):
+            # Log if severity level lower than set level (LOG_FILTER_LVL).
+            return record.levelno < self.max_level
+
+    handler_low = logging.StreamHandler(low_pass_stream)
+    handler_low.addFilter(LessThanFilter(log_filter_lvl))  # Responsible for logs below LOG_FILTER_LVL
+    handler_low.setFormatter(logging.Formatter('%(levelname)s: %(message)s\n'))
+
+    handler_high = logging.StreamHandler(high_pass_stream)
+    handler_high.setLevel(log_filter_lvl)  # Responsible for logs LOG_FILTER_LVL and above
+    handler_high.setFormatter(logging.Formatter('%(levelname)s: %(message)s'))
+
+    logger = logging.getLogger()  # Get the root logger
+    logger.setLevel(log_lvl)  # Defaults to logging.WARNING
+    logger.addHandler(handler_low)
+    logger.addHandler(handler_high)
+    return
+
+
+src_path = inspect.currentframe().f_code.co_filename.rsplit("/", maxsplit=1)[0]
+log_filename = f"{src_path}log.txt"
 
 def log(msg, curframe):
     # sys.path doesn't work when using bokeh server
@@ -40,6 +97,8 @@ def log(msg, curframe):
     filepath = filepath.split("/", maxsplit=7)[-1]
     logged_msg = filepath + ": " + funcname + " <" + str(msg)\
                  + ">\n\n"
+    if not os.path.isfile(log_filename):
+        open(log_filename, 'w').close()
 
     with open(log_filename, 'a') as file:
         file.write(logged_msg)

@@ -12,7 +12,7 @@ class FigureNames(Enum):
     budget = auto()
     console_output = auto()
     res_ratio_table = auto()
-    move_cost_table = auto()
+    item_cost_table = auto()
     item_properties_table = auto()
 
 class MoveCostTableSpecs:
