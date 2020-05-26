@@ -1,9 +1,6 @@
-from init_values import InitValues
-from base import res_members, prod_members
-import pandas as pd
+from base import res_members
 from global_config import FigureNames, Prod, Res
 from enum import Enum
-from collections import defaultdict
 from copy import deepcopy
 
 def enum_to_str(enum_arr):
@@ -16,8 +13,6 @@ def enum_to_str(enum_arr):
     return str_arr
 
 class Transporter:
-    # todo: figure update for figures need individual formatting,
-    #  see figure_update in individual_figure.py
     def __init__(self):
         self.data = dict()
 
@@ -26,9 +21,9 @@ class Transporter:
         index_in_enum = GS.inventory.get_index()
         index = dict()
         index['Item'] = enum_to_str(index_in_enum)
-        movein_cost = GS.inventory.get_all_movein_cost(1000)
-        moveout_cost = GS.inventory.get_all_moveout_cost(1000)
-        storage_cost = GS.inventory.get_all_storage_cost(1000)
+        movein_cost = GS.inventory.get_all_movein_cost(1)
+        moveout_cost = GS.inventory.get_all_moveout_cost(1)
+        storage_cost = GS.inventory.get_all_storage_cost(1)
         assert tuple(movein_cost.keys()) == tuple(moveout_cost.keys()) \
                == tuple(storage_cost.keys())
         fields = dict()
@@ -65,7 +60,7 @@ class Transporter:
         self.data[FigureNames.res_ratio_table] = deepcopy(output)
 
     #     console_output
-        self.data[FigureNames.console_output] = 'init'
+        self.data[FigureNames.console_output] = ''
 
     #     inventory_res
         inv_values = GS.inventory.return_data()

@@ -68,7 +68,7 @@ class TextInputComponent:
         TI.height = specs['height']
         TI.placeholder = specs['text']
         TI.on_change("value", self.widget_callback)
-        TI.title = None
+        TI.title = ""
         return TI
 
 class TextBoxComponent:
@@ -90,7 +90,7 @@ class TransactionWidget:
         self.widget_callback = callback
         self._input_val = None
 
-        self.width = 350
+        self.width = 500
         self.height = 0
 
         self._input_box = TextInputComponent(self._TI_specs(), self._TI_callback)
@@ -103,8 +103,8 @@ class TransactionWidget:
 
     def _TI_specs(self):
         specs = dict()
-        specs['width'] = 1
-        specs['height'] = 1
+        specs['width'] = 100
+        specs['height'] = 10
         specs['text'] = 'Quantity'
         return specs
 
@@ -122,7 +122,7 @@ class TransactionWidget:
         labelmap["Make"] = Func.make
         specs = dict()
         specs['width'] = 400
-        specs['height'] = 17
+        specs['height'] = 30
         specs['labelmap'] = labelmap
         return specs
 
@@ -131,8 +131,8 @@ class TransactionWidget:
         labelmap["Res"] = Res
         labelmap["Prod"] = Prod
         specs = dict()
-        specs['width'] = 400
-        specs['height'] = 17
+        specs['width'] = 200
+        specs['height'] = 30
         specs['labelmap'] = labelmap
         return specs
 
@@ -147,14 +147,14 @@ class TransactionWidget:
         labelmap["chama"] = Prod.chama
         specs = dict()
         specs['width'] = 400
-        specs['height'] = 17
+        specs['height'] = 30
         specs['labelmap'] = labelmap
         return specs
 
     def _button_specs(self):
         specs = dict()
         specs['width'] = 50
-        specs['height'] = 0
+        specs['height'] = 30
         specs['text'] = 'Send'
         return specs
 
@@ -169,17 +169,17 @@ class TransactionWidget:
 
         rbg2 = dict(height=40,
                          width=20,  # Determine how close RBG is
-                         spacers=[0])
+                         spacers=[90])
 
-        rbg3 = dict(height=30,
+        rbg3 = dict(height=50,
                          width=0,  # Determine how close RBG is
                          spacers=[0])
 
-        ti = dict(height=17,  # Spacing between widget cols
+        ti = dict(height=50,  # Spacing between widget cols
                          width=10,  # Spacing between widgets in same row.
                          spacers=[0])
 
-        button = dict(height=0,  # Spacing between widget cols
+        button = dict(height=50,  # Spacing between widget cols
                          width=200,  # Spacing between widgets in same row.
                          spacers=[0])
 
@@ -251,8 +251,8 @@ class TransactionWidget:
 class ButtonWidget:
     def __init__(self, callback):
         self.name = WidgetNames.Action
-        self.width = 0
-        self.height = 0
+        self.width = 100
+        self.height = 50
         self.callback = callback
         self._header = TextBoxComponent(self._textbox_specs())
         self._RBG = RBGComponent(self._RBG_specs())
@@ -260,7 +260,7 @@ class ButtonWidget:
         self.layout = self._assemble_layout(self._layout_specs())
 
     def _layout_specs(self):
-        row0 = dict(height=30,
+        row0 = dict(height=10,
                     width=100,  # Determine how close RBG is
                     spacers=[0])
 
@@ -273,8 +273,8 @@ class ButtonWidget:
 
     def _button_specs(self):
         specs = dict()
-        specs['width'] = 0
-        specs['height'] = 0
+        specs['width'] = 50
+        specs['height'] = 30
         specs['text'] = 'Send'
         return specs
 
@@ -294,7 +294,7 @@ class ButtonWidget:
         labelmap["quit"] = Func.quit
         specs = dict()
         specs['width'] = 250
-        specs['height'] = 17
+        specs['height'] = 30
         specs['labelmap'] = labelmap
         return specs
 
@@ -322,3 +322,10 @@ class ButtonWidget:
         row1 = self._build_row(specs[1], [self._RBG, self._button])
         layout = column(row0, row1, width=self.width, height=self.height)
         return layout
+
+
+# def call(attr, old, new):
+#     return
+# x = ButtonWidget(call)
+# from bokeh.plotting import show
+# show(x.layout)

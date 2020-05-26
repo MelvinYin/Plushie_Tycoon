@@ -57,7 +57,7 @@ class ConsoleOutputSpecs:
 class InventoryResSpecs:
     def __init__(self):
         self.name = FigureNames.inventory_res
-        self.title = "Inventory Res"
+        self.title = "Inventory (Resources)"
         self.x_label = "Time"
         self.y_label = "Number"
         self.colormap = self._entry_to_color()
@@ -72,7 +72,7 @@ class InventoryResSpecs:
 class InventoryProdSpecs:
     def __init__(self):
         self.name = FigureNames.inventory_prod
-        self.title = "Inventory Prod"
+        self.title = "Inventory (Products)"
         self.x_label = "Time"
         self.y_label = "Number"
         self.colormap = self._entry_to_color()
@@ -87,7 +87,7 @@ class InventoryProdSpecs:
 class PriceResSpecs:
     def __init__(self):
         self.name = FigureNames.price_res
-        self.title = "Price Res"
+        self.title = "Resource Price"
         self.x_label = "Time"
         self.y_label = "Dollars"
         self.colormap = self._entry_to_color()
@@ -102,7 +102,7 @@ class PriceResSpecs:
 class PriceProdSpecs:
     def __init__(self):
         self.name = FigureNames.price_prod
-        self.title = "Price Prod"
+        self.title = "Product Price"
         self.x_label = "Time"
         self.y_label = "Dollars"
         self.colormap = self._entry_to_color()
@@ -117,7 +117,7 @@ class PriceProdSpecs:
 class BudgetSpecs:
     def __init__(self):
         self.name = FigureNames.budget
-        self.title = "Budget_"
+        self.title = "Budget"
         self.x_label = "Time"
         self.y_label = "Dollars"
         self.colormap = self._entry_to_color()

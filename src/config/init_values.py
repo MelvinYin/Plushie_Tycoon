@@ -12,7 +12,7 @@ except:
 class InitValues:
     def __init__(self):
         self.production = self._get_production()
-        self.budget = 1000000
+        self.budget = 10000
         self.inventory = self._get_inventory()
         self.market = self._get_market()
         self.console = self._get_console()

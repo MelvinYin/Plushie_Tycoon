@@ -14,7 +14,7 @@ class WarehouseTierSpecs:
     def __init__(self):
         self.name = 'WarehouseTier'
         self.title = "Console"
-        self.text = 'Initial<p>'
+        self.text = '<p>'
         self.width = 50
         self.height = 20
         self.textbox_width = 400

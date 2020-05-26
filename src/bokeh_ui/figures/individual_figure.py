@@ -50,8 +50,8 @@ class ItemCostTable:
         self.name = FigureNames.item_cost_table
         self.title = "Item Cost Table"
         self.data = data
-        self.width = 200
-        self.height = 200
+        self.width = 250
+        self.height = 220
 
         self._CDS = self._set_CDS()
         self._table = self._build_table()
@@ -104,7 +104,7 @@ class ItemCostTable:
         return data_table
 
     def _set_table(self):
-        fig = column(row(Spacer(width=15), Div(text=self.title), height=22),
+        fig = column(row(Spacer(width=15), Div(text=self.title), height=30),
                      self._table)
         return fig
 
@@ -126,8 +126,8 @@ class ItemPropertiesTable:
         self.name = FigureNames.item_properties_table
         self.title = "Properties"
         self.data = data
-        self.width = 200
-        self.height = 200
+        self.width = 250
+        self.height = 220
 
         self._CDS = self._set_CDS()
         self._table = self._build_table()
@@ -178,7 +178,7 @@ class ItemPropertiesTable:
         return data_table
 
     def _set_table(self):
-        fig = column(row(Spacer(width=15), Div(text=self.title), height=22),
+        fig = column(row(Spacer(width=15), Div(text=self.title), height=30),
                      self._table)
         return fig
 
@@ -197,8 +197,8 @@ class ResourceRatioTable:
         self.name = FigureNames.res_ratio_table
         self.title = "Production Resource Ratios"
         self.data = initial_data
-        self.width = 200
-        self.height = 200
+        self.width = 250
+        self.height = 220
 
         self._CDS = self._set_CDS()
         self._table = self._build_table()
@@ -227,7 +227,7 @@ class ResourceRatioTable:
 
     def _set_table(self):
         fig = column(row(Spacer(width=15), Div(text=self.title),
-                         height=22), self._table)
+                         height=30), self._table)
         return fig
 
     def figure_update(self, add_data):
@@ -243,7 +243,7 @@ class ConsoleOutput:
     def __init__(self, input_):
         self.name = FigureNames.console_output
         self.title = "Console"
-        self.text = 'Initial<p>'
+        self.text = '<p>'
         self.width = 50
         self.height = 20
         self.textbox_width = 400
