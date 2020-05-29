@@ -1,7 +1,6 @@
 ##Plushie Tycoon
 
 ####Description
-<p>
 Well, it's meant to copy that anyway. Inspired by Neopets' plushie tycoon
 business simulator game sometime in 2000s, the original game has the player
 adopting the role of a manager of a plushie business. Resources are bought
@@ -14,8 +13,7 @@ make 20 beta, are collated and executed all together at month's end, adding some
 fluctuations leading to you buying less than what you want, or selling
 plushies at a lower price than you expect. Yeah that's painful, since
 plushies can and often sell for below cost. 
-</p>
-<p>
+
 Here, we adopt something similar. The ultimate goal is to have a global
 market server, with client players connecting to it. Each client create a
 set of decisions, and these are sent to the market server per turn to decide
@@ -61,7 +59,7 @@ There's also things like move-in and move-out cost for items, storage cost
  cost, prices for such upgrades, and similar stuff on the production side.
 
 That's the eventual goal, for now it's nowhere near. 
-</p>
+
 
 ####Requirements
 Bokeh 2.0, although it should work from 0.13. Python 3.6+. To run, cd to
