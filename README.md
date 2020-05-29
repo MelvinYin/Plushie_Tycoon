@@ -1,6 +1,6 @@
-##Plushie Tycoon
+## Plushie Tycoon
 
-####Description
+#### Description
 Well, it's meant to copy that anyway. Inspired by Neopets' plushie tycoon
 business simulator game sometime in 2000s, the original game has the player
 adopting the role of a manager of a plushie business. Resources are bought
@@ -61,18 +61,18 @@ There's also things like move-in and move-out cost for items, storage cost
 That's the eventual goal, for now it's nowhere near. 
 
 
-####Requirements
+#### Requirements
 Bokeh 2.0, although it should work from 0.13. Python 3.6+. To run, cd to
 project directory, in conda env run bokeh serve --show src. This executes
 main.py in src. 
 
-####How To Use
+#### How To Use
 Select Buy/Sell/Make, select Resource/Res or Product/Prod, and select item
 . Key in quantity, and click send. Next on the other side ends the turn. Back
 roll back uncommitted changes, so once you select Next you can't undo. Save
 and Load works locally, maybe. Quit is meant to quit. 
   
-####Detailed Description
+#### Detailed Description
 GE is game engine, GS is game state. GE implements commands like buy and sell
 , GS stores current state information such as inventory and market prices
 , and implements certain backend and maintenance methods. Each player has
@@ -90,7 +90,7 @@ uncommitted changes (only in local), to implement back function. Parameters
 such as resource ratios, storage cost, kept static for now
 . UI settles ui, using bokeh. 
  
-####Todo List
+#### Todo List
 In chronological order:
 1. Migration of backend to Java, keeping frontend as python for now, using
  py4j to interface between the two. This requires simplifying certain
