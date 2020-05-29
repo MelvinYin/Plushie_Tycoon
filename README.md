@@ -1,4 +1,4 @@
-## Plushie Tycoon
+### Plushie Tycoon
 
 #### Description
 Well, it's meant to copy that anyway. Inspired by Neopets' plushie tycoon
