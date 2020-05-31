@@ -33,7 +33,7 @@ class GSM:
     def return_data_for_ui(self):
         tp = Transporter()
         tp.load(self.gs_current)
-        return tp
+        return tp.return_data()
 
     def return_data(self):
         if self._return_from_global:

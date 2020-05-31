@@ -30,22 +30,68 @@ import random
 from collections import defaultdict
 import copy
 random.seed(1)
+from config.global_config import Func, res_members, prod_members
+
+
+def mocked_transaction_callbacks():
+    callbacks = []
+    for func in (Func.buy, Func.sell):
+        for res in res_members:
+            callback = dict(command=func, category=res,
+                            quantity=random.randint(0, 10))
+            callbacks.append(callback)
+        for prod in prod_members:
+            callback = dict(command=func, category=prod,
+                            quantity=random.randint(0, 10))
+            callbacks.append(callback)
+    for prod in prod_members:
+        callback = dict(command=Func.make, category=prod,
+                        quantity=random.randint(0, 10))
+        callbacks.append(callback)
+    return callbacks
+
+
+def mocked_button_callbacks():
+    funcs = (Func.save, Func.load, Func.back, Func.next, Func.quit)
+    callbacks = list([dict(command=func) for func in funcs])
+    return callbacks
+
+
+mock_callbacks = mocked_transaction_callbacks() + mocked_button_callbacks()
+import grpc
+import grpc_pb2
+import grpc_pb2_grpc
+from concurrent.futures import ThreadPoolExecutor
+
+from ui_interface import UIInterface
+
+
+def run():
+    port_no = "50051"
+    ui = UIInterface(port_no)
+    curdoc().add_root(ui.ui.ui_layout)
+    # show(ui.ui.ui_layout)
+    # with grpc.insecure_channel('localhost:50051') as channel:
+    #     stub = grpc_pb2_grpc.UITransferStub(channel)
+    #     # ui = MockUI(stub)
+    #     ui = UIInterface(stub)
+
+
+run()
+
+"""
+Client side:
 
 
 def main():
-    remake_log()
-    ge = GE()
-    callback = ge.callback
-    # this call should preferably be calling from callback. Then we can say
-    # all callbacks for ge are from ui.
-    init_data = ge.return_data_for_ui()
-    log(init_data, inspect.currentframe())
-    # callback(dict(command=Func.buy, category=Res.something, quantity=10))
+    with grpc.insecure_channel('localhost:50051') as channel:
+        stub = grpc_pb2_grpc.RouteGuideStub(channel)
+        feat = grpc_pb2.Point(a=123)
+        feature = stub.GetFeature(feat)
+        print(feature)
+    # a = grpc_pb2.
+    pass
 
-    ui = UIInterface(init_data, callback, UISpecs())
-    # calls = mocked_transaction_callbacks()
-    # ui.ui_callback(calls[0])
-    # show(ui.ui_layout)
-    curdoc().add_root(ui.ui_layout)
 
-main()
+
+"""

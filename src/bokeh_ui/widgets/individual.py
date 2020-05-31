@@ -2,7 +2,7 @@ from bokeh.models.widgets import Button, Div
 from bokeh.models.widgets.inputs import TextInput
 from bokeh.models.widgets import RadioButtonGroup
 from bokeh.layouts import row, column
-from global_config import UI_FAIL, Func, WidgetNames, Res, Prod
+from global_config import UI_FAIL, Func, Res, Prod
 from logs import log
 import re
 import os
@@ -86,7 +86,6 @@ class TextBoxComponent:
 
 class TransactionWidget:
     def __init__(self, callback):
-        self.name = WidgetNames.Transaction
         self.widget_callback = callback
         self._input_val = None
 
@@ -99,7 +98,7 @@ class TransactionWidget:
         self._RBG2 = RBGComponent(self._RBG2_specs(), self._RBG2_callback)
         self._RBG3 = RBGComponent(self._RBG3_specs())
         self._button = ButtonComponent(self._button_specs(), self._button_callback)
-        self.layout = self._assemble_layout(self._layout_specs())
+        self.layout = self._assemble_layout()
 
     def _TI_specs(self):
         specs = dict()
@@ -158,59 +157,18 @@ class TransactionWidget:
         specs['text'] = 'Send'
         return specs
 
-    def _layout_specs(self):
-        header = dict(height=30,
-                         width=100,  # Determine how close RBG is
-                         spacers=[0])
-
-        rbg1 = dict(height=40,
-                         width=50,  # Determine when break between rows happen
-                         spacers=[0])
-
-        rbg2 = dict(height=40,
-                         width=20,  # Determine how close RBG is
-                         spacers=[90])
-
-        rbg3 = dict(height=50,
-                         width=0,  # Determine how close RBG is
-                         spacers=[0])
-
-        ti = dict(height=50,  # Spacing between widget cols
-                         width=10,  # Spacing between widgets in same row.
-                         spacers=[0])
-
-        button = dict(height=50,  # Spacing between widget cols
-                         width=200,  # Spacing between widgets in same row.
-                         spacers=[0])
-
-        layout = [header, rbg1, rbg2, rbg3, ti, button]
-        return layout
-
-
     def _RBG2_callback(self, active_button):
         RBG2_selected_category = self._RBG2.get_active()
         self._RBG3.set_label_to_category(RBG2_selected_category)
         self._RBG3.set_active(None)
-        return
 
-    def _build_row(self, specs, components):
-        assert len(specs['spacers']) == len(components)
-        row_elements = []
-        for i in range(len(components)):
-            row_elements.append(Div(width=specs['spacers'][i]))
-            row_elements.append(components[i].widget)
-        to_display = row(*row_elements,
-                         height=specs['height'],
-                         width=specs['width'])
-        return to_display
-
-    def _assemble_layout(self, specs):
-        header = self._build_row(specs[0], [self._header])
-        rbg1 = self._build_row(specs[1], [self._RBG1])
-        rbg2 = self._build_row(specs[2], [self._RBG2])
-        rbg3 = self._build_row(specs[3], [self._RBG3])
-        inputbox = self._build_row(specs[4], [self._input_box])
-        button = self._build_row(specs[5], [self._button])
+    def _assemble_layout(self):
+        header = row(self._header.widget, height=30, width=100)
+        rbg1 = row(self._RBG1.widget, height=40, width=50)
+        rbg2 = row(Div(width=90), self._RBG2.widget, height=40, width=20)
+        rbg3 = row(self._RBG3.widget, height=50, width=0)
+        inputbox = row(self._input_box.widget, height=50, width=10)
+        button = row(self._button.widget, height=50, width=200)
         layout = column(header, rbg1, rbg2, rbg3, inputbox, button,
                         width=self.width, height=self.height)
         self._set_init_RBG3()
@@ -233,7 +191,7 @@ class TransactionWidget:
         elif self._input_val.startswith("0"):
             msg = "Invalid input value."
         else:
-            callback = dict(command=RBG1_key, category=RBG3_key,
+            callback = dict(command=RBG1_key.name, category=RBG3_key.name,
                             quantity=int(self._input_val))
             self.widget_callback(callback)
         if msg:
@@ -250,26 +208,14 @@ class TransactionWidget:
 
 class ButtonWidget:
     def __init__(self, callback):
-        self.name = WidgetNames.Action
         self.width = 100
         self.height = 50
         self.callback = callback
         self._header = TextBoxComponent(self._textbox_specs())
         self._RBG = RBGComponent(self._RBG_specs())
-        self._button = ButtonComponent(self._button_specs(), self._button_callback)
-        self.layout = self._assemble_layout(self._layout_specs())
-
-    def _layout_specs(self):
-        row0 = dict(height=10,
-                    width=100,  # Determine how close RBG is
-                    spacers=[0])
-
-        row1 = dict(height=40,
-                    width=0,  # Determine when break between rows happen
-                    spacers=[0, 0])
-
-        layout = [row0, row1]
-        return layout
+        self._button = ButtonComponent(self._button_specs(),
+                                       self._button_callback)
+        self.layout = self._assemble_layout()
 
     def _button_specs(self):
         specs = dict()
@@ -303,23 +249,12 @@ class ButtonWidget:
             msg = "No category selected."
             log(msg, inspect.currentframe())
         else:
-            callback = dict(command=self._RBG.get_active())
+            callback = dict(command=self._RBG.get_active().name)
             self.callback(callback)
-        return
 
-    def _build_row(self, specs, components):
-        assert len(specs['spacers']) == len(components)
-        row_elements = []
-        for i in range(len(components)):
-            row_elements.append(Div(width=specs['spacers'][i]))
-            row_elements.append(components[i].widget)
-        to_display = row(*row_elements, height=self.height,
-                         width=self.width)
-        return to_display
-
-    def _assemble_layout(self, specs):
-        row0 = self._build_row(specs[0], [self._header])
-        row1 = self._build_row(specs[1], [self._RBG, self._button])
+    def _assemble_layout(self):
+        row0 = row(self._header.widget, height=10, width=100)
+        row1 = row(self._RBG.widget, self._button.widget, height=40)
         layout = column(row0, row1, width=self.width, height=self.height)
         return layout
 

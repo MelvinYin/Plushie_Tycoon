@@ -91,12 +91,12 @@ class ItemCostTable:
         return True
 
     def _set_CDS(self):
-        source = ColumnDataSource(self.data['CDS'])
+        source = ColumnDataSource(self.data)
         return source
 
     def _build_table(self):
         columns = [TableColumn(field=i, title=i) for i in
-                        self.data['CDS'].keys()]
+                        self.data.keys()]
         columns[0].width = 700
         data_table = DataTable(source=self._CDS, columns=columns,
                                width=self.width,
@@ -113,7 +113,7 @@ class ItemCostTable:
         # add_data = self._convert_input(add_data)
         # self._check_add_data(add_data)
         to_patch = dict()
-        for category, ratios in self.data['CDS'].items():
+        for category, ratios in self.data.items():
             assert isinstance(category, str)
             for i, ratio in enumerate(ratios):
                 to_patch[category] = [(i, ratio)]
@@ -165,12 +165,12 @@ class ItemPropertiesTable:
         return True
 
     def _set_CDS(self):
-        source = ColumnDataSource(self.data['CDS'])
+        source = ColumnDataSource(self.data)
         return source
 
     def _build_table(self):
         columns = [TableColumn(field=i, title=i) for i in
-                        self.data['CDS'].keys()]
+                        self.data.keys()]
         columns[0].width = 400
         data_table = DataTable(source=self._CDS, columns=columns,
                                width=self.width,
@@ -178,15 +178,15 @@ class ItemPropertiesTable:
         return data_table
 
     def _set_table(self):
-        fig = column(row(Spacer(width=15), Div(text=self.title), height=30),
-                     self._table)
+        header = row(Spacer(width=15), Div(text=self.title), height=30)
+        fig = column(header, self._table)
         return fig
 
     def figure_update(self, data):
         # add_data = self._convert_input(add_data)
         # self._check_add_data(add_data)
         to_patch = dict()
-        for category, ratios in data['CDS'].items():
+        for category, ratios in data.items():
             for i, ratio in enumerate(ratios):
                 to_patch[category] = [(i, ratio)]
         self._CDS.patch(to_patch)
@@ -212,13 +212,13 @@ class ResourceRatioTable:
         return resource_ratios
 
     def _set_CDS(self):
-        source = ColumnDataSource(self.data['CDS'])
+        source = ColumnDataSource(self.data)
         return source
 
     def _build_table(self):
         # todo: see if self.data can be replaced by a CDS call instead
         columns = [TableColumn(field=i, title=i) for i in
-                        self.data['CDS'].keys()]
+                        self.data.keys()]
         columns[0].width = 800
         data_table = DataTable(source=self._CDS, columns=columns,
                                width=self.width,
@@ -233,7 +233,7 @@ class ResourceRatioTable:
     def figure_update(self, add_data):
         # add_data = self._convert_input(add_data)
         to_patch = dict()
-        for category, ratios in add_data['CDS'].items():
+        for category, ratios in add_data.items():
             for i, ratio in enumerate(ratios):
                 to_patch[category] = [(i, ratio)]
         self._CDS.patch(to_patch)
@@ -286,6 +286,7 @@ class IndividualFigure:
         CDS.stream will fail.
         """
         # add test? to make sure all values used in this class is in init_data
+        print(initial_data)
         num_values = len(next(iter(initial_data.values())))
         initial_data['xs'] = list(range(num_values))
         CDS = ColumnDataSource(initial_data)

@@ -4,96 +4,136 @@ from collections import defaultdict
 import inspect
 from logs import log
 from bokeh_ui.ui import UI
+from global_config import UISpecs
+from ge import GE
+import grpc
+import grpc_pb2
+import grpc_pb2_grpc
+from concurrent.futures import ThreadPoolExecutor
+import itertools
+
+# todo: for now, discard any function that requires 'reload'
+from grpc_ui_adapter import GrpcUIAdapter
+import init_values
 
 class UIInterface:
-    def __init__(self, initial_data, ui_callback, specs):
-        self.raw_callback = ui_callback
-        self.specs = specs
-        self.ui = UI(initial_data, self.callback, specs)
-
-    def _check_for_invalid_input(self, call):
-        if call['command'] == Func.make and call['category'] not in Prod:
-            message = "Invalid Input: Make only works with Prod."
-            return message
-        if call['command'] == UI_FAIL:
-            message = call['message']
-            return message
-        return None
-
-    def _to_console(self, message):
-        output = defaultdict(dict)
-        output[FigureNames.console_output]['console'] = message
-        return output
+    # def __init__(self, grpc_stub):
+    #     self.grpc_adapter = GrpcUIAdapter(grpc_stub)
+    #     self.ui = UI(self.callback)
+    def __init__(self, port_no="50051"):
+        self.port_no = port_no
+        self.ui = UI(self.callback)
 
     def callback(self, call):
-        log(call, inspect.currentframe())
-        message = self._check_for_invalid_input(call)
-        if message is not None:
-            cleaned_output = self._to_console(message)
-            log(cleaned_output, inspect.currentframe())
-            return cleaned_output
-        try:
-            updated_data, to_do = self.raw_callback(call)
-        except InsufficientQuantityError:
-            return False
-        except:
-            raise
-        if to_do == 'update':
-            # cleaned_output = self._adapt_for_ui(updated_data)
-            log(updated_data, inspect.currentframe())
-        elif to_do == "reload":
-            # cleaned_output = self._adapt_for_ui(updated_data)
-            log(updated_data, inspect.currentframe())
-            # self.ui.reload(cleaned_output)
-            self.ui = UI(updated_data, self.callback, self.specs)
-            return None
-        elif to_do == 'pause':
-            return None
-        else:
-            raise Exception
-        return updated_data
+        print(f"UIWrapper.callback called with <{call}>.")
+        with grpc.insecure_channel(f'localhost:{self.port_no}') as channel:
+            stub = grpc_pb2_grpc.UITransferStub(channel)
+            grpc_adapter = GrpcUIAdapter(stub)
+            if call['command'] == 'buy':
+                output = grpc_adapter.Buy(call['category'], call['quantity'])
+            elif call['command'] == 'sell':
+                output = grpc_adapter.Sell(call['category'], call['quantity'])
+            elif call['command'] == 'make':
+                output = grpc_adapter.Make(call['category'], call['quantity'])
+            elif call['command'] == 'next':
+                output = grpc_adapter.Next()
+            elif call['command'] == 'save':
+                output = grpc_adapter.Save()
+            elif call['command'] == 'load':
+                output = grpc_adapter.Load()
+            elif call['command'] == 'back':
+                output = grpc_adapter.Back()
+            elif call['command'] == 'quit':
+                output = grpc_adapter.Quit()
+            elif call['command'] == 'init':
+                output = grpc_adapter.Init()
+            else:
+                raise Exception(call)
+        action = output.action
+        output = self._convert_to_callback_output(output)
+        print(f"Success <{action}>.")
+        return output, action
 
-    # def _adapt_for_ui(self, GSDataClass):
-    #     adapted = defaultdict(dict)
-    #     input_to_res = GSDataClass.inventory
-    #     for key, values in input_to_res.items():
-    #         if key in Res:
-    #             adapted[FigureNames.inventory_res][key.name] = [values]
-    #     adapted[FigureNames.inventory_res]['time'] = [GSDataClass.time]
-    #
-    #     input_to_prod = GSDataClass.inventory
-    #     for key, values in input_to_prod.items():
-    #         if key in Prod:
-    #             adapted[FigureNames.inventory_prod][key.name] = [values]
-    #     adapted[FigureNames.inventory_prod]['time'] = [GSDataClass.time]
-    #
-    #     input_to_res = GSDataClass.market
-    #     for key, values in input_to_res.items():
-    #         if key in Res:
-    #             adapted[FigureNames.price_res][key.name] = [values]
-    #     adapted[FigureNames.price_res]['time'] = [GSDataClass.time]
-    #
-    #     input_to_prod = GSDataClass.market
-    #     for key, values in input_to_prod.items():
-    #         if key in Prod:
-    #             adapted[FigureNames.price_prod][key.name] = [values]
-    #     adapted[FigureNames.price_prod]['time'] = [GSDataClass.time]
-    #
-    #     budget = GSDataClass.budget
-    #     adapted[FigureNames.budget]['budget'] = [budget]
-    #     adapted[FigureNames.budget]['time'] = [GSDataClass.time]
-    #
-    #     console_log = GSDataClass.console
-    #     adapted[FigureNames.console_output]['console'] = console_log
-    #
-    #     adapted[FigureNames.res_ratio_table] = GSDataClass.production['res_ratio']
-    #
-    #     adapted[FigureNames.item_properties_table] = GSDataClass.inventory
-    #     adapted[FigureNames.item_cost_table] = GSDataClass.inventory
-    #
-    #     adapted = dict(adapted)
-    #     log(adapted, inspect.currentframe())
-    #     return adapted
+    def _convert_to_callback_output(self, grpc_obj):
+        output = dict()
 
-    def __getattr__(self, item):
-        return self.ui.__getattribute__(item)
+        init_val = init_values.InitValues()
+        fields = dict()
+        fields['Item'] = []
+        fields['Movein'] = []
+        fields['Moveout'] = []
+        fields['Storage'] = []
+        for term in itertools.chain(Res, Prod):
+            term = term.name
+            fields['Item'].append(term)
+            fields['Movein'].append(grpc_obj.item_cost[term].movein)
+            fields['Moveout'].append(grpc_obj.item_cost[term].moveout)
+            fields['Storage'].append(grpc_obj.item_cost[term].storage)
+        output[FigureNames.item_cost_table] = fields
+
+        #     item_properties_table
+        fields = dict()
+        fields['Item'] = []
+        fields['Weight'] = []
+        fields['Volume'] = []
+        for term in itertools.chain(Res, Prod):
+            term = term.name
+            fields['Item'].append(term)
+            fields['Weight'].append(init_val.inventory['weight'][term])
+            fields['Volume'].append(init_val.inventory['volume'][term])
+        output[FigureNames.item_properties_table] = fields
+
+        #     res_ratio_table
+        ratio = dict()
+        for i in Prod:
+            i = i.name
+            per_prod = []
+            for j in Res:
+                j = j.name
+                per_prod.append(grpc_obj.resource_ratio[i].ratio[j])
+            ratio[i] = per_prod
+        ratio['Resource'] = [i.name for i in Res]
+        output[FigureNames.res_ratio_table] = ratio
+
+        #     console_output
+        output[FigureNames.console_output] = grpc_obj.console_output
+
+        #     inventory_res
+        fields = dict()
+        for i in Res:
+            i = i.name
+            fields[i] = [grpc_obj.quantities[i]]
+        fields['time'] = [grpc_obj.time]
+        output[FigureNames.inventory_res] = fields
+
+        #     inventory_prod
+        fields = dict()
+        for i in Prod:
+            i = i.name
+            fields[i] = [grpc_obj.quantities[i]]
+        fields['time'] = [grpc_obj.time]
+        output[FigureNames.inventory_prod] = fields
+
+        #     price_res
+        fields = dict()
+        for i in Res:
+            i = i.name
+            fields[i] = [grpc_obj.prices[i]]
+        fields['time'] = [grpc_obj.time]
+        output[FigureNames.price_res] = fields
+
+        #     price_prod
+        fields = dict()
+        for i in Prod:
+            i = i.name
+            fields[i] = [grpc_obj.prices[i]]
+        fields['time'] = [grpc_obj.time]
+        output[FigureNames.price_prod] = fields
+
+        #     budget
+        output[FigureNames.budget] = dict()
+        output[FigureNames.budget]['budget'] = [grpc_obj.budget]
+        output[FigureNames.budget]['time'] = [grpc_obj.time]
+        return output
+
+

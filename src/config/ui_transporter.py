@@ -16,6 +16,9 @@ class Transporter:
     def __init__(self):
         self.data = dict()
 
+    def return_data(self):
+        return self
+
     def load(self, GS):
         # item_cost_table
         index_in_enum = GS.inventory.get_index()

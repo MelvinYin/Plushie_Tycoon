@@ -126,10 +126,6 @@ class BudgetSpecs:
         colormap = dict(budget=Category10[10][0])
         return colormap
 
-# class FigureSetSpecs:
-#     def __init__(self):
-#         self.figures_per_row = 3
-
 FigSpecs = dict()
 FigSpecs['inventory_res'] = InventoryResSpecs()
 FigSpecs['inventory_prod'] = InventoryProdSpecs()
@@ -139,46 +135,6 @@ FigSpecs['budget'] = BudgetSpecs()
 FigSpecs['console'] = ConsoleOutputSpecs()
 FigSpecs['res_ratio_table'] = ResourceRatioTableSpecs()
 FigSpecs['move_cost_table'] = ResourceRatioTableSpecs()
-
-
-# class FigureIndividualSpecs:
-#     def __init__(self):
-#         self.inventory_res = InventoryResSpecs()
-#         self.inventory_prod = InventoryProdSpecs()
-#         self.price_res = PriceResSpecs()
-#         self.price_prod = PriceProdSpecs()
-#         self.budget = BudgetSpecs()
-#         self.console = ConsoleOutputSpecs()
-#         self.res_ratio_table = ResourceRatioTableSpecs()
-#         self.move_cost_table = MoveCostTableSpecs()
-#
-# class FigureSpecs:
-#     def __init__(self):
-#         self.set = FigureSetSpecs()
-#         self.figure = FigureIndividualSpecs()
-
-"""
-UNUSED
-
-_FigureSpec8 = _FigureSpecBase(ResPrice.cloth, "ResPrice.cloth", "x_", "y_")
-_FigureSpec9 = _FigureSpecBase(ResPrice.stuff, "ResPrice.stuff", "x_", "y_")
-_FigureSpec10 = _FigureSpecBase(ResPrice.accessory, "ResPrice.accessory", "x_", "y_")
-_FigureSpec11 = _FigureSpecBase(ResPrice.packaging, "ResPrice.packaging", "x_", "y_")
-
-_FigureSpec12 = _FigureSpecBase(ProdPrice.aisha, "ProdPrice.aisha", "x_", "y_")
-_FigureSpec13 = _FigureSpecBase(ProdPrice.beta, "ProdPrice.beta", "x_", "y_")
-_FigureSpec14 = _FigureSpecBase(ProdPrice.chama, "ProdPrice.chama", "x_", "y_")
-_FigureSpec15 = _FigureSpecBase(Production.hours_needed, "Production.hours_needed", "x_", "y_")
-_FigureSpec16 = _FigureSpecBase(Production.cost_per_hour, "Production.cost_per_hour", "x_", "y_")
-_FigureSpec17 = _FigureSpecBase(Production.res_cost, "Production.res_cost", "x_", "y_")
-
-# FigureSpecs = [_FigureSpec1, _FigureSpec5, _FigureSpec9, _FigureSpec10, _FigureSpec11, _FigureSpec12,
-#                _FigureSpec13, _FigureSpec14]
-
-
-"""
-
-
 
 
 

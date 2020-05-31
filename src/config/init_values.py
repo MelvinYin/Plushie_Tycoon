@@ -3,11 +3,9 @@ from collections import namedtuple
 try:
     from .base import Res, Prod, Func, res_members, prod_members
     from .figure import FigureNames
-    from .widget import WidgetSpecs
 except:
     from base import Res, Prod, Func, res_members, prod_members
     from figure import FigureNames
-    from widget import WidgetSpecs
 
 class InitValues:
     def __init__(self):
@@ -31,9 +29,7 @@ class InitValues:
         production['cost_per_hour'] = cost_per_hour
         # production = ProductionTuple(hours_needed, res_ratio,
         #                              cost_per_hour)
-        assert isinstance(res_ratio, pd.DataFrame)
         assert isinstance(hours_needed, dict)
-        assert set(hours_needed.keys()) == set(prod_members)
         assert isinstance(list(hours_needed.values())[0], int)
         assert isinstance(cost_per_hour, int)
         return production
@@ -41,10 +37,21 @@ class InitValues:
     def _get_res_ratio(self):
         # Plushie Resource Cost
         _res_ratio = dict()
-        _res_ratio[Prod.aisha] = [3, 6, 2, 1]
-        _res_ratio[Prod.beta] = [1, 4, 1, 2]
-        _res_ratio[Prod.chama] = [2, 5, 1, 4]
-        res_ratio = pd.DataFrame(_res_ratio, index=res_members)
+        _res_ratio[Prod.aisha.name] = [3, 6, 2, 1]
+        _res_ratio[Prod.beta.name] = [1, 4, 1, 2]
+        _res_ratio[Prod.chama.name] = [2, 5, 1, 4]
+
+        res_ratio = dict()
+        for i, prod in enumerate(Prod):
+            local_map = dict()
+            for j, res in enumerate(Res):
+                local_map[res.name] = _res_ratio[prod.name][j]
+            res_ratio[prod.name] = local_map
+        for res in Res:
+            local_map = dict()
+            for prod in Prod:
+                local_map[prod.name] = res_ratio[prod.name][res.name]
+            res_ratio[res.name] = local_map
         return res_ratio
 
     def _get_hours_needed(self):
@@ -52,7 +59,7 @@ class InitValues:
         _p_hours = [30, 24, 36]
         hours_needed = dict()
         for i, prod in enumerate(prod_members):
-            hours_needed[prod] = _p_hours[i]
+            hours_needed[prod.name] = _p_hours[i]
         return hours_needed
 
     def _get_cost_per_hour(self):
@@ -72,23 +79,23 @@ class InitValues:
         inventory['tier'] = 0
 
         weights = dict()
-        weights[Res.cloth] = 0.1
-        weights[Res.stuff] = 0.05
-        weights[Res.accessory] = 0.3
-        weights[Res.packaging] = 0.05
-        weights[Prod.aisha] = 0.05
-        weights[Prod.beta] = 0.05
-        weights[Prod.chama] = 0.05
+        weights[Res.cloth.name] = 0.1
+        weights[Res.stuff.name] = 0.05
+        weights[Res.accessory.name] = 0.3
+        weights[Res.packaging.name] = 0.05
+        weights[Prod.aisha.name] = 0.05
+        weights[Prod.beta.name] = 0.05
+        weights[Prod.chama.name] = 0.05
         inventory['weight'] = weights
 
         volume = dict()
-        volume[Res.cloth] = 0.1
-        volume[Res.stuff] = 0.3
-        volume[Res.accessory] = 0.01
-        volume[Res.packaging] = 0.2
-        volume[Prod.aisha] = 0.2
-        volume[Prod.beta] = 0.2
-        volume[Prod.chama] = 0.2
+        volume[Res.cloth.name] = 0.1
+        volume[Res.stuff.name] = 0.3
+        volume[Res.accessory.name] = 0.01
+        volume[Res.packaging.name] = 0.2
+        volume[Prod.aisha.name] = 0.2
+        volume[Prod.beta.name] = 0.2
+        volume[Prod.chama.name] = 0.2
         inventory['volume'] = volume
 
         assert isinstance(inventory, dict)
@@ -101,8 +108,6 @@ class InitValues:
         market = {**res, **prod}
         assert isinstance(res, dict)
         assert isinstance(prod, dict)
-        assert set(res.keys()) == set(res_members)
-        assert set(prod.keys()) == set(prod_members)
         assert isinstance(list(res.values())[0], int)
         assert isinstance(list(prod.values())[0], int)
         return market
@@ -111,28 +116,28 @@ class InitValues:
         _s_res = [1001, 1002, 1003, 1004]
         starting_res = dict()
         for i, res in enumerate(res_members):
-            starting_res[res] = _s_res[i]
+            starting_res[res.name] = _s_res[i]
         return starting_res
 
     def _get_prod(self):
         _s_prod = [101, 102, 103]
         starting_prod = dict()
         for i, prod in enumerate(prod_members):
-            starting_prod[prod] = _s_prod[i]
+            starting_prod[prod.name] = _s_prod[i]
         return starting_prod
 
     def _get_res_price(self):
         _s_res_price = [10, 20, 18, 12]
         starting_res_price = dict()
         for i, res in enumerate(res_members):
-            starting_res_price[res] = _s_res_price[i]
+            starting_res_price[res.name] = _s_res_price[i]
         return starting_res_price
 
     def _get_prod_price(self):
         _s_prod_price = [80, 76, 52]
         starting_prod_price = dict()
         for i, prod in enumerate(prod_members):
-            starting_prod_price[prod] = _s_prod_price[i]
+            starting_prod_price[prod.name] = _s_prod_price[i]
         return starting_prod_price
 
 _history_columns = ["res", "prod", "res_price", "prod_price", "budget",

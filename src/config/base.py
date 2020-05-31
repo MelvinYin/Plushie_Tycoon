@@ -5,6 +5,7 @@ from collections import namedtuple
 # Resource signal values for internal use
 @unique
 class Res(Enum):
+    __order__ = 'cloth stuff accessory packaging'
     cloth = 1
     stuff = 2
     accessory = 3
@@ -13,6 +14,7 @@ class Res(Enum):
 # Plushie signal values for internal use
 @unique
 class Prod(Enum):
+    __order__ = 'aisha beta chama'
     # tag = hash("Prod")
     aisha = 1
     beta = 2
