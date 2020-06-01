@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\ngrpc.proto\"\x11\n\x0fSelectionObject\"3\n\x11TransactionObject\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"=\n\tmItemCost\x12\x0e\n\x06movein\x18\x03 \x01(\x01\x12\x0f\n\x07moveout\x18\x04 \x01(\x01\x12\x0f\n\x07storage\x18\x05 \x01(\x01\"m\n\x10mRatioPerProduct\x12+\n\x05ratio\x18\x06 \x03(\x0b\x32\x1c.mRatioPerProduct.RatioEntry\x1a,\n\nRatioEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\xfa\x03\n\nUserOutput\x12\'\n\x06prices\x18\x01 \x03(\x0b\x32\x17.UserOutput.PricesEntry\x12/\n\nquantities\x18\x02 \x03(\x0b\x32\x1b.UserOutput.QuantitiesEntry\x12,\n\titem_cost\x18\x0c \x03(\x0b\x32\x19.UserOutput.ItemCostEntry\x12\x36\n\x0eresource_ratio\x18\x07 \x03(\x0b\x32\x1e.UserOutput.ResourceRatioEntry\x12\x16\n\x0e\x63onsole_output\x18\x08 \x01(\t\x12\x0e\n\x06\x62udget\x18\t \x01(\x05\x12\x0c\n\x04time\x18\n \x01(\x05\x12\x0e\n\x06\x61\x63tion\x18\x0b \x01(\t\x1a-\n\x0bPricesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\x1a\x31\n\x0fQuantitiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\x1a;\n\rItemCostEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x19\n\x05value\x18\x02 \x01(\x0b\x32\n.mItemCost:\x02\x38\x01\x1aG\n\x12ResourceRatioEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12 \n\x05value\x18\x02 \x01(\x0b\x32\x11.mRatioPerProduct:\x02\x38\x01\x32\x82\x03\n\nUITransfer\x12(\n\x03\x42uy\x12\x12.TransactionObject\x1a\x0b.UserOutput\"\x00\x12)\n\x04Sell\x12\x12.TransactionObject\x1a\x0b.UserOutput\"\x00\x12)\n\x04Make\x12\x12.TransactionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04Next\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04Save\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04Load\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04\x42\x61\x63k\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04Quit\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04Init\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\ngrpc.proto\"\x11\n\x0fSelectionObject\"3\n\x11TransactionObject\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"=\n\tmItemCost\x12\x0e\n\x06movein\x18\x03 \x01(\x01\x12\x0f\n\x07moveout\x18\x04 \x01(\x01\x12\x0f\n\x07storage\x18\x05 \x01(\x01\"m\n\x10mRatioPerProduct\x12+\n\x05ratio\x18\x06 \x03(\x0b\x32\x1c.mRatioPerProduct.RatioEntry\x1a,\n\nRatioEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\xb0\x05\n\nUserOutput\x12\'\n\x06prices\x18\x01 \x03(\x0b\x32\x17.UserOutput.PricesEntry\x12/\n\nquantities\x18\x02 \x03(\x0b\x32\x1b.UserOutput.QuantitiesEntry\x12)\n\x07weights\x18\r \x03(\x0b\x32\x18.UserOutput.WeightsEntry\x12)\n\x07volumes\x18\x0e \x03(\x0b\x32\x18.UserOutput.VolumesEntry\x12,\n\titem_cost\x18\x0c \x03(\x0b\x32\x19.UserOutput.ItemCostEntry\x12\x36\n\x0eresource_ratio\x18\x07 \x03(\x0b\x32\x1e.UserOutput.ResourceRatioEntry\x12\x16\n\x0e\x63onsole_output\x18\x08 \x01(\t\x12\x0e\n\x06\x62udget\x18\t \x01(\x05\x12\x0c\n\x04time\x18\n \x01(\x05\x12\x0e\n\x06\x61\x63tion\x18\x0b \x01(\t\x1a-\n\x0bPricesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\x1a\x31\n\x0fQuantitiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\x1a.\n\x0cWeightsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x1a.\n\x0cVolumesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x1a;\n\rItemCostEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x19\n\x05value\x18\x02 \x01(\x0b\x32\n.mItemCost:\x02\x38\x01\x1aG\n\x12ResourceRatioEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12 \n\x05value\x18\x02 \x01(\x0b\x32\x11.mRatioPerProduct:\x02\x38\x01\x32\x82\x03\n\nUITransfer\x12(\n\x03\x42uy\x12\x12.TransactionObject\x1a\x0b.UserOutput\"\x00\x12)\n\x04Sell\x12\x12.TransactionObject\x1a\x0b.UserOutput\"\x00\x12)\n\x04Make\x12\x12.TransactionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04Next\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04Save\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04Load\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04\x42\x61\x63k\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04Quit\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x12\'\n\x04Init\x12\x10.SelectionObject\x1a\x0b.UserOutput\"\x00\x62\x06proto3'
 )
 
 
@@ -232,8 +232,8 @@ _USEROUTPUT_PRICESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=537,
-  serialized_end=582,
+  serialized_start=623,
+  serialized_end=668,
 )
 
 _USEROUTPUT_QUANTITIESENTRY = _descriptor.Descriptor(
@@ -269,8 +269,82 @@ _USEROUTPUT_QUANTITIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=584,
-  serialized_end=633,
+  serialized_start=670,
+  serialized_end=719,
+)
+
+_USEROUTPUT_WEIGHTSENTRY = _descriptor.Descriptor(
+  name='WeightsEntry',
+  full_name='UserOutput.WeightsEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='UserOutput.WeightsEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='UserOutput.WeightsEntry.value', index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=721,
+  serialized_end=767,
+)
+
+_USEROUTPUT_VOLUMESENTRY = _descriptor.Descriptor(
+  name='VolumesEntry',
+  full_name='UserOutput.VolumesEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='UserOutput.VolumesEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='UserOutput.VolumesEntry.value', index=1,
+      number=2, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=b'8\001',
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=769,
+  serialized_end=815,
 )
 
 _USEROUTPUT_ITEMCOSTENTRY = _descriptor.Descriptor(
@@ -306,8 +380,8 @@ _USEROUTPUT_ITEMCOSTENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=635,
-  serialized_end=694,
+  serialized_start=817,
+  serialized_end=876,
 )
 
 _USEROUTPUT_RESOURCERATIOENTRY = _descriptor.Descriptor(
@@ -343,8 +417,8 @@ _USEROUTPUT_RESOURCERATIOENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=696,
-  serialized_end=767,
+  serialized_start=878,
+  serialized_end=949,
 )
 
 _USEROUTPUT = _descriptor.Descriptor(
@@ -369,42 +443,56 @@ _USEROUTPUT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='item_cost', full_name='UserOutput.item_cost', index=2,
+      name='weights', full_name='UserOutput.weights', index=2,
+      number=13, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='volumes', full_name='UserOutput.volumes', index=3,
+      number=14, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='item_cost', full_name='UserOutput.item_cost', index=4,
       number=12, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='resource_ratio', full_name='UserOutput.resource_ratio', index=3,
+      name='resource_ratio', full_name='UserOutput.resource_ratio', index=5,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='console_output', full_name='UserOutput.console_output', index=4,
+      name='console_output', full_name='UserOutput.console_output', index=6,
       number=8, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='budget', full_name='UserOutput.budget', index=5,
+      name='budget', full_name='UserOutput.budget', index=7,
       number=9, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='time', full_name='UserOutput.time', index=6,
+      name='time', full_name='UserOutput.time', index=8,
       number=10, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='action', full_name='UserOutput.action', index=7,
+      name='action', full_name='UserOutput.action', index=9,
       number=11, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -413,7 +501,7 @@ _USEROUTPUT = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_USEROUTPUT_PRICESENTRY, _USEROUTPUT_QUANTITIESENTRY, _USEROUTPUT_ITEMCOSTENTRY, _USEROUTPUT_RESOURCERATIOENTRY, ],
+  nested_types=[_USEROUTPUT_PRICESENTRY, _USEROUTPUT_QUANTITIESENTRY, _USEROUTPUT_WEIGHTSENTRY, _USEROUTPUT_VOLUMESENTRY, _USEROUTPUT_ITEMCOSTENTRY, _USEROUTPUT_RESOURCERATIOENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -423,19 +511,23 @@ _USEROUTPUT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=261,
-  serialized_end=767,
+  serialized_end=949,
 )
 
 _MRATIOPERPRODUCT_RATIOENTRY.containing_type = _MRATIOPERPRODUCT
 _MRATIOPERPRODUCT.fields_by_name['ratio'].message_type = _MRATIOPERPRODUCT_RATIOENTRY
 _USEROUTPUT_PRICESENTRY.containing_type = _USEROUTPUT
 _USEROUTPUT_QUANTITIESENTRY.containing_type = _USEROUTPUT
+_USEROUTPUT_WEIGHTSENTRY.containing_type = _USEROUTPUT
+_USEROUTPUT_VOLUMESENTRY.containing_type = _USEROUTPUT
 _USEROUTPUT_ITEMCOSTENTRY.fields_by_name['value'].message_type = _MITEMCOST
 _USEROUTPUT_ITEMCOSTENTRY.containing_type = _USEROUTPUT
 _USEROUTPUT_RESOURCERATIOENTRY.fields_by_name['value'].message_type = _MRATIOPERPRODUCT
 _USEROUTPUT_RESOURCERATIOENTRY.containing_type = _USEROUTPUT
 _USEROUTPUT.fields_by_name['prices'].message_type = _USEROUTPUT_PRICESENTRY
 _USEROUTPUT.fields_by_name['quantities'].message_type = _USEROUTPUT_QUANTITIESENTRY
+_USEROUTPUT.fields_by_name['weights'].message_type = _USEROUTPUT_WEIGHTSENTRY
+_USEROUTPUT.fields_by_name['volumes'].message_type = _USEROUTPUT_VOLUMESENTRY
 _USEROUTPUT.fields_by_name['item_cost'].message_type = _USEROUTPUT_ITEMCOSTENTRY
 _USEROUTPUT.fields_by_name['resource_ratio'].message_type = _USEROUTPUT_RESOURCERATIOENTRY
 DESCRIPTOR.message_types_by_name['SelectionObject'] = _SELECTIONOBJECT
@@ -497,6 +589,20 @@ UserOutput = _reflection.GeneratedProtocolMessageType('UserOutput', (_message.Me
     })
   ,
 
+  'WeightsEntry' : _reflection.GeneratedProtocolMessageType('WeightsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _USEROUTPUT_WEIGHTSENTRY,
+    '__module__' : 'grpc_pb2'
+    # @@protoc_insertion_point(class_scope:UserOutput.WeightsEntry)
+    })
+  ,
+
+  'VolumesEntry' : _reflection.GeneratedProtocolMessageType('VolumesEntry', (_message.Message,), {
+    'DESCRIPTOR' : _USEROUTPUT_VOLUMESENTRY,
+    '__module__' : 'grpc_pb2'
+    # @@protoc_insertion_point(class_scope:UserOutput.VolumesEntry)
+    })
+  ,
+
   'ItemCostEntry' : _reflection.GeneratedProtocolMessageType('ItemCostEntry', (_message.Message,), {
     'DESCRIPTOR' : _USEROUTPUT_ITEMCOSTENTRY,
     '__module__' : 'grpc_pb2'
@@ -517,6 +623,8 @@ UserOutput = _reflection.GeneratedProtocolMessageType('UserOutput', (_message.Me
 _sym_db.RegisterMessage(UserOutput)
 _sym_db.RegisterMessage(UserOutput.PricesEntry)
 _sym_db.RegisterMessage(UserOutput.QuantitiesEntry)
+_sym_db.RegisterMessage(UserOutput.WeightsEntry)
+_sym_db.RegisterMessage(UserOutput.VolumesEntry)
 _sym_db.RegisterMessage(UserOutput.ItemCostEntry)
 _sym_db.RegisterMessage(UserOutput.ResourceRatioEntry)
 
@@ -524,6 +632,8 @@ _sym_db.RegisterMessage(UserOutput.ResourceRatioEntry)
 _MRATIOPERPRODUCT_RATIOENTRY._options = None
 _USEROUTPUT_PRICESENTRY._options = None
 _USEROUTPUT_QUANTITIESENTRY._options = None
+_USEROUTPUT_WEIGHTSENTRY._options = None
+_USEROUTPUT_VOLUMESENTRY._options = None
 _USEROUTPUT_ITEMCOSTENTRY._options = None
 _USEROUTPUT_RESOURCERATIOENTRY._options = None
 
@@ -533,8 +643,8 @@ _UITRANSFER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=770,
-  serialized_end=1156,
+  serialized_start=952,
+  serialized_end=1338,
   methods=[
   _descriptor.MethodDescriptor(
     name='Buy',

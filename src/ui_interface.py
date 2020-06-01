@@ -6,7 +6,6 @@ import itertools
 
 # todo: for now, discard any function that requires 'reload'
 from grpc_ui_adapter import GrpcUIAdapter
-import init_values
 
 class UIInterface:
     def __init__(self, port_no="50051"):
@@ -46,7 +45,6 @@ class UIInterface:
     def _convert_to_callback_output(self, grpc_obj):
         output = dict()
 
-        init_val = init_values.InitValues()
         fields = dict()
         fields['Item'] = []
         fields['Movein'] = []
@@ -68,8 +66,8 @@ class UIInterface:
         for term in itertools.chain(Res, Prod):
             term = term.name
             fields['Item'].append(term)
-            fields['Weight'].append(init_val.inventory['weight'][term])
-            fields['Volume'].append(init_val.inventory['volume'][term])
+            fields['Weight'].append(grpc_obj.weights[term])
+            fields['Volume'].append(grpc_obj.volumes[term])
         output[FigureNames.item_properties_table] = fields
 
         #     res_ratio_table
@@ -82,7 +80,7 @@ class UIInterface:
                 j = j.name
                 per_prod.append(grpc_obj.resource_ratio[i].ratio[j])
             ratio[i] = per_prod
-
+        print(ratio)
         output[FigureNames.res_ratio_table] = ratio
 
         #     console_output

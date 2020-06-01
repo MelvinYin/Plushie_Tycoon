@@ -18,6 +18,8 @@ class MockServer(grpc_pb2_grpc.UITransferServicer):
         initials = init_values.InitValues()
         prices = dict()
         quantities = dict()
+        weights = dict()
+        volumes = dict()
         item_cost = dict()
         budget = initials.budget
         time = initials.time
@@ -37,14 +39,16 @@ class MockServer(grpc_pb2_grpc.UITransferServicer):
 
             prices[i] = initials.market[i] + addition
             quantities[i] = initials.inventory[i] + addition
-            movein = movein_factor.weight * initials.inventory['weight'][i] \
-                + movein_factor.volume * initials.inventory['volume'][i]
+            weights[i] = initials.inventory['weight'][i]
+            volumes[i] = initials.inventory['volume'][i]
+            movein = movein_factor.weight * weights[i] \
+                + movein_factor.volume * volumes[i]
 
-            moveout = moveout_factor.weight * initials.inventory['weight'][i] \
-                      + moveout_factor.volume * initials.inventory['volume'][i]
+            moveout = moveout_factor.weight * weights[i] \
+                      + moveout_factor.volume * volumes[i]
 
-            storage = storage_factor.weight * initials.inventory['weight'][i] \
-                      + storage_factor.volume * initials.inventory['volume'][i]
+            storage = storage_factor.weight * weights[i] \
+                      + storage_factor.volume * volumes[i]
 
             item_cost[i] = grpc_pb2.mItemCost(movein=movein, moveout=moveout,
                                                    storage=storage)
@@ -54,16 +58,16 @@ class MockServer(grpc_pb2_grpc.UITransferServicer):
             per_p = dict()
             for j in Res:
                 j = j.name
-                per_p[i] = initials.production['res_ratio'][i][j]
+                per_p[j] = initials.production['res_ratio'][i][j]
             resource_ratio[i] = grpc_pb2.mRatioPerProduct(ratio=per_p)
-
         output_object = grpc_pb2.UserOutput(prices=prices,
                                             quantities=quantities,
                                             item_cost=item_cost,
                                             resource_ratio=resource_ratio,
                                             console_output=console_output,
                                             budget=budget, time=time,
-                                            action=action)
+                                            action=action, weights=weights,
+                                            volumes=volumes)
         return output_object
 
     def Buy(self, request, context):

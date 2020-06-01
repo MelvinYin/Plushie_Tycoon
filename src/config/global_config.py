@@ -4,12 +4,10 @@ import sys
 try:
     from .base import Res, Prod, Func
     from .figure import FigureNames, FigSpecs
-    from .gs_data_construct import GSConstructor
     from .properties import WarehouseStats
 except:
     from base import Res, Prod, Func
     from figure import FigureNames, FigSpecs
-    from gs_data_construct import GSConstructor
     from properties import WarehouseStats
 
 UI_FAIL = hash('UI_FAIL')

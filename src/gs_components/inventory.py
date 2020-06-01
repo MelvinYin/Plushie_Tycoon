@@ -1,1 +1,0 @@
-from g_inventory import GlobalInventory as Inventory

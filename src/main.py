@@ -22,8 +22,6 @@ from logs import log, remake_log, set_logging_level
 set_logging_level()
 
 import random
-from collections import defaultdict
-import copy
 random.seed(1)
 from config.global_config import Func, Res, Prod
 
@@ -69,20 +67,3 @@ def run():
 
 
 run()
-
-"""
-Client side:
-
-
-def main():
-    with grpc.insecure_channel('localhost:50051') as channel:
-        stub = grpc_pb2_grpc.RouteGuideStub(channel)
-        feat = grpc_pb2.Point(a=123)
-        feature = stub.GetFeature(feat)
-        print(feature)
-    # a = grpc_pb2.
-    pass
-
-
-
-"""
