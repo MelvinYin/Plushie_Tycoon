@@ -68,8 +68,8 @@ class UIInterface:
         for term in itertools.chain(Res, Prod):
             term = term.name
             fields['Item'].append(term)
-            fields['Weight'].append(init_val.inventory['weight'][term])
-            fields['Volume'].append(init_val.inventory['volume'][term])
+            fields['Weight'].append(grpc_obj.weights[term])
+            fields['Volume'].append(grpc_obj.volumes[term])
         output[FigureNames.item_properties_table] = fields
 
         #     res_ratio_table
