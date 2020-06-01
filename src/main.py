@@ -8,7 +8,6 @@ Necessary boxes to display:
 
 # todo: individual_figure.py, CDS.
 
-import sys
 from utils.sys_path_adder import folders_to_add
 from bokeh.plotting import show, curdoc
 
@@ -18,33 +17,29 @@ folders_to_add(['figures', 'widgets'], suffix='bokeh_ui')
 folders_to_add(['mocked_data'], suffix='tests')
 folders_to_add(['p_model'], suffix='gs_components')
 
-from ui_interface import UIInterface
-import inspect
 from logs import log, remake_log, set_logging_level
-from ge import GE
 
 set_logging_level()
 
-from global_config import UISpecs
 import random
 from collections import defaultdict
 import copy
 random.seed(1)
-from config.global_config import Func, res_members, prod_members
+from config.global_config import Func, Res, Prod
 
 
 def mocked_transaction_callbacks():
     callbacks = []
     for func in (Func.buy, Func.sell):
-        for res in res_members:
+        for res in Res:
             callback = dict(command=func, category=res,
                             quantity=random.randint(0, 10))
             callbacks.append(callback)
-        for prod in prod_members:
+        for prod in Prod:
             callback = dict(command=func, category=prod,
                             quantity=random.randint(0, 10))
             callbacks.append(callback)
-    for prod in prod_members:
+    for prod in Prod:
         callback = dict(command=Func.make, category=prod,
                         quantity=random.randint(0, 10))
         callbacks.append(callback)
@@ -58,10 +53,6 @@ def mocked_button_callbacks():
 
 
 mock_callbacks = mocked_transaction_callbacks() + mocked_button_callbacks()
-import grpc
-import grpc_pb2
-import grpc_pb2_grpc
-from concurrent.futures import ThreadPoolExecutor
 
 from ui_interface import UIInterface
 

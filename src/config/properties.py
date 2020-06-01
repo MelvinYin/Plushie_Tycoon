@@ -2,14 +2,13 @@
 # Widget Specs
 
 from collections import namedtuple
-from enum import Enum, auto, unique
 
 ##############################################################################
 # Global
 try:
-    from base import Res, Prod, Func, res_members, prod_members
+    from base import Res, Prod, Func
 except:
-    from .base import Res, Prod, Func, res_members, prod_members
+    from .base import Res, Prod, Func
 
 _WarehouseStats = namedtuple("WarehouseStats", "weight volume")
 
@@ -33,16 +32,6 @@ class WarehouseStats:
     moveout_cost[0] = _WarehouseStats(weight=0.005, volume=0.005)
     moveout_cost[1] = _WarehouseStats(weight=0.05, volume=0.05)
     moveout_cost[2] = _WarehouseStats(weight=0.05, volume=0.05)
-
-Properties = dict()
-Properties[Res.cloth] = _WarehouseStats(weight=0.1, volume=0.1)
-Properties[Res.stuff] = _WarehouseStats(weight=0.05, volume=0.3)
-Properties[Res.accessory] = _WarehouseStats(weight=0.3, volume=0.01)
-Properties[Res.packaging] = _WarehouseStats(weight=0.05, volume=0.2)
-Properties[Prod.aisha] = _WarehouseStats(weight=0.05, volume=0.2)
-Properties[Prod.beta] = _WarehouseStats(weight=0.05, volume=0.2)
-Properties[Prod.chama] = _WarehouseStats(weight=0.05, volume=0.2)
-
 
 
 

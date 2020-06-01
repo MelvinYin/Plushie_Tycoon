@@ -1,7 +1,7 @@
 import grpc
 import grpc_pb2
 import grpc_pb2_grpc
-from global_config import res_members, prod_members, Res, Prod
+from global_config import Res, Prod
 from config import init_values
 from config import properties
 

@@ -1,15 +1,7 @@
-from exceptions import InsufficientQuantityError
-from global_config import Res, Prod, FigureNames, Func, UI_FAIL
-from collections import defaultdict
-import inspect
-from logs import log
+from global_config import Res, Prod, FigureNames
 from bokeh_ui.ui import UI
-from global_config import UISpecs
-from ge import GE
 import grpc
-import grpc_pb2
 import grpc_pb2_grpc
-from concurrent.futures import ThreadPoolExecutor
 import itertools
 
 # todo: for now, discard any function that requires 'reload'
@@ -17,9 +9,6 @@ from grpc_ui_adapter import GrpcUIAdapter
 import init_values
 
 class UIInterface:
-    # def __init__(self, grpc_stub):
-    #     self.grpc_adapter = GrpcUIAdapter(grpc_stub)
-    #     self.ui = UI(self.callback)
     def __init__(self, port_no="50051"):
         self.port_no = port_no
         self.ui = UI(self.callback)
@@ -85,6 +74,7 @@ class UIInterface:
 
         #     res_ratio_table
         ratio = dict()
+        ratio['Resource'] = [i.name for i in Res]
         for i in Prod:
             i = i.name
             per_prod = []
@@ -92,7 +82,7 @@ class UIInterface:
                 j = j.name
                 per_prod.append(grpc_obj.resource_ratio[i].ratio[j])
             ratio[i] = per_prod
-        ratio['Resource'] = [i.name for i in Res]
+
         output[FigureNames.res_ratio_table] = ratio
 
         #     console_output

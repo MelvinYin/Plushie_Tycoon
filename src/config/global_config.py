@@ -2,24 +2,17 @@ import inspect
 import pandas as pd
 import sys
 try:
-    from .base import Res, Prod, Func, res_members, prod_members
+    from .base import Res, Prod, Func
     from .figure import FigureNames, FigSpecs
     from .gs_data_construct import GSConstructor
     from .properties import WarehouseStats
 except:
-    from base import Res, Prod, Func, res_members, prod_members
+    from base import Res, Prod, Func
     from figure import FigureNames, FigSpecs
     from gs_data_construct import GSConstructor
     from properties import WarehouseStats
 
-_history_columns = ["res", "prod", "res_price", "prod_price", "budget", "production",
-           "time_steps", "current_call"]
-
-history_init = pd.DataFrame(columns=_history_columns)
-
 UI_FAIL = hash('UI_FAIL')
-
-# starting_time = 0
 
 src_path = inspect.currentframe().f_code.co_filename.rsplit("/", maxsplit=1)[0]
 if src_path not in sys.path:
@@ -27,15 +20,6 @@ if src_path not in sys.path:
 
 save_folder = f"{src_path}save/"
 save_file_name = "game_save.pkl"
-
-class FigureSpecs:
-    def __init__(self):
-        return
-
-class UISpecs:
-    def __init__(self):
-        self.figures = FigureSpecs()
-        self.widgets = WidgetSpecs()
 
 ###############################################################################
 
@@ -57,7 +41,6 @@ starting_res
 starting_prod
 starting_res_price
 starting_prod_price
-history_init
 starting_time
 save_folder
 save_file_name

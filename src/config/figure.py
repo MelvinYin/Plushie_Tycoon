@@ -2,7 +2,7 @@
 # Figure Attributes
 from enum import Enum, auto, unique
 from bokeh.palettes import Category10
-from base import res_members, prod_members, Prod
+from base import Res, Prod
 
 class FigureNames(Enum):
     inventory_res = auto()
@@ -20,7 +20,7 @@ class MoveCostTableSpecs:
         self.name = FigureNames.move_cost_table
         self.title = "Production Resource Ratios"
         self.index = dict()
-        self.index['Resource'] = [i.name for i in res_members]
+        self.index['Resource'] = [i.name for i in Res]
         self.data = dict()
         self.data[Prod.aisha.name] = [3, 6, 2, 1]
         self.data[Prod.beta.name] = [1, 4, 1, 2]
@@ -33,7 +33,7 @@ class ResourceRatioTableSpecs:
         self.name = FigureNames.res_ratio_table
         self.title = "Production Resource Ratios"
         self.index = dict()
-        self.index['Resource'] = [i.name for i in res_members]
+        self.index['Resource'] = [i.name for i in Res]
         self.data = dict()
         self.data[Prod.aisha.name] = [3, 6, 2, 1]
         self.data[Prod.beta.name] = [1, 4, 1, 2]
@@ -64,7 +64,7 @@ class InventoryResSpecs:
 
     def _entry_to_color(self):
         colormap = dict()
-        entries = [res.name for res in res_members]
+        entries = [res.name for res in Res]
         for i, entry in enumerate(entries):
             colormap[entry] = Category10[10][i]
         return colormap
@@ -79,7 +79,7 @@ class InventoryProdSpecs:
 
     def _entry_to_color(self):
         colormap = dict()
-        entries = [prod.name for prod in prod_members]
+        entries = [prod.name for prod in Prod]
         for i, entry in enumerate(entries):
             colormap[entry] = Category10[10][i]
         return colormap
@@ -94,7 +94,7 @@ class PriceResSpecs:
 
     def _entry_to_color(self):
         colormap = dict()
-        entries = [res.name for res in res_members]
+        entries = [res.name for res in Res]
         for i, entry in enumerate(entries):
             colormap[entry] = Category10[10][i]
         return colormap
@@ -109,7 +109,7 @@ class PriceProdSpecs:
 
     def _entry_to_color(self):
         colormap = dict()
-        entries = [prod.name for prod in prod_members]
+        entries = [prod.name for prod in Prod]
         for i, entry in enumerate(entries):
             colormap[entry] = Category10[10][i]
         return colormap

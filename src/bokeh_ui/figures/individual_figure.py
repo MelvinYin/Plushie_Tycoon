@@ -33,7 +33,7 @@ from bokeh.layouts import row, column
 from bokeh.models.widgets import Paragraph, Div
 from bokeh.models.layouts import WidgetBox, Spacer
 from bokeh.models import DataTable, TableColumn, ColumnDataSource
-from global_config import FigureNames, res_members, Prod, prod_members
+from global_config import FigureNames, Prod, Res
 
 def enum_to_str(enum_arr):
     # This should convert enum representations to displayed names in UI.
@@ -68,12 +68,6 @@ class ItemCostTable:
         fields['Moveout'] = list(moveout_cost.values())
         fields['Storage'] = list(storage_cost.values())
         return fields
-
-    def _get_index(self, inventory):
-        index_in_enum = inventory.get_index()
-        index = dict()
-        index['Item/1000'] = enum_to_str(index_in_enum)
-        return index
 
     def _check_initial_data(self, data):
         assert data
@@ -142,12 +136,6 @@ class ItemPropertiesTable:
         properties['Volume'] = list(volumes.values())
         return properties
 
-    def _get_index(self, inventory):
-        index_in_enum = inventory.get_index()
-        index = dict()
-        index['Item'] = enum_to_str(index_in_enum)
-        return index
-
     def _check_initial_data(self, data):
         assert data
         assert isinstance(data, dict)
@@ -173,8 +161,8 @@ class ItemPropertiesTable:
                         self.data.keys()]
         columns[0].width = 400
         data_table = DataTable(source=self._CDS, columns=columns,
-                               width=self.width,
-                               height=self.height, index_position=None)
+                               width=self.width, height=self.height,
+                               index_position=None)
         return data_table
 
     def _set_table(self):
@@ -286,7 +274,6 @@ class IndividualFigure:
         CDS.stream will fail.
         """
         # add test? to make sure all values used in this class is in init_data
-        print(initial_data)
         num_values = len(next(iter(initial_data.values())))
         initial_data['xs'] = list(range(num_values))
         CDS = ColumnDataSource(initial_data)
@@ -304,7 +291,7 @@ class IndividualFigure:
             counter += count
         return tick_label_map
 
-    def _set_initial_figure(self, Specs):
+    def _set_initial_figure(self, specs):
         hover = HoverTool(
             tooltips=[("Point No.", "@xs"),
                       ("Time Step", "@time")],
@@ -337,10 +324,10 @@ class IndividualFigure:
 
         p.xaxis.major_label_overrides = self.tick_label_map
 
-        p.title.text = Specs.title
+        p.title.text = specs.title
         p.title.align = 'center'
-        p.xaxis.axis_label = Specs.x_label
-        p.yaxis.axis_label = Specs.y_label
+        p.xaxis.axis_label = specs.x_label
+        p.yaxis.axis_label = specs.y_label
         keys_in_figure = list([key for key in self.CDS.column_names
                                if key != 'time' and key != 'xs'])
 
@@ -349,15 +336,13 @@ class IndividualFigure:
         # reported in bokeh issues, see #8394
         for key in keys_in_figure:
             legend_key = key + "_"
-            color_value = Specs.colormap[key]
+            color_value = specs.colormap[key]
             p.x("xs", key, source=self.CDS, name=key, size=10,
-                legend=legend_key, color=color_value)
-            p.line("xs", key, source=self.CDS, legend=legend_key,
+                legend_label=legend_key, color=color_value)
+            p.line("xs", key, source=self.CDS, legend_label=legend_key,
                    color=color_value)
-
         p.legend.location = "top_left"
         p.legend.click_policy = "hide"
-
         return p
 
     def _update_xaxis(self):
@@ -365,7 +350,6 @@ class IndividualFigure:
         self.figure.xaxis.ticker = ticker
         self.figure.xgrid.ticker = ticker
         self.figure.xaxis.major_label_overrides = self.tick_label_map
-        return True
 
     def figure_update(self, add_line):
         current_time = add_line['time'][0]
@@ -379,4 +363,3 @@ class IndividualFigure:
         # Load does not work at this stage because figures do not appear to
         # be able to refresh themselves
         self.CDS.stream(add_line)
-        return True

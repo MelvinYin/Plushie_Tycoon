@@ -15,7 +15,6 @@ class Res(Enum):
 @unique
 class Prod(Enum):
     __order__ = 'aisha beta chama'
-    # tag = hash("Prod")
     aisha = 1
     beta = 2
     chama = 3
@@ -41,9 +40,6 @@ class Production(Enum):
     hours_needed = auto()
     cost_per_hour = auto()
     res_cost = auto()
-
-res_members = [Res.cloth, Res.stuff, Res.accessory, Res.packaging]
-prod_members = [Prod.aisha, Prod.beta, Prod.chama]
 
 # ProductionTuple = namedtuple('ProductionTuple',
 #                              'hours_needed res_ratio cost_per_hour')

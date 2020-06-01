@@ -3,7 +3,6 @@ from gs import GS
 from global_config import Func, GSConstructor
 from gs_global import GSGlobal
 from copy import deepcopy
-from ui_transporter import Transporter
 
 nested_defaultdict = defaultdict(lambda: defaultdict(int))
 

@@ -13,36 +13,7 @@ from global_config import Res, Prod, FigSpecs
 from global_config import FigureNames as FigNms
 from figures.individual_figure import IndividualFigure, ConsoleOutput, \
     ResourceRatioTable, ItemPropertiesTable, ItemCostTable
-from ui_transporter import Transporter
 from widgets.individual import TransactionWidget, ButtonWidget
-
-"""
-
-    def callback(self, call):
-        log(call, inspect.currentframe())
-        message = self._check_for_invalid_input(call)
-        if message is not None:
-            cleaned_output = self._to_console(message)
-            log(cleaned_output, inspect.currentframe())
-            return cleaned_output
-        to_do, updated_data = self.raw_callback(call)
-        if to_do == 'update':
-            # cleaned_output = self._adapt_for_ui(updated_data)
-            log(updated_data, inspect.currentframe())
-        # elif to_do == "reload":
-        #     # cleaned_output = self._adapt_for_ui(updated_data)
-        #     log(updated_data, inspect.currentframe())
-        #     # self.ui.reload(cleaned_output)
-        #     self.ui = UI(self.callback)
-        #     raise Exception
-        #     return None
-        elif to_do == 'pause':
-            return None
-        else:
-            raise Exception
-        return updated_data
-
-"""
 
 class UI:
     def __init__(self, ui_callback):

@@ -1,5 +1,5 @@
 from init_values import InitValues
-from base import res_members, prod_members
+from base import Res, Prod
 import pandas as pd
 
 class GSConstructor:
@@ -27,10 +27,6 @@ class GSConstructor:
         self.load_console(init_values.console)
         return True
 
-        # for var_name, value in init_values.__dict__.items():
-        #     if var_name in self.__dict__:
-        #         self.__dict__[var_name] = value
-
     def load_console(self, text):
         assert isinstance(text, str)
         self.console = text
@@ -42,7 +38,7 @@ class GSConstructor:
         cost_per_hour = _production['cost_per_hour']
         assert isinstance(res_ratio, pd.DataFrame)
         assert isinstance(hours_needed, dict)
-        assert set(hours_needed.keys()) == set(prod_members)
+        assert set(hours_needed.keys()) == set(Prod)
         assert isinstance(list(hours_needed.values())[0], int)
         assert isinstance(cost_per_hour, int)
         # self.production = ProductionTuple(hours_needed, res_ratio,
@@ -58,15 +54,13 @@ class GSConstructor:
     def load_market(self, market):
         self.market = market
         assert isinstance(market, dict)
-        assert set(market.keys()) == {*set(res_members), *set(prod_members)}
+        assert set(market.keys()) == {*set(Res), *set(Prod)}
         assert isinstance(list(market.values())[0], int)
         return True
 
     def load_inventory(self, inventory):
         assert isinstance(inventory, dict)
         # This is no longer true, because warehouse_tier is inside inventory now
-        # assert set(inventory.keys()) == {*set(res_members), *set(prod_members)}
-        # assert isinstance(list(inventory.values())[0], int)
         self.inventory = inventory
         return True
 
