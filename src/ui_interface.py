@@ -80,7 +80,6 @@ class UIInterface:
                 j = j.name
                 per_prod.append(grpc_obj.resource_ratio[i].ratio[j])
             ratio[i] = per_prod
-        print(ratio)
         output[FigureNames.res_ratio_table] = ratio
 
         #     console_output
