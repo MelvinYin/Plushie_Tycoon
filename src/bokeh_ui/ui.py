@@ -1,5 +1,4 @@
 from bokeh.layouts import column
-from exceptions import InvalidInputException, InsufficientQuantityError
 from global_config import Res, Prod, Func
 from collections import defaultdict
 import inspect
