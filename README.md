@@ -73,6 +73,7 @@ roll back uncommitted changes, so once you select Next you can't undo. Save
 and Load works locally, maybe. Quit is meant to quit. 
   
 #### Detailed Description
+
 #####Python Server
 GE is game engine, GS is game state. GE implements commands like buy and sell
 , GS stores current state information such as inventory and market prices

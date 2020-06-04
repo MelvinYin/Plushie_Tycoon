@@ -10,6 +10,7 @@ plushie_tycoon/Grpc$TransactionObject.class
 plushie_tycoon/UITransferGrpc$UITransferFileDescriptorSupplier.class
 plushie_tycoon/UITransferGrpc$1.class
 plushie_tycoon/UITransferGrpc$UITransferImplBase.class
+plushie_tycoon/MockService$UITransferService.class
 plushie_tycoon/Grpc$TransactionObjectOrBuilder.class
 plushie_tycoon/UITransferGrpc$UITransferMethodDescriptorSupplier.class
 plushie_tycoon/Grpc.class
@@ -38,7 +39,6 @@ plushie_tycoon/Grpc$SelectionObject$Builder.class
 plushie_tycoon/Grpc$mRatioPerProduct$1.class
 plushie_tycoon/UITransferGrpc$MethodHandlers.class
 plushie_tycoon/Grpc$UserOutput.class
-plushie_tycoon/PlushieServer$UITransferService.class
 plushie_tycoon/Grpc$UserOutput$Builder.class
 plushie_tycoon/Grpc$UserOutput$PricesDefaultEntryHolder.class
-plushie_tycoon/PlushieServer$1.class
+plushie_tycoon/MockService.class

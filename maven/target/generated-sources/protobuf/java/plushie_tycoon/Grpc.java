@@ -2422,8 +2422,8 @@ public final class Grpc {
 
   }
 
-  public interface UserOutputOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:plushie_tycoon.UserOutput)
+  public interface SnapshotOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:plushie_tycoon.Snapshot)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2667,18 +2667,18 @@ public final class Grpc {
         getActionBytes();
   }
   /**
-   * Protobuf type {@code plushie_tycoon.UserOutput}
+   * Protobuf type {@code plushie_tycoon.Snapshot}
    */
-  public  static final class UserOutput extends
+  public  static final class Snapshot extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:plushie_tycoon.UserOutput)
-      UserOutputOrBuilder {
+      // @@protoc_insertion_point(message_implements:plushie_tycoon.Snapshot)
+      SnapshotOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use UserOutput.newBuilder() to construct.
-    private UserOutput(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use Snapshot.newBuilder() to construct.
+    private Snapshot(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private UserOutput() {
+    private Snapshot() {
       consoleOutput_ = "";
       action_ = "";
     }
@@ -2687,7 +2687,7 @@ public final class Grpc {
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new UserOutput();
+      return new Snapshot();
     }
 
     @java.lang.Override
@@ -2695,7 +2695,7 @@ public final class Grpc {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private UserOutput(
+    private Snapshot(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2835,7 +2835,7 @@ public final class Grpc {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_descriptor;
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -2863,9 +2863,9 @@ public final class Grpc {
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_fieldAccessorTable
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              plushie_tycoon.Grpc.UserOutput.class, plushie_tycoon.Grpc.UserOutput.Builder.class);
+              plushie_tycoon.Grpc.Snapshot.class, plushie_tycoon.Grpc.Snapshot.Builder.class);
     }
 
     public static final int PRICES_FIELD_NUMBER = 1;
@@ -2874,7 +2874,7 @@ public final class Grpc {
           java.lang.String, java.lang.Integer> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_PricesEntry_descriptor, 
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_PricesEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.INT32,
@@ -2950,7 +2950,7 @@ public final class Grpc {
           java.lang.String, java.lang.Integer> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_QuantitiesEntry_descriptor, 
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_QuantitiesEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.INT32,
@@ -3026,7 +3026,7 @@ public final class Grpc {
           java.lang.String, java.lang.Double> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Double>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_WeightsEntry_descriptor, 
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_WeightsEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.DOUBLE,
@@ -3102,7 +3102,7 @@ public final class Grpc {
           java.lang.String, java.lang.Double> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Double>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_VolumesEntry_descriptor, 
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_VolumesEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.DOUBLE,
@@ -3178,7 +3178,7 @@ public final class Grpc {
           java.lang.String, plushie_tycoon.Grpc.mItemCost> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, plushie_tycoon.Grpc.mItemCost>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_ItemCostEntry_descriptor, 
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_ItemCostEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
@@ -3254,7 +3254,7 @@ public final class Grpc {
           java.lang.String, plushie_tycoon.Grpc.mRatioPerProduct> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, plushie_tycoon.Grpc.mRatioPerProduct>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_ResourceRatioEntry_descriptor, 
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_ResourceRatioEntry_descriptor,
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
@@ -3571,10 +3571,10 @@ public final class Grpc {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof plushie_tycoon.Grpc.UserOutput)) {
+      if (!(obj instanceof plushie_tycoon.Grpc.Snapshot)) {
         return super.equals(obj);
       }
-      plushie_tycoon.Grpc.UserOutput other = (plushie_tycoon.Grpc.UserOutput) obj;
+      plushie_tycoon.Grpc.Snapshot other = (plushie_tycoon.Grpc.Snapshot) obj;
 
       if (!internalGetPrices().equals(
           other.internalGetPrices())) return false;
@@ -3644,69 +3644,69 @@ public final class Grpc {
       return hash;
     }
 
-    public static plushie_tycoon.Grpc.UserOutput parseFrom(
+    public static plushie_tycoon.Grpc.Snapshot parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseFrom(
+    public static plushie_tycoon.Grpc.Snapshot parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseFrom(
+    public static plushie_tycoon.Grpc.Snapshot parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseFrom(
+    public static plushie_tycoon.Grpc.Snapshot parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseFrom(byte[] data)
+    public static plushie_tycoon.Grpc.Snapshot parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseFrom(
+    public static plushie_tycoon.Grpc.Snapshot parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseFrom(java.io.InputStream input)
+    public static plushie_tycoon.Grpc.Snapshot parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseFrom(
+    public static plushie_tycoon.Grpc.Snapshot parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseDelimitedFrom(java.io.InputStream input)
+    public static plushie_tycoon.Grpc.Snapshot parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseDelimitedFrom(
+    public static plushie_tycoon.Grpc.Snapshot parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseFrom(
+    public static plushie_tycoon.Grpc.Snapshot parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static plushie_tycoon.Grpc.UserOutput parseFrom(
+    public static plushie_tycoon.Grpc.Snapshot parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3719,7 +3719,7 @@ public final class Grpc {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(plushie_tycoon.Grpc.UserOutput prototype) {
+    public static Builder newBuilder(plushie_tycoon.Grpc.Snapshot prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3735,15 +3735,15 @@ public final class Grpc {
       return builder;
     }
     /**
-     * Protobuf type {@code plushie_tycoon.UserOutput}
+     * Protobuf type {@code plushie_tycoon.Snapshot}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:plushie_tycoon.UserOutput)
-        plushie_tycoon.Grpc.UserOutputOrBuilder {
+        // @@protoc_insertion_point(builder_implements:plushie_tycoon.Snapshot)
+        plushie_tycoon.Grpc.SnapshotOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_descriptor;
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
@@ -3791,12 +3791,12 @@ public final class Grpc {
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_fieldAccessorTable
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                plushie_tycoon.Grpc.UserOutput.class, plushie_tycoon.Grpc.UserOutput.Builder.class);
+                plushie_tycoon.Grpc.Snapshot.class, plushie_tycoon.Grpc.Snapshot.Builder.class);
       }
 
-      // Construct using plushie_tycoon.Grpc.UserOutput.newBuilder()
+      // Construct using plushie_tycoon.Grpc.Snapshot.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3834,17 +3834,17 @@ public final class Grpc {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserOutput_descriptor;
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_descriptor;
       }
 
       @java.lang.Override
-      public plushie_tycoon.Grpc.UserOutput getDefaultInstanceForType() {
-        return plushie_tycoon.Grpc.UserOutput.getDefaultInstance();
+      public plushie_tycoon.Grpc.Snapshot getDefaultInstanceForType() {
+        return plushie_tycoon.Grpc.Snapshot.getDefaultInstance();
       }
 
       @java.lang.Override
-      public plushie_tycoon.Grpc.UserOutput build() {
-        plushie_tycoon.Grpc.UserOutput result = buildPartial();
+      public plushie_tycoon.Grpc.Snapshot build() {
+        plushie_tycoon.Grpc.Snapshot result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3852,8 +3852,8 @@ public final class Grpc {
       }
 
       @java.lang.Override
-      public plushie_tycoon.Grpc.UserOutput buildPartial() {
-        plushie_tycoon.Grpc.UserOutput result = new plushie_tycoon.Grpc.UserOutput(this);
+      public plushie_tycoon.Grpc.Snapshot buildPartial() {
+        plushie_tycoon.Grpc.Snapshot result = new plushie_tycoon.Grpc.Snapshot(this);
         int from_bitField0_ = bitField0_;
         result.prices_ = internalGetPrices();
         result.prices_.makeImmutable();
@@ -3909,16 +3909,16 @@ public final class Grpc {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof plushie_tycoon.Grpc.UserOutput) {
-          return mergeFrom((plushie_tycoon.Grpc.UserOutput)other);
+        if (other instanceof plushie_tycoon.Grpc.Snapshot) {
+          return mergeFrom((plushie_tycoon.Grpc.Snapshot)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(plushie_tycoon.Grpc.UserOutput other) {
-        if (other == plushie_tycoon.Grpc.UserOutput.getDefaultInstance()) return this;
+      public Builder mergeFrom(plushie_tycoon.Grpc.Snapshot other) {
+        if (other == plushie_tycoon.Grpc.Snapshot.getDefaultInstance()) return this;
         internalGetMutablePrices().mergeFrom(
             other.internalGetPrices());
         internalGetMutableQuantities().mergeFrom(
@@ -3960,11 +3960,11 @@ public final class Grpc {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        plushie_tycoon.Grpc.UserOutput parsedMessage = null;
+        plushie_tycoon.Grpc.Snapshot parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (plushie_tycoon.Grpc.UserOutput) e.getUnfinishedMessage();
+          parsedMessage = (plushie_tycoon.Grpc.Snapshot) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4937,41 +4937,41 @@ public final class Grpc {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:plushie_tycoon.UserOutput)
+      // @@protoc_insertion_point(builder_scope:plushie_tycoon.Snapshot)
     }
 
-    // @@protoc_insertion_point(class_scope:plushie_tycoon.UserOutput)
-    private static final plushie_tycoon.Grpc.UserOutput DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:plushie_tycoon.Snapshot)
+    private static final plushie_tycoon.Grpc.Snapshot DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new plushie_tycoon.Grpc.UserOutput();
+      DEFAULT_INSTANCE = new plushie_tycoon.Grpc.Snapshot();
     }
 
-    public static plushie_tycoon.Grpc.UserOutput getDefaultInstance() {
+    public static plushie_tycoon.Grpc.Snapshot getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<UserOutput>
-        PARSER = new com.google.protobuf.AbstractParser<UserOutput>() {
+    private static final com.google.protobuf.Parser<Snapshot>
+        PARSER = new com.google.protobuf.AbstractParser<Snapshot>() {
       @java.lang.Override
-      public UserOutput parsePartialFrom(
+      public Snapshot parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new UserOutput(input, extensionRegistry);
+        return new Snapshot(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<UserOutput> parser() {
+    public static com.google.protobuf.Parser<Snapshot> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<UserOutput> getParserForType() {
+    public com.google.protobuf.Parser<Snapshot> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public plushie_tycoon.Grpc.UserOutput getDefaultInstanceForType() {
+    public plushie_tycoon.Grpc.Snapshot getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5003,40 +5003,40 @@ public final class Grpc {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_plushie_tycoon_mRatioPerProduct_RatioEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_plushie_tycoon_UserOutput_descriptor;
+    internal_static_plushie_tycoon_Snapshot_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_plushie_tycoon_UserOutput_fieldAccessorTable;
+      internal_static_plushie_tycoon_Snapshot_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_plushie_tycoon_UserOutput_PricesEntry_descriptor;
+    internal_static_plushie_tycoon_Snapshot_PricesEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_plushie_tycoon_UserOutput_PricesEntry_fieldAccessorTable;
+      internal_static_plushie_tycoon_Snapshot_PricesEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_plushie_tycoon_UserOutput_QuantitiesEntry_descriptor;
+    internal_static_plushie_tycoon_Snapshot_QuantitiesEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_plushie_tycoon_UserOutput_QuantitiesEntry_fieldAccessorTable;
+      internal_static_plushie_tycoon_Snapshot_QuantitiesEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_plushie_tycoon_UserOutput_WeightsEntry_descriptor;
+    internal_static_plushie_tycoon_Snapshot_WeightsEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_plushie_tycoon_UserOutput_WeightsEntry_fieldAccessorTable;
+      internal_static_plushie_tycoon_Snapshot_WeightsEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_plushie_tycoon_UserOutput_VolumesEntry_descriptor;
+    internal_static_plushie_tycoon_Snapshot_VolumesEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_plushie_tycoon_UserOutput_VolumesEntry_fieldAccessorTable;
+      internal_static_plushie_tycoon_Snapshot_VolumesEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_plushie_tycoon_UserOutput_ItemCostEntry_descriptor;
+    internal_static_plushie_tycoon_Snapshot_ItemCostEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_plushie_tycoon_UserOutput_ItemCostEntry_fieldAccessorTable;
+      internal_static_plushie_tycoon_Snapshot_ItemCostEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_plushie_tycoon_UserOutput_ResourceRatioEntry_descriptor;
+    internal_static_plushie_tycoon_Snapshot_ResourceRatioEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_plushie_tycoon_UserOutput_ResourceRatioEntry_fieldAccessorTable;
+      internal_static_plushie_tycoon_Snapshot_ResourceRatioEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -5053,16 +5053,16 @@ public final class Grpc {
       "\001(\001\"|\n\020mRatioPerProduct\022:\n\005ratio\030\006 \003(\0132+" +
       ".plushie_tycoon.mRatioPerProduct.RatioEn" +
       "try\032,\n\nRatioEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030" +
-      "\002 \001(\005:\0028\001\"\250\006\n\nUserOutput\0226\n\006prices\030\001 \003(\013" +
-      "2&.plushie_tycoon.UserOutput.PricesEntry" +
+      "\002 \001(\005:\0028\001\"\250\006\n\nSnapshot\0226\n\006prices\030\001 \003(\013" +
+      "2&.plushie_tycoon.Snapshot.PricesEntry" +
       "\022>\n\nquantities\030\002 \003(\0132*.plushie_tycoon.Us" +
       "erOutput.QuantitiesEntry\0228\n\007weights\030\r \003(" +
-      "\0132\'.plushie_tycoon.UserOutput.WeightsEnt" +
+      "\0132\'.plushie_tycoon.Snapshot.WeightsEnt" +
       "ry\0228\n\007volumes\030\016 \003(\0132\'.plushie_tycoon.Use" +
       "rOutput.VolumesEntry\022;\n\titem_cost\030\014 \003(\0132" +
-      "(.plushie_tycoon.UserOutput.ItemCostEntr" +
+      "(.plushie_tycoon.Snapshot.ItemCostEntr" +
       "y\022E\n\016resource_ratio\030\007 \003(\0132-.plushie_tyco" +
-      "on.UserOutput.ResourceRatioEntry\022\026\n\016cons" +
+      "on.Snapshot.ResourceRatioEntry\022\026\n\016cons" +
       "ole_output\030\010 \001(\t\022\016\n\006budget\030\t \001(\005\022\014\n\004time" +
       "\030\n \001(\005\022\016\n\006action\030\013 \001(\t\032-\n\013PricesEntry\022\013\n" +
       "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0321\n\017Quantit" +
@@ -5075,21 +5075,21 @@ public final class Grpc {
       "y\030\001 \001(\t\022/\n\005value\030\002 \001(\0132 .plushie_tycoon." +
       "mRatioPerProduct:\0028\0012\220\005\n\nUITransfer\022F\n\003b" +
       "uy\022!.plushie_tycoon.TransactionObject\032\032." +
-      "plushie_tycoon.UserOutput\"\000\022G\n\004sell\022!.pl" +
+      "plushie_tycoon.Snapshot\"\000\022G\n\004sell\022!.pl" +
       "ushie_tycoon.TransactionObject\032\032.plushie" +
-      "_tycoon.UserOutput\"\000\022G\n\004make\022!.plushie_t" +
+      "_tycoon.Snapshot\"\000\022G\n\004make\022!.plushie_t" +
       "ycoon.TransactionObject\032\032.plushie_tycoon" +
-      ".UserOutput\"\000\022E\n\004next\022\037.plushie_tycoon.S" +
+      ".Snapshot\"\000\022E\n\004next\022\037.plushie_tycoon.S" +
       "electionObject\032\032.plushie_tycoon.UserOutp" +
       "ut\"\000\022E\n\004save\022\037.plushie_tycoon.SelectionO" +
-      "bject\032\032.plushie_tycoon.UserOutput\"\000\022E\n\004l" +
+      "bject\032\032.plushie_tycoon.Snapshot\"\000\022E\n\004l" +
       "oad\022\037.plushie_tycoon.SelectionObject\032\032.p" +
-      "lushie_tycoon.UserOutput\"\000\022E\n\004back\022\037.plu" +
+      "lushie_tycoon.Snapshot\"\000\022E\n\004back\022\037.plu" +
       "shie_tycoon.SelectionObject\032\032.plushie_ty" +
-      "coon.UserOutput\"\000\022E\n\004quit\022\037.plushie_tyco" +
+      "coon.Snapshot\"\000\022E\n\004quit\022\037.plushie_tyco" +
       "on.SelectionObject\032\032.plushie_tycoon.User" +
       "Output\"\000\022E\n\004init\022\037.plushie_tycoon.Select" +
-      "ionObject\032\032.plushie_tycoon.UserOutput\"\000b" +
+      "ionObject\032\032.plushie_tycoon.Snapshot\"\000b" +
       "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
@@ -5126,47 +5126,47 @@ public final class Grpc {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_plushie_tycoon_mRatioPerProduct_RatioEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_plushie_tycoon_UserOutput_descriptor =
+    internal_static_plushie_tycoon_Snapshot_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_plushie_tycoon_UserOutput_fieldAccessorTable = new
+    internal_static_plushie_tycoon_Snapshot_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_plushie_tycoon_UserOutput_descriptor,
+        internal_static_plushie_tycoon_Snapshot_descriptor,
         new java.lang.String[] { "Prices", "Quantities", "Weights", "Volumes", "ItemCost", "ResourceRatio", "ConsoleOutput", "Budget", "Time", "Action", });
-    internal_static_plushie_tycoon_UserOutput_PricesEntry_descriptor =
-      internal_static_plushie_tycoon_UserOutput_descriptor.getNestedTypes().get(0);
-    internal_static_plushie_tycoon_UserOutput_PricesEntry_fieldAccessorTable = new
+    internal_static_plushie_tycoon_Snapshot_PricesEntry_descriptor =
+      internal_static_plushie_tycoon_Snapshot_descriptor.getNestedTypes().get(0);
+    internal_static_plushie_tycoon_Snapshot_PricesEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_plushie_tycoon_UserOutput_PricesEntry_descriptor,
+        internal_static_plushie_tycoon_Snapshot_PricesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_plushie_tycoon_UserOutput_QuantitiesEntry_descriptor =
-      internal_static_plushie_tycoon_UserOutput_descriptor.getNestedTypes().get(1);
-    internal_static_plushie_tycoon_UserOutput_QuantitiesEntry_fieldAccessorTable = new
+    internal_static_plushie_tycoon_Snapshot_QuantitiesEntry_descriptor =
+      internal_static_plushie_tycoon_Snapshot_descriptor.getNestedTypes().get(1);
+    internal_static_plushie_tycoon_Snapshot_QuantitiesEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_plushie_tycoon_UserOutput_QuantitiesEntry_descriptor,
+        internal_static_plushie_tycoon_Snapshot_QuantitiesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_plushie_tycoon_UserOutput_WeightsEntry_descriptor =
-      internal_static_plushie_tycoon_UserOutput_descriptor.getNestedTypes().get(2);
-    internal_static_plushie_tycoon_UserOutput_WeightsEntry_fieldAccessorTable = new
+    internal_static_plushie_tycoon_Snapshot_WeightsEntry_descriptor =
+      internal_static_plushie_tycoon_Snapshot_descriptor.getNestedTypes().get(2);
+    internal_static_plushie_tycoon_Snapshot_WeightsEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_plushie_tycoon_UserOutput_WeightsEntry_descriptor,
+        internal_static_plushie_tycoon_Snapshot_WeightsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_plushie_tycoon_UserOutput_VolumesEntry_descriptor =
-      internal_static_plushie_tycoon_UserOutput_descriptor.getNestedTypes().get(3);
-    internal_static_plushie_tycoon_UserOutput_VolumesEntry_fieldAccessorTable = new
+    internal_static_plushie_tycoon_Snapshot_VolumesEntry_descriptor =
+      internal_static_plushie_tycoon_Snapshot_descriptor.getNestedTypes().get(3);
+    internal_static_plushie_tycoon_Snapshot_VolumesEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_plushie_tycoon_UserOutput_VolumesEntry_descriptor,
+        internal_static_plushie_tycoon_Snapshot_VolumesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_plushie_tycoon_UserOutput_ItemCostEntry_descriptor =
-      internal_static_plushie_tycoon_UserOutput_descriptor.getNestedTypes().get(4);
-    internal_static_plushie_tycoon_UserOutput_ItemCostEntry_fieldAccessorTable = new
+    internal_static_plushie_tycoon_Snapshot_ItemCostEntry_descriptor =
+      internal_static_plushie_tycoon_Snapshot_descriptor.getNestedTypes().get(4);
+    internal_static_plushie_tycoon_Snapshot_ItemCostEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_plushie_tycoon_UserOutput_ItemCostEntry_descriptor,
+        internal_static_plushie_tycoon_Snapshot_ItemCostEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_plushie_tycoon_UserOutput_ResourceRatioEntry_descriptor =
-      internal_static_plushie_tycoon_UserOutput_descriptor.getNestedTypes().get(5);
-    internal_static_plushie_tycoon_UserOutput_ResourceRatioEntry_fieldAccessorTable = new
+    internal_static_plushie_tycoon_Snapshot_ResourceRatioEntry_descriptor =
+      internal_static_plushie_tycoon_Snapshot_descriptor.getNestedTypes().get(5);
+    internal_static_plushie_tycoon_Snapshot_ResourceRatioEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_plushie_tycoon_UserOutput_ResourceRatioEntry_descriptor,
+        internal_static_plushie_tycoon_Snapshot_ResourceRatioEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
   }
 

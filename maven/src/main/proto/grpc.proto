@@ -4,15 +4,15 @@ package plushie_tycoon;
 //todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
 //or alternatively we can provide an order object somewhere
 service UITransfer {
-    rpc buy(TransactionObject) returns (UserOutput) {};
-    rpc sell(TransactionObject) returns (UserOutput) {};
-    rpc make(TransactionObject) returns (UserOutput) {};
-    rpc next(SelectionObject) returns (UserOutput) {};
-    rpc save(SelectionObject) returns (UserOutput) {};
-    rpc load(SelectionObject) returns (UserOutput) {};
-    rpc back(SelectionObject) returns (UserOutput) {};
-    rpc quit(SelectionObject) returns (UserOutput) {};
-    rpc init (SelectionObject) returns (UserOutput) {};
+    rpc buy(TransactionObject) returns (Snapshot) {};
+    rpc sell(TransactionObject) returns (Snapshot) {};
+    rpc make(TransactionObject) returns (Snapshot) {};
+    rpc next(SelectionObject) returns (Snapshot) {};
+    rpc save(SelectionObject) returns (Snapshot) {};
+    rpc load(SelectionObject) returns (Snapshot) {};
+    rpc back(SelectionObject) returns (Snapshot) {};
+    rpc quit(SelectionObject) returns (Snapshot) {};
+    rpc init (SelectionObject) returns (Snapshot) {};
 }
 
 
@@ -35,7 +35,7 @@ message mRatioPerProduct {
     map<string, int32> ratio = 6;
 }
 
-message UserOutput {
+message Snapshot {
     map<string, int32> prices = 1;
     map<string, int32> quantities = 2;
     map<string, double> weights = 13;
