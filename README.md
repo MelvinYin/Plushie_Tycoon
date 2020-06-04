@@ -62,9 +62,9 @@ That's the eventual goal, for now it's nowhere near.
 
 
 #### Requirements
-Bokeh 2.0, although it should work from 0.13. Python 3.6+. To run, cd to
-project directory, in conda env run bokeh serve --show src. This executes
-main.py in src. 
+Bokeh 2.0, although it should work from 0.13. Python 3.6+, Maven 3.6.3
+, libprotoc 3.11.4, python -m grpc_tools.protoc
+ --version libprotoc 3.11.2, openjdk 14.0.1 2020-04-14
 
 #### How To Use
 Select Buy/Sell/Make, select Resource/Res or Product/Prod, and select item
@@ -73,6 +73,7 @@ roll back uncommitted changes, so once you select Next you can't undo. Save
 and Load works locally, maybe. Quit is meant to quit. 
   
 #### Detailed Description
+#####Python Server
 GE is game engine, GS is game state. GE implements commands like buy and sell
 , GS stores current state information such as inventory and market prices
 , and implements certain backend and maintenance methods. Each player has
@@ -89,12 +90,47 @@ house. GS therefore keeps a copy of these. GSHistory tracks all
 uncommitted changes (only in local), to implement back function. Parameters
 such as resource ratios, storage cost, kept static for now
 . UI settles ui, using bokeh. 
- 
+
+#### To run
+To build python grpc, cd to src, run python -m grpc_tools.protoc --proto_path . --python_out=. --grpc_python_out=. ./grpc.proto 
+To build java grpc, cd to maven, run mvn package
+
+To run java server, run PlushieServer.java
+To run python frontend, at project directory with src in folder, run bokeh serve --show src
+
+#### Developer Notes
+1. Don't bother trying to get java to work without mvn, it's a pita. Grpc
+ support for java compilation for grpc (not protobuf, that one is fine
+ ) without gradle or maven build systems is very weak, and online
+  documentation is crap. Stick to this for now, I know it sucks.
+
+2. Don't attempt to integrate python into maven build system for now, maven
+ has sparse multi-language support, and if it breaks it's hard to debug
+ . Again, I know the current directory structure sucks.
+
+3. To build grpc-generated classes in java, change `.proto` then run `mvn
+ package`. To run manually, I have a `./support/executables/protoc-gen-grpc
+ -java.exe` executable. To use this, move this to same folder as your `.proto
+  ` file, then run `protoc --plugin=protoc-gen-grpc-java=./protoc-gen-grpc-java.exe  --grpc-java_out=. --proto_path=. --java_out=. ./grpc.proto`. What this does is it uses the executable as plugin to generate the grpc generated classes. If you drop `--grpc-java_out=.`, then it's a purely protobuf call and doesn't need the plugin, but this means you don't have the grpc generated classes. The executable comes from here:
+`https://mvnrepository.com/artifact/io.grpc/protoc-gen-grpc-java.`
+
+4. As of 04062020, the helloworld example in `https://grpc.io/docs/languages
+/java/quickstart/`, breaks when you try to run `./gradlew installDist`. No
+ idea why, probably something to do with java JDK/SDK + gradle + grpc + protobuf versions not being compatible. Do __not__ try to debug. 
+  
+5. The package name in .proto and in java classes need to be the same. I don't think python need anything here.
+
+6. I have a `./support/server_mock.py` to help debugging the backend side
+. Frontend mock is just the original UI for now. 
+
+7. Note that in protoc3, everything is optional by default, but not nullable
+. You do not therefore need to fill up everything when debugging, depending
+ on caller/receiver ofc. 
+
 #### Todo List
 In chronological order:
-1. Migration of backend to Java, keeping frontend as python for now, using
- py4j to interface between the two. This requires simplifying certain
-  features initially to make transition easier.
+1. Tune and update java backend, provide original python backend as option
 2. Move frontend to spring boot/react stack
 2. Further implement features.
-3. Tests, linters, CI/CD, dockerfile, docs. Maybe a description landing page?
+3. Tests, linters, CI/CD, dockerfile, docs. Maybe a description landing page
+? As if I will reach here.
