@@ -12,11 +12,6 @@ import plushie_tycoon.serverService.ge.market.GlobalMarket;
 import plushie_tycoon.Grpc.*;
 import plushie_tycoon.serverService.utils.BaseStringConverter;
 
-//todo: add data retrieval method for UI to update after every call
-//todo: convert it to sql eventually? For GS
-
-
-
 public class GE {
     private StateHistory history;
     private int budget;
@@ -30,32 +25,6 @@ public class GE {
         budget = Initials.budget;
         inventory = new GlobalInventory(Initials.quantities);
         time = Initials.time;
-    }
-
-    public int getMoveInCost(BaseObjects object, int quantity){
-        return inventory.getMoveInCost(object) * quantity;
-    }
-    public int getMoveOutCost(BaseObjects object, int quantity){
-        return inventory.getMoveOutCost(object) * quantity;
-    }
-    public int getStorageCost(){
-        return inventory.getTotalStorageCost();
-    }
-
-    public void add(BaseObjects object, int quantity){
-        inventory.add(object, quantity);
-    }
-    public void addBudget(int quantity){
-        budget += quantity;
-    }
-    public void addTime(){
-        time++;
-    }
-    public void sub(BaseObjects object, int quantity){
-        inventory.sub(object, quantity);
-    }
-    public void subBudget(int quantity){
-        budget -= quantity;
     }
 
     public void commit(){
