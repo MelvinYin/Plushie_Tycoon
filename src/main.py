@@ -60,10 +60,9 @@ def run():
     ui = UIInterface(port_no)
     curdoc().add_root(ui.ui.ui_layout)
     # show(ui.ui.ui_layout)
-    # with grpc.insecure_channel('localhost:50051') as channel:
-    #     stub = grpc_pb2_grpc.UITransferStub(channel)
-    #     # ui = MockUI(stub)
-    #     ui = UIInterface(stub)
-
 
 run()
+"""
+python -m grpc_tools.protoc --proto_path . --python_out=. --grpc_python_out=. 
+./grpc.proto
+"""

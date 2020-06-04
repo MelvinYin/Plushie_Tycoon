@@ -1,16 +1,20 @@
 syntax = "proto3";
 
+package plushie_tycoon;
+//todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
+//or alternatively we can provide an order object somewhere
 service UITransfer {
-    rpc Buy(TransactionObject) returns (UserOutput) {};
-    rpc Sell(TransactionObject) returns (UserOutput) {};
-    rpc Make(TransactionObject) returns (UserOutput) {};
-    rpc Next(SelectionObject) returns (UserOutput) {};
-    rpc Save(SelectionObject) returns (UserOutput) {};
-    rpc Load(SelectionObject) returns (UserOutput) {};
-    rpc Back(SelectionObject) returns (UserOutput) {};
-    rpc Quit(SelectionObject) returns (UserOutput) {};
-    rpc Init (SelectionObject) returns (UserOutput) {};
+    rpc buy(TransactionObject) returns (UserOutput) {};
+    rpc sell(TransactionObject) returns (UserOutput) {};
+    rpc make(TransactionObject) returns (UserOutput) {};
+    rpc next(SelectionObject) returns (UserOutput) {};
+    rpc save(SelectionObject) returns (UserOutput) {};
+    rpc load(SelectionObject) returns (UserOutput) {};
+    rpc back(SelectionObject) returns (UserOutput) {};
+    rpc quit(SelectionObject) returns (UserOutput) {};
+    rpc init(SelectionObject) returns (UserOutput) {};
 }
+
 
 message SelectionObject {
 }

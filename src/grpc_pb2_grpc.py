@@ -5,7 +5,9 @@ import grpc_pb2 as grpc__pb2
 
 
 class UITransferStub(object):
-    """Missing associated documentation comment in .proto file"""
+    """todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
+    or alternatively we can provide an order object somewhere
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -13,105 +15,107 @@ class UITransferStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Buy = channel.unary_unary(
-                '/UITransfer/Buy',
+        self.buy = channel.unary_unary(
+                '/plushie_tycoon.UITransfer/buy',
                 request_serializer=grpc__pb2.TransactionObject.SerializeToString,
                 response_deserializer=grpc__pb2.UserOutput.FromString,
                 )
-        self.Sell = channel.unary_unary(
-                '/UITransfer/Sell',
+        self.sell = channel.unary_unary(
+                '/plushie_tycoon.UITransfer/sell',
                 request_serializer=grpc__pb2.TransactionObject.SerializeToString,
                 response_deserializer=grpc__pb2.UserOutput.FromString,
                 )
-        self.Make = channel.unary_unary(
-                '/UITransfer/Make',
+        self.make = channel.unary_unary(
+                '/plushie_tycoon.UITransfer/make',
                 request_serializer=grpc__pb2.TransactionObject.SerializeToString,
                 response_deserializer=grpc__pb2.UserOutput.FromString,
                 )
-        self.Next = channel.unary_unary(
-                '/UITransfer/Next',
+        self.next = channel.unary_unary(
+                '/plushie_tycoon.UITransfer/next',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
                 response_deserializer=grpc__pb2.UserOutput.FromString,
                 )
-        self.Save = channel.unary_unary(
-                '/UITransfer/Save',
+        self.save = channel.unary_unary(
+                '/plushie_tycoon.UITransfer/save',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
                 response_deserializer=grpc__pb2.UserOutput.FromString,
                 )
-        self.Load = channel.unary_unary(
-                '/UITransfer/Load',
+        self.load = channel.unary_unary(
+                '/plushie_tycoon.UITransfer/load',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
                 response_deserializer=grpc__pb2.UserOutput.FromString,
                 )
-        self.Back = channel.unary_unary(
-                '/UITransfer/Back',
+        self.back = channel.unary_unary(
+                '/plushie_tycoon.UITransfer/back',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
                 response_deserializer=grpc__pb2.UserOutput.FromString,
                 )
-        self.Quit = channel.unary_unary(
-                '/UITransfer/Quit',
+        self.quit = channel.unary_unary(
+                '/plushie_tycoon.UITransfer/quit',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
                 response_deserializer=grpc__pb2.UserOutput.FromString,
                 )
-        self.Init = channel.unary_unary(
-                '/UITransfer/Init',
+        self.init = channel.unary_unary(
+                '/plushie_tycoon.UITransfer/init',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
                 response_deserializer=grpc__pb2.UserOutput.FromString,
                 )
 
 
 class UITransferServicer(object):
-    """Missing associated documentation comment in .proto file"""
+    """todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
+    or alternatively we can provide an order object somewhere
+    """
 
-    def Buy(self, request, context):
+    def buy(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Sell(self, request, context):
+    def sell(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Make(self, request, context):
+    def make(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Next(self, request, context):
+    def next(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Save(self, request, context):
+    def save(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Load(self, request, context):
+    def load(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Back(self, request, context):
+    def back(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Quit(self, request, context):
+    def quit(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def Init(self, request, context):
+    def init(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -120,63 +124,65 @@ class UITransferServicer(object):
 
 def add_UITransferServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Buy': grpc.unary_unary_rpc_method_handler(
-                    servicer.Buy,
+            'buy': grpc.unary_unary_rpc_method_handler(
+                    servicer.buy,
                     request_deserializer=grpc__pb2.TransactionObject.FromString,
                     response_serializer=grpc__pb2.UserOutput.SerializeToString,
             ),
-            'Sell': grpc.unary_unary_rpc_method_handler(
-                    servicer.Sell,
+            'sell': grpc.unary_unary_rpc_method_handler(
+                    servicer.sell,
                     request_deserializer=grpc__pb2.TransactionObject.FromString,
                     response_serializer=grpc__pb2.UserOutput.SerializeToString,
             ),
-            'Make': grpc.unary_unary_rpc_method_handler(
-                    servicer.Make,
+            'make': grpc.unary_unary_rpc_method_handler(
+                    servicer.make,
                     request_deserializer=grpc__pb2.TransactionObject.FromString,
                     response_serializer=grpc__pb2.UserOutput.SerializeToString,
             ),
-            'Next': grpc.unary_unary_rpc_method_handler(
-                    servicer.Next,
+            'next': grpc.unary_unary_rpc_method_handler(
+                    servicer.next,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
                     response_serializer=grpc__pb2.UserOutput.SerializeToString,
             ),
-            'Save': grpc.unary_unary_rpc_method_handler(
-                    servicer.Save,
+            'save': grpc.unary_unary_rpc_method_handler(
+                    servicer.save,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
                     response_serializer=grpc__pb2.UserOutput.SerializeToString,
             ),
-            'Load': grpc.unary_unary_rpc_method_handler(
-                    servicer.Load,
+            'load': grpc.unary_unary_rpc_method_handler(
+                    servicer.load,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
                     response_serializer=grpc__pb2.UserOutput.SerializeToString,
             ),
-            'Back': grpc.unary_unary_rpc_method_handler(
-                    servicer.Back,
+            'back': grpc.unary_unary_rpc_method_handler(
+                    servicer.back,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
                     response_serializer=grpc__pb2.UserOutput.SerializeToString,
             ),
-            'Quit': grpc.unary_unary_rpc_method_handler(
-                    servicer.Quit,
+            'quit': grpc.unary_unary_rpc_method_handler(
+                    servicer.quit,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
                     response_serializer=grpc__pb2.UserOutput.SerializeToString,
             ),
-            'Init': grpc.unary_unary_rpc_method_handler(
-                    servicer.Init,
+            'init': grpc.unary_unary_rpc_method_handler(
+                    servicer.init,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
                     response_serializer=grpc__pb2.UserOutput.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'UITransfer', rpc_method_handlers)
+            'plushie_tycoon.UITransfer', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
 class UITransfer(object):
-    """Missing associated documentation comment in .proto file"""
+    """todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
+    or alternatively we can provide an order object somewhere
+    """
 
     @staticmethod
-    def Buy(request,
+    def buy(request,
             target,
             options=(),
             channel_credentials=None,
@@ -185,14 +191,14 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/UITransfer/Buy',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/buy',
             grpc__pb2.TransactionObject.SerializeToString,
             grpc__pb2.UserOutput.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def Sell(request,
+    def sell(request,
             target,
             options=(),
             channel_credentials=None,
@@ -201,14 +207,14 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/UITransfer/Sell',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/sell',
             grpc__pb2.TransactionObject.SerializeToString,
             grpc__pb2.UserOutput.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def Make(request,
+    def make(request,
             target,
             options=(),
             channel_credentials=None,
@@ -217,14 +223,14 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/UITransfer/Make',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/make',
             grpc__pb2.TransactionObject.SerializeToString,
             grpc__pb2.UserOutput.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def Next(request,
+    def next(request,
             target,
             options=(),
             channel_credentials=None,
@@ -233,14 +239,14 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/UITransfer/Next',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/next',
             grpc__pb2.SelectionObject.SerializeToString,
             grpc__pb2.UserOutput.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def Save(request,
+    def save(request,
             target,
             options=(),
             channel_credentials=None,
@@ -249,14 +255,14 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/UITransfer/Save',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/save',
             grpc__pb2.SelectionObject.SerializeToString,
             grpc__pb2.UserOutput.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def Load(request,
+    def load(request,
             target,
             options=(),
             channel_credentials=None,
@@ -265,14 +271,14 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/UITransfer/Load',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/load',
             grpc__pb2.SelectionObject.SerializeToString,
             grpc__pb2.UserOutput.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def Back(request,
+    def back(request,
             target,
             options=(),
             channel_credentials=None,
@@ -281,14 +287,14 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/UITransfer/Back',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/back',
             grpc__pb2.SelectionObject.SerializeToString,
             grpc__pb2.UserOutput.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def Quit(request,
+    def quit(request,
             target,
             options=(),
             channel_credentials=None,
@@ -297,14 +303,14 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/UITransfer/Quit',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/quit',
             grpc__pb2.SelectionObject.SerializeToString,
             grpc__pb2.UserOutput.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def Init(request,
+    def init(request,
             target,
             options=(),
             channel_credentials=None,
@@ -313,7 +319,7 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/UITransfer/Init',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/init',
             grpc__pb2.SelectionObject.SerializeToString,
             grpc__pb2.UserOutput.FromString,
             options, channel_credentials,
