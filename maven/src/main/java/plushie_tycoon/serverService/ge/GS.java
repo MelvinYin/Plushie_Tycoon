@@ -1,4 +1,4 @@
-package plushie_tycoon.serverService.gs;
+package plushie_tycoon.serverService.ge;
 import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
 import plushie_tycoon.serverService.config.baseObjects.Products;
 import plushie_tycoon.serverService.config.baseObjects.Resources;
@@ -7,20 +7,20 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import plushie_tycoon.serverService.config.Defaults;
 import plushie_tycoon.serverService.config.Initials;
-import plushie_tycoon.serverService.gs.inventory.GlobalInventory;
-import plushie_tycoon.serverService.gs.market.GlobalMarket;
+import plushie_tycoon.serverService.ge.inventory.GlobalInventory;
+import plushie_tycoon.serverService.ge.market.GlobalMarket;
 
 
 //todo: add market changes
 public class GS {
-    private GSHistory history;
+    private StateHistory history;
     private int budget;
     private GlobalMarket market;
     private GlobalInventory inventory;
     private int time;
 
     public GS(){
-        history = new GSHistory();
+        history = new StateHistory();
         market = new GlobalMarket();
         budget = Initials.budget;
         inventory = new GlobalInventory(Initials.quantities);

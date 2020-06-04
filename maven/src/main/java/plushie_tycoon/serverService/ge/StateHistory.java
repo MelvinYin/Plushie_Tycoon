@@ -1,17 +1,16 @@
-package plushie_tycoon.serverService.gs;
+package plushie_tycoon.serverService.ge;
 
-import plushie_tycoon.serverService.gs.inventory.GlobalInventory;
-import plushie_tycoon.serverService.gs.market.GlobalMarket;
-import plushie_tycoon.serverService.gs.inventory.GlobalInventory;
+import plushie_tycoon.serverService.ge.inventory.GlobalInventory;
+import plushie_tycoon.serverService.ge.market.GlobalMarket;
 
 import java.util.Stack;
 
-public class GSHistory {
+public class StateHistory {
     private Stack<Integer> budget;
     private Stack<GlobalInventory> inventory;
     private Stack<GlobalMarket> market;
     private Stack<Integer> time;
-    public GSHistory(){
+    public StateHistory(){
         budget = new Stack<>();
         inventory = new Stack<>();
         time = new Stack<>();

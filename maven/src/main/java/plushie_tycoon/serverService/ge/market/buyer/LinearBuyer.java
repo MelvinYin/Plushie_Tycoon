@@ -1,4 +1,4 @@
-package plushie_tycoon.serverService.gs.market.buyer;
+package plushie_tycoon.serverService.ge.market.buyer;
 import java.lang.Math;
 
 public class LinearBuyer extends BuyerBase{

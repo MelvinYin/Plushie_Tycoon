@@ -2,10 +2,8 @@ package plushie_tycoon.serverService;
 
 import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
 import plushie_tycoon.serverService.config.baseObjects.Products;
-import plushie_tycoon.serverService.gs.GS;
 import plushie_tycoon.Grpc;
 
-import java.util.ArrayList;
 import plushie_tycoon.Grpc.Snapshot;
 
 //todo: add data retrieval method for UI to update after every call

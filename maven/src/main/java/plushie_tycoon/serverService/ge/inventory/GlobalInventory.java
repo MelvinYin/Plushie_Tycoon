@@ -1,4 +1,4 @@
-package plushie_tycoon.serverService.gs.inventory;
+package plushie_tycoon.serverService.ge.inventory;
 import java.util.HashMap;
 
 import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
@@ -92,6 +92,10 @@ public class GlobalInventory {
 
     public int getMoveOutCost(BaseObjects item) {
         return InventoryCalculator.getMoveOutCost(item);
+    }
+
+    public int getStorageCost(BaseObjects item) {
+        return InventoryCalculator.getStorageCost(item);
     }
 
     public void add(BaseObjects item, int quantity){

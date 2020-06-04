@@ -1,12 +1,12 @@
-package plushie_tycoon.serverService.gs.market;
-import plushie_tycoon.serverService.gs.market.buyer.BuyerBase;
-import plushie_tycoon.serverService.gs.market.buyer.FixedBuyer;
-import plushie_tycoon.serverService.gs.market.buyer.LinearBuyer;
-import plushie_tycoon.serverService.gs.market.buyer.ConsolidatedBuyer;
-import plushie_tycoon.serverService.gs.market.seller.FixedSeller;
-import plushie_tycoon.serverService.gs.market.seller.LinearSeller;
-import plushie_tycoon.serverService.gs.market.seller.ConsolidatedSeller;
-import plushie_tycoon.serverService.gs.market.seller.SellerBase;
+package plushie_tycoon.serverService.ge.market;
+import plushie_tycoon.serverService.ge.market.buyer.BuyerBase;
+import plushie_tycoon.serverService.ge.market.buyer.FixedBuyer;
+import plushie_tycoon.serverService.ge.market.buyer.LinearBuyer;
+import plushie_tycoon.serverService.ge.market.buyer.ConsolidatedBuyer;
+import plushie_tycoon.serverService.ge.market.seller.FixedSeller;
+import plushie_tycoon.serverService.ge.market.seller.LinearSeller;
+import plushie_tycoon.serverService.ge.market.seller.ConsolidatedSeller;
+import plushie_tycoon.serverService.ge.market.seller.SellerBase;
 
 public class IndividualMarket {
     int current_price;

@@ -1,4 +1,4 @@
-package plushie_tycoon.serverService.gs;
+package plushie_tycoon.serverService.ge;
 
 public class BudgetBackend {
     private double budget;

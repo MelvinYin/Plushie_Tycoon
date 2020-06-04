@@ -1,4 +1,4 @@
-package plushie_tycoon.serverService.gs.market.seller;
+package plushie_tycoon.serverService.ge.market.seller;
 import java.lang.Math;
 
 public class LinearSeller extends SellerBase {

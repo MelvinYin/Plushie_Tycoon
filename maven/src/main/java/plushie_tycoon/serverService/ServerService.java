@@ -13,6 +13,8 @@ import plushie_tycoon.serverService.config.baseObjects.Resources;
 
 import java.io.IOException;
 import java.util.HashMap;
+import plushie_tycoon.serverService.utils.BaseStringConverter;
+import plushie_tycoon.serverService.ge.GE;
 
 public class ServerService {
     private static GE ge;
@@ -34,17 +36,7 @@ public class ServerService {
 
     private static Pair<BaseObjects, Integer> GrpcRequestToGeAdapter(Grpc.TransactionObject request){
 //        convert it to a grpc enum class eventually, and then a project-wide json config file.
-        HashMap<String, BaseObjects> strToBaseObjects = new HashMap<>();
-        strToBaseObjects.put("stuffing", Resources.STUFFING);
-        strToBaseObjects.put("accessory", Resources.ACCESSORY);
-        strToBaseObjects.put("packaging", Resources.PACKAGING);
-        strToBaseObjects.put("cloth", Resources.CLOTH);
-        strToBaseObjects.put("aisha", Products.AISHA);
-        strToBaseObjects.put("beta", Products.BETA);
-        strToBaseObjects.put("chama", Products.CHAMA);
-        BaseObjects baseObject = strToBaseObjects.get(request.getName());
-        int quantity = request.getQuantity();
-        return new Pair<>(baseObject, quantity);
+        return new Pair<>(BaseStringConverter.convert(request.getName()), request.getQuantity());
     }
 
     public static class UITransferService extends UITransferGrpc.UITransferImplBase  {

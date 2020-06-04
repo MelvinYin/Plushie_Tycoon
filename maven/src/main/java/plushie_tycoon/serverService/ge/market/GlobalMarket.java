@@ -1,4 +1,4 @@
-package plushie_tycoon.serverService.gs.market;
+package plushie_tycoon.serverService.ge.market;
 
 import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
 import plushie_tycoon.serverService.config.Initials;

@@ -1,4 +1,4 @@
-package plushie_tycoon.serverService.gs.inventory;
+package plushie_tycoon.serverService.ge.inventory;
 
 public class Inventory extends GlobalInventory{
 }

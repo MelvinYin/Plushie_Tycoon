@@ -1,6 +1,6 @@
-package plushie_tycoon.serverService.gs.market;
-import plushie_tycoon.serverService.gs.market.buyer.BuyerBase;
-import plushie_tycoon.serverService.gs.market.seller.SellerBase;
+package plushie_tycoon.serverService.ge.market;
+import plushie_tycoon.serverService.ge.market.buyer.BuyerBase;
+import plushie_tycoon.serverService.ge.market.seller.SellerBase;
 import java.util.List;
 import java.util.Arrays;
 
