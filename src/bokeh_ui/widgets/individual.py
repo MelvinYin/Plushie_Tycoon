@@ -111,7 +111,7 @@ class TransactionWidget:
         specs = dict()
         specs['width'] = 0
         specs['height'] = 0
-        specs['text'] = 'TITLE123'
+        specs['text'] = 'Orders'
         return specs
 
     def _RBG1_specs(self):
@@ -228,7 +228,7 @@ class ButtonWidget:
         specs = dict()
         specs['width'] = 0
         specs['height'] = 0
-        specs['text'] = 'TITLE123'
+        specs['text'] = 'Actions'
         return specs
 
     def _RBG_specs(self):
@@ -253,7 +253,7 @@ class ButtonWidget:
             self.callback(callback)
 
     def _assemble_layout(self):
-        row0 = row(self._header.widget, height=10, width=100)
+        row0 = row(self._header.widget, height=30, width=100)
         row1 = row(self._RBG.widget, self._button.widget, height=40)
         layout = column(row0, row1, width=self.width, height=self.height)
         return layout
