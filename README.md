@@ -74,7 +74,10 @@ and Load works locally, maybe. Quit is meant to quit.
   
 #### Detailed Description
 
-##### Python Server
+##### Java Server
+(see python first) Simplified by removing GS layer, moving all to GE
+. Otherwise the two are largely similar, at time of port. It has MockService
+ and MockGE for testing and debugging. 
 
 ##### Python Server<br>_Deprecated_
 
@@ -130,6 +133,10 @@ To run python frontend, at project directory with src in folder, run bokeh serve
 7. Note that in protoc3, everything is optional by default, but not nullable
 . You do not therefore need to fill up everything when debugging, depending
  on caller/receiver ofc. 
+ 
+8. Grpc does not carry out type-checking. If you find that your UI values
+ suddenly go to zero, see if the same .proto has been compiled on both java and
+  python side. A int32 on one side to double on the other reads as 0. 
 
 #### Todo List
 In chronological order:
