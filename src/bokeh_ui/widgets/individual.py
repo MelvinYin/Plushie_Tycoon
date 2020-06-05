@@ -138,7 +138,7 @@ class TransactionWidget:
     def _RBG3_specs(self):
         labelmap = dict()
         labelmap["cloth"] = Res.cloth
-        labelmap["stuff"] = Res.stuff
+        labelmap["stuffing"] = Res.stuffing
         labelmap["accessory"] = Res.accessory
         labelmap["packaging"] = Res.packaging
         labelmap["aisha"] = Prod.aisha

@@ -5,9 +5,9 @@ from collections import namedtuple
 # Resource signal values for internal use
 @unique
 class Res(Enum):
-    __order__ = 'cloth stuff accessory packaging'
+    __order__ = 'cloth stuffing accessory packaging'
     cloth = 1
-    stuff = 2
+    stuffing = 2
     accessory = 3
     packaging = 4
 

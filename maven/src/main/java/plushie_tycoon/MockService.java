@@ -34,9 +34,9 @@ public class MockService {
             curr_sign *= -1;
             int addition = curr_count * curr_sign;
 
-            String[] resources = {"cloth", "stuffing", "accessories", "packaging"};
+            String[] resources = {"cloth", "stuffing", "accessory", "packaging"};
             String[] products = {"aisha", "beta", "chama"};
-            String[] bases = new String[resources.length + products.length];  //resultant array of size first array and second array
+            String[] bases = new String[resources.length + products.length];
             System.arraycopy(resources, 0, bases, 0, resources.length);
             System.arraycopy(products, 0, bases, resources.length, products.length);
 

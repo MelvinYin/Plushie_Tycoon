@@ -202,3 +202,327 @@ figures/individual_figure.py: figure_update <{'aisha': [8], 'beta': [9], 'chama'
 
 figures/individual_figure.py: figure_update <{'budget': [99994], 'time': [1], 'xs': [4]}>
 
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.32999999999999996, 0.0, 0.0, 0.36, 0.37, 0.38, 0.39], 'Moveout': [0.43000000000000005, 0.0, 0.0, 0.4600000000000001, 0.47, 0.48, 0.49], 'Storage': [0.53, 0.0, 0.0, 0.56, 0.5700000000000001, 0.5800000000000001, 0.5900000000000001]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.13, 0.0, 0.0, 0.16, 0.17, 0.18000000000000002, 0.19], 'Volume': [0.23, 0.0, 0.0, 0.26, 0.27, 0.28, 0.29000000000000004]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuff', 'accessory', 'packaging'], 'aisha': [1, 0, 0, 4], 'beta': [5, 0, 0, 8], 'chama': [9, 0, 0, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [23], 'stuff': [0], 'accessory': [0], 'packaging': [26], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [27], 'beta': [28], 'chama': [29], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [13], 'stuff': [0], 'accessory': [0], 'packaging': [16], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [17], 'beta': [18], 'chama': [19], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [100003], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [23], 'stuff': [0], 'accessory': [0], 'packaging': [26], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [27], 'beta': [28], 'chama': [29], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [13], 'stuff': [0], 'accessory': [0], 'packaging': [16], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [17], 'beta': [18], 'chama': [19], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'budget': [100003], 'time': [1], 'xs': [1]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.26, 0.0, 0.0, 0.29, 0.3, 0.31, 0.32], 'Moveout': [0.36000000000000004, 0.0, 0.0, 0.39000000000000007, 0.4, 0.41000000000000003, 0.42000000000000004], 'Storage': [0.46, 0.0, 0.0, 0.49000000000000005, 0.5, 0.51, 0.52]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.060000000000000005, 0.0, 0.0, 0.09, 0.1, 0.11000000000000001, 0.12], 'Volume': [0.16, 0.0, 0.0, 0.19, 0.2, 0.21, 0.22]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuff', 'accessory', 'packaging'], 'aisha': [1, 0, 0, 4], 'beta': [5, 0, 0, 8], 'chama': [9, 0, 0, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [16], 'stuff': [0], 'accessory': [0], 'packaging': [19], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [20], 'beta': [21], 'chama': [22], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [6], 'stuff': [0], 'accessory': [0], 'packaging': [9], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [99996], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [16], 'stuff': [0], 'accessory': [0], 'packaging': [19], 'time': [1], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [20], 'beta': [21], 'chama': [22], 'time': [1], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [6], 'stuff': [0], 'accessory': [0], 'packaging': [9], 'time': [1], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [1], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'budget': [99996], 'time': [1], 'xs': [2]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.35, 0.0, 0.0, 0.37999999999999995, 0.38999999999999996, 0.39999999999999997, 0.41], 'Moveout': [0.45, 0.0, 0.0, 0.48000000000000004, 0.49, 0.5, 0.51], 'Storage': [0.55, 0.0, 0.0, 0.5800000000000001, 0.5900000000000001, 0.6000000000000001, 0.6100000000000001]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.15000000000000002, 0.0, 0.0, 0.18, 0.19, 0.2, 0.21000000000000002], 'Volume': [0.25, 0.0, 0.0, 0.28, 0.29000000000000004, 0.3, 0.31]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuff', 'accessory', 'packaging'], 'aisha': [1, 0, 0, 4], 'beta': [5, 0, 0, 8], 'chama': [9, 0, 0, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [25], 'stuff': [0], 'accessory': [0], 'packaging': [28], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [29], 'beta': [30], 'chama': [31], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [15], 'stuff': [0], 'accessory': [0], 'packaging': [18], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [19], 'beta': [20], 'chama': [21], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [100005], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [25], 'stuff': [0], 'accessory': [0], 'packaging': [28], 'time': [1], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [29], 'beta': [30], 'chama': [31], 'time': [1], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [15], 'stuff': [0], 'accessory': [0], 'packaging': [18], 'time': [1], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [19], 'beta': [20], 'chama': [21], 'time': [1], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'budget': [100005], 'time': [1], 'xs': [3]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.24, 0.0, 0.0, 0.26999999999999996, 0.27999999999999997, 0.29, 0.3], 'Moveout': [0.34, 0.0, 0.0, 0.37000000000000005, 0.38, 0.39, 0.4], 'Storage': [0.44, 0.0, 0.0, 0.47000000000000003, 0.48000000000000004, 0.49000000000000005, 0.5]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.04000000000000001, 0.0, 0.0, 0.07, 0.08000000000000002, 0.09000000000000002, 0.1], 'Volume': [0.14, 0.0, 0.0, 0.17, 0.18000000000000002, 0.19, 0.2]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuff', 'accessory', 'packaging'], 'aisha': [1, 0, 0, 4], 'beta': [5, 0, 0, 8], 'chama': [9, 0, 0, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [14], 'stuff': [0], 'accessory': [0], 'packaging': [17], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [18], 'beta': [19], 'chama': [20], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [4], 'stuff': [0], 'accessory': [0], 'packaging': [7], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [8], 'beta': [9], 'chama': [10], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [99994], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [14], 'stuff': [0], 'accessory': [0], 'packaging': [17], 'time': [1], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [18], 'beta': [19], 'chama': [20], 'time': [1], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [4], 'stuff': [0], 'accessory': [0], 'packaging': [7], 'time': [1], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [8], 'beta': [9], 'chama': [10], 'time': [1], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'budget': [99994], 'time': [1], 'xs': [4]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.37, 0.0, 0.0, 0.39999999999999997, 0.41, 0.42, 0.43], 'Moveout': [0.47000000000000003, 0.0, 0.0, 0.5, 0.51, 0.52, 0.53], 'Storage': [0.5700000000000001, 0.0, 0.0, 0.6000000000000001, 0.6100000000000001, 0.6200000000000001, 0.6300000000000001]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.17, 0.0, 0.0, 0.2, 0.21000000000000002, 0.22000000000000003, 0.23], 'Volume': [0.27, 0.0, 0.0, 0.30000000000000004, 0.31000000000000005, 0.32, 0.33]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuff', 'accessory', 'packaging'], 'aisha': [1, 0, 0, 4], 'beta': [5, 0, 0, 8], 'chama': [9, 0, 0, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [27], 'stuff': [0], 'accessory': [0], 'packaging': [30], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [31], 'beta': [32], 'chama': [33], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [17], 'stuff': [0], 'accessory': [0], 'packaging': [20], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [21], 'beta': [22], 'chama': [23], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [100007], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [27], 'stuff': [0], 'accessory': [0], 'packaging': [30], 'time': [1], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [31], 'beta': [32], 'chama': [33], 'time': [1], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [17], 'stuff': [0], 'accessory': [0], 'packaging': [20], 'time': [1], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [21], 'beta': [22], 'chama': [23], 'time': [1], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'budget': [100007], 'time': [1], 'xs': [5]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.21999999999999997, 0.0, 0.0, 0.24999999999999994, 0.25999999999999995, 0.26999999999999996, 0.27999999999999997], 'Moveout': [0.32, 0.0, 0.0, 0.35000000000000003, 0.36, 0.37, 0.38], 'Storage': [0.42, 0.0, 0.0, 0.45, 0.46, 0.47000000000000003, 0.48000000000000004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.020000000000000004, 0.0, 0.0, 0.05, 0.06000000000000001, 0.07000000000000002, 0.08], 'Volume': [0.12000000000000001, 0.0, 0.0, 0.15000000000000002, 0.16000000000000003, 0.16999999999999998, 0.18]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuff', 'accessory', 'packaging'], 'aisha': [1, 0, 0, 4], 'beta': [5, 0, 0, 8], 'chama': [9, 0, 0, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [12], 'stuff': [0], 'accessory': [0], 'packaging': [15], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [16], 'beta': [17], 'chama': [18], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [2], 'stuff': [0], 'accessory': [0], 'packaging': [5], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [6], 'beta': [7], 'chama': [8], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [99992], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [12], 'stuff': [0], 'accessory': [0], 'packaging': [15], 'time': [1], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [16], 'beta': [17], 'chama': [18], 'time': [1], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [2], 'stuff': [0], 'accessory': [0], 'packaging': [5], 'time': [1], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [6], 'beta': [7], 'chama': [8], 'time': [1], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'budget': [99992], 'time': [1], 'xs': [6]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.39, 0.0, 0.0, 0.41999999999999993, 0.42999999999999994, 0.43999999999999995, 0.44999999999999996], 'Moveout': [0.49, 0.0, 0.0, 0.52, 0.53, 0.54, 0.55], 'Storage': [0.59, 0.0, 0.0, 0.62, 0.63, 0.64, 0.65]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuff', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.19, 0.0, 0.0, 0.22, 0.23, 0.24000000000000002, 0.25], 'Volume': [0.29000000000000004, 0.0, 0.0, 0.32, 0.33, 0.33999999999999997, 0.35]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuff', 'accessory', 'packaging'], 'aisha': [1, 0, 0, 4], 'beta': [5, 0, 0, 8], 'chama': [9, 0, 0, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [29], 'stuff': [0], 'accessory': [0], 'packaging': [32], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [33], 'beta': [34], 'chama': [35], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [19], 'stuff': [0], 'accessory': [0], 'packaging': [22], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [23], 'beta': [24], 'chama': [25], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [100009], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [29], 'stuff': [0], 'accessory': [0], 'packaging': [32], 'time': [1], 'xs': [7]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [33], 'beta': [34], 'chama': [35], 'time': [1], 'xs': [7]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [19], 'stuff': [0], 'accessory': [0], 'packaging': [22], 'time': [1], 'xs': [7]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [23], 'beta': [24], 'chama': [25], 'time': [1], 'xs': [7]}>
+
+figures/individual_figure.py: figure_update <{'budget': [100009], 'time': [1], 'xs': [7]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.43, 0.44, 0.0, 0.45999999999999996, 0.47, 0.48, 0.49], 'Moveout': [0.53, 0.54, 0.0, 0.56, 0.5700000000000001, 0.5800000000000001, 0.5900000000000001], 'Storage': [0.63, 0.64, 0.0, 0.66, 0.67, 0.68, 0.6900000000000001]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.23, 0.24, 0.0, 0.26, 0.27, 0.28, 0.29000000000000004], 'Volume': [0.33, 0.34, 0.0, 0.36, 0.37, 0.38, 0.39]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [1, 2, 0, 4], 'beta': [5, 6, 0, 8], 'chama': [9, 10, 0, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [33], 'stuffing': [34], 'accessory': [0], 'packaging': [36], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [37], 'beta': [38], 'chama': [39], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [23], 'stuffing': [24], 'accessory': [0], 'packaging': [26], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [27], 'beta': [28], 'chama': [29], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [100013], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [33], 'stuffing': [34], 'accessory': [0], 'packaging': [36], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [37], 'beta': [38], 'chama': [39], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [23], 'stuffing': [24], 'accessory': [0], 'packaging': [26], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [27], 'beta': [28], 'chama': [29], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'budget': [100013], 'time': [1], 'xs': [1]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.44999999999999996, 0.45999999999999996, 0.0, 0.48, 0.49, 0.5, 0.51], 'Moveout': [0.55, 0.56, 0.0, 0.5800000000000001, 0.59, 0.6, 0.61], 'Storage': [0.65, 0.66, 0.0, 0.68, 0.6900000000000001, 0.7000000000000001, 0.7100000000000001]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.25, 0.26, 0.0, 0.28, 0.29000000000000004, 0.30000000000000004, 0.31], 'Volume': [0.35, 0.36, 0.0, 0.38, 0.39, 0.4, 0.41000000000000003]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [1, 2, 0, 4], 'beta': [5, 6, 0, 8], 'chama': [9, 10, 0, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [35], 'stuffing': [36], 'accessory': [0], 'packaging': [38], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [39], 'beta': [40], 'chama': [41], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [25], 'stuffing': [26], 'accessory': [0], 'packaging': [28], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [29], 'beta': [30], 'chama': [31], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [100015], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [35], 'stuffing': [36], 'accessory': [0], 'packaging': [38], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [39], 'beta': [40], 'chama': [41], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [25], 'stuffing': [26], 'accessory': [0], 'packaging': [28], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [29], 'beta': [30], 'chama': [31], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'budget': [100015], 'time': [1], 'xs': [1]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.27999999999999997, 0.29, 0.3, 0.30999999999999994, 0.31999999999999995, 0.32999999999999996, 0.33999999999999997], 'Moveout': [0.38, 0.39, 0.4, 0.41000000000000003, 0.42, 0.43, 0.44], 'Storage': [0.48, 0.49, 0.5, 0.51, 0.52, 0.53, 0.54]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.08, 0.09, 0.1, 0.11, 0.12000000000000001, 0.13000000000000003, 0.14], 'Volume': [0.18000000000000002, 0.19000000000000003, 0.2, 0.21000000000000002, 0.22000000000000003, 0.23, 0.24000000000000002]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [1, 2, 3, 4], 'beta': [5, 6, 7, 8], 'chama': [9, 10, 11, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [18], 'stuffing': [19], 'accessory': [20], 'packaging': [21], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [22], 'beta': [23], 'chama': [24], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [8], 'stuffing': [9], 'accessory': [10], 'packaging': [11], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [12], 'beta': [13], 'chama': [14], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [99998], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [18], 'stuffing': [19], 'accessory': [20], 'packaging': [21], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [22], 'beta': [23], 'chama': [24], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [8], 'stuffing': [9], 'accessory': [10], 'packaging': [11], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [12], 'beta': [13], 'chama': [14], 'time': [1], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'budget': [99998], 'time': [1], 'xs': [1]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.32999999999999996, 0.33999999999999997, 0.35, 0.36, 0.37, 0.38, 0.39], 'Moveout': [0.43000000000000005, 0.44000000000000006, 0.45000000000000007, 0.4600000000000001, 0.47, 0.48, 0.49], 'Storage': [0.53, 0.54, 0.55, 0.56, 0.5700000000000001, 0.5800000000000001, 0.5900000000000001]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.13, 0.14, 0.15000000000000002, 0.16, 0.17, 0.18000000000000002, 0.19], 'Volume': [0.23, 0.24000000000000002, 0.25, 0.26, 0.27, 0.28, 0.29000000000000004]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [1, 2, 3, 4], 'beta': [5, 6, 7, 8], 'chama': [9, 10, 11, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [23], 'stuffing': [24], 'accessory': [25], 'packaging': [26], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [27], 'beta': [28], 'chama': [29], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [13], 'stuffing': [14], 'accessory': [15], 'packaging': [16], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [17], 'beta': [18], 'chama': [19], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [100003], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [23], 'stuffing': [24], 'accessory': [25], 'packaging': [26], 'time': [1], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [27], 'beta': [28], 'chama': [29], 'time': [1], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [13], 'stuffing': [14], 'accessory': [15], 'packaging': [16], 'time': [1], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [17], 'beta': [18], 'chama': [19], 'time': [1], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'budget': [100003], 'time': [1], 'xs': [2]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.26, 0.27, 0.28, 0.29, 0.3, 0.31, 0.32], 'Moveout': [0.36000000000000004, 0.37000000000000005, 0.38000000000000006, 0.39000000000000007, 0.4, 0.41000000000000003, 0.42000000000000004], 'Storage': [0.46, 0.47000000000000003, 0.48000000000000004, 0.49000000000000005, 0.5, 0.51, 0.52]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.060000000000000005, 0.07, 0.08000000000000002, 0.09, 0.1, 0.11000000000000001, 0.12], 'Volume': [0.16, 0.17, 0.18, 0.19, 0.2, 0.21, 0.22]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [1, 2, 3, 4], 'beta': [5, 6, 7, 8], 'chama': [9, 10, 11, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [16], 'stuffing': [17], 'accessory': [18], 'packaging': [19], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [20], 'beta': [21], 'chama': [22], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [6], 'stuffing': [7], 'accessory': [8], 'packaging': [9], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [99996], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [16], 'stuffing': [17], 'accessory': [18], 'packaging': [19], 'time': [1], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [20], 'beta': [21], 'chama': [22], 'time': [1], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [6], 'stuffing': [7], 'accessory': [8], 'packaging': [9], 'time': [1], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [1], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'budget': [99996], 'time': [1], 'xs': [3]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.35, 0.36, 0.37, 0.37999999999999995, 0.38999999999999996, 0.39999999999999997, 0.41], 'Moveout': [0.45, 0.46, 0.47000000000000003, 0.48000000000000004, 0.49, 0.5, 0.51], 'Storage': [0.55, 0.56, 0.5700000000000001, 0.5800000000000001, 0.5900000000000001, 0.6000000000000001, 0.6100000000000001]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.15000000000000002, 0.16, 0.17, 0.18, 0.19, 0.2, 0.21000000000000002], 'Volume': [0.25, 0.26, 0.27, 0.28, 0.29000000000000004, 0.3, 0.31]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [1, 2, 3, 4], 'beta': [5, 6, 7, 8], 'chama': [9, 10, 11, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [25], 'stuffing': [26], 'accessory': [27], 'packaging': [28], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [29], 'beta': [30], 'chama': [31], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [15], 'stuffing': [16], 'accessory': [17], 'packaging': [18], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [19], 'beta': [20], 'chama': [21], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [100005], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [25], 'stuffing': [26], 'accessory': [27], 'packaging': [28], 'time': [1], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [29], 'beta': [30], 'chama': [31], 'time': [1], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [15], 'stuffing': [16], 'accessory': [17], 'packaging': [18], 'time': [1], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [19], 'beta': [20], 'chama': [21], 'time': [1], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'budget': [100005], 'time': [1], 'xs': [4]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.24, 0.25, 0.26, 0.26999999999999996, 0.27999999999999997, 0.29, 0.3], 'Moveout': [0.34, 0.35000000000000003, 0.36000000000000004, 0.37000000000000005, 0.38, 0.39, 0.4], 'Storage': [0.44, 0.45, 0.46, 0.47000000000000003, 0.48000000000000004, 0.49000000000000005, 0.5]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.04000000000000001, 0.05, 0.06000000000000001, 0.07, 0.08000000000000002, 0.09000000000000002, 0.1], 'Volume': [0.14, 0.15000000000000002, 0.16, 0.17, 0.18000000000000002, 0.19, 0.2]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [1, 2, 3, 4], 'beta': [5, 6, 7, 8], 'chama': [9, 10, 11, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [14], 'stuffing': [15], 'accessory': [16], 'packaging': [17], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [18], 'beta': [19], 'chama': [20], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [4], 'stuffing': [5], 'accessory': [6], 'packaging': [7], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [8], 'beta': [9], 'chama': [10], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [99994], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [14], 'stuffing': [15], 'accessory': [16], 'packaging': [17], 'time': [1], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [18], 'beta': [19], 'chama': [20], 'time': [1], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [4], 'stuffing': [5], 'accessory': [6], 'packaging': [7], 'time': [1], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [8], 'beta': [9], 'chama': [10], 'time': [1], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'budget': [99994], 'time': [1], 'xs': [5]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.37, 0.38, 0.39, 0.39999999999999997, 0.41, 0.42, 0.43], 'Moveout': [0.47000000000000003, 0.48000000000000004, 0.49000000000000005, 0.5, 0.51, 0.52, 0.53], 'Storage': [0.5700000000000001, 0.5800000000000001, 0.5900000000000001, 0.6000000000000001, 0.6100000000000001, 0.6200000000000001, 0.6300000000000001]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.17, 0.18, 0.19, 0.2, 0.21000000000000002, 0.22000000000000003, 0.23], 'Volume': [0.27, 0.28, 0.29000000000000004, 0.30000000000000004, 0.31000000000000005, 0.32, 0.33]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [1, 2, 3, 4], 'beta': [5, 6, 7, 8], 'chama': [9, 10, 11, 12]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [27], 'stuffing': [28], 'accessory': [29], 'packaging': [30], 'time': [1]}, <FigureNames.inventory_prod: 2>: {'aisha': [31], 'beta': [32], 'chama': [33], 'time': [1]}, <FigureNames.price_res: 3>: {'cloth': [17], 'stuffing': [18], 'accessory': [19], 'packaging': [20], 'time': [1]}, <FigureNames.price_prod: 4>: {'aisha': [21], 'beta': [22], 'chama': [23], 'time': [1]}, <FigureNames.budget: 5>: {'budget': [100007], 'time': [1]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [27], 'stuffing': [28], 'accessory': [29], 'packaging': [30], 'time': [1], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [31], 'beta': [32], 'chama': [33], 'time': [1], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [17], 'stuffing': [18], 'accessory': [19], 'packaging': [20], 'time': [1], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [21], 'beta': [22], 'chama': [23], 'time': [1], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'budget': [100007], 'time': [1], 'xs': [6]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1013], 'stuffing': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [999882], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [1013], 'stuffing': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'budget': [999882], 'time': [12], 'xs': [1]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1025], 'stuffing': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [999762], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [1025], 'stuffing': [1002], 'accessory': [1003], 'packaging': [1004], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'budget': [999762], 'time': [12], 'xs': [2]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1013], 'stuffing': [954], 'accessory': [991], 'packaging': [980], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [23], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [999762], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [1013], 'stuffing': [954], 'accessory': [991], 'packaging': [980], 'time': [12], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [23], 'chama': [12], 'time': [12], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'budget': [999762], 'time': [12], 'xs': [3]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [906], 'accessory': [979], 'packaging': [956], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [35], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [999762], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [906], 'accessory': [979], 'packaging': [956], 'time': [12], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [35], 'chama': [12], 'time': [12], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [4]}>
+
+figures/individual_figure.py: figure_update <{'budget': [999762], 'time': [12], 'xs': [4]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [989], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [47], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [999762], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [989], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [47], 'chama': [12], 'time': [12], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [5]}>
+
+figures/individual_figure.py: figure_update <{'budget': [999762], 'time': [12], 'xs': [5]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [989], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [998526], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [989], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [6]}>
+
+figures/individual_figure.py: figure_update <{'budget': [998526], 'time': [12], 'xs': [6]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1010], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [998316], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [1010], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'budget': [998316], 'time': [12], 'xs': [1]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1022], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [998196], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [1022], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'budget': [998196], 'time': [12], 'xs': [1]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1034], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [998076], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [1034], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'budget': [998076], 'time': [12], 'xs': [2]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1046], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [997956], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [1046], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [3]}>
+
+figures/individual_figure.py: figure_update <{'budget': [997956], 'time': [12], 'xs': [3]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1058], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [997836], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [1058], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [1]}>
+
+figures/individual_figure.py: figure_update <{'budget': [997836], 'time': [12], 'xs': [1]}>
+
+ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Moveout': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], 'Storage': [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0], 'Volume': [5.0, 6.0, 7.0, 8.0, 3.0, 2.0, 4.0]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1070], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [997716], 'time': [12]}}>
+
+figures/individual_figure.py: figure_update <{'cloth': [1070], 'stuffing': [858], 'accessory': [967], 'packaging': [932], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [59], 'chama': [12], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'cloth': [10], 'stuffing': [20], 'accessory': [18], 'packaging': [12], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'aisha': [102], 'beta': [103], 'chama': [104], 'time': [12], 'xs': [2]}>
+
+figures/individual_figure.py: figure_update <{'budget': [997716], 'time': [12], 'xs': [2]}>
+

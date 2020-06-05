@@ -245,7 +245,7 @@ class ConsoleOutput:
     def _build_paragraph(self):
         _style = dict()
         _style['overflow-y'] = 'auto'
-        _style['height'] = '{}px'.format(self.html_height)
+        _style['height'] = f'{self.html_height}px'
         paragraph = Div(width=self.textbox_width,
                         height=self.textbox_height,
                         text=self.text, style=_style)
@@ -257,7 +257,7 @@ class ConsoleOutput:
         return fig
 
     def figure_update(self, add_line):
-        self._paragraph.text = add_line
+        self._paragraph.text += add_line + "<br>"
         return True
 
 class IndividualFigure:

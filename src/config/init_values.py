@@ -80,7 +80,7 @@ class InitValues:
 
         weights = dict()
         weights[Res.cloth.name] = 0.1
-        weights[Res.stuff.name] = 0.05
+        weights[Res.stuffing.name] = 0.05
         weights[Res.accessory.name] = 0.3
         weights[Res.packaging.name] = 0.05
         weights[Prod.aisha.name] = 0.05
@@ -90,7 +90,7 @@ class InitValues:
 
         volume = dict()
         volume[Res.cloth.name] = 0.1
-        volume[Res.stuff.name] = 0.3
+        volume[Res.stuffing.name] = 0.3
         volume[Res.accessory.name] = 0.01
         volume[Res.packaging.name] = 0.2
         volume[Prod.aisha.name] = 0.2

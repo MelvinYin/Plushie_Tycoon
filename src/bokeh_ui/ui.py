@@ -1,14 +1,8 @@
-from bokeh.layouts import column
-from global_config import Res, Prod, Func
-from collections import defaultdict
-import inspect
-from logs import log
-
 from bokeh.layouts import row, column
 import inspect
 
 from logs import log
-from global_config import Res, Prod, FigSpecs
+from global_config import FigSpecs
 from global_config import FigureNames as FigNms
 from figures.individual_figure import IndividualFigure, ConsoleOutput, \
     ResourceRatioTable, ItemPropertiesTable, ItemCostTable

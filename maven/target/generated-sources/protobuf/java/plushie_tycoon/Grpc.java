@@ -2874,7 +2874,7 @@ public final class Grpc {
           java.lang.String, java.lang.Integer> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_PricesEntry_descriptor,
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_PricesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.INT32,
@@ -2950,7 +2950,7 @@ public final class Grpc {
           java.lang.String, java.lang.Integer> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_QuantitiesEntry_descriptor,
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_QuantitiesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.INT32,
@@ -3026,7 +3026,7 @@ public final class Grpc {
           java.lang.String, java.lang.Double> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Double>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_WeightsEntry_descriptor,
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_WeightsEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.DOUBLE,
@@ -3102,7 +3102,7 @@ public final class Grpc {
           java.lang.String, java.lang.Double> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Double>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_VolumesEntry_descriptor,
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_VolumesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.DOUBLE,
@@ -3178,7 +3178,7 @@ public final class Grpc {
           java.lang.String, plushie_tycoon.Grpc.mItemCost> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, plushie_tycoon.Grpc.mItemCost>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_ItemCostEntry_descriptor,
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_ItemCostEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
@@ -3254,7 +3254,7 @@ public final class Grpc {
           java.lang.String, plushie_tycoon.Grpc.mRatioPerProduct> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, plushie_tycoon.Grpc.mRatioPerProduct>newDefaultInstance(
-                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_ResourceRatioEntry_descriptor,
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_ResourceRatioEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
@@ -5053,44 +5053,43 @@ public final class Grpc {
       "\001(\001\"|\n\020mRatioPerProduct\022:\n\005ratio\030\006 \003(\0132+" +
       ".plushie_tycoon.mRatioPerProduct.RatioEn" +
       "try\032,\n\nRatioEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030" +
-      "\002 \001(\005:\0028\001\"\250\006\n\nSnapshot\0226\n\006prices\030\001 \003(\013" +
-      "2&.plushie_tycoon.Snapshot.PricesEntry" +
-      "\022>\n\nquantities\030\002 \003(\0132*.plushie_tycoon.Us" +
-      "erOutput.QuantitiesEntry\0228\n\007weights\030\r \003(" +
-      "\0132\'.plushie_tycoon.Snapshot.WeightsEnt" +
-      "ry\0228\n\007volumes\030\016 \003(\0132\'.plushie_tycoon.Use" +
-      "rOutput.VolumesEntry\022;\n\titem_cost\030\014 \003(\0132" +
-      "(.plushie_tycoon.Snapshot.ItemCostEntr" +
-      "y\022E\n\016resource_ratio\030\007 \003(\0132-.plushie_tyco" +
-      "on.Snapshot.ResourceRatioEntry\022\026\n\016cons" +
-      "ole_output\030\010 \001(\t\022\016\n\006budget\030\t \001(\005\022\014\n\004time" +
-      "\030\n \001(\005\022\016\n\006action\030\013 \001(\t\032-\n\013PricesEntry\022\013\n" +
-      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0321\n\017Quantit" +
-      "iesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001" +
-      "\032.\n\014WeightsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002" +
-      " \001(\001:\0028\001\032.\n\014VolumesEntry\022\013\n\003key\030\001 \001(\t\022\r\n" +
-      "\005value\030\002 \001(\001:\0028\001\032J\n\rItemCostEntry\022\013\n\003key" +
-      "\030\001 \001(\t\022(\n\005value\030\002 \001(\0132\031.plushie_tycoon.m" +
-      "ItemCost:\0028\001\032V\n\022ResourceRatioEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022/\n\005value\030\002 \001(\0132 .plushie_tycoon." +
-      "mRatioPerProduct:\0028\0012\220\005\n\nUITransfer\022F\n\003b" +
-      "uy\022!.plushie_tycoon.TransactionObject\032\032." +
-      "plushie_tycoon.Snapshot\"\000\022G\n\004sell\022!.pl" +
-      "ushie_tycoon.TransactionObject\032\032.plushie" +
-      "_tycoon.Snapshot\"\000\022G\n\004make\022!.plushie_t" +
-      "ycoon.TransactionObject\032\032.plushie_tycoon" +
-      ".Snapshot\"\000\022E\n\004next\022\037.plushie_tycoon.S" +
-      "electionObject\032\032.plushie_tycoon.UserOutp" +
-      "ut\"\000\022E\n\004save\022\037.plushie_tycoon.SelectionO" +
-      "bject\032\032.plushie_tycoon.Snapshot\"\000\022E\n\004l" +
-      "oad\022\037.plushie_tycoon.SelectionObject\032\032.p" +
-      "lushie_tycoon.Snapshot\"\000\022E\n\004back\022\037.plu" +
-      "shie_tycoon.SelectionObject\032\032.plushie_ty" +
-      "coon.Snapshot\"\000\022E\n\004quit\022\037.plushie_tyco" +
-      "on.SelectionObject\032\032.plushie_tycoon.User" +
-      "Output\"\000\022E\n\004init\022\037.plushie_tycoon.Select" +
-      "ionObject\032\032.plushie_tycoon.Snapshot\"\000b" +
-      "\006proto3"
+      "\002 \001(\005:\0028\001\"\232\006\n\010Snapshot\0224\n\006prices\030\001 \003(\0132$" +
+      ".plushie_tycoon.Snapshot.PricesEntry\022<\n\n" +
+      "quantities\030\002 \003(\0132(.plushie_tycoon.Snapsh" +
+      "ot.QuantitiesEntry\0226\n\007weights\030\r \003(\0132%.pl" +
+      "ushie_tycoon.Snapshot.WeightsEntry\0226\n\007vo" +
+      "lumes\030\016 \003(\0132%.plushie_tycoon.Snapshot.Vo" +
+      "lumesEntry\0229\n\titem_cost\030\014 \003(\0132&.plushie_" +
+      "tycoon.Snapshot.ItemCostEntry\022C\n\016resourc" +
+      "e_ratio\030\007 \003(\0132+.plushie_tycoon.Snapshot." +
+      "ResourceRatioEntry\022\026\n\016console_output\030\010 \001" +
+      "(\t\022\016\n\006budget\030\t \001(\005\022\014\n\004time\030\n \001(\005\022\016\n\006acti" +
+      "on\030\013 \001(\t\032-\n\013PricesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005" +
+      "value\030\002 \001(\005:\0028\001\0321\n\017QuantitiesEntry\022\013\n\003ke" +
+      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032.\n\014WeightsEnt" +
+      "ry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\0028\001\032.\n\014Vo" +
+      "lumesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\002" +
+      "8\001\032J\n\rItemCostEntry\022\013\n\003key\030\001 \001(\t\022(\n\005valu" +
+      "e\030\002 \001(\0132\031.plushie_tycoon.mItemCost:\0028\001\032V" +
+      "\n\022ResourceRatioEntry\022\013\n\003key\030\001 \001(\t\022/\n\005val" +
+      "ue\030\002 \001(\0132 .plushie_tycoon.mRatioPerProdu" +
+      "ct:\0028\0012\376\004\n\nUITransfer\022D\n\003buy\022!.plushie_t" +
+      "ycoon.TransactionObject\032\030.plushie_tycoon" +
+      ".Snapshot\"\000\022E\n\004sell\022!.plushie_tycoon.Tra" +
+      "nsactionObject\032\030.plushie_tycoon.Snapshot" +
+      "\"\000\022E\n\004make\022!.plushie_tycoon.TransactionO" +
+      "bject\032\030.plushie_tycoon.Snapshot\"\000\022C\n\004nex" +
+      "t\022\037.plushie_tycoon.SelectionObject\032\030.plu" +
+      "shie_tycoon.Snapshot\"\000\022C\n\004save\022\037.plushie" +
+      "_tycoon.SelectionObject\032\030.plushie_tycoon" +
+      ".Snapshot\"\000\022C\n\004load\022\037.plushie_tycoon.Sel" +
+      "ectionObject\032\030.plushie_tycoon.Snapshot\"\000" +
+      "\022C\n\004back\022\037.plushie_tycoon.SelectionObjec" +
+      "t\032\030.plushie_tycoon.Snapshot\"\000\022C\n\004quit\022\037." +
+      "plushie_tycoon.SelectionObject\032\030.plushie" +
+      "_tycoon.Snapshot\"\000\022C\n\004init\022\037.plushie_tyc" +
+      "oon.SelectionObject\032\030.plushie_tycoon.Sna" +
+      "pshot\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -18,47 +18,47 @@ class UITransferStub(object):
         self.buy = channel.unary_unary(
                 '/plushie_tycoon.UITransfer/buy',
                 request_serializer=grpc__pb2.TransactionObject.SerializeToString,
-                response_deserializer=grpc__pb2.UserOutput.FromString,
+                response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.sell = channel.unary_unary(
                 '/plushie_tycoon.UITransfer/sell',
                 request_serializer=grpc__pb2.TransactionObject.SerializeToString,
-                response_deserializer=grpc__pb2.UserOutput.FromString,
+                response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.make = channel.unary_unary(
                 '/plushie_tycoon.UITransfer/make',
                 request_serializer=grpc__pb2.TransactionObject.SerializeToString,
-                response_deserializer=grpc__pb2.UserOutput.FromString,
+                response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.next = channel.unary_unary(
                 '/plushie_tycoon.UITransfer/next',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
-                response_deserializer=grpc__pb2.UserOutput.FromString,
+                response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.save = channel.unary_unary(
                 '/plushie_tycoon.UITransfer/save',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
-                response_deserializer=grpc__pb2.UserOutput.FromString,
+                response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.load = channel.unary_unary(
                 '/plushie_tycoon.UITransfer/load',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
-                response_deserializer=grpc__pb2.UserOutput.FromString,
+                response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.back = channel.unary_unary(
                 '/plushie_tycoon.UITransfer/back',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
-                response_deserializer=grpc__pb2.UserOutput.FromString,
+                response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.quit = channel.unary_unary(
                 '/plushie_tycoon.UITransfer/quit',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
-                response_deserializer=grpc__pb2.UserOutput.FromString,
+                response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.init = channel.unary_unary(
                 '/plushie_tycoon.UITransfer/init',
                 request_serializer=grpc__pb2.SelectionObject.SerializeToString,
-                response_deserializer=grpc__pb2.UserOutput.FromString,
+                response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
 
 
@@ -127,47 +127,47 @@ def add_UITransferServicer_to_server(servicer, server):
             'buy': grpc.unary_unary_rpc_method_handler(
                     servicer.buy,
                     request_deserializer=grpc__pb2.TransactionObject.FromString,
-                    response_serializer=grpc__pb2.UserOutput.SerializeToString,
+                    response_serializer=grpc__pb2.Snapshot.SerializeToString,
             ),
             'sell': grpc.unary_unary_rpc_method_handler(
                     servicer.sell,
                     request_deserializer=grpc__pb2.TransactionObject.FromString,
-                    response_serializer=grpc__pb2.UserOutput.SerializeToString,
+                    response_serializer=grpc__pb2.Snapshot.SerializeToString,
             ),
             'make': grpc.unary_unary_rpc_method_handler(
                     servicer.make,
                     request_deserializer=grpc__pb2.TransactionObject.FromString,
-                    response_serializer=grpc__pb2.UserOutput.SerializeToString,
+                    response_serializer=grpc__pb2.Snapshot.SerializeToString,
             ),
             'next': grpc.unary_unary_rpc_method_handler(
                     servicer.next,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
-                    response_serializer=grpc__pb2.UserOutput.SerializeToString,
+                    response_serializer=grpc__pb2.Snapshot.SerializeToString,
             ),
             'save': grpc.unary_unary_rpc_method_handler(
                     servicer.save,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
-                    response_serializer=grpc__pb2.UserOutput.SerializeToString,
+                    response_serializer=grpc__pb2.Snapshot.SerializeToString,
             ),
             'load': grpc.unary_unary_rpc_method_handler(
                     servicer.load,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
-                    response_serializer=grpc__pb2.UserOutput.SerializeToString,
+                    response_serializer=grpc__pb2.Snapshot.SerializeToString,
             ),
             'back': grpc.unary_unary_rpc_method_handler(
                     servicer.back,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
-                    response_serializer=grpc__pb2.UserOutput.SerializeToString,
+                    response_serializer=grpc__pb2.Snapshot.SerializeToString,
             ),
             'quit': grpc.unary_unary_rpc_method_handler(
                     servicer.quit,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
-                    response_serializer=grpc__pb2.UserOutput.SerializeToString,
+                    response_serializer=grpc__pb2.Snapshot.SerializeToString,
             ),
             'init': grpc.unary_unary_rpc_method_handler(
                     servicer.init,
                     request_deserializer=grpc__pb2.SelectionObject.FromString,
-                    response_serializer=grpc__pb2.UserOutput.SerializeToString,
+                    response_serializer=grpc__pb2.Snapshot.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -193,7 +193,7 @@ class UITransfer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/buy',
             grpc__pb2.TransactionObject.SerializeToString,
-            grpc__pb2.UserOutput.FromString,
+            grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -209,7 +209,7 @@ class UITransfer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/sell',
             grpc__pb2.TransactionObject.SerializeToString,
-            grpc__pb2.UserOutput.FromString,
+            grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -225,7 +225,7 @@ class UITransfer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/make',
             grpc__pb2.TransactionObject.SerializeToString,
-            grpc__pb2.UserOutput.FromString,
+            grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -241,7 +241,7 @@ class UITransfer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/next',
             grpc__pb2.SelectionObject.SerializeToString,
-            grpc__pb2.UserOutput.FromString,
+            grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -257,7 +257,7 @@ class UITransfer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/save',
             grpc__pb2.SelectionObject.SerializeToString,
-            grpc__pb2.UserOutput.FromString,
+            grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -273,7 +273,7 @@ class UITransfer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/load',
             grpc__pb2.SelectionObject.SerializeToString,
-            grpc__pb2.UserOutput.FromString,
+            grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -289,7 +289,7 @@ class UITransfer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/back',
             grpc__pb2.SelectionObject.SerializeToString,
-            grpc__pb2.UserOutput.FromString,
+            grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -305,7 +305,7 @@ class UITransfer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/quit',
             grpc__pb2.SelectionObject.SerializeToString,
-            grpc__pb2.UserOutput.FromString,
+            grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -321,6 +321,6 @@ class UITransfer(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/init',
             grpc__pb2.SelectionObject.SerializeToString,
-            grpc__pb2.UserOutput.FromString,
+            grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
