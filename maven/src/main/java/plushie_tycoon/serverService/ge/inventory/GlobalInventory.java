@@ -18,8 +18,8 @@ public class GlobalInventory {
         this.movements = new HashMap<>();
     }
 
-    public int getTotalMoveCost() {
-        int costs = 0;
+    public double getTotalMoveCost() {
+        double costs = 0;
         for (HashMap.Entry<BaseObjects, Integer> entry : this.movements.entrySet()) {
             if (entry.getValue() > 0){
                 costs += InventoryCalculator.getMoveInCost(entry.getKey()) * entry.getValue();
@@ -30,8 +30,8 @@ public class GlobalInventory {
         return costs;
     }
 
-    public HashMap<BaseObjects, Integer> getMoveCostSplit() {
-        HashMap<BaseObjects, Integer> costs = new HashMap<>();
+    public HashMap<BaseObjects, Double> getMoveCostSplit() {
+        HashMap<BaseObjects, Double> costs = new HashMap<>();
         for (HashMap.Entry<BaseObjects, Integer> entry : this.movements.entrySet()) {
             if (entry.getValue() > 0){
                 costs.put(entry.getKey(), InventoryCalculator.getMoveInCost(entry.getKey()) * entry.getValue());
@@ -42,15 +42,15 @@ public class GlobalInventory {
         return costs;
     }
 
-    public HashMap<BaseObjects, Integer> getStorageCostSplit() {
-        HashMap<BaseObjects, Integer> costs = new HashMap<>();
+    public HashMap<BaseObjects, Double> getStorageCostSplit() {
+        HashMap<BaseObjects, Double> costs = new HashMap<>();
         for (HashMap.Entry<BaseObjects, Integer> entry : this.inventory.entrySet()) {
             costs.put(entry.getKey(), InventoryCalculator.getStorageCost(entry.getKey()) * entry.getValue());
         }
         return costs;
     }
 
-    public int getTotalStorageCost() {
+    public double getTotalStorageCost() {
         int costs = 0;
         for (HashMap.Entry<BaseObjects, Integer> entry : this.inventory.entrySet()) {
             costs += InventoryCalculator.getStorageCost(entry.getKey()) * entry.getValue();
@@ -58,7 +58,7 @@ public class GlobalInventory {
         return costs;
     }
 
-    public int getTotalWeight() {
+    public double getTotalWeight() {
         int weight = 0;
         for (HashMap.Entry<BaseObjects, Integer> entry : this.inventory.entrySet()) {
             weight += Defaults.getWeight(entry.getKey()) * entry.getValue();
@@ -66,7 +66,7 @@ public class GlobalInventory {
         return weight;
     }
 
-    public int getTotalVolume() {
+    public double getTotalVolume() {
         int volume = 0;
         for (HashMap.Entry<BaseObjects, Integer> entry : this.inventory.entrySet()) {
             volume += Defaults.getVolume(entry.getKey()) * entry.getValue();
@@ -86,15 +86,15 @@ public class GlobalInventory {
         return this.movements;
     }
 
-    public int getMoveInCost(BaseObjects item) {
+    public double getMoveInCost(BaseObjects item) {
         return InventoryCalculator.getMoveInCost(item);
     }
 
-    public int getMoveOutCost(BaseObjects item) {
+    public double getMoveOutCost(BaseObjects item) {
         return InventoryCalculator.getMoveOutCost(item);
     }
 
-    public int getStorageCost(BaseObjects item) {
+    public double getStorageCost(BaseObjects item) {
         return InventoryCalculator.getStorageCost(item);
     }
 

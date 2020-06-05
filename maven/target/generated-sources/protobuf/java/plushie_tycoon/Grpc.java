@@ -2427,11 +2427,11 @@ public final class Grpc {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>map&lt;string, int32&gt; prices = 1;</code>
+     * <code>map&lt;string, double&gt; prices = 1;</code>
      */
     int getPricesCount();
     /**
-     * <code>map&lt;string, int32&gt; prices = 1;</code>
+     * <code>map&lt;string, double&gt; prices = 1;</code>
      */
     boolean containsPrices(
         java.lang.String key);
@@ -2439,25 +2439,25 @@ public final class Grpc {
      * Use {@link #getPricesMap()} instead.
      */
     @java.lang.Deprecated
-    java.util.Map<java.lang.String, java.lang.Integer>
+    java.util.Map<java.lang.String, java.lang.Double>
     getPrices();
     /**
-     * <code>map&lt;string, int32&gt; prices = 1;</code>
+     * <code>map&lt;string, double&gt; prices = 1;</code>
      */
-    java.util.Map<java.lang.String, java.lang.Integer>
+    java.util.Map<java.lang.String, java.lang.Double>
     getPricesMap();
     /**
-     * <code>map&lt;string, int32&gt; prices = 1;</code>
+     * <code>map&lt;string, double&gt; prices = 1;</code>
      */
 
-    int getPricesOrDefault(
+    double getPricesOrDefault(
         java.lang.String key,
-        int defaultValue);
+        double defaultValue);
     /**
-     * <code>map&lt;string, int32&gt; prices = 1;</code>
+     * <code>map&lt;string, double&gt; prices = 1;</code>
      */
 
-    int getPricesOrThrow(
+    double getPricesOrThrow(
         java.lang.String key);
 
     /**
@@ -2643,10 +2643,10 @@ public final class Grpc {
         getConsoleOutputBytes();
 
     /**
-     * <code>int32 budget = 9;</code>
+     * <code>double budget = 9;</code>
      * @return The budget.
      */
-    int getBudget();
+    double getBudget();
 
     /**
      * <code>int32 time = 10;</code>
@@ -2720,7 +2720,7 @@ public final class Grpc {
                     PricesDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+              com.google.protobuf.MapEntry<java.lang.String, java.lang.Double>
               prices__ = input.readMessage(
                   PricesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               prices_.getMutableMap().put(
@@ -2759,9 +2759,9 @@ public final class Grpc {
               consoleOutput_ = s;
               break;
             }
-            case 72: {
+            case 73: {
 
-              budget_ = input.readInt32();
+              budget_ = input.readDouble();
               break;
             }
             case 80: {
@@ -2871,18 +2871,18 @@ public final class Grpc {
     public static final int PRICES_FIELD_NUMBER = 1;
     private static final class PricesDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, java.lang.Integer> defaultEntry =
+          java.lang.String, java.lang.Double> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+              .<java.lang.String, java.lang.Double>newDefaultInstance(
                   plushie_tycoon.Grpc.internal_static_plushie_tycoon_Snapshot_PricesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
-                  com.google.protobuf.WireFormat.FieldType.INT32,
-                  0);
+                  com.google.protobuf.WireFormat.FieldType.DOUBLE,
+                  0D);
     }
     private com.google.protobuf.MapField<
-        java.lang.String, java.lang.Integer> prices_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+        java.lang.String, java.lang.Double> prices_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Double>
     internalGetPrices() {
       if (prices_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -2895,7 +2895,7 @@ public final class Grpc {
       return internalGetPrices().getMap().size();
     }
     /**
-     * <code>map&lt;string, int32&gt; prices = 1;</code>
+     * <code>map&lt;string, double&gt; prices = 1;</code>
      */
 
     public boolean containsPrices(
@@ -2907,36 +2907,36 @@ public final class Grpc {
      * Use {@link #getPricesMap()} instead.
      */
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.Integer> getPrices() {
+    public java.util.Map<java.lang.String, java.lang.Double> getPrices() {
       return getPricesMap();
     }
     /**
-     * <code>map&lt;string, int32&gt; prices = 1;</code>
+     * <code>map&lt;string, double&gt; prices = 1;</code>
      */
 
-    public java.util.Map<java.lang.String, java.lang.Integer> getPricesMap() {
+    public java.util.Map<java.lang.String, java.lang.Double> getPricesMap() {
       return internalGetPrices().getMap();
     }
     /**
-     * <code>map&lt;string, int32&gt; prices = 1;</code>
+     * <code>map&lt;string, double&gt; prices = 1;</code>
      */
 
-    public int getPricesOrDefault(
+    public double getPricesOrDefault(
         java.lang.String key,
-        int defaultValue) {
+        double defaultValue) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, java.lang.Integer> map =
+      java.util.Map<java.lang.String, java.lang.Double> map =
           internalGetPrices().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, int32&gt; prices = 1;</code>
+     * <code>map&lt;string, double&gt; prices = 1;</code>
      */
 
-    public int getPricesOrThrow(
+    public double getPricesOrThrow(
         java.lang.String key) {
       if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, java.lang.Integer> map =
+      java.util.Map<java.lang.String, java.lang.Double> map =
           internalGetPrices().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -3361,12 +3361,12 @@ public final class Grpc {
     }
 
     public static final int BUDGET_FIELD_NUMBER = 9;
-    private int budget_;
+    private double budget_;
     /**
-     * <code>int32 budget = 9;</code>
+     * <code>double budget = 9;</code>
      * @return The budget.
      */
-    public int getBudget() {
+    public double getBudget() {
       return budget_;
     }
 
@@ -3451,8 +3451,8 @@ public final class Grpc {
       if (!getConsoleOutputBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 8, consoleOutput_);
       }
-      if (budget_ != 0) {
-        output.writeInt32(9, budget_);
+      if (budget_ != 0D) {
+        output.writeDouble(9, budget_);
       }
       if (time_ != 0) {
         output.writeInt32(10, time_);
@@ -3487,9 +3487,9 @@ public final class Grpc {
       if (size != -1) return size;
 
       size = 0;
-      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+      for (java.util.Map.Entry<java.lang.String, java.lang.Double> entry
            : internalGetPrices().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.Double>
         prices__ = PricesDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -3520,9 +3520,9 @@ public final class Grpc {
       if (!getConsoleOutputBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, consoleOutput_);
       }
-      if (budget_ != 0) {
+      if (budget_ != 0D) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, budget_);
+          .computeDoubleSize(9, budget_);
       }
       if (time_ != 0) {
         size += com.google.protobuf.CodedOutputStream
@@ -3590,8 +3590,9 @@ public final class Grpc {
           other.internalGetResourceRatio())) return false;
       if (!getConsoleOutput()
           .equals(other.getConsoleOutput())) return false;
-      if (getBudget()
-          != other.getBudget()) return false;
+      if (java.lang.Double.doubleToLongBits(getBudget())
+          != java.lang.Double.doubleToLongBits(
+              other.getBudget())) return false;
       if (getTime()
           != other.getTime()) return false;
       if (!getAction()
@@ -3634,7 +3635,8 @@ public final class Grpc {
       hash = (37 * hash) + CONSOLE_OUTPUT_FIELD_NUMBER;
       hash = (53 * hash) + getConsoleOutput().hashCode();
       hash = (37 * hash) + BUDGET_FIELD_NUMBER;
-      hash = (53 * hash) + getBudget();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getBudget()));
       hash = (37 * hash) + TIME_FIELD_NUMBER;
       hash = (53 * hash) + getTime();
       hash = (37 * hash) + ACTION_FIELD_NUMBER;
@@ -3822,7 +3824,7 @@ public final class Grpc {
         internalGetMutableResourceRatio().clear();
         consoleOutput_ = "";
 
-        budget_ = 0;
+        budget_ = 0D;
 
         time_ = 0;
 
@@ -3935,7 +3937,7 @@ public final class Grpc {
           consoleOutput_ = other.consoleOutput_;
           onChanged();
         }
-        if (other.getBudget() != 0) {
+        if (other.getBudget() != 0D) {
           setBudget(other.getBudget());
         }
         if (other.getTime() != 0) {
@@ -3976,8 +3978,8 @@ public final class Grpc {
       private int bitField0_;
 
       private com.google.protobuf.MapField<
-          java.lang.String, java.lang.Integer> prices_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          java.lang.String, java.lang.Double> prices_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Double>
       internalGetPrices() {
         if (prices_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -3985,7 +3987,7 @@ public final class Grpc {
         }
         return prices_;
       }
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Double>
       internalGetMutablePrices() {
         onChanged();;
         if (prices_ == null) {
@@ -4002,7 +4004,7 @@ public final class Grpc {
         return internalGetPrices().getMap().size();
       }
       /**
-       * <code>map&lt;string, int32&gt; prices = 1;</code>
+       * <code>map&lt;string, double&gt; prices = 1;</code>
        */
 
       public boolean containsPrices(
@@ -4014,36 +4016,36 @@ public final class Grpc {
        * Use {@link #getPricesMap()} instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer> getPrices() {
+      public java.util.Map<java.lang.String, java.lang.Double> getPrices() {
         return getPricesMap();
       }
       /**
-       * <code>map&lt;string, int32&gt; prices = 1;</code>
+       * <code>map&lt;string, double&gt; prices = 1;</code>
        */
 
-      public java.util.Map<java.lang.String, java.lang.Integer> getPricesMap() {
+      public java.util.Map<java.lang.String, java.lang.Double> getPricesMap() {
         return internalGetPrices().getMap();
       }
       /**
-       * <code>map&lt;string, int32&gt; prices = 1;</code>
+       * <code>map&lt;string, double&gt; prices = 1;</code>
        */
 
-      public int getPricesOrDefault(
+      public double getPricesOrDefault(
           java.lang.String key,
-          int defaultValue) {
+          double defaultValue) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
+        java.util.Map<java.lang.String, java.lang.Double> map =
             internalGetPrices().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, int32&gt; prices = 1;</code>
+       * <code>map&lt;string, double&gt; prices = 1;</code>
        */
 
-      public int getPricesOrThrow(
+      public double getPricesOrThrow(
           java.lang.String key) {
         if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
+        java.util.Map<java.lang.String, java.lang.Double> map =
             internalGetPrices().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
@@ -4057,7 +4059,7 @@ public final class Grpc {
         return this;
       }
       /**
-       * <code>map&lt;string, int32&gt; prices = 1;</code>
+       * <code>map&lt;string, double&gt; prices = 1;</code>
        */
 
       public Builder removePrices(
@@ -4071,16 +4073,16 @@ public final class Grpc {
        * Use alternate mutation accessors instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer>
+      public java.util.Map<java.lang.String, java.lang.Double>
       getMutablePrices() {
         return internalGetMutablePrices().getMutableMap();
       }
       /**
-       * <code>map&lt;string, int32&gt; prices = 1;</code>
+       * <code>map&lt;string, double&gt; prices = 1;</code>
        */
       public Builder putPrices(
           java.lang.String key,
-          int value) {
+          double value) {
         if (key == null) { throw new java.lang.NullPointerException(); }
         
         internalGetMutablePrices().getMutableMap()
@@ -4088,11 +4090,11 @@ public final class Grpc {
         return this;
       }
       /**
-       * <code>map&lt;string, int32&gt; prices = 1;</code>
+       * <code>map&lt;string, double&gt; prices = 1;</code>
        */
 
       public Builder putAllPrices(
-          java.util.Map<java.lang.String, java.lang.Integer> values) {
+          java.util.Map<java.lang.String, java.lang.Double> values) {
         internalGetMutablePrices().getMutableMap()
             .putAll(values);
         return this;
@@ -4789,32 +4791,32 @@ public final class Grpc {
         return this;
       }
 
-      private int budget_ ;
+      private double budget_ ;
       /**
-       * <code>int32 budget = 9;</code>
+       * <code>double budget = 9;</code>
        * @return The budget.
        */
-      public int getBudget() {
+      public double getBudget() {
         return budget_;
       }
       /**
-       * <code>int32 budget = 9;</code>
+       * <code>double budget = 9;</code>
        * @param value The budget to set.
        * @return This builder for chaining.
        */
-      public Builder setBudget(int value) {
+      public Builder setBudget(double value) {
         
         budget_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 budget = 9;</code>
+       * <code>double budget = 9;</code>
        * @return This builder for chaining.
        */
       public Builder clearBudget() {
         
-        budget_ = 0;
+        budget_ = 0D;
         onChanged();
         return this;
       }
@@ -5063,9 +5065,9 @@ public final class Grpc {
       "tycoon.Snapshot.ItemCostEntry\022C\n\016resourc" +
       "e_ratio\030\007 \003(\0132+.plushie_tycoon.Snapshot." +
       "ResourceRatioEntry\022\026\n\016console_output\030\010 \001" +
-      "(\t\022\016\n\006budget\030\t \001(\005\022\014\n\004time\030\n \001(\005\022\016\n\006acti" +
+      "(\t\022\016\n\006budget\030\t \001(\001\022\014\n\004time\030\n \001(\005\022\016\n\006acti" +
       "on\030\013 \001(\t\032-\n\013PricesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005" +
-      "value\030\002 \001(\005:\0028\001\0321\n\017QuantitiesEntry\022\013\n\003ke" +
+      "value\030\002 \001(\001:\0028\001\0321\n\017QuantitiesEntry\022\013\n\003ke" +
       "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032.\n\014WeightsEnt" +
       "ry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\0028\001\032.\n\014Vo" +
       "lumesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\002" +

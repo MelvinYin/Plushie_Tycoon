@@ -8,15 +8,15 @@ import java.util.HashMap;
 /** Does not have external setting capabilities unless value explicitly called. */
 public class GlobalMarket {
     HashMap<BaseObjects, IndividualMarket> indMarkets;
-    public GlobalMarket(HashMap<BaseObjects, Integer> market_values){
+    public GlobalMarket(HashMap<BaseObjects, Double> market_values){
         this.indMarkets = this.spawnMarkets(market_values);
     }
     public GlobalMarket(){
         this.indMarkets = this.spawnMarkets(Initials.prices);
     }
-    public HashMap<BaseObjects, IndividualMarket> spawnMarkets(HashMap<BaseObjects, Integer> values) {
+    public HashMap<BaseObjects, IndividualMarket> spawnMarkets(HashMap<BaseObjects, Double> values) {
         HashMap<BaseObjects, IndividualMarket> ind_markets = new HashMap<>();
-        for (HashMap.Entry<BaseObjects, Integer> entry: values.entrySet()) {
+        for (HashMap.Entry<BaseObjects, Double> entry: values.entrySet()) {
             IndividualMarket ind_market = new IndividualMarket(entry.getValue());
             ind_markets.put(entry.getKey(), ind_market);
         }
@@ -27,15 +27,15 @@ public class GlobalMarket {
             this.indMarkets.get(entry.getKey()).set(entry.getValue());
         }
     }
-    public HashMap<BaseObjects, Integer> returnValues(){
-        HashMap<BaseObjects, Integer> output = new HashMap<>();
+    public HashMap<BaseObjects, Double> returnValues(){
+        HashMap<BaseObjects, Double> output = new HashMap<>();
         for (HashMap.Entry<BaseObjects, IndividualMarket> entry: this.indMarkets.entrySet()) {
             output.put(entry.getKey(), entry.getValue().get());
         }
         return output;
     }
 
-    public int get(BaseObjects key){
+    public double get(BaseObjects key){
         return indMarkets.get(key).get();
     }
 

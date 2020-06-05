@@ -14,7 +14,7 @@ import plushie_tycoon.serverService.utils.BaseStringConverter;
 
 public class GE {
     private StateHistory history;
-    private int budget;
+    private double budget;
     private GlobalMarket market;
     private GlobalInventory inventory;
     private int time;
@@ -47,7 +47,7 @@ public class GE {
     }
 
     public Snapshot buy(BaseObjects object, int quantity){
-        int price = market.get(object) * quantity;
+        double price = market.get(object) * quantity;
         System.out.println("Buying " + object.toString() + " " + quantity + " price " + price +" budget " + budget);
         if (price > budget){
             String errorMsg = "Cannot buy <" + quantity + "> of <" + object + "> as it costs <" + price +
@@ -65,7 +65,7 @@ public class GE {
             return getNullReturn(errorMsg);
         }
         inventory.sub(object, quantity);
-        int price = market.get(object) * quantity;
+        double price = market.get(object) * quantity;
         budget += price;
         return getUpdateReturn();
     }

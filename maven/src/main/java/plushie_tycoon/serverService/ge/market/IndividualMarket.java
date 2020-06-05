@@ -9,17 +9,17 @@ import plushie_tycoon.serverService.ge.market.seller.ConsolidatedSeller;
 import plushie_tycoon.serverService.ge.market.seller.SellerBase;
 
 public class IndividualMarket {
-    int current_price;
+    double current_price;
 
-    public IndividualMarket(int price) {
+    public IndividualMarket(double price) {
         current_price = price;
     }
 
-    public int get() {
+    public double get() {
         return current_price;
     }
 
-    public int clearMarket(int buy_q, int sell_q){
+    public double clearMarket(int buy_q, int sell_q){
         BuyerBase[] buyers = new BuyerBase[2];
         buyers[0] = new FixedBuyer(buy_q);
         buyers[1] = new LinearBuyer();
@@ -33,7 +33,7 @@ public class IndividualMarket {
         return current_price;
     }
 
-    public void set(int price) {
+    public void set(double price) {
         current_price = price;
     }
 }

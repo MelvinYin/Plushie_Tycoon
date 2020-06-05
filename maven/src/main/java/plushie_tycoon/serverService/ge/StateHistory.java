@@ -6,7 +6,7 @@ import plushie_tycoon.serverService.ge.market.GlobalMarket;
 import java.util.Stack;
 
 public class StateHistory {
-    private Stack<Integer> budget;
+    private Stack<Double> budget;
     private Stack<GlobalInventory> inventory;
     private Stack<GlobalMarket> market;
     private Stack<Integer> time;
@@ -17,7 +17,7 @@ public class StateHistory {
         market = new Stack<>();
     }
 
-    public void addBudget(int budget){
+    public void addBudget(double budget){
         this.budget.push(budget);
     }
 
@@ -40,7 +40,7 @@ public class StateHistory {
         return (isValid() & budget.size() == 0);
     }
 
-    public int getBudget(){
+    public double getBudget(){
         return budget.peek();
     }
     public GlobalMarket getMarket(){

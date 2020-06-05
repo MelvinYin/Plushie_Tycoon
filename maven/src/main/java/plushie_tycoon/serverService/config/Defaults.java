@@ -10,9 +10,9 @@ public class Defaults {
     private static int numResources = Resources.values().length;
     public static HashMap<Integer, Integer> resourceRatio = new HashMap<>();
     public static HashMap<Products, Integer> productionHours = new HashMap<>();
-    public static int costPerHour;
-    public static HashMap<BaseObjects, Integer> volumes = new HashMap<>();
-    public static HashMap<BaseObjects, Integer> weights = new HashMap<>();
+    public static double costPerHour;
+    public static HashMap<BaseObjects, Double> volumes = new HashMap<>();
+    public static HashMap<BaseObjects, Double> weights = new HashMap<>();
 
     static {
         resourceRatio.put(getHashKey(Products.AISHA, Resources.CLOTH), 3);
@@ -34,23 +34,23 @@ public class Defaults {
         productionHours.put(Products.BETA, 24);
         productionHours.put(Products.CHAMA, 36);
 
-        costPerHour = 3;
+        costPerHour = 0.3;
 
-        volumes.put(Resources.CLOTH, 5);
-        volumes.put(Resources.STUFFING, 6);
-        volumes.put(Resources.ACCESSORY, 7);
-        volumes.put(Resources.PACKAGING, 8);
-        volumes.put(Products.AISHA, 3);
-        volumes.put(Products.BETA, 2);
-        volumes.put(Products.CHAMA, 4);
+        volumes.put(Resources.CLOTH, 0.5);
+        volumes.put(Resources.STUFFING, 0.6);
+        volumes.put(Resources.ACCESSORY, 0.7);
+        volumes.put(Resources.PACKAGING, 0.8);
+        volumes.put(Products.AISHA, 0.3);
+        volumes.put(Products.BETA, 0.2);
+        volumes.put(Products.CHAMA, 0.4);
 
-        weights.put(Resources.CLOTH, 5);
-        weights.put(Resources.STUFFING, 6);
-        weights.put(Resources.ACCESSORY, 7);
-        weights.put(Resources.PACKAGING, 8);
-        weights.put(Products.AISHA, 3);
-        weights.put(Products.BETA, 2);
-        weights.put(Products.CHAMA, 4);
+        weights.put(Resources.CLOTH, 0.5);
+        weights.put(Resources.STUFFING, 0.6);
+        weights.put(Resources.ACCESSORY, 0.7);
+        weights.put(Resources.PACKAGING, 0.8);
+        weights.put(Products.AISHA, 0.3);
+        weights.put(Products.BETA, 0.2);
+        weights.put(Products.CHAMA, 0.4);
     }
 
     private static int getHashKey(Products product, Resources resource){
@@ -63,10 +63,10 @@ public class Defaults {
     public static int getProductionHours(Products product){
         return productionHours.get(product);
     }
-    public static int getVolume(BaseObjects baseObject){
+    public static double getVolume(BaseObjects baseObject){
         return volumes.get(baseObject);
     }
-    public static int getWeight(BaseObjects baseObject){
+    public static double getWeight(BaseObjects baseObject){
         return weights.get(baseObject);
     }
 }
