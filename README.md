@@ -79,7 +79,7 @@ and Load works locally, maybe. Quit is meant to quit.
 . Otherwise the two are largely similar, at time of port. It has MockService
  and MockGE for testing and debugging. 
 
-##### Python Server<br>_Deprecated_
+##### Python Server<br><em>Deprecated_, find in python-server-deprecated branch</em>
 
 GE is game engine, GS is game state. GE implements commands like buy and sell
 , GS stores current state information such as inventory and market prices
