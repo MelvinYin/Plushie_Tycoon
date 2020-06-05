@@ -86,6 +86,7 @@ public class ServerService {
         //        @Override
         public void init(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             Grpc.Snapshot output = ge.init();
+            System.out.println(output);
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }

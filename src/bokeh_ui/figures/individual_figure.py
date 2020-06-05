@@ -5,7 +5,7 @@ from bokeh.models.tickers import FixedTicker
 import numpy as np
 import copy
 import re
-
+from collections import defaultdict
 """
 self.current_ticks need to be pulled out, because figure.xaxis.ticker cannot 
 be retrieved.
@@ -49,25 +49,26 @@ class ItemCostTable:
     def __init__(self, data):
         self.name = FigureNames.item_cost_table
         self.title = "Item Cost Table"
-        self.data = data
         self.width = 250
         self.height = 220
 
-        self._CDS = self._set_CDS()
-        self._table = self._build_table()
+        self._CDS = self._set_CDS(data)
+        self._table = self._build_table(data)
         self.figure = self._set_table()
 
-    def _get_fields(self, inventory):
-        movein_cost = inventory.get_all_movein_cost()
-        moveout_cost = inventory.get_all_moveout_cost()
-        storage_cost = inventory.get_all_storage_cost()
-        assert tuple(movein_cost.keys()) == tuple(moveout_cost.keys()) \
-               == tuple(storage_cost.keys())
-        fields = dict()
-        fields['Movein'] = list(movein_cost.values())
-        fields['Moveout'] = list(moveout_cost.values())
-        fields['Storage'] = list(storage_cost.values())
-        return fields
+    def _truncate_number(self, number):
+        precision = 0
+        curr_number = number
+        while curr_number // 1 < 0.99 and precision < 10:
+            precision += 1
+            curr_number *= 10
+        if precision == 0:
+            return str(round(number))
+        elif precision == 10:
+            return "0."
+        else:
+            number = round(number * (10 ** precision)) / (10 ** precision)
+            return '{:.{prec}f}'.format(number, prec=precision)
 
     def _check_initial_data(self, data):
         assert data
@@ -84,13 +85,24 @@ class ItemCostTable:
                 assert ratio >= 0
         return True
 
-    def _set_CDS(self):
-        source = ColumnDataSource(self.data)
+    def _set_CDS(self, data):
+        for key, values in data.items():
+            if key == "Item":
+                continue
+            new_values = []
+            for value in values:
+                error_msg = "This should be double, check who sent this in. " \
+                            "Otherwise check whether the index column has " \
+                            "key as 'Item'."
+                assert not isinstance(value, str), error_msg
+                new_values.append(self._truncate_number(value))
+            data[key] = new_values
+        source = ColumnDataSource(data)
         return source
 
-    def _build_table(self):
+    def _build_table(self, data):
         columns = [TableColumn(field=i, title=i) for i in
-                        self.data.keys()]
+                        data.keys()]
         columns[0].width = 700
         data_table = DataTable(source=self._CDS, columns=columns,
                                width=self.width,
@@ -106,11 +118,13 @@ class ItemCostTable:
         # todo: also need to settle using transporter
         # add_data = self._convert_input(add_data)
         # self._check_add_data(add_data)
-        to_patch = dict()
-        for category, ratios in self.data.items():
+        to_patch = defaultdict(list)
+        for category, ratios in data.items():
             assert isinstance(category, str)
             for i, ratio in enumerate(ratios):
-                to_patch[category] = [(i, ratio)]
+                if category != "Item":
+                    ratio = self._truncate_number(ratio)
+                to_patch[category].append((i, ratio))
         self._CDS.patch(to_patch)
         return
 
@@ -123,8 +137,8 @@ class ItemPropertiesTable:
         self.width = 250
         self.height = 220
 
-        self._CDS = self._set_CDS()
-        self._table = self._build_table()
+        self._CDS = self._set_CDS(data)
+        self._table = self._build_table(data)
         self.figure = self._set_table()
 
     def _get_properties(self, inventory):
@@ -152,13 +166,13 @@ class ItemPropertiesTable:
                 assert ratio >= 0
         return True
 
-    def _set_CDS(self):
-        source = ColumnDataSource(self.data)
+    def _set_CDS(self, data):
+        source = ColumnDataSource(data)
         return source
 
-    def _build_table(self):
+    def _build_table(self, data):
         columns = [TableColumn(field=i, title=i) for i in
-                        self.data.keys()]
+                        data.keys()]
         columns[0].width = 400
         data_table = DataTable(source=self._CDS, columns=columns,
                                width=self.width, height=self.height,
@@ -171,8 +185,6 @@ class ItemPropertiesTable:
         return fig
 
     def figure_update(self, data):
-        # add_data = self._convert_input(add_data)
-        # self._check_add_data(add_data)
         to_patch = dict()
         for category, ratios in data.items():
             for i, ratio in enumerate(ratios):

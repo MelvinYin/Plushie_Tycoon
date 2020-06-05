@@ -74,7 +74,7 @@ and Load works locally, maybe. Quit is meant to quit.
   
 #### Detailed Description
 
-#####Python Server
+##### Python Server
 GE is game engine, GS is game state. GE implements commands like buy and sell
 , GS stores current state information such as inventory and market prices
 , and implements certain backend and maintenance methods. Each player has
