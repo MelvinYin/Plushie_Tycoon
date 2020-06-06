@@ -11,37 +11,14 @@ import plushie_tycoon.Grpc.*;
 import plushie_tycoon.serverService.utils.BaseStringConverter;
 
 public class GEGlobal {
-    private StateHistory history;
-    private double budget;
     private GlobalMarket market;
     private GlobalInventory inventory;
     private int time;
 
     public GEGlobal(){
-        history = new StateHistory();
         market = new GlobalMarket();
-        budget = Initials.budget;
         inventory = new GlobalInventory(Initials.quantities);
         time = Initials.time;
-    }
-
-    public void commit(){
-        history.addBudget(budget);
-        history.addTime(time);
-        history.addInventory(inventory);
-        history.addMarket(market);
-        time++;
-    }
-
-    public boolean canReverseCall(){
-        return !history.isEmpty();
-    }
-    public void reverseCall(){
-        budget = history.getBudget();
-        time = history.getTime();
-        inventory = history.getInventory();
-        market = history.getMarket();
-        history.pop();
     }
 
     public Snapshot buy(BaseObjects object, int quantity){
@@ -94,7 +71,6 @@ public class GEGlobal {
         budget -= inventory.getTotalMoveCost();
         budget -= inventory.getTotalStorageCost();
         inventory.resetMovement();
-        commit();
         return getUpdateReturn();
     }
 
@@ -103,15 +79,6 @@ public class GEGlobal {
     }
 
     public Snapshot load(){
-        return getUpdateReturn();
-    }
-
-    public Snapshot back(){
-        if (!canReverseCall()){
-            String errorMsg = "Cannot reverse call, callstack is empty.";
-            return getNullReturn(errorMsg);
-        }
-        reverseCall();
         return getUpdateReturn();
     }
 
