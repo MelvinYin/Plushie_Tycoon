@@ -1,4 +1,4 @@
-package plushie_tycoon.serverService.ge.market.buyer;
+package plushie_tycoon.serverService.geGlobal.market.buyer;
 
 public class FixedBuyer extends BuyerBase{
     private int quantity;

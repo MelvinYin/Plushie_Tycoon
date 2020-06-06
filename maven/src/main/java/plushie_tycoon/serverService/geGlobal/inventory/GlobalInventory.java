@@ -1,4 +1,4 @@
-package plushie_tycoon.serverService.ge.inventory;
+package plushie_tycoon.serverService.geGlobal.inventory;
 import java.util.HashMap;
 
 import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
@@ -14,8 +14,7 @@ public class GlobalInventory {
     }
 
     public GlobalInventory(){
-        this.inventory = new HashMap<>();
-        this.movements = new HashMap<>();
+        this(new HashMap<>());
     }
 
     public double getTotalMoveCost() {

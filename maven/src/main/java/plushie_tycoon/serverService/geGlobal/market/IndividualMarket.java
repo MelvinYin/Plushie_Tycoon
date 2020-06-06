@@ -1,12 +1,12 @@
-package plushie_tycoon.serverService.ge.market;
-import plushie_tycoon.serverService.ge.market.buyer.BuyerBase;
-import plushie_tycoon.serverService.ge.market.buyer.FixedBuyer;
-import plushie_tycoon.serverService.ge.market.buyer.LinearBuyer;
-import plushie_tycoon.serverService.ge.market.buyer.ConsolidatedBuyer;
-import plushie_tycoon.serverService.ge.market.seller.FixedSeller;
-import plushie_tycoon.serverService.ge.market.seller.LinearSeller;
-import plushie_tycoon.serverService.ge.market.seller.ConsolidatedSeller;
-import plushie_tycoon.serverService.ge.market.seller.SellerBase;
+package plushie_tycoon.serverService.geGlobal.market;
+import plushie_tycoon.serverService.geGlobal.market.buyer.BuyerBase;
+import plushie_tycoon.serverService.geGlobal.market.buyer.FixedBuyer;
+import plushie_tycoon.serverService.geGlobal.market.buyer.LinearBuyer;
+import plushie_tycoon.serverService.geGlobal.market.buyer.ConsolidatedBuyer;
+import plushie_tycoon.serverService.geGlobal.market.seller.FixedSeller;
+import plushie_tycoon.serverService.geGlobal.market.seller.LinearSeller;
+import plushie_tycoon.serverService.geGlobal.market.seller.ConsolidatedSeller;
+import plushie_tycoon.serverService.geGlobal.market.seller.SellerBase;
 
 public class IndividualMarket {
     double current_price;
@@ -24,7 +24,7 @@ public class IndividualMarket {
         buyers[0] = new FixedBuyer(buy_q);
         buyers[1] = new LinearBuyer();
         SellerBase[] sellers = new SellerBase[2];
-        sellers[0] = new FixedSeller(buy_q);
+        sellers[0] = new FixedSeller(sell_q);
         sellers[1] = new LinearSeller();
         ConsolidatedBuyer conBuy = new ConsolidatedBuyer(buyers);
         ConsolidatedSeller conSell = new ConsolidatedSeller(sellers);

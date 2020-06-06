@@ -1,11 +1,11 @@
-package plushie_tycoon.serverService.ge.market;
-import plushie_tycoon.serverService.ge.market.buyer.BuyerBase;
-import plushie_tycoon.serverService.ge.market.seller.SellerBase;
+package plushie_tycoon.serverService.geGlobal.market;
+import plushie_tycoon.serverService.geGlobal.market.buyer.BuyerBase;
+import plushie_tycoon.serverService.geGlobal.market.seller.SellerBase;
 import java.util.List;
 import java.util.Arrays;
 
 public class ClearingHouse {
-    private int priceResolution = 1;
+    private double priceResolution = 0.1;
     private BuyerBase buyer;
     private SellerBase seller;
 
@@ -13,6 +13,7 @@ public class ClearingHouse {
         this.buyer = buyer;
         this.seller = seller;
     }
+
     public ClearingHouse (SellerBase seller, BuyerBase buyer){
         this(buyer, seller);
     }

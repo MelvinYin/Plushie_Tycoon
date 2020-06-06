@@ -4,24 +4,20 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import plushie_tycoon.Grpc;
-import plushie_tycoon.MockService;
 import plushie_tycoon.UITransferGrpc;
-import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
-import plushie_tycoon.serverService.config.baseObjects.Products;
-import plushie_tycoon.serverService.config.baseObjects.Resources;
 
 import java.io.IOException;
-import java.util.HashMap;
+
 import plushie_tycoon.serverService.utils.BaseStringConverter;
-import plushie_tycoon.serverService.ge.GE;
+import plushie_tycoon.serverService.geLocal.GELocal;
 
 public class ServerService {
-    private static GE ge;
+    private static GELocal ge;
     public int portno;
 
     public ServerService(int portno){
         this.portno = portno;
-        ge = new GE();
+        ge = new GELocal();
     }
 
     public void run() throws IOException, InterruptedException {

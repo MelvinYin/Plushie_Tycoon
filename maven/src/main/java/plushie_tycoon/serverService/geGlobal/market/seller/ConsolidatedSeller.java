@@ -1,4 +1,4 @@
-package plushie_tycoon.serverService.ge.market.seller;
+package plushie_tycoon.serverService.geGlobal.market.seller;
 
 public class ConsolidatedSeller extends SellerBase{
     SellerBase[] sellers;

@@ -1,7 +1,7 @@
-package plushie_tycoon.serverService.ge;
+package plushie_tycoon.serverService.geGlobal;
 
-import plushie_tycoon.serverService.ge.inventory.GlobalInventory;
-import plushie_tycoon.serverService.ge.market.GlobalMarket;
+import plushie_tycoon.serverService.geGlobal.inventory.GlobalInventory;
+import plushie_tycoon.serverService.geGlobal.market.GlobalMarket;
 
 import java.util.Stack;
 

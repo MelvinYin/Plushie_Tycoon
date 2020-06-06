@@ -6,10 +6,6 @@ import plushie_tycoon.Grpc;
 
 import plushie_tycoon.Grpc.Snapshot;
 
-//todo: add data retrieval method for UI to update after every call
-//todo: convert it to sql eventually? For GS
-
-
 public class MockGE {
     private int curr_count;
     private int curr_sign;

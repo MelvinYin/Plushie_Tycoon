@@ -60,11 +60,10 @@ There's also things like move-in and move-out cost for items, storage cost
 
 That's the eventual goal, for now it's nowhere near. 
 
-
 #### Requirements
 Bokeh 2.0, although it should work from 0.13. Python 3.6+, Maven 3.6.3
-, libprotoc 3.11.4, python -m grpc_tools.protoc
- --version libprotoc 3.11.2, openjdk 14.0.1 2020-04-14
+, libprotoc 3.11.4, python -m grpc_tools.protoc --version libprotoc 3.11.2
+, openjdk 14.0.1 2020-04-14
 
 #### How To Use
 Select Buy/Sell/Make, select Resource/Res or Product/Prod, and select item
@@ -79,7 +78,7 @@ and Load works locally, maybe. Quit is meant to quit.
 . Otherwise the two are largely similar, at time of port. It has MockService
  and MockGE for testing and debugging. 
 
-##### Python Server<br><em>Deprecated_, find in python-server-deprecated branch</em>
+##### Python Server<br><em>Deprecated, find in python-server-deprecated branch</em>
 
 GE is game engine, GS is game state. GE implements commands like buy and sell
 , GS stores current state information such as inventory and market prices
@@ -123,18 +122,19 @@ To run python frontend, at project directory with src in folder, run bokeh serve
 
 4. As of 04062020, the helloworld example in `https://grpc.io/docs/languages
 /java/quickstart/`, breaks when you try to run `./gradlew installDist`. No
- idea why, probably something to do with java JDK/SDK + gradle + grpc + protobuf versions not being compatible. Do __not__ try to debug. 
+ idea why, probably something to do with java JRE/SDK + gradle + grpc
+  + protobuf versions not being compatible. Do __not__ try to debug. 
   
 5. The package name in .proto and in java classes need to be the same. I don't think python need anything here.
 
 6. I have a `./support/server_mock.py` to help debugging the backend side
 . Frontend mock is just the original UI for now. 
 
-7. Note that in protoc3, everything is optional by default, but not nullable
+7. In protoc3, everything is optional by default, but not nullable
 . You do not therefore need to fill up everything when debugging, depending
  on caller/receiver ofc. 
  
-8. Grpc does not carry out type-checking. If you find that your UI values
+8. Grpc does not do type-checking. If you find that your UI values
  suddenly go to zero, see if the same .proto has been compiled on both java and
   python side. A int32 on one side to double on the other reads as 0. 
 
@@ -145,3 +145,6 @@ In chronological order:
 2. Further implement features.
 3. Tests, linters, CI/CD, dockerfile, docs. Maybe a description landing page
 ? As if I will reach here.
+
+1. Add buyers and sellers into geLocal, as an example of how users customise
+ their own GE to predict changes in geGlobal
