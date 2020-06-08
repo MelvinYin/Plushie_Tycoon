@@ -5,22 +5,19 @@ import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import plushie_tycoon.Grpc;
 import plushie_tycoon.SendCallsGrpc;
-import plushie_tycoon.UITransferGrpc;
-import plushie_tycoon.serverService.ServerService;
 import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
-import plushie_tycoon.serverService.geLocal.GELocal;
 import plushie_tycoon.serverService.utils.BaseStringConverter;
 
 import java.io.IOException;
 import java.util.HashMap;
 //todo user initialisation
 public class GlobalServerService {
-    private static GEGlobal2 ge;
+    private static GEGlobal ge;
     public int portno;
 
     public GlobalServerService(int portno){
         this.portno = portno;
-        ge = new GEGlobal2();
+        ge = new GEGlobal();
     }
 
     public void run() throws IOException, InterruptedException {

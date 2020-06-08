@@ -1,130 +1,183 @@
 package plushie_tycoon.serverService.geGlobal;
-import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
-import plushie_tycoon.serverService.config.baseObjects.Products;
-import plushie_tycoon.serverService.config.baseObjects.Resources;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import plushie_tycoon.Grpc;
 import plushie_tycoon.serverService.config.Defaults;
-import plushie_tycoon.serverService.config.Initials;
-import plushie_tycoon.serverService.geGlobal.inventory.GlobalInventory;
+import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
+import plushie_tycoon.serverService.config.baseObjects.Resources;
+import plushie_tycoon.serverService.config.baseObjects.Products;
 import plushie_tycoon.serverService.geGlobal.market.GlobalMarket;
-import plushie_tycoon.Grpc.*;
+import plushie_tycoon.serverService.geGlobal.production.Production;
 import plushie_tycoon.serverService.utils.BaseStringConverter;
+import plushie_tycoon.serverService.geLocal.inventory.InventoryCalculator;
+
+import java.util.HashMap;
 
 public class GEGlobal {
+    int time = 0;
+    public HashMap<String, UserData> userDatas;
+    public HashMap<String, Boolean> hasUpdated;
+    public HashMap<BaseObjects, HashMap<String, Integer>> buySellOrders;
+    public HashMap<BaseObjects, HashMap<String, Integer>> makeOrders;
+    private UserDataCalculator userDataCalculator;
     private GlobalMarket market;
-    private GlobalInventory inventory;
-    private int time;
-    double budget;
-
-    public GEGlobal(){
+    private Production production;
+    GEGlobal(){
+        userDatas = new HashMap<>();
+        hasUpdated = new HashMap<>();
+        buySellOrders = new HashMap<>();
+        makeOrders = new HashMap<>();
         market = new GlobalMarket();
-        inventory = new GlobalInventory(Initials.quantities);
-        time = Initials.time;
-        budget = 0;
-    }
+        userDataCalculator = new UserDataCalculator();
+        production = new Production();
 
-    public Snapshot buy(BaseObjects object, int quantity){
-        double price = market.get(object) * quantity;
-        System.out.println("Buying " + object.toString() + " " + quantity + " price " + price +" budget " + budget);
-        if (price > budget){
-            String errorMsg = "Cannot buy <" + quantity + "> of <" + object + "> as it costs <" + price +
-                    "> and budget is <" + budget + ">.";
-            return getNullReturn(errorMsg);
-        }
-        inventory.add(object, quantity);
-        budget -= price;
-        return getUpdateReturn();
-    }
-    public Snapshot sell(BaseObjects object, int quantity){
-        if (inventory.get(object) < quantity){
-            String errorMsg = "Cannot sell <" + quantity + "> of <" + object + "> as you only have <"
-                    + inventory.get(object) + ">.";
-            return getNullReturn(errorMsg);
-        }
-        inventory.sub(object, quantity);
-        double price = market.get(object) * quantity;
-        budget += price;
-        return getUpdateReturn();
-    }
-
-    public boolean canMake(Products product, int quantity){
         for (Resources resource: Resources.values()){
-            if (Defaults.getResourceRatio(product, resource) * quantity > inventory.get(resource)){
-                return false;
+            buySellOrders.put(resource, new HashMap<>());
+            makeOrders.put(resource, new HashMap<>());
+        }
+        for (Products product: Products.values()){
+            buySellOrders.put(product, new HashMap<>());
+            makeOrders.put(product, new HashMap<>());
+        }
+    }
+
+    public void nextTurn(){
+        hasUpdated.replaceAll((k, v) -> false);
+        time++;
+//        supposed to put in your movement_cost, etc here to update.
+        userDataCalculator.updateParameters();
+        for (HashMap.Entry<BaseObjects, HashMap<String, Integer>> perItem: buySellOrders.entrySet()){
+            BaseObjects base = perItem.getKey();
+            for (HashMap.Entry<String, Integer> entry: perItem.getValue().entrySet()){
+                market.sendOrder(entry.getKey(), base, entry.getValue());
             }
         }
-        return true;
-    }
-
-    public Snapshot make(BaseObjects object, int quantity){
-        Products product = (Products) object;
-        if (!canMake(product, quantity)){
-            String errorMsg = "Cannot make <" + quantity + "> of <" + product + "> as you only have <"
-                    + inventory.get(product) + ">.";
-            return getNullReturn(errorMsg);
+        for (HashMap.Entry<BaseObjects, HashMap<String, Integer>> perItem: makeOrders.entrySet()){
+            Products base = (Products) perItem.getKey();
+            for (HashMap.Entry<String, Integer> entry: perItem.getValue().entrySet()){
+                production.make(base, entry.getValue(), userDatas.get(entry.getKey()));
+            }
         }
-        inventory.add(product, quantity);
-        for (Resources resource: Resources.values()){
-            inventory.sub(resource, quantity * Defaults.getResourceRatio(product, resource));
+        market.clearMarket();
+        for (HashMap.Entry<String, UserData> perUser: userDatas.entrySet()){
+            String userid = perUser.getKey();
+            userDataCalculator.updateUserData(
+                    perUser.getValue(), market.getProcessedOrders(userid), market.getBudgetChanges(userid));
         }
-        return getUpdateReturn();
-    }
-    public Snapshot next(){
-        budget -= inventory.getTotalMoveCost();
-        budget -= inventory.getTotalStorageCost();
-        inventory.resetMovement();
-        return getUpdateReturn();
     }
 
-    public Snapshot save(){
-        return getUpdateReturn();
+    public Grpc.ReturnCode addCall(String userid, HashMap<BaseObjects, Integer> buySellOrder,
+                                   HashMap<BaseObjects, Integer> makeOrder){
+        for (HashMap.Entry<BaseObjects, Integer> entry: buySellOrder.entrySet()){
+            buySellOrders.get(entry.getKey()).put(userid, entry.getValue());
+        }
+        for (HashMap.Entry<BaseObjects, Integer> entry: makeOrder.entrySet()){
+            makeOrders.get(entry.getKey()).put(userid, entry.getValue());
+        }
+        Grpc.ReturnCode output = Grpc.ReturnCode.newBuilder().build();
+        hasUpdated.put(userid, true);
+        return output;
     }
 
-    public Snapshot load(){
-        return getUpdateReturn();
+    public boolean timeCheck(int time){
+        return (this.time == time);
     }
 
-    public Snapshot quit(){
-        return getUpdateReturn();
+    public Grpc.Snapshot query(String userid){
+        return buildSnapshot(userid);
     }
 
-    public Snapshot init(){
-        return getUpdateReturn();
+    public boolean hasUpdate(String userid){
+        return hasUpdated.get(userid);
     }
 
-    private Snapshot getNullReturn(String consoleOutput){
-        return Snapshot.newBuilder().setAction("pause").setConsoleOutput(consoleOutput).build();
-    }
+    private Grpc.Snapshot buildSnapshot(String userid){
+        Grpc.Snapshot.Builder snapshot = Grpc.Snapshot.newBuilder();
 
+//        User-specific information
+        UserData thisUser = userDatas.get(userid);
 
-    private Snapshot getUpdateReturn(){
-        Snapshot.Builder snapshot = Snapshot.newBuilder();
-//        prices
+        for (Products base: Products.values()) {
+            snapshot.putQuantities(BaseStringConverter.convert(base), thisUser.inventory.get(base));
+        }
+        for (Resources base: Resources.values()) {
+            snapshot.putQuantities(BaseStringConverter.convert(base), thisUser.inventory.get(base));
+        }
+        snapshot.setBudget(thisUser.budget);
+
+        //        Generic Information
+
         for (Products base: Products.values()){
             String baseString = BaseStringConverter.convert(base);
             snapshot.putPrices(baseString, market.get(base));
-            snapshot.putQuantities(baseString, inventory.get(base));
             snapshot.putWeights(baseString, Defaults.getWeight(base));
             snapshot.putVolumes(baseString, Defaults.getVolume(base));
 
-            mItemCost.Builder itemcost = mItemCost.newBuilder();
-            itemcost.setMovein(inventory.getMoveInCost(base));
-            itemcost.setMoveout(inventory.getMoveOutCost(base));
-            itemcost.setStorage(inventory.getStorageCost(base));
+            Grpc.mItemCost.Builder itemcost = Grpc.mItemCost.newBuilder();
+            itemcost.setMovein(InventoryCalculator.getMoveInCost(base));
+            itemcost.setMoveout(InventoryCalculator.getMoveOutCost(base));
+            itemcost.setStorage(InventoryCalculator.getStorageCost(base));
             snapshot.putItemCost(baseString, itemcost.build());
         }
 
         for (Resources base: Resources.values()){
             String baseString = BaseStringConverter.convert(base);
             snapshot.putPrices(baseString, market.get(base));
-            snapshot.putQuantities(baseString, inventory.get(base));
+            snapshot.putWeights(baseString, Defaults.getWeight(base));
+            snapshot.putVolumes(baseString, Defaults.getVolume(base));
+
+            Grpc.mItemCost.Builder itemcost = Grpc.mItemCost.newBuilder();
+            itemcost.setMovein(InventoryCalculator.getMoveInCost(base));
+            itemcost.setMoveout(InventoryCalculator.getMoveOutCost(base));
+            itemcost.setStorage(InventoryCalculator.getStorageCost(base));
+            snapshot.putItemCost(baseString, itemcost.build());
+        }
+
+        for (Products product: Products.values()){
+            String productString = BaseStringConverter.convert(product);
+            Grpc.mRatioPerProduct.Builder ratioPerProduct = Grpc.mRatioPerProduct.newBuilder();
+            for (Resources resource: Resources.values()){
+                String resourceString = BaseStringConverter.convert(resource);
+                ratioPerProduct.putRatio(resourceString, Defaults.getResourceRatio(product, resource));
+            }
+            snapshot.putResourceRatio(productString, ratioPerProduct.build());
+        }
+        snapshot.setTime(time);
+        return snapshot.build();
+    }
+}
+
+
+/*
+*
+    private Snapshot getUpdateReturn(){
+        Snapshot.Builder snapshot = Snapshot.newBuilder();
+//        prices
+        for (Products base: Products.values()){
+            String baseString = BaseStringConverter.convert(base);
+            snapshot.putPrices(baseString, market.get(base));
+            snapshot.putQuantities(baseString, localInventory.get(base));
             snapshot.putWeights(baseString, Defaults.getWeight(base));
             snapshot.putVolumes(baseString, Defaults.getVolume(base));
 
             mItemCost.Builder itemcost = mItemCost.newBuilder();
-            itemcost.setMovein(inventory.getMoveInCost(base));
-            itemcost.setMoveout(inventory.getMoveOutCost(base));
-            itemcost.setStorage(inventory.getStorageCost(base));
+            itemcost.setMovein(localInventory.getMoveInCost(base));
+            itemcost.setMoveout(localInventory.getMoveOutCost(base));
+            itemcost.setStorage(localInventory.getStorageCost(base));
+            snapshot.putItemCost(baseString, itemcost.build());
+        }
+
+        for (Resources base: Resources.values()){
+            String baseString = BaseStringConverter.convert(base);
+            snapshot.putPrices(baseString, market.get(base));
+            snapshot.putQuantities(baseString, localInventory.get(base));
+            snapshot.putWeights(baseString, Defaults.getWeight(base));
+            snapshot.putVolumes(baseString, Defaults.getVolume(base));
+
+            mItemCost.Builder itemcost = mItemCost.newBuilder();
+            itemcost.setMovein(localInventory.getMoveInCost(base));
+            itemcost.setMoveout(localInventory.getMoveOutCost(base));
+            itemcost.setStorage(localInventory.getStorageCost(base));
             snapshot.putItemCost(baseString, itemcost.build());
         }
 
@@ -144,4 +197,4 @@ public class GEGlobal {
         snapshot.setConsoleOutput("console_");
         return snapshot.build();
     }
-}
+* */
