@@ -14,11 +14,13 @@ public class GEGlobal {
     private GlobalMarket market;
     private GlobalInventory inventory;
     private int time;
+    double budget;
 
     public GEGlobal(){
         market = new GlobalMarket();
         inventory = new GlobalInventory(Initials.quantities);
         time = Initials.time;
+        budget = 0;
     }
 
     public Snapshot buy(BaseObjects object, int quantity){

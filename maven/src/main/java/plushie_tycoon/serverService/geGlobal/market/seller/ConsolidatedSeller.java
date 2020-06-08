@@ -1,11 +1,21 @@
 package plushie_tycoon.serverService.geGlobal.market.seller;
 
-public class ConsolidatedSeller extends SellerBase{
-    SellerBase[] sellers;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-    public ConsolidatedSeller(SellerBase[] sellers){
+public class ConsolidatedSeller extends SellerBase{
+    List<SellerBase> sellers;
+    public ConsolidatedSeller(List<SellerBase> sellers){
         this.sellers = sellers;
     }
+    public ConsolidatedSeller(Map<String, SellerBase> buyerMap){
+        sellers = new ArrayList<>();
+        for (Map.Entry<String, SellerBase> entry: buyerMap.entrySet()){
+            sellers.add(entry.getValue());
+        }
+    }
+
     public int sell(double price){
         int quantity = 0;
         for (SellerBase seller: this.sellers){

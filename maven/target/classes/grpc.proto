@@ -12,9 +12,35 @@ service UITransfer {
     rpc load(SelectionObject) returns (Snapshot) {};
     rpc back(SelectionObject) returns (Snapshot) {};
     rpc quit(SelectionObject) returns (Snapshot) {};
-    rpc init (SelectionObject) returns (Snapshot) {};
+    rpc init(SelectionObject) returns (Snapshot) {};
 }
 
+service SendCalls {
+    rpc send(ProposedChanges) returns (ReturnCode) {};
+    rpc query(UserID) returns (Snapshot) {};
+    rpc timeCheck(TimeCheck) returns (ReturnCode) {};
+    rpc hasUpdate(UserID) returns (ReturnCode) {};
+}
+
+message ReturnCode {
+    string message = 1;
+    bool code = 2;
+}
+
+message TimeCheck {
+    string userid = 1;
+    int32 time = 2;
+}
+
+message ProposedChanges {
+    map<string, int32> buySell = 1;
+    map<string, int32> make = 2;
+    string userid = 3;
+}
+
+message UserID {
+    string userid = 1;
+}
 
 message SelectionObject {
 }

@@ -14,6 +14,2996 @@ public final class Grpc {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface ReturnCodeOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:plushie_tycoon.ReturnCode)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string message = 1;</code>
+     * @return The message.
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>string message = 1;</code>
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+
+    /**
+     * <code>bool code = 2;</code>
+     * @return The code.
+     */
+    boolean getCode();
+  }
+  /**
+   * Protobuf type {@code plushie_tycoon.ReturnCode}
+   */
+  public  static final class ReturnCode extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:plushie_tycoon.ReturnCode)
+      ReturnCodeOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ReturnCode.newBuilder() to construct.
+    private ReturnCode(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ReturnCode() {
+      message_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ReturnCode();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ReturnCode(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              message_ = s;
+              break;
+            }
+            case 16: {
+
+              code_ = input.readBool();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_ReturnCode_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_ReturnCode_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              plushie_tycoon.Grpc.ReturnCode.class, plushie_tycoon.Grpc.ReturnCode.Builder.class);
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object message_;
+    /**
+     * <code>string message = 1;</code>
+     * @return The message.
+     */
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string message = 1;</code>
+     * @return The bytes for message.
+     */
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CODE_FIELD_NUMBER = 2;
+    private boolean code_;
+    /**
+     * <code>bool code = 2;</code>
+     * @return The code.
+     */
+    public boolean getCode() {
+      return code_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getMessageBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
+      }
+      if (code_ != false) {
+        output.writeBool(2, code_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getMessageBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
+      }
+      if (code_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, code_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof plushie_tycoon.Grpc.ReturnCode)) {
+        return super.equals(obj);
+      }
+      plushie_tycoon.Grpc.ReturnCode other = (plushie_tycoon.Grpc.ReturnCode) obj;
+
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (getCode()
+          != other.getCode()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getCode());
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static plushie_tycoon.Grpc.ReturnCode parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.ReturnCode parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(plushie_tycoon.Grpc.ReturnCode prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code plushie_tycoon.ReturnCode}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:plushie_tycoon.ReturnCode)
+        plushie_tycoon.Grpc.ReturnCodeOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_ReturnCode_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_ReturnCode_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                plushie_tycoon.Grpc.ReturnCode.class, plushie_tycoon.Grpc.ReturnCode.Builder.class);
+      }
+
+      // Construct using plushie_tycoon.Grpc.ReturnCode.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        message_ = "";
+
+        code_ = false;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_ReturnCode_descriptor;
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.ReturnCode getDefaultInstanceForType() {
+        return plushie_tycoon.Grpc.ReturnCode.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.ReturnCode build() {
+        plushie_tycoon.Grpc.ReturnCode result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.ReturnCode buildPartial() {
+        plushie_tycoon.Grpc.ReturnCode result = new plushie_tycoon.Grpc.ReturnCode(this);
+        result.message_ = message_;
+        result.code_ = code_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof plushie_tycoon.Grpc.ReturnCode) {
+          return mergeFrom((plushie_tycoon.Grpc.ReturnCode)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(plushie_tycoon.Grpc.ReturnCode other) {
+        if (other == plushie_tycoon.Grpc.ReturnCode.getDefaultInstance()) return this;
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          onChanged();
+        }
+        if (other.getCode() != false) {
+          setCode(other.getCode());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        plushie_tycoon.Grpc.ReturnCode parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (plushie_tycoon.Grpc.ReturnCode) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>string message = 1;</code>
+       * @return The message.
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @return The bytes for message.
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessage() {
+        
+        message_ = getDefaultInstance().getMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        message_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean code_ ;
+      /**
+       * <code>bool code = 2;</code>
+       * @return The code.
+       */
+      public boolean getCode() {
+        return code_;
+      }
+      /**
+       * <code>bool code = 2;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(boolean value) {
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool code = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        
+        code_ = false;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:plushie_tycoon.ReturnCode)
+    }
+
+    // @@protoc_insertion_point(class_scope:plushie_tycoon.ReturnCode)
+    private static final plushie_tycoon.Grpc.ReturnCode DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new plushie_tycoon.Grpc.ReturnCode();
+    }
+
+    public static plushie_tycoon.Grpc.ReturnCode getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ReturnCode>
+        PARSER = new com.google.protobuf.AbstractParser<ReturnCode>() {
+      @java.lang.Override
+      public ReturnCode parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ReturnCode(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ReturnCode> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ReturnCode> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public plushie_tycoon.Grpc.ReturnCode getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TimeCheckOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:plushie_tycoon.TimeCheck)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string userid = 1;</code>
+     * @return The userid.
+     */
+    java.lang.String getUserid();
+    /**
+     * <code>string userid = 1;</code>
+     * @return The bytes for userid.
+     */
+    com.google.protobuf.ByteString
+        getUseridBytes();
+
+    /**
+     * <code>int32 time = 2;</code>
+     * @return The time.
+     */
+    int getTime();
+  }
+  /**
+   * Protobuf type {@code plushie_tycoon.TimeCheck}
+   */
+  public  static final class TimeCheck extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:plushie_tycoon.TimeCheck)
+      TimeCheckOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use TimeCheck.newBuilder() to construct.
+    private TimeCheck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private TimeCheck() {
+      userid_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new TimeCheck();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private TimeCheck(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userid_ = s;
+              break;
+            }
+            case 16: {
+
+              time_ = input.readInt32();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_TimeCheck_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_TimeCheck_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              plushie_tycoon.Grpc.TimeCheck.class, plushie_tycoon.Grpc.TimeCheck.Builder.class);
+    }
+
+    public static final int USERID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object userid_;
+    /**
+     * <code>string userid = 1;</code>
+     * @return The userid.
+     */
+    public java.lang.String getUserid() {
+      java.lang.Object ref = userid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userid_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string userid = 1;</code>
+     * @return The bytes for userid.
+     */
+    public com.google.protobuf.ByteString
+        getUseridBytes() {
+      java.lang.Object ref = userid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIME_FIELD_NUMBER = 2;
+    private int time_;
+    /**
+     * <code>int32 time = 2;</code>
+     * @return The time.
+     */
+    public int getTime() {
+      return time_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getUseridBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userid_);
+      }
+      if (time_ != 0) {
+        output.writeInt32(2, time_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getUseridBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userid_);
+      }
+      if (time_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, time_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof plushie_tycoon.Grpc.TimeCheck)) {
+        return super.equals(obj);
+      }
+      plushie_tycoon.Grpc.TimeCheck other = (plushie_tycoon.Grpc.TimeCheck) obj;
+
+      if (!getUserid()
+          .equals(other.getUserid())) return false;
+      if (getTime()
+          != other.getTime()) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserid().hashCode();
+      hash = (37 * hash) + TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getTime();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(plushie_tycoon.Grpc.TimeCheck prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code plushie_tycoon.TimeCheck}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:plushie_tycoon.TimeCheck)
+        plushie_tycoon.Grpc.TimeCheckOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_TimeCheck_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_TimeCheck_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                plushie_tycoon.Grpc.TimeCheck.class, plushie_tycoon.Grpc.TimeCheck.Builder.class);
+      }
+
+      // Construct using plushie_tycoon.Grpc.TimeCheck.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        userid_ = "";
+
+        time_ = 0;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_TimeCheck_descriptor;
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.TimeCheck getDefaultInstanceForType() {
+        return plushie_tycoon.Grpc.TimeCheck.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.TimeCheck build() {
+        plushie_tycoon.Grpc.TimeCheck result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.TimeCheck buildPartial() {
+        plushie_tycoon.Grpc.TimeCheck result = new plushie_tycoon.Grpc.TimeCheck(this);
+        result.userid_ = userid_;
+        result.time_ = time_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof plushie_tycoon.Grpc.TimeCheck) {
+          return mergeFrom((plushie_tycoon.Grpc.TimeCheck)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(plushie_tycoon.Grpc.TimeCheck other) {
+        if (other == plushie_tycoon.Grpc.TimeCheck.getDefaultInstance()) return this;
+        if (!other.getUserid().isEmpty()) {
+          userid_ = other.userid_;
+          onChanged();
+        }
+        if (other.getTime() != 0) {
+          setTime(other.getTime());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        plushie_tycoon.Grpc.TimeCheck parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (plushie_tycoon.Grpc.TimeCheck) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object userid_ = "";
+      /**
+       * <code>string userid = 1;</code>
+       * @return The userid.
+       */
+      public java.lang.String getUserid() {
+        java.lang.Object ref = userid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userid_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string userid = 1;</code>
+       * @return The bytes for userid.
+       */
+      public com.google.protobuf.ByteString
+          getUseridBytes() {
+        java.lang.Object ref = userid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string userid = 1;</code>
+       * @param value The userid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        userid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string userid = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserid() {
+        
+        userid_ = getDefaultInstance().getUserid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string userid = 1;</code>
+       * @param value The bytes for userid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUseridBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        userid_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int time_ ;
+      /**
+       * <code>int32 time = 2;</code>
+       * @return The time.
+       */
+      public int getTime() {
+        return time_;
+      }
+      /**
+       * <code>int32 time = 2;</code>
+       * @param value The time to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTime(int value) {
+        
+        time_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 time = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTime() {
+        
+        time_ = 0;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:plushie_tycoon.TimeCheck)
+    }
+
+    // @@protoc_insertion_point(class_scope:plushie_tycoon.TimeCheck)
+    private static final plushie_tycoon.Grpc.TimeCheck DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new plushie_tycoon.Grpc.TimeCheck();
+    }
+
+    public static plushie_tycoon.Grpc.TimeCheck getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TimeCheck>
+        PARSER = new com.google.protobuf.AbstractParser<TimeCheck>() {
+      @java.lang.Override
+      public TimeCheck parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new TimeCheck(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<TimeCheck> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TimeCheck> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public plushie_tycoon.Grpc.TimeCheck getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ProposedChangesOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:plushie_tycoon.ProposedChanges)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>map&lt;string, int32&gt; buySell = 1;</code>
+     */
+    int getBuySellCount();
+    /**
+     * <code>map&lt;string, int32&gt; buySell = 1;</code>
+     */
+    boolean containsBuySell(
+        java.lang.String key);
+    /**
+     * Use {@link #getBuySellMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getBuySell();
+    /**
+     * <code>map&lt;string, int32&gt; buySell = 1;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getBuySellMap();
+    /**
+     * <code>map&lt;string, int32&gt; buySell = 1;</code>
+     */
+
+    int getBuySellOrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <code>map&lt;string, int32&gt; buySell = 1;</code>
+     */
+
+    int getBuySellOrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>map&lt;string, int32&gt; make = 2;</code>
+     */
+    int getMakeCount();
+    /**
+     * <code>map&lt;string, int32&gt; make = 2;</code>
+     */
+    boolean containsMake(
+        java.lang.String key);
+    /**
+     * Use {@link #getMakeMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getMake();
+    /**
+     * <code>map&lt;string, int32&gt; make = 2;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getMakeMap();
+    /**
+     * <code>map&lt;string, int32&gt; make = 2;</code>
+     */
+
+    int getMakeOrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <code>map&lt;string, int32&gt; make = 2;</code>
+     */
+
+    int getMakeOrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>string userid = 3;</code>
+     * @return The userid.
+     */
+    java.lang.String getUserid();
+    /**
+     * <code>string userid = 3;</code>
+     * @return The bytes for userid.
+     */
+    com.google.protobuf.ByteString
+        getUseridBytes();
+  }
+  /**
+   * Protobuf type {@code plushie_tycoon.ProposedChanges}
+   */
+  public  static final class ProposedChanges extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:plushie_tycoon.ProposedChanges)
+      ProposedChangesOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use ProposedChanges.newBuilder() to construct.
+    private ProposedChanges(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ProposedChanges() {
+      userid_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new ProposedChanges();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private ProposedChanges(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                buySell_ = com.google.protobuf.MapField.newMapField(
+                    BuySellDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000001;
+              }
+              com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+              buySell__ = input.readMessage(
+                  BuySellDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              buySell_.getMutableMap().put(
+                  buySell__.getKey(), buySell__.getValue());
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                make_ = com.google.protobuf.MapField.newMapField(
+                    MakeDefaultEntryHolder.defaultEntry);
+                mutable_bitField0_ |= 0x00000002;
+              }
+              com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+              make__ = input.readMessage(
+                  MakeDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              make_.getMutableMap().put(
+                  make__.getKey(), make__.getValue());
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userid_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_ProposedChanges_descriptor;
+    }
+
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetBuySell();
+        case 2:
+          return internalGetMake();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_ProposedChanges_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              plushie_tycoon.Grpc.ProposedChanges.class, plushie_tycoon.Grpc.ProposedChanges.Builder.class);
+    }
+
+    public static final int BUYSELL_FIELD_NUMBER = 1;
+    private static final class BuySellDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_ProposedChanges_BuySellEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> buySell_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetBuySell() {
+      if (buySell_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            BuySellDefaultEntryHolder.defaultEntry);
+      }
+      return buySell_;
+    }
+
+    public int getBuySellCount() {
+      return internalGetBuySell().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; buySell = 1;</code>
+     */
+
+    public boolean containsBuySell(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetBuySell().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getBuySellMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer> getBuySell() {
+      return getBuySellMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; buySell = 1;</code>
+     */
+
+    public java.util.Map<java.lang.String, java.lang.Integer> getBuySellMap() {
+      return internalGetBuySell().getMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; buySell = 1;</code>
+     */
+
+    public int getBuySellOrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetBuySell().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, int32&gt; buySell = 1;</code>
+     */
+
+    public int getBuySellOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetBuySell().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int MAKE_FIELD_NUMBER = 2;
+    private static final class MakeDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  plushie_tycoon.Grpc.internal_static_plushie_tycoon_ProposedChanges_MakeEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> make_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetMake() {
+      if (make_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            MakeDefaultEntryHolder.defaultEntry);
+      }
+      return make_;
+    }
+
+    public int getMakeCount() {
+      return internalGetMake().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; make = 2;</code>
+     */
+
+    public boolean containsMake(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetMake().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getMakeMap()} instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer> getMake() {
+      return getMakeMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; make = 2;</code>
+     */
+
+    public java.util.Map<java.lang.String, java.lang.Integer> getMakeMap() {
+      return internalGetMake().getMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; make = 2;</code>
+     */
+
+    public int getMakeOrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetMake().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, int32&gt; make = 2;</code>
+     */
+
+    public int getMakeOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetMake().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int USERID_FIELD_NUMBER = 3;
+    private volatile java.lang.Object userid_;
+    /**
+     * <code>string userid = 3;</code>
+     * @return The userid.
+     */
+    public java.lang.String getUserid() {
+      java.lang.Object ref = userid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userid_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string userid = 3;</code>
+     * @return The bytes for userid.
+     */
+    public com.google.protobuf.ByteString
+        getUseridBytes() {
+      java.lang.Object ref = userid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetBuySell(),
+          BuySellDefaultEntryHolder.defaultEntry,
+          1);
+      com.google.protobuf.GeneratedMessageV3
+        .serializeStringMapTo(
+          output,
+          internalGetMake(),
+          MakeDefaultEntryHolder.defaultEntry,
+          2);
+      if (!getUseridBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, userid_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+           : internalGetBuySell().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+        buySell__ = BuySellDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, buySell__);
+      }
+      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+           : internalGetMake().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+        make__ = MakeDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(2, make__);
+      }
+      if (!getUseridBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, userid_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof plushie_tycoon.Grpc.ProposedChanges)) {
+        return super.equals(obj);
+      }
+      plushie_tycoon.Grpc.ProposedChanges other = (plushie_tycoon.Grpc.ProposedChanges) obj;
+
+      if (!internalGetBuySell().equals(
+          other.internalGetBuySell())) return false;
+      if (!internalGetMake().equals(
+          other.internalGetMake())) return false;
+      if (!getUserid()
+          .equals(other.getUserid())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (!internalGetBuySell().getMap().isEmpty()) {
+        hash = (37 * hash) + BUYSELL_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetBuySell().hashCode();
+      }
+      if (!internalGetMake().getMap().isEmpty()) {
+        hash = (37 * hash) + MAKE_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetMake().hashCode();
+      }
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserid().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static plushie_tycoon.Grpc.ProposedChanges parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.ProposedChanges parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(plushie_tycoon.Grpc.ProposedChanges prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code plushie_tycoon.ProposedChanges}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:plushie_tycoon.ProposedChanges)
+        plushie_tycoon.Grpc.ProposedChangesOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_ProposedChanges_descriptor;
+      }
+
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetBuySell();
+          case 2:
+            return internalGetMake();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetMutableBuySell();
+          case 2:
+            return internalGetMutableMake();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_ProposedChanges_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                plushie_tycoon.Grpc.ProposedChanges.class, plushie_tycoon.Grpc.ProposedChanges.Builder.class);
+      }
+
+      // Construct using plushie_tycoon.Grpc.ProposedChanges.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        internalGetMutableBuySell().clear();
+        internalGetMutableMake().clear();
+        userid_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_ProposedChanges_descriptor;
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.ProposedChanges getDefaultInstanceForType() {
+        return plushie_tycoon.Grpc.ProposedChanges.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.ProposedChanges build() {
+        plushie_tycoon.Grpc.ProposedChanges result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.ProposedChanges buildPartial() {
+        plushie_tycoon.Grpc.ProposedChanges result = new plushie_tycoon.Grpc.ProposedChanges(this);
+        int from_bitField0_ = bitField0_;
+        result.buySell_ = internalGetBuySell();
+        result.buySell_.makeImmutable();
+        result.make_ = internalGetMake();
+        result.make_.makeImmutable();
+        result.userid_ = userid_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof plushie_tycoon.Grpc.ProposedChanges) {
+          return mergeFrom((plushie_tycoon.Grpc.ProposedChanges)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(plushie_tycoon.Grpc.ProposedChanges other) {
+        if (other == plushie_tycoon.Grpc.ProposedChanges.getDefaultInstance()) return this;
+        internalGetMutableBuySell().mergeFrom(
+            other.internalGetBuySell());
+        internalGetMutableMake().mergeFrom(
+            other.internalGetMake());
+        if (!other.getUserid().isEmpty()) {
+          userid_ = other.userid_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        plushie_tycoon.Grpc.ProposedChanges parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (plushie_tycoon.Grpc.ProposedChanges) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> buySell_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+      internalGetBuySell() {
+        if (buySell_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              BuySellDefaultEntryHolder.defaultEntry);
+        }
+        return buySell_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+      internalGetMutableBuySell() {
+        onChanged();;
+        if (buySell_ == null) {
+          buySell_ = com.google.protobuf.MapField.newMapField(
+              BuySellDefaultEntryHolder.defaultEntry);
+        }
+        if (!buySell_.isMutable()) {
+          buySell_ = buySell_.copy();
+        }
+        return buySell_;
+      }
+
+      public int getBuySellCount() {
+        return internalGetBuySell().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; buySell = 1;</code>
+       */
+
+      public boolean containsBuySell(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetBuySell().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getBuySellMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer> getBuySell() {
+        return getBuySellMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; buySell = 1;</code>
+       */
+
+      public java.util.Map<java.lang.String, java.lang.Integer> getBuySellMap() {
+        return internalGetBuySell().getMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; buySell = 1;</code>
+       */
+
+      public int getBuySellOrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetBuySell().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; buySell = 1;</code>
+       */
+
+      public int getBuySellOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetBuySell().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearBuySell() {
+        internalGetMutableBuySell().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; buySell = 1;</code>
+       */
+
+      public Builder removeBuySell(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableBuySell().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+      getMutableBuySell() {
+        return internalGetMutableBuySell().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; buySell = 1;</code>
+       */
+      public Builder putBuySell(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        
+        internalGetMutableBuySell().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; buySell = 1;</code>
+       */
+
+      public Builder putAllBuySell(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableBuySell().getMutableMap()
+            .putAll(values);
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> make_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+      internalGetMake() {
+        if (make_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              MakeDefaultEntryHolder.defaultEntry);
+        }
+        return make_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+      internalGetMutableMake() {
+        onChanged();;
+        if (make_ == null) {
+          make_ = com.google.protobuf.MapField.newMapField(
+              MakeDefaultEntryHolder.defaultEntry);
+        }
+        if (!make_.isMutable()) {
+          make_ = make_.copy();
+        }
+        return make_;
+      }
+
+      public int getMakeCount() {
+        return internalGetMake().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; make = 2;</code>
+       */
+
+      public boolean containsMake(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetMake().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getMakeMap()} instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer> getMake() {
+        return getMakeMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; make = 2;</code>
+       */
+
+      public java.util.Map<java.lang.String, java.lang.Integer> getMakeMap() {
+        return internalGetMake().getMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; make = 2;</code>
+       */
+
+      public int getMakeOrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetMake().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; make = 2;</code>
+       */
+
+      public int getMakeOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetMake().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+
+      public Builder clearMake() {
+        internalGetMutableMake().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; make = 2;</code>
+       */
+
+      public Builder removeMake(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        internalGetMutableMake().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+      getMutableMake() {
+        return internalGetMutableMake().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; make = 2;</code>
+       */
+      public Builder putMake(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        
+        internalGetMutableMake().getMutableMap()
+            .put(key, value);
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; make = 2;</code>
+       */
+
+      public Builder putAllMake(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableMake().getMutableMap()
+            .putAll(values);
+        return this;
+      }
+
+      private java.lang.Object userid_ = "";
+      /**
+       * <code>string userid = 3;</code>
+       * @return The userid.
+       */
+      public java.lang.String getUserid() {
+        java.lang.Object ref = userid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userid_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string userid = 3;</code>
+       * @return The bytes for userid.
+       */
+      public com.google.protobuf.ByteString
+          getUseridBytes() {
+        java.lang.Object ref = userid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string userid = 3;</code>
+       * @param value The userid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        userid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string userid = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserid() {
+        
+        userid_ = getDefaultInstance().getUserid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string userid = 3;</code>
+       * @param value The bytes for userid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUseridBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        userid_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:plushie_tycoon.ProposedChanges)
+    }
+
+    // @@protoc_insertion_point(class_scope:plushie_tycoon.ProposedChanges)
+    private static final plushie_tycoon.Grpc.ProposedChanges DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new plushie_tycoon.Grpc.ProposedChanges();
+    }
+
+    public static plushie_tycoon.Grpc.ProposedChanges getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ProposedChanges>
+        PARSER = new com.google.protobuf.AbstractParser<ProposedChanges>() {
+      @java.lang.Override
+      public ProposedChanges parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new ProposedChanges(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ProposedChanges> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ProposedChanges> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public plushie_tycoon.Grpc.ProposedChanges getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserIDOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:plushie_tycoon.UserID)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string userid = 1;</code>
+     * @return The userid.
+     */
+    java.lang.String getUserid();
+    /**
+     * <code>string userid = 1;</code>
+     * @return The bytes for userid.
+     */
+    com.google.protobuf.ByteString
+        getUseridBytes();
+  }
+  /**
+   * Protobuf type {@code plushie_tycoon.UserID}
+   */
+  public  static final class UserID extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:plushie_tycoon.UserID)
+      UserIDOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use UserID.newBuilder() to construct.
+    private UserID(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private UserID() {
+      userid_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new UserID();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private UserID(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              userid_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserID_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserID_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              plushie_tycoon.Grpc.UserID.class, plushie_tycoon.Grpc.UserID.Builder.class);
+    }
+
+    public static final int USERID_FIELD_NUMBER = 1;
+    private volatile java.lang.Object userid_;
+    /**
+     * <code>string userid = 1;</code>
+     * @return The userid.
+     */
+    public java.lang.String getUserid() {
+      java.lang.Object ref = userid_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userid_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string userid = 1;</code>
+     * @return The bytes for userid.
+     */
+    public com.google.protobuf.ByteString
+        getUseridBytes() {
+      java.lang.Object ref = userid_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userid_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getUseridBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userid_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getUseridBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userid_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof plushie_tycoon.Grpc.UserID)) {
+        return super.equals(obj);
+      }
+      plushie_tycoon.Grpc.UserID other = (plushie_tycoon.Grpc.UserID) obj;
+
+      if (!getUserid()
+          .equals(other.getUserid())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + getUserid().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static plushie_tycoon.Grpc.UserID parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.UserID parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.UserID parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.UserID parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.UserID parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static plushie_tycoon.Grpc.UserID parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.UserID parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.UserID parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.UserID parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.UserID parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static plushie_tycoon.Grpc.UserID parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static plushie_tycoon.Grpc.UserID parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(plushie_tycoon.Grpc.UserID prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code plushie_tycoon.UserID}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:plushie_tycoon.UserID)
+        plushie_tycoon.Grpc.UserIDOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserID_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserID_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                plushie_tycoon.Grpc.UserID.class, plushie_tycoon.Grpc.UserID.Builder.class);
+      }
+
+      // Construct using plushie_tycoon.Grpc.UserID.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        userid_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_UserID_descriptor;
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.UserID getDefaultInstanceForType() {
+        return plushie_tycoon.Grpc.UserID.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.UserID build() {
+        plushie_tycoon.Grpc.UserID result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public plushie_tycoon.Grpc.UserID buildPartial() {
+        plushie_tycoon.Grpc.UserID result = new plushie_tycoon.Grpc.UserID(this);
+        result.userid_ = userid_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof plushie_tycoon.Grpc.UserID) {
+          return mergeFrom((plushie_tycoon.Grpc.UserID)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(plushie_tycoon.Grpc.UserID other) {
+        if (other == plushie_tycoon.Grpc.UserID.getDefaultInstance()) return this;
+        if (!other.getUserid().isEmpty()) {
+          userid_ = other.userid_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        plushie_tycoon.Grpc.UserID parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (plushie_tycoon.Grpc.UserID) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object userid_ = "";
+      /**
+       * <code>string userid = 1;</code>
+       * @return The userid.
+       */
+      public java.lang.String getUserid() {
+        java.lang.Object ref = userid_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          userid_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string userid = 1;</code>
+       * @return The bytes for userid.
+       */
+      public com.google.protobuf.ByteString
+          getUseridBytes() {
+        java.lang.Object ref = userid_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          userid_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string userid = 1;</code>
+       * @param value The userid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUserid(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        userid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string userid = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUserid() {
+        
+        userid_ = getDefaultInstance().getUserid();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string userid = 1;</code>
+       * @param value The bytes for userid to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUseridBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        userid_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:plushie_tycoon.UserID)
+    }
+
+    // @@protoc_insertion_point(class_scope:plushie_tycoon.UserID)
+    private static final plushie_tycoon.Grpc.UserID DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new plushie_tycoon.Grpc.UserID();
+    }
+
+    public static plushie_tycoon.Grpc.UserID getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UserID>
+        PARSER = new com.google.protobuf.AbstractParser<UserID>() {
+      @java.lang.Override
+      public UserID parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new UserID(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UserID> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserID> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public plushie_tycoon.Grpc.UserID getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface SelectionObjectOrBuilder extends
       // @@protoc_insertion_point(interface_extends:plushie_tycoon.SelectionObject)
       com.google.protobuf.MessageOrBuilder {
@@ -4980,6 +7970,36 @@ public final class Grpc {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_plushie_tycoon_ReturnCode_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_plushie_tycoon_ReturnCode_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_plushie_tycoon_TimeCheck_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_plushie_tycoon_TimeCheck_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_plushie_tycoon_ProposedChanges_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_plushie_tycoon_ProposedChanges_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_plushie_tycoon_ProposedChanges_BuySellEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_plushie_tycoon_ProposedChanges_BuySellEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_plushie_tycoon_ProposedChanges_MakeEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_plushie_tycoon_ProposedChanges_MakeEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_plushie_tycoon_UserID_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_plushie_tycoon_UserID_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_plushie_tycoon_SelectionObject_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -5048,75 +8068,127 @@ public final class Grpc {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\ngrpc.proto\022\016plushie_tycoon\"\021\n\017Selectio" +
-      "nObject\"3\n\021TransactionObject\022\014\n\004name\030\001 \001" +
-      "(\t\022\020\n\010quantity\030\002 \001(\005\"=\n\tmItemCost\022\016\n\006mov" +
-      "ein\030\003 \001(\001\022\017\n\007moveout\030\004 \001(\001\022\017\n\007storage\030\005 " +
-      "\001(\001\"|\n\020mRatioPerProduct\022:\n\005ratio\030\006 \003(\0132+" +
-      ".plushie_tycoon.mRatioPerProduct.RatioEn" +
-      "try\032,\n\nRatioEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030" +
-      "\002 \001(\005:\0028\001\"\232\006\n\010Snapshot\0224\n\006prices\030\001 \003(\0132$" +
-      ".plushie_tycoon.Snapshot.PricesEntry\022<\n\n" +
-      "quantities\030\002 \003(\0132(.plushie_tycoon.Snapsh" +
-      "ot.QuantitiesEntry\0226\n\007weights\030\r \003(\0132%.pl" +
-      "ushie_tycoon.Snapshot.WeightsEntry\0226\n\007vo" +
-      "lumes\030\016 \003(\0132%.plushie_tycoon.Snapshot.Vo" +
-      "lumesEntry\0229\n\titem_cost\030\014 \003(\0132&.plushie_" +
-      "tycoon.Snapshot.ItemCostEntry\022C\n\016resourc" +
-      "e_ratio\030\007 \003(\0132+.plushie_tycoon.Snapshot." +
-      "ResourceRatioEntry\022\026\n\016console_output\030\010 \001" +
-      "(\t\022\016\n\006budget\030\t \001(\001\022\014\n\004time\030\n \001(\005\022\016\n\006acti" +
-      "on\030\013 \001(\t\032-\n\013PricesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005" +
-      "value\030\002 \001(\001:\0028\001\0321\n\017QuantitiesEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032.\n\014WeightsEnt" +
-      "ry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\0028\001\032.\n\014Vo" +
-      "lumesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\002" +
-      "8\001\032J\n\rItemCostEntry\022\013\n\003key\030\001 \001(\t\022(\n\005valu" +
-      "e\030\002 \001(\0132\031.plushie_tycoon.mItemCost:\0028\001\032V" +
-      "\n\022ResourceRatioEntry\022\013\n\003key\030\001 \001(\t\022/\n\005val" +
-      "ue\030\002 \001(\0132 .plushie_tycoon.mRatioPerProdu" +
-      "ct:\0028\0012\376\004\n\nUITransfer\022D\n\003buy\022!.plushie_t" +
-      "ycoon.TransactionObject\032\030.plushie_tycoon" +
-      ".Snapshot\"\000\022E\n\004sell\022!.plushie_tycoon.Tra" +
-      "nsactionObject\032\030.plushie_tycoon.Snapshot" +
-      "\"\000\022E\n\004make\022!.plushie_tycoon.TransactionO" +
-      "bject\032\030.plushie_tycoon.Snapshot\"\000\022C\n\004nex" +
-      "t\022\037.plushie_tycoon.SelectionObject\032\030.plu" +
-      "shie_tycoon.Snapshot\"\000\022C\n\004save\022\037.plushie" +
-      "_tycoon.SelectionObject\032\030.plushie_tycoon" +
-      ".Snapshot\"\000\022C\n\004load\022\037.plushie_tycoon.Sel" +
-      "ectionObject\032\030.plushie_tycoon.Snapshot\"\000" +
-      "\022C\n\004back\022\037.plushie_tycoon.SelectionObjec" +
-      "t\032\030.plushie_tycoon.Snapshot\"\000\022C\n\004quit\022\037." +
-      "plushie_tycoon.SelectionObject\032\030.plushie" +
-      "_tycoon.Snapshot\"\000\022C\n\004init\022\037.plushie_tyc" +
-      "oon.SelectionObject\032\030.plushie_tycoon.Sna" +
-      "pshot\"\000b\006proto3"
+      "\n\ngrpc.proto\022\016plushie_tycoon\"+\n\nReturnCo" +
+      "de\022\017\n\007message\030\001 \001(\t\022\014\n\004code\030\002 \001(\010\")\n\tTim" +
+      "eCheck\022\016\n\006userid\030\001 \001(\t\022\014\n\004time\030\002 \001(\005\"\366\001\n" +
+      "\017ProposedChanges\022=\n\007buySell\030\001 \003(\0132,.plus" +
+      "hie_tycoon.ProposedChanges.BuySellEntry\022" +
+      "7\n\004make\030\002 \003(\0132).plushie_tycoon.ProposedC" +
+      "hanges.MakeEntry\022\016\n\006userid\030\003 \001(\t\032.\n\014BuyS" +
+      "ellEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001" +
+      "\032+\n\tMakeEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
+      "\005:\0028\001\"\030\n\006UserID\022\016\n\006userid\030\001 \001(\t\"\021\n\017Selec" +
+      "tionObject\"3\n\021TransactionObject\022\014\n\004name\030" +
+      "\001 \001(\t\022\020\n\010quantity\030\002 \001(\005\"=\n\tmItemCost\022\016\n\006" +
+      "movein\030\003 \001(\001\022\017\n\007moveout\030\004 \001(\001\022\017\n\007storage" +
+      "\030\005 \001(\001\"|\n\020mRatioPerProduct\022:\n\005ratio\030\006 \003(" +
+      "\0132+.plushie_tycoon.mRatioPerProduct.Rati" +
+      "oEntry\032,\n\nRatioEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val" +
+      "ue\030\002 \001(\005:\0028\001\"\232\006\n\010Snapshot\0224\n\006prices\030\001 \003(" +
+      "\0132$.plushie_tycoon.Snapshot.PricesEntry\022" +
+      "<\n\nquantities\030\002 \003(\0132(.plushie_tycoon.Sna" +
+      "pshot.QuantitiesEntry\0226\n\007weights\030\r \003(\0132%" +
+      ".plushie_tycoon.Snapshot.WeightsEntry\0226\n" +
+      "\007volumes\030\016 \003(\0132%.plushie_tycoon.Snapshot" +
+      ".VolumesEntry\0229\n\titem_cost\030\014 \003(\0132&.plush" +
+      "ie_tycoon.Snapshot.ItemCostEntry\022C\n\016reso" +
+      "urce_ratio\030\007 \003(\0132+.plushie_tycoon.Snapsh" +
+      "ot.ResourceRatioEntry\022\026\n\016console_output\030" +
+      "\010 \001(\t\022\016\n\006budget\030\t \001(\001\022\014\n\004time\030\n \001(\005\022\016\n\006a" +
+      "ction\030\013 \001(\t\032-\n\013PricesEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "\r\n\005value\030\002 \001(\001:\0028\001\0321\n\017QuantitiesEntry\022\013\n" +
+      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032.\n\014Weights" +
+      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\0028\001\032.\n" +
+      "\014VolumesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
+      "\001:\0028\001\032J\n\rItemCostEntry\022\013\n\003key\030\001 \001(\t\022(\n\005v" +
+      "alue\030\002 \001(\0132\031.plushie_tycoon.mItemCost:\0028" +
+      "\001\032V\n\022ResourceRatioEntry\022\013\n\003key\030\001 \001(\t\022/\n\005" +
+      "value\030\002 \001(\0132 .plushie_tycoon.mRatioPerPr" +
+      "oduct:\0028\0012\376\004\n\nUITransfer\022D\n\003buy\022!.plushi" +
+      "e_tycoon.TransactionObject\032\030.plushie_tyc" +
+      "oon.Snapshot\"\000\022E\n\004sell\022!.plushie_tycoon." +
+      "TransactionObject\032\030.plushie_tycoon.Snaps" +
+      "hot\"\000\022E\n\004make\022!.plushie_tycoon.Transacti" +
+      "onObject\032\030.plushie_tycoon.Snapshot\"\000\022C\n\004" +
+      "next\022\037.plushie_tycoon.SelectionObject\032\030." +
+      "plushie_tycoon.Snapshot\"\000\022C\n\004save\022\037.plus" +
+      "hie_tycoon.SelectionObject\032\030.plushie_tyc" +
+      "oon.Snapshot\"\000\022C\n\004load\022\037.plushie_tycoon." +
+      "SelectionObject\032\030.plushie_tycoon.Snapsho" +
+      "t\"\000\022C\n\004back\022\037.plushie_tycoon.SelectionOb" +
+      "ject\032\030.plushie_tycoon.Snapshot\"\000\022C\n\004quit" +
+      "\022\037.plushie_tycoon.SelectionObject\032\030.plus" +
+      "hie_tycoon.Snapshot\"\000\022C\n\004init\022\037.plushie_" +
+      "tycoon.SelectionObject\032\030.plushie_tycoon." +
+      "Snapshot\"\0002\230\002\n\tSendCalls\022E\n\004send\022\037.plush" +
+      "ie_tycoon.ProposedChanges\032\032.plushie_tyco" +
+      "on.ReturnCode\"\000\022;\n\005query\022\026.plushie_tycoo" +
+      "n.UserID\032\030.plushie_tycoon.Snapshot\"\000\022D\n\t" +
+      "timeCheck\022\031.plushie_tycoon.TimeCheck\032\032.p" +
+      "lushie_tycoon.ReturnCode\"\000\022A\n\thasUpdate\022" +
+      "\026.plushie_tycoon.UserID\032\032.plushie_tycoon" +
+      ".ReturnCode\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_plushie_tycoon_SelectionObject_descriptor =
+    internal_static_plushie_tycoon_ReturnCode_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_plushie_tycoon_ReturnCode_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_plushie_tycoon_ReturnCode_descriptor,
+        new java.lang.String[] { "Message", "Code", });
+    internal_static_plushie_tycoon_TimeCheck_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_plushie_tycoon_TimeCheck_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_plushie_tycoon_TimeCheck_descriptor,
+        new java.lang.String[] { "Userid", "Time", });
+    internal_static_plushie_tycoon_ProposedChanges_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_plushie_tycoon_ProposedChanges_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_plushie_tycoon_ProposedChanges_descriptor,
+        new java.lang.String[] { "BuySell", "Make", "Userid", });
+    internal_static_plushie_tycoon_ProposedChanges_BuySellEntry_descriptor =
+      internal_static_plushie_tycoon_ProposedChanges_descriptor.getNestedTypes().get(0);
+    internal_static_plushie_tycoon_ProposedChanges_BuySellEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_plushie_tycoon_ProposedChanges_BuySellEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_plushie_tycoon_ProposedChanges_MakeEntry_descriptor =
+      internal_static_plushie_tycoon_ProposedChanges_descriptor.getNestedTypes().get(1);
+    internal_static_plushie_tycoon_ProposedChanges_MakeEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_plushie_tycoon_ProposedChanges_MakeEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_plushie_tycoon_UserID_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_plushie_tycoon_UserID_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_plushie_tycoon_UserID_descriptor,
+        new java.lang.String[] { "Userid", });
+    internal_static_plushie_tycoon_SelectionObject_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_plushie_tycoon_SelectionObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_plushie_tycoon_SelectionObject_descriptor,
         new java.lang.String[] { });
     internal_static_plushie_tycoon_TransactionObject_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_plushie_tycoon_TransactionObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_plushie_tycoon_TransactionObject_descriptor,
         new java.lang.String[] { "Name", "Quantity", });
     internal_static_plushie_tycoon_mItemCost_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_plushie_tycoon_mItemCost_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_plushie_tycoon_mItemCost_descriptor,
         new java.lang.String[] { "Movein", "Moveout", "Storage", });
     internal_static_plushie_tycoon_mRatioPerProduct_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_plushie_tycoon_mRatioPerProduct_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_plushie_tycoon_mRatioPerProduct_descriptor,
@@ -5128,7 +8200,7 @@ public final class Grpc {
         internal_static_plushie_tycoon_mRatioPerProduct_RatioEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_plushie_tycoon_Snapshot_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_plushie_tycoon_Snapshot_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_plushie_tycoon_Snapshot_descriptor,
