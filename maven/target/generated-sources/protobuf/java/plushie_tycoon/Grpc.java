@@ -649,49 +649,36 @@ public final class Grpc {
 
   }
 
-  public interface TimeCheckOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:plushie_tycoon.TimeCheck)
+  public interface IntObjectOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:plushie_tycoon.IntObject)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string userid = 1;</code>
-     * @return The userid.
+     * <code>int32 item = 1;</code>
+     * @return The item.
      */
-    java.lang.String getUserid();
-    /**
-     * <code>string userid = 1;</code>
-     * @return The bytes for userid.
-     */
-    com.google.protobuf.ByteString
-        getUseridBytes();
-
-    /**
-     * <code>int32 time = 2;</code>
-     * @return The time.
-     */
-    int getTime();
+    int getItem();
   }
   /**
-   * Protobuf type {@code plushie_tycoon.TimeCheck}
+   * Protobuf type {@code plushie_tycoon.IntObject}
    */
-  public  static final class TimeCheck extends
+  public  static final class IntObject extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:plushie_tycoon.TimeCheck)
-      TimeCheckOrBuilder {
+      // @@protoc_insertion_point(message_implements:plushie_tycoon.IntObject)
+      IntObjectOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use TimeCheck.newBuilder() to construct.
-    private TimeCheck(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use IntObject.newBuilder() to construct.
+    private IntObject(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private TimeCheck() {
-      userid_ = "";
+    private IntObject() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new TimeCheck();
+      return new IntObject();
     }
 
     @java.lang.Override
@@ -699,7 +686,7 @@ public final class Grpc {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private TimeCheck(
+    private IntObject(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -717,15 +704,9 @@ public final class Grpc {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
 
-              userid_ = s;
-              break;
-            }
-            case 16: {
-
-              time_ = input.readInt32();
+              item_ = input.readInt32();
               break;
             }
             default: {
@@ -749,61 +730,25 @@ public final class Grpc {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_TimeCheck_descriptor;
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_IntObject_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_TimeCheck_fieldAccessorTable
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_IntObject_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              plushie_tycoon.Grpc.TimeCheck.class, plushie_tycoon.Grpc.TimeCheck.Builder.class);
+              plushie_tycoon.Grpc.IntObject.class, plushie_tycoon.Grpc.IntObject.Builder.class);
     }
 
-    public static final int USERID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object userid_;
+    public static final int ITEM_FIELD_NUMBER = 1;
+    private int item_;
     /**
-     * <code>string userid = 1;</code>
-     * @return The userid.
+     * <code>int32 item = 1;</code>
+     * @return The item.
      */
-    public java.lang.String getUserid() {
-      java.lang.Object ref = userid_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        userid_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string userid = 1;</code>
-     * @return The bytes for userid.
-     */
-    public com.google.protobuf.ByteString
-        getUseridBytes() {
-      java.lang.Object ref = userid_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        userid_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int TIME_FIELD_NUMBER = 2;
-    private int time_;
-    /**
-     * <code>int32 time = 2;</code>
-     * @return The time.
-     */
-    public int getTime() {
-      return time_;
+    public int getItem() {
+      return item_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -820,11 +765,8 @@ public final class Grpc {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getUseridBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userid_);
-      }
-      if (time_ != 0) {
-        output.writeInt32(2, time_);
+      if (item_ != 0) {
+        output.writeInt32(1, item_);
       }
       unknownFields.writeTo(output);
     }
@@ -835,12 +777,9 @@ public final class Grpc {
       if (size != -1) return size;
 
       size = 0;
-      if (!getUseridBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userid_);
-      }
-      if (time_ != 0) {
+      if (item_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, time_);
+          .computeInt32Size(1, item_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -852,15 +791,13 @@ public final class Grpc {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof plushie_tycoon.Grpc.TimeCheck)) {
+      if (!(obj instanceof plushie_tycoon.Grpc.IntObject)) {
         return super.equals(obj);
       }
-      plushie_tycoon.Grpc.TimeCheck other = (plushie_tycoon.Grpc.TimeCheck) obj;
+      plushie_tycoon.Grpc.IntObject other = (plushie_tycoon.Grpc.IntObject) obj;
 
-      if (!getUserid()
-          .equals(other.getUserid())) return false;
-      if (getTime()
-          != other.getTime()) return false;
+      if (getItem()
+          != other.getItem()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -872,78 +809,76 @@ public final class Grpc {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + USERID_FIELD_NUMBER;
-      hash = (53 * hash) + getUserid().hashCode();
-      hash = (37 * hash) + TIME_FIELD_NUMBER;
-      hash = (53 * hash) + getTime();
+      hash = (37 * hash) + ITEM_FIELD_NUMBER;
+      hash = (53 * hash) + getItem();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+    public static plushie_tycoon.Grpc.IntObject parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+    public static plushie_tycoon.Grpc.IntObject parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+    public static plushie_tycoon.Grpc.IntObject parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+    public static plushie_tycoon.Grpc.IntObject parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseFrom(byte[] data)
+    public static plushie_tycoon.Grpc.IntObject parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+    public static plushie_tycoon.Grpc.IntObject parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseFrom(java.io.InputStream input)
+    public static plushie_tycoon.Grpc.IntObject parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+    public static plushie_tycoon.Grpc.IntObject parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseDelimitedFrom(java.io.InputStream input)
+    public static plushie_tycoon.Grpc.IntObject parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseDelimitedFrom(
+    public static plushie_tycoon.Grpc.IntObject parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+    public static plushie_tycoon.Grpc.IntObject parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static plushie_tycoon.Grpc.TimeCheck parseFrom(
+    public static plushie_tycoon.Grpc.IntObject parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -956,7 +891,7 @@ public final class Grpc {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(plushie_tycoon.Grpc.TimeCheck prototype) {
+    public static Builder newBuilder(plushie_tycoon.Grpc.IntObject prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -972,26 +907,26 @@ public final class Grpc {
       return builder;
     }
     /**
-     * Protobuf type {@code plushie_tycoon.TimeCheck}
+     * Protobuf type {@code plushie_tycoon.IntObject}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:plushie_tycoon.TimeCheck)
-        plushie_tycoon.Grpc.TimeCheckOrBuilder {
+        // @@protoc_insertion_point(builder_implements:plushie_tycoon.IntObject)
+        plushie_tycoon.Grpc.IntObjectOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_TimeCheck_descriptor;
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_IntObject_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_TimeCheck_fieldAccessorTable
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_IntObject_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                plushie_tycoon.Grpc.TimeCheck.class, plushie_tycoon.Grpc.TimeCheck.Builder.class);
+                plushie_tycoon.Grpc.IntObject.class, plushie_tycoon.Grpc.IntObject.Builder.class);
       }
 
-      // Construct using plushie_tycoon.Grpc.TimeCheck.newBuilder()
+      // Construct using plushie_tycoon.Grpc.IntObject.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1009,9 +944,7 @@ public final class Grpc {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        userid_ = "";
-
-        time_ = 0;
+        item_ = 0;
 
         return this;
       }
@@ -1019,17 +952,17 @@ public final class Grpc {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_TimeCheck_descriptor;
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_IntObject_descriptor;
       }
 
       @java.lang.Override
-      public plushie_tycoon.Grpc.TimeCheck getDefaultInstanceForType() {
-        return plushie_tycoon.Grpc.TimeCheck.getDefaultInstance();
+      public plushie_tycoon.Grpc.IntObject getDefaultInstanceForType() {
+        return plushie_tycoon.Grpc.IntObject.getDefaultInstance();
       }
 
       @java.lang.Override
-      public plushie_tycoon.Grpc.TimeCheck build() {
-        plushie_tycoon.Grpc.TimeCheck result = buildPartial();
+      public plushie_tycoon.Grpc.IntObject build() {
+        plushie_tycoon.Grpc.IntObject result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -1037,10 +970,9 @@ public final class Grpc {
       }
 
       @java.lang.Override
-      public plushie_tycoon.Grpc.TimeCheck buildPartial() {
-        plushie_tycoon.Grpc.TimeCheck result = new plushie_tycoon.Grpc.TimeCheck(this);
-        result.userid_ = userid_;
-        result.time_ = time_;
+      public plushie_tycoon.Grpc.IntObject buildPartial() {
+        plushie_tycoon.Grpc.IntObject result = new plushie_tycoon.Grpc.IntObject(this);
+        result.item_ = item_;
         onBuilt();
         return result;
       }
@@ -1079,22 +1011,18 @@ public final class Grpc {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof plushie_tycoon.Grpc.TimeCheck) {
-          return mergeFrom((plushie_tycoon.Grpc.TimeCheck)other);
+        if (other instanceof plushie_tycoon.Grpc.IntObject) {
+          return mergeFrom((plushie_tycoon.Grpc.IntObject)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(plushie_tycoon.Grpc.TimeCheck other) {
-        if (other == plushie_tycoon.Grpc.TimeCheck.getDefaultInstance()) return this;
-        if (!other.getUserid().isEmpty()) {
-          userid_ = other.userid_;
-          onChanged();
-        }
-        if (other.getTime() != 0) {
-          setTime(other.getTime());
+      public Builder mergeFrom(plushie_tycoon.Grpc.IntObject other) {
+        if (other == plushie_tycoon.Grpc.IntObject.getDefaultInstance()) return this;
+        if (other.getItem() != 0) {
+          setItem(other.getItem());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1111,11 +1039,11 @@ public final class Grpc {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        plushie_tycoon.Grpc.TimeCheck parsedMessage = null;
+        plushie_tycoon.Grpc.IntObject parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (plushie_tycoon.Grpc.TimeCheck) e.getUnfinishedMessage();
+          parsedMessage = (plushie_tycoon.Grpc.IntObject) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1125,108 +1053,32 @@ public final class Grpc {
         return this;
       }
 
-      private java.lang.Object userid_ = "";
+      private int item_ ;
       /**
-       * <code>string userid = 1;</code>
-       * @return The userid.
+       * <code>int32 item = 1;</code>
+       * @return The item.
        */
-      public java.lang.String getUserid() {
-        java.lang.Object ref = userid_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          userid_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public int getItem() {
+        return item_;
       }
       /**
-       * <code>string userid = 1;</code>
-       * @return The bytes for userid.
-       */
-      public com.google.protobuf.ByteString
-          getUseridBytes() {
-        java.lang.Object ref = userid_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          userid_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string userid = 1;</code>
-       * @param value The userid to set.
+       * <code>int32 item = 1;</code>
+       * @param value The item to set.
        * @return This builder for chaining.
        */
-      public Builder setUserid(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        userid_ = value;
+      public Builder setItem(int value) {
+        
+        item_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string userid = 1;</code>
+       * <code>int32 item = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearUserid() {
+      public Builder clearItem() {
         
-        userid_ = getDefaultInstance().getUserid();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string userid = 1;</code>
-       * @param value The bytes for userid to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUseridBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        userid_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int time_ ;
-      /**
-       * <code>int32 time = 2;</code>
-       * @return The time.
-       */
-      public int getTime() {
-        return time_;
-      }
-      /**
-       * <code>int32 time = 2;</code>
-       * @param value The time to set.
-       * @return This builder for chaining.
-       */
-      public Builder setTime(int value) {
-        
-        time_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 time = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearTime() {
-        
-        time_ = 0;
+        item_ = 0;
         onChanged();
         return this;
       }
@@ -1243,41 +1095,41 @@ public final class Grpc {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:plushie_tycoon.TimeCheck)
+      // @@protoc_insertion_point(builder_scope:plushie_tycoon.IntObject)
     }
 
-    // @@protoc_insertion_point(class_scope:plushie_tycoon.TimeCheck)
-    private static final plushie_tycoon.Grpc.TimeCheck DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:plushie_tycoon.IntObject)
+    private static final plushie_tycoon.Grpc.IntObject DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new plushie_tycoon.Grpc.TimeCheck();
+      DEFAULT_INSTANCE = new plushie_tycoon.Grpc.IntObject();
     }
 
-    public static plushie_tycoon.Grpc.TimeCheck getDefaultInstance() {
+    public static plushie_tycoon.Grpc.IntObject getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<TimeCheck>
-        PARSER = new com.google.protobuf.AbstractParser<TimeCheck>() {
+    private static final com.google.protobuf.Parser<IntObject>
+        PARSER = new com.google.protobuf.AbstractParser<IntObject>() {
       @java.lang.Override
-      public TimeCheck parsePartialFrom(
+      public IntObject parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new TimeCheck(input, extensionRegistry);
+        return new IntObject(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<TimeCheck> parser() {
+    public static com.google.protobuf.Parser<IntObject> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<TimeCheck> getParserForType() {
+    public com.google.protobuf.Parser<IntObject> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public plushie_tycoon.Grpc.TimeCheck getDefaultInstanceForType() {
+    public plushie_tycoon.Grpc.IntObject getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7975,10 +7827,10 @@ public final class Grpc {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_plushie_tycoon_ReturnCode_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_plushie_tycoon_TimeCheck_descriptor;
+    internal_static_plushie_tycoon_IntObject_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_plushie_tycoon_TimeCheck_fieldAccessorTable;
+      internal_static_plushie_tycoon_IntObject_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_plushie_tycoon_ProposedChanges_descriptor;
   private static final 
@@ -8069,68 +7921,68 @@ public final class Grpc {
   static {
     java.lang.String[] descriptorData = {
       "\n\ngrpc.proto\022\016plushie_tycoon\"+\n\nReturnCo" +
-      "de\022\017\n\007message\030\001 \001(\t\022\014\n\004code\030\002 \001(\010\")\n\tTim" +
-      "eCheck\022\016\n\006userid\030\001 \001(\t\022\014\n\004time\030\002 \001(\005\"\366\001\n" +
-      "\017ProposedChanges\022=\n\007buySell\030\001 \003(\0132,.plus" +
-      "hie_tycoon.ProposedChanges.BuySellEntry\022" +
-      "7\n\004make\030\002 \003(\0132).plushie_tycoon.ProposedC" +
-      "hanges.MakeEntry\022\016\n\006userid\030\003 \001(\t\032.\n\014BuyS" +
-      "ellEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001" +
-      "\032+\n\tMakeEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
-      "\005:\0028\001\"\030\n\006UserID\022\016\n\006userid\030\001 \001(\t\"\021\n\017Selec" +
-      "tionObject\"3\n\021TransactionObject\022\014\n\004name\030" +
-      "\001 \001(\t\022\020\n\010quantity\030\002 \001(\005\"=\n\tmItemCost\022\016\n\006" +
-      "movein\030\003 \001(\001\022\017\n\007moveout\030\004 \001(\001\022\017\n\007storage" +
-      "\030\005 \001(\001\"|\n\020mRatioPerProduct\022:\n\005ratio\030\006 \003(" +
-      "\0132+.plushie_tycoon.mRatioPerProduct.Rati" +
-      "oEntry\032,\n\nRatioEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val" +
-      "ue\030\002 \001(\005:\0028\001\"\232\006\n\010Snapshot\0224\n\006prices\030\001 \003(" +
-      "\0132$.plushie_tycoon.Snapshot.PricesEntry\022" +
-      "<\n\nquantities\030\002 \003(\0132(.plushie_tycoon.Sna" +
-      "pshot.QuantitiesEntry\0226\n\007weights\030\r \003(\0132%" +
-      ".plushie_tycoon.Snapshot.WeightsEntry\0226\n" +
-      "\007volumes\030\016 \003(\0132%.plushie_tycoon.Snapshot" +
-      ".VolumesEntry\0229\n\titem_cost\030\014 \003(\0132&.plush" +
-      "ie_tycoon.Snapshot.ItemCostEntry\022C\n\016reso" +
-      "urce_ratio\030\007 \003(\0132+.plushie_tycoon.Snapsh" +
-      "ot.ResourceRatioEntry\022\026\n\016console_output\030" +
-      "\010 \001(\t\022\016\n\006budget\030\t \001(\001\022\014\n\004time\030\n \001(\005\022\016\n\006a" +
-      "ction\030\013 \001(\t\032-\n\013PricesEntry\022\013\n\003key\030\001 \001(\t\022" +
-      "\r\n\005value\030\002 \001(\001:\0028\001\0321\n\017QuantitiesEntry\022\013\n" +
-      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032.\n\014Weights" +
-      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\0028\001\032.\n" +
-      "\014VolumesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
-      "\001:\0028\001\032J\n\rItemCostEntry\022\013\n\003key\030\001 \001(\t\022(\n\005v" +
-      "alue\030\002 \001(\0132\031.plushie_tycoon.mItemCost:\0028" +
-      "\001\032V\n\022ResourceRatioEntry\022\013\n\003key\030\001 \001(\t\022/\n\005" +
-      "value\030\002 \001(\0132 .plushie_tycoon.mRatioPerPr" +
-      "oduct:\0028\0012\376\004\n\nUITransfer\022D\n\003buy\022!.plushi" +
-      "e_tycoon.TransactionObject\032\030.plushie_tyc" +
-      "oon.Snapshot\"\000\022E\n\004sell\022!.plushie_tycoon." +
-      "TransactionObject\032\030.plushie_tycoon.Snaps" +
-      "hot\"\000\022E\n\004make\022!.plushie_tycoon.Transacti" +
-      "onObject\032\030.plushie_tycoon.Snapshot\"\000\022C\n\004" +
-      "next\022\037.plushie_tycoon.SelectionObject\032\030." +
-      "plushie_tycoon.Snapshot\"\000\022C\n\004save\022\037.plus" +
-      "hie_tycoon.SelectionObject\032\030.plushie_tyc" +
-      "oon.Snapshot\"\000\022C\n\004load\022\037.plushie_tycoon." +
-      "SelectionObject\032\030.plushie_tycoon.Snapsho" +
-      "t\"\000\022C\n\004back\022\037.plushie_tycoon.SelectionOb" +
-      "ject\032\030.plushie_tycoon.Snapshot\"\000\022C\n\004quit" +
-      "\022\037.plushie_tycoon.SelectionObject\032\030.plus" +
-      "hie_tycoon.Snapshot\"\000\022C\n\004init\022\037.plushie_" +
-      "tycoon.SelectionObject\032\030.plushie_tycoon." +
-      "Snapshot\"\0002\236\003\n\tSendCalls\022>\n\010register\022\026.p" +
-      "lushie_tycoon.UserID\032\030.plushie_tycoon.Sn" +
-      "apshot\"\000\022D\n\014isregistered\022\026.plushie_tycoo" +
-      "n.UserID\032\032.plushie_tycoon.ReturnCode\"\000\022E" +
-      "\n\004send\022\037.plushie_tycoon.ProposedChanges\032" +
-      "\032.plushie_tycoon.ReturnCode\"\000\022;\n\005query\022\026" +
-      ".plushie_tycoon.UserID\032\030.plushie_tycoon." +
-      "Snapshot\"\000\022D\n\ttimeCheck\022\031.plushie_tycoon" +
-      ".TimeCheck\032\032.plushie_tycoon.ReturnCode\"\000" +
-      "\022A\n\thasUpdate\022\026.plushie_tycoon.UserID\032\032." +
-      "plushie_tycoon.ReturnCode\"\000b\006proto3"
+      "de\022\017\n\007message\030\001 \001(\t\022\014\n\004code\030\002 \001(\010\"\031\n\tInt" +
+      "Object\022\014\n\004item\030\001 \001(\005\"\366\001\n\017ProposedChanges" +
+      "\022=\n\007buySell\030\001 \003(\0132,.plushie_tycoon.Propo" +
+      "sedChanges.BuySellEntry\0227\n\004make\030\002 \003(\0132)." +
+      "plushie_tycoon.ProposedChanges.MakeEntry" +
+      "\022\016\n\006userid\030\003 \001(\t\032.\n\014BuySellEntry\022\013\n\003key\030" +
+      "\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032+\n\tMakeEntry\022\013\n" +
+      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"\030\n\006UserID\022" +
+      "\016\n\006userid\030\001 \001(\t\"\021\n\017SelectionObject\"3\n\021Tr" +
+      "ansactionObject\022\014\n\004name\030\001 \001(\t\022\020\n\010quantit" +
+      "y\030\002 \001(\005\"=\n\tmItemCost\022\016\n\006movein\030\003 \001(\001\022\017\n\007" +
+      "moveout\030\004 \001(\001\022\017\n\007storage\030\005 \001(\001\"|\n\020mRatio" +
+      "PerProduct\022:\n\005ratio\030\006 \003(\0132+.plushie_tyco" +
+      "on.mRatioPerProduct.RatioEntry\032,\n\nRatioE" +
+      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"\232\006\n" +
+      "\010Snapshot\0224\n\006prices\030\001 \003(\0132$.plushie_tyco" +
+      "on.Snapshot.PricesEntry\022<\n\nquantities\030\002 " +
+      "\003(\0132(.plushie_tycoon.Snapshot.Quantities" +
+      "Entry\0226\n\007weights\030\r \003(\0132%.plushie_tycoon." +
+      "Snapshot.WeightsEntry\0226\n\007volumes\030\016 \003(\0132%" +
+      ".plushie_tycoon.Snapshot.VolumesEntry\0229\n" +
+      "\titem_cost\030\014 \003(\0132&.plushie_tycoon.Snapsh" +
+      "ot.ItemCostEntry\022C\n\016resource_ratio\030\007 \003(\013" +
+      "2+.plushie_tycoon.Snapshot.ResourceRatio" +
+      "Entry\022\026\n\016console_output\030\010 \001(\t\022\016\n\006budget\030" +
+      "\t \001(\001\022\014\n\004time\030\n \001(\005\022\016\n\006action\030\013 \001(\t\032-\n\013P" +
+      "ricesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\002" +
+      "8\001\0321\n\017QuantitiesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005va" +
+      "lue\030\002 \001(\005:\0028\001\032.\n\014WeightsEntry\022\013\n\003key\030\001 \001" +
+      "(\t\022\r\n\005value\030\002 \001(\001:\0028\001\032.\n\014VolumesEntry\022\013\n" +
+      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\0028\001\032J\n\rItemCos" +
+      "tEntry\022\013\n\003key\030\001 \001(\t\022(\n\005value\030\002 \001(\0132\031.plu" +
+      "shie_tycoon.mItemCost:\0028\001\032V\n\022ResourceRat" +
+      "ioEntry\022\013\n\003key\030\001 \001(\t\022/\n\005value\030\002 \001(\0132 .pl" +
+      "ushie_tycoon.mRatioPerProduct:\0028\0012\376\004\n\nUI" +
+      "Transfer\022D\n\003buy\022!.plushie_tycoon.Transac" +
+      "tionObject\032\030.plushie_tycoon.Snapshot\"\000\022E" +
+      "\n\004sell\022!.plushie_tycoon.TransactionObjec" +
+      "t\032\030.plushie_tycoon.Snapshot\"\000\022E\n\004make\022!." +
+      "plushie_tycoon.TransactionObject\032\030.plush" +
+      "ie_tycoon.Snapshot\"\000\022C\n\004next\022\037.plushie_t" +
+      "ycoon.SelectionObject\032\030.plushie_tycoon.S" +
+      "napshot\"\000\022C\n\004save\022\037.plushie_tycoon.Selec" +
+      "tionObject\032\030.plushie_tycoon.Snapshot\"\000\022C" +
+      "\n\004load\022\037.plushie_tycoon.SelectionObject\032" +
+      "\030.plushie_tycoon.Snapshot\"\000\022C\n\004back\022\037.pl" +
+      "ushie_tycoon.SelectionObject\032\030.plushie_t" +
+      "ycoon.Snapshot\"\000\022C\n\004quit\022\037.plushie_tycoo" +
+      "n.SelectionObject\032\030.plushie_tycoon.Snaps" +
+      "hot\"\000\022C\n\004init\022\037.plushie_tycoon.Selection" +
+      "Object\032\030.plushie_tycoon.Snapshot\"\0002\241\003\n\tS" +
+      "endCalls\022>\n\010register\022\026.plushie_tycoon.Us" +
+      "erID\032\030.plushie_tycoon.Snapshot\"\000\022D\n\014isre" +
+      "gistered\022\026.plushie_tycoon.UserID\032\032.plush" +
+      "ie_tycoon.ReturnCode\"\000\022E\n\004send\022\037.plushie" +
+      "_tycoon.ProposedChanges\032\032.plushie_tycoon" +
+      ".ReturnCode\"\000\022;\n\005query\022\026.plushie_tycoon." +
+      "UserID\032\030.plushie_tycoon.Snapshot\"\000\022G\n\007ge" +
+      "tTime\022\037.plushie_tycoon.SelectionObject\032\031" +
+      ".plushie_tycoon.IntObject\"\000\022A\n\thasUpdate" +
+      "\022\026.plushie_tycoon.UserID\032\032.plushie_tycoo" +
+      "n.ReturnCode\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -8142,12 +7994,12 @@ public final class Grpc {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_plushie_tycoon_ReturnCode_descriptor,
         new java.lang.String[] { "Message", "Code", });
-    internal_static_plushie_tycoon_TimeCheck_descriptor =
+    internal_static_plushie_tycoon_IntObject_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_plushie_tycoon_TimeCheck_fieldAccessorTable = new
+    internal_static_plushie_tycoon_IntObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_plushie_tycoon_TimeCheck_descriptor,
-        new java.lang.String[] { "Userid", "Time", });
+        internal_static_plushie_tycoon_IntObject_descriptor,
+        new java.lang.String[] { "Item", });
     internal_static_plushie_tycoon_ProposedChanges_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_plushie_tycoon_ProposedChanges_fieldAccessorTable = new

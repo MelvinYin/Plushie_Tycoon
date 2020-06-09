@@ -79,8 +79,8 @@ public class GEGlobal {
         return output;
     }
 
-    public boolean timeCheck(int time){
-        return (this.time == time);
+    public int getTime(){
+        return this.time;
     }
 
     public Grpc.Snapshot query(String userid){

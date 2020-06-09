@@ -69,12 +69,13 @@ public class GlobalServerService {
         }
 
         @Override
-        public void timeCheck(Grpc.TimeCheck request, StreamObserver<Grpc.ReturnCode> responseObserver) {
-            boolean returnCode = ge.timeCheck(request.getTime());
-            Grpc.ReturnCode output = Grpc.ReturnCode.newBuilder().setCode(returnCode).build();
+        public void getTime(Grpc.SelectionObject request, StreamObserver<Grpc.IntObject> responseObserver) {
+            int time = ge.getTime();
+            Grpc.IntObject output = Grpc.IntObject.newBuilder().setItem(time).build();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
+
         @Override
         public void hasUpdate(Grpc.UserID request, StreamObserver<Grpc.ReturnCode> responseObserver) {
             boolean returnCode = ge.hasUpdate(request.getUserid());

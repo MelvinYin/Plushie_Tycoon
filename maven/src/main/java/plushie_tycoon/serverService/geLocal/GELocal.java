@@ -64,8 +64,7 @@ public class GELocal {
             return getNullReturn(errorMsg);
         }
         localInventory.sub(object, quantity);
-        double price = market.get(object) * quantity;
-        budget += price;
+        budget += market.get(object) * quantity;
         return getUpdateReturn();
     }
 
@@ -91,6 +90,7 @@ public class GELocal {
         }
         return getUpdateReturn();
     }
+
     public Snapshot next(){
         budget -= localInventory.getTotalMoveCost();
         budget -= localInventory.getTotalStorageCost();

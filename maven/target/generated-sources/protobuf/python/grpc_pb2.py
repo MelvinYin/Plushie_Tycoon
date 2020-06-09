@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='plushie_tycoon',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\ngrpc.proto\x12\x0eplushie_tycoon\"+\n\nReturnCode\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\x08\")\n\tTimeCheck\x12\x0e\n\x06userid\x18\x01 \x01(\t\x12\x0c\n\x04time\x18\x02 \x01(\x05\"\xf6\x01\n\x0fProposedChanges\x12=\n\x07\x62uySell\x18\x01 \x03(\x0b\x32,.plushie_tycoon.ProposedChanges.BuySellEntry\x12\x37\n\x04make\x18\x02 \x03(\x0b\x32).plushie_tycoon.ProposedChanges.MakeEntry\x12\x0e\n\x06userid\x18\x03 \x01(\t\x1a.\n\x0c\x42uySellEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\x1a+\n\tMakeEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x18\n\x06UserID\x12\x0e\n\x06userid\x18\x01 \x01(\t\"\x11\n\x0fSelectionObject\"3\n\x11TransactionObject\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"=\n\tmItemCost\x12\x0e\n\x06movein\x18\x03 \x01(\x01\x12\x0f\n\x07moveout\x18\x04 \x01(\x01\x12\x0f\n\x07storage\x18\x05 \x01(\x01\"|\n\x10mRatioPerProduct\x12:\n\x05ratio\x18\x06 \x03(\x0b\x32+.plushie_tycoon.mRatioPerProduct.RatioEntry\x1a,\n\nRatioEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x9a\x06\n\x08Snapshot\x12\x34\n\x06prices\x18\x01 \x03(\x0b\x32$.plushie_tycoon.Snapshot.PricesEntry\x12<\n\nquantities\x18\x02 \x03(\x0b\x32(.plushie_tycoon.Snapshot.QuantitiesEntry\x12\x36\n\x07weights\x18\r \x03(\x0b\x32%.plushie_tycoon.Snapshot.WeightsEntry\x12\x36\n\x07volumes\x18\x0e \x03(\x0b\x32%.plushie_tycoon.Snapshot.VolumesEntry\x12\x39\n\titem_cost\x18\x0c \x03(\x0b\x32&.plushie_tycoon.Snapshot.ItemCostEntry\x12\x43\n\x0eresource_ratio\x18\x07 \x03(\x0b\x32+.plushie_tycoon.Snapshot.ResourceRatioEntry\x12\x16\n\x0e\x63onsole_output\x18\x08 \x01(\t\x12\x0e\n\x06\x62udget\x18\t \x01(\x01\x12\x0c\n\x04time\x18\n \x01(\x05\x12\x0e\n\x06\x61\x63tion\x18\x0b \x01(\t\x1a-\n\x0bPricesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x1a\x31\n\x0fQuantitiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\x1a.\n\x0cWeightsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x1a.\n\x0cVolumesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x1aJ\n\rItemCostEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12(\n\x05value\x18\x02 \x01(\x0b\x32\x19.plushie_tycoon.mItemCost:\x02\x38\x01\x1aV\n\x12ResourceRatioEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12/\n\x05value\x18\x02 \x01(\x0b\x32 .plushie_tycoon.mRatioPerProduct:\x02\x38\x01\x32\xfe\x04\n\nUITransfer\x12\x44\n\x03\x62uy\x12!.plushie_tycoon.TransactionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x45\n\x04sell\x12!.plushie_tycoon.TransactionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x45\n\x04make\x12!.plushie_tycoon.TransactionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04next\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04save\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04load\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04\x62\x61\x63k\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04quit\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04init\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x32\x9e\x03\n\tSendCalls\x12>\n\x08register\x12\x16.plushie_tycoon.UserID\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x44\n\x0cisregistered\x12\x16.plushie_tycoon.UserID\x1a\x1a.plushie_tycoon.ReturnCode\"\x00\x12\x45\n\x04send\x12\x1f.plushie_tycoon.ProposedChanges\x1a\x1a.plushie_tycoon.ReturnCode\"\x00\x12;\n\x05query\x12\x16.plushie_tycoon.UserID\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x44\n\ttimeCheck\x12\x19.plushie_tycoon.TimeCheck\x1a\x1a.plushie_tycoon.ReturnCode\"\x00\x12\x41\n\thasUpdate\x12\x16.plushie_tycoon.UserID\x1a\x1a.plushie_tycoon.ReturnCode\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\ngrpc.proto\x12\x0eplushie_tycoon\"+\n\nReturnCode\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\x08\"\x19\n\tIntObject\x12\x0c\n\x04item\x18\x01 \x01(\x05\"\xf6\x01\n\x0fProposedChanges\x12=\n\x07\x62uySell\x18\x01 \x03(\x0b\x32,.plushie_tycoon.ProposedChanges.BuySellEntry\x12\x37\n\x04make\x18\x02 \x03(\x0b\x32).plushie_tycoon.ProposedChanges.MakeEntry\x12\x0e\n\x06userid\x18\x03 \x01(\t\x1a.\n\x0c\x42uySellEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\x1a+\n\tMakeEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x18\n\x06UserID\x12\x0e\n\x06userid\x18\x01 \x01(\t\"\x11\n\x0fSelectionObject\"3\n\x11TransactionObject\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08quantity\x18\x02 \x01(\x05\"=\n\tmItemCost\x12\x0e\n\x06movein\x18\x03 \x01(\x01\x12\x0f\n\x07moveout\x18\x04 \x01(\x01\x12\x0f\n\x07storage\x18\x05 \x01(\x01\"|\n\x10mRatioPerProduct\x12:\n\x05ratio\x18\x06 \x03(\x0b\x32+.plushie_tycoon.mRatioPerProduct.RatioEntry\x1a,\n\nRatioEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"\x9a\x06\n\x08Snapshot\x12\x34\n\x06prices\x18\x01 \x03(\x0b\x32$.plushie_tycoon.Snapshot.PricesEntry\x12<\n\nquantities\x18\x02 \x03(\x0b\x32(.plushie_tycoon.Snapshot.QuantitiesEntry\x12\x36\n\x07weights\x18\r \x03(\x0b\x32%.plushie_tycoon.Snapshot.WeightsEntry\x12\x36\n\x07volumes\x18\x0e \x03(\x0b\x32%.plushie_tycoon.Snapshot.VolumesEntry\x12\x39\n\titem_cost\x18\x0c \x03(\x0b\x32&.plushie_tycoon.Snapshot.ItemCostEntry\x12\x43\n\x0eresource_ratio\x18\x07 \x03(\x0b\x32+.plushie_tycoon.Snapshot.ResourceRatioEntry\x12\x16\n\x0e\x63onsole_output\x18\x08 \x01(\t\x12\x0e\n\x06\x62udget\x18\t \x01(\x01\x12\x0c\n\x04time\x18\n \x01(\x05\x12\x0e\n\x06\x61\x63tion\x18\x0b \x01(\t\x1a-\n\x0bPricesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x1a\x31\n\x0fQuantitiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\x1a.\n\x0cWeightsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x1a.\n\x0cVolumesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x1aJ\n\rItemCostEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12(\n\x05value\x18\x02 \x01(\x0b\x32\x19.plushie_tycoon.mItemCost:\x02\x38\x01\x1aV\n\x12ResourceRatioEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12/\n\x05value\x18\x02 \x01(\x0b\x32 .plushie_tycoon.mRatioPerProduct:\x02\x38\x01\x32\xfe\x04\n\nUITransfer\x12\x44\n\x03\x62uy\x12!.plushie_tycoon.TransactionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x45\n\x04sell\x12!.plushie_tycoon.TransactionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x45\n\x04make\x12!.plushie_tycoon.TransactionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04next\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04save\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04load\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04\x62\x61\x63k\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04quit\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x43\n\x04init\x12\x1f.plushie_tycoon.SelectionObject\x1a\x18.plushie_tycoon.Snapshot\"\x00\x32\xa1\x03\n\tSendCalls\x12>\n\x08register\x12\x16.plushie_tycoon.UserID\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12\x44\n\x0cisregistered\x12\x16.plushie_tycoon.UserID\x1a\x1a.plushie_tycoon.ReturnCode\"\x00\x12\x45\n\x04send\x12\x1f.plushie_tycoon.ProposedChanges\x1a\x1a.plushie_tycoon.ReturnCode\"\x00\x12;\n\x05query\x12\x16.plushie_tycoon.UserID\x1a\x18.plushie_tycoon.Snapshot\"\x00\x12G\n\x07getTime\x12\x1f.plushie_tycoon.SelectionObject\x1a\x19.plushie_tycoon.IntObject\"\x00\x12\x41\n\thasUpdate\x12\x16.plushie_tycoon.UserID\x1a\x1a.plushie_tycoon.ReturnCode\"\x00\x62\x06proto3'
 )
 
 
@@ -62,23 +62,16 @@ _RETURNCODE = _descriptor.Descriptor(
 )
 
 
-_TIMECHECK = _descriptor.Descriptor(
-  name='TimeCheck',
-  full_name='plushie_tycoon.TimeCheck',
+_INTOBJECT = _descriptor.Descriptor(
+  name='IntObject',
+  full_name='plushie_tycoon.IntObject',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='userid', full_name='plushie_tycoon.TimeCheck.userid', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='time', full_name='plushie_tycoon.TimeCheck.time', index=1,
-      number=2, type=5, cpp_type=1, label=1,
+      name='item', full_name='plushie_tycoon.IntObject.item', index=0,
+      number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -96,7 +89,7 @@ _TIMECHECK = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=75,
-  serialized_end=116,
+  serialized_end=100,
 )
 
 
@@ -133,8 +126,8 @@ _PROPOSEDCHANGES_BUYSELLENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=274,
-  serialized_end=320,
+  serialized_start=258,
+  serialized_end=304,
 )
 
 _PROPOSEDCHANGES_MAKEENTRY = _descriptor.Descriptor(
@@ -170,8 +163,8 @@ _PROPOSEDCHANGES_MAKEENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=322,
-  serialized_end=365,
+  serialized_start=306,
+  serialized_end=349,
 )
 
 _PROPOSEDCHANGES = _descriptor.Descriptor(
@@ -214,8 +207,8 @@ _PROPOSEDCHANGES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=119,
-  serialized_end=365,
+  serialized_start=103,
+  serialized_end=349,
 )
 
 
@@ -245,8 +238,8 @@ _USERID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=367,
-  serialized_end=391,
+  serialized_start=351,
+  serialized_end=375,
 )
 
 
@@ -269,8 +262,8 @@ _SELECTIONOBJECT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=393,
-  serialized_end=410,
+  serialized_start=377,
+  serialized_end=394,
 )
 
 
@@ -307,8 +300,8 @@ _TRANSACTIONOBJECT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=412,
-  serialized_end=463,
+  serialized_start=396,
+  serialized_end=447,
 )
 
 
@@ -352,8 +345,8 @@ _MITEMCOST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=465,
-  serialized_end=526,
+  serialized_start=449,
+  serialized_end=510,
 )
 
 
@@ -390,8 +383,8 @@ _MRATIOPERPRODUCT_RATIOENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=608,
-  serialized_end=652,
+  serialized_start=592,
+  serialized_end=636,
 )
 
 _MRATIOPERPRODUCT = _descriptor.Descriptor(
@@ -420,8 +413,8 @@ _MRATIOPERPRODUCT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=528,
-  serialized_end=652,
+  serialized_start=512,
+  serialized_end=636,
 )
 
 
@@ -458,8 +451,8 @@ _SNAPSHOT_PRICESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1093,
-  serialized_end=1138,
+  serialized_start=1077,
+  serialized_end=1122,
 )
 
 _SNAPSHOT_QUANTITIESENTRY = _descriptor.Descriptor(
@@ -495,8 +488,8 @@ _SNAPSHOT_QUANTITIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1140,
-  serialized_end=1189,
+  serialized_start=1124,
+  serialized_end=1173,
 )
 
 _SNAPSHOT_WEIGHTSENTRY = _descriptor.Descriptor(
@@ -532,8 +525,8 @@ _SNAPSHOT_WEIGHTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1191,
-  serialized_end=1237,
+  serialized_start=1175,
+  serialized_end=1221,
 )
 
 _SNAPSHOT_VOLUMESENTRY = _descriptor.Descriptor(
@@ -569,8 +562,8 @@ _SNAPSHOT_VOLUMESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1239,
-  serialized_end=1285,
+  serialized_start=1223,
+  serialized_end=1269,
 )
 
 _SNAPSHOT_ITEMCOSTENTRY = _descriptor.Descriptor(
@@ -606,8 +599,8 @@ _SNAPSHOT_ITEMCOSTENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1287,
-  serialized_end=1361,
+  serialized_start=1271,
+  serialized_end=1345,
 )
 
 _SNAPSHOT_RESOURCERATIOENTRY = _descriptor.Descriptor(
@@ -643,8 +636,8 @@ _SNAPSHOT_RESOURCERATIOENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1363,
-  serialized_end=1449,
+  serialized_start=1347,
+  serialized_end=1433,
 )
 
 _SNAPSHOT = _descriptor.Descriptor(
@@ -736,8 +729,8 @@ _SNAPSHOT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=655,
-  serialized_end=1449,
+  serialized_start=639,
+  serialized_end=1433,
 )
 
 _PROPOSEDCHANGES_BUYSELLENTRY.containing_type = _PROPOSEDCHANGES
@@ -761,7 +754,7 @@ _SNAPSHOT.fields_by_name['volumes'].message_type = _SNAPSHOT_VOLUMESENTRY
 _SNAPSHOT.fields_by_name['item_cost'].message_type = _SNAPSHOT_ITEMCOSTENTRY
 _SNAPSHOT.fields_by_name['resource_ratio'].message_type = _SNAPSHOT_RESOURCERATIOENTRY
 DESCRIPTOR.message_types_by_name['ReturnCode'] = _RETURNCODE
-DESCRIPTOR.message_types_by_name['TimeCheck'] = _TIMECHECK
+DESCRIPTOR.message_types_by_name['IntObject'] = _INTOBJECT
 DESCRIPTOR.message_types_by_name['ProposedChanges'] = _PROPOSEDCHANGES
 DESCRIPTOR.message_types_by_name['UserID'] = _USERID
 DESCRIPTOR.message_types_by_name['SelectionObject'] = _SELECTIONOBJECT
@@ -778,12 +771,12 @@ ReturnCode = _reflection.GeneratedProtocolMessageType('ReturnCode', (_message.Me
   })
 _sym_db.RegisterMessage(ReturnCode)
 
-TimeCheck = _reflection.GeneratedProtocolMessageType('TimeCheck', (_message.Message,), {
-  'DESCRIPTOR' : _TIMECHECK,
+IntObject = _reflection.GeneratedProtocolMessageType('IntObject', (_message.Message,), {
+  'DESCRIPTOR' : _INTOBJECT,
   '__module__' : 'grpc_pb2'
-  # @@protoc_insertion_point(class_scope:plushie_tycoon.TimeCheck)
+  # @@protoc_insertion_point(class_scope:plushie_tycoon.IntObject)
   })
-_sym_db.RegisterMessage(TimeCheck)
+_sym_db.RegisterMessage(IntObject)
 
 ProposedChanges = _reflection.GeneratedProtocolMessageType('ProposedChanges', (_message.Message,), {
 
@@ -923,8 +916,8 @@ _UITRANSFER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1452,
-  serialized_end=2090,
+  serialized_start=1436,
+  serialized_end=2074,
   methods=[
   _descriptor.MethodDescriptor(
     name='buy',
@@ -1019,8 +1012,8 @@ _SENDCALLS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   serialized_options=None,
-  serialized_start=2093,
-  serialized_end=2507,
+  serialized_start=2077,
+  serialized_end=2494,
   methods=[
   _descriptor.MethodDescriptor(
     name='register',
@@ -1059,12 +1052,12 @@ _SENDCALLS = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='timeCheck',
-    full_name='plushie_tycoon.SendCalls.timeCheck',
+    name='getTime',
+    full_name='plushie_tycoon.SendCalls.getTime',
     index=4,
     containing_service=None,
-    input_type=_TIMECHECK,
-    output_type=_RETURNCODE,
+    input_type=_SELECTIONOBJECT,
+    output_type=_INTOBJECT,
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(

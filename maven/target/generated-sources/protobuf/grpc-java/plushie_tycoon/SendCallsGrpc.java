@@ -151,35 +151,35 @@ public final class SendCallsGrpc {
     return getQueryMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.TimeCheck,
-      plushie_tycoon.Grpc.ReturnCode> getTimeCheckMethod;
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+      plushie_tycoon.Grpc.IntObject> getGetTimeMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "timeCheck",
-      requestType = plushie_tycoon.Grpc.TimeCheck.class,
-      responseType = plushie_tycoon.Grpc.ReturnCode.class,
+      fullMethodName = SERVICE_NAME + '/' + "getTime",
+      requestType = plushie_tycoon.Grpc.SelectionObject.class,
+      responseType = plushie_tycoon.Grpc.IntObject.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.TimeCheck,
-      plushie_tycoon.Grpc.ReturnCode> getTimeCheckMethod() {
-    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.TimeCheck, plushie_tycoon.Grpc.ReturnCode> getTimeCheckMethod;
-    if ((getTimeCheckMethod = SendCallsGrpc.getTimeCheckMethod) == null) {
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+      plushie_tycoon.Grpc.IntObject> getGetTimeMethod() {
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.IntObject> getGetTimeMethod;
+    if ((getGetTimeMethod = SendCallsGrpc.getGetTimeMethod) == null) {
       synchronized (SendCallsGrpc.class) {
-        if ((getTimeCheckMethod = SendCallsGrpc.getTimeCheckMethod) == null) {
-          SendCallsGrpc.getTimeCheckMethod = getTimeCheckMethod =
-              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.TimeCheck, plushie_tycoon.Grpc.ReturnCode>newBuilder()
+        if ((getGetTimeMethod = SendCallsGrpc.getGetTimeMethod) == null) {
+          SendCallsGrpc.getGetTimeMethod = getGetTimeMethod =
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.IntObject>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "timeCheck"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getTime"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  plushie_tycoon.Grpc.TimeCheck.getDefaultInstance()))
+                  plushie_tycoon.Grpc.SelectionObject.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  plushie_tycoon.Grpc.ReturnCode.getDefaultInstance()))
-              .setSchemaDescriptor(new SendCallsMethodDescriptorSupplier("timeCheck"))
+                  plushie_tycoon.Grpc.IntObject.getDefaultInstance()))
+              .setSchemaDescriptor(new SendCallsMethodDescriptorSupplier("getTime"))
               .build();
         }
       }
     }
-    return getTimeCheckMethod;
+    return getGetTimeMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID,
@@ -291,9 +291,9 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public void timeCheck(plushie_tycoon.Grpc.TimeCheck request,
-        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode> responseObserver) {
-      asyncUnimplementedUnaryCall(getTimeCheckMethod(), responseObserver);
+    public void getTime(plushie_tycoon.Grpc.SelectionObject request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.IntObject> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetTimeMethod(), responseObserver);
     }
 
     /**
@@ -334,12 +334,12 @@ public final class SendCallsGrpc {
                 plushie_tycoon.Grpc.Snapshot>(
                   this, METHODID_QUERY)))
           .addMethod(
-            getTimeCheckMethod(),
+            getGetTimeMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                plushie_tycoon.Grpc.TimeCheck,
-                plushie_tycoon.Grpc.ReturnCode>(
-                  this, METHODID_TIME_CHECK)))
+                plushie_tycoon.Grpc.SelectionObject,
+                plushie_tycoon.Grpc.IntObject>(
+                  this, METHODID_GET_TIME)))
           .addMethod(
             getHasUpdateMethod(),
             asyncUnaryCall(
@@ -399,10 +399,10 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public void timeCheck(plushie_tycoon.Grpc.TimeCheck request,
-        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode> responseObserver) {
+    public void getTime(plushie_tycoon.Grpc.SelectionObject request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.IntObject> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getTimeCheckMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetTimeMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -458,9 +458,9 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public plushie_tycoon.Grpc.ReturnCode timeCheck(plushie_tycoon.Grpc.TimeCheck request) {
+    public plushie_tycoon.Grpc.IntObject getTime(plushie_tycoon.Grpc.SelectionObject request) {
       return blockingUnaryCall(
-          getChannel(), getTimeCheckMethod(), getCallOptions(), request);
+          getChannel(), getGetTimeMethod(), getCallOptions(), request);
     }
 
     /**
@@ -519,10 +519,10 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.ReturnCode> timeCheck(
-        plushie_tycoon.Grpc.TimeCheck request) {
+    public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.IntObject> getTime(
+        plushie_tycoon.Grpc.SelectionObject request) {
       return futureUnaryCall(
-          getChannel().newCall(getTimeCheckMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetTimeMethod(), getCallOptions()), request);
     }
 
     /**
@@ -538,7 +538,7 @@ public final class SendCallsGrpc {
   private static final int METHODID_ISREGISTERED = 1;
   private static final int METHODID_SEND = 2;
   private static final int METHODID_QUERY = 3;
-  private static final int METHODID_TIME_CHECK = 4;
+  private static final int METHODID_GET_TIME = 4;
   private static final int METHODID_HAS_UPDATE = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
@@ -574,9 +574,9 @@ public final class SendCallsGrpc {
           serviceImpl.query((plushie_tycoon.Grpc.UserID) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
           break;
-        case METHODID_TIME_CHECK:
-          serviceImpl.timeCheck((plushie_tycoon.Grpc.TimeCheck) request,
-              (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode>) responseObserver);
+        case METHODID_GET_TIME:
+          serviceImpl.getTime((plushie_tycoon.Grpc.SelectionObject) request,
+              (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.IntObject>) responseObserver);
           break;
         case METHODID_HAS_UPDATE:
           serviceImpl.hasUpdate((plushie_tycoon.Grpc.UserID) request,
@@ -647,7 +647,7 @@ public final class SendCallsGrpc {
               .addMethod(getIsregisteredMethod())
               .addMethod(getSendMethod())
               .addMethod(getQueryMethod())
-              .addMethod(getTimeCheckMethod())
+              .addMethod(getGetTimeMethod())
               .addMethod(getHasUpdateMethod())
               .build();
         }

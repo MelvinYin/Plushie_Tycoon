@@ -20,7 +20,7 @@ service SendCalls {
     rpc isregistered(UserID) returns (ReturnCode) {};
     rpc send(ProposedChanges) returns (ReturnCode) {};
     rpc query(UserID) returns (Snapshot) {};
-    rpc timeCheck(TimeCheck) returns (ReturnCode) {};
+    rpc getTime(SelectionObject) returns (IntObject) {};
     rpc hasUpdate(UserID) returns (ReturnCode) {};
 }
 
@@ -29,9 +29,8 @@ message ReturnCode {
     bool code = 2;
 }
 
-message TimeCheck {
-    string userid = 1;
-    int32 time = 2;
+message IntObject {
+    int32 item = 1;
 }
 
 message ProposedChanges {
