@@ -2856,30 +2856,30 @@ public final class Grpc {
 
   }
 
-  public interface SelectionObjectOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:plushie_tycoon.SelectionObject)
+  public interface NullObjectOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:plushie_tycoon.NullObject)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
-   * Protobuf type {@code plushie_tycoon.SelectionObject}
+   * Protobuf type {@code plushie_tycoon.NullObject}
    */
-  public  static final class SelectionObject extends
+  public  static final class NullObject extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:plushie_tycoon.SelectionObject)
-      SelectionObjectOrBuilder {
+      // @@protoc_insertion_point(message_implements:plushie_tycoon.NullObject)
+      NullObjectOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use SelectionObject.newBuilder() to construct.
-    private SelectionObject(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use NullObject.newBuilder() to construct.
+    private NullObject(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private SelectionObject() {
+    private NullObject() {
     }
 
     @java.lang.Override
     @SuppressWarnings({"unused"})
     protected java.lang.Object newInstance(
         UnusedPrivateParameter unused) {
-      return new SelectionObject();
+      return new NullObject();
     }
 
     @java.lang.Override
@@ -2887,7 +2887,7 @@ public final class Grpc {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private SelectionObject(
+    private NullObject(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2926,15 +2926,15 @@ public final class Grpc {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_SelectionObject_descriptor;
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_NullObject_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_SelectionObject_fieldAccessorTable
+      return plushie_tycoon.Grpc.internal_static_plushie_tycoon_NullObject_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              plushie_tycoon.Grpc.SelectionObject.class, plushie_tycoon.Grpc.SelectionObject.Builder.class);
+              plushie_tycoon.Grpc.NullObject.class, plushie_tycoon.Grpc.NullObject.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2970,10 +2970,10 @@ public final class Grpc {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof plushie_tycoon.Grpc.SelectionObject)) {
+      if (!(obj instanceof plushie_tycoon.Grpc.NullObject)) {
         return super.equals(obj);
       }
-      plushie_tycoon.Grpc.SelectionObject other = (plushie_tycoon.Grpc.SelectionObject) obj;
+      plushie_tycoon.Grpc.NullObject other = (plushie_tycoon.Grpc.NullObject) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -2991,69 +2991,69 @@ public final class Grpc {
       return hash;
     }
 
-    public static plushie_tycoon.Grpc.SelectionObject parseFrom(
+    public static plushie_tycoon.Grpc.NullObject parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseFrom(
+    public static plushie_tycoon.Grpc.NullObject parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseFrom(
+    public static plushie_tycoon.Grpc.NullObject parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseFrom(
+    public static plushie_tycoon.Grpc.NullObject parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseFrom(byte[] data)
+    public static plushie_tycoon.Grpc.NullObject parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseFrom(
+    public static plushie_tycoon.Grpc.NullObject parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseFrom(java.io.InputStream input)
+    public static plushie_tycoon.Grpc.NullObject parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseFrom(
+    public static plushie_tycoon.Grpc.NullObject parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseDelimitedFrom(java.io.InputStream input)
+    public static plushie_tycoon.Grpc.NullObject parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseDelimitedFrom(
+    public static plushie_tycoon.Grpc.NullObject parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseFrom(
+    public static plushie_tycoon.Grpc.NullObject parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static plushie_tycoon.Grpc.SelectionObject parseFrom(
+    public static plushie_tycoon.Grpc.NullObject parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3066,7 +3066,7 @@ public final class Grpc {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(plushie_tycoon.Grpc.SelectionObject prototype) {
+    public static Builder newBuilder(plushie_tycoon.Grpc.NullObject prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3082,26 +3082,26 @@ public final class Grpc {
       return builder;
     }
     /**
-     * Protobuf type {@code plushie_tycoon.SelectionObject}
+     * Protobuf type {@code plushie_tycoon.NullObject}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:plushie_tycoon.SelectionObject)
-        plushie_tycoon.Grpc.SelectionObjectOrBuilder {
+        // @@protoc_insertion_point(builder_implements:plushie_tycoon.NullObject)
+        plushie_tycoon.Grpc.NullObjectOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_SelectionObject_descriptor;
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_NullObject_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_SelectionObject_fieldAccessorTable
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_NullObject_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                plushie_tycoon.Grpc.SelectionObject.class, plushie_tycoon.Grpc.SelectionObject.Builder.class);
+                plushie_tycoon.Grpc.NullObject.class, plushie_tycoon.Grpc.NullObject.Builder.class);
       }
 
-      // Construct using plushie_tycoon.Grpc.SelectionObject.newBuilder()
+      // Construct using plushie_tycoon.Grpc.NullObject.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3125,17 +3125,17 @@ public final class Grpc {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_SelectionObject_descriptor;
+        return plushie_tycoon.Grpc.internal_static_plushie_tycoon_NullObject_descriptor;
       }
 
       @java.lang.Override
-      public plushie_tycoon.Grpc.SelectionObject getDefaultInstanceForType() {
-        return plushie_tycoon.Grpc.SelectionObject.getDefaultInstance();
+      public plushie_tycoon.Grpc.NullObject getDefaultInstanceForType() {
+        return plushie_tycoon.Grpc.NullObject.getDefaultInstance();
       }
 
       @java.lang.Override
-      public plushie_tycoon.Grpc.SelectionObject build() {
-        plushie_tycoon.Grpc.SelectionObject result = buildPartial();
+      public plushie_tycoon.Grpc.NullObject build() {
+        plushie_tycoon.Grpc.NullObject result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3143,8 +3143,8 @@ public final class Grpc {
       }
 
       @java.lang.Override
-      public plushie_tycoon.Grpc.SelectionObject buildPartial() {
-        plushie_tycoon.Grpc.SelectionObject result = new plushie_tycoon.Grpc.SelectionObject(this);
+      public plushie_tycoon.Grpc.NullObject buildPartial() {
+        plushie_tycoon.Grpc.NullObject result = new plushie_tycoon.Grpc.NullObject(this);
         onBuilt();
         return result;
       }
@@ -3183,16 +3183,16 @@ public final class Grpc {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof plushie_tycoon.Grpc.SelectionObject) {
-          return mergeFrom((plushie_tycoon.Grpc.SelectionObject)other);
+        if (other instanceof plushie_tycoon.Grpc.NullObject) {
+          return mergeFrom((plushie_tycoon.Grpc.NullObject)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(plushie_tycoon.Grpc.SelectionObject other) {
-        if (other == plushie_tycoon.Grpc.SelectionObject.getDefaultInstance()) return this;
+      public Builder mergeFrom(plushie_tycoon.Grpc.NullObject other) {
+        if (other == plushie_tycoon.Grpc.NullObject.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -3208,11 +3208,11 @@ public final class Grpc {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        plushie_tycoon.Grpc.SelectionObject parsedMessage = null;
+        plushie_tycoon.Grpc.NullObject parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (plushie_tycoon.Grpc.SelectionObject) e.getUnfinishedMessage();
+          parsedMessage = (plushie_tycoon.Grpc.NullObject) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3234,41 +3234,41 @@ public final class Grpc {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:plushie_tycoon.SelectionObject)
+      // @@protoc_insertion_point(builder_scope:plushie_tycoon.NullObject)
     }
 
-    // @@protoc_insertion_point(class_scope:plushie_tycoon.SelectionObject)
-    private static final plushie_tycoon.Grpc.SelectionObject DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:plushie_tycoon.NullObject)
+    private static final plushie_tycoon.Grpc.NullObject DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new plushie_tycoon.Grpc.SelectionObject();
+      DEFAULT_INSTANCE = new plushie_tycoon.Grpc.NullObject();
     }
 
-    public static plushie_tycoon.Grpc.SelectionObject getDefaultInstance() {
+    public static plushie_tycoon.Grpc.NullObject getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<SelectionObject>
-        PARSER = new com.google.protobuf.AbstractParser<SelectionObject>() {
+    private static final com.google.protobuf.Parser<NullObject>
+        PARSER = new com.google.protobuf.AbstractParser<NullObject>() {
       @java.lang.Override
-      public SelectionObject parsePartialFrom(
+      public NullObject parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new SelectionObject(input, extensionRegistry);
+        return new NullObject(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<SelectionObject> parser() {
+    public static com.google.protobuf.Parser<NullObject> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<SelectionObject> getParserForType() {
+    public com.google.protobuf.Parser<NullObject> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public plushie_tycoon.Grpc.SelectionObject getDefaultInstanceForType() {
+    public plushie_tycoon.Grpc.NullObject getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -7852,10 +7852,10 @@ public final class Grpc {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_plushie_tycoon_UserID_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_plushie_tycoon_SelectionObject_descriptor;
+    internal_static_plushie_tycoon_NullObject_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_plushie_tycoon_SelectionObject_fieldAccessorTable;
+      internal_static_plushie_tycoon_NullObject_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_plushie_tycoon_TransactionObject_descriptor;
   private static final 
@@ -7929,57 +7929,56 @@ public final class Grpc {
       "\022\016\n\006userid\030\003 \001(\t\032.\n\014BuySellEntry\022\013\n\003key\030" +
       "\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\032+\n\tMakeEntry\022\013\n" +
       "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"\030\n\006UserID\022" +
-      "\016\n\006userid\030\001 \001(\t\"\021\n\017SelectionObject\"3\n\021Tr" +
-      "ansactionObject\022\014\n\004name\030\001 \001(\t\022\020\n\010quantit" +
-      "y\030\002 \001(\005\"=\n\tmItemCost\022\016\n\006movein\030\003 \001(\001\022\017\n\007" +
-      "moveout\030\004 \001(\001\022\017\n\007storage\030\005 \001(\001\"|\n\020mRatio" +
-      "PerProduct\022:\n\005ratio\030\006 \003(\0132+.plushie_tyco" +
-      "on.mRatioPerProduct.RatioEntry\032,\n\nRatioE" +
-      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"\232\006\n" +
-      "\010Snapshot\0224\n\006prices\030\001 \003(\0132$.plushie_tyco" +
-      "on.Snapshot.PricesEntry\022<\n\nquantities\030\002 " +
-      "\003(\0132(.plushie_tycoon.Snapshot.Quantities" +
-      "Entry\0226\n\007weights\030\r \003(\0132%.plushie_tycoon." +
-      "Snapshot.WeightsEntry\0226\n\007volumes\030\016 \003(\0132%" +
-      ".plushie_tycoon.Snapshot.VolumesEntry\0229\n" +
-      "\titem_cost\030\014 \003(\0132&.plushie_tycoon.Snapsh" +
-      "ot.ItemCostEntry\022C\n\016resource_ratio\030\007 \003(\013" +
-      "2+.plushie_tycoon.Snapshot.ResourceRatio" +
-      "Entry\022\026\n\016console_output\030\010 \001(\t\022\016\n\006budget\030" +
-      "\t \001(\001\022\014\n\004time\030\n \001(\005\022\016\n\006action\030\013 \001(\t\032-\n\013P" +
-      "ricesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\002" +
-      "8\001\0321\n\017QuantitiesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005va" +
-      "lue\030\002 \001(\005:\0028\001\032.\n\014WeightsEntry\022\013\n\003key\030\001 \001" +
-      "(\t\022\r\n\005value\030\002 \001(\001:\0028\001\032.\n\014VolumesEntry\022\013\n" +
-      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\0028\001\032J\n\rItemCos" +
-      "tEntry\022\013\n\003key\030\001 \001(\t\022(\n\005value\030\002 \001(\0132\031.plu" +
-      "shie_tycoon.mItemCost:\0028\001\032V\n\022ResourceRat" +
-      "ioEntry\022\013\n\003key\030\001 \001(\t\022/\n\005value\030\002 \001(\0132 .pl" +
-      "ushie_tycoon.mRatioPerProduct:\0028\0012\376\004\n\nUI" +
-      "Transfer\022D\n\003buy\022!.plushie_tycoon.Transac" +
-      "tionObject\032\030.plushie_tycoon.Snapshot\"\000\022E" +
-      "\n\004sell\022!.plushie_tycoon.TransactionObjec" +
-      "t\032\030.plushie_tycoon.Snapshot\"\000\022E\n\004make\022!." +
-      "plushie_tycoon.TransactionObject\032\030.plush" +
-      "ie_tycoon.Snapshot\"\000\022C\n\004next\022\037.plushie_t" +
-      "ycoon.SelectionObject\032\030.plushie_tycoon.S" +
-      "napshot\"\000\022C\n\004save\022\037.plushie_tycoon.Selec" +
-      "tionObject\032\030.plushie_tycoon.Snapshot\"\000\022C" +
-      "\n\004load\022\037.plushie_tycoon.SelectionObject\032" +
-      "\030.plushie_tycoon.Snapshot\"\000\022C\n\004back\022\037.pl" +
-      "ushie_tycoon.SelectionObject\032\030.plushie_t" +
-      "ycoon.Snapshot\"\000\022C\n\004quit\022\037.plushie_tycoo" +
-      "n.SelectionObject\032\030.plushie_tycoon.Snaps" +
-      "hot\"\000\022C\n\004init\022\037.plushie_tycoon.Selection" +
-      "Object\032\030.plushie_tycoon.Snapshot\"\0002\241\003\n\tS" +
-      "endCalls\022>\n\010register\022\026.plushie_tycoon.Us" +
-      "erID\032\030.plushie_tycoon.Snapshot\"\000\022D\n\014isre" +
-      "gistered\022\026.plushie_tycoon.UserID\032\032.plush" +
-      "ie_tycoon.ReturnCode\"\000\022E\n\004send\022\037.plushie" +
-      "_tycoon.ProposedChanges\032\032.plushie_tycoon" +
-      ".ReturnCode\"\000\022;\n\005query\022\026.plushie_tycoon." +
-      "UserID\032\030.plushie_tycoon.Snapshot\"\000\022G\n\007ge" +
-      "tTime\022\037.plushie_tycoon.SelectionObject\032\031" +
+      "\016\n\006userid\030\001 \001(\t\"\014\n\nNullObject\"3\n\021Transac" +
+      "tionObject\022\014\n\004name\030\001 \001(\t\022\020\n\010quantity\030\002 \001" +
+      "(\005\"=\n\tmItemCost\022\016\n\006movein\030\003 \001(\001\022\017\n\007moveo" +
+      "ut\030\004 \001(\001\022\017\n\007storage\030\005 \001(\001\"|\n\020mRatioPerPr" +
+      "oduct\022:\n\005ratio\030\006 \003(\0132+.plushie_tycoon.mR" +
+      "atioPerProduct.RatioEntry\032,\n\nRatioEntry\022" +
+      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\"\232\006\n\010Snap" +
+      "shot\0224\n\006prices\030\001 \003(\0132$.plushie_tycoon.Sn" +
+      "apshot.PricesEntry\022<\n\nquantities\030\002 \003(\0132(" +
+      ".plushie_tycoon.Snapshot.QuantitiesEntry" +
+      "\0226\n\007weights\030\r \003(\0132%.plushie_tycoon.Snaps" +
+      "hot.WeightsEntry\0226\n\007volumes\030\016 \003(\0132%.plus" +
+      "hie_tycoon.Snapshot.VolumesEntry\0229\n\titem" +
+      "_cost\030\014 \003(\0132&.plushie_tycoon.Snapshot.It" +
+      "emCostEntry\022C\n\016resource_ratio\030\007 \003(\0132+.pl" +
+      "ushie_tycoon.Snapshot.ResourceRatioEntry" +
+      "\022\026\n\016console_output\030\010 \001(\t\022\016\n\006budget\030\t \001(\001" +
+      "\022\014\n\004time\030\n \001(\005\022\016\n\006action\030\013 \001(\t\032-\n\013Prices" +
+      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\001:\0028\001\0321\n" +
+      "\017QuantitiesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002" +
+      " \001(\005:\0028\001\032.\n\014WeightsEntry\022\013\n\003key\030\001 \001(\t\022\r\n" +
+      "\005value\030\002 \001(\001:\0028\001\032.\n\014VolumesEntry\022\013\n\003key\030" +
+      "\001 \001(\t\022\r\n\005value\030\002 \001(\001:\0028\001\032J\n\rItemCostEntr" +
+      "y\022\013\n\003key\030\001 \001(\t\022(\n\005value\030\002 \001(\0132\031.plushie_" +
+      "tycoon.mItemCost:\0028\001\032V\n\022ResourceRatioEnt" +
+      "ry\022\013\n\003key\030\001 \001(\t\022/\n\005value\030\002 \001(\0132 .plushie" +
+      "_tycoon.mRatioPerProduct:\0028\0012\340\004\n\nUITrans" +
+      "fer\022D\n\003buy\022!.plushie_tycoon.TransactionO" +
+      "bject\032\030.plushie_tycoon.Snapshot\"\000\022E\n\004sel" +
+      "l\022!.plushie_tycoon.TransactionObject\032\030.p" +
+      "lushie_tycoon.Snapshot\"\000\022E\n\004make\022!.plush" +
+      "ie_tycoon.TransactionObject\032\030.plushie_ty" +
+      "coon.Snapshot\"\000\022>\n\004next\022\032.plushie_tycoon" +
+      ".NullObject\032\030.plushie_tycoon.Snapshot\"\000\022" +
+      ">\n\004save\022\032.plushie_tycoon.NullObject\032\030.pl" +
+      "ushie_tycoon.Snapshot\"\000\022>\n\004load\022\032.plushi" +
+      "e_tycoon.NullObject\032\030.plushie_tycoon.Sna" +
+      "pshot\"\000\022>\n\004back\022\032.plushie_tycoon.NullObj" +
+      "ect\032\030.plushie_tycoon.Snapshot\"\000\022>\n\004quit\022" +
+      "\032.plushie_tycoon.NullObject\032\030.plushie_ty" +
+      "coon.Snapshot\"\000\022>\n\004init\022\032.plushie_tycoon" +
+      ".NullObject\032\030.plushie_tycoon.Snapshot\"\0002" +
+      "\234\003\n\tSendCalls\022>\n\010register\022\026.plushie_tyco" +
+      "on.UserID\032\030.plushie_tycoon.Snapshot\"\000\022D\n" +
+      "\014isregistered\022\026.plushie_tycoon.UserID\032\032." +
+      "plushie_tycoon.ReturnCode\"\000\022E\n\004send\022\037.pl" +
+      "ushie_tycoon.ProposedChanges\032\032.plushie_t" +
+      "ycoon.ReturnCode\"\000\022;\n\005query\022\026.plushie_ty" +
+      "coon.UserID\032\030.plushie_tycoon.Snapshot\"\000\022" +
+      "B\n\007getTime\022\032.plushie_tycoon.NullObject\032\031" +
       ".plushie_tycoon.IntObject\"\000\022A\n\thasUpdate" +
       "\022\026.plushie_tycoon.UserID\032\032.plushie_tycoo" +
       "n.ReturnCode\"\000b\006proto3"
@@ -8024,11 +8023,11 @@ public final class Grpc {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_plushie_tycoon_UserID_descriptor,
         new java.lang.String[] { "Userid", });
-    internal_static_plushie_tycoon_SelectionObject_descriptor =
+    internal_static_plushie_tycoon_NullObject_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_plushie_tycoon_SelectionObject_fieldAccessorTable = new
+    internal_static_plushie_tycoon_NullObject_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_plushie_tycoon_SelectionObject_descriptor,
+        internal_static_plushie_tycoon_NullObject_descriptor,
         new java.lang.String[] { });
     internal_static_plushie_tycoon_TransactionObject_descriptor =
       getDescriptor().getMessageTypes().get(5);

@@ -7,12 +7,12 @@ service UITransfer {
     rpc buy(TransactionObject) returns (Snapshot) {};
     rpc sell(TransactionObject) returns (Snapshot) {};
     rpc make(TransactionObject) returns (Snapshot) {};
-    rpc next(SelectionObject) returns (Snapshot) {};
-    rpc save(SelectionObject) returns (Snapshot) {};
-    rpc load(SelectionObject) returns (Snapshot) {};
-    rpc back(SelectionObject) returns (Snapshot) {};
-    rpc quit(SelectionObject) returns (Snapshot) {};
-    rpc init(SelectionObject) returns (Snapshot) {};
+    rpc next(NullObject) returns (Snapshot) {};
+    rpc save(NullObject) returns (Snapshot) {};
+    rpc load(NullObject) returns (Snapshot) {};
+    rpc back(NullObject) returns (Snapshot) {};
+    rpc quit(NullObject) returns (Snapshot) {};
+    rpc init(NullObject) returns (Snapshot) {};
 }
 
 service SendCalls {
@@ -20,7 +20,7 @@ service SendCalls {
     rpc isregistered(UserID) returns (ReturnCode) {};
     rpc send(ProposedChanges) returns (ReturnCode) {};
     rpc query(UserID) returns (Snapshot) {};
-    rpc getTime(SelectionObject) returns (IntObject) {};
+    rpc getTime(NullObject) returns (IntObject) {};
     rpc hasUpdate(UserID) returns (ReturnCode) {};
 }
 
@@ -43,7 +43,7 @@ message UserID {
     string userid = 1;
 }
 
-message SelectionObject {
+message NullObject {
 }
 
 message TransactionObject {

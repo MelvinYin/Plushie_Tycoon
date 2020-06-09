@@ -50,37 +50,37 @@ public class ServerService {
             responseObserver.onCompleted();
         }
         @Override
-        public void next(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void next(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             Grpc.Snapshot output = ge.next();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         @Override
-        public void save(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void save(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             Grpc.Snapshot output = ge.save();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         @Override
-        public void load(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void load(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             Grpc.Snapshot output = ge.load();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         //        @Override
-        public void back(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void back(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             Grpc.Snapshot output = ge.back();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         //        @Override
-        public void quit(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void quit(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             Grpc.Snapshot output = ge.quit();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         //        @Override
-        public void init(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void init(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             Grpc.Snapshot output = ge.init();
             System.out.println(output);
             responseObserver.onNext(output);

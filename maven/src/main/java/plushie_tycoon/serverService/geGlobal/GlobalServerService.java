@@ -69,7 +69,7 @@ public class GlobalServerService {
         }
 
         @Override
-        public void getTime(Grpc.SelectionObject request, StreamObserver<Grpc.IntObject> responseObserver) {
+        public void getTime(Grpc.NullObject request, StreamObserver<Grpc.IntObject> responseObserver) {
             int time = ge.getTime();
             Grpc.IntObject output = Grpc.IntObject.newBuilder().setItem(time).build();
             responseObserver.onNext(output);

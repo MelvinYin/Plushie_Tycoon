@@ -151,27 +151,27 @@ public final class SendCallsGrpc {
     return getQueryMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.IntObject> getGetTimeMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "getTime",
-      requestType = plushie_tycoon.Grpc.SelectionObject.class,
+      requestType = plushie_tycoon.Grpc.NullObject.class,
       responseType = plushie_tycoon.Grpc.IntObject.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.IntObject> getGetTimeMethod() {
-    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.IntObject> getGetTimeMethod;
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.IntObject> getGetTimeMethod;
     if ((getGetTimeMethod = SendCallsGrpc.getGetTimeMethod) == null) {
       synchronized (SendCallsGrpc.class) {
         if ((getGetTimeMethod = SendCallsGrpc.getGetTimeMethod) == null) {
           SendCallsGrpc.getGetTimeMethod = getGetTimeMethod =
-              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.IntObject>newBuilder()
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.IntObject>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getTime"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  plushie_tycoon.Grpc.SelectionObject.getDefaultInstance()))
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   plushie_tycoon.Grpc.IntObject.getDefaultInstance()))
               .setSchemaDescriptor(new SendCallsMethodDescriptorSupplier("getTime"))
@@ -291,7 +291,7 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public void getTime(plushie_tycoon.Grpc.SelectionObject request,
+    public void getTime(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.IntObject> responseObserver) {
       asyncUnimplementedUnaryCall(getGetTimeMethod(), responseObserver);
     }
@@ -337,7 +337,7 @@ public final class SendCallsGrpc {
             getGetTimeMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                plushie_tycoon.Grpc.SelectionObject,
+                plushie_tycoon.Grpc.NullObject,
                 plushie_tycoon.Grpc.IntObject>(
                   this, METHODID_GET_TIME)))
           .addMethod(
@@ -399,7 +399,7 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public void getTime(plushie_tycoon.Grpc.SelectionObject request,
+    public void getTime(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.IntObject> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetTimeMethod(), getCallOptions()), request, responseObserver);
@@ -458,7 +458,7 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public plushie_tycoon.Grpc.IntObject getTime(plushie_tycoon.Grpc.SelectionObject request) {
+    public plushie_tycoon.Grpc.IntObject getTime(plushie_tycoon.Grpc.NullObject request) {
       return blockingUnaryCall(
           getChannel(), getGetTimeMethod(), getCallOptions(), request);
     }
@@ -520,7 +520,7 @@ public final class SendCallsGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.IntObject> getTime(
-        plushie_tycoon.Grpc.SelectionObject request) {
+        plushie_tycoon.Grpc.NullObject request) {
       return futureUnaryCall(
           getChannel().newCall(getGetTimeMethod(), getCallOptions()), request);
     }
@@ -575,7 +575,7 @@ public final class SendCallsGrpc {
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
           break;
         case METHODID_GET_TIME:
-          serviceImpl.getTime((plushie_tycoon.Grpc.SelectionObject) request,
+          serviceImpl.getTime((plushie_tycoon.Grpc.NullObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.IntObject>) responseObserver);
           break;
         case METHODID_HAS_UPDATE:

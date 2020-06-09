@@ -14,7 +14,6 @@ plushie_tycoon/serverService/geGlobal/UserData.class
 plushie_tycoon/SendCallsGrpc$2.class
 plushie_tycoon/Grpc$1.class
 plushie_tycoon/Grpc$ProposedChanges$BuySellDefaultEntryHolder.class
-plushie_tycoon/Grpc$SelectionObject.class
 plushie_tycoon/UITransferGrpc$UITransferStub.class
 plushie_tycoon/Grpc$ProposedChangesOrBuilder.class
 plushie_tycoon/Grpc$mRatioPerProduct.class
@@ -23,8 +22,6 @@ plushie_tycoon/Grpc$IntObject$Builder.class
 plushie_tycoon/serverService/geLocal/inventory/LocalInventory.class
 plushie_tycoon/serverService/ServerService$UITransferService.class
 plushie_tycoon/Grpc$mItemCostOrBuilder.class
-plushie_tycoon/Grpc$SelectionObjectOrBuilder.class
-plushie_tycoon/Grpc$SelectionObject$Builder.class
 plushie_tycoon/Grpc$UserIDOrBuilder.class
 plushie_tycoon/Grpc$ProposedChanges$MakeDefaultEntryHolder.class
 plushie_tycoon/serverService/geGlobal/market/seller/ConsolidatedSeller.class
@@ -91,6 +88,7 @@ plushie_tycoon/UITransferGrpc$UITransferFutureStub.class
 plushie_tycoon/Grpc$TransactionObject$Builder.class
 plushie_tycoon/Grpc$Snapshot$ItemCostDefaultEntryHolder.class
 plushie_tycoon/Grpc$TransactionObject.class
+plushie_tycoon/Grpc$NullObject.class
 plushie_tycoon/UITransferGrpc$UITransferFileDescriptorSupplier.class
 plushie_tycoon/serverService/geGlobal/market/seller/SellerBase.class
 plushie_tycoon/MockService$UITransferService.class
@@ -101,18 +99,20 @@ plushie_tycoon/serverService/geLocal/inventory/InventoryCalculator.class
 plushie_tycoon/Grpc$Snapshot$WeightsDefaultEntryHolder.class
 plushie_tycoon/serverService/MockGE.class
 plushie_tycoon/serverService/utils/BaseStringConverter.class
+plushie_tycoon/Grpc$NullObject$1.class
 plushie_tycoon/Grpc$mRatioPerProduct$RatioDefaultEntryHolder.class
 plushie_tycoon/SendCallsGrpc$SendCallsBaseDescriptorSupplier.class
 plushie_tycoon/serverService/config/Initials.class
 plushie_tycoon/Grpc$Snapshot$QuantitiesDefaultEntryHolder.class
-plushie_tycoon/Grpc$SelectionObject$1.class
 plushie_tycoon/Grpc$ReturnCode$Builder.class
 plushie_tycoon/serverService/config/Defaults.class
 plushie_tycoon/Grpc$ProposedChanges.class
 plushie_tycoon/Grpc$Snapshot$1.class
 plushie_tycoon/serverService/geGlobal/market/IndividualMarket.class
 plushie_tycoon/serverService/config/interfaces/Inventory.class
+plushie_tycoon/Grpc$NullObjectOrBuilder.class
 plushie_tycoon/serverService/geGlobal/GEGlobal.class
+plushie_tycoon/Grpc$NullObject$Builder.class
 plushie_tycoon/serverService/geGlobal/MockGEGlobal.class
 plushie_tycoon/MockService.class
 plushie_tycoon/serverService/geGlobal/market/GlobalMarket.class
