@@ -77,8 +77,8 @@ public class GlobalServerService {
         }
 
         @Override
-        public void hasUpdate(Grpc.UserID request, StreamObserver<Grpc.ReturnCode> responseObserver) {
-            boolean returnCode = ge.hasUpdate(request.getUserid());
+        public void hasUpdated(Grpc.UserID request, StreamObserver<Grpc.ReturnCode> responseObserver) {
+            boolean returnCode = ge.hasUpdated(request.getUserid());
             Grpc.ReturnCode output = Grpc.ReturnCode.newBuilder().setCode(returnCode).build();
             responseObserver.onNext(output);
             responseObserver.onCompleted();

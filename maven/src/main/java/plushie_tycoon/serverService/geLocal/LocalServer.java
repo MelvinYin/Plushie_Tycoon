@@ -3,10 +3,12 @@ package plushie_tycoon.serverService.geLocal;
 
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import plushie_tycoon.Grpc;
 import plushie_tycoon.SendCallsGrpc;
 import plushie_tycoon.Grpc.UserID;
 import plushie_tycoon.Grpc.ReturnCode;
 import plushie_tycoon.Grpc.Snapshot;
+import plushie_tycoon.Grpc.NullObject;
 import plushie_tycoon.Grpc.ProposedChanges;
 import plushie_tycoon.SendCallsGrpc.SendCallsBlockingStub;
 
@@ -36,12 +38,17 @@ public class LocalServer {
         return stub.query(grpcUserid);
     }
 
-//    public static Snapshot query(int portno, String userid){
-//        UserID grpcUserid = UserID.newBuilder().setUserid(userid).build();
-//        SendCallsBlockingStub stub = generateBlockingStub(portno);
-//        return stub.query(grpcUserid);
-//    }
+    public static int getTime(int portno){
+        NullObject nullObject = Grpc.NullObject.newBuilder().build();
+        SendCallsBlockingStub stub = generateBlockingStub(portno);
+        return stub.getTime(nullObject).getItem();
+    }
 
+    public static boolean hasUpdated(int portno, String userid){
+        UserID userID = Grpc.UserID.newBuilder().setUserid(userid).build();
+        SendCallsBlockingStub stub = generateBlockingStub(portno);
+        return stub.hasUpdated(userID).getCode();
+    }
 
     private static SendCallsBlockingStub generateBlockingStub(int portno){
         String target = "localhost:" + portno;
@@ -52,10 +59,3 @@ public class LocalServer {
 
 }
 
-/*
-
-rpc register(UserID) returns (Snapshot) {};
-    rpc query(UserID) returns (Snapshot) {};
-    rpc timeCheck(TimeCheck) returns (ReturnCode) {};
-    rpc hasUpdate(UserID) returns (ReturnCode) {};
-    */

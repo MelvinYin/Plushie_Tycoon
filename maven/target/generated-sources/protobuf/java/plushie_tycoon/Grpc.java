@@ -7971,7 +7971,7 @@ public final class Grpc {
       "\032.plushie_tycoon.NullObject\032\030.plushie_ty" +
       "coon.Snapshot\"\000\022>\n\004init\022\032.plushie_tycoon" +
       ".NullObject\032\030.plushie_tycoon.Snapshot\"\0002" +
-      "\234\003\n\tSendCalls\022>\n\010register\022\026.plushie_tyco" +
+      "\235\003\n\tSendCalls\022>\n\010register\022\026.plushie_tyco" +
       "on.UserID\032\030.plushie_tycoon.Snapshot\"\000\022D\n" +
       "\014isregistered\022\026.plushie_tycoon.UserID\032\032." +
       "plushie_tycoon.ReturnCode\"\000\022E\n\004send\022\037.pl" +
@@ -7979,9 +7979,9 @@ public final class Grpc {
       "ycoon.ReturnCode\"\000\022;\n\005query\022\026.plushie_ty" +
       "coon.UserID\032\030.plushie_tycoon.Snapshot\"\000\022" +
       "B\n\007getTime\022\032.plushie_tycoon.NullObject\032\031" +
-      ".plushie_tycoon.IntObject\"\000\022A\n\thasUpdate" +
-      "\022\026.plushie_tycoon.UserID\032\032.plushie_tycoo" +
-      "n.ReturnCode\"\000b\006proto3"
+      ".plushie_tycoon.IntObject\"\000\022B\n\nhasUpdate" +
+      "d\022\026.plushie_tycoon.UserID\032\032.plushie_tyco" +
+      "on.ReturnCode\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

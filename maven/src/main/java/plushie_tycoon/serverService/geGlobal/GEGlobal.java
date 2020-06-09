@@ -97,7 +97,7 @@ public class GEGlobal {
         return userDatas.containsKey(userid);
     }
 
-    public boolean hasUpdate(String userid){
+    public boolean hasUpdated(String userid){
         return hasUpdated.get(userid);
     }
 

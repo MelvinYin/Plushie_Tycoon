@@ -183,34 +183,34 @@ public final class SendCallsGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID,
-      plushie_tycoon.Grpc.ReturnCode> getHasUpdateMethod;
+      plushie_tycoon.Grpc.ReturnCode> getHasUpdatedMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "hasUpdate",
+      fullMethodName = SERVICE_NAME + '/' + "hasUpdated",
       requestType = plushie_tycoon.Grpc.UserID.class,
       responseType = plushie_tycoon.Grpc.ReturnCode.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID,
-      plushie_tycoon.Grpc.ReturnCode> getHasUpdateMethod() {
-    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID, plushie_tycoon.Grpc.ReturnCode> getHasUpdateMethod;
-    if ((getHasUpdateMethod = SendCallsGrpc.getHasUpdateMethod) == null) {
+      plushie_tycoon.Grpc.ReturnCode> getHasUpdatedMethod() {
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID, plushie_tycoon.Grpc.ReturnCode> getHasUpdatedMethod;
+    if ((getHasUpdatedMethod = SendCallsGrpc.getHasUpdatedMethod) == null) {
       synchronized (SendCallsGrpc.class) {
-        if ((getHasUpdateMethod = SendCallsGrpc.getHasUpdateMethod) == null) {
-          SendCallsGrpc.getHasUpdateMethod = getHasUpdateMethod =
+        if ((getHasUpdatedMethod = SendCallsGrpc.getHasUpdatedMethod) == null) {
+          SendCallsGrpc.getHasUpdatedMethod = getHasUpdatedMethod =
               io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.UserID, plushie_tycoon.Grpc.ReturnCode>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "hasUpdate"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "hasUpdated"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   plushie_tycoon.Grpc.UserID.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   plushie_tycoon.Grpc.ReturnCode.getDefaultInstance()))
-              .setSchemaDescriptor(new SendCallsMethodDescriptorSupplier("hasUpdate"))
+              .setSchemaDescriptor(new SendCallsMethodDescriptorSupplier("hasUpdated"))
               .build();
         }
       }
     }
-    return getHasUpdateMethod;
+    return getHasUpdatedMethod;
   }
 
   /**
@@ -298,9 +298,9 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public void hasUpdate(plushie_tycoon.Grpc.UserID request,
+    public void hasUpdated(plushie_tycoon.Grpc.UserID request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode> responseObserver) {
-      asyncUnimplementedUnaryCall(getHasUpdateMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getHasUpdatedMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -341,12 +341,12 @@ public final class SendCallsGrpc {
                 plushie_tycoon.Grpc.IntObject>(
                   this, METHODID_GET_TIME)))
           .addMethod(
-            getHasUpdateMethod(),
+            getHasUpdatedMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 plushie_tycoon.Grpc.UserID,
                 plushie_tycoon.Grpc.ReturnCode>(
-                  this, METHODID_HAS_UPDATE)))
+                  this, METHODID_HAS_UPDATED)))
           .build();
     }
   }
@@ -407,10 +407,10 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public void hasUpdate(plushie_tycoon.Grpc.UserID request,
+    public void hasUpdated(plushie_tycoon.Grpc.UserID request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getHasUpdateMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getHasUpdatedMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -465,9 +465,9 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public plushie_tycoon.Grpc.ReturnCode hasUpdate(plushie_tycoon.Grpc.UserID request) {
+    public plushie_tycoon.Grpc.ReturnCode hasUpdated(plushie_tycoon.Grpc.UserID request) {
       return blockingUnaryCall(
-          getChannel(), getHasUpdateMethod(), getCallOptions(), request);
+          getChannel(), getHasUpdatedMethod(), getCallOptions(), request);
     }
   }
 
@@ -527,10 +527,10 @@ public final class SendCallsGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.ReturnCode> hasUpdate(
+    public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.ReturnCode> hasUpdated(
         plushie_tycoon.Grpc.UserID request) {
       return futureUnaryCall(
-          getChannel().newCall(getHasUpdateMethod(), getCallOptions()), request);
+          getChannel().newCall(getHasUpdatedMethod(), getCallOptions()), request);
     }
   }
 
@@ -539,7 +539,7 @@ public final class SendCallsGrpc {
   private static final int METHODID_SEND = 2;
   private static final int METHODID_QUERY = 3;
   private static final int METHODID_GET_TIME = 4;
-  private static final int METHODID_HAS_UPDATE = 5;
+  private static final int METHODID_HAS_UPDATED = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -578,8 +578,8 @@ public final class SendCallsGrpc {
           serviceImpl.getTime((plushie_tycoon.Grpc.NullObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.IntObject>) responseObserver);
           break;
-        case METHODID_HAS_UPDATE:
-          serviceImpl.hasUpdate((plushie_tycoon.Grpc.UserID) request,
+        case METHODID_HAS_UPDATED:
+          serviceImpl.hasUpdated((plushie_tycoon.Grpc.UserID) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode>) responseObserver);
           break;
         default:
@@ -648,7 +648,7 @@ public final class SendCallsGrpc {
               .addMethod(getSendMethod())
               .addMethod(getQueryMethod())
               .addMethod(getGetTimeMethod())
-              .addMethod(getHasUpdateMethod())
+              .addMethod(getHasUpdatedMethod())
               .build();
         }
       }
