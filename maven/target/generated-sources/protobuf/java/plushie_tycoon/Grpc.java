@@ -8120,14 +8120,17 @@ public final class Grpc {
       "\022\037.plushie_tycoon.SelectionObject\032\030.plus" +
       "hie_tycoon.Snapshot\"\000\022C\n\004init\022\037.plushie_" +
       "tycoon.SelectionObject\032\030.plushie_tycoon." +
-      "Snapshot\"\0002\230\002\n\tSendCalls\022E\n\004send\022\037.plush" +
-      "ie_tycoon.ProposedChanges\032\032.plushie_tyco" +
-      "on.ReturnCode\"\000\022;\n\005query\022\026.plushie_tycoo" +
-      "n.UserID\032\030.plushie_tycoon.Snapshot\"\000\022D\n\t" +
-      "timeCheck\022\031.plushie_tycoon.TimeCheck\032\032.p" +
-      "lushie_tycoon.ReturnCode\"\000\022A\n\thasUpdate\022" +
-      "\026.plushie_tycoon.UserID\032\032.plushie_tycoon" +
-      ".ReturnCode\"\000b\006proto3"
+      "Snapshot\"\0002\236\003\n\tSendCalls\022>\n\010register\022\026.p" +
+      "lushie_tycoon.UserID\032\030.plushie_tycoon.Sn" +
+      "apshot\"\000\022D\n\014isregistered\022\026.plushie_tycoo" +
+      "n.UserID\032\032.plushie_tycoon.ReturnCode\"\000\022E" +
+      "\n\004send\022\037.plushie_tycoon.ProposedChanges\032" +
+      "\032.plushie_tycoon.ReturnCode\"\000\022;\n\005query\022\026" +
+      ".plushie_tycoon.UserID\032\030.plushie_tycoon." +
+      "Snapshot\"\000\022D\n\ttimeCheck\022\031.plushie_tycoon" +
+      ".TimeCheck\032\032.plushie_tycoon.ReturnCode\"\000" +
+      "\022A\n\thasUpdate\022\026.plushie_tycoon.UserID\032\032." +
+      "plushie_tycoon.ReturnCode\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

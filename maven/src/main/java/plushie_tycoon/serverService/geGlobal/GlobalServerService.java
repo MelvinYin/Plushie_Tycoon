@@ -52,6 +52,22 @@ public class GlobalServerService {
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
+
+        @Override
+        public void register(Grpc.UserID request, StreamObserver<Grpc.Snapshot> responseObserver) {
+            Grpc.Snapshot output = ge.register(request.getUserid());
+            responseObserver.onNext(output);
+            responseObserver.onCompleted();
+        }
+
+        @Override
+        public void isregistered(Grpc.UserID request, StreamObserver<Grpc.ReturnCode> responseObserver) {
+            boolean returnCode = ge.isRegistered(request.getUserid());
+            Grpc.ReturnCode output = Grpc.ReturnCode.newBuilder().setCode(returnCode).build();
+            responseObserver.onNext(output);
+            responseObserver.onCompleted();
+        }
+
         @Override
         public void timeCheck(Grpc.TimeCheck request, StreamObserver<Grpc.ReturnCode> responseObserver) {
             boolean returnCode = ge.timeCheck(request.getTime());

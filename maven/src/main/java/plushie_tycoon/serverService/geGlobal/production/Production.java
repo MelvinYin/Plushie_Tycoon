@@ -7,8 +7,6 @@ import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
 import plushie_tycoon.serverService.config.baseObjects.Products;
 import plushie_tycoon.serverService.config.baseObjects.Resources;
 
-import java.util.HashMap;
-
 public class Production {
     public void make(Products product, int quantity, UserData userdata){
         for (Resources resource: Resources.values()){

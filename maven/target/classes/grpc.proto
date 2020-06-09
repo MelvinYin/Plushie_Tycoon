@@ -16,6 +16,8 @@ service UITransfer {
 }
 
 service SendCalls {
+    rpc register(UserID) returns (Snapshot) {};
+    rpc isregistered(UserID) returns (ReturnCode) {};
     rpc send(ProposedChanges) returns (ReturnCode) {};
     rpc query(UserID) returns (Snapshot) {};
     rpc timeCheck(TimeCheck) returns (ReturnCode) {};

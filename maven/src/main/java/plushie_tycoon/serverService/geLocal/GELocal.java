@@ -36,6 +36,7 @@ public class GELocal {
     public boolean canReverseCall(){
         return !history.isEmpty();
     }
+
     public void reverseCall(){
         budget = history.getBudget();
         time = history.getTime();

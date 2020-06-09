@@ -35,7 +35,6 @@ plushie_tycoon/SendCallsGrpc$SendCallsBlockingStub.class
 plushie_tycoon/SendCallsGrpc$SendCallsFileDescriptorSupplier.class
 plushie_tycoon/Grpc$TimeCheck$1.class
 plushie_tycoon/serverService/config/Paths.class
-plushie_tycoon/serverService/geGlobal/GEGlobal2.class
 plushie_tycoon/SendCallsGrpc$SendCallsImplBase.class
 plushie_tycoon/Grpc$Snapshot$VolumesDefaultEntryHolder.class
 plushie_tycoon/Grpc$ReturnCode.class
@@ -46,6 +45,7 @@ plushie_tycoon/Grpc$mItemCost$1.class
 plushie_tycoon/Grpc$TimeCheckOrBuilder.class
 plushie_tycoon/serverService/geGlobal/market/seller/FixedSeller.class
 plushie_tycoon/UITransferGrpc$UITransferBaseDescriptorSupplier.class
+plushie_tycoon/serverService/geGlobal/UserDataCalculator.class
 plushie_tycoon/UITransferGrpc.class
 plushie_tycoon/SendCallsGrpc$1.class
 plushie_tycoon/SendCallsGrpc$SendCallsFutureStub.class
@@ -67,6 +67,7 @@ plushie_tycoon/serverService/config/UserData.class
 plushie_tycoon/Grpc$mItemCost.class
 plushie_tycoon/serverService/config/baseObjects/Products.class
 plushie_tycoon/SendCallsGrpc$MethodHandlers.class
+plushie_tycoon/serverService/geGlobal/production/Production.class
 plushie_tycoon/UITransferGrpc$2.class
 plushie_tycoon/serverService/geGlobal/GlobalServerService.class
 plushie_tycoon/Grpc$ReturnCode$1.class

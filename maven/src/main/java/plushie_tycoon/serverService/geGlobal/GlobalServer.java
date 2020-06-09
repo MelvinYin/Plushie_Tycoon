@@ -1,11 +1,11 @@
 package plushie_tycoon.serverService.geGlobal;
 
-import plushie_tycoon.serverService.ServerService;
+import plushie_tycoon.serverService.geGlobal.GlobalServerService;
 
 public class GlobalServer {
     public static void main(String[] args) throws Exception {
         int portno = 50001;
-        ServerService service = new ServerService(portno);
+        GlobalServerService service = new GlobalServerService(portno);
         service.run();
     }
 }

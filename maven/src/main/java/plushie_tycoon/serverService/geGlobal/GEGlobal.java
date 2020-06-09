@@ -87,6 +87,16 @@ public class GEGlobal {
         return buildSnapshot(userid);
     }
 
+    public Grpc.Snapshot register(String userid){
+        userDatas.put(userid, new UserData());
+        hasUpdated.put(userid, false);
+        return buildSnapshot(userid);
+    }
+
+    public boolean isRegistered(String userid){
+        return userDatas.containsKey(userid);
+    }
+
     public boolean hasUpdate(String userid){
         return hasUpdated.get(userid);
     }
@@ -147,54 +157,3 @@ public class GEGlobal {
     }
 }
 
-
-/*
-*
-    private Snapshot getUpdateReturn(){
-        Snapshot.Builder snapshot = Snapshot.newBuilder();
-//        prices
-        for (Products base: Products.values()){
-            String baseString = BaseStringConverter.convert(base);
-            snapshot.putPrices(baseString, market.get(base));
-            snapshot.putQuantities(baseString, localInventory.get(base));
-            snapshot.putWeights(baseString, Defaults.getWeight(base));
-            snapshot.putVolumes(baseString, Defaults.getVolume(base));
-
-            mItemCost.Builder itemcost = mItemCost.newBuilder();
-            itemcost.setMovein(localInventory.getMoveInCost(base));
-            itemcost.setMoveout(localInventory.getMoveOutCost(base));
-            itemcost.setStorage(localInventory.getStorageCost(base));
-            snapshot.putItemCost(baseString, itemcost.build());
-        }
-
-        for (Resources base: Resources.values()){
-            String baseString = BaseStringConverter.convert(base);
-            snapshot.putPrices(baseString, market.get(base));
-            snapshot.putQuantities(baseString, localInventory.get(base));
-            snapshot.putWeights(baseString, Defaults.getWeight(base));
-            snapshot.putVolumes(baseString, Defaults.getVolume(base));
-
-            mItemCost.Builder itemcost = mItemCost.newBuilder();
-            itemcost.setMovein(localInventory.getMoveInCost(base));
-            itemcost.setMoveout(localInventory.getMoveOutCost(base));
-            itemcost.setStorage(localInventory.getStorageCost(base));
-            snapshot.putItemCost(baseString, itemcost.build());
-        }
-
-        for (Products product: Products.values()){
-            String productString = BaseStringConverter.convert(product);
-            mRatioPerProduct.Builder ratioPerProduct = mRatioPerProduct.newBuilder();
-            for (Resources resource: Resources.values()){
-                String resourceString = BaseStringConverter.convert(resource);
-                ratioPerProduct.putRatio(resourceString, Defaults.getResourceRatio(product, resource));
-            }
-            snapshot.putResourceRatio(productString, ratioPerProduct.build());
-        }
-
-        snapshot.setTime(time);
-        snapshot.setAction("update");
-        snapshot.setBudget(budget);
-        snapshot.setConsoleOutput("console_");
-        return snapshot.build();
-    }
-* */

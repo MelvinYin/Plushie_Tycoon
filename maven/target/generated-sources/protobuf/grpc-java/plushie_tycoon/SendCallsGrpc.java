@@ -27,6 +27,68 @@ public final class SendCallsGrpc {
   public static final String SERVICE_NAME = "plushie_tycoon.SendCalls";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID,
+      plushie_tycoon.Grpc.Snapshot> getRegisterMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "register",
+      requestType = plushie_tycoon.Grpc.UserID.class,
+      responseType = plushie_tycoon.Grpc.Snapshot.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID,
+      plushie_tycoon.Grpc.Snapshot> getRegisterMethod() {
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID, plushie_tycoon.Grpc.Snapshot> getRegisterMethod;
+    if ((getRegisterMethod = SendCallsGrpc.getRegisterMethod) == null) {
+      synchronized (SendCallsGrpc.class) {
+        if ((getRegisterMethod = SendCallsGrpc.getRegisterMethod) == null) {
+          SendCallsGrpc.getRegisterMethod = getRegisterMethod =
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.UserID, plushie_tycoon.Grpc.Snapshot>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "register"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.UserID.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.Snapshot.getDefaultInstance()))
+              .setSchemaDescriptor(new SendCallsMethodDescriptorSupplier("register"))
+              .build();
+        }
+      }
+    }
+    return getRegisterMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID,
+      plushie_tycoon.Grpc.ReturnCode> getIsregisteredMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "isregistered",
+      requestType = plushie_tycoon.Grpc.UserID.class,
+      responseType = plushie_tycoon.Grpc.ReturnCode.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID,
+      plushie_tycoon.Grpc.ReturnCode> getIsregisteredMethod() {
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.UserID, plushie_tycoon.Grpc.ReturnCode> getIsregisteredMethod;
+    if ((getIsregisteredMethod = SendCallsGrpc.getIsregisteredMethod) == null) {
+      synchronized (SendCallsGrpc.class) {
+        if ((getIsregisteredMethod = SendCallsGrpc.getIsregisteredMethod) == null) {
+          SendCallsGrpc.getIsregisteredMethod = getIsregisteredMethod =
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.UserID, plushie_tycoon.Grpc.ReturnCode>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "isregistered"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.UserID.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.ReturnCode.getDefaultInstance()))
+              .setSchemaDescriptor(new SendCallsMethodDescriptorSupplier("isregistered"))
+              .build();
+        }
+      }
+    }
+    return getIsregisteredMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.ProposedChanges,
       plushie_tycoon.Grpc.ReturnCode> getSendMethod;
 
@@ -201,6 +263,20 @@ public final class SendCallsGrpc {
 
     /**
      */
+    public void register(plushie_tycoon.Grpc.UserID request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
+      asyncUnimplementedUnaryCall(getRegisterMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void isregistered(plushie_tycoon.Grpc.UserID request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode> responseObserver) {
+      asyncUnimplementedUnaryCall(getIsregisteredMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void send(plushie_tycoon.Grpc.ProposedChanges request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode> responseObserver) {
       asyncUnimplementedUnaryCall(getSendMethod(), responseObserver);
@@ -229,6 +305,20 @@ public final class SendCallsGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getRegisterMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                plushie_tycoon.Grpc.UserID,
+                plushie_tycoon.Grpc.Snapshot>(
+                  this, METHODID_REGISTER)))
+          .addMethod(
+            getIsregisteredMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                plushie_tycoon.Grpc.UserID,
+                plushie_tycoon.Grpc.ReturnCode>(
+                  this, METHODID_ISREGISTERED)))
           .addMethod(
             getSendMethod(),
             asyncUnaryCall(
@@ -273,6 +363,22 @@ public final class SendCallsGrpc {
     protected SendCallsStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new SendCallsStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public void register(plushie_tycoon.Grpc.UserID request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getRegisterMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void isregistered(plushie_tycoon.Grpc.UserID request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getIsregisteredMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -324,6 +430,20 @@ public final class SendCallsGrpc {
 
     /**
      */
+    public plushie_tycoon.Grpc.Snapshot register(plushie_tycoon.Grpc.UserID request) {
+      return blockingUnaryCall(
+          getChannel(), getRegisterMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public plushie_tycoon.Grpc.ReturnCode isregistered(plushie_tycoon.Grpc.UserID request) {
+      return blockingUnaryCall(
+          getChannel(), getIsregisteredMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public plushie_tycoon.Grpc.ReturnCode send(plushie_tycoon.Grpc.ProposedChanges request) {
       return blockingUnaryCall(
           getChannel(), getSendMethod(), getCallOptions(), request);
@@ -367,6 +487,22 @@ public final class SendCallsGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.Snapshot> register(
+        plushie_tycoon.Grpc.UserID request) {
+      return futureUnaryCall(
+          getChannel().newCall(getRegisterMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.ReturnCode> isregistered(
+        plushie_tycoon.Grpc.UserID request) {
+      return futureUnaryCall(
+          getChannel().newCall(getIsregisteredMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.ReturnCode> send(
         plushie_tycoon.Grpc.ProposedChanges request) {
       return futureUnaryCall(
@@ -398,10 +534,12 @@ public final class SendCallsGrpc {
     }
   }
 
-  private static final int METHODID_SEND = 0;
-  private static final int METHODID_QUERY = 1;
-  private static final int METHODID_TIME_CHECK = 2;
-  private static final int METHODID_HAS_UPDATE = 3;
+  private static final int METHODID_REGISTER = 0;
+  private static final int METHODID_ISREGISTERED = 1;
+  private static final int METHODID_SEND = 2;
+  private static final int METHODID_QUERY = 3;
+  private static final int METHODID_TIME_CHECK = 4;
+  private static final int METHODID_HAS_UPDATE = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -420,6 +558,14 @@ public final class SendCallsGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_REGISTER:
+          serviceImpl.register((plushie_tycoon.Grpc.UserID) request,
+              (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
+          break;
+        case METHODID_ISREGISTERED:
+          serviceImpl.isregistered((plushie_tycoon.Grpc.UserID) request,
+              (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode>) responseObserver);
+          break;
         case METHODID_SEND:
           serviceImpl.send((plushie_tycoon.Grpc.ProposedChanges) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode>) responseObserver);
@@ -497,6 +643,8 @@ public final class SendCallsGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new SendCallsFileDescriptorSupplier())
+              .addMethod(getRegisterMethod())
+              .addMethod(getIsregisteredMethod())
               .addMethod(getSendMethod())
               .addMethod(getQueryMethod())
               .addMethod(getTimeCheckMethod())
