@@ -1,5 +1,7 @@
 package plushie_tycoon.global.geGlobal;
 
+import io.grpc.Server;
+import io.grpc.ServerBuilder;
 import plushie_tycoon.Grpc;
 import plushie_tycoon.config.Defaults;
 import plushie_tycoon.config.baseObjects.BaseObjects;
@@ -13,6 +15,7 @@ import plushie_tycoon.global.geGlobal.inventory.InventoryCalculator;
 import plushie_tycoon.global.geGlobal.globalServer.GlobalServerService;
 import plushie_tycoon.Grpc.ProposedChanges;
 
+import java.util.concurrent.Executors;
 import java.util.concurrent.locks.ReentrantLock;
 import java.io.IOException;
 import java.util.HashMap;
@@ -62,6 +65,14 @@ public class GEGlobal {
     }
 
     public void runGlobalServer()  throws IOException, InterruptedException {
+
+        ServerBuilder builder = ServerBuilder.forPort(portno).executor(Executors.newFixedThreadPool(4));
+        GlobalServerService.SendCallsService service = new GlobalServerService.SendCallsService();
+        builder.addService(serverService).addService(adminService);
+        Server server = builder.build();
+        server.start();
+        server.awaitTermination();
+
         serverService.run();
     }
 

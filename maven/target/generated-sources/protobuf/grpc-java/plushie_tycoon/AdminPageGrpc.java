@@ -89,6 +89,37 @@ public final class AdminPageGrpc {
     return getNextTurnMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
+      plushie_tycoon.Grpc.NullObject> getPingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ping",
+      requestType = plushie_tycoon.Grpc.NullObject.class,
+      responseType = plushie_tycoon.Grpc.NullObject.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
+      plushie_tycoon.Grpc.NullObject> getPingMethod() {
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.NullObject> getPingMethod;
+    if ((getPingMethod = AdminPageGrpc.getPingMethod) == null) {
+      synchronized (AdminPageGrpc.class) {
+        if ((getPingMethod = AdminPageGrpc.getPingMethod) == null) {
+          AdminPageGrpc.getPingMethod = getPingMethod =
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.NullObject>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ping"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
+              .setSchemaDescriptor(new AdminPageMethodDescriptorSupplier("ping"))
+              .build();
+        }
+      }
+    }
+    return getPingMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -151,6 +182,13 @@ public final class AdminPageGrpc {
       asyncUnimplementedUnaryCall(getNextTurnMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void ping(plushie_tycoon.Grpc.NullObject request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.NullObject> responseObserver) {
+      asyncUnimplementedUnaryCall(getPingMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -167,6 +205,13 @@ public final class AdminPageGrpc {
                 plushie_tycoon.Grpc.NullObject,
                 plushie_tycoon.Grpc.ReturnCode>(
                   this, METHODID_NEXT_TURN)))
+          .addMethod(
+            getPingMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                plushie_tycoon.Grpc.NullObject,
+                plushie_tycoon.Grpc.NullObject>(
+                  this, METHODID_PING)))
           .build();
     }
   }
@@ -200,6 +245,14 @@ public final class AdminPageGrpc {
       asyncUnaryCall(
           getChannel().newCall(getNextTurnMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void ping(plushie_tycoon.Grpc.NullObject request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.NullObject> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getPingMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -230,6 +283,13 @@ public final class AdminPageGrpc {
       return blockingUnaryCall(
           getChannel(), getNextTurnMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public plushie_tycoon.Grpc.NullObject ping(plushie_tycoon.Grpc.NullObject request) {
+      return blockingUnaryCall(
+          getChannel(), getPingMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -253,10 +313,19 @@ public final class AdminPageGrpc {
       return futureUnaryCall(
           getChannel().newCall(getNextTurnMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.NullObject> ping(
+        plushie_tycoon.Grpc.NullObject request) {
+      return futureUnaryCall(
+          getChannel().newCall(getPingMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_CALL = 0;
   private static final int METHODID_NEXT_TURN = 1;
+  private static final int METHODID_PING = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -282,6 +351,10 @@ public final class AdminPageGrpc {
         case METHODID_NEXT_TURN:
           serviceImpl.nextTurn((plushie_tycoon.Grpc.NullObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode>) responseObserver);
+          break;
+        case METHODID_PING:
+          serviceImpl.ping((plushie_tycoon.Grpc.NullObject) request,
+              (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.NullObject>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -346,6 +419,7 @@ public final class AdminPageGrpc {
               .setSchemaDescriptor(new AdminPageFileDescriptorSupplier())
               .addMethod(getGetCallMethod())
               .addMethod(getNextTurnMethod())
+              .addMethod(getPingMethod())
               .build();
         }
       }

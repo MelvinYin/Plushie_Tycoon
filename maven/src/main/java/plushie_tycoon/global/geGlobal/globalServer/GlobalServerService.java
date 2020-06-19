@@ -11,6 +11,7 @@ import plushie_tycoon.serverService.utils.BaseStringConverter;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.concurrent.Executors;
 
 public class GlobalServerService {
     public GEGlobal ge;
@@ -19,15 +20,6 @@ public class GlobalServerService {
     public GlobalServerService(int portno, GEGlobal ge){
         this.portno = portno;
         this.ge = ge;
-    }
-
-    public void run() throws IOException, InterruptedException {
-        ServerBuilder builder = ServerBuilder.forPort(portno);
-        GlobalServerService.SendCallsService service = new GlobalServerService.SendCallsService();
-        builder.addService(service);
-        Server server = builder.build();
-        server.start();
-        server.awaitTermination();
     }
 
     public class SendCallsService extends SendCallsGrpc.SendCallsImplBase  {
@@ -48,6 +40,14 @@ public class GlobalServerService {
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
+
+        @Override
+        public void ping(Grpc.NullObject request, StreamObserver<Grpc.NullObject> responseObserver) {
+            System.out.println("GlobalServerService.ping called.");
+            responseObserver.onNext(Grpc.NullObject.newBuilder().build());
+            responseObserver.onCompleted();
+        }
+
         @Override
         public void query(Grpc.UserID request, StreamObserver<Grpc.Snapshot> responseObserver) {
             System.out.println("GlobalServerService.query called.");

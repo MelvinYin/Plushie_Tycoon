@@ -7971,7 +7971,7 @@ public final class Grpc {
       "\032.plushie_tycoon.NullObject\032\030.plushie_ty" +
       "coon.Snapshot\"\000\022>\n\004init\022\032.plushie_tycoon" +
       ".NullObject\032\030.plushie_tycoon.Snapshot\"\0002" +
-      "\235\003\n\tSendCalls\022>\n\010register\022\026.plushie_tyco" +
+      "\337\003\n\tSendCalls\022>\n\010register\022\026.plushie_tyco" +
       "on.UserID\032\030.plushie_tycoon.Snapshot\"\000\022D\n" +
       "\014isregistered\022\026.plushie_tycoon.UserID\032\032." +
       "plushie_tycoon.ReturnCode\"\000\022E\n\004send\022\037.pl" +
@@ -7981,11 +7981,14 @@ public final class Grpc {
       "B\n\007getTime\022\032.plushie_tycoon.NullObject\032\031" +
       ".plushie_tycoon.IntObject\"\000\022B\n\nhasUpdate" +
       "d\022\026.plushie_tycoon.UserID\032\032.plushie_tyco" +
-      "on.ReturnCode\"\0002\235\001\n\tAdminPage\022J\n\007getCall" +
-      "\022\032.plushie_tycoon.NullObject\032\037.plushie_t" +
-      "ycoon.ProposedChanges\"\0000\001\022D\n\010nextTurn\022\032." +
-      "plushie_tycoon.NullObject\032\032.plushie_tyco" +
-      "on.ReturnCode\"\000b\006proto3"
+      "on.ReturnCode\"\000\022@\n\004ping\022\032.plushie_tycoon" +
+      ".NullObject\032\032.plushie_tycoon.NullObject\"" +
+      "\0002\337\001\n\tAdminPage\022J\n\007getCall\022\032.plushie_tyc" +
+      "oon.NullObject\032\037.plushie_tycoon.Proposed" +
+      "Changes\"\0000\001\022D\n\010nextTurn\022\032.plushie_tycoon" +
+      ".NullObject\032\032.plushie_tycoon.ReturnCode\"" +
+      "\000\022@\n\004ping\022\032.plushie_tycoon.NullObject\032\032." +
+      "plushie_tycoon.NullObject\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

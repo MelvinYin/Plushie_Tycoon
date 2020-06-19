@@ -133,16 +133,68 @@ class UI:
         self.transaction_table = TransactionTable()
         self.production_table = ProductionTable()
         self.time_box = self._build_time_box()
-        self.next_turn_button = self._build_button()
+        self.next_turn_button = self._build_next_turn()
+        self.refresh_button = self._build_refresh()
+        self.ping_button = self._build_ping()
         self.layout = self.plot()
 
-    def _build_button(self):
+    def _build_next_turn(self):
         specs = dict()
         specs['text'] = "Next Turn"
-        specs['width'] = 200
-        specs['height'] = 200
+        specs['width'] = 100
+        specs['height'] = 50
         button = ButtonComponent(specs, self.widget_callback)
         return button
+
+    def _build_ping(self):
+        specs = dict()
+        specs['text'] = "Ping"
+        specs['width'] = 100
+        specs['height'] = 50
+        button = ButtonComponent(specs, self.ping_callback)
+        return button
+
+    def _build_refresh(self):
+        specs = dict()
+        specs['text'] = "Refresh"
+        specs['width'] = 100
+        specs['height'] = 50
+        button = ButtonComponent(specs, self.get_calls)
+        return button
+
+    def get_calls(self):
+        print(f"\n\n\nget_calls called with portno {self.portno}.")
+        with grpc.insecure_channel(f'localhost:{self.portno}') as channel:
+            stub = grpc_pb2_grpc.AdminPageStub(channel)
+            request_object = grpc_pb2.NullObject()
+            return_object = stub.getCall(request_object)
+            for call in return_object:
+                print(call)
+                call = self._format_changes(call)
+                self.figure_update(call)
+
+    def _format_changes(self, request):
+        output = dict()
+        output['userid'] = request.userid
+        for res in Res:
+            tag = "transaction_" + res.__name__
+            if res.__name__ in request.buySell:
+                output[tag] = request.buySell[res.__name__]
+            else:
+                output[tag] = 0
+        for prod in Prod:
+            tag = "transaction_" + prod.__name__
+            if prod.__name__ in request.buySell:
+                output[tag] = request.buySell[prod.__name__]
+            else:
+                output[tag] = 0
+
+            tag = "production_" + prod.__name__
+            if prod.__name__ in request.make:
+                output[tag] = request.make[prod.__name__]
+            else:
+                output[tag] = 0
+        return output
 
     def _build_time_box(self):
         specs = dict()
@@ -161,13 +213,24 @@ class UI:
         layout = column(self.time_box.widget,
                         row(self.transaction_table.figure,
                             self.production_table.figure),
-                        self.next_turn_button.widget)
+                        self.next_turn_button.widget,
+                        self.refresh_button.widget, self.ping_button.widget)
         return layout
 
     def widget_callback(self, call):
-        print(f"callback called.")
+        print(f"next_turn_button called.")
         with grpc.insecure_channel(f'localhost:{self.portno}') as channel:
-            stub = grpc_pb2_grpc.AdminReturnStub(channel)
+            stub = grpc_pb2_grpc.AdminPageStub(channel)
             request_object = grpc_pb2.NullObject()
             return_object = stub.nextTurn(request_object)
+            print(return_object.code)
+        return True
+
+    def ping_callback(self, call):
+        print(f"ping_button called.")
+        with grpc.insecure_channel(f'localhost:{self.portno}') as channel:
+            stub = grpc_pb2_grpc.AdminPageStub(channel)
+            request_object = grpc_pb2.NullObject()
+            return_object = stub.ping(request_object)
+            print(return_object.code)
         return True

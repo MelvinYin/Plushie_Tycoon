@@ -22,11 +22,13 @@ service SendCalls {
     rpc query(UserID) returns (Snapshot) {};
     rpc getTime(NullObject) returns (IntObject) {};
     rpc hasUpdated(UserID) returns (ReturnCode) {};
+    rpc ping(NullObject) returns (NullObject) {};
 }
 
 service AdminPage {
     rpc getCall(NullObject) returns (stream ProposedChanges) {};
     rpc nextTurn (NullObject) returns (ReturnCode) {};
+    rpc ping(NullObject) returns (NullObject) {};
 }
 
 message ReturnCode {

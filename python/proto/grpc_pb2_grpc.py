@@ -365,6 +365,11 @@ class SendCallsStub(object):
                 request_serializer=grpc__pb2.UserID.SerializeToString,
                 response_deserializer=grpc__pb2.ReturnCode.FromString,
                 )
+        self.ping = channel.unary_unary(
+                '/plushie_tycoon.SendCalls/ping',
+                request_serializer=grpc__pb2.NullObject.SerializeToString,
+                response_deserializer=grpc__pb2.NullObject.FromString,
+                )
 
 
 class SendCallsServicer(object):
@@ -406,6 +411,12 @@ class SendCallsServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ping(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_SendCallsServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -438,6 +449,11 @@ def add_SendCallsServicer_to_server(servicer, server):
                     servicer.hasUpdated,
                     request_deserializer=grpc__pb2.UserID.FromString,
                     response_serializer=grpc__pb2.ReturnCode.SerializeToString,
+            ),
+            'ping': grpc.unary_unary_rpc_method_handler(
+                    servicer.ping,
+                    request_deserializer=grpc__pb2.NullObject.FromString,
+                    response_serializer=grpc__pb2.NullObject.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -545,52 +561,8 @@ class SendCalls(object):
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
-
-class AdminSendStub(object):
-    """Missing associated documentation comment in .proto file"""
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.sendCall = channel.unary_unary(
-                '/plushie_tycoon.AdminSend/sendCall',
-                request_serializer=grpc__pb2.ProposedChanges.SerializeToString,
-                response_deserializer=grpc__pb2.NullObject.FromString,
-                )
-
-
-class AdminSendServicer(object):
-    """Missing associated documentation comment in .proto file"""
-
-    def sendCall(self, request, context):
-        """Missing associated documentation comment in .proto file"""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_AdminSendServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'sendCall': grpc.unary_unary_rpc_method_handler(
-                    servicer.sendCall,
-                    request_deserializer=grpc__pb2.ProposedChanges.FromString,
-                    response_serializer=grpc__pb2.NullObject.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'plushie_tycoon.AdminSend', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-
-
- # This class is part of an EXPERIMENTAL API.
-class AdminSend(object):
-    """Missing associated documentation comment in .proto file"""
-
     @staticmethod
-    def sendCall(request,
+    def ping(request,
             target,
             options=(),
             channel_credentials=None,
@@ -599,14 +571,14 @@ class AdminSend(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.AdminSend/sendCall',
-            grpc__pb2.ProposedChanges.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.SendCalls/ping',
+            grpc__pb2.NullObject.SerializeToString,
             grpc__pb2.NullObject.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
-class AdminReturnStub(object):
+class AdminPageStub(object):
     """Missing associated documentation comment in .proto file"""
 
     def __init__(self, channel):
@@ -615,15 +587,31 @@ class AdminReturnStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.getCall = channel.unary_stream(
+                '/plushie_tycoon.AdminPage/getCall',
+                request_serializer=grpc__pb2.NullObject.SerializeToString,
+                response_deserializer=grpc__pb2.ProposedChanges.FromString,
+                )
         self.nextTurn = channel.unary_unary(
-                '/plushie_tycoon.AdminReturn/nextTurn',
+                '/plushie_tycoon.AdminPage/nextTurn',
+                request_serializer=grpc__pb2.NullObject.SerializeToString,
+                response_deserializer=grpc__pb2.ReturnCode.FromString,
+                )
+        self.ping = channel.unary_unary(
+                '/plushie_tycoon.AdminPage/ping',
                 request_serializer=grpc__pb2.NullObject.SerializeToString,
                 response_deserializer=grpc__pb2.NullObject.FromString,
                 )
 
 
-class AdminReturnServicer(object):
+class AdminPageServicer(object):
     """Missing associated documentation comment in .proto file"""
+
+    def getCall(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def nextTurn(self, request, context):
         """Missing associated documentation comment in .proto file"""
@@ -631,23 +619,55 @@ class AdminReturnServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ping(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
-def add_AdminReturnServicer_to_server(servicer, server):
+
+def add_AdminPageServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'getCall': grpc.unary_stream_rpc_method_handler(
+                    servicer.getCall,
+                    request_deserializer=grpc__pb2.NullObject.FromString,
+                    response_serializer=grpc__pb2.ProposedChanges.SerializeToString,
+            ),
             'nextTurn': grpc.unary_unary_rpc_method_handler(
                     servicer.nextTurn,
+                    request_deserializer=grpc__pb2.NullObject.FromString,
+                    response_serializer=grpc__pb2.ReturnCode.SerializeToString,
+            ),
+            'ping': grpc.unary_unary_rpc_method_handler(
+                    servicer.ping,
                     request_deserializer=grpc__pb2.NullObject.FromString,
                     response_serializer=grpc__pb2.NullObject.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'plushie_tycoon.AdminReturn', rpc_method_handlers)
+            'plushie_tycoon.AdminPage', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class AdminReturn(object):
+class AdminPage(object):
     """Missing associated documentation comment in .proto file"""
+
+    @staticmethod
+    def getCall(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/plushie_tycoon.AdminPage/getCall',
+            grpc__pb2.NullObject.SerializeToString,
+            grpc__pb2.ProposedChanges.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def nextTurn(request,
@@ -659,58 +679,14 @@ class AdminReturn(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.AdminReturn/nextTurn',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.AdminPage/nextTurn',
             grpc__pb2.NullObject.SerializeToString,
-            grpc__pb2.NullObject.FromString,
+            grpc__pb2.ReturnCode.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
-
-class TestCallStub(object):
-    """Missing associated documentation comment in .proto file"""
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.callthis = channel.unary_unary(
-                '/plushie_tycoon.TestCall/callthis',
-                request_serializer=grpc__pb2.IntObject.SerializeToString,
-                response_deserializer=grpc__pb2.ReturnCode.FromString,
-                )
-
-
-class TestCallServicer(object):
-    """Missing associated documentation comment in .proto file"""
-
-    def callthis(self, request, context):
-        """Missing associated documentation comment in .proto file"""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_TestCallServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'callthis': grpc.unary_unary_rpc_method_handler(
-                    servicer.callthis,
-                    request_deserializer=grpc__pb2.IntObject.FromString,
-                    response_serializer=grpc__pb2.ReturnCode.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'plushie_tycoon.TestCall', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-
-
- # This class is part of an EXPERIMENTAL API.
-class TestCall(object):
-    """Missing associated documentation comment in .proto file"""
-
     @staticmethod
-    def callthis(request,
+    def ping(request,
             target,
             options=(),
             channel_credentials=None,
@@ -719,8 +695,8 @@ class TestCall(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.TestCall/callthis',
-            grpc__pb2.IntObject.SerializeToString,
-            grpc__pb2.ReturnCode.FromString,
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.AdminPage/ping',
+            grpc__pb2.NullObject.SerializeToString,
+            grpc__pb2.NullObject.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)

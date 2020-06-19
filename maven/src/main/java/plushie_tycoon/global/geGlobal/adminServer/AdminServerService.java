@@ -8,6 +8,7 @@ import plushie_tycoon.AdminPageGrpc;
 import plushie_tycoon.global.geGlobal.GEGlobal;
 
 import java.io.IOException;
+import java.util.concurrent.Executors;
 
 public class AdminServerService {
     public GEGlobal ge;
@@ -19,11 +20,12 @@ public class AdminServerService {
     }
 
     public void run() throws IOException, InterruptedException {
-        ServerBuilder builder = ServerBuilder.forPort(portno);
-        AdminServerService.AdminPageService service = new AdminServerService.AdminPageService();
+        ServerBuilder builder = ServerBuilder.forPort(portno).executor(Executors.newFixedThreadPool(4));
+        AdminPageService service = new AdminPageService();
         builder.addService(service);
         Server server = builder.build();
         server.start();
+        System.out.println("Start");
         server.awaitTermination();
     }
 
@@ -50,6 +52,13 @@ public class AdminServerService {
                 responseObserver.onNext(changes);
                 changes = ge.getCall();
             }
+            responseObserver.onCompleted();
+        }
+
+        @Override
+        public void ping(Grpc.NullObject request, StreamObserver<Grpc.NullObject> responseObserver) {
+            System.out.println("AdminServerService.ping called.");
+            responseObserver.onNext(Grpc.NullObject.newBuilder().build());
             responseObserver.onCompleted();
         }
     }

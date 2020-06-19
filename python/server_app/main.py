@@ -28,38 +28,6 @@ class Admin:
     def __init__(self, portno):
         self.portno = portno
         self.ui = admin_ui.UI(portno)
-        self.admin_send = AdminSend(self.ui.figure_update)
-
-class AdminSend(grpc_pb2_grpc.AdminSendServicer):
-    def __init__(self, callback):
-        self.callback = callback
-
-    def sendCall(self, request, context):
-        self.callback(self._format_changes(request))
-        return grpc_pb2.NullObject()
-
-    def _format_changes(self, request):
-        output = dict()
-        output['userid'] = request.userid
-        for res in Res:
-            tag = "transaction_" + res.__name__
-            if res.__name__ in request.buySell:
-                output[tag] = request.buySell[res.__name__]
-            else:
-                output[tag] = 0
-        for prod in Prod:
-            tag = "transaction_" + prod.__name__
-            if prod.__name__ in request.buySell:
-                output[tag] = request.buySell[prod.__name__]
-            else:
-                output[tag] = 0
-
-            tag = "production_" + prod.__name__
-            if prod.__name__ in request.make:
-                output[tag] = request.buySell[prod.__name__]
-            else:
-                output[tag] = 0
-        return output
 
 def run():
     portno = 50003

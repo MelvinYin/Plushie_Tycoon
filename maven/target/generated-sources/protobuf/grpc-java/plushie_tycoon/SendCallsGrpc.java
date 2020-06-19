@@ -213,6 +213,37 @@ public final class SendCallsGrpc {
     return getHasUpdatedMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
+      plushie_tycoon.Grpc.NullObject> getPingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ping",
+      requestType = plushie_tycoon.Grpc.NullObject.class,
+      responseType = plushie_tycoon.Grpc.NullObject.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
+      plushie_tycoon.Grpc.NullObject> getPingMethod() {
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.NullObject> getPingMethod;
+    if ((getPingMethod = SendCallsGrpc.getPingMethod) == null) {
+      synchronized (SendCallsGrpc.class) {
+        if ((getPingMethod = SendCallsGrpc.getPingMethod) == null) {
+          SendCallsGrpc.getPingMethod = getPingMethod =
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.NullObject>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ping"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
+              .setSchemaDescriptor(new SendCallsMethodDescriptorSupplier("ping"))
+              .build();
+        }
+      }
+    }
+    return getPingMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -303,6 +334,13 @@ public final class SendCallsGrpc {
       asyncUnimplementedUnaryCall(getHasUpdatedMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void ping(plushie_tycoon.Grpc.NullObject request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.NullObject> responseObserver) {
+      asyncUnimplementedUnaryCall(getPingMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -347,6 +385,13 @@ public final class SendCallsGrpc {
                 plushie_tycoon.Grpc.UserID,
                 plushie_tycoon.Grpc.ReturnCode>(
                   this, METHODID_HAS_UPDATED)))
+          .addMethod(
+            getPingMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                plushie_tycoon.Grpc.NullObject,
+                plushie_tycoon.Grpc.NullObject>(
+                  this, METHODID_PING)))
           .build();
     }
   }
@@ -412,6 +457,14 @@ public final class SendCallsGrpc {
       asyncUnaryCall(
           getChannel().newCall(getHasUpdatedMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void ping(plushie_tycoon.Grpc.NullObject request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.NullObject> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getPingMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -468,6 +521,13 @@ public final class SendCallsGrpc {
     public plushie_tycoon.Grpc.ReturnCode hasUpdated(plushie_tycoon.Grpc.UserID request) {
       return blockingUnaryCall(
           getChannel(), getHasUpdatedMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public plushie_tycoon.Grpc.NullObject ping(plushie_tycoon.Grpc.NullObject request) {
+      return blockingUnaryCall(
+          getChannel(), getPingMethod(), getCallOptions(), request);
     }
   }
 
@@ -532,6 +592,14 @@ public final class SendCallsGrpc {
       return futureUnaryCall(
           getChannel().newCall(getHasUpdatedMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.NullObject> ping(
+        plushie_tycoon.Grpc.NullObject request) {
+      return futureUnaryCall(
+          getChannel().newCall(getPingMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_REGISTER = 0;
@@ -540,6 +608,7 @@ public final class SendCallsGrpc {
   private static final int METHODID_QUERY = 3;
   private static final int METHODID_GET_TIME = 4;
   private static final int METHODID_HAS_UPDATED = 5;
+  private static final int METHODID_PING = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -581,6 +650,10 @@ public final class SendCallsGrpc {
         case METHODID_HAS_UPDATED:
           serviceImpl.hasUpdated((plushie_tycoon.Grpc.UserID) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.ReturnCode>) responseObserver);
+          break;
+        case METHODID_PING:
+          serviceImpl.ping((plushie_tycoon.Grpc.NullObject) request,
+              (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.NullObject>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -649,6 +722,7 @@ public final class SendCallsGrpc {
               .addMethod(getQueryMethod())
               .addMethod(getGetTimeMethod())
               .addMethod(getHasUpdatedMethod())
+              .addMethod(getPingMethod())
               .build();
         }
       }

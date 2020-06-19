@@ -92,7 +92,6 @@ public class ServerService {
         public void init(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             System.out.println("UITransferService.init called");
             Grpc.Snapshot output = ge.init();
-            System.out.println(output);
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
