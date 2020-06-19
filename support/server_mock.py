@@ -1,9 +1,9 @@
 import grpc
 import grpc_pb2
 import grpc_pb2_grpc
-from global_config import Res, Prod
-from config import init_values
-from config import properties
+from config.global_config import Res, Prod
+import init_values
+import properties
 
 from concurrent.futures import ThreadPoolExecutor
 import itertools

@@ -1,8 +1,8 @@
 package plushie_tycoon.serverService.utils;
 
-import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
-import plushie_tycoon.serverService.config.baseObjects.Products;
-import plushie_tycoon.serverService.config.baseObjects.Resources;
+import plushie_tycoon.config.baseObjects.BaseObjects;
+import plushie_tycoon.config.baseObjects.Products;
+import plushie_tycoon.config.baseObjects.Resources;
 
 import java.util.HashMap;
 import java.util.Map;

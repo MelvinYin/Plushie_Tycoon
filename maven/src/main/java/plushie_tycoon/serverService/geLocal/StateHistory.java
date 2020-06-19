@@ -36,6 +36,13 @@ public class StateHistory {
         return (market.size() == size) & (localInventory.size() == size) & (time.size() == size);
     }
 
+    public void reset(){
+        budget.empty();
+        localInventory.empty();
+        time.empty();
+        market.empty();
+    }
+
     public boolean isEmpty(){
         return (isValid() & budget.size() == 0);
     }

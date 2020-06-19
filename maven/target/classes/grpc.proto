@@ -24,6 +24,11 @@ service SendCalls {
     rpc hasUpdated(UserID) returns (ReturnCode) {};
 }
 
+service AdminPage {
+    rpc getCall(NullObject) returns (stream ProposedChanges) {};
+    rpc nextTurn (NullObject) returns (ReturnCode) {};
+}
+
 message ReturnCode {
     string message = 1;
     bool code = 2;

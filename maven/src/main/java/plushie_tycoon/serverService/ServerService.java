@@ -13,15 +13,17 @@ import plushie_tycoon.serverService.geLocal.GELocal;
 
 public class ServerService {
     private static GELocal ge;
-    public int portno;
+    public int toUIPortno;
+    public int toGlobalPortno;
 
-    public ServerService(int portno){
-        this.portno = portno;
-        ge = new GELocal();
+    public ServerService(int toUIPortno, int toGlobalPortno){
+        this.toUIPortno = toUIPortno;
+        this.toGlobalPortno = toGlobalPortno;
+        ge = new GELocal(toGlobalPortno);
     }
 
     public void run() throws IOException, InterruptedException {
-        ServerBuilder builder = ServerBuilder.forPort(portno);
+        ServerBuilder builder = ServerBuilder.forPort(toUIPortno);
         UITransferService service = new UITransferService();
         builder.addService(service);
         Server server = builder.build();
@@ -30,57 +32,65 @@ public class ServerService {
     }
 
     public static class UITransferService extends UITransferGrpc.UITransferImplBase  {
-
         @Override
         public void buy(Grpc.TransactionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+            System.out.println("UITransferService.buy called");
             Grpc.Snapshot output = ge.buy(BaseStringConverter.convert(request.getName()), request.getQuantity());
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         @Override
         public void sell(Grpc.TransactionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+            System.out.println("UITransferService.sell called");
             Grpc.Snapshot output = ge.sell(BaseStringConverter.convert(request.getName()), request.getQuantity());
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         @Override
         public void make(Grpc.TransactionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+            System.out.println("UITransferService.make called");
             Grpc.Snapshot output = ge.make(BaseStringConverter.convert(request.getName()), request.getQuantity());
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         @Override
         public void next(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+            System.out.println("UITransferService.next called");
             Grpc.Snapshot output = ge.next();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         @Override
         public void save(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+            System.out.println("UITransferService.save called");
             Grpc.Snapshot output = ge.save();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         @Override
         public void load(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+            System.out.println("UITransferService.load called");
             Grpc.Snapshot output = ge.load();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         //        @Override
         public void back(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+            System.out.println("UITransferService.back called");
             Grpc.Snapshot output = ge.back();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         //        @Override
         public void quit(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+            System.out.println("UITransferService.quit called");
             Grpc.Snapshot output = ge.quit();
             responseObserver.onNext(output);
             responseObserver.onCompleted();
         }
         //        @Override
         public void init(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+            System.out.println("UITransferService.init called");
             Grpc.Snapshot output = ge.init();
             System.out.println(output);
             responseObserver.onNext(output);

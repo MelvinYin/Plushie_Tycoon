@@ -1,7 +1,7 @@
 package plushie_tycoon.serverService.geLocal.market;
 
-import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
-import plushie_tycoon.serverService.config.Initials;
+import plushie_tycoon.config.baseObjects.BaseObjects;
+import plushie_tycoon.config.Initials;
 
 import java.util.HashMap;
 

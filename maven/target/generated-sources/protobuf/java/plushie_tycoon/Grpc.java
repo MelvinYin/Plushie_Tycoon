@@ -7981,6 +7981,10 @@ public final class Grpc {
       "B\n\007getTime\022\032.plushie_tycoon.NullObject\032\031" +
       ".plushie_tycoon.IntObject\"\000\022B\n\nhasUpdate" +
       "d\022\026.plushie_tycoon.UserID\032\032.plushie_tyco" +
+      "on.ReturnCode\"\0002\235\001\n\tAdminPage\022J\n\007getCall" +
+      "\022\032.plushie_tycoon.NullObject\032\037.plushie_t" +
+      "ycoon.ProposedChanges\"\0000\001\022D\n\010nextTurn\022\032." +
+      "plushie_tycoon.NullObject\032\032.plushie_tyco" +
       "on.ReturnCode\"\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
