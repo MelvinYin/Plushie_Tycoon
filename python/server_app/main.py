@@ -30,7 +30,7 @@ class Admin:
         self.ui = admin_ui.UI(portno)
 
 def run():
-    portno = 50003
+    portno = 50002
     admin = Admin(portno)
     curdoc().add_root(admin.ui.layout)
     # show(ui.ui.ui_layout)

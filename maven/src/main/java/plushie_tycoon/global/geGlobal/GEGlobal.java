@@ -7,12 +7,12 @@ import plushie_tycoon.config.Defaults;
 import plushie_tycoon.config.baseObjects.BaseObjects;
 import plushie_tycoon.config.baseObjects.Resources;
 import plushie_tycoon.config.baseObjects.Products;
-import plushie_tycoon.global.geGlobal.adminServer.AdminServerService;
+import plushie_tycoon.global.geGlobal.adminServer.AdminPageService;
+import plushie_tycoon.global.geGlobal.globalServer.SendCallsService;
 import plushie_tycoon.global.geGlobal.market.GlobalMarket;
 import plushie_tycoon.global.geGlobal.production.Production;
 import plushie_tycoon.serverService.utils.BaseStringConverter;
 import plushie_tycoon.global.geGlobal.inventory.InventoryCalculator;
-import plushie_tycoon.global.geGlobal.globalServer.GlobalServerService;
 import plushie_tycoon.Grpc.ProposedChanges;
 
 import java.util.concurrent.Executors;
@@ -33,14 +33,14 @@ public class GEGlobal {
     private UserDataCalculator userDataCalculator;
     private GlobalMarket market;
     private Production production;
-    public GlobalServerService serverService;
-    public AdminServerService adminService;
-    int adminPortno;
+    public AdminPageService adminService;
+    public SendCallsService serverService;
+    int portno;
     private final ReentrantLock lockOrderStack;
     Stack<ProposedChanges> orderStack;
 
 
-    public GEGlobal(int publicPortno, int adminPortno){
+    public GEGlobal(int portno){
         userDatas = new HashMap<>();
         hasUpdated = new HashMap<>();
         buySellOrders = new HashMap<>();
@@ -48,9 +48,9 @@ public class GEGlobal {
         market = new GlobalMarket();
         userDataCalculator = new UserDataCalculator();
         production = new Production();
-        serverService = new GlobalServerService(publicPortno, this);
-        adminService = new AdminServerService(adminPortno, this);
-        this.adminPortno = adminPortno;
+        serverService = new SendCallsService(this);
+        adminService = new AdminPageService(this);
+        this.portno = portno;
         orderStack = new Stack<>();
         lockOrderStack = new ReentrantLock(true);
 
@@ -64,20 +64,12 @@ public class GEGlobal {
         }
     }
 
-    public void runGlobalServer()  throws IOException, InterruptedException {
-
+    public void runServices()  throws IOException, InterruptedException {
         ServerBuilder builder = ServerBuilder.forPort(portno).executor(Executors.newFixedThreadPool(4));
-        GlobalServerService.SendCallsService service = new GlobalServerService.SendCallsService();
         builder.addService(serverService).addService(adminService);
         Server server = builder.build();
         server.start();
         server.awaitTermination();
-
-        serverService.run();
-    }
-
-    public void runAdminServer()  throws IOException, InterruptedException {
-        adminService.run();
     }
 
     public void lockOrderStack(){

@@ -1174,3 +1174,339 @@ bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta':
 
 bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999522.0], 'time': [12], 'xs': [2]}>
 
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1014], 'accessory': [1003], 'packaging': [1004], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [999762.0], 'time': [12]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1014], 'accessory': [1003], 'packaging': [1004], 'time': [12], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [12], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [12], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [12], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999762.0], 'time': [12], 'xs': [1]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1026], 'accessory': [1003], 'packaging': [1004], 'time': [12]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [12]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [12]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [12]}, <FigureNames.budget: 5>: {'budget': [999522.0], 'time': [12]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1026], 'accessory': [1003], 'packaging': [1004], 'time': [12], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [12], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [12], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [12], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999522.0], 'time': [12], 'xs': [2]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1026], 'accessory': [1003], 'packaging': [1004], 'time': [13]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [13]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [13]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [13]}, <FigureNames.budget: 5>: {'budget': [999496.0], 'time': [13]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1026], 'accessory': [1003], 'packaging': [1004], 'time': [13], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [13], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [13], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [13], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999496.0], 'time': [13], 'xs': [3]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1038], 'accessory': [1003], 'packaging': [1004], 'time': [13]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [13]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [13]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [13]}, <FigureNames.budget: 5>: {'budget': [999256.0], 'time': [13]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1038], 'accessory': [1003], 'packaging': [1004], 'time': [13], 'xs': [4]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [13], 'xs': [4]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [13], 'xs': [4]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [13], 'xs': [4]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999256.0], 'time': [13], 'xs': [4]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1050], 'accessory': [1003], 'packaging': [1004], 'time': [13]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [13]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [13]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [13]}, <FigureNames.budget: 5>: {'budget': [999016.0], 'time': [13]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1050], 'accessory': [1003], 'packaging': [1004], 'time': [13], 'xs': [5]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [13], 'xs': [5]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [13], 'xs': [5]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [13], 'xs': [5]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999016.0], 'time': [13], 'xs': [5]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1050], 'accessory': [1003], 'packaging': [1004], 'time': [14]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [14]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [14]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [14]}, <FigureNames.budget: 5>: {'budget': [998990.0], 'time': [14]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1050], 'accessory': [1003], 'packaging': [1004], 'time': [14], 'xs': [6]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [14], 'xs': [6]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [14], 'xs': [6]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [14], 'xs': [6]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [998990.0], 'time': [14], 'xs': [6]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1062], 'accessory': [1003], 'packaging': [1004], 'time': [14]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [14]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [14]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [14]}, <FigureNames.budget: 5>: {'budget': [998750.0], 'time': [14]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1062], 'accessory': [1003], 'packaging': [1004], 'time': [14], 'xs': [7]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [14], 'xs': [7]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [14], 'xs': [7]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [14], 'xs': [7]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [998750.0], 'time': [14], 'xs': [7]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1074], 'accessory': [1003], 'packaging': [1004], 'time': [14]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [14]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [14]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [14]}, <FigureNames.budget: 5>: {'budget': [998510.0], 'time': [14]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1074], 'accessory': [1003], 'packaging': [1004], 'time': [14], 'xs': [8]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [14], 'xs': [8]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [14], 'xs': [8]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [14], 'xs': [8]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [998510.0], 'time': [14], 'xs': [8]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1086], 'accessory': [1003], 'packaging': [1004], 'time': [14]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [14]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [14]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [14]}, <FigureNames.budget: 5>: {'budget': [998270.0], 'time': [14]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1086], 'accessory': [1003], 'packaging': [1004], 'time': [14], 'xs': [9]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [14], 'xs': [9]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [14], 'xs': [9]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [14], 'xs': [9]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [998270.0], 'time': [14], 'xs': [9]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1086], 'accessory': [1003], 'packaging': [1004], 'time': [15]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [15]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [15]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [15]}, <FigureNames.budget: 5>: {'budget': [998244.0], 'time': [15]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1086], 'accessory': [1003], 'packaging': [1004], 'time': [15], 'xs': [10]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [15], 'xs': [10]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [15], 'xs': [10]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [15], 'xs': [10]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [998244.0], 'time': [15], 'xs': [10]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1098], 'accessory': [1003], 'packaging': [1004], 'time': [15]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [15]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [15]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [15]}, <FigureNames.budget: 5>: {'budget': [998004.0], 'time': [15]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1098], 'accessory': [1003], 'packaging': [1004], 'time': [15], 'xs': [11]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [15], 'xs': [11]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [15], 'xs': [11]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [15], 'xs': [11]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [998004.0], 'time': [15], 'xs': [11]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1110], 'accessory': [1003], 'packaging': [1004], 'time': [15]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [15]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [15]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [15]}, <FigureNames.budget: 5>: {'budget': [997764.0], 'time': [15]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1110], 'accessory': [1003], 'packaging': [1004], 'time': [15], 'xs': [12]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [15], 'xs': [12]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [15], 'xs': [12]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [15], 'xs': [12]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997764.0], 'time': [15], 'xs': [12]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1110], 'accessory': [1003], 'packaging': [1004], 'time': [16]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [16]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [16]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [16]}, <FigureNames.budget: 5>: {'budget': [997738.0], 'time': [16]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1110], 'accessory': [1003], 'packaging': [1004], 'time': [16], 'xs': [13]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [16], 'xs': [13]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [16], 'xs': [13]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [16], 'xs': [13]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997738.0], 'time': [16], 'xs': [13]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1122], 'accessory': [1003], 'packaging': [1004], 'time': [16]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [16]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [16]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [16]}, <FigureNames.budget: 5>: {'budget': [997498.0], 'time': [16]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1122], 'accessory': [1003], 'packaging': [1004], 'time': [16], 'xs': [14]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [16], 'xs': [14]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [16], 'xs': [14]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [16], 'xs': [14]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997498.0], 'time': [16], 'xs': [14]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [16]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [16]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [16]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [16]}, <FigureNames.budget: 5>: {'budget': [997258.0], 'time': [16]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [16], 'xs': [15]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [16], 'xs': [15]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [16], 'xs': [15]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [16], 'xs': [15]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997258.0], 'time': [16], 'xs': [15]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [17]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [17]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [17]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [17]}, <FigureNames.budget: 5>: {'budget': [997232.0], 'time': [17]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [17], 'xs': [16]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [17], 'xs': [16]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [17], 'xs': [16]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [17], 'xs': [16]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997232.0], 'time': [17], 'xs': [16]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [18]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [18]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [18]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [18]}, <FigureNames.budget: 5>: {'budget': [997206.0], 'time': [18]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [18], 'xs': [17]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [18], 'xs': [17]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [18], 'xs': [17]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [18], 'xs': [17]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997206.0], 'time': [18], 'xs': [17]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [19]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [19]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [19]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [19]}, <FigureNames.budget: 5>: {'budget': [997180.0], 'time': [19]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [19], 'xs': [18]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [19], 'xs': [18]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [19], 'xs': [18]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [19], 'xs': [18]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997180.0], 'time': [19], 'xs': [18]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [20]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [20]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [20]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [20]}, <FigureNames.budget: 5>: {'budget': [997154.0], 'time': [20]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [20], 'xs': [19]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [20], 'xs': [19]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [20], 'xs': [19]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [20], 'xs': [19]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997154.0], 'time': [20], 'xs': [19]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [21]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [21]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [21]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [21]}, <FigureNames.budget: 5>: {'budget': [997128.0], 'time': [21]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [21], 'xs': [20]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [21], 'xs': [20]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [21], 'xs': [20]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [21], 'xs': [20]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997128.0], 'time': [21], 'xs': [20]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [22]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [22]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [22]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [22]}, <FigureNames.budget: 5>: {'budget': [997102.0], 'time': [22]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [22], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [22], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [22], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [22], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997102.0], 'time': [22], 'xs': [1]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [23]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [23]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [23]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [23]}, <FigureNames.budget: 5>: {'budget': [997076.0], 'time': [23]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [23], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [23], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [23], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [23], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997076.0], 'time': [23], 'xs': [2]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [24]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [24]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [24]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [24]}, <FigureNames.budget: 5>: {'budget': [997050.0], 'time': [24]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [24], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [24], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [24], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [24], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997050.0], 'time': [24], 'xs': [3]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [25]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [25]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [25]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [25]}, <FigureNames.budget: 5>: {'budget': [997024.0], 'time': [25]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [25], 'xs': [4]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [25], 'xs': [4]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [25], 'xs': [4]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [25], 'xs': [4]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [997024.0], 'time': [25], 'xs': [4]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [26]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [26]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [26]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [26]}, <FigureNames.budget: 5>: {'budget': [996998.0], 'time': [26]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1001], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [26], 'xs': [5]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [26], 'xs': [5]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [26], 'xs': [5]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [26], 'xs': [5]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [996998.0], 'time': [26], 'xs': [5]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1013], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [26]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [26]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [26]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [26]}, <FigureNames.budget: 5>: {'budget': [996878.0], 'time': [26]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1013], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [26], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [26], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [26], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [26], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [996878.0], 'time': [26], 'xs': [1]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1025], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [26]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [26]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [26]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [26]}, <FigureNames.budget: 5>: {'budget': [996758.0], 'time': [26]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1025], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [26], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [26], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [26], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [26], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [996758.0], 'time': [26], 'xs': [2]}>
+
+bokeh_ui/ui.py: figure_update <{<FigureNames.item_cost_table: 8>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Movein': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Moveout': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004], 'Storage': [0.005, 0.006, 0.006999999999999999, 0.008, 0.003, 0.002, 0.004]}, <FigureNames.item_properties_table: 9>: {'Item': ['cloth', 'stuffing', 'accessory', 'packaging', 'aisha', 'beta', 'chama'], 'Weight': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4], 'Volume': [0.5, 0.6, 0.7, 0.8, 0.3, 0.2, 0.4]}, <FigureNames.res_ratio_table: 7>: {'Resource': ['cloth', 'stuffing', 'accessory', 'packaging'], 'aisha': [3, 6, 2, 1], 'beta': [1, 4, 1, 2], 'chama': [2, 5, 1, 4]}, <FigureNames.console_output: 6>: 'console_', <FigureNames.inventory_res: 1>: {'cloth': [1025], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [27]}, <FigureNames.inventory_prod: 2>: {'aisha': [10], 'beta': [11], 'chama': [12], 'time': [27]}, <FigureNames.price_res: 3>: {'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [27]}, <FigureNames.price_prod: 4>: {'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [27]}, <FigureNames.budget: 5>: {'budget': [996732.0], 'time': [27]}}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [1025], 'stuffing': [1134], 'accessory': [1003], 'packaging': [1004], 'time': [27], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [11], 'chama': [12], 'time': [27], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [27], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [27], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [996732.0], 'time': [27], 'xs': [3]}>
+

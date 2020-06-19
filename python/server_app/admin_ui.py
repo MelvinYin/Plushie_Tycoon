@@ -49,11 +49,11 @@ class TransactionTable:
 
     def figure_update(self, data):
         to_patch = defaultdict(list)
-        for category, ratios in data.items():
+        for category, ratio in data.items():
             assert isinstance(category, str)
-            for i, ratio in enumerate(ratios):
-                to_patch[category].append((i, ratio))
-        self._CDS.patch(to_patch)
+            if category in self._CDS.data:
+                to_patch[category] = [ratio]
+        self._CDS.stream(to_patch)
         return
 
 
@@ -69,9 +69,6 @@ class ProductionTable:
     def _set_CDS(self):
         data = dict()
         data['userid'] = []
-        for res in Res:
-            tag = "production_" + res.name
-            data[tag] = []
         for prod in Prod:
             tag = "production_" + prod.name
             data[tag] = []
@@ -80,9 +77,6 @@ class ProductionTable:
 
     def _build_table(self):
         columns = []
-        for res in Res:
-            tag = "production_" + res.name
-            columns.append(TableColumn(field=tag, title=res.name))
         for prod in Prod:
             tag = "production_" + prod.name
             columns.append(TableColumn(field=tag, title=prod.name))
@@ -95,12 +89,14 @@ class ProductionTable:
         return self._table
 
     def figure_update(self, data):
-        to_patch = defaultdict(list)
-        for category, ratios in data.items():
+        to_patch = dict()
+        print(data)
+        for category, ratio in data.items():
             assert isinstance(category, str)
-            for i, ratio in enumerate(ratios):
-                to_patch[category].append((i, ratio))
-        self._CDS.patch(to_patch)
+            print(self._CDS.data)
+            if category in self._CDS.data:
+                to_patch[category] = [ratio]
+        self._CDS.stream(to_patch)
         return
 
 class TextBoxComponent:
@@ -167,31 +163,31 @@ class UI:
         with grpc.insecure_channel(f'localhost:{self.portno}') as channel:
             stub = grpc_pb2_grpc.AdminPageStub(channel)
             request_object = grpc_pb2.NullObject()
-            return_object = stub.getCall(request_object)
-            for call in return_object:
+            for call in stub.getCall(request_object):
                 print(call)
                 call = self._format_changes(call)
+                print(call)
                 self.figure_update(call)
 
     def _format_changes(self, request):
         output = dict()
         output['userid'] = request.userid
         for res in Res:
-            tag = "transaction_" + res.__name__
-            if res.__name__ in request.buySell:
-                output[tag] = request.buySell[res.__name__]
+            tag = "transaction_" + res.name
+            if res.name.upper() in request.buySell:
+                output[tag] = request.buySell[res.name.upper()]
             else:
                 output[tag] = 0
         for prod in Prod:
-            tag = "transaction_" + prod.__name__
-            if prod.__name__ in request.buySell:
-                output[tag] = request.buySell[prod.__name__]
+            tag = "transaction_" + prod.name
+            if prod.name.upper() in request.buySell:
+                output[tag] = request.buySell[prod.name.upper()]
             else:
                 output[tag] = 0
 
-            tag = "production_" + prod.__name__
-            if prod.__name__ in request.make:
-                output[tag] = request.make[prod.__name__]
+            tag = "production_" + prod.name
+            if prod.name.upper() in request.make:
+                output[tag] = request.make[prod.name.upper()]
             else:
                 output[tag] = 0
         return output
@@ -204,7 +200,8 @@ class UI:
         return TextBoxComponent(specs)
 
     def figure_update(self, update):
-        self.time_box.widget.text = update['time']
+        self.time_box.widget.text = '123'
+        # self.time_box.widget.text = update['time']
         self.transaction_table.figure_update(update)
         self.production_table.figure_update(update)
         return True
