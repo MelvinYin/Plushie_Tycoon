@@ -7,12 +7,12 @@ service UITransfer {
     rpc buy(TransactionObject) returns (Snapshot) {};
     rpc sell(TransactionObject) returns (Snapshot) {};
     rpc make(TransactionObject) returns (Snapshot) {};
-    rpc next(SelectionObject) returns (Snapshot) {};
-    rpc save(SelectionObject) returns (Snapshot) {};
-    rpc load(SelectionObject) returns (Snapshot) {};
-    rpc back(SelectionObject) returns (Snapshot) {};
-    rpc quit(SelectionObject) returns (Snapshot) {};
-    rpc init(SelectionObject) returns (Snapshot) {};
+    rpc next(NullObject) returns (Snapshot) {};
+    rpc save(NullObject) returns (Snapshot) {};
+    rpc load(NullObject) returns (Snapshot) {};
+    rpc back(NullObject) returns (Snapshot) {};
+    rpc quit(NullObject) returns (Snapshot) {};
+    rpc init(NullObject) returns (Snapshot) {};
 }
 
 service SendCalls {
@@ -20,8 +20,15 @@ service SendCalls {
     rpc isregistered(UserID) returns (ReturnCode) {};
     rpc send(ProposedChanges) returns (ReturnCode) {};
     rpc query(UserID) returns (Snapshot) {};
-    rpc timeCheck(TimeCheck) returns (ReturnCode) {};
-    rpc hasUpdate(UserID) returns (ReturnCode) {};
+    rpc getTime(NullObject) returns (IntObject) {};
+    rpc hasUpdated(UserID) returns (ReturnCode) {};
+    rpc ping(NullObject) returns (NullObject) {};
+}
+
+service AdminPage {
+    rpc getCall(NullObject) returns (stream ProposedChanges) {};
+    rpc nextTurn (NullObject) returns (ReturnCode) {};
+    rpc ping(NullObject) returns (NullObject) {};
 }
 
 message ReturnCode {
@@ -29,9 +36,8 @@ message ReturnCode {
     bool code = 2;
 }
 
-message TimeCheck {
-    string userid = 1;
-    int32 time = 2;
+message IntObject {
+    int32 item = 1;
 }
 
 message ProposedChanges {
@@ -44,7 +50,7 @@ message UserID {
     string userid = 1;
 }
 
-message SelectionObject {
+message NullObject {
 }
 
 message TransactionObject {

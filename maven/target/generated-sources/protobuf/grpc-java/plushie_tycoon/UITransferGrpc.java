@@ -124,27 +124,27 @@ public final class UITransferGrpc {
     return getMakeMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getNextMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "next",
-      requestType = plushie_tycoon.Grpc.SelectionObject.class,
+      requestType = plushie_tycoon.Grpc.NullObject.class,
       responseType = plushie_tycoon.Grpc.Snapshot.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getNextMethod() {
-    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot> getNextMethod;
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot> getNextMethod;
     if ((getNextMethod = UITransferGrpc.getNextMethod) == null) {
       synchronized (UITransferGrpc.class) {
         if ((getNextMethod = UITransferGrpc.getNextMethod) == null) {
           UITransferGrpc.getNextMethod = getNextMethod =
-              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "next"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  plushie_tycoon.Grpc.SelectionObject.getDefaultInstance()))
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   plushie_tycoon.Grpc.Snapshot.getDefaultInstance()))
               .setSchemaDescriptor(new UITransferMethodDescriptorSupplier("next"))
@@ -155,27 +155,27 @@ public final class UITransferGrpc {
     return getNextMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getSaveMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "save",
-      requestType = plushie_tycoon.Grpc.SelectionObject.class,
+      requestType = plushie_tycoon.Grpc.NullObject.class,
       responseType = plushie_tycoon.Grpc.Snapshot.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getSaveMethod() {
-    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot> getSaveMethod;
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot> getSaveMethod;
     if ((getSaveMethod = UITransferGrpc.getSaveMethod) == null) {
       synchronized (UITransferGrpc.class) {
         if ((getSaveMethod = UITransferGrpc.getSaveMethod) == null) {
           UITransferGrpc.getSaveMethod = getSaveMethod =
-              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "save"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  plushie_tycoon.Grpc.SelectionObject.getDefaultInstance()))
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   plushie_tycoon.Grpc.Snapshot.getDefaultInstance()))
               .setSchemaDescriptor(new UITransferMethodDescriptorSupplier("save"))
@@ -186,27 +186,27 @@ public final class UITransferGrpc {
     return getSaveMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getLoadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "load",
-      requestType = plushie_tycoon.Grpc.SelectionObject.class,
+      requestType = plushie_tycoon.Grpc.NullObject.class,
       responseType = plushie_tycoon.Grpc.Snapshot.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getLoadMethod() {
-    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot> getLoadMethod;
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot> getLoadMethod;
     if ((getLoadMethod = UITransferGrpc.getLoadMethod) == null) {
       synchronized (UITransferGrpc.class) {
         if ((getLoadMethod = UITransferGrpc.getLoadMethod) == null) {
           UITransferGrpc.getLoadMethod = getLoadMethod =
-              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "load"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  plushie_tycoon.Grpc.SelectionObject.getDefaultInstance()))
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   plushie_tycoon.Grpc.Snapshot.getDefaultInstance()))
               .setSchemaDescriptor(new UITransferMethodDescriptorSupplier("load"))
@@ -217,27 +217,27 @@ public final class UITransferGrpc {
     return getLoadMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getBackMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "back",
-      requestType = plushie_tycoon.Grpc.SelectionObject.class,
+      requestType = plushie_tycoon.Grpc.NullObject.class,
       responseType = plushie_tycoon.Grpc.Snapshot.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getBackMethod() {
-    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot> getBackMethod;
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot> getBackMethod;
     if ((getBackMethod = UITransferGrpc.getBackMethod) == null) {
       synchronized (UITransferGrpc.class) {
         if ((getBackMethod = UITransferGrpc.getBackMethod) == null) {
           UITransferGrpc.getBackMethod = getBackMethod =
-              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "back"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  plushie_tycoon.Grpc.SelectionObject.getDefaultInstance()))
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   plushie_tycoon.Grpc.Snapshot.getDefaultInstance()))
               .setSchemaDescriptor(new UITransferMethodDescriptorSupplier("back"))
@@ -248,27 +248,27 @@ public final class UITransferGrpc {
     return getBackMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getQuitMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "quit",
-      requestType = plushie_tycoon.Grpc.SelectionObject.class,
+      requestType = plushie_tycoon.Grpc.NullObject.class,
       responseType = plushie_tycoon.Grpc.Snapshot.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getQuitMethod() {
-    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot> getQuitMethod;
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot> getQuitMethod;
     if ((getQuitMethod = UITransferGrpc.getQuitMethod) == null) {
       synchronized (UITransferGrpc.class) {
         if ((getQuitMethod = UITransferGrpc.getQuitMethod) == null) {
           UITransferGrpc.getQuitMethod = getQuitMethod =
-              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "quit"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  plushie_tycoon.Grpc.SelectionObject.getDefaultInstance()))
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   plushie_tycoon.Grpc.Snapshot.getDefaultInstance()))
               .setSchemaDescriptor(new UITransferMethodDescriptorSupplier("quit"))
@@ -279,27 +279,27 @@ public final class UITransferGrpc {
     return getQuitMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getInitMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "init",
-      requestType = plushie_tycoon.Grpc.SelectionObject.class,
+      requestType = plushie_tycoon.Grpc.NullObject.class,
       responseType = plushie_tycoon.Grpc.Snapshot.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject,
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
       plushie_tycoon.Grpc.Snapshot> getInitMethod() {
-    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot> getInitMethod;
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot> getInitMethod;
     if ((getInitMethod = UITransferGrpc.getInitMethod) == null) {
       synchronized (UITransferGrpc.class) {
         if ((getInitMethod = UITransferGrpc.getInitMethod) == null) {
           UITransferGrpc.getInitMethod = getInitMethod =
-              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.SelectionObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "init"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  plushie_tycoon.Grpc.SelectionObject.getDefaultInstance()))
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   plushie_tycoon.Grpc.Snapshot.getDefaultInstance()))
               .setSchemaDescriptor(new UITransferMethodDescriptorSupplier("init"))
@@ -385,42 +385,42 @@ public final class UITransferGrpc {
 
     /**
      */
-    public void next(plushie_tycoon.Grpc.SelectionObject request,
+    public void next(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnimplementedUnaryCall(getNextMethod(), responseObserver);
     }
 
     /**
      */
-    public void save(plushie_tycoon.Grpc.SelectionObject request,
+    public void save(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnimplementedUnaryCall(getSaveMethod(), responseObserver);
     }
 
     /**
      */
-    public void load(plushie_tycoon.Grpc.SelectionObject request,
+    public void load(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnimplementedUnaryCall(getLoadMethod(), responseObserver);
     }
 
     /**
      */
-    public void back(plushie_tycoon.Grpc.SelectionObject request,
+    public void back(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnimplementedUnaryCall(getBackMethod(), responseObserver);
     }
 
     /**
      */
-    public void quit(plushie_tycoon.Grpc.SelectionObject request,
+    public void quit(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnimplementedUnaryCall(getQuitMethod(), responseObserver);
     }
 
     /**
      */
-    public void init(plushie_tycoon.Grpc.SelectionObject request,
+    public void init(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnimplementedUnaryCall(getInitMethod(), responseObserver);
     }
@@ -452,42 +452,42 @@ public final class UITransferGrpc {
             getNextMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                plushie_tycoon.Grpc.SelectionObject,
+                plushie_tycoon.Grpc.NullObject,
                 plushie_tycoon.Grpc.Snapshot>(
                   this, METHODID_NEXT)))
           .addMethod(
             getSaveMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                plushie_tycoon.Grpc.SelectionObject,
+                plushie_tycoon.Grpc.NullObject,
                 plushie_tycoon.Grpc.Snapshot>(
                   this, METHODID_SAVE)))
           .addMethod(
             getLoadMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                plushie_tycoon.Grpc.SelectionObject,
+                plushie_tycoon.Grpc.NullObject,
                 plushie_tycoon.Grpc.Snapshot>(
                   this, METHODID_LOAD)))
           .addMethod(
             getBackMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                plushie_tycoon.Grpc.SelectionObject,
+                plushie_tycoon.Grpc.NullObject,
                 plushie_tycoon.Grpc.Snapshot>(
                   this, METHODID_BACK)))
           .addMethod(
             getQuitMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                plushie_tycoon.Grpc.SelectionObject,
+                plushie_tycoon.Grpc.NullObject,
                 plushie_tycoon.Grpc.Snapshot>(
                   this, METHODID_QUIT)))
           .addMethod(
             getInitMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                plushie_tycoon.Grpc.SelectionObject,
+                plushie_tycoon.Grpc.NullObject,
                 plushie_tycoon.Grpc.Snapshot>(
                   this, METHODID_INIT)))
           .build();
@@ -538,7 +538,7 @@ public final class UITransferGrpc {
 
     /**
      */
-    public void next(plushie_tycoon.Grpc.SelectionObject request,
+    public void next(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getNextMethod(), getCallOptions()), request, responseObserver);
@@ -546,7 +546,7 @@ public final class UITransferGrpc {
 
     /**
      */
-    public void save(plushie_tycoon.Grpc.SelectionObject request,
+    public void save(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getSaveMethod(), getCallOptions()), request, responseObserver);
@@ -554,7 +554,7 @@ public final class UITransferGrpc {
 
     /**
      */
-    public void load(plushie_tycoon.Grpc.SelectionObject request,
+    public void load(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getLoadMethod(), getCallOptions()), request, responseObserver);
@@ -562,7 +562,7 @@ public final class UITransferGrpc {
 
     /**
      */
-    public void back(plushie_tycoon.Grpc.SelectionObject request,
+    public void back(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getBackMethod(), getCallOptions()), request, responseObserver);
@@ -570,7 +570,7 @@ public final class UITransferGrpc {
 
     /**
      */
-    public void quit(plushie_tycoon.Grpc.SelectionObject request,
+    public void quit(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getQuitMethod(), getCallOptions()), request, responseObserver);
@@ -578,7 +578,7 @@ public final class UITransferGrpc {
 
     /**
      */
-    public void init(plushie_tycoon.Grpc.SelectionObject request,
+    public void init(plushie_tycoon.Grpc.NullObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getInitMethod(), getCallOptions()), request, responseObserver);
@@ -626,42 +626,42 @@ public final class UITransferGrpc {
 
     /**
      */
-    public plushie_tycoon.Grpc.Snapshot next(plushie_tycoon.Grpc.SelectionObject request) {
+    public plushie_tycoon.Grpc.Snapshot next(plushie_tycoon.Grpc.NullObject request) {
       return blockingUnaryCall(
           getChannel(), getNextMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public plushie_tycoon.Grpc.Snapshot save(plushie_tycoon.Grpc.SelectionObject request) {
+    public plushie_tycoon.Grpc.Snapshot save(plushie_tycoon.Grpc.NullObject request) {
       return blockingUnaryCall(
           getChannel(), getSaveMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public plushie_tycoon.Grpc.Snapshot load(plushie_tycoon.Grpc.SelectionObject request) {
+    public plushie_tycoon.Grpc.Snapshot load(plushie_tycoon.Grpc.NullObject request) {
       return blockingUnaryCall(
           getChannel(), getLoadMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public plushie_tycoon.Grpc.Snapshot back(plushie_tycoon.Grpc.SelectionObject request) {
+    public plushie_tycoon.Grpc.Snapshot back(plushie_tycoon.Grpc.NullObject request) {
       return blockingUnaryCall(
           getChannel(), getBackMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public plushie_tycoon.Grpc.Snapshot quit(plushie_tycoon.Grpc.SelectionObject request) {
+    public plushie_tycoon.Grpc.Snapshot quit(plushie_tycoon.Grpc.NullObject request) {
       return blockingUnaryCall(
           getChannel(), getQuitMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public plushie_tycoon.Grpc.Snapshot init(plushie_tycoon.Grpc.SelectionObject request) {
+    public plushie_tycoon.Grpc.Snapshot init(plushie_tycoon.Grpc.NullObject request) {
       return blockingUnaryCall(
           getChannel(), getInitMethod(), getCallOptions(), request);
     }
@@ -712,7 +712,7 @@ public final class UITransferGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.Snapshot> next(
-        plushie_tycoon.Grpc.SelectionObject request) {
+        plushie_tycoon.Grpc.NullObject request) {
       return futureUnaryCall(
           getChannel().newCall(getNextMethod(), getCallOptions()), request);
     }
@@ -720,7 +720,7 @@ public final class UITransferGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.Snapshot> save(
-        plushie_tycoon.Grpc.SelectionObject request) {
+        plushie_tycoon.Grpc.NullObject request) {
       return futureUnaryCall(
           getChannel().newCall(getSaveMethod(), getCallOptions()), request);
     }
@@ -728,7 +728,7 @@ public final class UITransferGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.Snapshot> load(
-        plushie_tycoon.Grpc.SelectionObject request) {
+        plushie_tycoon.Grpc.NullObject request) {
       return futureUnaryCall(
           getChannel().newCall(getLoadMethod(), getCallOptions()), request);
     }
@@ -736,7 +736,7 @@ public final class UITransferGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.Snapshot> back(
-        plushie_tycoon.Grpc.SelectionObject request) {
+        plushie_tycoon.Grpc.NullObject request) {
       return futureUnaryCall(
           getChannel().newCall(getBackMethod(), getCallOptions()), request);
     }
@@ -744,7 +744,7 @@ public final class UITransferGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.Snapshot> quit(
-        plushie_tycoon.Grpc.SelectionObject request) {
+        plushie_tycoon.Grpc.NullObject request) {
       return futureUnaryCall(
           getChannel().newCall(getQuitMethod(), getCallOptions()), request);
     }
@@ -752,7 +752,7 @@ public final class UITransferGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.Snapshot> init(
-        plushie_tycoon.Grpc.SelectionObject request) {
+        plushie_tycoon.Grpc.NullObject request) {
       return futureUnaryCall(
           getChannel().newCall(getInitMethod(), getCallOptions()), request);
     }
@@ -798,27 +798,27 @@ public final class UITransferGrpc {
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
           break;
         case METHODID_NEXT:
-          serviceImpl.next((plushie_tycoon.Grpc.SelectionObject) request,
+          serviceImpl.next((plushie_tycoon.Grpc.NullObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
           break;
         case METHODID_SAVE:
-          serviceImpl.save((plushie_tycoon.Grpc.SelectionObject) request,
+          serviceImpl.save((plushie_tycoon.Grpc.NullObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
           break;
         case METHODID_LOAD:
-          serviceImpl.load((plushie_tycoon.Grpc.SelectionObject) request,
+          serviceImpl.load((plushie_tycoon.Grpc.NullObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
           break;
         case METHODID_BACK:
-          serviceImpl.back((plushie_tycoon.Grpc.SelectionObject) request,
+          serviceImpl.back((plushie_tycoon.Grpc.NullObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
           break;
         case METHODID_QUIT:
-          serviceImpl.quit((plushie_tycoon.Grpc.SelectionObject) request,
+          serviceImpl.quit((plushie_tycoon.Grpc.NullObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
           break;
         case METHODID_INIT:
-          serviceImpl.init((plushie_tycoon.Grpc.SelectionObject) request,
+          serviceImpl.init((plushie_tycoon.Grpc.NullObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
           break;
         default:

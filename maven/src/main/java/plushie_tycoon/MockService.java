@@ -115,32 +115,32 @@ public class MockService {
             responseObserver.onCompleted();
         }
         @Override
-        public void next(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void next(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             responseObserver.onNext(getReturn());
             responseObserver.onCompleted();
         }
         @Override
-        public void save(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void save(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             responseObserver.onNext(getReturn());
             responseObserver.onCompleted();
         }
         @Override
-        public void load(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void load(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             responseObserver.onNext(getReturn());
             responseObserver.onCompleted();
         }
         //        @Override
-        public void back(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void back(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             responseObserver.onNext(getReturn());
             responseObserver.onCompleted();
         }
         //        @Override
-        public void quit(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void quit(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             responseObserver.onNext(getReturn());
             responseObserver.onCompleted();
         }
         //        @Override
-        public void init(Grpc.SelectionObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
+        public void init(Grpc.NullObject request, StreamObserver<Grpc.Snapshot> responseObserver) {
             responseObserver.onNext(getReturn());
             responseObserver.onCompleted();
         }

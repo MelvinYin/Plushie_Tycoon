@@ -1,7 +1,7 @@
 package plushie_tycoon.serverService;
 
-import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
-import plushie_tycoon.serverService.config.baseObjects.Products;
+import plushie_tycoon.config.baseObjects.BaseObjects;
+import plushie_tycoon.config.baseObjects.Products;
 import plushie_tycoon.Grpc;
 
 import plushie_tycoon.Grpc.Snapshot;

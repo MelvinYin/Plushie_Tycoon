@@ -8,8 +8,9 @@ import plushie_tycoon.serverService.ServerService;
 
 public class PlushieServer {
     public static void main(String[] args) throws Exception {
-        int portno = 50051;
-        ServerService service = new ServerService(portno);
+        int toUIPortno = 50001;
+        int toGlobalPortno = 50002;
+        ServerService service = new ServerService(toUIPortno, toGlobalPortno);
         service.run();
     }
 }

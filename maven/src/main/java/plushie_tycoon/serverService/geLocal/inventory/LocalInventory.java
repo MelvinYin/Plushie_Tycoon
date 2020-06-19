@@ -1,8 +1,8 @@
 package plushie_tycoon.serverService.geLocal.inventory;
 import java.util.HashMap;
 
-import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
-import plushie_tycoon.serverService.config.Defaults;
+import plushie_tycoon.config.baseObjects.BaseObjects;
+import plushie_tycoon.config.Defaults;
 
 public class LocalInventory{
     private HashMap<BaseObjects, Integer> inventory;

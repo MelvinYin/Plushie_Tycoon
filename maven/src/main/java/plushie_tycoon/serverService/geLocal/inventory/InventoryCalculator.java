@@ -1,10 +1,10 @@
 package plushie_tycoon.serverService.geLocal.inventory;
 
-import plushie_tycoon.serverService.config.baseObjects.BaseObjects;
-import plushie_tycoon.serverService.config.Defaults;
-import plushie_tycoon.serverService.config.stats.MoveInCost;
-import plushie_tycoon.serverService.config.stats.MoveOutCost;
-import plushie_tycoon.serverService.config.stats.StoreCost;
+import plushie_tycoon.config.baseObjects.BaseObjects;
+import plushie_tycoon.config.Defaults;
+import plushie_tycoon.config.stats.MoveInCost;
+import plushie_tycoon.config.stats.MoveOutCost;
+import plushie_tycoon.config.stats.StoreCost;
 
 
 public class InventoryCalculator {
