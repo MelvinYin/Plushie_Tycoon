@@ -17,6 +17,7 @@ import java.util.HashMap;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
+import javax.swing.plaf.basic.BasicBorders;
 import java.io.IOException;
 
 public class LocalEngine {
@@ -45,18 +46,17 @@ public class LocalEngine {
         this.serverPortno = serverPortno;
         this.webPagePortno = webPagePortno;
         clientPageService = new ClientPageService(this);
-        //todo: this should return a snapshot, which is used to update the parameters here.
+    }
+
+    public void initFromGlobalServer(){
+        ToGlobalServer.waitForReady(serverPortno);
+        ToGlobalServer.ping(serverPortno);
         Snapshot initSnapshot = ToGlobalServer.register(serverPortno, userid);
         updateLocal(initSnapshot);
     }
 
-    public boolean pingGlobalServer() {
-
-    }
-
     public void runServices() throws IOException, InterruptedException {
-        ServerBuilder builder = ServerBuilder.forPort(webPagePortno).addService(clientPageService);
-        Server server = builder.build();
+        Server server = ServerBuilder.forPort(webPagePortno).addService(clientPageService).build();
         server.start();
         server.awaitTermination();
     }

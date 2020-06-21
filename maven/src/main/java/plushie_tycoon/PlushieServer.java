@@ -7,6 +7,7 @@ public class PlushieServer {
         int webPagePortno = 50001;
         int serverPortno = 50002;
         LocalEngine ge = new LocalEngine(webPagePortno, serverPortno);
+        ge.initFromGlobalServer();
         ge.runServices();
     }
 }

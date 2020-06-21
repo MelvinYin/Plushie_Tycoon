@@ -38,7 +38,6 @@ plushie_tycoon/local/localEngine/inventory/LocalInventory.class
 plushie_tycoon/SendCallsGrpc$SendCallsBlockingStub.class
 plushie_tycoon/SendCallsGrpc$SendCallsFileDescriptorSupplier.class
 plushie_tycoon/AdminPageGrpc$AdminPageFutureStub.class
-plushie_tycoon/local/localEngine/ToGlobalServer.class
 plushie_tycoon/SendCallsGrpc$SendCallsImplBase.class
 plushie_tycoon/ClientPageGrpc$ClientPageImplBase.class
 plushie_tycoon/Grpc$Snapshot$VolumesDefaultEntryHolder.class
@@ -95,7 +94,6 @@ plushie_tycoon/Grpc$TransactionObject.class
 plushie_tycoon/Grpc$NullObject.class
 plushie_tycoon/ClientPageGrpc$2.class
 plushie_tycoon/global/globalEngine/market/buyer/BuyerBase.class
-plushie_tycoon/local/localEngine/LocalEngine.class
 plushie_tycoon/config/CallStack.class
 plushie_tycoon/Grpc$TransactionObjectOrBuilder.class
 plushie_tycoon/config/interfaces/Inventory.class

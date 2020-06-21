@@ -16,12 +16,12 @@ folders_to_add(['figures', 'widgets'], suffix='bokeh_ui')
 folders_to_add(['mocked_data'], suffix='tests')
 folders_to_add(['p_model'], suffix='gs_components')
 
-from ui_interface import UIInterface
+from bokeh_ui.ui import UI
 
 def run():
     port_no = "50001"
-    ui = UIInterface(port_no)
-    curdoc().add_root(ui.ui.ui_layout)
+    ui = UI(port_no)
+    curdoc().add_root(ui.ui_layout)
     # show(ui.ui.ui_layout)
 
 run()

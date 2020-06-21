@@ -58,3 +58,33 @@ bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta':
 
 bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999980.0], 'time': [1], 'xs': [5]}>
 
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [989], 'stuffing': [954], 'accessory': [991], 'packaging': [980], 'time': [0], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [23], 'chama': [12], 'time': [0], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [0], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [0], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [1000002.0], 'time': [0], 'xs': [1]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [977], 'stuffing': [906], 'accessory': [979], 'packaging': [956], 'time': [0], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [35], 'chama': [12], 'time': [0], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [0], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [0], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [1000002.0], 'time': [0], 'xs': [2]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [977], 'stuffing': [906], 'accessory': [979], 'packaging': [956], 'time': [1], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [10], 'beta': [35], 'chama': [12], 'time': [1], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'cloth': [10.0], 'stuffing': [20.0], 'accessory': [18.0], 'packaging': [12.0], 'time': [1], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'aisha': [102.0], 'beta': [103.0], 'chama': [104.0], 'time': [1], 'xs': [3]}>
+
+bokeh_ui/figures/individual_figure.py: figure_update <{'budget': [999980.0], 'time': [1], 'xs': [3]}>
+

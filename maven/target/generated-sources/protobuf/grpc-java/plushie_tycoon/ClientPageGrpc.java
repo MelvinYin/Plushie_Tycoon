@@ -31,6 +31,37 @@ public final class ClientPageGrpc {
   public static final String SERVICE_NAME = "plushie_tycoon.ClientPage";
 
   // Static method descriptors that strictly reflect the proto.
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
+      plushie_tycoon.Grpc.NullObject> getPingMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ping",
+      requestType = plushie_tycoon.Grpc.NullObject.class,
+      responseType = plushie_tycoon.Grpc.NullObject.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject,
+      plushie_tycoon.Grpc.NullObject> getPingMethod() {
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.NullObject> getPingMethod;
+    if ((getPingMethod = ClientPageGrpc.getPingMethod) == null) {
+      synchronized (ClientPageGrpc.class) {
+        if ((getPingMethod = ClientPageGrpc.getPingMethod) == null) {
+          ClientPageGrpc.getPingMethod = getPingMethod =
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.NullObject, plushie_tycoon.Grpc.NullObject>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ping"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.NullObject.getDefaultInstance()))
+              .setSchemaDescriptor(new ClientPageMethodDescriptorSupplier("ping"))
+              .build();
+        }
+      }
+    }
+    return getPingMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.TransactionObject,
       plushie_tycoon.Grpc.Snapshot> getBuyMethod;
 
@@ -364,6 +395,13 @@ public final class ClientPageGrpc {
 
     /**
      */
+    public void ping(plushie_tycoon.Grpc.NullObject request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.NullObject> responseObserver) {
+      asyncUnimplementedUnaryCall(getPingMethod(), responseObserver);
+    }
+
+    /**
+     */
     public void buy(plushie_tycoon.Grpc.TransactionObject request,
         io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
       asyncUnimplementedUnaryCall(getBuyMethod(), responseObserver);
@@ -427,6 +465,13 @@ public final class ClientPageGrpc {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
+          .addMethod(
+            getPingMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                plushie_tycoon.Grpc.NullObject,
+                plushie_tycoon.Grpc.NullObject>(
+                  this, METHODID_PING)))
           .addMethod(
             getBuyMethod(),
             asyncUnaryCall(
@@ -510,6 +555,14 @@ public final class ClientPageGrpc {
     protected ClientPageStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new ClientPageStub(channel, callOptions);
+    }
+
+    /**
+     */
+    public void ping(plushie_tycoon.Grpc.NullObject request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.NullObject> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getPingMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -605,6 +658,13 @@ public final class ClientPageGrpc {
 
     /**
      */
+    public plushie_tycoon.Grpc.NullObject ping(plushie_tycoon.Grpc.NullObject request) {
+      return blockingUnaryCall(
+          getChannel(), getPingMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public plushie_tycoon.Grpc.Snapshot buy(plushie_tycoon.Grpc.TransactionObject request) {
       return blockingUnaryCall(
           getChannel(), getBuyMethod(), getCallOptions(), request);
@@ -687,6 +747,14 @@ public final class ClientPageGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.NullObject> ping(
+        plushie_tycoon.Grpc.NullObject request) {
+      return futureUnaryCall(
+          getChannel().newCall(getPingMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.Snapshot> buy(
         plushie_tycoon.Grpc.TransactionObject request) {
       return futureUnaryCall(
@@ -758,15 +826,16 @@ public final class ClientPageGrpc {
     }
   }
 
-  private static final int METHODID_BUY = 0;
-  private static final int METHODID_SELL = 1;
-  private static final int METHODID_MAKE = 2;
-  private static final int METHODID_NEXT = 3;
-  private static final int METHODID_SAVE = 4;
-  private static final int METHODID_LOAD = 5;
-  private static final int METHODID_BACK = 6;
-  private static final int METHODID_QUIT = 7;
-  private static final int METHODID_INIT = 8;
+  private static final int METHODID_PING = 0;
+  private static final int METHODID_BUY = 1;
+  private static final int METHODID_SELL = 2;
+  private static final int METHODID_MAKE = 3;
+  private static final int METHODID_NEXT = 4;
+  private static final int METHODID_SAVE = 5;
+  private static final int METHODID_LOAD = 6;
+  private static final int METHODID_BACK = 7;
+  private static final int METHODID_QUIT = 8;
+  private static final int METHODID_INIT = 9;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -785,6 +854,10 @@ public final class ClientPageGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_PING:
+          serviceImpl.ping((plushie_tycoon.Grpc.NullObject) request,
+              (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.NullObject>) responseObserver);
+          break;
         case METHODID_BUY:
           serviceImpl.buy((plushie_tycoon.Grpc.TransactionObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
@@ -882,6 +955,7 @@ public final class ClientPageGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ClientPageFileDescriptorSupplier())
+              .addMethod(getPingMethod())
               .addMethod(getBuyMethod())
               .addMethod(getSellMethod())
               .addMethod(getMakeMethod())
