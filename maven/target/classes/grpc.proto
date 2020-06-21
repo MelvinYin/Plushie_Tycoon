@@ -3,7 +3,7 @@ syntax = "proto3";
 package plushie_tycoon;
 //todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
 //or alternatively we can provide an order object somewhere
-service UITransfer {
+service ClientPage {
     rpc buy(TransactionObject) returns (Snapshot) {};
     rpc sell(TransactionObject) returns (Snapshot) {};
     rpc make(TransactionObject) returns (Snapshot) {};

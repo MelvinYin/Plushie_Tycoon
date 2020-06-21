@@ -7,11 +7,9 @@ Necessary boxes to display:
 """
 
 # todo: individual_figure.py, CDS.
-print("call\n\n\n\n\m")
 from utils.sys_path_adder import folders_to_add
 from bokeh.plotting import curdoc
 
-print("call2\n\n\n\n\m")
 folders_to_add(['bokeh_ui', 'config', 'p_model', 'tests', 'gs_components',
                 'utils'])
 folders_to_add(['figures', 'widgets'], suffix='bokeh_ui')

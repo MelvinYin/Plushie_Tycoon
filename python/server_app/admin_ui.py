@@ -2,12 +2,9 @@ from bokeh.models.widgets import Button
 from collections import defaultdict
 from bokeh.layouts import row, column
 from bokeh.models.widgets import Div
-from bokeh.models.layouts import Spacer
 from bokeh.models import DataTable, TableColumn, ColumnDataSource
-import grpc
-import grpc_pb2_grpc
-import grpc_pb2
 from config.global_config import Res, Prod
+from grpc_clients import admin_page
 
 class TransactionTable:
     def __init__(self):
@@ -90,10 +87,8 @@ class ProductionTable:
 
     def figure_update(self, data):
         to_patch = dict()
-        print(data)
         for category, ratio in data.items():
             assert isinstance(category, str)
-            print(self._CDS.data)
             if category in self._CDS.data:
                 to_patch[category] = [ratio]
         self._CDS.stream(to_patch)
@@ -108,7 +103,6 @@ class TextBoxComponent:
         TB.width = specs['width']
         TB.height = specs['height']
         return TB
-
 
 class ButtonComponent:
     def __init__(self, specs, widget_callback):
@@ -160,14 +154,9 @@ class UI:
 
     def get_calls(self):
         print(f"\n\n\nget_calls called with portno {self.portno}.")
-        with grpc.insecure_channel(f'localhost:{self.portno}') as channel:
-            stub = grpc_pb2_grpc.AdminPageStub(channel)
-            request_object = grpc_pb2.NullObject()
-            for call in stub.getCall(request_object):
-                print(call)
-                call = self._format_changes(call)
-                print(call)
-                self.figure_update(call)
+        for call in admin_page.getCall(self.portno):
+            call = self._format_changes(call)
+            self.figure_update(call)
 
     def _format_changes(self, request):
         output = dict()
@@ -216,18 +205,10 @@ class UI:
 
     def widget_callback(self, call):
         print(f"next_turn_button called.")
-        with grpc.insecure_channel(f'localhost:{self.portno}') as channel:
-            stub = grpc_pb2_grpc.AdminPageStub(channel)
-            request_object = grpc_pb2.NullObject()
-            return_object = stub.nextTurn(request_object)
-            print(return_object.code)
+        admin_page.nextTurn(self.portno)
         return True
 
     def ping_callback(self, call):
         print(f"ping_button called.")
-        with grpc.insecure_channel(f'localhost:{self.portno}') as channel:
-            stub = grpc_pb2_grpc.AdminPageStub(channel)
-            request_object = grpc_pb2.NullObject()
-            return_object = stub.ping(request_object)
-            print(return_object.code)
+        admin_page.ping(self.portno)
         return True

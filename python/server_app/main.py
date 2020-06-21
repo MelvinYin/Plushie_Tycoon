@@ -11,7 +11,6 @@ Necessary boxes to display:
 from utils.sys_path_adder import folders_to_add
 from bokeh.plotting import curdoc
 import admin_ui
-from config.global_config import Res, Prod
 
 folders_to_add(['bokeh_ui', 'config', 'p_model', 'tests', 'gs_components',
                 'utils'])
@@ -19,10 +18,6 @@ folders_to_add(['figures', 'widgets'], suffix='bokeh_ui')
 folders_to_add(['mocked_data'], suffix='tests')
 folders_to_add(['p_model'], suffix='gs_components')
 
-import grpc_pb2_grpc
-import grpc_pb2
-import grpc
-import concurrent.futures
 
 class Admin:
     def __init__(self, portno):

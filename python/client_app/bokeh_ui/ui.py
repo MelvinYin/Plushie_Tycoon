@@ -30,7 +30,6 @@ class UI:
         call = dict()
         call['command'] = "init"
         tp, action = self._format_init_data(self.ui_callback(call))
-        print(tp)
         if action == 'pause':
             return self.FigInstances
 

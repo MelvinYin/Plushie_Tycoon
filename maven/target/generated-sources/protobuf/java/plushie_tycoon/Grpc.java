@@ -7955,8 +7955,8 @@ public final class Grpc {
       "y\022\013\n\003key\030\001 \001(\t\022(\n\005value\030\002 \001(\0132\031.plushie_" +
       "tycoon.mItemCost:\0028\001\032V\n\022ResourceRatioEnt" +
       "ry\022\013\n\003key\030\001 \001(\t\022/\n\005value\030\002 \001(\0132 .plushie" +
-      "_tycoon.mRatioPerProduct:\0028\0012\340\004\n\nUITrans" +
-      "fer\022D\n\003buy\022!.plushie_tycoon.TransactionO" +
+      "_tycoon.mRatioPerProduct:\0028\0012\340\004\n\nClientP" +
+      "age\022D\n\003buy\022!.plushie_tycoon.TransactionO" +
       "bject\032\030.plushie_tycoon.Snapshot\"\000\022E\n\004sel" +
       "l\022!.plushie_tycoon.TransactionObject\032\030.p" +
       "lushie_tycoon.Snapshot\"\000\022E\n\004make\022!.plush" +

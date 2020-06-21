@@ -15,7 +15,7 @@ class UIInterface:
     def callback(self, call):
         print(f"UIWrapper.callback called with <{call}>.")
         with grpc.insecure_channel(f'localhost:{self.port_no}') as channel:
-            stub = grpc_pb2_grpc.UITransferStub(channel)
+            stub = grpc_pb2_grpc.ClientPageStub(channel)
             grpc_adapter = GrpcUIAdapter(stub)
             if call['command'] == 'buy':
                 output = grpc_adapter.Buy(call['category'], call['quantity'])
