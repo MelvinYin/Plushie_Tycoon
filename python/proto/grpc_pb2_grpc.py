@@ -15,6 +15,11 @@ class ClientPageStub(object):
         Args:
             channel: A grpc.Channel.
         """
+        self.ping = channel.unary_unary(
+                '/plushie_tycoon.ClientPage/ping',
+                request_serializer=grpc__pb2.NullObject.SerializeToString,
+                response_deserializer=grpc__pb2.NullObject.FromString,
+                )
         self.buy = channel.unary_unary(
                 '/plushie_tycoon.ClientPage/buy',
                 request_serializer=grpc__pb2.TransactionObject.SerializeToString,
@@ -66,6 +71,12 @@ class ClientPageServicer(object):
     """todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
     or alternatively we can provide an order object somewhere
     """
+
+    def ping(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
     def buy(self, request, context):
         """Missing associated documentation comment in .proto file"""
@@ -124,6 +135,11 @@ class ClientPageServicer(object):
 
 def add_ClientPageServicer_to_server(servicer, server):
     rpc_method_handlers = {
+            'ping': grpc.unary_unary_rpc_method_handler(
+                    servicer.ping,
+                    request_deserializer=grpc__pb2.NullObject.FromString,
+                    response_serializer=grpc__pb2.NullObject.SerializeToString,
+            ),
             'buy': grpc.unary_unary_rpc_method_handler(
                     servicer.buy,
                     request_deserializer=grpc__pb2.TransactionObject.FromString,
@@ -180,6 +196,22 @@ class ClientPage(object):
     """todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
     or alternatively we can provide an order object somewhere
     """
+
+    @staticmethod
+    def ping(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/ping',
+            grpc__pb2.NullObject.SerializeToString,
+            grpc__pb2.NullObject.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
     def buy(request,
@@ -326,7 +358,7 @@ class ClientPage(object):
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
 
-class SendCallsStub(object):
+class ClientToHostStub(object):
     """Missing associated documentation comment in .proto file"""
 
     def __init__(self, channel):
@@ -336,47 +368,48 @@ class SendCallsStub(object):
             channel: A grpc.Channel.
         """
         self.register = channel.unary_unary(
-                '/plushie_tycoon.SendCalls/register',
+                '/plushie_tycoon.ClientToHost/register',
                 request_serializer=grpc__pb2.UserID.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.isregistered = channel.unary_unary(
-                '/plushie_tycoon.SendCalls/isregistered',
+                '/plushie_tycoon.ClientToHost/isregistered',
                 request_serializer=grpc__pb2.UserID.SerializeToString,
                 response_deserializer=grpc__pb2.ReturnCode.FromString,
                 )
         self.send = channel.unary_unary(
-                '/plushie_tycoon.SendCalls/send',
+                '/plushie_tycoon.ClientToHost/send',
                 request_serializer=grpc__pb2.ProposedChanges.SerializeToString,
                 response_deserializer=grpc__pb2.ReturnCode.FromString,
                 )
         self.query = channel.unary_unary(
-                '/plushie_tycoon.SendCalls/query',
+                '/plushie_tycoon.ClientToHost/query',
                 request_serializer=grpc__pb2.UserID.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.getTime = channel.unary_unary(
-                '/plushie_tycoon.SendCalls/getTime',
+                '/plushie_tycoon.ClientToHost/getTime',
                 request_serializer=grpc__pb2.NullObject.SerializeToString,
                 response_deserializer=grpc__pb2.IntObject.FromString,
                 )
         self.hasUpdated = channel.unary_unary(
-                '/plushie_tycoon.SendCalls/hasUpdated',
+                '/plushie_tycoon.ClientToHost/hasUpdated',
                 request_serializer=grpc__pb2.UserID.SerializeToString,
                 response_deserializer=grpc__pb2.ReturnCode.FromString,
                 )
         self.ping = channel.unary_unary(
-                '/plushie_tycoon.SendCalls/ping',
+                '/plushie_tycoon.ClientToHost/ping',
                 request_serializer=grpc__pb2.NullObject.SerializeToString,
                 response_deserializer=grpc__pb2.NullObject.FromString,
                 )
 
 
-class SendCallsServicer(object):
+class ClientToHostServicer(object):
     """Missing associated documentation comment in .proto file"""
 
     def register(self, request, context):
-        """Missing associated documentation comment in .proto file"""
+        """service SendCalls {
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -418,7 +451,7 @@ class SendCallsServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_SendCallsServicer_to_server(servicer, server):
+def add_ClientToHostServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'register': grpc.unary_unary_rpc_method_handler(
                     servicer.register,
@@ -457,12 +490,12 @@ def add_SendCallsServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'plushie_tycoon.SendCalls', rpc_method_handlers)
+            'plushie_tycoon.ClientToHost', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class SendCalls(object):
+class ClientToHost(object):
     """Missing associated documentation comment in .proto file"""
 
     @staticmethod
@@ -475,7 +508,7 @@ class SendCalls(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.SendCalls/register',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientToHost/register',
             grpc__pb2.UserID.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
@@ -491,7 +524,7 @@ class SendCalls(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.SendCalls/isregistered',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientToHost/isregistered',
             grpc__pb2.UserID.SerializeToString,
             grpc__pb2.ReturnCode.FromString,
             options, channel_credentials,
@@ -507,7 +540,7 @@ class SendCalls(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.SendCalls/send',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientToHost/send',
             grpc__pb2.ProposedChanges.SerializeToString,
             grpc__pb2.ReturnCode.FromString,
             options, channel_credentials,
@@ -523,7 +556,7 @@ class SendCalls(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.SendCalls/query',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientToHost/query',
             grpc__pb2.UserID.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
@@ -539,7 +572,7 @@ class SendCalls(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.SendCalls/getTime',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientToHost/getTime',
             grpc__pb2.NullObject.SerializeToString,
             grpc__pb2.IntObject.FromString,
             options, channel_credentials,
@@ -555,7 +588,7 @@ class SendCalls(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.SendCalls/hasUpdated',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientToHost/hasUpdated',
             grpc__pb2.UserID.SerializeToString,
             grpc__pb2.ReturnCode.FromString,
             options, channel_credentials,
@@ -571,7 +604,7 @@ class SendCalls(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.SendCalls/ping',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientToHost/ping',
             grpc__pb2.NullObject.SerializeToString,
             grpc__pb2.NullObject.FromString,
             options, channel_credentials,

@@ -16,7 +16,7 @@ service ClientPage {
     rpc init(NullObject) returns (Snapshot) {};
 }
 
-service SendCalls {
+service ClientToHost {
     rpc register(UserID) returns (Snapshot) {};
     rpc isregistered(UserID) returns (ReturnCode) {};
     rpc send(ProposedChanges) returns (ReturnCode) {};

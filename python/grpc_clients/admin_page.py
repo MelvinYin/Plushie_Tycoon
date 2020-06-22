@@ -15,7 +15,7 @@ def nextTurn(portno):
     with grpc.insecure_channel(f'localhost:{portno}') as channel:
         stub = grpc_pb2_grpc.AdminPageStub(channel)
         request_object = grpc_pb2.NullObject()
-        return_object = stub.ping(request_object)
+        return_object = stub.nextTurn(request_object)
     print(f"AdminPage.nextTurn completed.\n")
     return return_object
 
