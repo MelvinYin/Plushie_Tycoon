@@ -8,7 +8,7 @@ from .figures.individual_figure import IndividualFigure, ConsoleOutput, \
 from .widgets.individual import TransactionWidget, ButtonWidget
 import grpc
 import itertools
-from global_config import FigureNames, Res, Prod
+from global_config import FigureNames, Res, Prod, Func
 import grpc_pb2_grpc
 from grpc_ui_adapter import GrpcUIAdapter
 
@@ -28,7 +28,7 @@ class UI:
 
     def _init_figures(self):
         call = dict()
-        call['command'] = 'init'
+        call['command'] = Func.init
         self.ui_callback(call)
 
     def _update_figures(self, grpc_obj):
@@ -166,64 +166,31 @@ class UI:
         with grpc.insecure_channel(f'localhost:{self.portno}') as channel:
             stub = grpc_pb2_grpc.ClientPageStub(channel)
             grpc_adapter = GrpcUIAdapter(stub)
-            if call['command'] == 'buy':
-                output = grpc_adapter.Buy(call['category'], call['quantity'])
-            elif call['command'] == 'sell':
-                output = grpc_adapter.Sell(call['category'], call['quantity'])
-            elif call['command'] == 'make':
-                output = grpc_adapter.Make(call['category'], call['quantity'])
-            elif call['command'] == 'next':
-                output = grpc_adapter.Next()
-            elif call['command'] == 'save':
-                output = grpc_adapter.Save()
-            elif call['command'] == 'load':
-                output = grpc_adapter.Load()
-            elif call['command'] == 'back':
-                output = grpc_adapter.Back()
-            elif call['command'] == 'quit':
-                output = grpc_adapter.Quit()
-            elif call['command'] == 'init':
-                output = grpc_adapter.Init()
+            if call['command'] == Func.buy:
+                output = grpc_adapter.buy(call['category'].name,
+                                          call['quantity'])
+            elif call['command'] == Func.sell:
+                output = grpc_adapter.sell(call['category'].name, call['quantity'])
+            elif call['command'] == Func.make:
+                output = grpc_adapter.make(call['category'].name, call['quantity'])
+            elif call['command'] == Func.next:
+                output = grpc_adapter.next()
+            elif call['command'] == Func.save:
+                output = grpc_adapter.save()
+            elif call['command'] == Func.load:
+                output = grpc_adapter.load()
+            elif call['command'] == Func.back:
+                output = grpc_adapter.back()
+            elif call['command'] == Func.quit:
+                output = grpc_adapter.quit()
+            elif call['command'] == Func.init:
+                output = grpc_adapter.init()
             else:
                 raise Exception(call)
         action = output.action
         if action == "update":
             self._update_figures(output)
         print(f"Success <{action}>.")
-
-
-    # def _construct_individual_figures(self, couple_range=True):
-    #     call = dict()
-    #     call['command'] = "init"
-    #     tp, action = self.ui_callback(call)
-    #     if action == 'pause':
-    #         return self.FigInstances
-    #
-    #     inv_res = IndividualFigure(tp[FigNms.inventory_res],
-    #                                FigSpecs[FigNms.inventory_res])
-    #     inv_prod = IndividualFigure(tp[FigNms.inventory_prod],
-    #                                 FigSpecs['inventory_prod'])
-    #     pr_res = IndividualFigure(tp[FigNms.price_res],
-    #                               FigSpecs['price_res'])
-    #     pr_prod = IndividualFigure(tp[FigNms.price_prod],
-    #                                FigSpecs['price_prod'])
-    #     budget = IndividualFigure(tp[FigNms.budget], FigSpecs['budget'])
-    #     # couple range
-    #     if couple_range:
-    #         ref_x_range = inv_res.figure.x_range
-    #         inv_prod.figure.x_range = ref_x_range
-    #         pr_res.figure.x_range = ref_x_range
-    #         pr_prod.figure.x_range = ref_x_range
-    #         budget.figure.x_range = ref_x_range
-    #
-    #     console = ConsoleOutput(tp[FigNms.console_output])
-    #     ratio_t = ResourceRatioTable(tp[FigNms.res_ratio_table])
-    #     prop_t = ItemPropertiesTable(tp[FigNms.item_properties_table])
-    #     cost_t = ItemCostTable(tp[FigNms.item_cost_table])
-    #
-    #     FigInsts = [inv_res, inv_prod, pr_res, pr_prod, budget, console,
-    #                 ratio_t, prop_t, cost_t]
-    #     return FigInsts
 
     def figure_update(self, tp):
         # log(tp, inspect.currentframe())

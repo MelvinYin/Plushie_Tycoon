@@ -32,6 +32,7 @@ class Func(Enum):
     next = 7
     back = 8
     start = 9
+    init = 10
 
 # Production signal values for internal use
 @unique
