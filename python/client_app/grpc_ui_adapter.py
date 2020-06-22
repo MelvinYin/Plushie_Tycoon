@@ -12,63 +12,63 @@ class GrpcUIAdapter:
         if self.verbose:
             print(message)
 
-    def Buy(self, name="aisha", quantity=11):
+    def buy(self, name="aisha", quantity=11):
         self._print(f"GrpcUIAdapter.Buy({name}, {quantity}) called.")
         request_object = grpc_pb2.TransactionObject(name=name, quantity=quantity)
         return_object = self.stub.buy(request_object)
         self._print("Success.")
         return return_object
 
-    def Sell(self, name="aisha", quantity=11):
+    def sell(self, name="aisha", quantity=11):
         self._print(f"GrpcUIAdapter.Sell({name}, {quantity}) called.")
         request_object = grpc_pb2.TransactionObject(name=name, quantity=quantity)
         return_object = self.stub.sell(request_object)
         self._print("Success.")
         return return_object
 
-    def Make(self, name="aisha", quantity=11):
+    def make(self, name="aisha", quantity=11):
         self._print(f"GrpcUIAdapter.Make({name}, {quantity}) called.")
         request_object = grpc_pb2.TransactionObject(name=name, quantity=quantity)
         return_object = self.stub.make(request_object)
         self._print("Success.")
         return return_object
 
-    def Next(self):
+    def next(self):
         self._print(f"GrpcUIAdapter.Next() called.")
         request_object = grpc_pb2.NullObject()
         return_object = self.stub.next(request_object)
         self._print("Success.")
         return return_object
 
-    def Save(self):
+    def save(self):
         self._print(f"GrpcUIAdapter.Save() called.")
         request_object = grpc_pb2.NullObject()
         return_object = self.stub.save(request_object)
         self._print("Success.")
         return return_object
 
-    def Load(self):
+    def load(self):
         self._print(f"GrpcUIAdapter.Load() called.")
         request_object = grpc_pb2.NullObject()
         return_object = self.stub.load(request_object)
         self._print("Success.")
         return return_object
 
-    def Back(self):
+    def back(self):
         self._print(f"GrpcUIAdapter.Back() called.")
         request_object = grpc_pb2.NullObject()
         return_object = self.stub.back(request_object)
         self._print("Success.")
         return return_object
 
-    def Quit(self):
+    def quit(self):
         self._print(f"GrpcUIAdapter.Quit() called.")
         request_object = grpc_pb2.NullObject()
         return_object = self.stub.quit(request_object)
         self._print("Success.")
         return return_object
 
-    def Init(self):
+    def init(self):
         self._print(f"GrpcUIAdapter.Init() called.")
         request_object = grpc_pb2.NullObject()
         return_object = self.stub.init(request_object)

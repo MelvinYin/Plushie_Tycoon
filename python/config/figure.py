@@ -2,7 +2,7 @@
 # Figure Attributes
 from enum import Enum, auto, unique
 from bokeh.palettes import Category10
-from .base import Res, Prod
+from config.base import Res, Prod
 
 class FigureNames(Enum):
     inventory_res = auto()
@@ -40,7 +40,6 @@ class ResourceRatioTableSpecs:
         self.data[Prod.chama.name] = [2, 5, 1, 4]
         self.width = 200
         self.height = 200
-
 
 class ConsoleOutputSpecs:
     def __init__(self):
@@ -127,17 +126,15 @@ class BudgetSpecs:
         return colormap
 
 FigSpecs = dict()
-FigSpecs['inventory_res'] = InventoryResSpecs()
-FigSpecs['inventory_prod'] = InventoryProdSpecs()
-FigSpecs['price_res'] = PriceResSpecs()
-FigSpecs['price_prod'] = PriceProdSpecs()
-FigSpecs['budget'] = BudgetSpecs()
-FigSpecs['console'] = ConsoleOutputSpecs()
-FigSpecs['res_ratio_table'] = ResourceRatioTableSpecs()
-FigSpecs['move_cost_table'] = ResourceRatioTableSpecs()
-
-
-
+FigSpecs[FigureNames.inventory_res] = InventoryResSpecs()
+FigSpecs[FigureNames.inventory_prod] = InventoryProdSpecs()
+FigSpecs[FigureNames.price_res] = PriceResSpecs()
+FigSpecs[FigureNames.price_prod] = PriceProdSpecs()
+FigSpecs[FigureNames.budget] = BudgetSpecs()
+FigSpecs[FigureNames.console_output] = ConsoleOutputSpecs()
+FigSpecs[FigureNames.res_ratio_table] = ResourceRatioTableSpecs()
+FigSpecs[FigureNames.item_cost_table] = ResourceRatioTableSpecs()
+FigSpecs[FigureNames.item_cost_table] = ResourceRatioTableSpecs()
 
 
 

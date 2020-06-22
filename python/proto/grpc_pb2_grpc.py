@@ -4,7 +4,7 @@ import grpc
 import grpc_pb2 as grpc__pb2
 
 
-class UITransferStub(object):
+class ClientPageStub(object):
     """todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
     or alternatively we can provide an order object somewhere
     """
@@ -16,53 +16,53 @@ class UITransferStub(object):
             channel: A grpc.Channel.
         """
         self.buy = channel.unary_unary(
-                '/plushie_tycoon.UITransfer/buy',
+                '/plushie_tycoon.ClientPage/buy',
                 request_serializer=grpc__pb2.TransactionObject.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.sell = channel.unary_unary(
-                '/plushie_tycoon.UITransfer/sell',
+                '/plushie_tycoon.ClientPage/sell',
                 request_serializer=grpc__pb2.TransactionObject.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.make = channel.unary_unary(
-                '/plushie_tycoon.UITransfer/make',
+                '/plushie_tycoon.ClientPage/make',
                 request_serializer=grpc__pb2.TransactionObject.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.next = channel.unary_unary(
-                '/plushie_tycoon.UITransfer/next',
+                '/plushie_tycoon.ClientPage/next',
                 request_serializer=grpc__pb2.NullObject.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.save = channel.unary_unary(
-                '/plushie_tycoon.UITransfer/save',
+                '/plushie_tycoon.ClientPage/save',
                 request_serializer=grpc__pb2.NullObject.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.load = channel.unary_unary(
-                '/plushie_tycoon.UITransfer/load',
+                '/plushie_tycoon.ClientPage/load',
                 request_serializer=grpc__pb2.NullObject.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.back = channel.unary_unary(
-                '/plushie_tycoon.UITransfer/back',
+                '/plushie_tycoon.ClientPage/back',
                 request_serializer=grpc__pb2.NullObject.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.quit = channel.unary_unary(
-                '/plushie_tycoon.UITransfer/quit',
+                '/plushie_tycoon.ClientPage/quit',
                 request_serializer=grpc__pb2.NullObject.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
         self.init = channel.unary_unary(
-                '/plushie_tycoon.UITransfer/init',
+                '/plushie_tycoon.ClientPage/init',
                 request_serializer=grpc__pb2.NullObject.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
 
 
-class UITransferServicer(object):
+class ClientPageServicer(object):
     """todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
     or alternatively we can provide an order object somewhere
     """
@@ -122,7 +122,7 @@ class UITransferServicer(object):
         raise NotImplementedError('Method not implemented!')
 
 
-def add_UITransferServicer_to_server(servicer, server):
+def add_ClientPageServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'buy': grpc.unary_unary_rpc_method_handler(
                     servicer.buy,
@@ -171,12 +171,12 @@ def add_UITransferServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'plushie_tycoon.UITransfer', rpc_method_handlers)
+            'plushie_tycoon.ClientPage', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class UITransfer(object):
+class ClientPage(object):
     """todo: map in proto is not ordered. Perhaps switch to 2 repeated fields?
     or alternatively we can provide an order object somewhere
     """
@@ -191,7 +191,7 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/buy',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/buy',
             grpc__pb2.TransactionObject.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
@@ -207,7 +207,7 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/sell',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/sell',
             grpc__pb2.TransactionObject.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
@@ -223,7 +223,7 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/make',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/make',
             grpc__pb2.TransactionObject.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
@@ -239,7 +239,7 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/next',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/next',
             grpc__pb2.NullObject.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
@@ -255,7 +255,7 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/save',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/save',
             grpc__pb2.NullObject.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
@@ -271,7 +271,7 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/load',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/load',
             grpc__pb2.NullObject.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
@@ -287,7 +287,7 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/back',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/back',
             grpc__pb2.NullObject.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
@@ -303,7 +303,7 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/quit',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/quit',
             grpc__pb2.NullObject.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,
@@ -319,7 +319,7 @@ class UITransfer(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.UITransfer/init',
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/init',
             grpc__pb2.NullObject.SerializeToString,
             grpc__pb2.Snapshot.FromString,
             options, channel_credentials,

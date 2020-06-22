@@ -1,16 +1,13 @@
 package plushie_tycoon;
 
-import io.grpc.Server;
-import io.grpc.ServerBuilder;
-import io.grpc.stub.StreamObserver;
-import java.util.LinkedHashMap;
-import plushie_tycoon.serverService.ServerService;
+import plushie_tycoon.local.localEngine.LocalEngine;
 
 public class PlushieServer {
     public static void main(String[] args) throws Exception {
-        int toUIPortno = 50001;
-        int toGlobalPortno = 50002;
-        ServerService service = new ServerService(toUIPortno, toGlobalPortno);
-        service.run();
+        int webPagePortno = 50001;
+        int serverPortno = 50002;
+        LocalEngine ge = new LocalEngine(webPagePortno, serverPortno);
+        ge.initFromGlobalServer();
+        ge.runServices();
     }
 }

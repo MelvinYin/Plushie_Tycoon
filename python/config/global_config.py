@@ -1,14 +1,17 @@
 import inspect
 import pandas as pd
 import sys
-try:
-    from .base import Res, Prod, Func
-    from .figure import FigureNames, FigSpecs
-    from .properties import WarehouseStats
-except:
-    from base import Res, Prod, Func
-    from figure import FigureNames, FigSpecs
-    from properties import WarehouseStats
+from config.base import Res, Prod, Func
+from config.figure import FigureNames, FigSpecs
+from config.properties import WarehouseStats
+# try:
+#     from python.config.base import Res, Prod, Func
+#     from python.config.figure import FigureNames, FigSpecs
+#     from python.config.properties import WarehouseStats
+# except:
+#     from base import Res, Prod, Func
+#     from figure import FigureNames, FigSpecs
+#     from properties import WarehouseStats
 
 UI_FAIL = hash('UI_FAIL')
 

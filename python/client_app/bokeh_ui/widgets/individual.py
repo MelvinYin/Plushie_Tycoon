@@ -191,7 +191,7 @@ class TransactionWidget:
         elif self._input_val.startswith("0"):
             msg = "Invalid input value."
         else:
-            callback = dict(command=RBG1_key.name, category=RBG3_key.name,
+            callback = dict(command=RBG1_key, category=RBG3_key,
                             quantity=int(self._input_val))
             self.widget_callback(callback)
         if msg:
@@ -249,7 +249,7 @@ class ButtonWidget:
             msg = "No category selected."
             log(msg, inspect.currentframe())
         else:
-            callback = dict(command=self._RBG.get_active().name)
+            callback = dict(command=self._RBG.get_active())
             self.callback(callback)
 
     def _assemble_layout(self):
