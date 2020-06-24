@@ -38,7 +38,6 @@ public class IndividualMarket {
     public double clearMarket(){
         HashMap<String, BuyerBase> buyers = new HashMap<>();
         buyers.put("init", new LinearBuyer());
-        System.out.println(playerBuyers);
         for (HashMap.Entry<String, Integer> entry: playerBuyers.entrySet()){
             buyers.put(entry.getKey(), new FixedBuyer(entry.getValue()));
         }

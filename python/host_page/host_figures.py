@@ -7,7 +7,7 @@ from config.global_config import Res, Prod
 
 class TransactionTable:
     def __init__(self):
-        self.width = 250
+        self.width = 500
         self.height = 220
 
         self._CDS = self._set_CDS()

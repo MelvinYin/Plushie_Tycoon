@@ -95,8 +95,6 @@ public class HostEngine {
             }
         }
         market.clearMarket();
-        System.out.println(market);
-        System.out.println(market.processedOrders);
         for (HashMap.Entry<String, UserData> perUser: userDatas.entrySet()){
             String userid = perUser.getKey();
             userDataCalculator.updateUserData(

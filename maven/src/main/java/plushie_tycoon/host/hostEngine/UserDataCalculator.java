@@ -16,7 +16,6 @@ public class UserDataCalculator {
     public void updateUserData(UserData original, HashMap<BaseObjects, Integer> movements, double budgetChange){
         double movementCost = 0;
         double storageCost = 0;
-        System.out.println(movements);
         for (HashMap.Entry<BaseObjects, Integer> entry: movements.entrySet()){
             if (entry.getValue() > 0){
                 movementCost += InventoryCalculator.getMoveInCost(entry.getKey()) * entry.getValue();

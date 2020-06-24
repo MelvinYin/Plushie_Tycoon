@@ -31,6 +31,8 @@ public class ClientEngine {
     int serverPortno;
     int webPagePortno;
     ClientPageService clientPageService;
+    ToHost toHost;
+    boolean needUpdate;
 
     public ClientEngine(int webPagePortno, int serverPortno){
         history = new StateHistory();
@@ -42,15 +44,16 @@ public class ClientEngine {
         makeTracker = new HashMap<>();
         Random random = new Random();
         userid = String.valueOf(random.nextInt());
+        toHost = new ToHost(serverPortno);
         this.serverPortno = serverPortno;
         this.webPagePortno = webPagePortno;
         clientPageService = new ClientPageService(this);
+        needUpdate = false;
     }
 
     public void initFromGlobalServer(){
-        ToHost.waitForReady(serverPortno);
-        ToHost.ping(serverPortno);
-        Snapshot initSnapshot = ToHost.register(serverPortno, userid);
+        toHost.waitForReady(10);
+        Snapshot initSnapshot = toHost.register(userid);
         updateLocal(initSnapshot);
     }
 
@@ -141,21 +144,35 @@ public class ClientEngine {
             changes.putBuySell(BaseStringConverter.convert(product), buySellTracker.getOrDefault(product, 0));
             changes.putMake(BaseStringConverter.convert(product), makeTracker.getOrDefault(product, 0));
         }
-        ToHost.send(serverPortno, changes.build());
+        toHost.send(changes.build());
         budget -= ClientInventory.getTotalMoveCost();
         budget -= ClientInventory.getTotalStorageCost();
         ClientInventory.resetMovement();
         time++;
+        needUpdate = true;
         return getUpdateReturn();
     }
 
+    public Snapshot updateFromHost() {
+        if (needUpdate){
+            needUpdate = false;
+            return getUpdateReturn();
+        } else {
+            return Snapshot.newBuilder().build();
+        }
+    }
+
     public boolean checkIfNextTurn(){
-        int serverTime = ToHost.getTime(serverPortno);
+        System.out.println("checkIfNextTurn called");
+        int serverTime = toHost.getTime();
         if (serverTime == time){
             return false;
         }
-        Snapshot newData = ToHost.query(serverPortno, userid);
+        System.out.println("checkIfNextTurn 2");
+        Snapshot newData = toHost.query(userid);
+        System.out.println("checkIfNextTurn pre");
         updateLocal(newData);
+        System.out.println("checkIfNextTurn completed");
         return true;
     }
 
@@ -176,10 +193,6 @@ public class ClientEngine {
         history.reset();
         buySellTracker.clear();
         makeTracker.clear();
-    }
-
-    public Snapshot getData(){
-        return getUpdateReturn();
     }
 
     public Snapshot save(){

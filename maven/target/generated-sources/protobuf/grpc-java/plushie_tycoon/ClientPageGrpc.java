@@ -341,6 +341,37 @@ public final class ClientPageGrpc {
     return getInitMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<plushie_tycoon.Grpc.IntObject,
+      plushie_tycoon.Grpc.Snapshot> getUpdateMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "update",
+      requestType = plushie_tycoon.Grpc.IntObject.class,
+      responseType = plushie_tycoon.Grpc.Snapshot.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<plushie_tycoon.Grpc.IntObject,
+      plushie_tycoon.Grpc.Snapshot> getUpdateMethod() {
+    io.grpc.MethodDescriptor<plushie_tycoon.Grpc.IntObject, plushie_tycoon.Grpc.Snapshot> getUpdateMethod;
+    if ((getUpdateMethod = ClientPageGrpc.getUpdateMethod) == null) {
+      synchronized (ClientPageGrpc.class) {
+        if ((getUpdateMethod = ClientPageGrpc.getUpdateMethod) == null) {
+          ClientPageGrpc.getUpdateMethod = getUpdateMethod =
+              io.grpc.MethodDescriptor.<plushie_tycoon.Grpc.IntObject, plushie_tycoon.Grpc.Snapshot>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "update"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.IntObject.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  plushie_tycoon.Grpc.Snapshot.getDefaultInstance()))
+              .setSchemaDescriptor(new ClientPageMethodDescriptorSupplier("update"))
+              .build();
+        }
+      }
+    }
+    return getUpdateMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -463,6 +494,13 @@ public final class ClientPageGrpc {
       asyncUnimplementedUnaryCall(getInitMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void update(plushie_tycoon.Grpc.IntObject request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
+      asyncUnimplementedUnaryCall(getUpdateMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -535,6 +573,13 @@ public final class ClientPageGrpc {
                 plushie_tycoon.Grpc.NullObject,
                 plushie_tycoon.Grpc.Snapshot>(
                   this, METHODID_INIT)))
+          .addMethod(
+            getUpdateMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                plushie_tycoon.Grpc.IntObject,
+                plushie_tycoon.Grpc.Snapshot>(
+                  this, METHODID_UPDATE)))
           .build();
     }
   }
@@ -636,6 +681,14 @@ public final class ClientPageGrpc {
       asyncUnaryCall(
           getChannel().newCall(getInitMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void update(plushie_tycoon.Grpc.IntObject request,
+        io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getUpdateMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -724,6 +777,13 @@ public final class ClientPageGrpc {
     public plushie_tycoon.Grpc.Snapshot init(plushie_tycoon.Grpc.NullObject request) {
       return blockingUnaryCall(
           getChannel(), getInitMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public plushie_tycoon.Grpc.Snapshot update(plushie_tycoon.Grpc.IntObject request) {
+      return blockingUnaryCall(
+          getChannel(), getUpdateMethod(), getCallOptions(), request);
     }
   }
 
@@ -824,6 +884,14 @@ public final class ClientPageGrpc {
       return futureUnaryCall(
           getChannel().newCall(getInitMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<plushie_tycoon.Grpc.Snapshot> update(
+        plushie_tycoon.Grpc.IntObject request) {
+      return futureUnaryCall(
+          getChannel().newCall(getUpdateMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_PING = 0;
@@ -836,6 +904,7 @@ public final class ClientPageGrpc {
   private static final int METHODID_BACK = 7;
   private static final int METHODID_QUIT = 8;
   private static final int METHODID_INIT = 9;
+  private static final int METHODID_UPDATE = 10;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -892,6 +961,10 @@ public final class ClientPageGrpc {
           break;
         case METHODID_INIT:
           serviceImpl.init((plushie_tycoon.Grpc.NullObject) request,
+              (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
+          break;
+        case METHODID_UPDATE:
+          serviceImpl.update((plushie_tycoon.Grpc.IntObject) request,
               (io.grpc.stub.StreamObserver<plushie_tycoon.Grpc.Snapshot>) responseObserver);
           break;
         default:
@@ -965,6 +1038,7 @@ public final class ClientPageGrpc {
               .addMethod(getBackMethod())
               .addMethod(getQuitMethod())
               .addMethod(getInitMethod())
+              .addMethod(getUpdateMethod())
               .build();
         }
       }

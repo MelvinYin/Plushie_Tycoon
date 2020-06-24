@@ -18,11 +18,13 @@ class UI:
         a dict that is used to update figure_set.
         """
         self.portno = portno
+        self.current_time = 0
         self.FigInstances = dict()
         self.transaction_widget = TransactionWidget(self.ui_callback)
         self.button_widget = ButtonWidget(self.ui_callback)
         self._init_figures()
         self._couple_range()
+
         self.ui_layout = self.plot()
 
     def _init_figures(self):
@@ -31,6 +33,7 @@ class UI:
         self.ui_callback(call)
 
     def _update_figures(self, grpc_obj):
+        self.current_time = grpc_obj.time
         #     inventory_res
         fields = dict()
         fig_name = FigNms.inventory_res
@@ -153,7 +156,6 @@ class UI:
 
 
     def _couple_range(self):
-        print(list(self.FigInstances.keys()))
         ref_x_range = self.FigInstances[FigNms.inventory_res].figure.x_range
         self.FigInstances[FigNms.inventory_prod].figure.x_range = ref_x_range
         self.FigInstances[FigNms.price_res].figure.x_range = ref_x_range
@@ -184,6 +186,8 @@ class UI:
                 output = grpc_adapter.quit()
             elif call['command'] == Func.init:
                 output = grpc_adapter.init()
+            elif call['command'] == Func.update:
+                output = grpc_adapter.update(self.current_time)
             else:
                 raise Exception(call)
         action = output.action

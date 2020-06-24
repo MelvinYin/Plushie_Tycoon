@@ -7955,7 +7955,7 @@ public final class Grpc {
       "y\022\013\n\003key\030\001 \001(\t\022(\n\005value\030\002 \001(\0132\031.plushie_" +
       "tycoon.mItemCost:\0028\001\032V\n\022ResourceRatioEnt" +
       "ry\022\013\n\003key\030\001 \001(\t\022/\n\005value\030\002 \001(\0132 .plushie" +
-      "_tycoon.mRatioPerProduct:\0028\0012\242\005\n\nClientP" +
+      "_tycoon.mRatioPerProduct:\0028\0012\343\005\n\nClientP" +
       "age\022@\n\004ping\022\032.plushie_tycoon.NullObject\032" +
       "\032.plushie_tycoon.NullObject\"\000\022D\n\003buy\022!.p" +
       "lushie_tycoon.TransactionObject\032\030.plushi" +
@@ -7972,25 +7972,27 @@ public final class Grpc {
       "tycoon.Snapshot\"\000\022>\n\004quit\022\032.plushie_tyco" +
       "on.NullObject\032\030.plushie_tycoon.Snapshot\"" +
       "\000\022>\n\004init\022\032.plushie_tycoon.NullObject\032\030." +
-      "plushie_tycoon.Snapshot\"\0002\342\003\n\014ClientToHo" +
-      "st\022>\n\010register\022\026.plushie_tycoon.UserID\032\030" +
-      ".plushie_tycoon.Snapshot\"\000\022D\n\014isregister" +
-      "ed\022\026.plushie_tycoon.UserID\032\032.plushie_tyc" +
-      "oon.ReturnCode\"\000\022E\n\004send\022\037.plushie_tycoo" +
-      "n.ProposedChanges\032\032.plushie_tycoon.Retur" +
-      "nCode\"\000\022;\n\005query\022\026.plushie_tycoon.UserID" +
-      "\032\030.plushie_tycoon.Snapshot\"\000\022B\n\007getTime\022" +
-      "\032.plushie_tycoon.NullObject\032\031.plushie_ty" +
-      "coon.IntObject\"\000\022B\n\nhasUpdated\022\026.plushie" +
-      "_tycoon.UserID\032\032.plushie_tycoon.ReturnCo" +
-      "de\"\000\022@\n\004ping\022\032.plushie_tycoon.NullObject" +
-      "\032\032.plushie_tycoon.NullObject\"\0002\337\001\n\tAdmin" +
-      "Page\022J\n\007getCall\022\032.plushie_tycoon.NullObj" +
-      "ect\032\037.plushie_tycoon.ProposedChanges\"\0000\001" +
-      "\022D\n\010nextTurn\022\032.plushie_tycoon.NullObject" +
-      "\032\032.plushie_tycoon.ReturnCode\"\000\022@\n\004ping\022\032" +
-      ".plushie_tycoon.NullObject\032\032.plushie_tyc" +
-      "oon.NullObject\"\000b\006proto3"
+      "plushie_tycoon.Snapshot\"\000\022?\n\006update\022\031.pl" +
+      "ushie_tycoon.IntObject\032\030.plushie_tycoon." +
+      "Snapshot\"\0002\342\003\n\014ClientToHost\022>\n\010register\022" +
+      "\026.plushie_tycoon.UserID\032\030.plushie_tycoon" +
+      ".Snapshot\"\000\022D\n\014isregistered\022\026.plushie_ty" +
+      "coon.UserID\032\032.plushie_tycoon.ReturnCode\"" +
+      "\000\022E\n\004send\022\037.plushie_tycoon.ProposedChang" +
+      "es\032\032.plushie_tycoon.ReturnCode\"\000\022;\n\005quer" +
+      "y\022\026.plushie_tycoon.UserID\032\030.plushie_tyco" +
+      "on.Snapshot\"\000\022B\n\007getTime\022\032.plushie_tycoo" +
+      "n.NullObject\032\031.plushie_tycoon.IntObject\"" +
+      "\000\022B\n\nhasUpdated\022\026.plushie_tycoon.UserID\032" +
+      "\032.plushie_tycoon.ReturnCode\"\000\022@\n\004ping\022\032." +
+      "plushie_tycoon.NullObject\032\032.plushie_tyco" +
+      "on.NullObject\"\0002\337\001\n\tAdminPage\022J\n\007getCall" +
+      "\022\032.plushie_tycoon.NullObject\032\037.plushie_t" +
+      "ycoon.ProposedChanges\"\0000\001\022D\n\010nextTurn\022\032." +
+      "plushie_tycoon.NullObject\032\032.plushie_tyco" +
+      "on.ReturnCode\"\000\022@\n\004ping\022\032.plushie_tycoon" +
+      ".NullObject\032\032.plushie_tycoon.NullObject\"" +
+      "\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

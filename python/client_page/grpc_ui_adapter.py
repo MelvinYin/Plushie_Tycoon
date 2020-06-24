@@ -74,3 +74,10 @@ class GrpcUIAdapter:
         return_object = self.stub.init(request_object)
         self._print("Success.")
         return return_object
+
+    def update(self, time):
+        self._print(f"GrpcUIAdapter.update() called.")
+        request_object = grpc_pb2.IntObject(item=time)
+        return_object = self.stub.update(request_object)
+        self._print("Success.")
+        return return_object

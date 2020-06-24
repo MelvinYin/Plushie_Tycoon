@@ -1,7 +1,6 @@
 plushie_tycoon/Grpc$mRatioPerProductOrBuilder.class
 plushie_tycoon/config/baseObjects/Products.class
 plushie_tycoon/host/hostEngine/hostMarket/seller/SellerBase.class
-plushie_tycoon/PlushieServer.class
 plushie_tycoon/Grpc$UserID$Builder.class
 plushie_tycoon/ClientToHostGrpc$ClientToHostFutureStub.class
 plushie_tycoon/ClientPageGrpc$ClientPageStub.class
@@ -101,6 +100,7 @@ plushie_tycoon/Grpc$Snapshot$WeightsDefaultEntryHolder.class
 plushie_tycoon/AdminPageGrpc$2.class
 plushie_tycoon/host/hostEngine/hostMarket/buyer/FixedBuyer.class
 plushie_tycoon/config/stats/MoveOutCost.class
+plushie_tycoon/client/PlushieServer.class
 plushie_tycoon/client/MockGE.class
 plushie_tycoon/Grpc$NullObject$1.class
 plushie_tycoon/ClientPageGrpc$ClientPageFutureStub.class

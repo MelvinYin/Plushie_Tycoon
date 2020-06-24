@@ -4,7 +4,7 @@ from config.global_config import Res, Prod
 from grpc_clients import admin_page
 from host_figures import TransactionTable, ProductionTable, ButtonComponent, \
     TextBoxComponent
-
+from bokeh.models.widgets import Button, Div
 
 class UI:
     def __init__(self, portno):
@@ -15,6 +15,7 @@ class UI:
         self.next_turn_button = self._build_next_turn()
         self.refresh_button = self._build_refresh()
         self.ping_button = self._build_ping()
+        self.label_row = self._labels_row()
         self.layout = self.plot()
 
     def _build_next_turn(self):
@@ -84,10 +85,25 @@ class UI:
         self.production_table.figure_update(update)
         return True
 
+    def _labels_row(self):
+        transaction_label = TextBoxComponent(dict(text='Transactions',
+                                                  width=100, height=10))
+        production_label = TextBoxComponent(
+            dict(text='Productions', width=100, height=10))
+        label_row = row(Div(width=53), transaction_label.widget,
+                        Div(width=317),
+                        production_label.widget)
+        return label_row
+
     def plot(self):
         layout = column(self.time_box.widget,
-                        row(self.transaction_table.figure,
-                            self.production_table.figure),
+                        self.label_row,
+                        row(row(self.transaction_table.figure, width=self
+                                .transaction_table.width),
+                        row(self.production_table.figure,
+                            width=self.production_table.width)),
+                        # row(self.transaction_table.figure,
+                        #     self.production_table.figure),
                         row(self.next_turn_button.widget,
                             self.refresh_button.widget, self.ping_button.widget))
         return layout

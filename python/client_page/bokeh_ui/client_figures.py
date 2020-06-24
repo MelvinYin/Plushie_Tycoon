@@ -578,6 +578,7 @@ class ButtonWidget:
 
     def _RBG_specs(self):
         labelmap = dict()
+        labelmap["update"] = Func.update
         labelmap["next"] = Func.next
         labelmap["save"] = Func.save
         labelmap["load"] = Func.load

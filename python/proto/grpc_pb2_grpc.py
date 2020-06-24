@@ -65,6 +65,11 @@ class ClientPageStub(object):
                 request_serializer=grpc__pb2.NullObject.SerializeToString,
                 response_deserializer=grpc__pb2.Snapshot.FromString,
                 )
+        self.update = channel.unary_unary(
+                '/plushie_tycoon.ClientPage/update',
+                request_serializer=grpc__pb2.IntObject.SerializeToString,
+                response_deserializer=grpc__pb2.Snapshot.FromString,
+                )
 
 
 class ClientPageServicer(object):
@@ -132,6 +137,12 @@ class ClientPageServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def update(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ClientPageServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -183,6 +194,11 @@ def add_ClientPageServicer_to_server(servicer, server):
             'init': grpc.unary_unary_rpc_method_handler(
                     servicer.init,
                     request_deserializer=grpc__pb2.NullObject.FromString,
+                    response_serializer=grpc__pb2.Snapshot.SerializeToString,
+            ),
+            'update': grpc.unary_unary_rpc_method_handler(
+                    servicer.update,
+                    request_deserializer=grpc__pb2.IntObject.FromString,
                     response_serializer=grpc__pb2.Snapshot.SerializeToString,
             ),
     }
@@ -357,6 +373,22 @@ class ClientPage(object):
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 
+    @staticmethod
+    def update(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/plushie_tycoon.ClientPage/update',
+            grpc__pb2.IntObject.SerializeToString,
+            grpc__pb2.Snapshot.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
 
 class ClientToHostStub(object):
     """Missing associated documentation comment in .proto file"""
@@ -408,8 +440,7 @@ class ClientToHostServicer(object):
     """Missing associated documentation comment in .proto file"""
 
     def register(self, request, context):
-        """service SendCalls {
-        """
+        """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
