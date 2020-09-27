@@ -73,13 +73,12 @@ class UI:
 
     def _build_time_box(self):
         specs = dict()
-        specs['text'] = '0'
+        specs['text'] = "Time: 0"
         specs['height'] = 20
         specs['width'] = 50
         return TextBoxComponent(specs)
 
     def figure_update(self, update):
-        self.time_box.widget.text = '123'
         # self.time_box.widget.text = update['time']
         self.transaction_table.figure_update(update)
         self.production_table.figure_update(update)
@@ -111,7 +110,7 @@ class UI:
     def widget_callback(self, call):
         print(f"next_turn_button called.")
         time = admin_page.nextTurn(self.portno).message
-        self.time_box.widget.text = time
+        self.time_box.widget.text = "Time: " + time
         return True
 
     def ping_callback(self, call):

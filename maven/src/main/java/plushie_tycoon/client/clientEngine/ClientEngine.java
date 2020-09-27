@@ -36,7 +36,7 @@ public class ClientEngine {
 
     public ClientEngine(int webPagePortno, int serverPortno){
         history = new StateHistory();
-        market = new ClientMarket();
+        market = new ClientMarket(Initials.prices);
         budget = Initials.budget;
         ClientInventory = new ClientInventory(Initials.quantities);
         time = Initials.time;
@@ -163,16 +163,12 @@ public class ClientEngine {
     }
 
     public boolean checkIfNextTurn(){
-        System.out.println("checkIfNextTurn called");
         int serverTime = toHost.getTime();
         if (serverTime == time){
             return false;
         }
-        System.out.println("checkIfNextTurn 2");
         Snapshot newData = toHost.query(userid);
-        System.out.println("checkIfNextTurn pre");
         updateLocal(newData);
-        System.out.println("checkIfNextTurn completed");
         return true;
     }
 

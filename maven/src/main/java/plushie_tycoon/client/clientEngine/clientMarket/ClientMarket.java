@@ -13,16 +13,8 @@ public class ClientMarket {
         this.indMarkets = market_values;
     }
 
-    public ClientMarket(){
-        this.indMarkets = Initials.prices;
-    }
-
     public void set(BaseObjects key, double price){
         indMarkets.put(key, price);
-    }
-
-    public HashMap<BaseObjects, Double> returnValues(){
-        return indMarkets;
     }
 
     public double get(BaseObjects key){
